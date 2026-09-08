@@ -1,11 +1,35 @@
 import './style.css'
 import 'hammerjs'
 import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } from './candidates.js'
-import { createPollChart, updatePollChart, resetZoom } from './chart.js'
+import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToChart } from './chart.js'
 import { weightedTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
 const META_URL = `${import.meta.env.BASE_URL}data/meta.json`
+const THEME_KEY = 'pebr-theme'
+
+const WINDOW_PRESETS = [
+  { id: '1', days: 1, label: '1d' },
+  { id: '7', days: 7, label: '7d' },
+  { id: '14', days: 14, label: '14d' },
+  { id: '21', days: 21, label: '21d' },
+  { id: '30', days: 30, label: 'mês' },
+  { id: '90', days: 90, label: '90d' },
+  { id: 'ytd', days: null, label: 'YTD' },
+]
+
+function daysSinceJan1() {
+  const now = new Date()
+  const jan1 = new Date(now.getFullYear(), 0, 1)
+  return Math.max(1, Math.ceil((now - jan1) / 86400000))
+}
+
+function resolveWindowDays(presetId, customDays) {
+  if (presetId === 'custom') return Math.max(1, Number(customDays) || 1)
+  if (presetId === 'ytd') return daysSinceJan1()
+  const p = WINDOW_PRESETS.find((x) => x.id === presetId)
+  return p?.days ?? 14
+}
 
 const state = {
   raw: [],
@@ -15,14 +39,35 @@ const state = {
   round: 1,
   institutes: new Set(),
   allInstitutes: [],
+  windowPreset: '14',
+  windowCustom: 14,
   windowDays: 14,
   rangeDays: null, // null = tudo; 30 | 90
+  projection: false,
   chart: null,
 }
 
+function applyTheme(theme) {
+  const t = theme === 'dark' ? 'dark' : 'light'
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light')
+  localStorage.setItem(THEME_KEY, t)
+  const btn = document.getElementById('themeToggle')
+  if (btn) btn.textContent = t === 'dark' ? 'Claro' : 'Escuro'
+  applyThemeToChart(state.chart)
+}
+
+function initTheme() {
+  const saved = localStorage.getItem(THEME_KEY)
+  if (saved === 'dark' || saved === 'light') return saved
+  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark'
+  return 'light'
+}
+
 async function boot() {
+  applyTheme(initTheme())
   const app = document.getElementById('app')
   app.innerHTML = shellHTML()
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
   bindChrome()
   try {
     const [pollRes, meta] = await Promise.all([fetch(DATA_URL), loadMeta()])
@@ -40,18 +85,24 @@ async function boot() {
     renderLegend()
     renderCards()
     renderTable()
+    syncWindowUI()
     const canvas = document.getElementById('pollChart')
-    state.chart = createPollChart(canvas, {
-      polls: state.polls,
-      round: state.round,
-      institutes: state.institutes,
-      windowDays: state.windowDays,
-      rangeDays: state.rangeDays,
-    })
+    state.chart = createPollChart(canvas, chartOpts())
     setStamp()
   } catch (err) {
     document.getElementById('chartError').textContent =
       `Não foi possível carregar as pesquisas: ${err.message}`
+  }
+}
+
+function chartOpts() {
+  return {
+    polls: state.polls,
+    round: state.round,
+    institutes: state.institutes,
+    windowDays: state.windowDays,
+    rangeDays: state.rangeDays,
+    projection: state.projection,
   }
 }
 
@@ -75,7 +126,6 @@ function resolveUpdatedStamp(meta, polls) {
     if (d && (!maxPub || d > maxPub)) maxPub = d
   }
   if (maxPub) {
-    // date-only → midday UTC so BR date is stable
     const iso = /^\d{4}-\d{2}-\d{2}$/.test(maxPub) ? maxPub + 'T12:00:00Z' : maxPub
     return formatUpdatedStamp(iso)
   }
@@ -132,11 +182,20 @@ function normalize(rows) {
 }
 
 function shellHTML() {
+  const presetBtns = WINDOW_PRESETS.map(
+    (p) =>
+      `<button type="button" class="chip${p.id === '14' ? ' on' : ''}" data-win="${p.id}">${p.label}</button>`,
+  ).join('')
   return `
   <header class="app-hdr"><div class="wrap">
-    <h1>Pesquisas eleitorais — Presidência 2026</h1>
-    <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
-    <div class="stamp" id="stamp">Carregando…</div>
+    <div class="hdr-row">
+      <div class="hdr-text">
+        <h1>Pesquisas eleitorais — Presidência 2026</h1>
+        <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
+        <div class="stamp" id="stamp">Carregando…</div>
+      </div>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">Escuro</button>
+    </div>
   </div></header>
   <main class="wrap main-stack">
     <section class="panel chart-panel" id="chartPanel">
@@ -155,15 +214,30 @@ function shellHTML() {
       <div class="chart-box"><canvas id="pollChart" aria-label="Gráfico de pesquisas"></canvas></div>
       <div class="chart-below">
         <div class="controls controls-secondary">
-          <label class="ctrl">Janela da média
-            <input type="range" id="window" min="7" max="28" value="14" />
-            <strong id="windowVal">14d</strong>
+          <div class="window-row">
+            <span class="ctrl">Janela da média</span>
+            <div class="window-presets" role="group" aria-label="Presets da janela">${presetBtns}</div>
+            <label class="ctrl">personalizado
+              <input type="number" class="win-custom" id="windowCustom" min="1" step="1" value="14" inputmode="numeric" />
+              <strong id="windowVal">14d</strong>
+            </label>
+          </div>
+          <label class="toggle-proj">
+            <input type="checkbox" id="projectionToggle" />
+            Modo projeção
           </label>
-          <button type="button" class="chip btn-reset" id="resetZoom">Resetar zoom</button>
+          <div class="axis-btns">
+            <button type="button" class="chip btn-reset" id="resetZoom">Resetar eixos</button>
+            <button type="button" class="chip btn-axis" id="resetY" title="Resetar escala Y">Resetar Y</button>
+          </div>
         </div>
+        <p class="proj-disclaimer" id="projDisclaimer">
+          <strong>Aviso:</strong> a projeção é uma <em>estimativa de modelo</em> (tendência linear local + banda de incerteza),
+          <strong>não</strong> uma pesquisa de opinião nem uma previsão eleitoral.
+        </p>
         <div class="filters institutes-inline" id="institutes" aria-label="Institutos"></div>
         <div class="legend" id="legend"></div>
-        <p class="hint">Pinça ou roda do mouse para zoom nas datas · arraste para panear. Fontes: pesquisas registradas no TSE e divulgações oficiais dos institutos.</p>
+        <p class="hint">Zoom X/Y: roda do mouse, pinça ou Shift+arrastar · arraste para panear nos dois eixos (eixo Y redimensionável). Fontes: pesquisas registradas no TSE e divulgações oficiais dos institutos.</p>
         <p class="hint" id="chartError" style="color:#c62828"></p>
       </div>
     </section>
@@ -174,7 +248,8 @@ function shellHTML() {
     </section>
     <section class="panel metodologia">
       <h2>Metodologia</h2>
-      <p>Pontos no gráfico são pesquisas individuais (campo/publicação). A linha é uma <strong>média ponderada</strong>: peso ≈ √(N) × decaimento exponencial na janela escolhida. A variação nos cartões compara a média atual com a de <strong>meados de maio/2026</strong> (âncora fixa). Cores são categóricas e não representam partidos.</p>
+      <p>Pontos no gráfico são pesquisas individuais (campo/publicação). A linha é uma <strong>média ponderada</strong>: peso ≈ √(N/2000) × exp(−dias/janela). Presets de janela: 1d, 7d, 14d, 21d, mês (~30d), 90d e YTD (dias desde 1º de janeiro do ano corrente); também há controle diário personalizado a partir de 1 dia. A variação nos cartões compara a média atual com a de <strong>meados de maio/2026</strong> (âncora fixa).</p>
+      <p><strong>Modo projeção:</strong> estende a série ponderada com tendência linear local na janela recente e uma banda de incerteza que se alarga no horizonte. Linhas tracejadas = estimativa de modelo — <strong>não</strong> é pesquisa nem previsão de eleição. Cores: Lula vermelho (#c62828), Flávio verde da bandeira (#009c3b); demais categóricas.</p>
     </section>
     <footer>
       <p>Site estático e sem fins partidários. Números apenas de pesquisas publicadas e verificadas — lacunas possíveis quando um instituto não mede todos os nomes.</p>
@@ -183,7 +258,41 @@ function shellHTML() {
   </main>`
 }
 
+function syncWindowUI() {
+  const val = document.getElementById('windowVal')
+  const custom = document.getElementById('windowCustom')
+  if (val) {
+    if (state.windowPreset === 'ytd') val.textContent = `${state.windowDays}d (YTD)`
+    else val.textContent = `${state.windowDays}d`
+  }
+  if (custom && state.windowPreset === 'custom') custom.value = String(state.windowDays)
+  document.querySelectorAll('[data-win]').forEach((b) => {
+    b.classList.toggle('on', state.windowPreset !== 'custom' && b.dataset.win === state.windowPreset)
+  })
+}
+
+function setWindowPreset(id) {
+  state.windowPreset = id
+  state.windowDays = resolveWindowDays(id, state.windowCustom)
+  syncWindowUI()
+  refresh()
+}
+
+function setWindowCustom(n) {
+  const days = Math.max(1, Math.floor(Number(n) || 1))
+  state.windowPreset = 'custom'
+  state.windowCustom = days
+  state.windowDays = days
+  syncWindowUI()
+  refresh()
+}
+
 function bindChrome() {
+  document.getElementById('themeToggle')?.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+    applyTheme(cur === 'dark' ? 'light' : 'dark')
+  })
+
   document.querySelectorAll('[data-round]').forEach((btn) => {
     btn.addEventListener('click', () => {
       state.round = Number(btn.dataset.round)
@@ -199,23 +308,45 @@ function bindChrome() {
       refresh()
     })
   })
-  const win = document.getElementById('window')
-  win.addEventListener('input', () => {
-    state.windowDays = Number(win.value)
-    document.getElementById('windowVal').textContent = `${state.windowDays}d`
+
+  document.querySelectorAll('[data-win]').forEach((btn) => {
+    btn.addEventListener('click', () => setWindowPreset(btn.dataset.win))
+  })
+  const custom = document.getElementById('windowCustom')
+  custom?.addEventListener('change', () => setWindowCustom(custom.value))
+  custom?.addEventListener('input', () => {
+    const n = Math.max(1, Math.floor(Number(custom.value) || 1))
+    if (String(custom.value) === '' || Number(custom.value) < 1) return
+    state.windowPreset = 'custom'
+    state.windowCustom = n
+    state.windowDays = n
+    syncWindowUI()
     refresh()
   })
-  document.getElementById('resetZoom').addEventListener('click', () => {
+
+  document.getElementById('projectionToggle')?.addEventListener('change', (e) => {
+    state.projection = !!e.target.checked
+    document.getElementById('projDisclaimer')?.classList.toggle('on', state.projection)
+    refresh()
+  })
+
+  document.getElementById('resetZoom')?.addEventListener('click', () => {
     if (state.chart) {
       resetZoom(state.chart)
-      // re-apply preset range after clearing pinch/wheel zoom
-      updatePollChart(state.chart, {
-        polls: state.polls,
-        round: state.round,
-        institutes: state.institutes,
-        windowDays: state.windowDays,
-        rangeDays: state.rangeDays,
-      })
+      resetYScale(state.chart, state.round)
+      updatePollChart(state.chart, chartOpts())
+    }
+  })
+  document.getElementById('resetY')?.addEventListener('click', () => {
+    if (state.chart) {
+      resetYScale(state.chart, state.round)
+      // clear zoom plugin Y limits by resetting then re-applying
+      try {
+        state.chart.resetZoom('y')
+      } catch {
+        /* older plugin may only support full reset */
+      }
+      state.chart.update('none')
     }
   })
 }
@@ -324,13 +455,7 @@ function refresh() {
   renderCards()
   renderTable()
   if (state.chart) {
-    updatePollChart(state.chart, {
-      polls: state.polls,
-      round: state.round,
-      institutes: state.institutes,
-      windowDays: state.windowDays,
-      rangeDays: state.rangeDays,
-    })
+    updatePollChart(state.chart, chartOpts())
   }
   setStamp()
 }

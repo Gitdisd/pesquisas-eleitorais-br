@@ -15,6 +15,7 @@ import zoomPlugin from 'chartjs-plugin-zoom'
 import { ptBR } from 'date-fns/locale'
 import { CANDIDATES } from './candidates.js'
 import { weightedTrend } from './aggregate.js'
+import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 
 Chart.register(
   LineController,
@@ -31,9 +32,20 @@ Chart.register(
 
 const DAY_MS = 86400000
 
-export function createPollChart(canvas, { polls, round, institutes, windowDays, rangeDays, onZoom }) {
-  const datasets = buildDatasets(polls, round, institutes, windowDays)
-  const { min, max } = rangeBounds(polls, round, institutes, rangeDays)
+function themeColors() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark'
+  return {
+    grid: dark ? 'rgba(255,255,255,.08)' : 'rgba(0,0,0,.06)',
+    tick: dark ? '#a8b0ba' : '#5c6570',
+    title: dark ? '#e8eaed' : '#1a1d21',
+  }
+}
+
+export function createPollChart(canvas, opts) {
+  const { polls, round, institutes, windowDays, rangeDays, projection, onZoom } = opts
+  const datasets = buildDatasets(polls, round, institutes, windowDays, projection)
+  const { min, max } = rangeBounds(polls, round, institutes, rangeDays, projection)
+  const tc = themeColors()
   const chart = new Chart(canvas, {
     type: 'line',
     data: { datasets },
@@ -61,12 +73,28 @@ export function createPollChart(canvas, { polls, round, institutes, windowDays, 
           },
         },
         zoom: {
-          limits: { x: { min: 'original', max: 'original' } },
-          pan: { enabled: true, mode: 'x', modifierKey: null },
+          limits: {
+            x: { min: 'original', max: 'original' },
+            y: { min: 0, max: 100, minRange: 5 },
+          },
+          pan: {
+            enabled: true,
+            mode: 'xy',
+            modifierKey: null,
+            scaleMode: 'xy',
+          },
           zoom: {
-            wheel: { enabled: true },
+            wheel: { enabled: true, speed: 0.08 },
             pinch: { enabled: true },
-            mode: 'x',
+            mode: 'xy',
+            scaleMode: 'xy',
+            drag: {
+              enabled: true,
+              backgroundColor: 'rgba(37,99,235,.12)',
+              borderColor: 'rgba(37,99,235,.45)',
+              borderWidth: 1,
+              modifierKey: 'shift',
+            },
             onZoomComplete: ({ chart: c }) => onZoom?.(c),
           },
         },
@@ -78,14 +106,15 @@ export function createPollChart(canvas, { polls, round, institutes, windowDays, 
           time: { unit: 'month', tooltipFormat: 'dd/MM/yyyy' },
           min: min ?? undefined,
           max: max ?? undefined,
-          grid: { color: 'rgba(0,0,0,.06)' },
-          ticks: { maxRotation: 0, autoSkipPadding: 12 },
+          grid: { color: tc.grid },
+          ticks: { maxRotation: 0, autoSkipPadding: 12, color: tc.tick },
         },
         y: {
-          title: { display: true, text: 'Intenção de voto (%)' },
-          suggestedMin: 0,
+          title: { display: true, text: 'Intenção de voto (%)', color: tc.title },
+          min: 0,
           suggestedMax: round === 2 ? 55 : 50,
-          grid: { color: 'rgba(0,0,0,.06)' },
+          grid: { color: tc.grid },
+          ticks: { color: tc.tick },
         },
       },
     },
@@ -93,15 +122,32 @@ export function createPollChart(canvas, { polls, round, institutes, windowDays, 
   return chart
 }
 
-export function updatePollChart(chart, { polls, round, institutes, windowDays, rangeDays }) {
-  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays)
+export function updatePollChart(chart, { polls, round, institutes, windowDays, rangeDays, projection }) {
+  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, projection)
+  const tc = themeColors()
   chart.options.scales.y.suggestedMax = round === 2 ? 55 : 50
-  applyDateRange(chart, polls, round, institutes, rangeDays)
+  chart.options.scales.x.grid.color = tc.grid
+  chart.options.scales.y.grid.color = tc.grid
+  chart.options.scales.x.ticks.color = tc.tick
+  chart.options.scales.y.ticks.color = tc.tick
+  chart.options.scales.y.title.color = tc.title
+  applyDateRange(chart, polls, round, institutes, rangeDays, projection)
   chart.update('none')
 }
 
-export function applyDateRange(chart, polls, round, institutes, rangeDays) {
-  const { min, max } = rangeBounds(polls, round, institutes, rangeDays)
+export function applyThemeToChart(chart) {
+  if (!chart) return
+  const tc = themeColors()
+  chart.options.scales.x.grid.color = tc.grid
+  chart.options.scales.y.grid.color = tc.grid
+  chart.options.scales.x.ticks.color = tc.tick
+  chart.options.scales.y.ticks.color = tc.tick
+  chart.options.scales.y.title.color = tc.title
+  chart.update('none')
+}
+
+export function applyDateRange(chart, polls, round, institutes, rangeDays, projection) {
+  const { min, max } = rangeBounds(polls, round, institutes, rangeDays, projection)
   if (min == null || max == null) {
     chart.options.scales.x.min = undefined
     chart.options.scales.x.max = undefined
@@ -111,21 +157,22 @@ export function applyDateRange(chart, polls, round, institutes, rangeDays) {
   }
 }
 
-function rangeBounds(polls, round, institutes, rangeDays) {
+function rangeBounds(polls, round, institutes, rangeDays, projection) {
   const filtered = polls.filter((p) => {
     if (p.round !== round) return false
     if (institutes?.size && !institutes.has(p.institute)) return false
     return true
   })
   if (!filtered.length) return { min: null, max: null }
-  const tMax = filtered.reduce((m, p) => Math.max(m, p.t), filtered[0].t)
+  const tMaxObs = filtered.reduce((m, p) => Math.max(m, p.t), filtered[0].t)
   const tMinAll = filtered.reduce((m, p) => Math.min(m, p.t), filtered[0].t)
+  const tMax = projection ? tMaxObs + 14 * DAY_MS : tMaxObs
   if (!rangeDays) return { min: tMinAll, max: tMax }
-  const min = Math.max(tMinAll, tMax - rangeDays * DAY_MS)
+  const min = Math.max(tMinAll, tMaxObs - rangeDays * DAY_MS)
   return { min, max: tMax }
 }
 
-function buildDatasets(polls, round, institutes, windowDays) {
+function buildDatasets(polls, round, institutes, windowDays, projection) {
   const filtered = polls.filter((p) => {
     if (p.round !== round) return false
     if (institutes.size && !institutes.has(p.institute)) return false
@@ -167,10 +214,66 @@ function buildDatasets(polls, round, institutes, windowDays) {
       tension: 0.25,
       order: 1,
     })
+
+    if (projection && trend.length >= 2) {
+      const electionDayMs = round === 2 ? ELECTION_ROUND2_MS : ELECTION_ROUND1_MS
+      const proj = projectTrend(trend, {
+        fitDays: windowDays,
+        horizonDays: 14,
+        electionDayMs,
+      })
+      if (proj.ok && proj.line.length > 1) {
+        // uncertainty band: high then low reversed for fill
+        datasets.push({
+          label: `${c.label} (banda+)`,
+          data: proj.bandHigh,
+          showLine: true,
+          pointRadius: 0,
+          borderWidth: 0,
+          backgroundColor: hexAlpha(c.color, 0.14),
+          borderColor: 'transparent',
+          fill: '+1',
+          tension: 0.2,
+          order: 3,
+        })
+        datasets.push({
+          label: `${c.label} (banda-)`,
+          data: proj.bandLow,
+          showLine: true,
+          pointRadius: 0,
+          borderWidth: 0,
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          fill: false,
+          tension: 0.2,
+          order: 3,
+        })
+        datasets.push({
+          label: `${c.label} (projeção)`,
+          data: proj.line,
+          showLine: true,
+          pointRadius: 0,
+          borderColor: c.color,
+          borderWidth: 2,
+          borderDash: [6, 4],
+          tension: 0.2,
+          order: 0,
+        })
+      }
+    }
   }
   return datasets
 }
 
 export function resetZoom(chart) {
   chart.resetZoom()
+}
+
+/** Reset Y scale to default suggested range (TradingView-like axis reset helper). */
+export function resetYScale(chart, round) {
+  const y = chart.options.scales.y
+  y.min = 0
+  y.max = undefined
+  y.suggestedMin = 0
+  y.suggestedMax = round === 2 ? 55 : 50
 }

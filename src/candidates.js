@@ -1,8 +1,7 @@
 export const CANDIDATES = [
-  // Neutral categorical palette — no Lula-red / Flávio-blue party coding
-  // teal, slate, amber, violet, olive, coral
-  { key: 'lula', names: ['Lula', 'Luiz Inácio Lula da Silva'], label: 'Lula', color: '#0f766e', borderDash: [], borderWidth: 2.5 },
-  { key: 'flavio', names: ['Flávio Bolsonaro', 'Flavio Bolsonaro'], label: 'Flávio Bolsonaro', color: '#64748b', borderDash: [], borderWidth: 2.5 },
+  // Lula red · Flávio Brazilian-flag green · others categorical
+  { key: 'lula', names: ['Lula', 'Luiz Inácio Lula da Silva'], label: 'Lula', color: '#c62828', borderDash: [], borderWidth: 2.5 },
+  { key: 'flavio', names: ['Flávio Bolsonaro', 'Flavio Bolsonaro'], label: 'Flávio Bolsonaro', color: '#009c3b', borderDash: [], borderWidth: 2.5 },
   { key: 'cury', names: ['Augusto Cury', 'Cury'], label: 'Augusto Cury', color: '#b45309', borderDash: [8, 4], borderWidth: 2 },
   { key: 'renan', names: ['Renan Santos', 'Renan'], label: 'Renan Santos', color: '#6d28d9', borderDash: [2, 3], borderWidth: 2 },
   { key: 'caiado', names: ['Ronaldo Caiado', 'Caiado'], label: 'Ronaldo Caiado', color: '#4d7c0f', borderDash: [10, 4, 2, 4], borderWidth: 2 },
