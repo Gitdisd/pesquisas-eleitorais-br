@@ -69,6 +69,8 @@ async function boot() {
   const app = document.getElementById('app')
   app.innerHTML = shellHTML()
   applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
+  fillProjectionCopy()
+  syncProjectionUI()
   bindChrome()
   try {
     const [pollRes, meta] = await Promise.all([fetch(DATA_URL), loadMeta()])
