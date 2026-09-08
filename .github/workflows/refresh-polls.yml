@@ -2,8 +2,10 @@ name: Refresh polls
 
 on:
   schedule:
-    # 09:00 UTC ~ 06:00 America/Sao_Paulo
-    - cron: "0 9 * * *"
+    # Every 3 hours at :10 UTC.
+    # Primary discovery may also run via Chief of Staff routine; this job validates/syncs
+    # and can pull POLL_SOURCE_URL if set.
+    - cron: "10 */3 * * *"
   workflow_dispatch:
 
 # Overlapping crons must not race-corrupt data commits.

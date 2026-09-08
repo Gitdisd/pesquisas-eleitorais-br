@@ -196,6 +196,7 @@ function shellHTML() {
         <h1>Pesquisas eleitorais — Presidência 2026</h1>
         <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
         <div class="stamp" id="stamp">Carregando…</div>
+        <p class="refresh-notice">Novas pesquisas publicadas podem levar até cerca de 3 horas para aparecer (busca automática periódica).</p>
       </div>
       <button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">Escuro</button>
     </div>
@@ -250,6 +251,7 @@ function shellHTML() {
     <section class="panel metodologia">
       <h2>Metodologia</h2>
       <p>Pontos no gráfico são pesquisas individuais (campo/publicação). A linha é uma <strong>média ponderada</strong>: peso ≈ √(N/2000) × exp(−dias/janela). Presets de janela: 1d, 7d, 14d, 21d, mês (~30d), 90d e YTD (dias desde 1º de janeiro do ano corrente); também há controle diário personalizado a partir de 1 dia. A variação nos cartões compara a média atual com a de <strong>meados de maio/2026</strong> (âncora fixa).</p>
+      <p>Os dados são atualizados por busca automática periódica. Por isso, novas pesquisas publicadas podem demorar até cerca de 3 horas para aparecer neste site.</p>
       <p id="projMethodology"></p>
       <p>Cores: Lula vermelho (#c62828), Flávio verde da bandeira (#009c3b); demais categóricas. Cartões mostram só a média ponderada observada — não o extremo da projeção.</p>
     </section>
