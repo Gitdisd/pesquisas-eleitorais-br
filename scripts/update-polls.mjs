@@ -269,17 +269,20 @@ async function main() {
   let prevMeta = null;
   try { prevMeta = readJsonFile(META_PATH); } catch { /* missing */ }
   const needsContentHash = !prevMeta || typeof prevMeta.content_hash !== "string";
+  const checkedAtUtc = new Date().toISOString();
   const meta = {
     schema_version: 1,
     last_updated:
       contentChanged || !prevMeta?.last_updated
         ? nowSaoPauloIso()
         : prevMeta.last_updated,
+    last_check_at: checkedAtUtc,
+    check_interval_minutes: 190,
     record_count: sorted.length,
     source: "verified published polls",
     content_hash: hash,
   };
-  // Rewrite meta when polls change, or once to land content_hash without bumping last_updated.
+  // Always refresh last_check_at; bump last_updated only when poll content changes.
   const metaText = pretty(meta);
   const metaDataChanged = writeTextIfChanged(META_PATH, metaText);
   const metaPublicChanged = writeTextIfChanged(PUBLIC_META, metaText);
@@ -305,6 +308,7 @@ async function main() {
   console.log("  coverage_summary changed:", coverageChanged);
   console.log("  files changed:", anyChanged);
   console.log("  last_updated:", meta.last_updated);
+  console.log("  last_check_at:", meta.last_check_at);
 }
 
 main().catch((err) => {

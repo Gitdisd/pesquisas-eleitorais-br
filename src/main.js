@@ -32,11 +32,18 @@ function resolveWindowDays(presetId, customDays) {
   return p?.days ?? 14
 }
 
+const DEFAULT_CHECK_INTERVAL_MINUTES = 190
+
 const state = {
   raw: [],
   polls: [],
   meta: null,
   updatedLabel: null,
+  lastCheckAt: null,
+  checkIntervalMs: DEFAULT_CHECK_INTERVAL_MINUTES * 60 * 1000,
+  checkTimerId: null,
+  metaPollId: null,
+  awaitingCheck: false,
   round: 1,
   institutes: new Set(),
   allInstitutes: [],
@@ -92,6 +99,8 @@ async function boot() {
     const canvas = document.getElementById('pollChart')
     state.chart = createPollChart(canvas, chartOpts())
     setStamp()
+    applyCheckMeta(meta)
+    startCheckTimers()
   } catch (err) {
     document.getElementById('chartError').textContent =
       `Não foi possível carregar as pesquisas: ${err.message}`
@@ -139,6 +148,99 @@ function setStamp() {
   const stamp = document.getElementById('stamp')
   const when = state.updatedLabel || '—'
   stamp.textContent = `Atualizado em ${when} · ${countLabel()}`
+}
+
+function applyCheckMeta(meta) {
+  state.meta = meta
+  const iso = meta?.last_check_at || meta?.last_updated || null
+  const d = iso ? new Date(iso) : null
+  if (d && !Number.isNaN(d.getTime())) {
+    const prevMs = state.lastCheckAt?.getTime()
+    const nextMs = d.getTime()
+    // Keep an optimistic restart if it is ahead of a stale meta stamp.
+    if (prevMs == null || nextMs >= prevMs || !state.awaitingCheck) {
+      state.lastCheckAt = d
+      state.awaitingCheck = false
+    }
+  } else if (!state.lastCheckAt) {
+    state.lastCheckAt = new Date()
+  }
+  const mins = Number(meta?.check_interval_minutes)
+  if (Number.isFinite(mins) && mins > 0) {
+    state.checkIntervalMs = mins * 60 * 1000
+  } else {
+    state.checkIntervalMs = DEFAULT_CHECK_INTERVAL_MINUTES * 60 * 1000
+  }
+}
+
+/** Relative elapsed in natural pt-BR: "há 12 min", "há 2 h e 5 min". */
+function formatElapsedPt(ms) {
+  const sec = Math.max(0, Math.floor(ms / 1000))
+  if (sec < 60) return 'há menos de 1 min'
+  const min = Math.floor(sec / 60)
+  if (min < 60) return min === 1 ? 'há 1 min' : `há ${min} min`
+  const h = Math.floor(min / 60)
+  const rem = min % 60
+  if (h < 48) {
+    if (rem === 0) return h === 1 ? 'há 1 h' : `há ${h} h`
+    const hPart = h === 1 ? '1 h' : `${h} h`
+    const mPart = rem === 1 ? '1 min' : `${rem} min`
+    return `há ${hPart} e ${mPart}`
+  }
+  const days = Math.floor(h / 24)
+  return days === 1 ? 'há 1 dia' : `há ${days} dias`
+}
+
+function formatCountdown(ms) {
+  const total = Math.max(0, Math.floor(ms / 1000))
+  const h = Math.floor(total / 3600)
+  const m = Math.floor((total % 3600) / 60)
+  const s = total % 60
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+}
+
+function tickCheckTimer() {
+  const lastEl = document.getElementById('lastCheckLine')
+  const nextEl = document.getElementById('nextCheckLine')
+  if (!lastEl || !nextEl || !state.lastCheckAt) return
+
+  const now = Date.now()
+  let elapsed = now - state.lastCheckAt.getTime()
+  let remaining = state.checkIntervalMs - elapsed
+
+  if (remaining <= 0) {
+    // Hit zero: show verifying, then restart countdown optimistically.
+    state.awaitingCheck = true
+    state.lastCheckAt = new Date()
+    lastEl.textContent = `Última verificação: ${formatElapsedPt(0)}`
+    nextEl.textContent = 'Verificando em breve…'
+    return
+  }
+
+  lastEl.textContent = `Última verificação: ${formatElapsedPt(elapsed)}`
+  nextEl.textContent = `Próxima verificação em: ${formatCountdown(remaining)}`
+}
+
+async function refreshMetaQuietly() {
+  const meta = await loadMeta()
+  if (!meta) return
+  const prevIso = state.meta?.last_check_at || state.meta?.last_updated
+  const nextIso = meta.last_check_at || meta.last_updated
+  applyCheckMeta(meta)
+  const stampLabel = resolveUpdatedStamp(meta, state.polls)
+  if (stampLabel) {
+    state.updatedLabel = stampLabel
+    setStamp()
+  }
+  if (nextIso && nextIso !== prevIso) tickCheckTimer()
+}
+
+function startCheckTimers() {
+  if (state.checkTimerId) clearInterval(state.checkTimerId)
+  if (state.metaPollId) clearInterval(state.metaPollId)
+  tickCheckTimer()
+  state.checkTimerId = setInterval(tickCheckTimer, 1000)
+  state.metaPollId = setInterval(refreshMetaQuietly, 60_000)
 }
 
 function normalize(rows) {
@@ -196,6 +298,10 @@ function shellHTML() {
         <h1>Pesquisas eleitorais — Presidência 2026</h1>
         <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
         <div class="stamp" id="stamp">Carregando…</div>
+        <div class="check-timer" id="checkTimer" aria-live="polite">
+          <div id="lastCheckLine">Última verificação: —</div>
+          <div id="nextCheckLine">Próxima verificação em: —</div>
+        </div>
         <p class="refresh-notice">Novas pesquisas publicadas podem levar até cerca de 3 horas para aparecer (busca automática periódica).</p>
       </div>
       <button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">Escuro</button>

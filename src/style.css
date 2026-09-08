@@ -22,6 +22,11 @@ header.app-hdr{background:var(--surface);border-bottom:1px solid var(--border);p
 header.app-hdr h1{margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
 header.app-hdr p{margin:.35rem 0 0;color:var(--muted);font-size:.9rem}
 .stamp{font-size:.8rem;color:var(--muted);margin-top:.5rem}
+.check-timer{
+  margin-top:.35rem;font-size:.78rem;color:var(--muted);line-height:1.4;
+  font-variant-numeric:tabular-nums;max-width:42rem;
+}
+.check-timer div{margin:0}
 .refresh-notice{margin:.35rem 0 0;font-size:.78rem;color:var(--muted);max-width:42rem;line-height:1.35}
 .theme-toggle{
   flex-shrink:0;border:1px solid var(--border);background:var(--chip-bg);color:var(--text);
@@ -133,6 +138,7 @@ footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);fon
   header.app-hdr p{display:none}
   header.app-hdr p.refresh-notice{display:block;font-size:.68rem;margin-top:.2rem}
   .stamp{font-size:.7rem;margin-top:.25rem}
+  .check-timer{font-size:.68rem;margin-top:.2rem}
   .hdr-row{gap:.5rem;align-items:center}
   .theme-toggle{padding:.3rem .65rem;font-size:.75rem;min-height:36px}
   .wrap{padding:0 .75rem 1.5rem}
