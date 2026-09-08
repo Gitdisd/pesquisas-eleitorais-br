@@ -1,0 +1,56 @@
+{
+  "ran_at": "2026-09-08T21:04:30.454Z",
+  "watermark": "2026-09-08",
+  "sources": 18,
+  "candidate_links": 224,
+  "pages_fetched": 40,
+  "verified_new": 0,
+  "inbox_new": 7,
+  "skipped_old": 23,
+  "fetch_errors": 6,
+  "dry_run": false,
+  "verified_samples": [],
+  "inbox_samples": [
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest em PE: Lula, 51%; ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-08T21:04:16.965Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/parana/",
+      "title": "G1 – Paraná: notícias e vídeos da RPC Pular para o conteúdo Paraná eleições 2026 últimas notícias bom dia pr meio-dia pr",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-08T21:04:19.207Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/parana/caminhos-do-campo/",
+      "title": "caminhos do campo Pular para o conteúdo Paraná caminhos do campo eleições 2026 últimas notícias bom dia pr meio-dia pr b",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-09-08T21:04:21.121Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/oeste-sudoeste/videos-meio-dia-parana-foz-do-iguacu/",
+      "title": "Vídeos Meio Dia Paraná - Foz do Iguaçu - G1 Oeste e Sudoeste Pular para o conteúdo Oeste e Sudoeste Vídeos Meio Dia Para",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-08T21:04:25.253Z"
+    },
+    {
+      "url": "https://g1.globo.com/globonews/converse-com-outras-ideias/",
+      "title": "Converse Com Outras Ideias Pular para o conteúdo GloboNews Converse Com Outras Ideias Festival Converse Com Outras Ideia",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-08T21:04:25.717Z"
+    }
+  ],
+  "meta_last_check_at": "2026-09-08T21:04:30.454Z"
+}
