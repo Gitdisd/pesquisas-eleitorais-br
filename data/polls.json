@@ -1,5 +1,83 @@
 [
   {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-contra-45-de-lula-no-2o-turno-diz-btg-nexus/",
+    "methodology_note": "Phone CATI; Nexus for BTG Pactual; TSE BR-06790/2026; PDF https://static.poder360.com.br/uploads/2026/09/BTG-Nexus-nacional-8set2026.pdf.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 9
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-contra-45-de-lula-no-2o-turno-diz-btg-nexus/",
+    "methodology_note": "Phone CATI; Nexus for BTG Pactual; TSE BR-06790/2026; PDF https://static.poder360.com.br/uploads/2026/09/BTG-Nexus-nacional-8set2026.pdf. Cenario 1 sem Pablo Marcal.",
+    "verified": true
+  },
+  {
     "institute": "Quaest",
     "fieldwork_start": "2026-09-03",
     "fieldwork_end": "2026-09-06",
