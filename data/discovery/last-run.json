@@ -1,23 +1,23 @@
 {
-  "ran_at": "2026-09-08T21:04:30.454Z",
+  "ran_at": "2026-09-08T23:20:20.143Z",
   "watermark": "2026-09-08",
   "sources": 18,
-  "candidate_links": 224,
+  "candidate_links": 257,
   "pages_fetched": 40,
   "verified_new": 0,
   "inbox_new": 7,
   "skipped_old": 23,
-  "fetch_errors": 6,
+  "fetch_errors": 5,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
-      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest em PE: Lula, 51%; ",
+      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest: veja como está o ",
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-08T21:04:16.965Z"
+      "found_at": "2026-09-08T23:20:03.022Z"
     },
     {
       "url": "https://g1.globo.com/pr/parana/",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": null,
       "published_date": null,
-      "found_at": "2026-09-08T21:04:19.207Z"
+      "found_at": "2026-09-08T23:20:06.031Z"
     },
     {
       "url": "https://g1.globo.com/pr/parana/caminhos-do-campo/",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": "Ideia",
       "published_date": null,
-      "found_at": "2026-09-08T21:04:21.121Z"
+      "found_at": "2026-09-08T23:20:07.366Z"
     },
     {
       "url": "https://g1.globo.com/pr/oeste-sudoeste/videos-meio-dia-parana-foz-do-iguacu/",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": null,
       "published_date": null,
-      "found_at": "2026-09-08T21:04:25.253Z"
+      "found_at": "2026-09-08T23:20:11.515Z"
     },
     {
       "url": "https://g1.globo.com/globonews/converse-com-outras-ideias/",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": null,
       "published_date": null,
-      "found_at": "2026-09-08T21:04:25.717Z"
+      "found_at": "2026-09-08T23:20:12.562Z"
     }
   ],
-  "meta_last_check_at": "2026-09-08T21:04:30.454Z"
+  "meta_last_check_at": "2026-09-08T23:20:20.143Z"
 }
