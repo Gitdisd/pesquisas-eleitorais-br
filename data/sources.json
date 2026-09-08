@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "keywords": [
+    "pesquisa eleitoral",
+    "intenção de voto",
+    "intencao de voto",
+    "pesquisa presidencial",
+    "pesquisa para presidente",
+    "estimulada",
+    "1º turno",
+    "1o turno",
+    "2º turno",
+    "2o turno",
+    "BR-0",
+    "Datafolha",
+    "Quaest",
+    "Genial",
+    "AtlasIntel",
+    "PoderData",
+    "Poder360",
+    "Nexus",
+    "BTG",
+    "Paraná Pesquisas",
+    "Parana Pesquisas",
+    "Ideia",
+    "CNT",
+    "MDA",
+    "Real Time Big Data",
+    "Futura",
+    "GERP",
+    "Indexa",
+    "Broadcast",
+    "Vox Brasil",
+    "Alfa Inteligência",
+    "Alfa Inteligencia"
+  ],
+  "sources": [
+    {
+      "id": "datafolha-folha",
+      "name": "Datafolha / Folha",
+      "type": "institute",
+      "urls": [
+        "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+        "https://www1.folha.uol.com.br/poder/"
+      ],
+      "notes": "National face-to-face; often mirrored on G1 and Folha."
+    },
+    {
+      "id": "quaest-genial",
+      "name": "Quaest / Genial",
+      "type": "institute",
+      "urls": [
+        "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+        "https://www.quaest.com.br/"
+      ],
+      "notes": "Genial/Quaest or Quaest branding; G1 primary mirror."
+    },
+    {
+      "id": "atlasintel",
+      "name": "AtlasIntel",
+      "type": "institute",
+      "urls": [
+        "https://www.atlasintel.org/",
+        "https://www.poder360.com.br/tag/atlasintel/"
+      ],
+      "notes": "Online panels; often via Poder360."
+    },
+    {
+      "id": "poderdata-poder360",
+      "name": "PoderData / Poder360",
+      "type": "institute",
+      "urls": [
+        "https://www.poder360.com.br/poderdata/",
+        "https://www.poder360.com.br/poder-eleicoes-2026/",
+        "https://www.poder360.com.br/feed/"
+      ],
+      "notes": "IVR phone; RSS feed useful for discovery."
+    },
+    {
+      "id": "nexus-btg",
+      "name": "Nexus / BTG",
+      "type": "institute",
+      "urls": [
+        "https://www.nexus.fsb.com.br/estudos-divulgados/",
+        "https://www.poder360.com.br/tag/nexus/"
+      ],
+      "notes": "Phone CATI for BTG Pactual."
+    },
+    {
+      "id": "parana-pesquisas",
+      "name": "Paraná Pesquisas",
+      "type": "institute",
+      "urls": [
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+        "https://www.paranapesquisas.com.br/"
+      ],
+      "notes": "Often on Gazeta do Povo."
+    },
+    {
+      "id": "ideia",
+      "name": "Ideia",
+      "type": "institute",
+      "urls": [
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+        "https://ideia.com.br/"
+      ],
+      "notes": "Meio/Ideia series sometimes."
+    },
+    {
+      "id": "cnt-mda",
+      "name": "CNT / MDA",
+      "type": "institute",
+      "urls": [
+        "https://www.cnt.org.br/",
+        "https://www.poder360.com.br/tag/cnt/"
+      ],
+      "notes": "CNT Opinião / MDA."
+    },
+    {
+      "id": "realtime-bigdata",
+      "name": "Real Time Big Data",
+      "type": "institute",
+      "urls": [
+        "https://www.infomoney.com.br/politica/",
+        "https://gauchazh.clicrbs.com.br/politica/eleicoes/"
+      ],
+      "notes": "Often InfoMoney / GaúchaZH."
+    },
+    {
+      "id": "futura",
+      "name": "Futura / Apex",
+      "type": "institute",
+      "urls": [
+        "https://www.poder360.com.br/tag/futura/",
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/"
+      ],
+      "notes": "Futura/Apex national."
+    },
+    {
+      "id": "gerp",
+      "name": "GERP",
+      "type": "institute",
+      "urls": [
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/"
+      ],
+      "notes": "Gazeta do Povo mirror common."
+    },
+    {
+      "id": "indexa-broadcast",
+      "name": "Indexa / Broadcast",
+      "type": "institute",
+      "urls": [
+        "https://www.broadcast.com.br/",
+        "https://valor.globo.com/politica/eleicoes-2026/"
+      ],
+      "notes": "Broadcast / Valor."
+    },
+    {
+      "id": "vox-brasil",
+      "name": "Vox Brasil",
+      "type": "institute",
+      "urls": [
+        "https://www.poder360.com.br/tag/vox/"
+      ],
+      "notes": "Often PDF on Poder360 static."
+    },
+    {
+      "id": "alfa-inteligencia",
+      "name": "Alfa Inteligência",
+      "type": "institute",
+      "urls": [
+        "https://www.poder360.com.br/tag/alfa/",
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/"
+      ],
+      "notes": "National series when available."
+    },
+    {
+      "id": "g1-pesquisas",
+      "name": "G1 — tag pesquisa eleitoral",
+      "type": "outlet",
+      "urls": [
+        "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+        "https://g1.globo.com/dynamo/politica/eleicoes/2026/pesquisa-eleitoral/rss2.xml"
+      ],
+      "notes": "Primary aggregator for Datafolha/Quaest."
+    },
+    {
+      "id": "valor-eleicoes",
+      "name": "Valor — Eleições 2026",
+      "type": "outlet",
+      "urls": [
+        "https://valor.globo.com/politica/eleicoes-2026/"
+      ],
+      "notes": "Roundups and Indexa/Broadcast mirrors."
+    },
+    {
+      "id": "reuters-br-politics",
+      "name": "Reuters / BBC Portuguese politics",
+      "type": "outlet",
+      "urls": [
+        "https://www.bbc.com/portuguese/topics/c404v14pdw4t",
+        "https://www.reuters.com/world/americas/"
+      ],
+      "notes": "Secondary mirrors; use for discovery only."
+    },
+    {
+      "id": "poder360-feed",
+      "name": "Poder360 RSS",
+      "type": "aggregator",
+      "urls": [
+        "https://www.poder360.com.br/feed/"
+      ],
+      "notes": "Broad poll coverage RSS."
+    }
+  ]
+}
