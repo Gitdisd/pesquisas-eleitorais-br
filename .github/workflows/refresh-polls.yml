@@ -1,0 +1,56 @@
+name: Refresh polls
+
+on:
+  schedule:
+    # 09:00 UTC ~ 06:00 America/Sao_Paulo
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+# Overlapping crons must not race-corrupt data commits.
+concurrency:
+  group: refresh-polls
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Update polls
+        env:
+          # Empty secret = script falls back to existing data/polls.json (OK).
+          POLL_SOURCE_URL: ${{ secrets.POLL_SOURCE_URL }}
+        run: npm run update-polls
+
+      # Successful data push to main triggers deploy-pages.yml via push-to-main.
+      - name: Commit if changed
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # porcelain catches modified + new untracked under data paths
+          if [ -z "$(git status --porcelain -- data/ public/data/)" ]; then
+            echo "No data changes to commit"
+            exit 0
+          fi
+          git add -- data/ public/data/
+          if git diff --cached --quiet; then
+            echo "Nothing staged to commit"
+            exit 0
+          fi
+          git commit -m "chore(data): refresh polls"
+          git push

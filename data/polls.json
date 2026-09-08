@@ -1,0 +1,7356 @@
+[
+  {
+    "institute": "Quaest",
+    "fieldwork_start": "2026-09-03",
+    "fieldwork_end": "2026-09-06",
+    "published_date": "2026-09-07",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-2-turno-7-de-setembro.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-01720/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest",
+    "fieldwork_start": "2026-09-03",
+    "fieldwork_end": "2026-09-06",
+    "published_date": "2026-09-07",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 36
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 29
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 8
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-presidente-7-setembro.ghtml",
+    "methodology_note": "Face-to-face; Globo/O Globo; TSE BR-01720/2026. Without Marçal.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-01",
+    "fieldwork_end": "2026-09-02",
+    "published_date": "2026-09-03",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-2o-turno-presidente-3-setembro.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-03669/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-01",
+    "fieldwork_end": "2026-09-02",
+    "published_date": "2026-09-03",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 8
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-presidente-3-setembro.ghtml",
+    "methodology_note": "Face-to-face, pontos de fluxo; Globo/Folha; TSE BR-03669/2026. Scenario without Pablo Marçal.",
+    "verified": true,
+    "flag": "fieldwork_end aligned to Folha/G1 (1–2 Sep); title sometimes says through 3 Sep."
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-08-30",
+    "fieldwork_end": "2026-09-02",
+    "published_date": "2026-09-03",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 3000,
+    "margin_of_error": "±1.8 pp",
+    "source_url": "https://www.poder360.com.br/poderdata/flavio-tem-45-e-lula-registra-44-no-2o-turno-diz-poderdata-aya/",
+    "methodology_note": "Phone IVR; TSE BR-07561/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-08-30",
+    "fieldwork_end": "2026-09-02",
+    "published_date": "2026-09-03",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 37
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 10
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 3000,
+    "margin_of_error": "±1.8 pp",
+    "source_url": "https://www.poder360.com.br/poderdata/poderdata-aya-augusto-cury-vai-de-4-para-10-no-1o-turno/",
+    "methodology_note": "Phone IVR (URA); PoderData/Aya; TSE BR-07561/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-08-27",
+    "fieldwork_end": "2026-09-01",
+    "published_date": "2026-09-03",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45.6
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.2
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-387-das-intencoes-de-voto-contra-336-de-flavio/",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02793/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-08-27",
+    "fieldwork_end": "2026-09-01",
+    "published_date": "2026-09-03",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.7
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33.6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 9.9
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.8
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1.6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6.1
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-387-das-intencoes-de-voto-contra-336-de-flavio/",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02793/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest",
+    "fieldwork_start": "2026-08-30",
+    "fieldwork_end": "2026-09-01",
+    "published_date": "2026-09-02",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/02/quaest-presidente-2-setembro.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-07065/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest",
+    "fieldwork_start": "2026-08-30",
+    "fieldwork_end": "2026-09-01",
+    "published_date": "2026-09-02",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 37
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 29
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 10
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/02/quaest-presidente-2-setembro.ghtml",
+    "methodology_note": "Face-to-face domiciliar; Globo/O Globo; TSE BR-07065/2026. Without Marçal.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-08-27",
+    "fieldwork_end": "2026-08-31",
+    "published_date": "2026-09-01",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.infomoney.com.br/politica/real-time-big-data-lula-e-flavio-bolsonaro-empatam-com-44-no-2o-turno/",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03490/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-08-27",
+    "fieldwork_end": "2026-08-31",
+    "published_date": "2026-09-01",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 29
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 10
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://gauchazh.clicrbs.com.br/politica/eleicoes/noticia/2026/09/real-time-big-data-divulga-nova-pesquisa-para-presidente-veja-os-numeros-cmtiihl5a00gp011jsm3hy1kq.html",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03490/2026.",
+    "verified": true,
+    "flag": "Aug scenario with Marçal on GZH: Lula 38 Flávio 29 Cury 10 Renan 6 Caiado 4 Zema 2; without Marçal Flávio 30 Cury 11 Renan 7."
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-08-25",
+    "fieldwork_end": "2026-08-30",
+    "published_date": "2026-08-31",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.6
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.3
+      }
+    ],
+    "n": 5014,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-471-contra-426-de-flavio-no-2o-turno-diz-pesquisa/",
+    "methodology_note": "Online panel; TSE BR-07972/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-08-25",
+    "fieldwork_end": "2026-08-30",
+    "published_date": "2026-08-31",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33.7
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 7.8
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 7.6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 0.3
+      }
+    ],
+    "n": 5014,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-471-contra-426-de-flavio-no-2o-turno-diz-pesquisa/",
+    "methodology_note": "Electronic form / online panel; self-funded; TSE BR-07972/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-28",
+    "fieldwork_end": "2026-08-30",
+    "published_date": "2026-08-31",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2005,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-08900/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-28",
+    "fieldwork_end": "2026-08-30",
+    "published_date": "2026-08-31",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 11
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6
+      }
+    ],
+    "n": 2005,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-31-de-agosto-de-2026/",
+    "methodology_note": "Phone CATI; BTG Pactual; TSE BR-08900/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-08-25",
+    "fieldwork_end": "2026-08-27",
+    "published_date": "2026-08-29",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.4
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://static.poder360.com.br/uploads/2026/08/RELATORIO-VOX-BRASIL-NACIONAL-6-29-08-2026-1.pdf",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-05519/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-08-25",
+    "fieldwork_end": "2026-08-27",
+    "published_date": "2026-08-29",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 37.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34.8
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2.6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3.3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.8
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.3
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://static.poder360.com.br/uploads/2026/08/RELATORIO-VOX-BRASIL-NACIONAL-6-29-08-2026-1.pdf",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-05519/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-08-23",
+    "fieldwork_end": "2026-08-26",
+    "published_date": "2026-08-27",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR; TSE BR-04974/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-08-23",
+    "fieldwork_end": "2026-08-26",
+    "published_date": "2026-08-27",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-04974/2026. Often branded PoderData/Aya.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-08-21",
+    "fieldwork_end": "2026-08-25",
+    "published_date": "2026-08-26",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2.0 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-agosto-2026-2/",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03547/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-08-21",
+    "fieldwork_end": "2026-08-25",
+    "published_date": "2026-08-26",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 37
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2.0 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-agosto-2026-2/",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03547/2026. Aug 21-25 contracted by AESP.",
+    "verified": true,
+    "flag": "BBC lists Aug 20-23 GERP as 37.2/37.6; Gazeta rounds to 37/38."
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-08-20",
+    "fieldwork_end": "2026-08-23",
+    "published_date": "2026-08-26",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.broadcast.com.br/news/lula-tem-39-e-flavio-34-no-primeiro-turno-mostra-pesquisa-indexa-broadcast/",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-06366/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-08-20",
+    "fieldwork_end": "2026-08-23",
+    "published_date": "2026-08-26",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 16
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.broadcast.com.br/news/lula-tem-39-e-flavio-34-no-primeiro-turno-mostra-pesquisa-indexa-broadcast/",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-06366/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-21",
+    "fieldwork_end": "2026-08-23",
+    "published_date": "2026-08-24",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-09028/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-21",
+    "fieldwork_end": "2026-08-23",
+    "published_date": "2026-08-24",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-09028/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-08-18",
+    "fieldwork_end": "2026-08-20",
+    "published_date": "2026-08-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2058,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/02/quem-esta-na-frente-para-presidente-veja-resultados-das-ultimas-pesquisas.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-04496/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-08-18",
+    "fieldwork_end": "2026-08-20",
+    "published_date": "2026-08-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2058,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-presidente-3-setembro.ghtml",
+    "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-04496/2026. Prior round cited on Sep 3 G1.",
+    "verified": true,
+    "flag": "Full Aug detail also on Valor; scenario without Marçal."
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-14",
+    "fieldwork_end": "2026-08-16",
+    "published_date": "2026-08-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-03317/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-14",
+    "fieldwork_end": "2026-08-16",
+    "published_date": "2026-08-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-03317/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-08-10",
+    "fieldwork_end": "2026-08-13",
+    "published_date": "2026-08-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-06773/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-08-10",
+    "fieldwork_end": "2026-08-13",
+    "published_date": "2026-08-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-06773/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-08-09",
+    "fieldwork_end": "2026-08-12",
+    "published_date": "2026-08-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR; TSE BR-06868/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-08-09",
+    "fieldwork_end": "2026-08-12",
+    "published_date": "2026-08-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-06868/2026. Often branded PoderData/Aya.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-08-06",
+    "fieldwork_end": "2026-08-10",
+    "published_date": "2026-08-11",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2.0 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-08045/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-08-06",
+    "fieldwork_end": "2026-08-10",
+    "published_date": "2026-08-11",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2.0 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-08045/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "CNT/MDA",
+    "fieldwork_start": "2026-08-05",
+    "fieldwork_end": "2026-08-09",
+    "published_date": "2026-08-11",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 39.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12.9
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://revistaforum.com.br/politica/cnt-mda-nova-pesquisa-lula-flavio/",
+    "methodology_note": "Face-to-face; TSE BR-06935/2026. Fórum reports Lula 48% Flávio 39%; BBC 48.0/39.1.",
+    "verified": true
+  },
+  {
+    "institute": "CNT/MDA",
+    "fieldwork_start": "2026-08-05",
+    "fieldwork_end": "2026-08-09",
+    "published_date": "2026-08-11",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 28.7
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.8
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://static.poder360.com.br/uploads/2026/08/Relatorio-Pesquisa-CNT-de-Opiniao-R169-AGOSTO26.pdf",
+    "methodology_note": "Face-to-face domiciliar e ponto de fluxo; MDA for CNT; TSE BR-06935/2026. 169ª rodada.",
+    "verified": true,
+    "flag": "Detailed % also in Revista Fórum / BBC (42.4/28.7)."
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-07",
+    "fieldwork_end": "2026-08-09",
+    "published_date": "2026-08-10",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08428/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-08-07",
+    "fieldwork_end": "2026-08-09",
+    "published_date": "2026-08-10",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08428/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-08-03",
+    "fieldwork_end": "2026-08-07",
+    "published_date": "2026-08-08",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.5
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08109/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-08-03",
+    "fieldwork_end": "2026-08-07",
+    "published_date": "2026-08-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34.1
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3.6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.9
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08109/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-07-31",
+    "fieldwork_end": "2026-08-03",
+    "published_date": "2026-08-05",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 39
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-06591/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-07-31",
+    "fieldwork_end": "2026-08-03",
+    "published_date": "2026-08-05",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 30
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-06591/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-07-31",
+    "fieldwork_end": "2026-08-03",
+    "published_date": "2026-08-05",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8.5
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-agosto-2026/",
+    "methodology_note": "Phone CATI; TSE BR-04579/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-07-31",
+    "fieldwork_end": "2026-08-03",
+    "published_date": "2026-08-05",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.7
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4.7
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-agosto-2026/",
+    "methodology_note": "Phone CATI; Canal Meio; TSE BR-04579/2026. Latest Ideia national as of Sep 2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-07-31",
+    "fieldwork_end": "2026-08-02",
+    "published_date": "2026-08-03",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-02874/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-07-31",
+    "fieldwork_end": "2026-08-02",
+    "published_date": "2026-08-03",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-02874/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-07-26",
+    "fieldwork_end": "2026-07-29",
+    "published_date": "2026-07-30",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR; TSE BR-07845/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-07-26",
+    "fieldwork_end": "2026-07-29",
+    "published_date": "2026-07-30",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-07845/2026. Often branded PoderData/Aya.",
+    "verified": true
+  },
+  {
+    "institute": "Alfa Inteligência",
+    "fieldwork_start": "2026-07-23",
+    "fieldwork_end": "2026-07-28",
+    "published_date": "2026-07-29",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2700,
+    "margin_of_error": "±1.8 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-04488/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Alfa Inteligência",
+    "fieldwork_start": "2026-07-23",
+    "fieldwork_end": "2026-07-28",
+    "published_date": "2026-07-29",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 29
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2700,
+    "margin_of_error": "±1.8 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-04488/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-07-26",
+    "fieldwork_end": "2026-07-28",
+    "published_date": "2026-07-29",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.4
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-01084/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-07-26",
+    "fieldwork_end": "2026-07-28",
+    "published_date": "2026-07-29",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31.2
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.9
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-01084/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-07-22",
+    "fieldwork_end": "2026-07-27",
+    "published_date": "2026-07-28",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 49.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.9
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7.9
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel; TSE BR-08602/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-07-22",
+    "fieldwork_end": "2026-07-27",
+    "published_date": "2026-07-28",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.9
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35.8
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 7.8
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.8
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 1.6
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-08602/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-07-24",
+    "fieldwork_end": "2026-07-26",
+    "published_date": "2026-07-27",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01489/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-07-24",
+    "fieldwork_end": "2026-07-26",
+    "published_date": "2026-07-27",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01489/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-07-22",
+    "fieldwork_end": "2026-07-24",
+    "published_date": "2026-07-24",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-01166/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-07-22",
+    "fieldwork_end": "2026-07-24",
+    "published_date": "2026-07-24",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/24/datafolha-primeiro-turno-julho.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-01166/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-07-15",
+    "fieldwork_end": "2026-07-20",
+    "published_date": "2026-07-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-05026/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-07-15",
+    "fieldwork_end": "2026-07-20",
+    "published_date": "2026-07-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-05026/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-07-18",
+    "fieldwork_end": "2026-07-20",
+    "published_date": "2026-07-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09247/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-07-18",
+    "fieldwork_end": "2026-07-20",
+    "published_date": "2026-07-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 9
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09247/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-07-16",
+    "fieldwork_end": "2026-07-19",
+    "published_date": "2026-07-20",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 39
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02904/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-07-16",
+    "fieldwork_end": "2026-07-19",
+    "published_date": "2026-07-20",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 30
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02904/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-07-12",
+    "fieldwork_end": "2026-07-15",
+    "published_date": "2026-07-16",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR; TSE BR-00059/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-07-12",
+    "fieldwork_end": "2026-07-15",
+    "published_date": "2026-07-16",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-00059/2026. Often branded PoderData/Aya.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-07-10",
+    "fieldwork_end": "2026-07-13",
+    "published_date": "2026-07-15",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/15/quaest-1o-turno-julho-lula-flavio-bolsonaro.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-07181/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-07-10",
+    "fieldwork_end": "2026-07-13",
+    "published_date": "2026-07-15",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 28
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 19
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/15/quaest-1o-turno-julho-lula-flavio-bolsonaro.ghtml",
+    "methodology_note": "Face-to-face; Genial Investimentos; TSE BR-07181/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-07-10",
+    "fieldwork_end": "2026-07-12",
+    "published_date": "2026-07-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07981/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-07-10",
+    "fieldwork_end": "2026-07-12",
+    "published_date": "2026-07-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07981/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-07-07",
+    "fieldwork_end": "2026-07-11",
+    "published_date": "2026-07-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7.6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-07294/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-07-07",
+    "fieldwork_end": "2026-07-11",
+    "published_date": "2026-07-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36.8
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.7
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8.7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-07294/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-07-03",
+    "fieldwork_end": "2026-07-07",
+    "published_date": "2026-07-08",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03067/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-07-03",
+    "fieldwork_end": "2026-07-07",
+    "published_date": "2026-07-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 36
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03067/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-07-03",
+    "fieldwork_end": "2026-07-06",
+    "published_date": "2026-07-07",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-05628/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-07-03",
+    "fieldwork_end": "2026-07-06",
+    "published_date": "2026-07-07",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13.6
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-05628/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-06-25",
+    "fieldwork_end": "2026-06-30",
+    "published_date": "2026-07-01",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.3
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8.9
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel; TSE BR-04582/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-06-25",
+    "fieldwork_end": "2026-06-30",
+    "published_date": "2026-07-01",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36.6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 7.8
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2.9
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 1.2
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-04582/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-06-26",
+    "fieldwork_end": "2026-06-28",
+    "published_date": "2026-06-29",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08521/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-06-26",
+    "fieldwork_end": "2026-06-28",
+    "published_date": "2026-06-29",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08521/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-06-23",
+    "fieldwork_end": "2026-06-25",
+    "published_date": "2026-06-26",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.8
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.9
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-06630/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-06-23",
+    "fieldwork_end": "2026-06-25",
+    "published_date": "2026-06-26",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32.2
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.7
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.8
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14.3
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-06630/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-06-21",
+    "fieldwork_end": "2026-06-24",
+    "published_date": "2026-06-25",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR; TSE BR-05722/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-06-21",
+    "fieldwork_end": "2026-06-24",
+    "published_date": "2026-06-25",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-05722/2026. Often branded PoderData/Aya.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-06-18",
+    "fieldwork_end": "2026-06-20",
+    "published_date": "2026-06-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-08944/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-06-18",
+    "fieldwork_end": "2026-06-20",
+    "published_date": "2026-06-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-08944/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-06-17",
+    "fieldwork_end": "2026-06-19",
+    "published_date": "2026-06-20",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/06/20/datafolha-lula-tem-41percent-e-flavio-bolsonaro-31percent-das-intencoes-de-voto-no-1o-turno.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-09956/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-06-17",
+    "fieldwork_end": "2026-06-19",
+    "published_date": "2026-06-20",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/06/20/datafolha-lula-tem-41percent-e-flavio-bolsonaro-31percent-das-intencoes-de-voto-no-1o-turno.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-09956/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-06-15",
+    "fieldwork_end": "2026-06-19",
+    "published_date": "2026-06-20",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18.3
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-09657/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-06-15",
+    "fieldwork_end": "2026-06-19",
+    "published_date": "2026-06-20",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 37
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-09657/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "CNT/MDA",
+    "fieldwork_start": "2026-06-10",
+    "fieldwork_end": "2026-06-14",
+    "published_date": "2026-06-15",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 49.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36.8
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13.9
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-04256/2026.",
+    "verified": true
+  },
+  {
+    "institute": "CNT/MDA",
+    "fieldwork_start": "2026-06-10",
+    "fieldwork_end": "2026-06-14",
+    "published_date": "2026-06-15",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 28.2
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.8
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.8
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14.9
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-04256/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-06-12",
+    "fieldwork_end": "2026-06-14",
+    "published_date": "2026-06-15",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 49
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-06645/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-06-12",
+    "fieldwork_end": "2026-06-14",
+    "published_date": "2026-06-15",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-06645/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-06-08",
+    "fieldwork_end": "2026-06-12",
+    "published_date": "2026-06-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.9
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-01461/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-06-08",
+    "fieldwork_end": "2026-06-12",
+    "published_date": "2026-06-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41.6
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34.1
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.9
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-01461/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Alfa Inteligência",
+    "fieldwork_start": "2026-06-05",
+    "fieldwork_end": "2026-06-10",
+    "published_date": "2026-06-11",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 1400,
+    "margin_of_error": "±2.6 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-03496/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Alfa Inteligência",
+    "fieldwork_start": "2026-06-05",
+    "fieldwork_end": "2026-06-10",
+    "published_date": "2026-06-11",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 7
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 1400,
+    "margin_of_error": "±2.6 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-03496/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-06-05",
+    "fieldwork_end": "2026-06-08",
+    "published_date": "2026-06-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-07661/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-06-05",
+    "fieldwork_end": "2026-06-08",
+    "published_date": "2026-06-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 29
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 19
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-07661/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-06-01",
+    "fieldwork_end": "2026-06-05",
+    "published_date": "2026-06-06",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44.7
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 16.3
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-01792/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-06-01",
+    "fieldwork_end": "2026-06-05",
+    "published_date": "2026-06-06",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 34
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 19
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-01792/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-06-01",
+    "fieldwork_end": "2026-06-03",
+    "published_date": "2026-06-04",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41.3
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.9
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-08016/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-06-01",
+    "fieldwork_end": "2026-06-03",
+    "published_date": "2026-06-04",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33.6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3.1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6.9
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 5.1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 5.2
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-08016/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-05-29",
+    "fieldwork_end": "2026-05-30",
+    "published_date": "2026-05-31",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-05864/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-05-29",
+    "fieldwork_end": "2026-05-30",
+    "published_date": "2026-05-31",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-05864/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-05-25",
+    "fieldwork_end": "2026-05-28",
+    "published_date": "2026-05-29",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR; TSE BR-04882/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-05-25",
+    "fieldwork_end": "2026-05-28",
+    "published_date": "2026-05-29",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-04882/2026. Often branded PoderData/Aya.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-05-23",
+    "fieldwork_end": "2026-05-27",
+    "published_date": "2026-05-28",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41.4
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12.2
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-02918/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-05-23",
+    "fieldwork_end": "2026-05-27",
+    "published_date": "2026-05-28",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31.5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15.6
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-02918/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-05-22",
+    "fieldwork_end": "2026-05-24",
+    "published_date": "2026-05-25",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02154/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Indexa/Broadcast",
+    "fieldwork_start": "2026-05-22",
+    "fieldwork_end": "2026-05-24",
+    "published_date": "2026-05-25",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 19
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02154/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-05-22",
+    "fieldwork_end": "2026-05-24",
+    "published_date": "2026-05-25",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-04193/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-05-22",
+    "fieldwork_end": "2026-05-24",
+    "published_date": "2026-05-25",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-04193/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-19",
+    "fieldwork_end": "2026-05-22",
+    "published_date": "2026-05-23",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-07971/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-19",
+    "fieldwork_end": "2026-05-22",
+    "published_date": "2026-05-23",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-07971/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-05-20",
+    "fieldwork_end": "2026-05-22",
+    "published_date": "2026-05-22",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-07489/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-05-20",
+    "fieldwork_end": "2026-05-22",
+    "published_date": "2026-05-22",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-07489/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-05-15",
+    "fieldwork_end": "2026-05-21",
+    "published_date": "2026-05-22",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.7
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.2
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06529/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-05-15",
+    "fieldwork_end": "2026-05-21",
+    "published_date": "2026-05-22",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42.7
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35.6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.9
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.7
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.9
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06529/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-05-17",
+    "fieldwork_end": "2026-05-19",
+    "published_date": "2026-05-20",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15.1
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-02416/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-05-17",
+    "fieldwork_end": "2026-05-19",
+    "published_date": "2026-05-20",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32.1
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.9
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4.1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14.3
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-02416/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-05-12",
+    "fieldwork_end": "2026-05-14",
+    "published_date": "2026-05-16",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/05/16/datafolha-maio-primeiro-turno.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-00290/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-05-12",
+    "fieldwork_end": "2026-05-14",
+    "published_date": "2026-05-16",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/05/16/datafolha-maio-primeiro-turno.ghtml",
+    "methodology_note": "Face-to-face; TSE BR-00290/2026; most interviews before Vorcaro audio leak.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-05-09",
+    "fieldwork_end": "2026-05-12",
+    "published_date": "2026-05-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 43.8
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 16
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-02423/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "Vox Brasil",
+    "fieldwork_start": "2026-05-09",
+    "fieldwork_end": "2026-05-12",
+    "published_date": "2026-05-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 35.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.8
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 0.8
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.8
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4.5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2100,
+    "margin_of_error": "±2.15 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-02423/2026. PDF hosted by Poder360 for Aug round.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-07",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 50
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-07",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 34
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-05-08",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-05-08",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-05-04",
+    "fieldwork_end": "2026-05-08",
+    "published_date": "2026-05-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46.9
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8.6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-03678/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-05-04",
+    "fieldwork_end": "2026-05-08",
+    "published_date": "2026-05-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36.1
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-03678/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-05-01",
+    "fieldwork_end": "2026-05-05",
+    "published_date": "2026-05-06",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.7
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.3
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-05356/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-05-01",
+    "fieldwork_end": "2026-05-05",
+    "published_date": "2026-05-06",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.1
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-05356/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-05-02",
+    "fieldwork_end": "2026-05-04",
+    "published_date": "2026-05-05",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03627/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-05-02",
+    "fieldwork_end": "2026-05-04",
+    "published_date": "2026-05-05",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03627/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-04-22",
+    "fieldwork_end": "2026-04-27",
+    "published_date": "2026-04-28",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47.8
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 4.7
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel; TSE BR-07992/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-04-22",
+    "fieldwork_end": "2026-04-27",
+    "published_date": "2026-04-28",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.6
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 39.7
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 5.3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 0.6
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-07992/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-04-24",
+    "fieldwork_end": "2026-04-26",
+    "published_date": "2026-04-27",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01075/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-04-24",
+    "fieldwork_end": "2026-04-26",
+    "published_date": "2026-04-27",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01075/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-04-10",
+    "fieldwork_end": "2026-04-13",
+    "published_date": "2026-04-14",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-09285/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-04-10",
+    "fieldwork_end": "2026-04-13",
+    "published_date": "2026-04-14",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 37
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 16
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-09285/2026.",
+    "verified": true
+  },
+  {
+    "institute": "CNT/MDA",
+    "fieldwork_start": "2026-04-08",
+    "fieldwork_end": "2026-04-12",
+    "published_date": "2026-04-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.9
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14.9
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-02847/2026.",
+    "verified": true
+  },
+  {
+    "institute": "CNT/MDA",
+    "fieldwork_start": "2026-04-08",
+    "fieldwork_end": "2026-04-12",
+    "published_date": "2026-04-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 30.2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.8
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 19.3
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar/fluxo; TSE BR-02847/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-04-07",
+    "fieldwork_end": "2026-04-11",
+    "published_date": "2026-04-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42.6
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 48
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.4
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08282/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-04-07",
+    "fieldwork_end": "2026-04-11",
+    "published_date": "2026-04-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.3
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1.3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.8
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.9
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08282/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-04-07",
+    "fieldwork_end": "2026-04-09",
+    "published_date": "2026-04-10",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-03770/2026.",
+    "verified": true,
+    "flag": "Numbers from BBC/PollingData TSE table (major outlet); Folha/G1 page not re-fetched this session."
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-04-07",
+    "fieldwork_end": "2026-04-09",
+    "published_date": "2026-04-10",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 14
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-03770/2026.",
+    "verified": true,
+    "flag": "Numbers from BBC/PollingData TSE table (major outlet); Folha/G1 page not re-fetched this session."
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-04-03",
+    "fieldwork_end": "2026-04-07",
+    "published_date": "2026-04-08",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.8
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8.7
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-00605/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-04-03",
+    "fieldwork_end": "2026-04-07",
+    "published_date": "2026-04-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.5
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-00605/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-03-27",
+    "fieldwork_end": "2026-03-29",
+    "published_date": "2026-03-30",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07875/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Nexus/BTG",
+    "fieldwork_start": "2026-03-27",
+    "fieldwork_end": "2026-03-29",
+    "published_date": "2026-03-30",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07875/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Paraná Pesquisas",
+    "fieldwork_start": "2026-03-25",
+    "fieldwork_end": "2026-03-28",
+    "published_date": "2026-03-30",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.7
+      }
+    ],
+    "n": 2080,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-presidente-marco-2026/",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-00873/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Paraná Pesquisas",
+    "fieldwork_start": "2026-03-25",
+    "fieldwork_end": "2026-03-28",
+    "published_date": "2026-03-30",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.8
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7.5
+      }
+    ],
+    "n": 2080,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-presidente-marco-2026/",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-00873/2026. Latest national presidential from institute as of Sep 2026.",
+    "verified": true,
+    "flag": "AGE: ~5 months old — no national presidential poll from Paraná Pesquisas since March 2026 (state polls only in Aug/Sep)."
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-03-21",
+    "fieldwork_end": "2026-03-27",
+    "published_date": "2026-03-28",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 48
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.24 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-02846/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-03-21",
+    "fieldwork_end": "2026-03-27",
+    "published_date": "2026-03-28",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.24 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-02846/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-03-18",
+    "fieldwork_end": "2026-03-23",
+    "published_date": "2026-03-24",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.6
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47.6
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 5.8
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel; TSE BR-04227/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-03-18",
+    "fieldwork_end": "2026-03-23",
+    "published_date": "2026-03-24",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45.9
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40.1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4.4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 2.2
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-04227/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-03-06",
+    "fieldwork_end": "2026-03-10",
+    "published_date": "2026-03-11",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.3
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7.3
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-00386/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-03-06",
+    "fieldwork_end": "2026-03-10",
+    "published_date": "2026-03-11",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.9
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-00386/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-03-06",
+    "fieldwork_end": "2026-03-09",
+    "published_date": "2026-03-10",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.estadao.com.br/politica/lua-de-mel-de-flavio-e-remontada-de-lula-o-que-mostraram-as-pesquisas-eleitorais-do-1-semestre/",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-05809/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-03-06",
+    "fieldwork_end": "2026-03-09",
+    "published_date": "2026-03-10",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 21
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-05809/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-03-02",
+    "fieldwork_end": "2026-03-06",
+    "published_date": "2026-03-07",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 48.8
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06607/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-03-02",
+    "fieldwork_end": "2026-03-06",
+    "published_date": "2026-03-07",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 35.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41.9
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.7
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13.1
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06607/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-03-03",
+    "fieldwork_end": "2026-03-05",
+    "published_date": "2026-03-07",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/03/07/datafolha-1o-turno.ghtml",
+    "methodology_note": "Face-to-face, pontos de fluxo.",
+    "verified": true,
+    "flag": "2º-turno figures from BBC/PollingData (Estadão/G1 series consistent)."
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-03-03",
+    "fieldwork_end": "2026-03-05",
+    "published_date": "2026-03-07",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/03/07/datafolha-1o-turno.ghtml",
+    "methodology_note": "Face-to-face, pontos de fluxo; TSE-registered; Folha/Globo.",
+    "verified": true,
+    "flag": "Cury not in this scenario; Caiado tested in separate scenario (Lula 39%, Flávio 33%, Caiado 4%, Zema 5%)."
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-02-28",
+    "fieldwork_end": "2026-03-02",
+    "published_date": "2026-03-03",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09353/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-02-28",
+    "fieldwork_end": "2026-03-02",
+    "published_date": "2026-03-03",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09353/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Paraná Pesquisas",
+    "fieldwork_start": "2026-02-22",
+    "fieldwork_end": "2026-02-25",
+    "published_date": "2026-02-27",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44.4
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.9
+      }
+    ],
+    "n": 2080,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face; TSE BR-07974/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Paraná Pesquisas",
+    "fieldwork_start": "2026-02-22",
+    "fieldwork_end": "2026-02-25",
+    "published_date": "2026-02-27",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36.6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4.3
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2080,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-presidente-fevereiro-2026-2/",
+    "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-07974/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-02-19",
+    "fieldwork_end": "2026-02-24",
+    "published_date": "2026-02-25",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46.3
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7.5
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel; TSE BR-07600/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-02-19",
+    "fieldwork_end": "2026-02-24",
+    "published_date": "2026-02-25",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.9
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.9
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.9
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.9
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 4.3
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-07600/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-02-05",
+    "fieldwork_end": "2026-02-09",
+    "published_date": "2026-02-10",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 19
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-00249/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-02-05",
+    "fieldwork_end": "2026-02-09",
+    "published_date": "2026-02-10",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 30
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 22
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-00249/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-02-03",
+    "fieldwork_end": "2026-02-07",
+    "published_date": "2026-02-08",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 48.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.4
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02276/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-02-03",
+    "fieldwork_end": "2026-02-07",
+    "published_date": "2026-02-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 35.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35.7
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 6.6
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 6.5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12.7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02276/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-01-30",
+    "fieldwork_end": "2026-02-02",
+    "published_date": "2026-02-03",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13.1
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-08425/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-01-30",
+    "fieldwork_end": "2026-02-02",
+    "published_date": "2026-02-03",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 0.7
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5.1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15.1
+      }
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-08425/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-01-26",
+    "fieldwork_end": "2026-01-30",
+    "published_date": "2026-01-31",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-04519/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-01-26",
+    "fieldwork_end": "2026-01-30",
+    "published_date": "2026-01-31",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 0
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-04519/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "Paraná Pesquisas",
+    "fieldwork_start": "2026-01-25",
+    "fieldwork_end": "2026-01-28",
+    "published_date": "2026-01-29",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 42.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
+    ],
+    "n": 2080,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-08254/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Paraná Pesquisas",
+    "fieldwork_start": "2026-01-25",
+    "fieldwork_end": "2026-01-28",
+    "published_date": "2026-01-29",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33.1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.8
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 11.5
+      }
+    ],
+    "n": 2080,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-08254/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-01-15",
+    "fieldwork_end": "2026-01-20",
+    "published_date": "2026-01-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 49
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel; TSE BR-02804/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-01-15",
+    "fieldwork_end": "2026-01-20",
+    "published_date": "2026-01-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 48.8
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3.4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.8
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 1.9
+      }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-02804/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-01-15",
+    "fieldwork_end": "2026-01-19",
+    "published_date": "2026-01-20",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41.9
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 48.1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08233/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-01-15",
+    "fieldwork_end": "2026-01-19",
+    "published_date": "2026-01-20",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 35.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34.3
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1.7
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4.4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10.7
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08233/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-01-08",
+    "fieldwork_end": "2026-01-12",
+    "published_date": "2026-01-13",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.2
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 16.6
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; TSE BR-06731/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-01-08",
+    "fieldwork_end": "2026-01-12",
+    "published_date": "2026-01-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.7
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 26.5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 0.4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3.6
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 18.5
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-06731/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-01-08",
+    "fieldwork_end": "2026-01-11",
+    "published_date": "2026-01-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-00835/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-01-08",
+    "fieldwork_end": "2026-01-11",
+    "published_date": "2026-01-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 31
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 22
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; Genial Investimentos; TSE BR-00835/2026. Scenario with Caiado (no Ratinho).",
+    "verified": true,
+    "flag": "Cury not yet tested; Zema in alternate scenario."
+  }
+]

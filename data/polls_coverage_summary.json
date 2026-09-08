@@ -1,0 +1,59 @@
+{
+  "as_of": "2026-09-08",
+  "scope": "Brazil national presidential voting intention only (1º estimulada for tracked 6 candidates + 2º Lula×Flávio), Jan 2026 onward",
+  "tracked_candidates": [
+    "Lula",
+    "Flávio Bolsonaro",
+    "Augusto Cury",
+    "Renan Santos",
+    "Ronaldo Caiado",
+    "Romeu Zema"
+  ],
+  "records": 192,
+  "institutes_included": [
+    "Alfa Inteligência",
+    "AtlasIntel",
+    "CNT/MDA",
+    "Datafolha",
+    "Futura/Apex",
+    "GERP",
+    "Genial/Quaest",
+    "Ideia",
+    "Indexa/Broadcast",
+    "Nexus/BTG",
+    "Paraná Pesquisas",
+    "PoderData",
+    "Quaest",
+    "Real Time Big Data",
+    "Vox Brasil"
+  ],
+  "institutes_no_national_2026_presidential": {
+    "Ipec (Ipsos-Ipec)": "No Brazil-wide presidential poll published in 2026 through 2026-09-08; last national was Dec 2025. State-level only (e.g. Ceará) in 2026 — excluded.",
+    "Brasmarket": "State-only (RS) presidential cuts — excluded (not national).",
+    "Instituto Methodus": "State-only (RS) — excluded.",
+    "Palver": "Appears in aggregators but treated as lesser-known; omitted pending stronger primary verification.",
+    "Veritá / Vetor Arrow / Colectta": "Present in some aggregators; omitted here as contested/less consensus-reputable vs core set."
+  },
+  "coverage_gaps": [
+    "Not every Nexus/BTG, Futura, GERP, RTBD round from early 2026 may be present if BBC table lacked a clean 6-candidate scenario.",
+    "Paraná Pesquisas: last NATIONAL presidential = Mar 2026 (~5 months old); Aug/Sep work is state races only.",
+    "Ideia: last national in file = 31 Jul–3 Aug 2026.",
+    "CNT/MDA: last = 5–9 Aug 2026 (169ª rodada).",
+    "AtlasIntel: last = 25–30 Aug 2026.",
+    "New Datafolha fieldwork 8–11 Sep 2026 registered (BR-01833/2026) not yet published as of 8 Sep.",
+    "Quaest Sep 3–6 and Datafolha Sep 1–3 are the newest major face-to-face rounds verified on G1."
+  ],
+  "sharp_divergences_flag": [
+    "1º turno Lula–Flávio gap: AtlasIntel (~9–10 pp) and CNT/MDA (~13–14 pp) show wider Lula leads than Quaest (~7 pp) or PoderData (~3 pp) in late Aug/early Sep.",
+    "2º turno: Quaest 41–41 and PoderData Flávio 45 / Lula 44 vs AtlasIntel Lula 47.1 / Flávio 42.6 and CNT/MDA Lula 48 / Flávio ~39 — sharp spread on runoff.",
+    "GERP often shows Flávio ahead or tied in both rounds vs Datafolha/Quaest Lula edge — methodology divergence (phone CATI).",
+    "Augusto Cury surge late Aug/early Sep: 1–2% → ~8–11% across Datafolha, Quaest, PoderData, RTBD, Futura, Nexus."
+  ],
+  "polls_json_path": "/workspace/polls.json",
+  "spot_check_2026-09-08": {
+    "Quaest_Sep7_1T": "G1 confirms Lula 36 / Flávio 29 / Cury 8; N=2004; BR-01720/2026 — MATCH",
+    "Quaest_Sep7_2T": "G1 confirms Lula 41 / Flávio 41 (branco/nulo 13 + indecisos 5); some secondary outlets misstated 42–41 — MATCH file to G1",
+    "Datafolha_Sep3": "G1/Folha confirm Lula 38 / Flávio 33 / Cury 8; 2T 46–44; N=2002; BR-03669/2026 — MATCH; fieldwork 1–2 Sep",
+    "Nexus_latest": "Primary nexus.fsb.com.br: last published round 31 Aug 2026 (no Sep round yet as of 8 Sep) — MATCH"
+  }
+}
