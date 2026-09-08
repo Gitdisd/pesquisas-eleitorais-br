@@ -3,6 +3,7 @@ import 'hammerjs'
 import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } from './candidates.js'
 import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToChart } from './chart.js'
 import { weightedTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
+import { PROJECTION_COPY_PT } from './projection.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
 const META_URL = `${import.meta.env.BASE_URL}data/meta.json`
@@ -222,19 +223,17 @@ function shellHTML() {
               <strong id="windowVal">14d</strong>
             </label>
           </div>
-          <label class="toggle-proj">
-            <input type="checkbox" id="projectionToggle" />
-            Modo projeção
+          <label class="toggle-proj" id="projToggleLabel">
+            <input type="checkbox" id="projectionToggle" aria-label="" />
+            <span id="projToggleText"></span>
+            <span class="chip proj-chip" id="projChip" hidden></span>
           </label>
           <div class="axis-btns">
             <button type="button" class="chip btn-reset" id="resetZoom">Resetar eixos</button>
             <button type="button" class="chip btn-axis" id="resetY" title="Resetar escala Y">Resetar Y</button>
           </div>
         </div>
-        <p class="proj-disclaimer" id="projDisclaimer">
-          <strong>Aviso:</strong> a projeção é uma <em>estimativa de modelo</em> (tendência linear local + banda de incerteza),
-          <strong>não</strong> uma pesquisa de opinião nem uma previsão eleitoral.
-        </p>
+        <p class="proj-disclaimer" id="projDisclaimer"></p>
         <div class="filters institutes-inline" id="institutes" aria-label="Institutos"></div>
         <div class="legend" id="legend"></div>
         <p class="hint">Zoom X/Y: roda do mouse, pinça ou Shift+arrastar · arraste para panear nos dois eixos (eixo Y redimensionável). Fontes: pesquisas registradas no TSE e divulgações oficiais dos institutos.</p>
@@ -249,13 +248,36 @@ function shellHTML() {
     <section class="panel metodologia">
       <h2>Metodologia</h2>
       <p>Pontos no gráfico são pesquisas individuais (campo/publicação). A linha é uma <strong>média ponderada</strong>: peso ≈ √(N/2000) × exp(−dias/janela). Presets de janela: 1d, 7d, 14d, 21d, mês (~30d), 90d e YTD (dias desde 1º de janeiro do ano corrente); também há controle diário personalizado a partir de 1 dia. A variação nos cartões compara a média atual com a de <strong>meados de maio/2026</strong> (âncora fixa).</p>
-      <p><strong>Modo projeção:</strong> estende a série ponderada com tendência linear local na janela recente e uma banda de incerteza que se alarga no horizonte. Linhas tracejadas = estimativa de modelo — <strong>não</strong> é pesquisa nem previsão de eleição. Cores: Lula vermelho (#c62828), Flávio verde da bandeira (#009c3b); demais categóricas.</p>
+      <p id="projMethodology"></p>
+      <p>Cores: Lula vermelho (#c62828), Flávio verde da bandeira (#009c3b); demais categóricas. Cartões mostram só a média ponderada observada — não o extremo da projeção.</p>
     </section>
     <footer>
       <p>Site estático e sem fins partidários. Números apenas de pesquisas publicadas e verificadas — lacunas possíveis quando um instituto não mede todos os nomes.</p>
       <p>Fontes: registros e divulgações com identificação junto ao TSE e materiais oficiais dos institutos de pesquisa. Hospedagem gratuita via GitHub Pages.</p>
     </footer>
   </main>`
+}
+
+
+function fillProjectionCopy() {
+  const copy = PROJECTION_COPY_PT
+  const textEl = document.getElementById('projToggleText')
+  const input = document.getElementById('projectionToggle')
+  const chip = document.getElementById('projChip')
+  const disc = document.getElementById('projDisclaimer')
+  const meto = document.getElementById('projMethodology')
+  if (textEl) textEl.textContent = copy.toggleLabel
+  if (input) input.setAttribute('aria-label', copy.toggleAria)
+  if (chip) chip.textContent = copy.chipOn
+  if (disc) disc.textContent = copy.chartHint
+  if (meto) meto.textContent = copy.methodology
+}
+
+function syncProjectionUI() {
+  const on = !!state.projection
+  document.getElementById('projDisclaimer')?.classList.toggle('on', on)
+  const chip = document.getElementById('projChip')
+  if (chip) chip.hidden = !on
 }
 
 function syncWindowUI() {
@@ -326,7 +348,7 @@ function bindChrome() {
 
   document.getElementById('projectionToggle')?.addEventListener('change', (e) => {
     state.projection = !!e.target.checked
-    document.getElementById('projDisclaimer')?.classList.toggle('on', state.projection)
+    syncProjectionUI()
     refresh()
   })
 

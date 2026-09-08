@@ -57,6 +57,10 @@ export function createPollChart(canvas, opts) {
       plugins: {
         legend: { display: false },
         tooltip: {
+          filter(item) {
+            const lab = item.dataset.label || ''
+            return !lab.includes('(banda')
+          },
           callbacks: {
             title(items) {
               const x = items[0]?.parsed?.x

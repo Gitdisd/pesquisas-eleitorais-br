@@ -96,6 +96,7 @@ input[type=number].win-custom{
   border-radius:8px;padding:.55rem .7rem;margin:.35rem 0 .5rem;display:none;
 }
 .proj-disclaimer.on{display:block}
+.proj-chip{margin-left:.25rem;min-height:28px;padding:.2rem .5rem;font-size:.72rem}
 
 .institutes-inline{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.65rem}
 
