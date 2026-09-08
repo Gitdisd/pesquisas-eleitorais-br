@@ -78,12 +78,14 @@ Frontend may derive UI-only fields client-side — **do not add these to the JSO
 Fields:
 
 - `schema_version` (1)
-- `last_updated` (ISO-8601 America/Sao_Paulo offset when possible)
+- `last_updated` (ISO-8601 America/Sao_Paulo offset, e.g. `2026-09-08T11:25:29-03:00`) — bumped **only** when polls `content_hash` changes
+- `last_check_at` (ISO-8601 **UTC**, e.g. `2026-09-08T15:47:00.000Z`) — refreshed on **every** discovery cycle / workflow run, including empty checks when polls are unchanged
+- `check_interval_minutes` (number, default `190` ≈ 3h10m discovery cadence) — Frontend stamp timer interval
 - `record_count`
 - `source` (`verified published polls`)
 - `content_hash` (sha256 hex of the canonical polls JSON string)
 
-- `last_updated` is bumped **only** when polls content hash changes (cron does not empty-commit on timestamp alone).
+- Because `last_check_at` always changes, the backup cron may commit `meta.json` every run even when polls are unchanged (intentional for the UI stamp timer).
 - If `content_hash` is missing from an older meta file, the pipeline backfills it once without bumping `last_updated`.
 
 ## Sort order (stable)
@@ -99,7 +101,8 @@ See `package.json` scripts and `scripts/update-polls.mjs`.
 
 Input priority: CLI path, then `POLL_SOURCE`, then `POLL_SOURCE_URL`, else `data/polls.json`.
 Default filter: `verified === true` only (pass `--include-unverified` to keep others).
-Daily Action: `.github/workflows/refresh-polls.yml` at `0 9` UTC (~06:00 America/Sao_Paulo).
+Backup cron: `.github/workflows/refresh-polls.yml` at `10 */3 * * *` UTC (every 3 hours at :10).
+Primary discovery cadence ~3h10m (`check_interval_minutes: 190`), plus up to ~3h site delay before polls appear.
 A successful data push to `main` triggers `deploy-pages.yml` via push-to-main.
 
 ## Frontend notes
@@ -107,6 +110,7 @@ A successful data push to `main` triggers `deploy-pages.yml` via push-to-main.
 - **No renames.** `PollsFile = Poll[]` bare array.
 - Prefer `${BASE_URL}data/polls.json` from `public/`; `data/polls.json` is source of truth mirrored there.
 - Prefer `${BASE_URL}data/meta.json` for "atualizado em"; fallback `coverage_summary.as_of`.
+- Stamp timer reads `last_check_at` (UTC) + `check_interval_minutes`; if either is absent, fall back to `last_updated` + 190 minutes.
 - Filter by scenario / institute; show `flag` when present.
 - `margin_of_error` stays a display string.
 - Ping Frontend before schema changes.
