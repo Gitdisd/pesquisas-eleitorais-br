@@ -1,4 +1,4 @@
-/** média ponderada: peso = √(n/2000) * exp(-dias/janela) */
+/** média ponderada: peso = √(n/2000) * exp(−dias/janela) */
 export function weightedTrend(points, windowDays = 14) {
   if (!points.length) return []
   const sorted = [...points].sort((a, b) => a.t - b.t)
@@ -19,7 +19,7 @@ export function weightedTrend(points, windowDays = 14) {
       num += w * p.y
       den += w
     }
-    if (den > 0 && nearest <= windowDays) out.push({ x: t, y: Math.round((num / den) * 10) / 10 })
+    if (den > 0 && nearest <= windowDays) out.push({ x: t, y: Math.round((num / den) * 100) / 100 })
   }
   return out
 }
@@ -41,9 +41,9 @@ export function trendAt(series, dateMs) {
 export function fmtPct(v) {
   if (v == null || Number.isNaN(v)) return '—'
   return (
-    (Math.round(v * 10) / 10).toLocaleString('pt-BR', {
-      minimumFractionDigits: 1,
-      maximumFractionDigits: 1,
+    (Math.round(v * 100) / 100).toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     }) + '%'
   )
 }
@@ -51,11 +51,11 @@ export function fmtPct(v) {
 /** Δ vs média ponderada em meados de mai/2026 (âncora fixa do agregador) */
 export function fmtDelta(v) {
   if (v == null || Number.isNaN(v)) return { text: '—', cls: 'flat' }
-  const r = Math.round(v * 10) / 10
-  if (Math.abs(r) < 0.05) return { text: '0,0 pp vs mai/2026', cls: 'flat' }
+  const r = Math.round(v * 100) / 100
+  if (Math.abs(r) < 0.005) return { text: '0,00 pp vs mai/2026', cls: 'flat' }
   const sign = r > 0 ? '+' : ''
   return {
-    text: `${sign}${r.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} pp vs mai/2026`,
+    text: `${sign}${r.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} pp vs mai/2026`,
     cls: r > 0 ? 'up' : 'down',
   }
 }

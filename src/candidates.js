@@ -17,6 +17,7 @@ export const CANDIDATES = [
   { key: 'rui', names: ['Rui Costa Pimenta', 'Rui Costa', 'Pimenta'], label: 'Rui Costa Pimenta', party: 'PCO', number: '29', tier: 'field', color: '#0f766e', borderDash: [7, 3], borderWidth: 1.6 },
   { key: 'clariana', names: ['Clariana Barão', 'Clariana Barao', 'Clariana'], label: 'Clariana Barão', party: 'DC', number: '27', tier: 'field', color: '#7c3aed', borderDash: [2, 2], borderWidth: 1.6 },
   { key: 'grassi', names: ['Wilson Grassi', 'Veterinário Wilson Grassi', 'Grassi'], label: 'Wilson Grassi', party: 'Democrata', number: '35', tier: 'field', color: '#57534e', borderDash: [1, 3], borderWidth: 1.6 },
+  { key: 'branco_nulo', names: ['branco/nulo', 'Brancos ou nulos', 'Ninguém/Branco/Nulo', 'branco/nulo/nenhum', 'branco/nulo/não sabe', 'outros/branco/nulo/não sabe'], label: 'Brancos ou nulos', party: '', number: '', tier: 'field', color: '#94a3b8', borderDash: [2, 2], borderWidth: 1.8 },
 ]
 
 export function matchCandidate(name) {
