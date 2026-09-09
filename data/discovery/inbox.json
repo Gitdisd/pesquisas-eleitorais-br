@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-09T11:13:04.156Z",
+  "updated_at": "2026-09-09T14:28:47.444Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -97,6 +97,78 @@
       "institute": "Datafolha",
       "published_date": "2026-09-09",
       "found_at": "2026-09-09T11:13:01.329Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa eleitoral presidente 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+eleitoral+presi",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:42.321Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa Quaest Lula 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Quaest+Lula+2026&hl=pt-B",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:44.072Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa Datafolha presidente 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Datafolha+presi",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:44.440Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa AtlasIntel 2026 Flávio\" - Google Notícias https://news.google.com/search?q=pesquisa+AtlasIntel+2026+Fl",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:45.613Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa Nexus BTG 2º turno 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Nexus+BTG+2%C2%BA",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:46.406Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa PoderData 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:46.805Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/",
+      "title": "Eleições | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro Infra IA Esportes Viagem & Gastronomia Políti",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:47.078Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/",
+      "title": "CNN Brasil | Notícias Ao Vivo do Brasil e do Mundo Pular para o conteúdo Ao vivo Política Money WW Agro Infra IA Esporte",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:47.127Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/politica/",
+      "title": "Política - Notícias do Governo, Congresso e STF | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro Infra ",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-09T14:28:47.181Z"
     }
   ]
 }
