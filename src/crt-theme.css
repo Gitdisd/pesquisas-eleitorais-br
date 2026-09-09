@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap');
+
+html[data-theme='crt-amber'],
+html[data-theme='crt-green']{
+  --radius:2px;
+  --shadow:none;
+}
+html[data-theme='crt-amber']{
+  --bg:#140e04;
+  --surface:#1c1406;
+  --text:#ffb000;
+  --muted:#c48420;
+  --border:#8a5a10;
+  --accent:#ffd36a;
+  --chip-bg:#221806;
+  --chip-on-bg:#3a2808;
+  --chip-on-border:#ffb000;
+  --chip-on-text:#ffe7a8;
+  --seg-active-bg:#ffb000;
+  --seg-active-fg:#140e04;
+  --crt-glow:0 0 8px rgba(255,176,0,.35);
+  --scan:rgba(255,176,0,.07);
+}
+html[data-theme='crt-green']{
+  --bg:#031208;
+  --surface:#06180c;
+  --text:#3dff7a;
+  --muted:#1fa34d;
+  --border:#0d5c2a;
+  --accent:#9affb8;
+  --chip-bg:#04160a;
+  --chip-on-bg:#083016;
+  --chip-on-border:#3dff7a;
+  --chip-on-text:#c8ffd8;
+  --seg-active-bg:#3dff7a;
+  --seg-active-fg:#031208;
+  --crt-glow:0 0 8px rgba(61,255,122,.32);
+  --scan:rgba(61,255,122,.07);
+}
+
+html[data-theme^='crt'] body{
+  font-family:'Share Tech Mono',ui-monospace,Menlo,Consolas,monospace;
+  letter-spacing:.01em;
+  text-shadow:var(--crt-glow);
+}
+html[data-theme^='crt'] header.app-hdr h1,
+html[data-theme^='crt'] .chart-title,
+html[data-theme^='crt'] .chapter-kicker,
+html[data-theme^='crt'] .card strong{
+  font-family:VT323,'Share Tech Mono',monospace;
+  font-weight:400;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+html[data-theme^='crt'] header.app-hdr{
+  background:var(--surface);
+  border-bottom:2px solid var(--border);
+}
+html[data-theme^='crt'] header.app-hdr h1{font-size:clamp(1.35rem,4vw,2rem)}
+html[data-theme^='crt'] .panel,
+html[data-theme^='crt'] .card,
+html[data-theme^='crt'] .theme-toggle,
+html[data-theme^='crt'] .chip,
+html[data-theme^='crt'] .seg button,
+html[data-theme^='crt'] .chart-hover,
+html[data-theme^='crt'] .proj-disclaimer{
+  border-radius:2px !important;
+  box-shadow:none;
+}
+html[data-theme^='crt'] .chip,
+html[data-theme^='crt'] .theme-toggle,
+html[data-theme^='crt'] .seg button{
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:.72rem;
+}
+html[data-theme^='crt'] .card{
+  border:1px solid var(--border);
+  background:var(--surface);
+}
+html[data-theme^='crt'] .card .val{
+  font-family:VT323,monospace;
+  font-size:2rem;
+  line-height:1;
+}
+html[data-theme^='crt'] table.polls th{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--muted);
+}
+html[data-theme^='crt'] .chart-box{
+  border:1px solid var(--border);
+  background:#050505;
+  border-radius:2px;
+}
+html[data-theme^='crt'] .chart-hover{
+  border-style:solid;
+  font-family:'Share Tech Mono',monospace;
+}
+
+html[data-theme^='crt'] body::before{
+  content:'';
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:80;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      var(--scan) 3px
+    );
+  mix-blend-mode:multiply;
+}
+html[data-theme^='crt'] .chart-box{
+  isolation:isolate;
+}
+html[data-theme^='crt'] .chart-box canvas{
+  position:relative;
+  z-index:1;
+  filter:none;
+}
+
+@media (max-width:600px){
+  html[data-theme^='crt'] body{text-shadow:none}
+  html[data-theme^='crt'] body::before{opacity:.45}
+  html[data-theme^='crt'] header.app-hdr h1{font-size:1.25rem}
+  html[data-theme^='crt'] .chip,
+  html[data-theme^='crt'] .theme-toggle{
+    min-height:40px;
+    font-size:.68rem;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  html[data-theme^='crt'] body::before{display:none}
+}
