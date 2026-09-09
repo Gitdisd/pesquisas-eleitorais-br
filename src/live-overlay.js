@@ -1,8 +1,18 @@
 import './layout-fix.css'
 import './crt-theme.css'
+import './party-themes.css'
 import { Chart } from 'chart.js'
 
-const THEME_ORDER = ['light', 'dark', 'crt-amber', 'crt-green']
+const BASE_THEMES = ['light', 'dark', 'crt-amber', 'crt-green']
+const PARTY_THEMES = [
+  { id: 'party-pt', label: 'PT' },
+  { id: 'party-pl', label: 'PL' },
+  { id: 'party-missao', label: 'Missão' },
+  { id: 'party-psd', label: 'PSD' },
+  { id: 'party-novo', label: 'Novo' },
+  { id: 'party-avante', label: 'Avante' },
+]
+const ALL_THEMES = [...BASE_THEMES, ...PARTY_THEMES.map((p) => p.id)]
 const THEME_NEXT_LABEL = {
   light: 'Escuro',
   dark: 'CRT âmbar',
@@ -10,37 +20,43 @@ const THEME_NEXT_LABEL = {
   'crt-green': 'Claro',
 }
 
+function chartTint(theme) {
+  if (theme === 'crt-amber') return { grid: 'rgba(255,176,0,.16)', tick: '#c48420', title: '#ffb000' }
+  if (theme === 'crt-green') return { grid: 'rgba(61,255,122,.14)', tick: '#1fa34d', title: '#3dff7a' }
+  if (theme === 'party-pt') return { grid: 'rgba(255,255,255,.12)', tick: '#f3c4c8', title: '#fff8f6' }
+  if (theme === 'party-pl') return { grid: 'rgba(255,210,0,.14)', tick: '#d4c07a', title: '#ffe9a0' }
+  if (theme === 'party-missao') return { grid: 'rgba(252,190,38,.16)', tick: '#d7a31c', title: '#fcbe26' }
+  if (theme === 'party-psd') return { grid: 'rgba(255,164,0,.16)', tick: '#e0b46a', title: '#ffe4b0' }
+  if (theme === 'party-novo') return { grid: 'rgba(236,103,28,.16)', tick: '#f0b48a', title: '#ffe8d6' }
+  if (theme === 'party-avante') return { grid: 'rgba(46,171,177,.16)', tick: '#9ad4d8', title: '#e8ffff' }
+  if (theme === 'dark') return { grid: 'rgba(255,255,255,.08)', tick: '#a8b0ba', title: '#e8eaed' }
+  return { grid: 'rgba(0,0,0,.06)', tick: '#5c6570', title: '#1a1d21' }
+}
+
 function tintCharts() {
   const t = document.documentElement.getAttribute('data-theme') || 'light'
-  const crt = t.startsWith('crt')
-  const amber = t === 'crt-amber'
-  const grid = crt
-    ? amber
-      ? 'rgba(255,176,0,.16)'
-      : 'rgba(61,255,122,.14)'
-    : t === 'dark'
-      ? 'rgba(255,255,255,.08)'
-      : 'rgba(0,0,0,.06)'
-  const tick = crt ? (amber ? '#c48420' : '#1fa34d') : t === 'dark' ? '#a8b0ba' : '#5c6570'
-  const title = crt ? (amber ? '#ffb000' : '#3dff7a') : t === 'dark' ? '#e8eaed' : '#1a1d21'
+  const tc = chartTint(t)
   document.querySelectorAll('canvas').forEach((el) => {
     const ch = Chart.getChart(el)
     if (!ch?.options?.scales) return
-    if (ch.options.scales.x?.grid) ch.options.scales.x.grid.color = grid
-    if (ch.options.scales.y?.grid) ch.options.scales.y.grid.color = grid
-    if (ch.options.scales.x?.ticks) ch.options.scales.x.ticks.color = tick
-    if (ch.options.scales.y?.ticks) ch.options.scales.y.ticks.color = tick
-    if (ch.options.scales.y?.title) ch.options.scales.y.title.color = title
+    if (ch.options.scales.x?.grid) ch.options.scales.x.grid.color = tc.grid
+    if (ch.options.scales.y?.grid) ch.options.scales.y.grid.color = tc.grid
+    if (ch.options.scales.x?.ticks) ch.options.scales.x.ticks.color = tc.tick
+    if (ch.options.scales.y?.ticks) ch.options.scales.y.ticks.color = tc.tick
+    if (ch.options.scales.y?.title) ch.options.scales.y.title.color = tc.title
     ch.update('none')
   })
 }
 
-function applyCrtTheme(theme) {
-  const t = THEME_ORDER.includes(theme) ? theme : 'light'
+function applySiteTheme(theme) {
+  const t = ALL_THEMES.includes(theme) ? theme : 'light'
   document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : t)
   localStorage.setItem('pebr-theme', t)
   const btn = document.getElementById('themeToggle')
-  if (btn) btn.textContent = THEME_NEXT_LABEL[t]
+  if (btn) btn.textContent = THEME_NEXT_LABEL[t] || 'Claro'
+  document.querySelectorAll('[data-party-theme]').forEach((b) => {
+    b.classList.toggle('on', b.dataset.partyTheme === t)
+  })
   tintCharts()
 }
 
@@ -49,17 +65,40 @@ function installThemeCycle() {
   if (!btn || btn.dataset.crtCycle) return false
   btn.dataset.crtCycle = '1'
   const saved = localStorage.getItem('pebr-theme')
-  if (THEME_ORDER.includes(saved)) applyCrtTheme(saved)
+  if (ALL_THEMES.includes(saved)) applySiteTheme(saved)
   btn.addEventListener(
     'click',
     (ev) => {
       ev.stopImmediatePropagation()
       const cur = document.documentElement.getAttribute('data-theme') || 'light'
-      const i = Math.max(0, THEME_ORDER.indexOf(cur))
-      applyCrtTheme(THEME_ORDER[(i + 1) % THEME_ORDER.length])
+      const i = Math.max(0, BASE_THEMES.indexOf(cur))
+      applySiteTheme(BASE_THEMES[(i + 1) % BASE_THEMES.length])
     },
     true,
   )
+  return true
+}
+
+function injectPartyThemes() {
+  if (document.getElementById('partyThemes')) return true
+  const header = document.querySelector('header.app-hdr .hdr-text') || document.querySelector('header.app-hdr')
+  if (!header) return false
+  const row = document.createElement('div')
+  row.id = 'partyThemes'
+  row.className = 'party-themes'
+  row.setAttribute('aria-label', 'Temas das bandeiras partidárias')
+  PARTY_THEMES.forEach((p) => {
+    const b = document.createElement('button')
+    b.type = 'button'
+    b.className = 'chip'
+    b.dataset.partyTheme = p.id
+    b.textContent = p.label
+    b.addEventListener('click', () => applySiteTheme(p.id))
+    row.appendChild(b)
+  })
+  header.appendChild(row)
+  const saved = localStorage.getItem('pebr-theme')
+  if (saved) applySiteTheme(saved)
   return true
 }
 
@@ -209,6 +248,7 @@ function layoutFix() {
 
   injectModelToggles()
   installThemeCycle()
+  injectPartyThemes()
   document.body.dataset.layoutFixed = '1'
   return true
 }
