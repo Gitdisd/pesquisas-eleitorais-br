@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-08T23:20:20.143Z",
+  "updated_at": "2026-09-09T04:29:52.024Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -57,6 +57,30 @@
       "institute": "Datafolha",
       "published_date": null,
       "found_at": "2026-09-08T21:04:26.181Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/09/quaest-no-df-governador-raca-sexo-idade-escolaridade-religiao-renda.ghtml",
+      "title": "Quaest no DF: veja intenção de voto para governador por sexo, raça, idade, escolaridade, religião, renda e identificação",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-09",
+      "found_at": "2026-09-09T04:29:40.425Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/virada-numerica-em-mg-acende-alerta-para-lula-leia-analise-de-felipe-nunes.ghtml",
+      "title": "ANÁLISE: Virada numérica em MG acende alerta para Lula | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Virad",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-09",
+      "found_at": "2026-09-09T04:29:40.676Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
+      "title": "Quaest: veja como está a corrida presidencial em SP, RJ, MG, PE e DF | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-09",
+      "found_at": "2026-09-09T04:29:40.835Z"
     }
   ]
 }
