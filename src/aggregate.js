@@ -14,13 +14,11 @@ export function weightedTrend(points, windowDays = 14) {
       const days = Math.abs(t - p.t) / dayMs
       if (days < nearest) nearest = days
       if (days > windowDays * 2.5) continue
-      // Missing n must NOT impersonate a 2,000-interview poll.
       const sample = Number.isFinite(p.n) && p.n > 0 ? Math.max(100, p.n) : 800
       const w = Math.sqrt(sample / 2000) * Math.exp(-days / windowDays)
       num += w * p.y
       den += w
     }
-    // Do not invent a daily average across empty stretches of the calendar.
     if (den > 0 && nearest <= windowDays) out.push({ x: t, y: Math.round((num / den) * 10) / 10 })
   }
   return out
@@ -42,7 +40,12 @@ export function trendAt(series, dateMs) {
 
 export function fmtPct(v) {
   if (v == null || Number.isNaN(v)) return '—'
-  return (Math.round(v * 10) / 10).toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 1 }) + '%'
+  return (
+    (Math.round(v * 10) / 10).toLocaleString('pt-BR', {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    }) + '%'
+  )
 }
 
 /** Δ vs média ponderada em meados de mai/2026 (âncora fixa do agregador) */
@@ -73,7 +76,6 @@ export function saoPauloStamp(date = new Date()) {
   )
 }
 
-/** Format an ISO last_updated (or Date) for the "Atualizado em" stamp. */
 export function formatUpdatedStamp(isoOrDate) {
   if (!isoOrDate) return null
   const d = isoOrDate instanceof Date ? isoOrDate : new Date(isoOrDate)
