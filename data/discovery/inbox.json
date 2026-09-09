@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-09T04:29:52.024Z",
+  "updated_at": "2026-09-09T11:13:04.156Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -81,6 +81,22 @@
       "institute": "Quaest",
       "published_date": "2026-09-09",
       "found_at": "2026-09-09T04:29:40.835Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/09/quaest-em-mg-flavio-bolsonaro-aparece-numericamente-a-frente-de-lula-no-2o-turno-veja-numeros-por-perfil-do-eleitorado.ghtml",
+      "title": "Quaest em MG: veja números para presidente no 2º turno por perfil | G1 Pular para o conteúdo Minas Gerais Eleições 2026 ",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-09",
+      "found_at": "2026-09-09T11:12:53.019Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/mercado/2026/09/sp-lidera-acoes-na-justica-por-assedio-eleitoral-no-trabalho-veja-ranking.shtml",
+      "title": "Assédio eleitoral: SP é líder de processos; veja ranking - 09/09/2026 - Economia - Folha Últimas notícias Gostaria de re",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Datafolha",
+      "published_date": "2026-09-09",
+      "found_at": "2026-09-09T11:13:01.329Z"
     }
   ]
 }

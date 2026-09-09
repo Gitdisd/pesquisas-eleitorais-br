@@ -1,23 +1,31 @@
 {
-  "ran_at": "2026-09-09T04:29:52.024Z",
+  "ran_at": "2026-09-09T11:13:04.156Z",
   "watermark": "2026-09-08",
   "sources": 18,
-  "candidate_links": 255,
+  "candidate_links": 254,
   "pages_fetched": 40,
   "verified_new": 0,
-  "inbox_new": 10,
-  "skipped_old": 20,
+  "inbox_new": 11,
+  "skipped_old": 18,
   "fetch_errors": 5,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
-      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest no DF: veja intenç",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest em MG: Flávio Bols",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-09T04:29:40.054Z"
+      "found_at": "2026-09-09T11:12:52.650Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/09/quaest-em-mg-flavio-bolsonaro-aparece-numericamente-a-frente-de-lula-no-2o-turno-veja-numeros-por-perfil-do-eleitorado.ghtml",
+      "title": "Quaest em MG: veja números para presidente no 2º turno por perfil | G1 Pular para o conteúdo Minas Gerais Eleições 2026 ",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-09",
+      "found_at": "2026-09-09T11:12:53.019Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/09/quaest-no-df-governador-raca-sexo-idade-escolaridade-religiao-renda.ghtml",
@@ -25,7 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-09",
-      "found_at": "2026-09-09T04:29:40.425Z"
+      "found_at": "2026-09-09T11:12:53.276Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/virada-numerica-em-mg-acende-alerta-para-lula-leia-analise-de-felipe-nunes.ghtml",
@@ -33,7 +41,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-09",
-      "found_at": "2026-09-09T04:29:40.676Z"
+      "found_at": "2026-09-09T11:12:53.593Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
@@ -41,16 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-09",
-      "found_at": "2026-09-09T04:29:40.835Z"
-    },
-    {
-      "url": "https://g1.globo.com/pr/parana/",
-      "title": "G1 – Paraná: notícias e vídeos da RPC Pular para o conteúdo Paraná eleições 2026 últimas notícias bom dia pr meio-dia pr",
-      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
-      "institute": null,
-      "published_date": null,
-      "found_at": "2026-09-09T04:29:42.208Z"
+      "found_at": "2026-09-09T11:12:53.755Z"
     }
   ],
-  "meta_last_check_at": "2026-09-09T04:29:52.024Z"
+  "meta_last_check_at": "2026-09-09T11:13:04.157Z"
 }
