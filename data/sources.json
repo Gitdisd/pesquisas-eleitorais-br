@@ -32,9 +32,55 @@
     "Broadcast",
     "Vox Brasil",
     "Alfa Inteligência",
-    "Alfa Inteligencia"
+    "Alfa Inteligencia",
+    "CNN",
+    "Flávio Bolsonaro"
   ],
   "sources": [
+    {
+      "id": "gnews-presidencial",
+      "name": "Google News — pesquisa presidencial 2026",
+      "type": "search",
+      "urls": [
+        "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+      ],
+      "notes": "Search stand-in: Google News RSS of fresh national-poll stories."
+    },
+    {
+      "id": "cnn-brasil-eleicoes",
+      "name": "CNN Brasil — Eleições",
+      "type": "outlet",
+      "urls": [
+        "https://www.cnnbrasil.com.br/eleicoes/",
+        "https://www.cnnbrasil.com.br/politica/"
+      ],
+      "notes": "Often first to post Nexus/Quaest/Futura mirrors."
+    },
+    {
+      "id": "uol-eleicoes",
+      "name": "UOL — Eleições",
+      "type": "outlet",
+      "urls": [
+        "https://noticias.uol.com.br/eleicoes/",
+        "https://noticias.uol.com.br/politica/"
+      ],
+      "notes": "Broad wire."
+    },
+    {
+      "id": "wikipedia-polling-2026",
+      "name": "Wikipedia opinion polling 2026",
+      "type": "aggregator",
+      "urls": [
+        "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
+        "https://pt.wikipedia.org/wiki/Pesquisas_de_opini%C3%A3o_para_a_elei%C3%A7%C3%A3o_presidencial_do_Brasil_em_2026"
+      ],
+      "notes": "Link farm for newly cited national polls."
+    },
     {
       "id": "datafolha-folha",
       "name": "Datafolha / Folha",
