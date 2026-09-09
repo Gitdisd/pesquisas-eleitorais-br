@@ -24,7 +24,6 @@ function injectVerifyButton() {
 
   wrap.append(btn, link)
   timer.after(wrap)
-
   document.querySelectorAll('header .refresh-notice').forEach((n) => n.remove())
 
   btn.addEventListener('click', async () => {
@@ -42,6 +41,57 @@ function injectVerifyButton() {
       btn.disabled = false
     }
   })
+  return true
+}
+
+function setProjModel(n) {
+  window.__pebrProjModel = n
+  const box = document.getElementById('projectionToggle')
+  if (box) {
+    box.checked = n > 0
+    box.dispatchEvent(new Event('change', { bubbles: true }))
+  }
+  document.querySelectorAll('[data-proj-model]').forEach((b) => {
+    b.classList.toggle('on', Number(b.dataset.projModel) === n)
+  })
+  const hint = document.getElementById('projDisclaimer')
+  if (hint) {
+    hint.classList.toggle('on', n > 0)
+    hint.textContent =
+      n === 2
+        ? 'Modelo 2: pesquisas com viés de instituto removido + teste nos últimos 7 dias. Se o modelo não ganha de “ficar parado”, a linha some. Não é prognóstico de urna.'
+        : n === 1
+          ? 'Modelo 1: régua amortecida sobre a média ponderada. Não é pesquisa nova nem probabilidade de vitória.'
+          : hint.textContent
+  }
+}
+
+function injectModelToggles() {
+  if (document.getElementById('projModelRow')) return !!document.getElementById('projectionToggle')
+  const host = document.getElementById('projToggleLabel')?.parentElement || document.querySelector('.controls-secondary')
+  if (!host) return false
+
+  const row = document.createElement('div')
+  row.id = 'projModelRow'
+  row.className = 'proj-model-row'
+  row.innerHTML = `
+    <span class="ctrl">Projeção</span>
+    <button type="button" class="chip" data-proj-model="0">off</button>
+    <button type="button" class="chip" data-proj-model="1">Modelo 1</button>
+    <button type="button" class="chip" data-proj-model="2">Modelo 2</button>
+  `
+  host.prepend(row)
+  row.querySelectorAll('[data-proj-model]').forEach((b) => {
+    b.addEventListener('click', () => setProjModel(Number(b.dataset.projModel)))
+  })
+
+  if (!document.getElementById('projSummary')) {
+    const p = document.createElement('p')
+    p.id = 'projSummary'
+    p.className = 'hint proj-summary'
+    host.appendChild(p)
+  }
+  setProjModel(Number(window.__pebrProjModel || 0))
   return true
 }
 
@@ -78,8 +128,9 @@ function layoutFix() {
     const det = document.createElement('details')
     det.id = 'chartOpts'
     det.className = 'opts-fold'
+    det.open = true
     const sum = document.createElement('summary')
-    sum.textContent = 'Opções do gráfico (janela, institutos, eixos)'
+    sum.textContent = 'Opções do gráfico (projeção, janela, institutos)'
     det.append(sum, below)
     chart.appendChild(det)
   }
@@ -93,6 +144,7 @@ function layoutFix() {
     else if (tablePanel) tablePanel.after(regional)
   }
 
+  injectModelToggles()
   document.body.dataset.layoutFixed = '1'
   return true
 }
