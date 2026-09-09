@@ -41,6 +41,11 @@ function themeColors() {
   }
 }
 
+function yScaleForRound(round) {
+  if (round === 2) return { min: 30, max: 58, suggestedMin: 30, suggestedMax: 55 }
+  return { min: 0, max: undefined, suggestedMin: 0, suggestedMax: 50 }
+}
+
 export function createPollChart(canvas, opts) {
   const { polls, round, institutes, windowDays, rangeDays, projection, onZoom } = opts
   const datasets = buildDatasets(polls, round, institutes, windowDays, projection)
@@ -115,8 +120,7 @@ export function createPollChart(canvas, opts) {
         },
         y: {
           title: { display: true, text: 'Intenção de voto (%)', color: tc.title },
-          min: 0,
-          suggestedMax: round === 2 ? 55 : 50,
+          ...yScaleForRound(round),
           grid: { color: tc.grid },
           ticks: { color: tc.tick },
         },
@@ -129,7 +133,7 @@ export function createPollChart(canvas, opts) {
 export function updatePollChart(chart, { polls, round, institutes, windowDays, rangeDays, projection }) {
   chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, projection)
   const tc = themeColors()
-  chart.options.scales.y.suggestedMax = round === 2 ? 55 : 50
+  Object.assign(chart.options.scales.y, yScaleForRound(round))
   chart.options.scales.x.grid.color = tc.grid
   chart.options.scales.y.grid.color = tc.grid
   chart.options.scales.x.ticks.color = tc.tick
@@ -227,7 +231,6 @@ function buildDatasets(polls, round, institutes, windowDays, projection) {
         electionDayMs,
       })
       if (proj.ok && proj.line.length > 1) {
-        // uncertainty band: high then low reversed for fill
         datasets.push({
           label: `${c.label} (banda+)`,
           data: proj.bandHigh,
@@ -273,11 +276,6 @@ export function resetZoom(chart) {
   chart.resetZoom()
 }
 
-/** Reset Y scale to default suggested range (TradingView-like axis reset helper). */
 export function resetYScale(chart, round) {
-  const y = chart.options.scales.y
-  y.min = 0
-  y.max = undefined
-  y.suggestedMin = 0
-  y.suggestedMax = round === 2 ? 55 : 50
+  Object.assign(chart.options.scales.y, yScaleForRound(round))
 }
