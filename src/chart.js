@@ -32,6 +32,7 @@ Chart.register(
 )
 
 const DAY_MS = 86400000
+const RIGHT_PAD_DAYS = 18
 
 function resolveModel(opts = {}) {
   if (opts.projectionModel != null) return Number(opts.projectionModel)
@@ -55,8 +56,53 @@ function yScaleForRound(round) {
   return { min: 0, max: undefined, suggestedMin: 0, suggestedMax: 50 }
 }
 
+function hoverBoxFor(chart) {
+  const canvas = chart.canvas
+  const panel = canvas.closest('.chart-panel') || canvas.parentElement
+  let box = panel.querySelector(':scope > .chart-hover')
+  if (!box) {
+    box = document.createElement('div')
+    box.className = 'chart-hover is-empty'
+    box.textContent = 'Toque um ponto — a leitura aparece aqui, não em cima do gráfico.'
+    const chartBox = canvas.closest('.chart-box') || canvas
+    chartBox.parentNode.insertBefore(box, chartBox)
+  }
+  return box
+}
+
+function isOverlaySeries(label) {
+  return /\((média|projeção|modelo|banda)/i.test(label || '')
+}
+
+function externalTooltip(context) {
+  const box = hoverBoxFor(context.chart)
+  const tip = context.tooltip
+  if (!tip || tip.opacity === 0 || !tip.dataPoints?.length) {
+    box.classList.add('is-empty')
+    box.textContent = 'Toque um ponto — a leitura aparece aqui, não em cima do gráfico.'
+    return
+  }
+  const pts = tip.dataPoints
+  const raw = pts.filter((p) => !isOverlaySeries(p.dataset.label))
+  const show = raw.length ? raw : pts.filter((p) => /média/i.test(p.dataset.label || ''))
+  const use = show.length ? show : pts
+  const x = use[0]?.parsed?.x
+  const date = x
+    ? new Date(x).toLocaleDateString('pt-BR', { timeZone: 'UTC' })
+    : ''
+  const rows = use.map((p) => {
+    const color = p.dataset.borderColor || p.dataset.backgroundColor || '#888'
+    const v = p.parsed?.y
+    const meta = p.raw?.meta
+    const extra = meta?.institute ? ` · ${meta.institute}` : ''
+    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${v?.toLocaleString('pt-BR')}%${extra}</span>`
+  })
+  box.classList.remove('is-empty')
+  box.innerHTML = `<span class="ch-date">${date}</span>${rows.join('')}`
+}
+
 export function createPollChart(canvas, opts) {
-  const { polls, round, institutes, windowDays, rangeDays, projection, onZoom } = opts
+  const { polls, round, institutes, windowDays, rangeDays, onZoom } = opts
   const model = resolveModel(opts)
   const datasets = buildDatasets(polls, round, institutes, windowDays, model)
   const { min, max } = rangeBounds(polls, round, institutes, rangeDays, model > 0)
@@ -69,27 +115,12 @@ export function createPollChart(canvas, opts) {
       maintainAspectRatio: false,
       animation: { duration: 280 },
       interaction: { mode: 'nearest', axis: 'x', intersect: false },
+      layout: { padding: { right: 8 } },
       plugins: {
         legend: { display: false },
         tooltip: {
-          filter(item) {
-            const lab = item.dataset.label || ''
-            return !lab.includes('(banda')
-          },
-          callbacks: {
-            title(items) {
-              const x = items[0]?.parsed?.x
-              if (!x) return ''
-              return new Date(x).toLocaleDateString('pt-BR', { timeZone: 'UTC' })
-            },
-            label(ctx) {
-              const v = ctx.parsed.y
-              const base = `${ctx.dataset.label}: ${v?.toLocaleString('pt-BR')}%`
-              const meta = ctx.raw?.meta
-              if (!meta) return base
-              return `${base} · ${meta.institute} (N=${meta.n})`
-            },
-          },
+          enabled: false,
+          external: externalTooltip,
         },
         zoom: {
           limits: {
@@ -137,6 +168,7 @@ export function createPollChart(canvas, opts) {
       },
     },
   })
+  hoverBoxFor(chart)
   return chart
 }
 
@@ -186,7 +218,8 @@ function rangeBounds(polls, round, institutes, rangeDays, projection) {
   if (!filtered.length) return { min: null, max: null }
   const tMaxObs = filtered.reduce((m, p) => Math.max(m, p.t), filtered[0].t)
   const tMinAll = filtered.reduce((m, p) => Math.min(m, p.t), filtered[0].t)
-  const tMax = projection ? tMaxObs + 14 * DAY_MS : tMaxObs
+  const projPad = projection ? 14 * DAY_MS : 0
+  const tMax = tMaxObs + projPad + RIGHT_PAD_DAYS * DAY_MS
   if (!rangeDays) return { min: tMinAll, max: tMax }
   const min = Math.max(tMinAll, tMaxObs - rangeDays * DAY_MS)
   return { min, max: tMax }
