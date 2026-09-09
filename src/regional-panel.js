@@ -70,10 +70,7 @@ function renderTable() {
   const tbody = document.getElementById('regTbody')
   if (!thead || !tbody) return
   thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
-  const rows = filtered()
-    .filter((p) => p.round === state.round)
-    .slice()
-    .reverse()
+  const rows = filtered().filter((p) => p.round === state.round).slice().reverse()
   tbody.innerHTML = rows
     .map((p) => {
       const cells = keys.map((c) => {
@@ -91,28 +88,34 @@ function refresh() {
 }
 
 function mount() {
-  const host = document.querySelector('main.wrap') || document.getElementById('app')
-  if (!host || document.getElementById('allSourcesPanel')) return
+  if (document.getElementById('allSourcesPanel')) return
+  const stack = document.querySelector('main.wrap') || document.getElementById('app')
+  if (!stack) return
 
   const panel = document.createElement('section')
   panel.className = 'panel chart-panel'
   panel.id = 'allSourcesPanel'
   panel.innerHTML = `
+    <p class="chapter-kicker">Capítulo 2</p>
     <h2 class="chart-title">Todas as fontes (nacional + SP + MG)</h2>
-    <p class="hint">Este gráfico é separado do agregado nacional acima. Ele mistura pesquisas nacionais com estaduais de <strong>São Paulo</strong> e <strong>Minas Gerais</strong> (e DF/PE se você ligar). Média aqui NÃO é uma projeção do Brasil — estado ≠ país.</p>
+    <p class="hint">Separado do agregado nacional. Inclui estaduais de <strong>São Paulo</strong> e <strong>Minas Gerais</strong>. A média daqui não é o Brasil — estado ≠ país. GERP, Ideia e Palver de 9/9 entram neste bloco.</p>
     <div class="controls controls-primary">
-      <div class="seg" role="group" aria-label="Turno (todas as fontes)">
-        <button type="button" data-reg-round="1" class="active">1º turno</button>
-        <button type="button" data-reg-round="2">2º turno</button>
+      <div class="seg" role="group" aria-label="Turno com SP e MG">
+        <button type="button" data-reg-round="1" class="active">1º com SP/MG</button>
+        <button type="button" data-reg-round="2">2º com SP/MG</button>
       </div>
       <div class="filters institutes-inline" id="geoChips"></div>
     </div>
     <div class="chart-box"><canvas id="allSourcesChart" aria-label="Gráfico todas as fontes"></canvas></div>
-    <div class="table-wrap" style="margin-top:.75rem"><table class="polls"><thead id="regThead"></thead><tbody id="regTbody"></tbody></table></div>
+    <h3 class="chart-title" style="margin-top:.85rem">Tabela — todas as fontes</h3>
+    <div class="table-wrap"><table class="polls"><thead id="regThead"></thead><tbody id="regTbody"></tbody></table></div>
   `
-  const firstPanel = document.getElementById('chartPanel')
-  if (firstPanel?.parentNode) firstPanel.parentNode.insertBefore(panel, firstPanel.nextSibling)
-  else host.appendChild(panel)
+
+  const metodo = stack.querySelector('.metodologia')
+  const nationalTable = document.getElementById('nationalTablePanel')
+  if (metodo) stack.insertBefore(panel, metodo)
+  else if (nationalTable) nationalTable.after(panel)
+  else stack.appendChild(panel)
 
   const geos = [...new Set(state.polls.map((p) => p.geo || 'BR'))].sort()
   const chips = document.getElementById('geoChips')
