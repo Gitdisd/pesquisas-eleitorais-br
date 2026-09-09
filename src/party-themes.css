@@ -1,0 +1,171 @@
+html[data-theme^='party-']{
+  --radius:6px;
+  --shadow:none;
+}
+html[data-theme^='party-'] header.app-hdr{
+  border-bottom-width:4px;
+}
+html[data-theme^='party-'] .panel,
+html[data-theme^='party-'] .card{
+  border-width:1px;
+}
+html[data-theme^='party-'] .chip.on,
+html[data-theme^='party-'] .seg button[aria-pressed='true']{
+  font-weight:700;
+}
+
+/* PT — red field, white star */
+html[data-theme='party-pt']{
+  --bg:#4a0b16;
+  --surface:#6b1020;
+  --text:#fff8f6;
+  --muted:#f3c4c8;
+  --border:#9a2030;
+  --accent:#ffffff;
+  --chip-bg:#5a0e1a;
+  --chip-on-bg:#c0122d;
+  --chip-on-border:#ffffff;
+  --chip-on-text:#ffffff;
+  --seg-active-bg:#ffffff;
+  --seg-active-fg:#6b1020;
+}
+html[data-theme='party-pt'] header.app-hdr{
+  background:linear-gradient(180deg,#c0122d 0%,#6b1020 72%);
+  border-bottom-color:#ffffff;
+}
+
+/* PL — navy + gold */
+html[data-theme='party-pl']{
+  --bg:#161636;
+  --surface:#22225a;
+  --text:#ffe9a0;
+  --muted:#d4c07a;
+  --border:#3c3c80;
+  --accent:#ffd200;
+  --chip-bg:#1c1c48;
+  --chip-on-bg:#30306c;
+  --chip-on-border:#ffd200;
+  --chip-on-text:#ffd200;
+  --seg-active-bg:#ffd200;
+  --seg-active-fg:#161636;
+}
+html[data-theme='party-pl'] header.app-hdr{
+  background:linear-gradient(180deg,#30306c 0%,#161636 80%);
+  border-bottom-color:#ffd200;
+}
+
+/* Missão — yellow / black / white (jaguar flag) */
+html[data-theme='party-missao']{
+  --bg:#111111;
+  --surface:#1c1c1c;
+  --text:#fcbe26;
+  --muted:#d7a31c;
+  --border:#fcbe26;
+  --accent:#ffffff;
+  --chip-bg:#191919;
+  --chip-on-bg:#fcbe26;
+  --chip-on-border:#ffffff;
+  --chip-on-text:#111111;
+  --seg-active-bg:#fcbe26;
+  --seg-active-fg:#111111;
+}
+html[data-theme='party-missao'] header.app-hdr{
+  background:#000;
+  border-bottom-color:#fcbe26;
+}
+
+/* PSD — official orange */
+html[data-theme='party-psd']{
+  --bg:#2a1600;
+  --surface:#3d2200;
+  --text:#ffe4b0;
+  --muted:#e0b46a;
+  --border:#ffa400;
+  --accent:#ffa400;
+  --chip-bg:#321c00;
+  --chip-on-bg:#ffa400;
+  --chip-on-border:#fff3d6;
+  --chip-on-text:#2a1600;
+  --seg-active-bg:#ffa400;
+  --seg-active-fg:#2a1600;
+}
+html[data-theme='party-psd'] header.app-hdr{
+  background:linear-gradient(180deg,#ffa400 0%,#3d2200 70%);
+  border-bottom-color:#ffa400;
+}
+html[data-theme='party-psd'] header.app-hdr h1,
+html[data-theme='party-psd'] header.app-hdr p{
+  color:#1a1000;
+  text-shadow:0 1px 0 rgba(255,255,255,.25);
+}
+html[data-theme='party-psd'] header.app-hdr p,
+html[data-theme='party-psd'] header.app-hdr .stamp,
+html[data-theme='party-psd'] header.app-hdr .check-timer{
+  color:#3a2200;
+}
+
+/* Novo — official orange + campaign green/yellow stripe */
+html[data-theme='party-novo']{
+  --bg:#1c0d04;
+  --surface:#2c1608;
+  --text:#ffe8d6;
+  --muted:#f0b48a;
+  --border:#ec671c;
+  --accent:#ec671c;
+  --chip-bg:#241208;
+  --chip-on-bg:#ec671c;
+  --chip-on-border:#ffd200;
+  --chip-on-text:#ffffff;
+  --seg-active-bg:#ec671c;
+  --seg-active-fg:#1c0d04;
+}
+html[data-theme='party-novo'] header.app-hdr{
+  background:
+    linear-gradient(#009c3b,#009c3b) top/100% 6px no-repeat,
+    linear-gradient(180deg,#ec671c 0%,#2c1608 78%);
+  border-bottom-color:#ffd200;
+}
+
+/* Avante — teal flag */
+html[data-theme='party-avante']{
+  --bg:#062022;
+  --surface:#0a3034;
+  --text:#e8ffff;
+  --muted:#9ad4d8;
+  --border:#2eabb1;
+  --accent:#2eabb1;
+  --chip-bg:#083034;
+  --chip-on-bg:#2eabb1;
+  --chip-on-border:#e8ffff;
+  --chip-on-text:#062022;
+  --seg-active-bg:#2eabb1;
+  --seg-active-fg:#062022;
+}
+html[data-theme='party-avante'] header.app-hdr{
+  background:linear-gradient(180deg,#2eabb1 0%,#0a3034 72%);
+  border-bottom-color:#e8ffff;
+}
+
+.party-themes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem;
+  margin:.55rem 0 0;
+}
+.party-themes .chip{
+  min-height:36px;
+  font-size:.72rem;
+}
+html[data-theme='party-pt'] .party-themes .chip[data-party-theme='party-pt'],
+html[data-theme='party-pl'] .party-themes .chip[data-party-theme='party-pl'],
+html[data-theme='party-missao'] .party-themes .chip[data-party-theme='party-missao'],
+html[data-theme='party-psd'] .party-themes .chip[data-party-theme='party-psd'],
+html[data-theme='party-novo'] .party-themes .chip[data-party-theme='party-novo'],
+html[data-theme='party-avante'] .party-themes .chip[data-party-theme='party-avante']{
+  outline:2px solid var(--accent);
+}
+
+@media (max-width:600px){
+  html[data-theme='party-psd'] header.app-hdr h1{color:#1a1000}
+  .party-themes .chip{min-height:40px}
+}
