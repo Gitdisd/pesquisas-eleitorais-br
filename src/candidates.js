@@ -49,10 +49,15 @@ export function parseMoe(str) {
 
 export function isFirstRound(scenario) {
   const s = (scenario || '').toLowerCase()
-  return s.includes('1') || s.includes('primeiro') || s.includes('estimulad')
+  return /1[ºo]?\s*turno|primeiro\s*turno|estimulad/.test(s)
 }
 
 export function isSecondRound(scenario) {
   const s = (scenario || '').toLowerCase()
-  return s.includes('2') || s.includes('segundo')
+  return /2[ºo]?\s*turno|segundo\s*turno/.test(s)
+}
+
+export function pointRadiusForN(n) {
+  const sample = Number.isFinite(n) && n > 0 ? n : 800
+  return Math.max(2.2, Math.min(6.2, 2.0 + 2.4 * Math.sqrt(sample / 2000)))
 }
