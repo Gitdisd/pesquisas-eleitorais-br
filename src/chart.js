@@ -56,6 +56,37 @@ function yScaleForRound(round) {
   return { min: 0, max: undefined, suggestedMin: 0, suggestedMax: 50 }
 }
 
+function timeConfigForSpan(min, max) {
+  const days = min != null && max != null ? (max - min) / DAY_MS : 400
+  if (days <= 45) {
+    return {
+      unit: 'day',
+      displayFormats: { day: 'dd/MM', week: 'dd/MM', month: 'MMM yyyy' },
+      tooltipFormat: 'dd/MM/yyyy',
+    }
+  }
+  if (days <= 120) {
+    return {
+      unit: 'day',
+      displayFormats: { day: 'dd/MM', week: 'dd/MM', month: 'MMM yyyy' },
+      tooltipFormat: 'dd/MM/yyyy',
+    }
+  }
+  return {
+    unit: 'week',
+    displayFormats: { day: 'dd/MM', week: 'dd/MM', month: 'MMM yyyy' },
+    tooltipFormat: 'dd/MM/yyyy',
+  }
+}
+
+function fmtVote(v) {
+  if (v == null || Number.isNaN(Number(v))) return '—'
+  return Number(v).toLocaleString('pt-BR', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  })
+}
+
 function hoverBoxFor(chart) {
   const canvas = chart.canvas
   const panel = canvas.closest('.chart-panel') || canvas.parentElement
@@ -71,7 +102,7 @@ function hoverBoxFor(chart) {
 }
 
 function isOverlaySeries(label) {
-  return /\((édia|projeção|modelo|banda)/i.test(label || '')
+  return /\((média|projeção|modelo|banda)/i.test(label || '')
 }
 
 function externalTooltip(context) {
@@ -84,18 +115,18 @@ function externalTooltip(context) {
   }
   const pts = tip.dataPoints
   const raw = pts.filter((p) => !isOverlaySeries(p.dataset.label))
-  const show = raw.length ? raw : pts.filter((p) => /édia/i.test(p.dataset.label || ''))
+  const show = raw.length ? raw : pts.filter((p) => /média/i.test(p.dataset.label || ''))
   const use = show.length ? show : pts
   const x = use[0]?.parsed?.x
   const date = x
-    ? new Date(x).toLocaleDateString('pt-BR', { timeZone: 'UTC' })
+    ? new Date(x).toLocaleDateString('pt-BR', { timeZone: 'UTC', day: '2-digit', month: '2-digit', year: 'numeric' })
     : ''
   const rows = use.map((p) => {
     const color = p.dataset.borderColor || p.dataset.backgroundColor || '#888'
     const v = p.parsed?.y
     const meta = p.raw?.meta
     const extra = meta?.institute ? ` · ${meta.institute}` : ''
-    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${v?.toLocaleString('pt-BR')}%${extra}</span>`
+    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${fmtVote(v)}%${extra}</span>`
   })
   box.classList.remove('is-empty')
   box.innerHTML = `<span class="ch-date">${date}</span>${rows.join('')}`
@@ -153,17 +184,20 @@ export function createPollChart(canvas, opts) {
         x: {
           type: 'time',
           adapters: { date: { locale: ptBR } },
-          time: { unit: 'month', tooltipFormat: 'dd/MM/yyyy' },
+          time: timeConfigForSpan(min, max),
           min: min ?? undefined,
           max: max ?? undefined,
           grid: { color: tc.grid },
-          ticks: { maxRotation: 0, autoSkipPadding: 12, color: tc.tick },
+          ticks: { maxRotation: 45, autoSkip: true, autoSkipPadding: 6, maxTicksLimit: 16, color: tc.tick },
         },
         y: {
           title: { display: true, text: 'Intenção de voto (%)', color: tc.title },
           ...yScaleForRound(round),
           grid: { color: tc.grid },
-          ticks: { color: tc.tick },
+          ticks: {
+            color: tc.tick,
+            callback: (v) => fmtVote(v),
+          },
         },
       },
     },
@@ -178,12 +212,16 @@ export function updatePollChart(chart, opts) {
   chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model)
   const tc = themeColors()
   Object.assign(chart.options.scales.y, yScaleForRound(round))
+  chart.options.scales.y.ticks.callback = (v) => fmtVote(v)
   chart.options.scales.x.grid.color = tc.grid
   chart.options.scales.y.grid.color = tc.grid
   chart.options.scales.x.ticks.color = tc.tick
   chart.options.scales.y.ticks.color = tc.tick
   chart.options.scales.y.title.color = tc.title
   applyDateRange(chart, polls, round, institutes, rangeDays, model > 0)
+  const xmin = chart.options.scales.x.min
+  const xmax = chart.options.scales.x.max
+  chart.options.scales.x.time = timeConfigForSpan(xmin, xmax)
   chart.update('none')
 }
 
@@ -207,6 +245,7 @@ export function applyDateRange(chart, polls, round, institutes, rangeDays, proje
     chart.options.scales.x.min = min
     chart.options.scales.x.max = max
   }
+  chart.options.scales.x.time = timeConfigForSpan(min, max)
 }
 
 function rangeBounds(polls, round, institutes, rangeDays, projection) {
