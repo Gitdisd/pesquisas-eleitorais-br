@@ -12,7 +12,8 @@ export function weightedTrend(points, windowDays = 14) {
     for (const p of sorted) {
       const days = Math.abs(t - p.t) / dayMs
       if (days > windowDays * 2.5) continue
-      const sample = Math.max(100, p.n || 2000)
+      // Missing n must NOT impersonate a 2,000-interview poll.
+      const sample = Number.isFinite(p.n) && p.n > 0 ? Math.max(100, p.n) : 800
       const w = Math.sqrt(sample / 2000) * Math.exp(-days / windowDays)
       num += w * p.y
       den += w
