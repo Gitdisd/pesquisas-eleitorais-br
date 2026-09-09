@@ -82,8 +82,8 @@ function timeConfigForSpan(min, max) {
 function fmtVote(v) {
   if (v == null || Number.isNaN(Number(v))) return '—'
   return Number(v).toLocaleString('pt-BR', {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   })
 }
 
@@ -156,7 +156,7 @@ export function createPollChart(canvas, opts) {
         zoom: {
           limits: {
             x: { min: 'original', max: 'original' },
-            y: { min: 0, max: 100, minRange: 5 },
+            y: { min: 0, max: 100, minRange: 0.4 },
           },
           pan: {
             enabled: true,
@@ -309,7 +309,7 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
     if (institutes.size && !institutes.has(p.institute)) return false
     return true
   })
-  const keys = round === 2 ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio') : CANDIDATES
+  const keys = round === 2 ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio' || c.key === 'branco_nulo') : CANDIDATES
   const datasets = []
   const projByKey = {}
   const electionDayMs = round === 2 ? ELECTION_ROUND2_MS : ELECTION_ROUND1_MS
