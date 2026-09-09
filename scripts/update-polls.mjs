@@ -173,7 +173,6 @@ function nowSaoPauloIso() {
   });
   const parts = Object.fromEntries(fmt.formatToParts(new Date()).map((p) => [p.type, p.value]));
   const hour = parts.hour === "24" ? "00" : parts.hour;
-  // Brazil currently observes -03:00 year-round (no DST).
   return `${parts.year}-${parts.month}-${parts.day}T${hour}:${parts.minute}:${parts.second}-03:00`;
 }
 
@@ -277,12 +276,11 @@ async function main() {
         ? nowSaoPauloIso()
         : prevMeta.last_updated,
     last_check_at: checkedAtUtc,
-    check_interval_minutes: 190,
+    check_interval_minutes: 60,
     record_count: sorted.length,
     source: "verified published polls",
     content_hash: hash,
   };
-  // Always refresh last_check_at; bump last_updated only when poll content changes.
   const metaText = pretty(meta);
   const metaDataChanged = writeTextIfChanged(META_PATH, metaText);
   const metaPublicChanged = writeTextIfChanged(PUBLIC_META, metaText);
