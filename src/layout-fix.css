@@ -40,6 +40,13 @@ table.polls th:nth-child(2),table.polls td:nth-child(2){
 }
 table.polls thead th{z-index:3}
 
+.card[data-c=samara]{border-top:3px solid #0284c7}
+.card[data-c=hertz]{border-top:3px solid #475569}
+.card[data-c=edmilson]{border-top:3px solid #9f1239}
+.card[data-c=rui]{border-top:3px solid #0f766e}
+.card[data-c=clariana]{border-top:3px solid #7c3aed}
+.card[data-c=grassi]{border-top:3px solid #57534e}
+
 @media(max-width:600px){
   header.app-hdr{padding:.45rem 0;margin-bottom:.4rem}
   header.app-hdr h1{font-size:1.05rem}
