@@ -1,0 +1,108 @@
+[
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 38.4},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.3},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1.5}
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://exame.com/brasil/pesquisa-meio-ideia-lula-tem-384-e-flavio-bolsonaro-373-no-1o-turno/",
+    "methodology_note": "Meio/Ideia telefone TSE BR-07935/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 46},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46}
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www1.folha.uol.com.br/poder/2026/09/lula-e-flavio-bolsonaro-empatam-no-primeiro-e-no-segundo-turno-diz-pesquisa-meioideia.shtml",
+    "methodology_note": "Meio/Ideia TSE BR-07935/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-09-03",
+    "fieldwork_end": "2026-09-08",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37},
+      {"name": "Lula", "party_optional": "PT", "pct": 34},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 3},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 2}
+    ],
+    "n": 2400,
+    "margin_of_error": "±2.0 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
+    "methodology_note": "GERP TSE BR-00251/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-09-03",
+    "fieldwork_end": "2026-09-08",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47},
+      {"name": "Lula", "party_optional": "PT", "pct": 40}
+    ],
+    "n": 2400,
+    "margin_of_error": "±2.0 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
+    "methodology_note": "GERP TSE BR-00251/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 40},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 40},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 11},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 4}
+    ],
+    "n": 5000,
+    "margin_of_error": "±1.4 pp",
+    "source_url": "https://www.poder360.com.br/",
+    "methodology_note": "Palver nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46},
+      {"name": "Lula", "party_optional": "PT", "pct": 44}
+    ],
+    "n": 5000,
+    "margin_of_error": "±1.4 pp",
+    "source_url": "https://www.poder360.com.br/",
+    "methodology_note": "Palver.",
+    "verified": true
+  }
+]

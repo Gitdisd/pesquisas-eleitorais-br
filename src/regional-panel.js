@@ -3,6 +3,7 @@ import { createPollChart, updatePollChart } from './chart.js'
 
 const BASE = import.meta.env.BASE_URL
 const NAT_URL = `${BASE}data/polls.json`
+const EXTRA_URL = `${BASE}data/polls-extra.json`
 const REG_URL = `${BASE}data/polls-regional.json`
 
 const state = {
@@ -25,9 +26,10 @@ function normalize(rows) {
       const results = {}
       for (const c of row.candidates || []) {
         const m = matchCandidate(c.name)
-        if (m && typeof c.pct === 'number') results[m.key] = c.pct
+        const pct = Number(String(c.pct ?? '').replace(',', '.'))
+        if (m && Number.isFinite(pct)) results[m.key] = pct
       }
-      if (round === 2 && (results.lula == null || results.flavio == null)) return null
+      if (results.lula == null && results.flavio == null) return null
       const end = row.fieldwork_end || row.published_date
       if (!end) return null
       return {
@@ -70,7 +72,11 @@ function renderTable() {
   const tbody = document.getElementById('regTbody')
   if (!thead || !tbody) return
   thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
-  const rows = filtered().filter((p) => p.round === state.round).slice().reverse()
+  const rows = filtered()
+    .filter((p) => p.round === state.round)
+    .filter((p) => keys.some((c) => p.results[c.key] != null))
+    .slice()
+    .reverse()
   tbody.innerHTML = rows
     .map((p) => {
       const cells = keys.map((c) => {
@@ -151,14 +157,23 @@ function mount() {
 
 async function bootRegional() {
   try {
-    const [natRes, regRes] = await Promise.all([
+    const [natRes, extraRes, regRes] = await Promise.all([
       fetch(NAT_URL + '?t=' + Date.now(), { cache: 'no-store' }),
+      fetch(EXTRA_URL + '?t=' + Date.now(), { cache: 'no-store' }),
       fetch(REG_URL + '?t=' + Date.now(), { cache: 'no-store' }),
     ])
     const nat = natRes.ok ? await natRes.json() : []
+    const extraNat = extraRes.ok ? await extraRes.json() : []
     const extra = regRes.ok ? await regRes.json() : []
-    const natRows = (Array.isArray(nat) ? nat : nat.polls || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))
-    state.polls = normalize([...natRows, ...extra])
+    const natRows = [...(Array.isArray(extraNat) ? extraNat : []), ...(Array.isArray(nat) ? nat : nat.polls || [])].map((p) => ({ ...p, geo: p.geo || 'BR' }))
+    const merged = normalize([...natRows, ...extra])
+    const seen = new Set()
+    state.polls = merged.filter((p) => {
+      const k = `${p.institute}|${p.fieldworkEnd}|${p.round}|${p.geo}`
+      if (seen.has(k)) return false
+      seen.add(k)
+      return true
+    })
     const started = Date.now()
     const wait = setInterval(() => {
       if (document.getElementById('chartPanel') || Date.now() - started > 8000) {
