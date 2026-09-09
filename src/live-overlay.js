@@ -1,3 +1,5 @@
+import './layout-fix.css'
+
 function injectVerifyButton() {
   if (document.getElementById('verifyNow')) return true
   const timer = document.getElementById('checkTimer')
@@ -23,8 +25,7 @@ function injectVerifyButton() {
   wrap.append(btn, link)
   timer.after(wrap)
 
-  const extra = document.querySelector('header .refresh-notice')
-  if (extra) extra.remove()
+  document.querySelectorAll('header .refresh-notice').forEach((n) => n.remove())
 
   btn.addEventListener('click', async () => {
     btn.disabled = true
@@ -45,16 +46,17 @@ function injectVerifyButton() {
 }
 
 function layoutFix() {
-  if (document.body.dataset.layoutFixed === '1') return
   const stack = document.querySelector('main.main-stack')
   const cards = document.getElementById('cards')
   const chart = document.getElementById('chartPanel')
-  if (!stack || !cards || !chart) return
+  if (!stack || !cards || !chart) return false
 
   const tablePanel = [...stack.querySelectorAll(':scope > .panel')].find((p) => p.querySelector('#tbody'))
   const metodo = [...stack.querySelectorAll(':scope > .panel')].find((p) => p.classList.contains('metodologia'))
 
-  stack.insertBefore(cards, chart)
+  if (cards.nextElementSibling !== chart && cards !== chart.previousElementSibling) {
+    stack.insertBefore(cards, chart)
+  }
   if (!document.getElementById('cardsNote')) {
     const note = document.createElement('p')
     note.id = 'cardsNote'
@@ -65,10 +67,10 @@ function layoutFix() {
 
   if (tablePanel) {
     tablePanel.classList.add('panel-table')
-    tablePanel.id = tablePanel.id || 'nationalTablePanel'
+    tablePanel.id = 'nationalTablePanel'
     const h = tablePanel.querySelector('h2')
     if (h) h.textContent = 'Tabela nacional'
-    chart.after(tablePanel)
+    if (tablePanel.previousElementSibling !== chart) chart.after(tablePanel)
   }
 
   const below = chart.querySelector('.chart-below')
@@ -86,38 +88,18 @@ function layoutFix() {
   if (title) title.textContent = 'Nacional — evolução da intenção de voto'
 
   const regional = document.getElementById('allSourcesPanel')
-  if (regional && metodo) stack.insertBefore(regional, metodo)
-  else if (regional && tablePanel) tablePanel.after(regional)
+  if (regional) {
+    if (metodo) stack.insertBefore(regional, metodo)
+    else if (tablePanel) tablePanel.after(regional)
+  }
 
   document.body.dataset.layoutFixed = '1'
-}
-
-function addTseHeaderIfMissing() {
-  const table = document.querySelector('#nationalTablePanel table.polls, .panel-table table.polls')
-  if (!table) return
-  const ths = [...table.querySelectorAll('thead th')].map((th) => th.textContent.trim())
-  if (!ths.length || ths.includes('TSE')) return
-  const inst = [...table.querySelectorAll('thead th')].find((th) => th.textContent.trim() === 'Instituto')
-  if (!inst) return
-  const th = document.createElement('th')
-  th.textContent = 'TSE'
-  inst.after(th)
-  table.querySelectorAll('tbody tr').forEach((tr) => {
-    const td = document.createElement('td')
-    td.textContent = '—'
-    tr.children[1]?.after(td)
-  })
+  return true
 }
 
 const started = Date.now()
 const id = setInterval(() => {
-  const ok = injectVerifyButton()
-  if (ok) {
-    layoutFix()
-    addTseHeaderIfMissing()
-  }
-  if ((ok && document.body.dataset.layoutFixed === '1') || Date.now() - started > 15000) {
-    layoutFix()
-    clearInterval(id)
-  }
+  injectVerifyButton()
+  layoutFix()
+  if (document.body.dataset.layoutFixed === '1' || Date.now() - started > 15000) clearInterval(id)
 }, 200)
