@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-09T14:28:47.444Z",
+  "ran_at": "2026-09-09T18:31:18.434Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 365,
+  "candidate_links": 366,
   "pages_fetched": 40,
   "verified_new": 0,
   "inbox_new": 9,
@@ -17,15 +17,15 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-09T14:28:42.321Z"
+      "found_at": "2026-09-09T18:31:15.173Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
       "title": "NFE/5.0 \"pesquisa Quaest Lula 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Quaest+Lula+2026&hl=pt-B",
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
+      "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-09T14:28:44.072Z"
+      "found_at": "2026-09-09T18:31:16.160Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-09T14:28:44.440Z"
+      "found_at": "2026-09-09T18:31:16.652Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-09T14:28:45.613Z"
+      "found_at": "2026-09-09T18:31:17.295Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-09T14:28:46.406Z"
+      "found_at": "2026-09-09T18:31:17.742Z"
     }
   ],
-  "meta_last_check_at": "2026-09-09T14:28:47.444Z"
+  "meta_last_check_at": "2026-09-09T18:31:18.435Z"
 }
