@@ -1,4 +1,67 @@
 import './layout-fix.css'
+import './crt-theme.css'
+import { Chart } from 'chart.js'
+
+const THEME_ORDER = ['light', 'dark', 'crt-amber', 'crt-green']
+const THEME_NEXT_LABEL = {
+  light: 'Escuro',
+  dark: 'CRT âmbar',
+  'crt-amber': 'CRT verde',
+  'crt-green': 'Claro',
+}
+
+function tintCharts() {
+  const t = document.documentElement.getAttribute('data-theme') || 'light'
+  const crt = t.startsWith('crt')
+  const amber = t === 'crt-amber'
+  const grid = crt
+    ? amber
+      ? 'rgba(255,176,0,.16)'
+      : 'rgba(61,255,122,.14)'
+    : t === 'dark'
+      ? 'rgba(255,255,255,.08)'
+      : 'rgba(0,0,0,.06)'
+  const tick = crt ? (amber ? '#c48420' : '#1fa34d') : t === 'dark' ? '#a8b0ba' : '#5c6570'
+  const title = crt ? (amber ? '#ffb000' : '#3dff7a') : t === 'dark' ? '#e8eaed' : '#1a1d21'
+  document.querySelectorAll('canvas').forEach((el) => {
+    const ch = Chart.getChart(el)
+    if (!ch?.options?.scales) return
+    if (ch.options.scales.x?.grid) ch.options.scales.x.grid.color = grid
+    if (ch.options.scales.y?.grid) ch.options.scales.y.grid.color = grid
+    if (ch.options.scales.x?.ticks) ch.options.scales.x.ticks.color = tick
+    if (ch.options.scales.y?.ticks) ch.options.scales.y.ticks.color = tick
+    if (ch.options.scales.y?.title) ch.options.scales.y.title.color = title
+    ch.update('none')
+  })
+}
+
+function applyCrtTheme(theme) {
+  const t = THEME_ORDER.includes(theme) ? theme : 'light'
+  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : t)
+  localStorage.setItem('pebr-theme', t)
+  const btn = document.getElementById('themeToggle')
+  if (btn) btn.textContent = THEME_NEXT_LABEL[t]
+  tintCharts()
+}
+
+function installThemeCycle() {
+  const btn = document.getElementById('themeToggle')
+  if (!btn || btn.dataset.crtCycle) return false
+  btn.dataset.crtCycle = '1'
+  const saved = localStorage.getItem('pebr-theme')
+  if (THEME_ORDER.includes(saved)) applyCrtTheme(saved)
+  btn.addEventListener(
+    'click',
+    (ev) => {
+      ev.stopImmediatePropagation()
+      const cur = document.documentElement.getAttribute('data-theme') || 'light'
+      const i = Math.max(0, THEME_ORDER.indexOf(cur))
+      applyCrtTheme(THEME_ORDER[(i + 1) % THEME_ORDER.length])
+    },
+    true,
+  )
+  return true
+}
 
 function injectVerifyButton() {
   if (document.getElementById('verifyNow')) return true
@@ -145,6 +208,7 @@ function layoutFix() {
   }
 
   injectModelToggles()
+  installThemeCycle()
   document.body.dataset.layoutFixed = '1'
   return true
 }
