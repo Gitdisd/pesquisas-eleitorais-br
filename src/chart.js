@@ -16,6 +16,7 @@ import { ptBR } from 'date-fns/locale'
 import { CANDIDATES } from './candidates.js'
 import { weightedTrend } from './aggregate.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
+import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
 
 Chart.register(
   LineController,
@@ -31,6 +32,14 @@ Chart.register(
 )
 
 const DAY_MS = 86400000
+
+function resolveModel(opts = {}) {
+  if (opts.projectionModel != null) return Number(opts.projectionModel)
+  if (typeof window !== 'undefined' && window.__pebrProjModel != null) {
+    return Number(window.__pebrProjModel)
+  }
+  return opts.projection ? 1 : 0
+}
 
 function themeColors() {
   const dark = document.documentElement.getAttribute('data-theme') === 'dark'
@@ -48,8 +57,9 @@ function yScaleForRound(round) {
 
 export function createPollChart(canvas, opts) {
   const { polls, round, institutes, windowDays, rangeDays, projection, onZoom } = opts
-  const datasets = buildDatasets(polls, round, institutes, windowDays, projection)
-  const { min, max } = rangeBounds(polls, round, institutes, rangeDays, projection)
+  const model = resolveModel(opts)
+  const datasets = buildDatasets(polls, round, institutes, windowDays, model)
+  const { min, max } = rangeBounds(polls, round, institutes, rangeDays, model > 0)
   const tc = themeColors()
   const chart = new Chart(canvas, {
     type: 'line',
@@ -130,8 +140,10 @@ export function createPollChart(canvas, opts) {
   return chart
 }
 
-export function updatePollChart(chart, { polls, round, institutes, windowDays, rangeDays, projection }) {
-  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, projection)
+export function updatePollChart(chart, opts) {
+  const { polls, round, institutes, windowDays, rangeDays } = opts
+  const model = resolveModel(opts)
+  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model)
   const tc = themeColors()
   Object.assign(chart.options.scales.y, yScaleForRound(round))
   chart.options.scales.x.grid.color = tc.grid
@@ -139,7 +151,7 @@ export function updatePollChart(chart, { polls, round, institutes, windowDays, r
   chart.options.scales.x.ticks.color = tc.tick
   chart.options.scales.y.ticks.color = tc.tick
   chart.options.scales.y.title.color = tc.title
-  applyDateRange(chart, polls, round, institutes, rangeDays, projection)
+  applyDateRange(chart, polls, round, institutes, rangeDays, model > 0)
   chart.update('none')
 }
 
@@ -180,7 +192,46 @@ function rangeBounds(polls, round, institutes, rangeDays, projection) {
   return { min, max: tMax }
 }
 
-function buildDatasets(polls, round, institutes, windowDays, projection) {
+function pushProjDatasets(datasets, c, proj, tag) {
+  if (!proj.ok || proj.line.length <= 1) return
+  datasets.push({
+    label: `${c.label} (banda+)`,
+    data: proj.bandHigh,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 0,
+    backgroundColor: hexAlpha(c.color, 0.14),
+    borderColor: 'transparent',
+    fill: '+1',
+    tension: 0.2,
+    order: 3,
+  })
+  datasets.push({
+    label: `${c.label} (banda-)`,
+    data: proj.bandLow,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    fill: false,
+    tension: 0.2,
+    order: 3,
+  })
+  datasets.push({
+    label: `${c.label} (${tag})`,
+    data: proj.line,
+    showLine: true,
+    pointRadius: 0,
+    borderColor: c.color,
+    borderWidth: 2,
+    borderDash: tag === 'modelo 2' ? [2, 3] : [6, 4],
+    tension: 0.2,
+    order: 0,
+  })
+}
+
+function buildDatasets(polls, round, institutes, windowDays, model) {
   const filtered = polls.filter((p) => {
     if (p.round !== round) return false
     if (institutes.size && !institutes.has(p.institute)) return false
@@ -188,6 +239,9 @@ function buildDatasets(polls, round, institutes, windowDays, projection) {
   })
   const keys = round === 2 ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio') : CANDIDATES
   const datasets = []
+  const projByKey = {}
+  const electionDayMs = round === 2 ? ELECTION_ROUND2_MS : ELECTION_ROUND1_MS
+
   for (const c of keys) {
     const pts = []
     for (const p of filtered) {
@@ -209,7 +263,7 @@ function buildDatasets(polls, round, institutes, windowDays, projection) {
       borderColor: c.color,
       order: 2,
     })
-    const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n }))
+    const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute }))
     const trend = weightedTrend(trendPts, windowDays)
     datasets.push({
       label: `${c.label} (média)`,
@@ -223,52 +277,49 @@ function buildDatasets(polls, round, institutes, windowDays, projection) {
       order: 1,
     })
 
-    if (projection && trend.length >= 2) {
-      const electionDayMs = round === 2 ? ELECTION_ROUND2_MS : ELECTION_ROUND1_MS
-      const proj = projectTrend(trend, {
+    if (model === 1 && trend.length >= 2) {
+      projByKey[c.key] = projectTrend(trend, {
         fitDays: windowDays,
         horizonDays: 14,
         electionDayMs,
       })
-      if (proj.ok && proj.line.length > 1) {
-        datasets.push({
-          label: `${c.label} (banda+)`,
-          data: proj.bandHigh,
-          showLine: true,
-          pointRadius: 0,
-          borderWidth: 0,
-          backgroundColor: hexAlpha(c.color, 0.14),
-          borderColor: 'transparent',
-          fill: '+1',
-          tension: 0.2,
-          order: 3,
-        })
-        datasets.push({
-          label: `${c.label} (banda-)`,
-          data: proj.bandLow,
-          showLine: true,
-          pointRadius: 0,
-          borderWidth: 0,
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-          fill: false,
-          tension: 0.2,
-          order: 3,
-        })
-        datasets.push({
-          label: `${c.label} (projeção)`,
-          data: proj.line,
-          showLine: true,
-          pointRadius: 0,
-          borderColor: c.color,
-          borderWidth: 2,
-          borderDash: [6, 4],
-          tension: 0.2,
-          order: 0,
-        })
-      }
+    }
+    if (model === 2 && trendPts.length >= 4) {
+      projByKey[c.key] = projectTrendV2(trendPts, {
+        fitDays: windowDays,
+        horizonDays: 14,
+        electionDayMs,
+      })
     }
   }
+
+  if (model === 2) {
+    const lead = keys.filter((c) => c.tier !== 'field').map((c) => c.key)
+    rescaleComposition(projByKey, lead.length ? lead : keys.map((c) => c.key))
+  }
+
+  const tag = model === 2 ? 'modelo 2' : 'projeção'
+  for (const c of keys) {
+    if (projByKey[c.key]) pushProjDatasets(datasets, c, projByKey[c.key], tag)
+  }
+
+  if (typeof window !== 'undefined') {
+    const labels = Object.fromEntries(CANDIDATES.map((c) => [c.key, c.label.split(' ')[0]]))
+    const failed = Object.entries(projByKey)
+      .filter(([, p]) => p && !p.ok)
+      .map(([k, p]) => `${labels[k] || k}:${p.reason}`)
+    window.__pebrProjSummary =
+      model === 0
+        ? ''
+        : formatProjSummary(projByKey, labels) ||
+          (failed.length
+            ? `Modelo ${model} sem sinal (${failed.slice(0, 4).join(', ')})`
+            : '')
+    window.__pebrLastProjByKey = projByKey
+    const el = document.getElementById('projSummary')
+    if (el) el.textContent = window.__pebrProjSummary
+  }
+
   return datasets
 }
 
