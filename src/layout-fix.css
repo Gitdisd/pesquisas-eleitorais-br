@@ -24,6 +24,22 @@ header.app-hdr .stamp,.header.app-hdr .check-timer{display:block}
 .opts-fold>summary::before{content:'▸  ';color:var(--accent)}
 .opts-fold[open]>summary::before{content:'▾  '}
 
+.chart-hover{
+  min-height:2.55rem;
+  font-size:.78rem;
+  color:var(--text);
+  background:var(--chip-bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:.45rem .7rem;
+  margin:0 0 .5rem;
+  line-height:1.4;
+}
+.chart-hover.is-empty{color:var(--muted)}
+.chart-hover .ch-date{font-weight:700;margin-right:.55rem}
+.chart-hover .ch-row{display:inline-flex;align-items:center;gap:.3rem;margin:.15rem .85rem .15rem 0;white-space:nowrap}
+.chart-hover i{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+
 .chart-box{height:min(62vh,460px);min-height:320px}
 .chapter-kicker{
   font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
@@ -52,6 +68,7 @@ table.polls thead th{z-index:3}
   header.app-hdr h1{font-size:1.05rem}
   .cards{grid-template-columns:repeat(2,1fr);gap:.5rem}
   .chart-box{height:38vh;min-height:210px;max-height:260px}
+  .chart-hover{font-size:.72rem;min-height:2.2rem;padding:.35rem .55rem}
   table.polls{font-size:.75rem}
   table.polls th,table.polls td{padding:.38rem .4rem}
 }
