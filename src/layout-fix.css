@@ -47,12 +47,10 @@ header.app-hdr .stamp,.header.app-hdr .check-timer{display:block}
 }
 
 .table-wrap{overflow:auto;max-height:min(52vh,440px);-webkit-overflow-scrolling:touch}
+table.polls{border-collapse:separate;border-spacing:0;min-width:720px}
+table.polls th,table.polls td{white-space:nowrap;background:var(--surface)}
 table.polls th:nth-child(1),table.polls td:nth-child(1){
-  position:sticky;left:0;z-index:2;background:var(--surface);min-width:6.8rem;
-  box-shadow:4px 0 8px -6px rgba(0,0,0,.25)
-}
-table.polls th:nth-child(2),table.polls td:nth-child(2){
-  position:sticky;left:6.8rem;z-index:2;background:var(--surface);min-width:6.4rem;
+  position:sticky;left:0;z-index:2;min-width:10.5rem;box-shadow:4px 0 8px -6px rgba(0,0,0,.25)
 }
 table.polls thead th{z-index:3}
 
