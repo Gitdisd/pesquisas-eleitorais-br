@@ -69,7 +69,7 @@ function renderTable() {
   const thead = document.getElementById('regThead')
   const tbody = document.getElementById('regTbody')
   if (!thead || !tbody) return
-  thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>N</th>${keys.map((c) => `<th>${c.short}</th>`).join('')}</tr>`
+  thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
   const rows = filtered()
     .filter((p) => p.round === state.round)
     .slice()
