@@ -1,0 +1,232 @@
+[
+  {
+    "institute": "Futura/Apex (SP)",
+    "geo": "SP",
+    "fieldwork_start": "2026-09-02",
+    "fieldwork_end": "2026-09-04",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 33.3},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.4},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6.8},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4.6},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4.2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1.9}
+    ],
+    "n": 1600,
+    "margin_of_error": "±2.4 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-em-sp-flavio-tem-374-no-1o-turno-lula-333/",
+    "methodology_note": "Futura/100% Cidades; eleitores de São Paulo; telefone. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex (SP)",
+    "geo": "SP",
+    "fieldwork_start": "2026-09-02",
+    "fieldwork_end": "2026-09-04",
+    "published_date": "2026-09-08",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 40.3},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 49.4}
+    ],
+    "n": 1600,
+    "margin_of_error": "±2.4 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-em-sp-flavio-tem-494-no-2o-turno-lula-403/",
+    "methodology_note": "Futura/100% Cidades; eleitores de São Paulo; telefone. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest (SP)",
+    "geo": "SP",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 30},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 31},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 8},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4}
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
+    "methodology_note": "Quaest estadual São Paulo. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest (MG)",
+    "geo": "MG",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 31},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 27},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 8},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 6},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3}
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
+    "methodology_note": "Quaest estadual Minas Gerais MG-04716/2026. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest (DF)",
+    "geo": "DF",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 31},
+      {"name": "Lula", "party_optional": "PT", "pct": 28},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 12},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 8},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 2},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 2}
+    ],
+    "n": 2004,
+    "margin_of_error": "±3 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
+    "methodology_note": "Quaest Distrito Federal DF-01987/2026. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest (PE)",
+    "geo": "PE",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 51},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 21},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6}
+    ],
+    "n": 2004,
+    "margin_of_error": "±3 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
+    "methodology_note": "Quaest Pernambuco. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "geo": "BR",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 38.4},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.3},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1.5}
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/meio-ideia-lula-e-flavio-empatam-em-46-no-2o-turno/",
+    "methodology_note": "Meio/Ideia nacional; telefone; TSE BR-07935/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Ideia",
+    "geo": "BR",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 46},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46}
+    ],
+    "n": 1500,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/meio-ideia-lula-e-flavio-empatam-em-46-no-2o-turno/",
+    "methodology_note": "Meio/Ideia nacional; telefone; TSE BR-07935/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "geo": "BR",
+    "fieldwork_start": "2026-09-03",
+    "fieldwork_end": "2026-09-08",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37},
+      {"name": "Lula", "party_optional": "PT", "pct": 34},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 5},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1}
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-37-das-intencoes-de-voto-no-1o-turno-lula-34/",
+    "methodology_note": "GERP nacional; telefone; 3 a 8 set 2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "geo": "BR",
+    "fieldwork_start": "2026-09-03",
+    "fieldwork_end": "2026-09-08",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47},
+      {"name": "Lula", "party_optional": "PT", "pct": 40}
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-47-das-intencoes-de-voto-no-2o-turno-lula-40/",
+    "methodology_note": "GERP nacional; telefone; 3 a 8 set 2026.",
+    "verified": true
+  },
+  {
+    "institute": "Palver",
+    "geo": "BR",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 40},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 40},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 11},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 4},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1}
+    ],
+    "n": 5000,
+    "margin_of_error": "±3 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
+    "methodology_note": "Palver online nacional; 5.000 entrevistas.",
+    "verified": true
+  },
+  {
+    "institute": "Palver",
+    "geo": "BR",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46},
+      {"name": "Lula", "party_optional": "PT", "pct": 44}
+    ],
+    "n": 5000,
+    "margin_of_error": "±3 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/",
+    "methodology_note": "Palver online nacional; 5.000 entrevistas.",
+    "verified": true
+  }
+]
