@@ -1,0 +1,50 @@
+.hdr-actions{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.45rem}
+.hdr-link{text-decoration:none;display:inline-flex;align-items:center}
+header.app-hdr{padding:.7rem 0;margin-bottom:.65rem}
+header.app-hdr p{display:none}
+header.app-hdr .stamp,.header.app-hdr .check-timer{display:block}
+.check-timer{margin-top:.2rem;font-size:.75rem}
+.refresh-notice{display:none}
+
+.main-stack{display:flex;flex-direction:column}
+.cards{order:1!important;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:0 0 .25rem}
+.cards-note{order:1!important;font-size:.75rem;color:var(--muted);margin:0 0 .85rem}
+.chart-panel{order:2!important}
+.panel-table{order:3!important}
+#allSourcesPanel{order:4!important;margin-top:.25rem;border-top:3px solid var(--border);padding-top:1.1rem}
+.panel.metodologia{order:5!important}
+.main-stack>footer{order:6!important}
+
+.opts-fold{order:4;margin-top:.55rem;border-top:1px solid var(--border);padding-top:.45rem}
+.opts-fold>summary{
+  cursor:pointer;font-size:.82rem;color:var(--muted);list-style:none;
+  min-height:36px;display:flex;align-items:center;
+}
+.opts-fold>summary::-webkit-details-marker{display:none}
+.opts-fold>summary::before{content:'▸  ';color:var(--accent)}
+.opts-fold[open]>summary::before{content:'▾  '}
+
+.chart-box{height:min(62vh,460px);min-height:320px}
+.chapter-kicker{
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .35rem;
+}
+
+.table-wrap{overflow:auto;max-height:min(52vh,440px);-webkit-overflow-scrolling:touch}
+table.polls th:nth-child(1),table.polls td:nth-child(1){
+  position:sticky;left:0;z-index:2;background:var(--surface);min-width:6.8rem;
+  box-shadow:4px 0 8px -6px rgba(0,0,0,.25)
+}
+table.polls th:nth-child(2),table.polls td:nth-child(2){
+  position:sticky;left:6.8rem;z-index:2;background:var(--surface);min-width:6.4rem;
+}
+table.polls thead th{z-index:3}
+
+@media(max-width:600px){
+  header.app-hdr{padding:.45rem 0;margin-bottom:.4rem}
+  header.app-hdr h1{font-size:1.05rem}
+  .cards{grid-template-columns:repeat(2,1fr);gap:.5rem}
+  .chart-box{height:38vh;min-height:210px;max-height:260px}
+  table.polls{font-size:.75rem}
+  table.polls th,table.polls td{padding:.38rem .4rem}
+}
