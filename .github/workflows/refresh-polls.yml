@@ -2,12 +2,9 @@ name: Refresh polls
 
 on:
   schedule:
-    # Hourly at :10 UTC.
-    # Bots-offline: this job alone runs discover then update then commit.
     - cron: "10 * * * *"
   workflow_dispatch:
 
-# Overlapping crons must not race-corrupt data commits.
 concurrency:
   group: refresh-polls
   cancel-in-progress: false
@@ -32,6 +29,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci || npm install
+
+      - name: Install PDF text + OCR tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por
 
       - name: Discover new polls (headless)
         id: discover
