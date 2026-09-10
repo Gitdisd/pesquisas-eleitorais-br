@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-10T18:21:23.366Z",
+  "updated_at": "2026-09-10T21:35:27.053Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -177,6 +177,14 @@
       "institute": "Quaest",
       "published_date": null,
       "found_at": "2026-09-10T14:20:05.308Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/ao-vivo/",
+      "title": "Ao vivo | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro Infra IA Esportes Viagem & Gastronomia CNN Bra",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-10T21:35:26.831Z"
     }
   ]
 }
