@@ -1,11 +1,11 @@
 {
-  "ran_at": "2026-09-10T14:20:08.569Z",
+  "ran_at": "2026-09-10T18:21:23.365Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 393,
+  "candidate_links": 399,
   "pages_fetched": 40,
   "verified_new": 0,
-  "inbox_new": 9,
+  "inbox_new": 10,
   "skipped_old": 0,
   "fetch_errors": 8,
   "dry_run": false,
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-10T14:20:04.216Z"
+      "found_at": "2026-09-10T18:21:18.045Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-10T14:20:05.308Z"
+      "found_at": "2026-09-10T18:21:19.452Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-10T14:20:05.586Z"
+      "found_at": "2026-09-10T18:21:19.869Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-10T14:20:06.649Z"
+      "found_at": "2026-09-10T18:21:21.108Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-10T14:20:07.553Z"
+      "found_at": "2026-09-10T18:21:22.268Z"
     }
   ],
-  "meta_last_check_at": "2026-09-10T14:20:08.570Z"
+  "meta_last_check_at": "2026-09-10T18:21:23.366Z"
 }
