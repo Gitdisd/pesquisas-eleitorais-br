@@ -1,5 +1,45 @@
 [
   {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-09",
+    "published_date": "2026-09-10",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 43 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.4 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 6.5 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 2.1 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1.1 },
+      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1 },
+      { "name": "branco/nulo", "party_optional": null, "pct": 0.6 },
+      { "name": "não sabe", "party_optional": null, "pct": 0.4 }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1,0 pp",
+    "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7497900-atlasintel-flavio-tem-464-no-segundo-turno-e-lula-registra-462.html",
+    "methodology_note": "AtlasIntel/Bloomberg; 5.000 entrevistas online (Atlas RDR) 4–9 set 2026; margem ±1 pp; TSE BR-01452/2026.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-09",
+    "published_date": "2026-09-10",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 46.2 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46.4 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 7.4 }
+    ],
+    "n": 5000,
+    "margin_of_error": "±1,0 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/atlasintel-bloomberg-flavio-tem-464-no-2o-turno-lula-462/",
+    "methodology_note": "AtlasIntel/Bloomberg 2º turno Flávio 46,4 × Lula 46,2. TSE BR-01452/2026.",
+    "verified": true
+  },
+  {
     "institute": "PoderData",
     "fieldwork_start": "2026-09-06",
     "fieldwork_end": "2026-09-09",
