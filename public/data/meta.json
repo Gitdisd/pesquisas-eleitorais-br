@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-09-09T19:30:00-03:00",
-  "last_check_at": "2026-09-10T09:37:20.675Z",
+  "last_updated": "2026-09-10T08:24:00-03:00",
+  "last_check_at": "2026-09-10T11:24:00.000Z",
   "check_interval_minutes": 60,
-  "record_count": 194,
+  "record_count": 200,
   "source": "verified published polls",
-  "content_hash": "1300a3697ed9297ab3508310daee77bd0cd70518eab14d62b26a31d4bcc3425b"
+  "content_hash": "poderdata-aya-2026-09-10"
 }
