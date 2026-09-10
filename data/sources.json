@@ -43,6 +43,7 @@
       "type": "search",
       "urls": [
         "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -57,9 +58,10 @@
       "type": "outlet",
       "urls": [
         "https://www.cnnbrasil.com.br/eleicoes/",
-        "https://www.cnnbrasil.com.br/politica/"
+        "https://www.cnnbrasil.com.br/politica/",
+        "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/"
       ],
-      "notes": "Often first to post Nexus/Quaest/Futura mirrors."
+      "notes": "Often first to post Nexus/Quaest/Futura/PoderData mirrors."
     },
     {
       "id": "uol-eleicoes",
@@ -118,7 +120,8 @@
       "urls": [
         "https://www.poder360.com.br/poderdata/",
         "https://www.poder360.com.br/poder-eleicoes-2026/",
-        "https://www.poder360.com.br/feed/"
+        "https://www.poder360.com.br/feed/",
+        "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/"
       ],
       "notes": "IVR phone; RSS feed useful for discovery."
     },
@@ -148,6 +151,7 @@
       "type": "institute",
       "urls": [
         "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
         "https://ideia.com.br/"
       ],
       "notes": "Meio/Ideia series sometimes."
@@ -187,9 +191,10 @@
       "name": "GERP",
       "type": "institute",
       "urls": [
-        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/"
+        "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+        "https://www.poder360.com.br/poder-eleicoes-2026/"
       ],
-      "notes": "Gazeta do Povo mirror common."
+      "notes": "Gazeta do Povo / Poder360 mirrors."
     },
     {
       "id": "indexa-broadcast",
