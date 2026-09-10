@@ -1,25 +1,56 @@
 [
   {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-09-06",
+    "fieldwork_end": "2026-09-09",
+    "published_date": "2026-09-10",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 38 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 36 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 10 }
+    ],
+    "n": 3000,
+    "margin_of_error": "±1,8 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/",
+    "methodology_note": "PoderData/Aya; 3.000 entrevistas em 623 municípios, 6–9 set 2026; TSE BR-04914/2026.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-09-06",
+    "fieldwork_end": "2026-09-09",
+    "published_date": "2026-09-10",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 45 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 8 }
+    ],
+    "n": 3000,
+    "margin_of_error": "±1,8 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/",
+    "methodology_note": "PoderData/Aya 2º turno Flávio 47 × Lula 45. TSE BR-04914/2026.",
+    "verified": true
+  },
+  {
     "institute": "GERP",
     "fieldwork_start": "2026-09-03",
     "fieldwork_end": "2026-09-08",
     "published_date": "2026-09-09",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37},
-      {"name": "Lula", "party_optional": "PT", "pct": 34},
-      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6},
-      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 5},
-      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
-      {"name": "Pablo Marçal", "party_optional": "PRTB", "pct": 2},
-      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1},
-      {"name": "branco/nulo", "party_optional": null, "pct": 8},
-      {"name": "não sabe", "party_optional": null, "pct": 4}
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37 },
+      { "name": "Lula", "party_optional": "PT", "pct": 34 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 5 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 4 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1 }
     ],
     "n": 2400,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-37-das-intencoes-de-voto-no-1o-turno-lula-34/",
-    "methodology_note": "Phone GerpCati; TSE BR-00251/2026; AESP Rádio + TV.",
+    "margin_of_error": "±2,0 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
+    "methodology_note": "GERP nacional; 2.400 entrevistas 3–8 set 2026.",
     "verified": true
   },
   {
@@ -29,15 +60,14 @@
     "published_date": "2026-09-09",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47},
-      {"name": "Lula", "party_optional": "PT", "pct": 40},
-      {"name": "branco/nulo", "party_optional": null, "pct": 11},
-      {"name": "não sabe", "party_optional": null, "pct": 3}
+      { "name": "Lula", "party_optional": "PT", "pct": 40 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 13 }
     ],
     "n": 2400,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-47-das-intencoes-de-voto-no-2o-turno-lula-40/",
-    "methodology_note": "Phone GerpCati; TSE BR-00251/2026.",
+    "margin_of_error": "±2,0 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
+    "methodology_note": "GERP 2º turno Flávio 47 × Lula 40.",
     "verified": true
   },
   {
@@ -47,26 +77,17 @@
     "published_date": "2026-09-09",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      {"name": "Lula", "party_optional": "PT", "pct": 38.4},
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.3},
-      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6},
-      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
-      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4},
-      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1.5},
-      {"name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1.5},
-      {"name": "Samara Martins", "party_optional": "UP", "pct": 0.7},
-      {"name": "Rui Costa Pimenta", "party_optional": "PCO", "pct": 0.4},
-      {"name": "Wilson Grassi", "party_optional": "Democrata", "pct": 0.2},
-      {"name": "Hertz Dias", "party_optional": "PSTU", "pct": 0.1},
-      {"name": "Clariana Barão", "party_optional": "DC", "pct": 0.1},
-      {"name": "Edmilson Costa", "party_optional": "PCB", "pct": 0.1},
-      {"name": "branco/nulo", "party_optional": null, "pct": 2.5},
-      {"name": "não sabe", "party_optional": null, "pct": 2.8}
+      { "name": "Lula", "party_optional": "PT", "pct": 38.4 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.3 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 4 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1.5 }
     ],
     "n": 1500,
-    "margin_of_error": "±2.5 pp",
+    "margin_of_error": "±2,5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
-    "methodology_note": "Phone; Meio/Ideia; TSE BR-07935/2026; Canal Meio.",
+    "methodology_note": "Meio/Ideia; 1.500 entrevistas 4–7 set 2026; TSE BR-07935/2026.",
     "verified": true
   },
   {
@@ -76,15 +97,14 @@
     "published_date": "2026-09-09",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      {"name": "Lula", "party_optional": "PT", "pct": 46},
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46},
-      {"name": "branco/nulo", "party_optional": null, "pct": 3.5},
-      {"name": "não sabe", "party_optional": null, "pct": 4.5}
+      { "name": "Lula", "party_optional": "PT", "pct": 46 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 8 }
     ],
     "n": 1500,
-    "margin_of_error": "±2.5 pp",
+    "margin_of_error": "±2,5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
-    "methodology_note": "Phone; Meio/Ideia; TSE BR-07935/2026.",
+    "methodology_note": "Meio/Ideia 2º turno Lula 46 × Flávio 46. TSE BR-07935/2026.",
     "verified": true
   }
 ]
