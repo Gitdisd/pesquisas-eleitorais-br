@@ -8,12 +8,17 @@
     "candidates": [
       { "name": "Lula", "party_optional": "PT", "pct": 38 },
       { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 36 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 10 }
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 10 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 3 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 2 },
+      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 2 },
+      { "name": "branco/nulo", "party_optional": null, "pct": 3 },
+      { "name": "não sabe", "party_optional": null, "pct": 1 }
     ],
     "n": 3000,
     "margin_of_error": "±1,8 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/",
-    "methodology_note": "PoderData/Aya; 3.000 entrevistas em 623 municípios, 6–9 set 2026; TSE BR-04914/2026.",
+    "source_url": "https://sbtnews.sbt.com.br/noticia/eleicoes/poder-data-aya-flavio-bolsonaro-47-x-45-lula-no-2-turno",
+    "methodology_note": "PoderData/Aya; 3.000 entrevistas em 623 municípios, 6–9 set 2026; telefone; TSE BR-04914/2026.",
     "verified": true
   },
   {
