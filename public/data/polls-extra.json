@@ -39,6 +39,44 @@
     "verified": true
   },
   {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-08",
+    "published_date": "2026-09-09",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 40 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 40 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 11 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 4 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1 },
+      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1 }
+    ],
+    "n": 5000,
+    "margin_of_error": "±2,5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
+    "methodology_note": "Palver; 5.000 entrevistas online 4–8 set 2026; TSE BR-05420/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-08",
+    "published_date": "2026-09-09",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 44 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 10 }
+    ],
+    "n": 5000,
+    "margin_of_error": "±2,5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/",
+    "methodology_note": "Palver 2º turno Flávio 46 × Lula 44. TSE BR-05420/2026.",
+    "verified": true
+  },
+  {
     "institute": "GERP",
     "fieldwork_start": "2026-09-03",
     "fieldwork_end": "2026-09-08",
@@ -110,6 +148,44 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
     "methodology_note": "Meio/Ideia 2º turno Lula 46 × Flávio 46. TSE BR-07935/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Veritá",
+    "fieldwork_start": "2026-09-01",
+    "fieldwork_end": "2026-09-04",
+    "published_date": "2026-09-06",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 38.9 },
+      { "name": "Lula", "party_optional": "PT", "pct": 38.4 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 12.2 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 3.7 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1.9 },
+      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1.4 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 0.3 }
+    ],
+    "n": 3804,
+    "margin_of_error": "±2,0 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-389-no-1o-turno-lula-384-e-cury-122/",
+    "methodology_note": "Veritá; 3.804 entrevistas 1–4 set 2026; TSE BR-09426/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Veritá",
+    "fieldwork_start": "2026-09-01",
+    "fieldwork_end": "2026-09-04",
+    "published_date": "2026-09-06",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 43.1 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 48.5 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 8.5 }
+    ],
+    "n": 3804,
+    "margin_of_error": "±2,0 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-485-no-2o-turno-lula-431/",
+    "methodology_note": "Veritá 2º turno Flávio 48,5 × Lula 43,1. TSE BR-09426/2026.",
     "verified": true
   }
 ]
