@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-10T09:37:20.535Z",
+  "updated_at": "2026-09-10T14:20:08.569Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,6 +169,14 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-09T14:28:47.181Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa PoderData Aya 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+PoderData+Aya+2026&hl=",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-10T14:20:05.308Z"
     }
   ]
 }

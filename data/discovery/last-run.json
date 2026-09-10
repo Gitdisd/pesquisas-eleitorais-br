@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-10T09:37:20.535Z",
+  "ran_at": "2026-09-10T14:20:08.569Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 358,
+  "candidate_links": 393,
   "pages_fetched": 40,
   "verified_new": 0,
   "inbox_new": 9,
@@ -17,7 +17,15 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-10T09:37:15.724Z"
+      "found_at": "2026-09-10T14:20:04.216Z"
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "title": "NFE/5.0 \"pesquisa PoderData Aya 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+PoderData+Aya+2026&hl=",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-10T14:20:05.308Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -25,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-10T09:37:17.100Z"
+      "found_at": "2026-09-10T14:20:05.586Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -33,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-10T09:37:18.087Z"
+      "found_at": "2026-09-10T14:20:06.649Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -41,16 +49,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-10T09:37:19.194Z"
-    },
-    {
-      "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-      "title": "NFE/5.0 \"pesquisa Nexus BTG 2º turno 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Nexus+BTG+2%C2%BA",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-09-10T09:37:19.990Z"
+      "found_at": "2026-09-10T14:20:07.553Z"
     }
   ],
-  "meta_last_check_at": "2026-09-10T09:37:20.536Z"
+  "meta_last_check_at": "2026-09-10T14:20:08.570Z"
 }
