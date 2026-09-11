@@ -34,7 +34,10 @@
     "Alfa Inteligência",
     "Alfa Inteligencia",
     "CNN",
-    "Flávio Bolsonaro"
+    "Flávio Bolsonaro",
+    "Palver",
+    "Veritá",
+    "Aya"
   ],
   "sources": [
     {
@@ -48,7 +51,8 @@
         "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
         "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-        "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+        "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419"
       ],
       "notes": "Search stand-in: Google News RSS of fresh national-poll stories."
     },
@@ -89,9 +93,11 @@
       "type": "institute",
       "urls": [
         "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+        "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml",
+        "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-39-e-flavio-bolsonaro-35-em-primeiro-turno.shtml",
         "https://www1.folha.uol.com.br/poder/"
       ],
-      "notes": "National face-to-face; often mirrored on G1 and Folha."
+      "notes": "National face-to-face; often mirrored on G1 and Folha. Direct 8-10 Sep 2026 article pinned."
     },
     {
       "id": "quaest-genial",
@@ -231,9 +237,10 @@
       "type": "outlet",
       "urls": [
         "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+        "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml",
         "https://g1.globo.com/dynamo/politica/eleicoes/2026/pesquisa-eleitoral/rss2.xml"
       ],
-      "notes": "Primary aggregator for Datafolha/Quaest."
+      "notes": "Primary aggregator for Datafolha/Quaest. Pinned 11 Sep Datafolha."
     },
     {
       "id": "valor-eleicoes",
