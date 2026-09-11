@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-10T21:35:27.053Z",
+  "updated_at": "2026-09-11T00:03:45.320Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -185,6 +185,14 @@
       "institute": "AtlasIntel",
       "published_date": null,
       "found_at": "2026-09-10T21:35:26.831Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/money/",
+      "title": "CNN Money: notícias e análises sobre economia e negócios | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Ag",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-11T00:03:44.555Z"
     }
   ]
 }
