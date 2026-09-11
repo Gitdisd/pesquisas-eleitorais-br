@@ -49,7 +49,7 @@ function tintCharts() {
 }
 
 function applySiteTheme(theme) {
-  const t = ALL_THEMES.includes(theme) ? theme : 'light'
+  const t = ALL_THEMES.includes(theme) ? theme : 'dark'
   document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : t)
   localStorage.setItem('pebr-theme', t)
   const btn = document.getElementById('themeToggle')
@@ -213,7 +213,7 @@ function layoutFix() {
     const note = document.createElement('p')
     note.id = 'cardsNote'
     note.className = 'cards-note'
-    note.textContent = 'Média ponderada 14 dias — pesquisas nacionais apenas. Não inclui SP/MG.'
+    note.textContent = 'Média ponderada 1 dia — pesquisas nacionais apenas. Não inclui SP/MG.'
     cards.after(note)
   }
 
