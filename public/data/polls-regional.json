@@ -45,15 +45,38 @@
     "published_date": "2026-09-08",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      {"name": "Lula", "party_optional": "PT", "pct": 30},
       {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 31},
+      {"name": "Lula", "party_optional": "PT", "pct": 30},
       {"name": "Augusto Cury", "party_optional": "Avante", "pct": 8},
-      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4}
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1}
     ],
-    "n": 2004,
+    "n": 1800,
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest estadual São Paulo. Não é pesquisa nacional.",
+    "methodology_note": "Quaest estadual São Paulo BR-04705/2026. Não é pesquisa nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Quaest (RJ)",
+    "geo": "RJ",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-08",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 34},
+      {"name": "Lula", "party_optional": "PT", "pct": 32},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 5},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 2}
+    ],
+    "n": 1302,
+    "margin_of_error": "±3 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
+    "methodology_note": "Quaest estadual Rio de Janeiro RJ-04768/2026 / BR-09705/2026. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -68,9 +91,10 @@
       {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 27},
       {"name": "Augusto Cury", "party_optional": "Avante", "pct": 8},
       {"name": "Romeu Zema", "party_optional": "Novo", "pct": 6},
-      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3}
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 2}
     ],
-    "n": 2004,
+    "n": 1506,
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
     "methodology_note": "Quaest estadual Minas Gerais MG-04716/2026. Não é pesquisa nacional.",
@@ -91,10 +115,10 @@
       {"name": "Romeu Zema", "party_optional": "Novo", "pct": 2},
       {"name": "Renan Santos", "party_optional": "Missão", "pct": 2}
     ],
-    "n": 2004,
+    "n": 1104,
     "margin_of_error": "±3 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest Distrito Federal DF-01987/2026. Não é pesquisa nacional.",
+    "methodology_note": "Quaest Distrito Federal DF-01987/2026 / BR-04442/2026. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -107,12 +131,14 @@
     "candidates": [
       {"name": "Lula", "party_optional": "PT", "pct": 51},
       {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 21},
-      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6}
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 2},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 2}
     ],
-    "n": 2004,
+    "n": 1302,
     "margin_of_error": "±3 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest Pernambuco. Não é pesquisa nacional.",
+    "methodology_note": "Quaest Pernambuco PE-00285/2026. Não é pesquisa nacional.",
     "verified": true
   },
   {
