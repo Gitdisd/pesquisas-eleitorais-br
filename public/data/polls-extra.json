@@ -1,5 +1,44 @@
 [
   {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-08",
+    "fieldwork_end": "2026-09-10",
+    "published_date": "2026-09-11",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 39 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 35 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 3 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 2 },
+      { "name": "branco/nulo", "party_optional": null, "pct": 6 },
+      { "name": "não sabe", "party_optional": null, "pct": 4 }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2,0 pp",
+    "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml",
+    "methodology_note": "Datafolha/Globo/Folha; 2.002 presenciais em 125 municípios, 8–10 set 2026; margem ±2 pp; TSE BR-01833/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-08",
+    "fieldwork_end": "2026-09-10",
+    "published_date": "2026-09-11",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 46 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 44 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 9 }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2,0 pp",
+    "source_url": "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/11/datafolha-lula-tem-46percent-e-flavio-bolsonaro-44percent-em-cenario-de-2o-turno.ghtml",
+    "methodology_note": "Datafolha 2º turno Lula 46 × Flávio 44 (branco/nulo 8, indecisos 1). TSE BR-01833/2026.",
+    "verified": true
+  },
+  {
     "institute": "Futura/Apex",
     "fieldwork_start": "2026-09-04",
     "fieldwork_end": "2026-09-10",
