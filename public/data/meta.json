@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "last_updated": "2026-09-10T19:55:00-03:00",
-  "last_check_at": "2026-09-11T00:03:45.494Z",
+  "last_check_at": "2026-09-11T04:29:46.467Z",
   "check_interval_minutes": 60,
   "record_count": 194,
   "source": "verified published polls",
