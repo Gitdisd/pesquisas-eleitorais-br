@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-11T04:29:46.298Z",
+  "ran_at": "2026-09-11T09:34:30.638Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 366,
+  "candidate_links": 394,
   "pages_fetched": 40,
   "verified_new": 0,
-  "inbox_new": 12,
+  "inbox_new": 10,
   "skipped_old": 0,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-11T04:29:42.441Z"
+      "found_at": "2026-09-11T09:34:27.133Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-11T04:29:43.733Z"
+      "found_at": "2026-09-11T09:34:28.267Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-11T04:29:44.036Z"
+      "found_at": "2026-09-11T09:34:28.604Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-11T04:29:44.783Z"
+      "found_at": "2026-09-11T09:34:29.341Z"
     },
     {
       "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-11T04:29:45.521Z"
+      "found_at": "2026-09-11T09:34:30.010Z"
     }
   ],
-  "meta_last_check_at": "2026-09-11T04:29:46.298Z"
+  "meta_last_check_at": "2026-09-11T09:34:30.638Z"
 }
