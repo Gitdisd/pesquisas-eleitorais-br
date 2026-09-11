@@ -1,5 +1,45 @@
 [
   {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-10",
+    "published_date": "2026-09-11",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 39.2 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 33.6 },
+      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6.4 },
+      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4.4 },
+      { "name": "Renan Santos", "party_optional": "Missão", "pct": 4.3 },
+      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 2.3 },
+      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 0.7 },
+      { "name": "branco/nulo", "party_optional": null, "pct": 3.1 },
+      { "name": "não sabe", "party_optional": null, "pct": 5.2 }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2,2 pp",
+    "source_url": "https://exame.com/brasil/pesquisa-futura-lula-tem-392-e-flavio-bolsonaro-336-no-1o-turno/",
+    "methodology_note": "Futura/100% Cidades; 2.000 CATI 4–10 set 2026; TSE BR-02322/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-10",
+    "published_date": "2026-09-11",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      { "name": "Lula", "party_optional": "PT", "pct": 45 },
+      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 45.4 },
+      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 9.6 }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2,2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-454-contra-45-de-lula-no-2o-turno/",
+    "methodology_note": "Futura/100% Cidades 2º turno Flávio 45,4 × Lula 45. TSE BR-02322/2026.",
+    "verified": true
+  },
+  {
     "institute": "AtlasIntel",
     "fieldwork_start": "2026-09-04",
     "fieldwork_end": "2026-09-09",
