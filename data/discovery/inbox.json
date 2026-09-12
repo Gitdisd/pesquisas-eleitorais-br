@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-11T23:34:20.848Z",
+  "updated_at": "2026-09-12T00:11:24.240Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -193,6 +193,302 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-11T00:03:44.555Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-2o-turno-presidente-11-setembro.ghtml",
+      "title": "Datafolha, 2º turno: Lula, 46%; Flávio Bolsonaro, 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:17.820Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/11/datafolha-decisao-de-voto-presidente-11-setembro.ghtml",
+      "title": "Pesquisa Datafolha: 75% dos eleitores já decidiram voto para presidente | G1 Pular para o conteúdo Eleições 2026 Apuraçã",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:18.125Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-2/",
+      "title": "O que mostra a nova pesquisa Datafolha para presidente Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleiç",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:18.161Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Encontre matérias e conteúdos da Gazeta do Povo Ele",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:18.180Z"
+    },
+    {
+      "url": "https://api.whatsapp.com/send?text=Confira%20este%20link:%20https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/%3Fcomp%3Dwhatsapp",
+      "title": "Compartilhe no WhatsApp Baixar Recursos Ligações Mensagens Grupos Canais Meta AI Status Segurança Privacidade Blog Apps ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:18.470Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/11/datafolha-lula-tem-39percent-das-intencoes-de-voto-e-flavio-35percent-no-primeiro-turno.ghtml",
+      "title": "Datafolha: Lula tem 46% e Flávio marca 44% no segundo turno | Eleições 2026 | Valor Econômico Carregando... Acesse sua c",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:19.109Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/08/quaest-presidente-segundo-turno-estados.ghtml",
+      "title": "Quaest: veja a disputa entre Lula e Flávio no 2º turno nos estados | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-08",
+      "found_at": "2026-09-12T00:11:20.133Z"
+    },
+    {
+      "url": "https://docs.google.com/viewerng/viewer?url=https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf",
+      "title": "Palver PDF",
+      "reason": "pdf_needs_manual_or_ocr",
+      "institute": "Palver",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:20.441Z"
+    },
+    {
+      "url": "https://noticias.uol.com.br/eleicoes/2026/08/31/pesquisa-presidencial-btgnexus-31-agosto.ghtm",
+      "title": "\"BTG/Nexus: Lula lidera no 1° turno, Flávio cai 4 pontos, e Cury sobe 9\"",
+      "reason": "fetch_failed:403",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:20.713Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-11-setembro-rejeicao.ghtml",
+      "title": "Rejeição Datafolha: Lula e Flávio Bolsonaro empatam com 46% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:21.098Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-aprova-desaprova-governo-11-setembro.ghtml",
+      "title": "Datafolha: 50% desaprovam e 47% aprovam governo Lula | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafol",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:21.303Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/11/datafolha-pe-governador-segundo-turno-11-setembro.ghtml",
+      "title": "Datafolha em PE: veja os dados da pesquisa para o segundo turno | G1 Pular para o conteúdo Pernambuco Eleições 2026 em P",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:21.465Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/11/datafolha-pe-senado-11-setembro.ghtml",
+      "title": "Datafolha em PE: veja como está a disputa pelo Senado | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:21.625Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/11/datafolha-df-avaliacao-governo-celina.ghtml",
+      "title": "Datafolha: veja como está a aprovação da governadora do DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:21.815Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/11/datafolha-df-senador-11-setembro.ghtml",
+      "title": "Datafolha, DF: veja como está a disputa para o Senado | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no Distr",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:21.980Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/11/datafolha-no-rj-senado-11-setembro.ghtml",
+      "title": "Datafolha no RJ: veja como está a disputa pelo Senado | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio de ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:22.184Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/11/datafolha-df-governador-segundo-turno-11-setembro.ghtml",
+      "title": "Datafolha, DF: veja os dados da pesquisa para o segundo turno | G1 Pular para o conteúdo Distrito Federal Eleições 2026 ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:22.422Z"
+    },
+    {
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/11/datafolha-sp-governador-11-setembro.ghtml",
+      "title": "Datafolha: veja como está a disputa pelo governo de SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo D",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:22.605Z"
+    },
+    {
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/11/datafolha-sp-senado-11-setembro.ghtml",
+      "title": "Datafolha: veja como está a disputa pelo Senado em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Da",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:22.773Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/11/datafolha-no-rj-governo-11-setembro.ghtml",
+      "title": "Datafolha: veja como está a corrida ao governo do RJ | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio de J",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:22.937Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/11/datafolha-no-rj-2-turno-11-setembro.ghtml",
+      "title": "Datafolha no RJ: no 2º turno, Paes tem 54%, e Ruas, 34% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio d",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:23.099Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/11/datafolha-mg-governador-11-setembro.ghtml",
+      "title": "Datafolha em MG: Cleitinho, 37%; Patrus, 13%; Kalil, 11% | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:23.259Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/11/datafolha-governo-mg-segundo-turno-11-setembro.ghtml",
+      "title": "Datafolha em MG, 2º turno: veja cenários da disputa ao governo | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:23.420Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/11/datafolha-senado-mg-11-setembro.ghtml",
+      "title": "Datafolha em MG para o Senado: Marília, 12%; Viana, 10%; Aécio, 10%; Sávio, 8%; Aro, 6% | G1 Pular para o conteúdo Minas",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:23.689Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/11/datafolha-pe-governador-11-setembro.ghtml",
+      "title": "Datafolha em PE: Raquel Lyra, 47%; João Campos, 42% | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco Da",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:23.877Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/11/datafolha-df-governador-11-setembro.ghtml",
+      "title": "Datafolha, DF: veja como está a disputa para o governo | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no Dist",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:24.036Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+      "title": "Pesquisa Eleitoral 2026: acompanhe as intenções de voto Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.067Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-roraima-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governo em Roraima Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.080Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-minas-gerais-setembro-2026/",
+      "title": "Datafolha: pesquisa para governo e senadores por Minas Gerais Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.095Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-pernambuco-setembro-2026/",
+      "title": "Os números do Datafolha para governo e Senado em Pernambuco Publicidade Encontre matérias e conteúdos da Gazeta do Povo ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.114Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para o governo no DF Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições Ele",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.137Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-senado-sao-paulo-setembro-2026/",
+      "title": "Datafolha divulga números para o Senado em São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleiçõe",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.152Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-rio-de-janeiro-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para governo e Senado pelo Rio Publicidade Encontre matérias e conteúdos da Gazeta do Povo El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.167Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-sao-paulo-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para governador de São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.181Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-mato-grosso-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governador do Mato Grosso Publicidade Encontre matérias e conteúdos da Gazeta do Povo E",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.201Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-senador-para-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governo e Senado no Pará Publicidade Encontre matérias e conteúdos da Gazeta do Povo El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.220Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/real-time-big-data-governador-parana-setembro-2026/",
+      "title": "Real Time Big Data divulga pesquisa para governador no Paraná Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:24.238Z"
     }
   ]
 }

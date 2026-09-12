@@ -1,56 +1,56 @@
 {
-  "ran_at": "2026-09-11T23:34:20.848Z",
+  "ran_at": "2026-09-12T00:11:24.240Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 433,
+  "candidate_links": 435,
   "pages_fetched": 40,
   "verified_new": 0,
-  "inbox_new": 6,
+  "inbox_new": 40,
   "skipped_old": 0,
-  "fetch_errors": 8,
+  "fetch_errors": 9,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-      "title": "NFE/5.0 \"pesquisa eleitoral presidente 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+eleitoral+presi",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-2o-turno-presidente-11-setembro.ghtml",
+      "title": "Datafolha, 2º turno: Lula, 46%; Flávio Bolsonaro, 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:17.820Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/11/datafolha-decisao-de-voto-presidente-11-setembro.ghtml",
+      "title": "Pesquisa Datafolha: 75% dos eleitores já decidiram voto para presidente | G1 Pular para o conteúdo Eleições 2026 Apuraçã",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-11",
+      "found_at": "2026-09-12T00:11:18.125Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-2/",
+      "title": "O que mostra a nova pesquisa Datafolha para presidente Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleiç",
+      "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-11T23:34:16.553Z"
+      "found_at": "2026-09-12T00:11:18.161Z"
     },
     {
-      "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-      "title": "NFE/5.0 \"pesquisa PoderData Aya 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+PoderData+Aya+2026&hl=",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-09-11T23:34:18.139Z"
-    },
-    {
-      "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-      "title": "NFE/5.0 \"pesquisa Quaest Lula 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Quaest+Lula+2026&hl=pt-B",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-11T23:34:18.646Z"
-    },
-    {
-      "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-      "title": "NFE/5.0 \"pesquisa Datafolha presidente 2026\" - Google Notícias https://news.google.com/search?q=pesquisa+Datafolha+presi",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-11T23:34:19.646Z"
-    },
-    {
-      "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-      "title": "NFE/5.0 \"pesquisa AtlasIntel 2026 Flávio\" - Google Notícias https://news.google.com/search?q=pesquisa+AtlasIntel+2026+Fl",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Encontre matérias e conteúdos da Gazeta do Povo Ele",
+      "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-11T23:34:20.599Z"
+      "found_at": "2026-09-12T00:11:18.180Z"
+    },
+    {
+      "url": "https://api.whatsapp.com/send?text=Confira%20este%20link:%20https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/%3Fcomp%3Dwhatsapp",
+      "title": "Compartilhe no WhatsApp Baixar Recursos Ligações Mensagens Grupos Canais Meta AI Status Segurança Privacidade Blog Apps ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-09-12T00:11:18.470Z"
     }
   ],
-  "meta_last_check_at": "2026-09-11T23:34:20.848Z"
+  "meta_last_check_at": "2026-09-12T00:11:24.240Z"
 }
