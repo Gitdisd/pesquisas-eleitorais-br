@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-12T00:11:24.240Z",
+  "ran_at": "2026-09-12T05:40:14.157Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 435,
+  "candidate_links": 432,
   "pages_fetched": 40,
   "verified_new": 0,
   "inbox_new": 40,
@@ -12,12 +12,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario1.ghtml",
+      "title": "Datafolha 1º turno: Lula tem 39% e Flávio Bolsonaro 35% sem Marçal | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T05:40:07.546Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario2.ghtml",
+      "title": "Datafolha eleição presidencial: Lula tem 39% e Flávio 33% no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T05:40:07.799Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-2o-turno-presidente-11-setembro.ghtml",
       "title": "Datafolha, 2º turno: Lula, 46%; Flávio Bolsonaro, 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-11",
-      "found_at": "2026-09-12T00:11:17.820Z"
+      "found_at": "2026-09-12T05:40:08.200Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/11/datafolha-decisao-de-voto-presidente-11-setembro.ghtml",
@@ -25,7 +41,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-11",
-      "found_at": "2026-09-12T00:11:18.125Z"
+      "found_at": "2026-09-12T05:40:08.372Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-2/",
@@ -33,24 +49,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-12T00:11:18.161Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/",
-      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Encontre matérias e conteúdos da Gazeta do Povo Ele",
-      "reason": "incomplete_extract:no_published_date,no_moe",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-09-12T00:11:18.180Z"
-    },
-    {
-      "url": "https://api.whatsapp.com/send?text=Confira%20este%20link:%20https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/%3Fcomp%3Dwhatsapp",
-      "title": "Compartilhe no WhatsApp Baixar Recursos Ligações Mensagens Grupos Canais Meta AI Status Segurança Privacidade Blog Apps ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
-      "institute": "Ideia",
-      "published_date": null,
-      "found_at": "2026-09-12T00:11:18.470Z"
+      "found_at": "2026-09-12T05:40:08.397Z"
     }
   ],
-  "meta_last_check_at": "2026-09-12T00:11:24.240Z"
+  "meta_last_check_at": "2026-09-12T05:40:14.158Z"
 }

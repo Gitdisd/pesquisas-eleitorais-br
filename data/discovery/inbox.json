@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-12T00:11:24.240Z",
+  "updated_at": "2026-09-12T05:40:14.157Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -489,6 +489,94 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-12T00:11:24.238Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario1.ghtml",
+      "title": "Datafolha 1º turno: Lula tem 39% e Flávio Bolsonaro 35% sem Marçal | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T05:40:07.546Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario2.ghtml",
+      "title": "Datafolha eleição presidencial: Lula tem 39% e Flávio 33% no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T05:40:07.799Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/real-time-big-data-senado-parana-setembro-2026/",
+      "title": "Real Time Big Data divulga pesquisa para o Senado pelo Paraná Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date,no_scenario",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.392Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-senado-sao-paulo-setembro-2026/",
+      "title": "Os números do Paraná Pesquisas para o Senado em São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.405Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senado-goias-setembro-2026/",
+      "title": "Paraná Pesquisas divulga sondagem para governo em Goiás Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.628Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-sao-paulo-setembro-2026/",
+      "title": "Os números do Paraná Pesquisas para governador de São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.641Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-senador-santa-catarina-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa ao Senado em Santa Catarina Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date,no_moe,no_scenario",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.653Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-santa-catarina-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governador de Santa Catarina Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.669Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-sergipe-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governador em Sergipe Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleiç",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:13.901Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-alagoas-setembro-2026/",
+      "title": "Os números da pesquisa AtlasIntel para governador de Alagoas Publicidade Encontre matérias e conteúdos da Gazeta do Povo",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:14.142Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/neokemp-senado-parana-setembro-2026/",
+      "title": "Neokemp divulga pesquisa de intenção de voto ao Senado no Paraná Publicidade Encontre matérias e conteúdos da Gazeta do ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-12T05:40:14.155Z"
     }
   ]
 }
