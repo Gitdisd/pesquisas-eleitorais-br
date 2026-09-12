@@ -1,0 +1,111 @@
+name: Wire Modelo 3 and 4
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch wiring
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          a = Path('src/aggregate.js')
+          s = a.read_text()
+          if "from './models-advanced.js'" not in s:
+              s = s.replace(
+                  'const DAY_MS = 86400000',
+                  "import { averageTrendAdvanced } from './models-advanced.js'\n\nconst DAY_MS = 86400000",
+                  1,
+              )
+          old = '''export function averageTrend(points, windowDays = 14, model = 1) {
+  if (Number(model) === 2) {
+    const house = estimateHouseEffects(points)
+    return weightedTrendV2(applyHouseEffects(points, house), windowDays)
+  }
+  return weightedTrendV1(points, windowDays)
+}'''
+          new = '''export function averageTrend(points, windowDays = 14, model = 1) {
+  const m = Number(model)
+  if (m === 3 || m === 4) return averageTrendAdvanced(points, windowDays, m)
+  if (m === 2) {
+    const house = estimateHouseEffects(points)
+    return weightedTrendV2(applyHouseEffects(points, house), windowDays)
+  }
+  return weightedTrendV1(points, windowDays)
+}'''
+          if old not in s:
+              raise SystemExit('averageTrend block missing')
+          a.write_text(s.replace(old, new, 1))
+
+          c = Path('src/chart.js')
+          t = c.read_text()
+          t = t.replace(
+              'institute: p.meta.institute }))',
+              'institute: p.meta.institute, moe: p.meta.moe }))',
+              1,
+          )
+          t = t.replace(
+              'const avgModel = model === 2 ? 2 : 1',
+              'const avgModel = model >= 3 ? model : model === 2 ? 2 : 1',
+              1,
+          )
+          c.write_text(t)
+
+          m = Path('src/main.js')
+          u = m.read_text()
+          u = u.replace(
+              'n: p.n, institute: p.institute }))',
+              'n: p.n, institute: p.institute, moe: p.moe }))',
+              1,
+          )
+          u = u.replace(
+              "const avgModel = Number(window.__pebrProjModel || 0) === 2 ? 2 : 1",
+              "const rawM = Number(window.__pebrProjModel || 0)\n    const avgModel = rawM >= 3 ? rawM : rawM === 2 ? 2 : 1",
+              1,
+          )
+          m.write_text(u)
+
+          o = Path('src/live-overlay.js')
+          v = o.read_text()
+          v = v.replace(
+              '<button type="button" class="chip" data-proj-model="2">Modelo 2</button>',
+              '<button type="button" class="chip" data-proj-model="2">Modelo 2</button>\n    <button type="button" class="chip" data-proj-model="3">Modelo 3</button>\n    <button type="button" class="chip" data-proj-model="4">Modelo 4</button>',
+              1,
+          )
+          oldh = '''    hint.textContent =
+      n === 2
+        ? 'Modelo 2: média nova (√n, meia-vida, sem inundar com o mesmo instituto, viés de casa ±14d). A linha sólida é essa média; o tracejado só aparece se passar no teste de 7 dias.'
+        : n === 1
+          ? 'Modelo 1: média antiga (√n × e^(-\u200bdias/janela)) + régua amortecida. É o plot de antes.'
+          : hint.textContent'''
+          newh = '''    const copy = {
+      1: 'Modelo 1: média antiga (√n × e^(-dias/janela)). Plot original.',
+      2: 'Modelo 2: meia-vida + √n + anti-inundação + viés de casa ±14d.',
+      3: 'Modelo 3: meta-análise de efeitos aleatórios. Peso = recência / (σ² amostral + τ² entre pesquisas). N e margem entram; um instituto grande não domina.',
+      4: 'Modelo 4: intenção latente (Kalman + smoother). Cada pesquisa atualiza a corrida pelo seu erro amostral e viés de casa; a linha é o estado da disputa, não uma previsão de urna.',
+    }
+    hint.textContent = copy[n] || hint.textContent'''
+          if oldh not in v:
+              print('HINT_BLOCK_MISMATCH')
+              # fallback: leave old ternary, still have chips
+          else:
+              v = v.replace(oldh, newh, 1)
+          v = v.replace('<span class="ctrl">Projeção</span>', '<span class="ctrl">Média</span>', 1)
+          o.write_text(v)
+          print('ok')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/aggregate.js src/chart.js src/main.js src/live-overlay.js
+          if git diff --cached --quiet; then echo nochange; exit 0; fi
+          git commit -m "ui: wire Modelo 3 RE-meta and Modelo 4 Kalman into the plot toggle"
+          git push
