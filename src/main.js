@@ -326,8 +326,9 @@ function renderCards() {
   const ago = now - 30 * 86400000
   el.innerHTML = keys.map((key) => {
     const c = CANDIDATES.find((x) => x.key === key)
-    const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute }))
-    const avgModel = Number(window.__pebrProjModel || 0) === 2 ? 2 : 1
+    const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute, moe: p.moe }))
+    const rawM = Number(window.__pebrProjModel || 0)
+    const avgModel = rawM >= 3 ? rawM : rawM === 2 ? 2 : 1
     const trend = averageTrend(pts, state.windowDays, avgModel)
     const cur = trendAt(trend, now), then = trendAt(trend, ago)
     const d = fmtDelta(cur != null && then != null ? cur - then : null)

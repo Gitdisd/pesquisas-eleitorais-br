@@ -335,8 +335,8 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       borderColor: c.color,
       order: 2,
     })
-    const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute }))
-    const avgModel = model === 2 ? 2 : 1
+    const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
+    const avgModel = model >= 3 ? model : model === 2 ? 2 : 1
     const trend = averageTrend(trendPts, windowDays, avgModel)
     datasets.push({
       label: `${c.label} (média)`,

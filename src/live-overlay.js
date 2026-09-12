@@ -159,12 +159,13 @@ function setProjModel(n) {
   const hint = document.getElementById('projDisclaimer')
   if (hint) {
     hint.classList.toggle('on', n > 0)
-    hint.textContent =
-      n === 2
-        ? 'Modelo 2: média nova (√n, meia-vida, sem inundar com o mesmo instituto, viés de casa ±14d). A linha sólida é essa média; o tracejado só aparece se passar no teste de 7 dias.'
-        : n === 1
-          ? 'Modelo 1: média antiga (√n × e^(-​dias/janela)) + régua amortecida. É o plot de antes.'
-          : hint.textContent
+    const copy = {
+      1: 'Modelo 1: média antiga.',
+      2: 'Modelo 2: meia-vida + house.',
+      3: 'Modelo 3: meta-análise de efeitos aleatórios. Peso = recência / (erro amostral + tau entre pesquisas). N e margem entram.',
+      4: 'Modelo 4: intencao latente (Kalman). Cada pesquisa atualiza a corrida pelo erro amostral; nao e previsao de urna.',
+    }
+    hint.textContent = copy[n] || hint.textContent
   }
 }
 
@@ -177,10 +178,12 @@ function injectModelToggles() {
   row.id = 'projModelRow'
   row.className = 'proj-model-row'
   row.innerHTML = `
-    <span class="ctrl">Projeção</span>
+    <span class="ctrl">Média</span>
     <button type="button" class="chip" data-proj-model="0">off</button>
     <button type="button" class="chip" data-proj-model="1">Modelo 1</button>
     <button type="button" class="chip" data-proj-model="2">Modelo 2</button>
+    <button type="button" class="chip" data-proj-model="3">Modelo 3</button>
+    <button type="button" class="chip" data-proj-model="4">Modelo 4</button>
   `
   host.prepend(row)
   row.querySelectorAll('[data-proj-model]').forEach((b) => {
