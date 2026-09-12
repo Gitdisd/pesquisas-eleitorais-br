@@ -1,0 +1,43 @@
+name: Restore discover script
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: restore-discover
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout backup
+        uses: actions/checkout@v4
+        with:
+          ref: backup/pre-discover-upgrade-2026-09-11
+          path: bak
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          path: mainrepo
+
+      - name: Copy known-good discover script
+        run: |
+          set -e
+          test -s bak/scripts/discover-polls.mjs
+          wc -c bak/scripts/discover-polls.mjs
+          cp bak/scripts/discover-polls.mjs mainrepo/scripts/discover-polls.mjs
+          cd mainrepo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/discover-polls.mjs
+          if git diff --cached --quiet; then
+            echo "already restored"
+            exit 0
+          fi
+          git commit -m "restore scripts/discover-polls.mjs from backup/pre-discover-upgrade-2026-09-11"
+          git push
