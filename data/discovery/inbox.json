@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-12T19:13:58.575Z",
+  "updated_at": "2026-09-12T22:13:02.833Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -585,6 +585,38 @@
       "institute": "Quaest",
       "published_date": null,
       "found_at": "2026-09-12T10:39:15.518Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/12/datafolha-pe-presidente-setembro.ghtml",
+      "title": "Datafolha em PE: Lula, 55%; Flávio Bolsonaro, 24% | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco Data",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T22:12:40.025Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/12/datafolha-mg-presidente-12-setembro.ghtml",
+      "title": "Datafolha para presidente em MG: Lula, 37%; Flávio 35%, | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas G",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T22:12:40.405Z"
+    },
+    {
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/12/datafolha-sp-presidente-12-setembro.ghtml",
+      "title": "Datafolha: veja números da disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Da",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T22:12:40.621Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/12/datafolha-no-df-flavio-bolsonaro-40percent-lula-32percent-caiado-8percent-renan-3percent-zema-1percent-cury-6percent.ghtml",
+      "title": "Datafolha no DF: veja como está a disputa para a Presidência | G1 Pular para o conteúdo Distrito Federal Eleições 2026 n",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-12T22:12:47.263Z"
     }
   ]
 }
