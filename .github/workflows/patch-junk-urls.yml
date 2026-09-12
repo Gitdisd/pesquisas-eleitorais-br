@@ -1,0 +1,43 @@
+name: Filter junk discover URLs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch looksLikePollLink
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("scripts/discover-polls.mjs")
+          s = p.read_text()
+          assert len(s) > 20000
+          old = '''function looksLikePollLink(url, anchorText, keywords) {
+  const hay = `${url} ${anchorText}`.toLowerCase();
+  if (/\\.pdf(\\?|$)/i.test(url)) return true;'''
+          new = '''function looksLikePollLink(url, anchorText, keywords) {
+  const hay = `${url} ${anchorText}`.toLowerCase();
+  if (/whatsapp\\.com|facebook\\.com\\/sharer|twitter\\.com\\/intent|x\\.com\\/intent|t\\.me\\/|mailto:|javascript:/i.test(url)) return false;
+  if (/\\.pdf(\\?|$)/i.test(url)) return true;'''
+          if old not in s:
+              raise SystemExit("looksLikePollLink block missing")
+          s = s.replace(old, new, 1)
+          p.write_text(s)
+          print("ok", len(s))
+          PY
+          node --check scripts/discover-polls.mjs
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/discover-polls.mjs
+          if git diff --cached --quiet; then echo nochange; exit 0; fi
+          git commit -m "discover: drop WhatsApp/share junk candidate URLs"
+          git push
