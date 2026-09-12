@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-12T05:40:14.157Z",
+  "updated_at": "2026-09-12T10:39:15.520Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -577,6 +577,14 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-12T05:40:14.155Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/neokemp-governador-parana-setembro-2026/",
+      "title": "Neokemp divulga pesquisa para o governo do Paraná Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições E",
+      "reason": "incomplete_extract:no_published_date,no_scenario",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-12T10:39:15.518Z"
     }
   ]
 }

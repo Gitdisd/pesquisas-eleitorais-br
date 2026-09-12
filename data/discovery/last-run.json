@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-12T05:40:14.157Z",
+  "ran_at": "2026-09-12T10:39:15.520Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 432,
+  "candidate_links": 429,
   "pages_fetched": 40,
   "verified_new": 0,
   "inbox_new": 40,
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T05:40:07.546Z"
+      "found_at": "2026-09-12T10:38:54.070Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario2.ghtml",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T05:40:07.799Z"
+      "found_at": "2026-09-12T10:38:54.416Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-2o-turno-presidente-11-setembro.ghtml",
@@ -33,15 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-11",
-      "found_at": "2026-09-12T05:40:08.200Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/11/datafolha-decisao-de-voto-presidente-11-setembro.ghtml",
-      "title": "Pesquisa Datafolha: 75% dos eleitores já decidiram voto para presidente | G1 Pular para o conteúdo Eleições 2026 Apuraçã",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-11",
-      "found_at": "2026-09-12T05:40:08.372Z"
+      "found_at": "2026-09-12T10:38:54.753Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-2/",
@@ -49,8 +41,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-12T05:40:08.397Z"
+      "found_at": "2026-09-12T10:38:55.589Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Encontre matérias e conteúdos da Gazeta do Povo Ele",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-12T10:38:56.357Z"
     }
   ],
-  "meta_last_check_at": "2026-09-12T05:40:14.158Z"
+  "meta_last_check_at": "2026-09-12T10:39:15.521Z"
 }
