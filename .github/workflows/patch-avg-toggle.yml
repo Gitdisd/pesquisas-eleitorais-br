@@ -1,0 +1,74 @@
+name: Wire average model toggle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch chart, cards, overlay, projection-v2
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          c = Path('src/chart.js')
+          s = c.read_text()
+          s = s.replace(
+              "import { weightedTrend } from './aggregate.js'",
+              "import { weightedTrend, averageTrend } from './aggregate.js'",
+              1,
+          )
+          old = "    const trend = weightedTrend(trendPts, windowDays)"
+          new = "    const avgModel = model === 2 ? 2 : 1\n    const trend = averageTrend(trendPts, windowDays, avgModel)"
+          if old not in s:
+              raise SystemExit('chart trend line missing')
+          s = s.replace(old, new, 1)
+          c.write_text(s)
+
+          m = Path('src/main.js')
+          t = m.read_text()
+          t = t.replace(
+              "import { weightedTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'",
+              "import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'",
+              1,
+          )
+          oldc = "    const trend = weightedTrend(pts, state.windowDays)"
+          newc = "    const avgModel = Number(window.__pebrProjModel || 0) === 2 ? 2 : 1\n    const trend = averageTrend(pts, state.windowDays, avgModel)"
+          if oldc not in t:
+              raise SystemExit('cards trend missing')
+          t = t.replace(oldc, newc, 1)
+          m.write_text(t)
+
+          p = Path('src/projection-v2.js')
+          v = p.read_text()
+          v = v.replace("import { weightedTrend } from './aggregate.js'", "import { weightedTrendV2 } from './aggregate.js'", 1)
+          v = v.replace('const trend = weightedTrend(debiased, fitDays)', 'const trend = weightedTrendV2(debiased, fitDays)', 1)
+          p.write_text(v)
+
+          o = Path('src/live-overlay.js')
+          u = o.read_text()
+          u = u.replace(
+              'Modelo 2: pesquisas com viés de instituto removido + teste nos últimos 7 dias. Se o modelo não ganha de “ficar parado”, a linha some. Não é prognóstico de urna.',
+              'Modelo 2: média nova (√n, meia-vida, sem inundar com o mesmo instituto, viés de casa ±14d). A linha sólida é essa média; o tracejado só aparece se passar no teste de 7 dias.',
+          )
+          u = u.replace(
+              'Modelo 1: régua amortecida sobre a média ponderada. Não é pesquisa nova nem probabilidade de vitória.',
+              'Modelo 1: média antiga (√n × e^(-​dias/janela)) + régua amortecida. É o plot de antes.',
+          )
+          o.write_text(u)
+          print('wired')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/chart.js src/main.js src/projection-v2.js src/live-overlay.js
+          if git diff --cached --quiet; then echo nochange; exit 0; fi
+          git commit -m "ui: Modelo 1 old average, Modelo 2 new average, same toggle"
+          git push
