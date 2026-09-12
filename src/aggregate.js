@@ -1,8 +1,9 @@
 /**
- * Duas médias, mesmo desenho:
- *   Modelo 1 — fórmula anterior: √(n/2000) × exp(−dias/janela)
- *   Modelo 2 — meia-vida + anti-inundação + viés de casa (±14d, encolhido)
+ * Quatro médias no mesmo desenho:
+ *   1 antiga · 2 meia-vida+house · 3 RE-meta · 4 Kalman latente
  */
+import { averageTrendAdvanced } from './models-advanced.js'
+
 const DAY_MS = 86400000
 const N_REF = 2000
 const FLOOD_DAYS = 14
@@ -12,7 +13,6 @@ function sampleSize(n) {
   return Number.isFinite(rawN) && rawN > 0 ? Math.min(8000, Math.max(100, rawN)) : 800
 }
 
-/** Fórmula original do agregador (Modelo 1). */
 export function weightedTrendV1(points, windowDays = 14) {
   if (!points.length) return []
   const sorted = [...points].sort((a, b) => a.t - b.t)
@@ -62,7 +62,6 @@ function floodCountFor(points, target, t, halfLifeDays) {
   return Math.max(1, k)
 }
 
-/** Média nova sem viés de casa (núcleo do Modelo 2). */
 export function weightedTrendV2(points, windowDays = 14) {
   if (!points.length) return []
   const sorted = [...points].sort((a, b) => a.t - b.t)
@@ -91,7 +90,6 @@ export function weightedTrendV2(points, windowDays = 14) {
   return out
 }
 
-/** Viés da casa vs outras casas em ±peerDays, encolhido n/(n+4). */
 export function estimateHouseEffects(points, peerDays = 14) {
   const acc = new Map()
   for (const p of points) {
@@ -129,19 +127,16 @@ export function applyHouseEffects(points, house) {
   }))
 }
 
-/**
- * model 2 → média nova com viés de casa removido
- * qualquer outro → média antiga (Modelo 1)
- */
 export function averageTrend(points, windowDays = 14, model = 1) {
-  if (Number(model) === 2) {
+  const m = Number(model)
+  if (m === 3 || m === 4) return averageTrendAdvanced(points, windowDays, m)
+  if (m === 2) {
     const house = estimateHouseEffects(points)
     return weightedTrendV2(applyHouseEffects(points, house), windowDays)
   }
   return weightedTrendV1(points, windowDays)
 }
 
-/** Compat: quem ainda chama weightedTrend recebe Modelo 1. */
 export function weightedTrend(points, windowDays = 14) {
   return weightedTrendV1(points, windowDays)
 }
