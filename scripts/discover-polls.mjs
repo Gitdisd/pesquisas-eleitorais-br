@@ -79,6 +79,8 @@ const INSTITUTE_PATTERNS = [
   { re: /\bindexa\b/i, name: "Indexa/Broadcast" },
   { re: /\bvox\s*brasil\b|\bvox\b/i, name: "Vox Brasil" },
   { re: /\balfa\s*intelig[eê]ncia\b/i, name: "Alfa Inteligência" },
+  { re: /\bpalver\b/i, name: "Palver" },
+  { re: /\bverit[aá]\b/i, name: "Veritá" },
 ];
 
 function parseArgs(argv) {
@@ -140,6 +142,22 @@ function pollKey(p) {
     p.published_date,
     p.scenario,
   ].join("|");
+}
+
+function pollSoftKey(p) {
+  return [p.institute, p.fieldwork_end, p.scenario].join("|");
+}
+
+function scoreCandidateLink(link) {
+  const hay = `${link.url || ""} ${link.title || ""}`.toLowerCase();
+  let score = 0;
+  if (/datafolha|quaest|atlasintel|poderdata|poder-data|nexus|ideia|futura|gerp|palver|verit|paran[aá]|indexa|vox|alfa/.test(hay))
+    score += 50;
+  if (/pesquisa-eleitoral|noticia\/20|eleicoes\/2026/.test(hay)) score += 25;
+  if (/presidente|primeiro-turno|1o-turno|2o-turno/.test(hay)) score += 10;
+  if (/news\.google|rss\/search|\/tag\/|\/feed\/?$|wikipedia\.org/.test(hay)) score -= 40;
+  if (/\/politica\/?$|\/eleicoes\/?$/.test(hay)) score -= 15;
+  return score;
 }
 
 function nowSaoPauloIso() {
@@ -630,7 +648,7 @@ function tryExtractPolls(html, pageUrl, watermark) {
   if (!scenario) reasonBits.push("no_scenario");
 
   // Skip clearly old pages when we have a date
-  if (publishedFinal && publishedFinal <= watermark) {
+  if (publishedFinal && publishedFinal < watermark) {
     return {
       polls: [],
       inbox: null,
@@ -766,7 +784,18 @@ async function main() {
   const existing = unwrapPolls(readJson(POLLS_PATH));
   const watermark = watermarkFromPolls(existing);
   const existingKeys = new Set(existing.map(pollKey));
+  const existingSoft = new Set(existing.map(pollSoftKey));
   const existingUrls = new Set(existing.map((p) => p.source_url));
+  for (const extraPath of [path.join(ROOT, "data", "polls-extra.json"), path.join(ROOT, "public", "data", "polls-extra.json")]) {
+    const extraDoc = readJson(extraPath, []);
+    const extraList = Array.isArray(extraDoc) ? extraDoc : extraDoc.polls || [];
+    for (const ep of extraList) {
+      if (!ep || !ep.institute) continue;
+      existingKeys.add(pollKey(ep));
+      existingSoft.add(pollSoftKey(ep));
+      if (ep.source_url) existingUrls.add(ep.source_url);
+    }
+  }
 
   console.log("[discover-polls] watermark published_date =", watermark);
   console.log("[discover-polls] existing polls =", existing.length);
@@ -810,6 +839,7 @@ async function main() {
   // Prefer links not already in dataset; cap pages fetched
   const toFetch = seedLinks
     .filter((l) => !existingUrls.has(l.url))
+    .sort((a, b) => scoreCandidateLink(b) - scoreCandidateLink(a))
     .slice(0, args.maxPages);
 
   const verifiedNew = [];
@@ -844,10 +874,10 @@ async function main() {
       continue;
     }
     for (const p of extracted.polls) {
-      if (existingKeys.has(pollKey(p))) continue;
-      // also skip if same institute+dates already present with any scenario key collision handled above
+      if (existingKeys.has(pollKey(p)) || existingSoft.has(pollSoftKey(p))) continue;
       verifiedNew.push(p);
       existingKeys.add(pollKey(p));
+      existingSoft.add(pollSoftKey(p));
     }
     if (extracted.inbox) inboxNew.push(extracted.inbox);
   }
