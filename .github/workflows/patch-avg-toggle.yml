@@ -11,64 +11,50 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch chart, cards, overlay, projection-v2
+      - name: Wire models 3 and 4
         run: |
-          set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
+          import re
 
           c = Path('src/chart.js')
-          s = c.read_text()
-          s = s.replace(
-              "import { weightedTrend } from './aggregate.js'",
-              "import { weightedTrend, averageTrend } from './aggregate.js'",
-              1,
-          )
-          old = "    const trend = weightedTrend(trendPts, windowDays)"
-          new = "    const avgModel = model === 2 ? 2 : 1\n    const trend = averageTrend(trendPts, windowDays, avgModel)"
-          if old not in s:
-              raise SystemExit('chart trend line missing')
-          s = s.replace(old, new, 1)
-          c.write_text(s)
+          t = c.read_text()
+          t = t.replace('institute: p.meta.institute }))', 'institute: p.meta.institute, moe: p.meta.moe }))')
+          t = t.replace('const avgModel = model === 2 ? 2 : 1', 'const avgModel = model >= 3 ? model : model === 2 ? 2 : 1')
+          c.write_text(t)
 
           m = Path('src/main.js')
-          t = m.read_text()
-          t = t.replace(
-              "import { weightedTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'",
-              "import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'",
-              1,
+          u = m.read_text()
+          u = u.replace('n: p.n, institute: p.institute }))', 'n: p.n, institute: p.institute, moe: p.moe }))')
+          u = u.replace(
+              'const avgModel = Number(window.__pebrProjModel || 0) === 2 ? 2 : 1',
+              'const rawM = Number(window.__pebrProjModel || 0)\n    const avgModel = rawM >= 3 ? rawM : rawM === 2 ? 2 : 1',
           )
-          oldc = "    const trend = weightedTrend(pts, state.windowDays)"
-          newc = "    const avgModel = Number(window.__pebrProjModel || 0) === 2 ? 2 : 1\n    const trend = averageTrend(pts, state.windowDays, avgModel)"
-          if oldc not in t:
-              raise SystemExit('cards trend missing')
-          t = t.replace(oldc, newc, 1)
-          m.write_text(t)
-
-          p = Path('src/projection-v2.js')
-          v = p.read_text()
-          v = v.replace("import { weightedTrend } from './aggregate.js'", "import { weightedTrendV2 } from './aggregate.js'", 1)
-          v = v.replace('const trend = weightedTrend(debiased, fitDays)', 'const trend = weightedTrendV2(debiased, fitDays)', 1)
-          p.write_text(v)
+          m.write_text(u)
 
           o = Path('src/live-overlay.js')
-          u = o.read_text()
-          u = u.replace(
-              'Modelo 2: pesquisas com viés de instituto removido + teste nos últimos 7 dias. Se o modelo não ganha de “ficar parado”, a linha some. Não é prognóstico de urna.',
-              'Modelo 2: média nova (√n, meia-vida, sem inundar com o mesmo instituto, viés de casa ±14d). A linha sólida é essa média; o tracejado só aparece se passar no teste de 7 dias.',
+          v = o.read_text()
+          if 'data-proj-model="3"' not in v:
+              v = v.replace(
+                  '<button type="button" class="chip" data-proj-model="2">Modelo 2</button>',
+                  '<button type="button" class="chip" data-proj-model="2">Modelo 2</button>\n    <button type="button" class="chip" data-proj-model="3">Modelo 3</button>\n    <button type="button" class="chip" data-proj-model="4">Modelo 4</button>',
+              )
+          v = v.replace('<span class="ctrl">Projeção</span>', '<span class="ctrl">Média</span>')
+          v2, n = re.subn(
+              r"hint\.textContent =\s*n === 2\s*\?[\s\S]*?: hint\.textContent",
+              "const copy = {\n      1: 'Modelo 1: média antiga.',\n      2: 'Modelo 2: meia-vida + house.',\n      3: 'Modelo 3: meta-análise de efeitos aleatórios. Peso = recência / (erro amostral + tau entre pesquisas). N e margem entram.',\n      4: 'Modelo 4: intencao latente (Kalman). Cada pesquisa atualiza a corrida pelo erro amostral; nao e previsao de urna.',\n    }\n    hint.textContent = copy[n] || hint.textContent",
+              v,
+              count=1,
           )
-          u = u.replace(
-              'Modelo 1: régua amortecida sobre a média ponderada. Não é pesquisa nova nem probabilidade de vitória.',
-              'Modelo 1: média antiga (√n × e^(-​dias/janela)) + régua amortecida. É o plot de antes.',
-          )
-          o.write_text(u)
-          print('wired')
+          print('hint', n)
+          o.write_text(v2 if n else v)
+          print('done')
           PY
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/chart.js src/main.js src/projection-v2.js src/live-overlay.js
+          git add src/chart.js src/main.js src/live-overlay.js
           if git diff --cached --quiet; then echo nochange; exit 0; fi
-          git commit -m "ui: Modelo 1 old average, Modelo 2 new average, same toggle"
+          git commit -m "ui: add Modelo 3 and Modelo 4 plot chips"
           git push
