@@ -1,0 +1,81 @@
+name: Patch discover reliability
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: patch-discover
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply small discover patches
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("scripts/discover-polls.mjs")
+          s = p.read_text()
+          assert "async function main" in s and len(s) > 20000
+
+          old_inst = '''  { re: /\\balfa\\s*intelig[eê]ncia\\b/i, name: "Alfa Inteligência" },\n];'''
+          new_inst = '''  { re: /\\balfa\\s*intelig[eê]ncia\\b/i, name: "Alfa Inteligência" },\n  { re: /\\bpalver\\b/i, name: "Palver" },\n  { re: /\\bverit[aá]\\b/i, name: "Veritá" },\n];'''
+          if old_inst not in s:
+              raise SystemExit("institute block missing")
+          s = s.replace(old_inst, new_inst, 1)
+
+          old_key = '''function pollKey(p) {\n  return [\n    p.institute,\n    p.fieldwork_start,\n    p.fieldwork_end,\n    p.published_date,\n    p.scenario,\n  ].join("|");\n}'''
+          new_key = old_key + '''\n\nfunction pollSoftKey(p) {\n  return [p.institute, p.fieldwork_end, p.scenario].join("|");\n}\n\nfunction scoreCandidateLink(link) {\n  const hay = `${link.url || \"\"} ${link.title || \"\"}`.toLowerCase();\n  let score = 0;\n  if (/datafolha|quaest|atlasintel|poderdata|poder-data|nexus|ideia|futura|gerp|palver|verit|paran[aá]|indexa|vox|alfa/.test(hay))\n    score += 50;\n  if (/pesquisa-eleitoral|noticia\\/20|eleicoes\\/2026/.test(hay)) score += 25;\n  if (/presidente|primeiro-turno|1o-turno|2o-turno/.test(hay)) score += 10;\n  if (/news\\.google|rss\\/search|\\/tag\\/|\\/feed\\/?$|wikipedia\\.org/.test(hay)) score -= 40;\n  if (/\\/politica\\/?$|\\/eleicoes\\/?$/.test(hay)) score -= 15;\n  return score;\n}'''
+          if old_key not in s:
+              raise SystemExit("pollKey missing")
+          s = s.replace(old_key, new_key, 1)
+
+          s = s.replace(
+              "if (publishedFinal && publishedFinal <= watermark)",
+              "if (publishedFinal && publishedFinal < watermark)",
+              1,
+          )
+
+          old_exist = '''  const existingKeys = new Set(existing.map(pollKey));\n  const existingUrls = new Set(existing.map((p) => p.source_url));'''
+          new_exist = '''  const existingKeys = new Set(existing.map(pollKey));\n  const existingSoft = new Set(existing.map(pollSoftKey));\n  const existingUrls = new Set(existing.map((p) => p.source_url));\n  for (const extraPath of [path.join(ROOT, \"data\", \"polls-extra.json\"), path.join(ROOT, \"public\", \"data\", \"polls-extra.json\")]) {\n    const extraDoc = readJson(extraPath, []);\n    const extraList = Array.isArray(extraDoc) ? extraDoc : extraDoc.polls || [];\n    for (const ep of extraList) {\n      if (!ep || !ep.institute) continue;\n      existingKeys.add(pollKey(ep));\n      existingSoft.add(pollSoftKey(ep));\n      if (ep.source_url) existingUrls.add(ep.source_url);\n    }\n  }'''
+          if old_exist not in s:
+              raise SystemExit("existingKeys missing")
+          s = s.replace(old_exist, new_exist, 1)
+
+          old_fetch = '''  const toFetch = seedLinks\n    .filter((l) => !existingUrls.has(l.url))\n    .slice(0, args.maxPages);'''
+          new_fetch = '''  const toFetch = seedLinks\n    .filter((l) => !existingUrls.has(l.url))\n    .sort((a, b) => scoreCandidateLink(b) - scoreCandidateLink(a))\n    .slice(0, args.maxPages);'''
+          if old_fetch not in s:
+              raise SystemExit("toFetch missing")
+          s = s.replace(old_fetch, new_fetch, 1)
+
+          old_dup = '''      if (existingKeys.has(pollKey(p))) continue;\n      // also skip if same institute+dates already present with any scenario key collision handled above\n      verifiedNew.push(p);\n      existingKeys.add(pollKey(p));'''
+          new_dup = '''      if (existingKeys.has(pollKey(p)) || existingSoft.has(pollSoftKey(p))) continue;\n      verifiedNew.push(p);\n      existingKeys.add(pollKey(p));\n      existingSoft.add(pollSoftKey(p));'''
+          if old_dup not in s:
+              raise SystemExit("dedupe block missing")
+          s = s.replace(old_dup, new_dup, 1)
+
+          p.write_text(s)
+          print("patched bytes", len(s))
+          PY
+          node --check scripts/discover-polls.mjs
+          test $(wc -c < scripts/discover-polls.mjs) -gt 20000
+
+      - name: Commit if changed
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/discover-polls.mjs
+          if git diff --cached --quiet; then
+            echo "no patch changes"
+            exit 0
+          fi
+          git commit -m "discover: same-day watermark, extra dedupe, rank new article URLs"
+          git push
