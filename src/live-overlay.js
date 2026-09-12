@@ -161,9 +161,9 @@ function setProjModel(n) {
     hint.classList.toggle('on', n > 0)
     hint.textContent =
       n === 2
-        ? 'Modelo 2: pesquisas com viés de instituto removido + teste nos últimos 7 dias. Se o modelo não ganha de “ficar parado”, a linha some. Não é prognóstico de urna.'
+        ? 'Modelo 2: média nova (√n, meia-vida, sem inundar com o mesmo instituto, viés de casa ±14d). A linha sólida é essa média; o tracejado só aparece se passar no teste de 7 dias.'
         : n === 1
-          ? 'Modelo 1: régua amortecida sobre a média ponderada. Não é pesquisa nova nem probabilidade de vitória.'
+          ? 'Modelo 1: média antiga (√n × e^(-​dias/janela)) + régua amortecida. É o plot de antes.'
           : hint.textContent
   }
 }

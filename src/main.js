@@ -2,7 +2,7 @@ import './style.css'
 import 'hammerjs'
 import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } from './candidates.js'
 import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToChart } from './chart.js'
-import { weightedTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
+import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
 import { PROJECTION_COPY_PT } from './projection.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
@@ -327,7 +327,8 @@ function renderCards() {
   el.innerHTML = keys.map((key) => {
     const c = CANDIDATES.find((x) => x.key === key)
     const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute }))
-    const trend = weightedTrend(pts, state.windowDays)
+    const avgModel = Number(window.__pebrProjModel || 0) === 2 ? 2 : 1
+    const trend = averageTrend(pts, state.windowDays, avgModel)
     const cur = trendAt(trend, now), then = trendAt(trend, ago)
     const d = fmtDelta(cur != null && then != null ? cur - then : null)
     return `<article class="card" data-c="${key}"><div class="name">${c.label}</div><div class="val">${fmtPct(cur)}</div><div class="delta ${d.cls}">${d.text}</div></article>`

@@ -1,4 +1,4 @@
-import { weightedTrend } from './aggregate.js'
+import { weightedTrendV2 } from './aggregate.js'
 import { projectTrend } from './projection.js'
 
 const DAY = 86400000
@@ -118,7 +118,7 @@ export function projectTrendV2(rawPoints, opts = {}) {
     n: p.n,
   }))
   const fitDays = opts.fitDays ?? 14
-  const trend = weightedTrend(debiased, fitDays)
+  const trend = weightedTrendV2(debiased, fitDays)
   if (trend.length < 4) return empty('insufficient_points')
 
   const tLast = trend[trend.length - 1].x

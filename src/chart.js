@@ -14,7 +14,7 @@ import 'chartjs-adapter-date-fns'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import { ptBR } from 'date-fns/locale'
 import { CANDIDATES } from './candidates.js'
-import { weightedTrend } from './aggregate.js'
+import { weightedTrend, averageTrend } from './aggregate.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
 
@@ -336,7 +336,8 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       order: 2,
     })
     const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute }))
-    const trend = weightedTrend(trendPts, windowDays)
+    const avgModel = model === 2 ? 2 : 1
+    const trend = averageTrend(trendPts, windowDays, avgModel)
     datasets.push({
       label: `${c.label} (média)`,
       data: trend,
