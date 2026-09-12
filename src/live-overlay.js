@@ -213,7 +213,7 @@ function layoutFix() {
     const note = document.createElement('p')
     note.id = 'cardsNote'
     note.className = 'cards-note'
-    note.textContent = 'Média ponderada 1 dia — pesquisas nacionais apenas. Não inclui SP/MG.'
+    note.textContent = 'Média ponderada: √n + meia-vida 14d (chip muda a janela). Só nacionais.'
     cards.after(note)
   }
 

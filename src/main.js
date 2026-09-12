@@ -33,7 +33,7 @@ const state = {
   checkIntervalMs: DEFAULT_CHECK_INTERVAL_MINUTES * 60 * 1000,
   checkTimerId: null, metaPollId: null, awaitingCheck: false,
   round: 1, institutes: new Set(), allInstitutes: [],
-  windowPreset: '1', windowCustom: 1, windowDays: 1,
+  windowPreset: '14', windowCustom: 14, windowDays: 14,
   rangeDays: 30, projection: false, chart: null,
 }
 function applyTheme(theme) {
@@ -194,7 +194,7 @@ function normalize(rows) {
   }).filter(Boolean).sort((a, b) => a.t - b.t)
 }
 function shellHTML() {
-  const presetBtns = WINDOW_PRESETS.map((p) => `<button type="button" class="chip${p.id === '1' ? ' on' : ''}" data-win="${p.id}">${p.label}</button>`).join('')
+  const presetBtns = WINDOW_PRESETS.map((p) => `<button type="button" class="chip${p.id === '14' ? ' on' : ''}" data-win="${p.id}">${p.label}</button>`).join('')
   return `<header class="app-hdr"><div class="wrap"><div class="hdr-row"><div class="hdr-text">
     <h1>Pesquisas eleitorais — Presidência 2026</h1>
     <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
@@ -323,12 +323,12 @@ function renderCards() {
   const polls = activePolls()
   const keys = state.round === 2 ? ['lula', 'flavio'] : CANDIDATES.map((c) => c.key)
   const now = polls.length ? polls[polls.length - 1].t : Date.now()
-  const may = Date.parse('2026-05-15T12:00:00Z')
+  const ago = now - 30 * 86400000
   el.innerHTML = keys.map((key) => {
     const c = CANDIDATES.find((x) => x.key === key)
-    const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n }))
+    const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute }))
     const trend = weightedTrend(pts, state.windowDays)
-    const cur = trendAt(trend, now), then = trendAt(trend, may)
+    const cur = trendAt(trend, now), then = trendAt(trend, ago)
     const d = fmtDelta(cur != null && then != null ? cur - then : null)
     return `<article class="card" data-c="${key}"><div class="name">${c.label}</div><div class="val">${fmtPct(cur)}</div><div class="delta ${d.cls}">${d.text}</div></article>`
   }).join('')
