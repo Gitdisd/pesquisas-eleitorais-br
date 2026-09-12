@@ -1,0 +1,47 @@
+name: Patch average UI defaults
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch main.js and live-overlay.js
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          m = Path("src/main.js")
+          s = m.read_text()
+          s = s.replace("windowPreset: '1', windowCustom: 1, windowDays: 1,", "windowPreset: '14', windowCustom: 14, windowDays: 14,", 1)
+          s = s.replace('p.id === \'1\' ? \' on\' : \'\'', "p.id === '14' ? ' on' : ''", 1)
+          old = """  const now = polls.length ? polls[polls.length - 1].t : Date.now()\n  const may = Date.parse('2026-05-15T12:00:00Z')\n  el.innerHTML = keys.map((key) => {\n    const c = CANDIDATES.find((x) => x.key === key)\n    const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n }))\n    const trend = weightedTrend(pts, state.windowDays)\n    const cur = trendAt(trend, now), then = trendAt(trend, may)"""
+          new = """  const now = polls.length ? polls[polls.length - 1].t : Date.now()\n  const ago = now - 30 * 86400000\n  el.innerHTML = keys.map((key) => {\n    const c = CANDIDATES.find((x) => x.key === key)\n    const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute }))\n    const trend = weightedTrend(pts, state.windowDays)\n    const cur = trendAt(trend, now), then = trendAt(trend, ago)"""
+          if old not in s:
+              raise SystemExit('cards block missing')
+          s = s.replace(old, new, 1)
+          m.write_text(s)
+
+          o = Path("src/live-overlay.js")
+          t = o.read_text()
+          t = t.replace(
+              'Média ponderada 1 dia — pesquisas nacionais apenas. Não inclui SP/MG.',
+              'Média ponderada: √n + meia-vida 14d (chip muda a janela). Só nacionais.',
+          )
+          o.write_text(t)
+          print('patched')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/main.js src/live-overlay.js
+          if git diff --cached --quiet; then echo nochange; exit 0; fi
+          git commit -m "ui: default average window 14d, delta vs 30d"
+          git push
