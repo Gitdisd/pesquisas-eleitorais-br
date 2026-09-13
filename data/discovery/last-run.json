@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-12T22:13:02.833Z",
+  "ran_at": "2026-09-13T00:53:53.158Z",
   "watermark": "2026-09-08",
   "sources": 22,
-  "candidate_links": 433,
+  "candidate_links": 428,
   "pages_fetched": 40,
   "verified_new": 0,
   "inbox_new": 40,
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T22:12:40.025Z"
+      "found_at": "2026-09-13T00:53:44.537Z"
     },
     {
       "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/12/datafolha-mg-presidente-12-setembro.ghtml",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T22:12:40.405Z"
+      "found_at": "2026-09-13T00:53:44.862Z"
     },
     {
       "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/12/datafolha-sp-presidente-12-setembro.ghtml",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T22:12:40.621Z"
+      "found_at": "2026-09-13T00:53:45.112Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario1.ghtml",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T22:12:40.844Z"
+      "found_at": "2026-09-13T00:53:45.300Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario2.ghtml",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-12",
-      "found_at": "2026-09-12T22:12:41.063Z"
+      "found_at": "2026-09-13T00:53:45.486Z"
     }
   ],
-  "meta_last_check_at": "2026-09-12T22:13:02.834Z"
+  "meta_last_check_at": "2026-09-13T00:53:53.158Z"
 }
