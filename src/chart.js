@@ -15,6 +15,7 @@ import zoomPlugin from 'chartjs-plugin-zoom'
 import { ptBR } from 'date-fns/locale'
 import { CANDIDATES } from './candidates.js'
 import { weightedTrend, averageTrend } from './aggregate.js'
+import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
 
@@ -102,7 +103,7 @@ function hoverBoxFor(chart) {
 }
 
 function isOverlaySeries(label) {
-  return /\((média|projeção|modelo|banda)/i.test(label || '')
+  return /\((média|projeção|modelo|banda|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')
 }
 
 function externalTooltip(context) {
@@ -336,7 +337,7 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       order: 2,
     })
     const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
-    const avgModel = model >= 3 ? model : model === 2 ? 2 : 1
+    const avgModel = model >= 2 && model <= 5 ? model : 1
     const trend = averageTrend(trendPts, windowDays, avgModel)
     datasets.push({
       label: `${c.label} (média)`,
@@ -349,6 +350,19 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       tension: 0.25,
       order: 1,
     })
+
+    const ovState = readOverlayState()
+    for (const def of OVERLAY_DEFS) {
+      if (!ovState[def.id]) continue
+      const ov = computeOverlay(def.id, trend, trendPts)
+      if (def.kind === 'band' && ov.high.length) {
+        datasets.push({ label: `${c.label} (${def.label}+)`, data: ov.high, showLine: true, pointRadius: 0, borderWidth: 1, borderColor: hexAlpha(c.color, 0.35), backgroundColor: hexAlpha(c.color, 0.08), borderDash: def.dash, fill: '+1', tension: 0.2, order: 4 })
+        datasets.push({ label: `${c.label} (${def.label}-)`, data: ov.low, showLine: true, pointRadius: 0, borderWidth: 1, borderColor: hexAlpha(c.color, 0.35), backgroundColor: 'transparent', borderDash: def.dash, fill: false, tension: 0.2, order: 4 })
+      }
+      if (ov.mid.length) {
+        datasets.push({ label: `${c.label} (${def.label})`, data: ov.mid, showLine: true, pointRadius: 0, borderWidth: 1.35, borderColor: hexAlpha(c.color, 0.72), borderDash: def.dash, tension: 0.2, order: 4 })
+      }
+    }
 
     if (model === 1 && trend.length >= 2) {
       projByKey[c.key] = projectTrend(trend, {

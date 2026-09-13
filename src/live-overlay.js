@@ -146,8 +146,17 @@ function injectVerifyButton() {
   return true
 }
 
+function defaultModel() {
+  try {
+    const saved = Number(localStorage.getItem('pebr-model'))
+    if ([0, 1, 2, 3, 4, 5].includes(saved)) return saved
+  } catch {}
+  return 1
+}
+
 function setProjModel(n) {
   window.__pebrProjModel = n
+  try { localStorage.setItem('pebr-model', String(n)) } catch {}
   const box = document.getElementById('projectionToggle')
   if (box) {
     box.checked = n > 0
@@ -164,6 +173,7 @@ function setProjModel(n) {
       2: 'Modelo 2: meia-vida + house.',
       3: 'Modelo 3: meta-análise de efeitos aleatórios. Peso = recência / (erro amostral + tau entre pesquisas). N e margem entram.',
       4: 'Modelo 4: intencao latente (Kalman). Cada pesquisa atualiza a corrida pelo erro amostral; nao e previsao de urna.',
+      5: 'Modelo 5: reativo. Meia-vida curta e impulso nas pesquisas novas. Sem house effect.',
     }
     hint.textContent = copy[n] || hint.textContent
   }
@@ -184,6 +194,7 @@ function injectModelToggles() {
     <button type="button" class="chip" data-proj-model="2">Modelo 2</button>
     <button type="button" class="chip" data-proj-model="3">Modelo 3</button>
     <button type="button" class="chip" data-proj-model="4">Modelo 4</button>
+    <button type="button" class="chip" data-proj-model="5">Modelo 5</button>
   `
   host.prepend(row)
   row.querySelectorAll('[data-proj-model]').forEach((b) => {
@@ -196,10 +207,48 @@ function injectModelToggles() {
     p.className = 'hint proj-summary'
     host.appendChild(p)
   }
-  setProjModel(Number(window.__pebrProjModel || 0))
+  setProjModel(window.__pebrProjModel == null ? defaultModel() : Number(window.__pebrProjModel))
   return true
 }
 
+
+function injectOverlayToggles() {
+  if (document.getElementById('overlayRow')) return true
+  const host = document.getElementById('projModelRow')
+  if (!host) return false
+  const row = document.createElement('div')
+  row.id = 'overlayRow'
+  row.className = 'overlay-row'
+  row.setAttribute('aria-label', 'Overlays visuais')
+  const lab = document.createElement('span')
+  lab.className = 'ctrl'
+  lab.textContent = 'Overlays'
+  row.appendChild(lab)
+  const defs = [['sma7','SMA7'],['sma21','SMA21'],['ema9','EMA9'],['ema21','EMA21'],['hma','HMA'],['vwma','VWMA'],['kama','KAMA'],['bb','BB']]
+  let state = {}
+  try { state = JSON.parse(localStorage.getItem('pebr-overlays') || '{}') || {} } catch { state = {} }
+  window.__pebrOverlays = state
+  defs.forEach(([id, label]) => {
+    const b = document.createElement('button')
+    b.type = 'button'
+    b.className = 'chip'
+    b.dataset.overlay = id
+    b.textContent = label
+    b.classList.toggle('on', !!state[id])
+    b.addEventListener('click', () => {
+      const cur = window.__pebrOverlays || {}
+      cur[id] = !cur[id]
+      window.__pebrOverlays = cur
+      try { localStorage.setItem('pebr-overlays', JSON.stringify(cur)) } catch {}
+      b.classList.toggle('on', !!cur[id])
+      const box = document.getElementById('projectionToggle')
+      if (box) box.dispatchEvent(new Event('change', { bubbles: true }))
+    })
+    row.appendChild(b)
+  })
+  host.after(row)
+  return true
+}
 function layoutFix() {
   const stack = document.querySelector('main.main-stack')
   const cards = document.getElementById('cards')
@@ -216,7 +265,7 @@ function layoutFix() {
     const note = document.createElement('p')
     note.id = 'cardsNote'
     note.className = 'cards-note'
-    note.textContent = 'Média ponderada: √n + meia-vida 14d (chip muda a janela). Só nacionais.'
+    note.textContent = 'Padrão: Modelo 1 (fórmula original). Overlays são só visual e não mudam a média.'
     cards.after(note)
   }
 
@@ -250,6 +299,7 @@ function layoutFix() {
   }
 
   injectModelToggles()
+  injectOverlayToggles()
   installThemeCycle()
   injectPartyThemes()
   document.body.dataset.layoutFixed = '1'

@@ -222,7 +222,7 @@ function shellHTML() {
     <section class="cards" id="cards" aria-live="polite"></section>
     <section class="panel"><h2>Tabela de pesquisas</h2><div class="table-wrap"><table class="polls"><thead id="thead"></thead><tbody id="tbody"></tbody></table></div></section>
     <section class="panel metodologia"><h2>Metodologia</h2>
-    <p>Pontos no gráfico são pesquisas individuais. A linha é uma <strong>média ponderada</strong>: peso ≈ √(N/2000) × exp(−dias/janela). Variação nos cartões vs <strong>meados de maio/2026</strong>.</p>
+    <p>Pontos = pesquisas. Linha sólida = chip de modelo (<strong>padrão Modelo 1</strong>: √(N/2000)×exp(−dias/janela)). Modelo 5 é reativo. Overlays SMA/EMA/HMA/VWMA/KAMA/Bollinger são só visual e <strong>não</strong> entram na média. Cartões: vs 30d.</p>
     <p>Os dados são atualizados por busca automática periódica (até cerca de 3 horas).</p>
     <p id="projMethodology"></p></section>
     <footer><p>Site estático e sem fins partidários. Hospedagem via GitHub Pages.</p></footer></main>`
@@ -327,8 +327,8 @@ function renderCards() {
   el.innerHTML = keys.map((key) => {
     const c = CANDIDATES.find((x) => x.key === key)
     const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute, moe: p.moe }))
-    const rawM = Number(window.__pebrProjModel || 0)
-    const avgModel = rawM >= 3 ? rawM : rawM === 2 ? 2 : 1
+    const rawM = Number(window.__pebrProjModel == null ? 1 : window.__pebrProjModel)
+    const avgModel = rawM >= 2 && rawM <= 5 ? rawM : 1
     const trend = averageTrend(pts, state.windowDays, avgModel)
     const cur = trendAt(trend, now), then = trendAt(trend, ago)
     const d = fmtDelta(cur != null && then != null ? cur - then : null)
