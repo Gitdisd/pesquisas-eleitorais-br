@@ -70,3 +70,6 @@ table.polls thead th{z-index:3}
   table.polls{font-size:.75rem}
   table.polls th,table.polls td{padding:.38rem .4rem}
 }
+
+.overlay-row,.proj-model-row{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.35rem 0}
+.overlay-row .chip,.proj-model-row .chip{font-size:.72rem}
