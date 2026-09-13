@@ -1,107 +1,133 @@
 import './methodology.css'
-/** Texto da seção Metodologia — curto, em blocos, no ar. */
+
 export function methodologyHTML() {
   return `
 <section class="panel metodologia" id="metodologia">
-  <h2>Metodologia</h2>
+  <h2>Como este site funciona (explicação simples)</h2>
+  <p class="meto-lead">Pense em vários amigos medindo a altura da mesma árvore. Cada um usa uma fita diferente. A gente não escolhe o amigo mais alto de voz. A gente junta as medidas.</p>
 
   <section class="meto-sec">
-    <h3>Objetivo</h3>
-    <p>Mostrar um número de <strong>consenso</strong> da disputa nacional, não a última pesquisa de um instituto. Uma casa sozinha tem modo (telefone, face, online), peso geográfico e hábito próprio. A linha junta várias casas para reduzir esse viés.</p>
-  </section>
-
-  <section class="meto-sec">
-    <h3>O que o gráfico mostra</h3>
+    <h3>O desenho</h3>
     <ul>
-      <li><strong>Ponto</strong> = uma pesquisa publicada. Data = <em>fim de campo</em>, não o dia da matéria.</li>
-      <li><strong>Linha sólida</strong> = modelo do chip (padrão: Modelo 1). Os cartões usam a mesma conta.</li>
-      <li><strong>Tracejado</strong> = projeção opcional. Não é urna.</li>
-      <li><strong>Overlays</strong> (SMA, EMA…) = régua visual. <em>Não</em> entram na média nem nos cartões.</li>
+      <li><strong>Bolinha</strong> = uma pesquisa. É só aquela escola, naquele dia.</li>
+      <li><strong>Linha cheia</strong> = o resumo de várias bolinhas. É o número do site.</li>
+      <li><strong>Linha tracejada</strong> = “se continuar assim”. Não é o resultado da eleição.</li>
+      <li><strong>Linhas extras (overlays)</strong> = réguas em cima do resumo. Elas não mudam o número dos cartões.</li>
     </ul>
+    <p class="ex">Exemplo: Datafolha diz 39 e Atlas diz 43 no mesmo fim de semana. As duas bolinhas aparecem. A linha fica no meio, um pouco mais perto de quem ouviu mais gente.</p>
   </section>
 
   <section class="meto-sec">
-    <h3>Como o viés de uma fonte é cortado</h3>
+    <h3>Por que não olhamos só uma pesquisa</h3>
     <ul>
-      <li><strong>Várias casas</strong> no mesmo dia: nenhuma pesquisa é o resultado sozinha.</li>
-      <li><strong>Peso por N</strong>: amostra maior conta mais (√N), mas não come o gráfico (N limitado 100–8000; n ausente = 800).</li>
-      <li><strong>Recência</strong>: pesquisa velha perde peso. A janela (padrão 14d) define o alcance.</li>
-      <li><strong>Anti-inundação</strong> (modelos 2 e 3): se a mesma casa solta várias ondas na janela, cada uma vale 1/k.</li>
-      <li><strong>House</strong> (modelos 2 e 4): desvio sistemático da casa vs as outras em ±14 dias, encolhido n/(n+4). Casa alta demais é puxada para o meio.</li>
-      <li><strong>τ²</strong> (modelo 3): desacordo <em>além</em> do erro amostral (modo, geografia, pergunta). Atlas n=5000 não manda sozinho.</li>
-      <li>Só entram pesquisas <strong>nacionais</strong> estimuladas. Estadual e PDF vão para a caixa, não para o plot.</li>
+      <li>Um amigo sempre mede um pouco alto. Outro sempre mede um pouco baixo.</li>
+      <li>Quem ouviu mais pessoas (N grande) pesa mais, mas não manda sozinho.</li>
+      <li>Medida velha vale menos que medida nova.</li>
+      <li>Se o mesmo amigo manda três recados na mesma semana, cada recado vale menos — senão ele grita mais alto só porque falou três vezes.</li>
     </ul>
+    <p class="ex">Exemplo: Atlas ouve 5.000 pessoas. Datafolha ouve 2.000. Atlas pesa mais, mas Datafolha, Quaest e Nexus ainda puxam a linha. Uma casa não “ganha” o gráfico.</p>
   </section>
 
   <section class="meto-sec">
-    <h3>Modelos da linha</h3>
-    <p>Um chip por vez. Compare; não misture na cabeça como se fossem urnas diferentes.</p>
+    <h3>Os modos da linha (Modelos 1 a 5)</h3>
+    <p>É a mesma turma de bolinhas. Muda só o jeito de fazer a média. Um modo de cada vez.</p>
     <div class="meto-models">
       <article>
         <h4>off</h4>
-        <p>Pontos + linha do Modelo 1. Sem projeção.</p>
+        <p>Bolinha + linha antiga. Sem “se continuar assim”.</p>
       </article>
       <article>
-        <h4>1 — original (padrão)</h4>
-        <p><code>peso = √(N/2000) × exp(−dias/janela)</code></p>
-        <p>Simples e estável. Não corrige casa. É o histórico do site.</p>
+        <h4>1 — padrão</h4>
+        <p>Receita antiga do site. Pesquisa grande e nova pesa mais. Não corrige o hábito da casa.</p>
+        <p class="ex">Exemplo: 39 ontem e 35 há 20 dias. O 39 puxa mais a linha.</p>
       </article>
       <article>
-        <h4>2 — meia-vida + house</h4>
-        <p><code>peso = √(N/2000) × 2^(−dias/janela) × 1/k</code></p>
-        <p>Meia-vida em vez de exp. Debiasa a casa. Tracejado só se o holdout de 7 dias ganhar de “ficar parado”.</p>
+        <h4>2 — casa justa</h4>
+        <p>Se uma casa sempre fica 2 pontos acima das outras, a gente tira esses 2 antes de misturar.</p>
+        <p class="ex">Exemplo: casa A sempre 2 pontos acima de B, C e D. No modo 2 a linha trata A como se fosse “menos 2”.</p>
       </article>
       <article>
-        <h4>3 — meta-análise</h4>
-        <p><code>peso = recência / (σ² + τ²) / k</code></p>
-        <p>σ = margem/1,96 (ou 1,3×√[p(1−p)/N] se não há margem). τ² = DerSimonian–Laird. Melhor quando as casas discordam.</p>
+        <h4>3 — quando brigam</h4>
+        <p>Olha a margem de erro e o quanto as casas discordam. Se discordam muito, ninguém manda sozinho.</p>
+        <p class="ex">Exemplo: uma diz 34 e outra 40. O modo 3 não finge que são a mesma foto. A linha fica no meio e não corre para o 40.</p>
       </article>
       <article>
-        <h4>4 — latente (Kalman)</h4>
-        <p>A corrida é um estado θ que anda um pouco por dia. Cada pesquisa atualiza θ pelo erro amostral + house. A linha é o estado até o último campo, não até 4/out.</p>
+        <h4>4 — filme, não foto</h4>
+        <p>A disputa anda um pouquinho por dia. Cada pesquisa nova empurra o filme, não apaga o capítulo anterior.</p>
+        <p class="ex">Exemplo: três semanas de 38 e uma pesquisa de 43. O filme sobe, mas não pula para 43 no mesmo dia.</p>
       </article>
       <article>
-        <h4>5 — reativo</h4>
-        <p>Meia-vida curta (janela/5) e impulso nas pesquisas novas. Sem house. Serve para ver o choque da última onda — não para consenso calmo.</p>
+        <h4>5 — nervoso</h4>
+        <p>Olha quase só o que acabou de sair. Bom para ver o susto. Ruim para um número calmo.</p>
+        <p class="ex">Exemplo: sai um 43 hoje. O modo 5 sobe rápido. O modo 1 sobe devagar.</p>
       </article>
     </div>
   </section>
 
   <section class="meto-sec">
-    <h3>Overlays</h3>
-    <p>Ferramentas de gráfico (ideia TradingView), ligadas uma a uma. Calculadas <em>em cima</em> da linha do modelo ativo.</p>
+    <h3>Réguas (overlays / indicadores)</h3>
+    <p>São adesivos no desenho. Ligar ou desligar não muda os cartões.</p>
     <ul>
-      <li><strong>SMA 7 / 21</strong> — média simples dos últimos 7 ou 21 dias da linha.</li>
-      <li><strong>EMA 9 / 21</strong> — média exponencial (recente pesa mais).</li>
-      <li><strong>HMA 16</strong> — Hull; reage rápido a virada.</li>
-      <li><strong>VWMA 14</strong> — peso = N da pesquisa (“volume”).</li>
-      <li><strong>KAMA 10</strong> — adapta a velocidade quando o número oscila.</li>
-      <li><strong>Bollinger 20</strong> — faixa ±2 desvios da SMA 20. Faixa larga = casas discordando.</li>
+      <li><strong>SMA 7</strong> — média dos últimos 7 dias da linha. Como a nota da semana.</li>
+      <li><strong>SMA 21</strong> — média de 21 dias. Como a nota do mês. Mais lisa.</li>
+      <li><strong>EMA 9 / 21</strong> — parecida com a SMA, mas o dia de ontem pesa mais que o de três semanas.</li>
+      <li><strong>HMA</strong> — régua rápida. Vira cedo quando a linha vira.</li>
+      <li><strong>VWMA</strong> — dias com pesquisa grande (muito N) puxam mais a régua.</li>
+      <li><strong>KAMA</strong> — anda rápido quando o número está mudando de verdade; anda devagar quando só treme.</li>
+      <li><strong>Bollinger (BB)</strong> — um corredor em volta da linha. Corredor largo = as casas não combinam. Estreito = quase o mesmo número.</li>
     </ul>
+    <p class="ex">Exemplo: a linha sobe de 36 para 39. SMA 21 quase não se mexe. EMA 9 e HMA sobem junto. BB fica mais largo se uma casa ficou em 34 e outra em 43.</p>
   </section>
 
   <section class="meto-sec">
-    <h3>Janela, cartões, dados</h3>
+    <h3>Escalas e botões do gráfico</h3>
     <ul>
-      <li>Janela padrão <strong>14 dias</strong>. Muda o alcance da média, não inventa ponto.</li>
-      <li>Cartões: valor do modelo hoje vs o mesmo modelo há <strong>30 dias</strong>.</li>
-      <li>Busca automática a cada ~3 h. “Verificar agora” só recarrega o JSON já publicado.</li>
-      <li>Fonte: institutos + TSE no texto da linha. Extra pinado em <code>polls-extra.json</code> se o RSS atrasar.</li>
+      <li><strong>Eixo de baixo (X)</strong> = calendário. Esquerda é passado. Direita é agora.</li>
+      <li><strong>Eixo de lado (Y)</strong> = porcentagem de voto. 40 quer dizer 40 em cada 100 pessoas naquela pesquisa.</li>
+      <li><strong>30d / 90d / tudo</strong> = quanto calendário cabe na tela. Não apaga pesquisa; só aproxima o zoom.</li>
+      <li><strong>Janela 7d / 14d / 30d</strong> = até que distância uma bolinha ainda puxa a linha de hoje. Janela curta = memória curta.</li>
+      <li><strong>Resetar eixos</strong> = volta o zoom. <strong>Resetar Y</strong> = só o eixo da porcentagem.</li>
+      <li><strong>Roda do mouse / pinça / Shift+arrastar</strong> = zoom. Como aproximar um mapa.</li>
+      <li><strong>1º turno / 2º turno</strong> = duas perguntas diferentes. Não misturamos as bolinhas.</li>
     </ul>
+    <p class="ex">Exemplo: no 1º turno Lula pode ter 39 e Flávio 35. No 2º a mesma pesquisa pode ser 46 a 44. São contas separadas. Trocar o chip de turno é trocar de caderno.</p>
   </section>
 
   <section class="meto-sec">
-    <h3>O que isto não é</h3>
+    <h3>Ferramentas da página</h3>
     <ul>
-      <li>Não é probabilidade de vitória.</li>
-      <li>Não simula 2º turno a partir do 1º (o 2º turno no site só usa pesquisas de 2º).</li>
-      <li>Não é MRP estadual — só há nacionais no JSON.</li>
-      <li>Não corrige o erro de 2022 de cada instituto.</li>
-      <li>Não inventa pesquisa. Sem número publicado, não entra.</li>
+      <li><strong>Cartões em cima</strong> = o número da linha hoje e a diferença contra 30 dias atrás. “+1,20 pp vs 30d” = subiu um pouco no mês.</li>
+      <li><strong>Chips de instituto</strong> = ligar/desligar uma casa. Útil para ver se uma casa sozinha puxa o desenho. Com todas ligadas o site está no modo justo.</li>
+      <li><strong>Tema / bandeira</strong> = só cor da página. Zero efeito no número.</li>
+      <li><strong>Verificar agora</strong> = pede de novo o arquivo que já está no ar. Não sai caçando pesquisa nova na hora.</li>
+      <li><strong>Tabela</strong> = lista crua: quem mediu, quantas pessoas, margem, link.</li>
+    </ul>
+    <p class="ex">Exemplo: desliga Atlas e a linha desce um pouco. Liga de novo e ela volta. Isso mostra o peso daquela casa — por isso o modo justo deixa todas ligadas.</p>
+  </section>
+
+  <section class="meto-sec">
+    <h3>O que o site não faz</h3>
+    <ul>
+      <li>Não diz “vai ganhar”. Diz “as pesquisas de agora, juntas, estão aqui”.</li>
+      <li>Não inventa pesquisa. Sem número publicado, não tem bolinha.</li>
+      <li>Não usa pesquisa de um só estado no desenho nacional.</li>
+      <li>Não transforma 1º turno em 2º turno por mágica.</li>
     </ul>
   </section>
 
-  <p class="meto-foot">Contas no repositório: <a href="https://github.com/Gitdisd/pesquisas-eleitorais-br/blob/main/docs/MODELS.md" target="_blank" rel="noopener">docs/MODELS.md</a>. Site estático, sem fins partidários.</p>
+  <details class="meto-more">
+    <summary>Contas diretas (para quem quiser o detalhe)</summary>
+    <ul>
+      <li>Modelo 1: <code>peso = √(N/2000) × exp(−dias/janela)</code>. N vazio = 800; N entre 100 e 8000.</li>
+      <li>Modelo 2: meia-vida <code>2^(−dias/janela)</code>, vezes <code>1/k</code> se a mesma casa repetiu, menos o vício da casa (house) encolhido <code>n/(n+4)</code>.</li>
+      <li>Modelo 3: <code>peso = recência / (σ² + τ²) / k</code>. σ = margem/1,96. τ² = briga extra entre casas.</li>
+      <li>Modelo 4: Kalman + smoother. A disputa é um estado que anda ~0,16 ponto por raiz de dia.</li>
+      <li>Modelo 5: meia-vida = janela/5, com impulso <code>1 + 2e^(−dias/1,8)</code> nas pesquisas novas.</li>
+    </ul>
+    <p>Texto longo: <a href="https://github.com/Gitdisd/pesquisas-eleitorais-br/blob/main/docs/MODELS.md" target="_blank" rel="noopener">docs/MODELS.md</a>.</p>
+  </details>
+
+  <p class="meto-foot">Site estático, sem fins partidários.</p>
   <p id="projMethodology"></p>
 </section>`
 }
