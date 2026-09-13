@@ -1,0 +1,28 @@
+.metodologia h3{
+  font-size:.92rem;margin:1rem 0 .35rem;letter-spacing:.02em;
+}
+.metodologia h4{
+  font-size:.82rem;margin:0 0 .25rem;
+}
+.metodologia .meto-sec p,
+.metodologia .meto-sec li{
+  font-size:.84rem;line-height:1.45;color:var(--text);
+}
+.metodologia ul{margin:.2rem 0 .4rem 1.1rem;padding:0}
+.metodologia li{margin:.2rem 0}
+.metodologia code{
+  font-size:.78rem;background:var(--chip-bg);padding:.05rem .28rem;border-radius:4px;
+}
+.meto-models{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.55rem;margin:.45rem 0;
+}
+.meto-models article{
+  border:1px solid var(--border);border-radius:8px;padding:.55rem .7rem;background:var(--chip-bg);
+}
+.meto-models p{margin:.2rem 0}
+.meto-foot{font-size:.78rem;color:var(--muted);margin-top:1rem}
+.meto-foot a{color:var(--accent)}
+@media(max-width:600px){
+  .meto-models{grid-template-columns:1fr}
+  .metodologia .meto-sec p,.metodologia .meto-sec li{font-size:.8rem}
+}
