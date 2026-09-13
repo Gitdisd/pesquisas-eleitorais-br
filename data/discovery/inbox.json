@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-13T00:53:53.158Z",
+  "updated_at": "2026-09-13T06:00:29.294Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -617,6 +617,14 @@
       "institute": "Datafolha",
       "published_date": "2026-09-12",
       "found_at": "2026-09-12T22:12:47.263Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/12/datafolha-veja-os-numeros-das-pesquisas-presidenciais-em-sp-rj-mg-pe-e-df.ghtml?utm_source=g1&amp;utm_medium=mini-home-multicontent&amp;utm_content=click-materia-jornalismo",
+      "title": "Datafolha: veja os números das pesquisas presidenciais em SP, RJ, MG, PE e DF | G1 Pular para o conteúdo Eleições 2026 A",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-12",
+      "found_at": "2026-09-13T06:00:27.238Z"
     }
   ]
 }
