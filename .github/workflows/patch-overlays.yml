@@ -1,0 +1,79 @@
+name: patch overlays and default model
+on:
+  workflow_dispatch:
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply patches
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import json, urllib.request
+
+          p = Path('src/chart.js')
+          t = p.read_text()
+          if "from './overlays.js'" not in t:
+              t = t.replace(
+                  "import { weightedTrend, averageTrend } from './aggregate.js'",
+                  "import { weightedTrend, averageTrend } from './aggregate.js'\nimport { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'",
+                  1,
+              )
+          t = t.replace(
+              "return /\\((média|projeção|modelo|banda)/i.test(label || '')",
+              "return /\\((média|projeção|modelo|banda|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')",
+          )
+          t = t.replace(
+              "const avgModel = model >= 3 ? model : model === 2 ? 2 : 1",
+              "const avgModel = model >= 2 && model <= 5 ? model : 1",
+          )
+          needle = '''    datasets.push({\n      label: `${c.label} (média)`,\n      data: trend,\n      showLine: true,\n      pointRadius: 0,\n      borderColor: c.color,\n      borderWidth: c.borderWidth,\n      borderDash: c.borderDash,\n      tension: 0.25,\n      order: 1,\n    })\n'''
+          if 'readOverlayState()' not in t and needle in t:
+              t = t.replace(needle, needle + '''\n    const ovState = readOverlayState()\n    for (const def of OVERLAY_DEFS) {\n      if (!ovState[def.id]) continue\n      const ov = computeOverlay(def.id, trend, trendPts)\n      if (def.kind === 'band' && ov.high.length) {\n        datasets.push({ label: `${c.label} (${def.label}+)`, data: ov.high, showLine: true, pointRadius: 0, borderWidth: 1, borderColor: hexAlpha(c.color, 0.35), backgroundColor: hexAlpha(c.color, 0.08), borderDash: def.dash, fill: '+1', tension: 0.2, order: 4 })\n        datasets.push({ label: `${c.label} (${def.label}-)`, data: ov.low, showLine: true, pointRadius: 0, borderWidth: 1, borderColor: hexAlpha(c.color, 0.35), backgroundColor: 'transparent', borderDash: def.dash, fill: false, tension: 0.2, order: 4 })\n      }\n      if (ov.mid.length) {\n        datasets.push({ label: `${c.label} (${def.label})`, data: ov.mid, showLine: true, pointRadius: 0, borderWidth: 1.35, borderColor: hexAlpha(c.color, 0.72), borderDash: def.dash, tension: 0.2, order: 4 })\n      }\n    }\n''', 1)
+          p.write_text(t)
+
+          lo = Path('src/live-overlay.js')
+          s = lo.read_text()
+          if 'function defaultModel' not in s:
+              s = s.replace('function setProjModel(n) {\n  window.__pebrProjModel = n\n', '''function defaultModel() {\n  try {\n    const saved = Number(localStorage.getItem('pebr-model'))\n    if ([0, 1, 2, 3, 4, 5].includes(saved)) return saved\n  } catch {}\n  return 1\n}\n\nfunction setProjModel(n) {\n  window.__pebrProjModel = n\n  try { localStorage.setItem('pebr-model', String(n)) } catch {}\n''', 1)
+          if 'data-proj-model="5"' not in s:
+              s = s.replace('<button type="button" class="chip" data-proj-model="4">Modelo 4</button>', '<button type="button" class="chip" data-proj-model="4">Modelo 4</button>\n    <button type="button" class="chip" data-proj-model="5">Modelo 5</button>', 1)
+          if "5: 'Modelo 5" not in s:
+              s = s.replace("4: 'Modelo 4: intencao latente (Kalman). Cada pesquisa atualiza a corrida pelo erro amostral; nao e previsao de urna.',", "4: 'Modelo 4: intencao latente (Kalman). Cada pesquisa atualiza a corrida pelo erro amostral; nao e previsao de urna.',\n      5: 'Modelo 5: reativo. Meia-vida curta e impulso nas pesquisas novas. Sem house effect.',", 1)
+          s = s.replace('setProjModel(Number(window.__pebrProjModel || 0))', 'setProjModel(window.__pebrProjModel == null ? defaultModel() : Number(window.__pebrProjModel))')
+          if 'function injectOverlayToggles' not in s:
+              s = s.replace('  injectModelToggles()\n  installThemeCycle()', '''  injectModelToggles()\n  injectOverlayToggles()\n  installThemeCycle()''', 1)
+              fn = '''\nfunction injectOverlayToggles() {\n  if (document.getElementById('overlayRow')) return true\n  const host = document.getElementById('projModelRow')\n  if (!host) return false\n  const row = document.createElement('div')\n  row.id = 'overlayRow'\n  row.className = 'overlay-row'\n  row.setAttribute('aria-label', 'Overlays visuais')\n  const lab = document.createElement('span')\n  lab.className = 'ctrl'\n  lab.textContent = 'Overlays'\n  row.appendChild(lab)\n  const defs = [['sma7','SMA7'],['sma21','SMA21'],['ema9','EMA9'],['ema21','EMA21'],['hma','HMA'],['vwma','VWMA'],['kama','KAMA'],['bb','BB']]\n  let state = {}\n  try { state = JSON.parse(localStorage.getItem('pebr-overlays') || '{}') || {} } catch { state = {} }\n  window.__pebrOverlays = state\n  defs.forEach(([id, label]) => {\n    const b = document.createElement('button')\n    b.type = 'button'\n    b.className = 'chip'\n    b.dataset.overlay = id\n    b.textContent = label\n    b.classList.toggle('on', !!state[id])\n    b.addEventListener('click', () => {\n      const cur = window.__pebrOverlays || {}\n      cur[id] = !cur[id]\n      window.__pebrOverlays = cur\n      try { localStorage.setItem('pebr-overlays', JSON.stringify(cur)) } catch {}\n      b.classList.toggle('on', !!cur[id])\n      const box = document.getElementById('projectionToggle')\n      if (box) box.dispatchEvent(new Event('change', { bubbles: true }))\n    })\n    row.appendChild(b)\n  })\n  host.after(row)\n  return true\n}\n'''
+              s = s.replace('function layoutFix()', fn + 'function layoutFix()', 1)
+          s = s.replace("note.textContent = 'Média ponderada: √n + meia-vida 14d (chip muda a janela). Só nacionais.'", "note.textContent = 'Padrão: Modelo 1 (fórmula original). Overlays são só visual e não mudam a média.'")
+          lo.write_text(s)
+
+          mj = Path('src/main.js')
+          m = mj.read_text()
+          m = m.replace('const rawM = Number(window.__pebrProjModel || 0)\n    const avgModel = rawM >= 3 ? rawM : rawM === 2 ? 2 : 1', 'const rawM = Number(window.__pebrProjModel == null ? 1 : window.__pebrProjModel)\n    const avgModel = rawM >= 2 && rawM <= 5 ? rawM : 1')
+          old = '    <p>Pontos no gráfico são pesquisas individuais. A linha é uma <strong>média ponderada</strong>: peso ≈ √(N/2000) × exp(−dias/janela). Variação nos cartões vs <strong>meados de maio/2026</strong>.</p>'
+          new = '    <p>Pontos = pesquisas. Linha sólida = chip de modelo (<strong>padrão Modelo 1</strong>: √(N/2000)×exp(−dias/janela)). Modelo 5 é reativo. Overlays SMA/EMA/HMA/VWMA/KAMA/Bollinger são só visual e <strong>não</strong> entram na média. Cartões: vs 30d.</p>'
+          m = m.replace(old, new)
+          mj.write_text(m)
+
+          extra_path = Path('public/data/polls-extra.json')
+          data = json.loads(extra_path.read_text())
+          keys = {(x.get('institute'), x.get('fieldwork_end'), x.get('scenario')) for x in data}
+          nexus = [
+            {"institute":"Nexus/BTG","fieldwork_start":"2026-09-04","fieldwork_end":"2026-09-07","published_date":"2026-09-08","scenario":"estimulada 1º turno","candidates":[{"name":"Lula","party_optional":"PT","pct":39},{"name":"Flávio Bolsonaro","party_optional":"PL","pct":35},{"name":"Augusto Cury","party_optional":"Avante","pct":9},{"name":"Renan Santos","party_optional":"Missão","pct":4},{"name":"Ronaldo Caiado","party_optional":"PSD","pct":4},{"name":"Pablo Marçal","party_optional":"PRTB","pct":1},{"name":"Romeu Zema","party_optional":"Novo","pct":1},{"name":"não sabe","party_optional":None,"pct":5}],"n":2002,"margin_of_error":"±2,0 pp","source_url":"https://veja.abril.com.br/brasil/o-que-revelam-as-pesquisas-eleitorais-da-semana-sobre-a-disputa-entre-lula-e-flavio/","methodology_note":"Nexus/BTG Pactual; 2.002 entrevistas telefônicas 4–7 set 2026; margem ±2 pp; TSE BR-06790/2026.","verified":True},
+            {"institute":"Nexus/BTG","fieldwork_start":"2026-09-04","fieldwork_end":"2026-09-07","published_date":"2026-09-08","scenario":"2º turno Lula x Flávio Bolsonaro","candidates":[{"name":"Lula","party_optional":"PT","pct":45},{"name":"Flávio Bolsonaro","party_optional":"PL","pct":46},{"name":"branco/nulo/não sabe","party_optional":None,"pct":9}],"n":2002,"margin_of_error":"±2,0 pp","source_url":"https://www.cnnbrasil.com.br/eleicoes/nexus-btg-lula-tem-empate-tecnico-com-flavio-caiado-e-cury-no-2o-turno/","methodology_note":"Nexus/BTG 2º turno Flávio 46 × Lula 45. TSE BR-06790/2026.","verified":True},
+          ]
+          added = [x for x in nexus if (x['institute'], x['fieldwork_end'], x['scenario']) not in keys]
+          extra_path.write_text(json.dumps(added + data, ensure_ascii=False, indent=2) + '\n')
+          print('patched', 'nexus added', len(added))
+          PY
+      - name: Commit
+        run: |
+          git config user.name "pebr-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/chart.js src/live-overlay.js src/main.js public/data/polls-extra.json
+          git diff --cached --quiet || git commit -m "feat: wire overlays, default model 1, Nexus/BTG extra"
+          git push
