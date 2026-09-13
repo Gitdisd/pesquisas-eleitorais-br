@@ -1,6 +1,6 @@
 /**
- * Quatro médias no mesmo desenho:
- *   1 antiga · 2 meia-vida+house · 3 RE-meta · 4 Kalman latente
+ * Medias no mesmo desenho:
+ *   1 antiga (padrao) · 2 meia-vida+house · 3 RE-meta · 4 Kalman · 5 reativo
  */
 import { averageTrendAdvanced } from './models-advanced.js'
 
@@ -67,7 +67,7 @@ export function weightedTrendV2(points, windowDays = 14) {
   const sorted = [...points].sort((a, b) => a.t - b.t)
   const tMin = sorted[0].t
   const tMax = sorted[sorted.length - 1].t
-  const half = Math.max(1, Number(windowDays) || 14)
+  const half = Math.max(1, Number(halfLifeDays) || 14)
   const reach = half * 2.5
   const out = []
   for (let t = tMin; t <= tMax; t += DAY_MS) {
@@ -129,7 +129,7 @@ export function applyHouseEffects(points, house) {
 
 export function averageTrend(points, windowDays = 14, model = 1) {
   const m = Number(model)
-  if (m === 3 || m === 4) return averageTrendAdvanced(points, windowDays, m)
+  if (m === 3 || m === 4 || m === 5) return averageTrendAdvanced(points, windowDays, m)
   if (m === 2) {
     const house = estimateHouseEffects(points)
     return weightedTrendV2(applyHouseEffects(points, house), windowDays)
