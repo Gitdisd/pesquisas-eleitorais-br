@@ -4,6 +4,7 @@ import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } fro
 import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToChart } from './chart.js'
 import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
 import { PROJECTION_COPY_PT } from './projection.js'
+import { methodologyHTML } from './methodology.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
 const EXTRA_URL = `${import.meta.env.BASE_URL}data/polls-extra.json`
@@ -221,10 +222,7 @@ function shellHTML() {
     <p class="hint" id="chartError" style="color:#c62828"></p></div></section>
     <section class="cards" id="cards" aria-live="polite"></section>
     <section class="panel"><h2>Tabela de pesquisas</h2><div class="table-wrap"><table class="polls"><thead id="thead"></thead><tbody id="tbody"></tbody></table></div></section>
-    <section class="panel metodologia"><h2>Metodologia</h2>
-    <p>Pontos = pesquisas. Linha sólida = chip de modelo (<strong>padrão Modelo 1</strong>: √(N/2000)×exp(−dias/janela)). Modelo 5 é reativo. Overlays SMA/EMA/HMA/VWMA/KAMA/Bollinger são só visual e <strong>não</strong> entram na média. Cartões: vs 30d.</p>
-    <p>Os dados são atualizados por busca automática periódica (até cerca de 3 horas).</p>
-    <p id="projMethodology"></p></section>
+    ${methodologyHTML()}
     <footer><p>Site estático e sem fins partidários. Hospedagem via GitHub Pages.</p></footer></main>`
 }
 function fillProjectionCopy() {

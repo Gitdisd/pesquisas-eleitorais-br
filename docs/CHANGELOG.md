@@ -6,6 +6,8 @@ Formato: data (America/Sao_Paulo) · o quê · por que · arquivos.
 
 ## 2026-09-13
 
+- **Metodologia ao vivo** em seções: objetivo, viés de casa, modelos 1–5, overlays, o que não é. `src/methodology.js`.
+
 - **Padrão = Modelo 1** (fórmula original √n × e^(-−d/janela)). Chip grava `pebr-model` no localStorage.
 - **Modelo 5 reativo.** Meia-vida = max(2, janela/5) e impulso 1+2e^(-d/1,8) nas pesquisas novas. Sem house. `src/models-advanced.js`.
 - **Overlays independentes** (não entram na média): SMA7, SMA21, EMA9, EMA21, HMA16, VWMA14 (n = volume), KAMA10, Bollinger 20±2σ. Chips em Overlay. `src/overlays.js` + `src/chart.js`.

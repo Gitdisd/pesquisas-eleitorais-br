@@ -1,3 +1,4 @@
+import './methodology.css'
 /** Texto da seção Metodologia — curto, em blocos, no ar. */
 export function methodologyHTML() {
   return `
