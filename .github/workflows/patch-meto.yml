@@ -1,0 +1,61 @@
+name: patch methodology panel
+on:
+  workflow_dispatch:
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch main and css import
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          p = Path('src/main.js')
+          t = p.read_text()
+          if "from './methodology.js'" not in t:
+              t = t.replace(
+                  "import { PROJECTION_COPY_PT } from './projection.js'",
+                  "import { PROJECTION_COPY_PT } from './projection.js'\nimport { methodologyHTML } from './methodology.js'",
+                  1,
+              )
+          old = '''    <section class="panel metodologia"><h2>Metodologia</h2>\n    <p>Pontos = pesquisas. Linha sólida = chip de modelo (<strong>padrão Modelo 1</strong>: √(N/2000)×exp(−dias/janela)). Modelo 5 é reativo. Overlays SMA/EMA/HMA/VWMA/KAMA/Bollinger são só visual e <strong>não</strong> entram na média. Cartões: vs 30d.</p>\n    <p>Os dados são atualizados por busca automática periódica (até cerca de 3 horas).</p>\n    <p id="projMethodology"></p></section>'''
+          new = '    ${methodologyHTML()}'
+          if old in t:
+              t = t.replace(old, new, 1)
+          else:
+              # fallback: replace any compact metodologia block
+              import re
+              t2, n = re.subn(
+                  r'<section class="panel metodologia">.*?</section>',
+                  '${methodologyHTML()}',
+                  t,
+                  count=1,
+                  flags=re.S,
+              )
+              if n:
+                  t = t2
+              print('regex replacements', n)
+          p.write_text(t)
+          print('main has methodologyHTML', 'methodologyHTML()' in t)
+
+          m = Path('src/methodology.js')
+          s = m.read_text()
+          if "import './methodology.css'" not in s:
+              s = "import './methodology.css'\n" + s
+              m.write_text(s)
+
+          cl = Path('docs/CHANGELOG.md')
+          c = cl.read_text()
+          if 'Metodologia ao vivo' not in c:
+              c = c.replace('## 2026-09-13\n', '## 2026-09-13\n\n- **Metodologia ao vivo** em seções: objetivo, viés de casa, modelos 1–5, overlays, o que não é. `src/methodology.js`.\n', 1)
+              cl.write_text(c)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "pebr-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/main.js src/methodology.js docs/CHANGELOG.md
+          git diff --cached --quiet || git commit -m "feat: live methodology sections in page shell"
+          git push
