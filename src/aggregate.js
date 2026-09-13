@@ -67,7 +67,7 @@ export function weightedTrendV2(points, windowDays = 14) {
   const sorted = [...points].sort((a, b) => a.t - b.t)
   const tMin = sorted[0].t
   const tMax = sorted[sorted.length - 1].t
-  const half = Math.max(1, Number(halfLifeDays) || 14)
+  const half = Math.max(1, Number(windowDays) || 14)
   const reach = half * 2.5
   const out = []
   for (let t = tMin; t <= tMax; t += DAY_MS) {
