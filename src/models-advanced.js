@@ -1,13 +1,7 @@
 /**
  * Modelo 3 — meta-análise de efeitos aleatórios (DerSimonian–Laird)
- *   Cada pesquisa tem erro amostral σ_i (margem/1,96 ou √[p(1-p)/n] × deff).
- *   τ² captura que as pesquisas NÃO medem a mesma coisa (modo, peso, geografia).
- *   peso = recência / (σ_i² + τ²). Atlas n=5000 não come o gráfico sozinho.
- *
  * Modelo 4 — filtro de Kalman + smoother (intenção latente)
- *   θ_t = θ_{t-1} + ruído de processo
- *   y_i = θ_{t_i} + house_i + erro amostral
- *   A linha é a trajetória suavizada da corrida, não um ponto-a-ponto.
+ * Modelo 5 — reativo: meia-vida curta + impulso nas pesquisas novas.
  */
 const DAY = 86400000
 const DEFF = 1.3
@@ -170,7 +164,40 @@ export function weightedTrendV4(points, windowDays = 14) {
   }))
 }
 
+/** Reativo: meia-vida = max(2, janela/5) e impulso 1+2e^(-d/1.8) nas pesquisas novas. Sem house. */
+export function weightedTrendV5(points, windowDays = 14) {
+  if (!points.length) return []
+  const sorted = [...points].sort((a, b) => a.t - b.t)
+  const half = Math.max(2, (Number(windowDays) || 14) / 5)
+  const reach = Math.max(8, half * 4)
+  const tMin = sorted[0].t
+  const tMax = sorted[sorted.length - 1].t
+  const out = []
+  for (let t = tMin; t <= tMax; t += DAY) {
+    let num = 0
+    let den = 0
+    let nearest = Infinity
+    for (const p of sorted) {
+      const days = Math.abs(t - p.t) / DAY
+      if (days < nearest) nearest = days
+      if (days > reach) continue
+      const sizeW = Math.sqrt(sampleN(p.n) / 2000)
+      const rec = Math.pow(2, -days / half)
+      const punch = 1 + 2 * Math.exp(-days / 1.8)
+      const w = sizeW * rec * punch
+      num += w * p.y
+      den += w
+    }
+    if (den > 0 && nearest <= Math.max(3, half * 1.5)) {
+      out.push({ x: t, y: Math.round((num / den) * 100) / 100 })
+    }
+  }
+  return out
+}
+
 export function averageTrendAdvanced(points, windowDays = 14, model = 3) {
-  if (Number(model) === 4) return weightedTrendV4(points, windowDays)
+  const m = Number(model)
+  if (m === 5) return weightedTrendV5(points, windowDays)
+  if (m === 4) return weightedTrendV4(points, windowDays)
   return weightedTrendV3(points, windowDays)
 }
