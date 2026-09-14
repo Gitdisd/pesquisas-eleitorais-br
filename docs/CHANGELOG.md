@@ -4,6 +4,10 @@ Registro de mudanças reais. Entrada nova no topo. Não reescrever história.
 
 Formato: data (America/Sao_Paulo) · o quê · por que · arquivos.
 
+## 2026-09-14
+
+- **Correção do boot nacional após migração tipada**: o front passou a usar o `meta` retornado pelo carregador tipado, importar corretamente `loadMeta`, e normalizar dados com `normalizePolls` durante a atualização automática. Isso corrige a interrupção do boot que deixava cards, tabela e gráfico nacionais sem dados. `src/main.js`.
+
 ## 2026-09-13
 
 - **Metodologia em linguagem simples**, com exemplo em cada bloco: modelos, overlays, eixos/zoom, chips. Fórmulas ficam num `<details>`. `src/methodology.js`.
