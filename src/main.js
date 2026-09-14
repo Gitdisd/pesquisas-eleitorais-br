@@ -1,7 +1,7 @@
 import './style.css'
 import 'hammerjs'
 import { CANDIDATES } from './candidates.js'
-import { loadPollData } from './data/api.ts'
+import { loadPollData, loadMeta } from './data/api.ts'
 import { mergePolls, normalizePolls } from './data/normalize.ts'
 import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToChart } from './chart.js'
 import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
@@ -61,13 +61,13 @@ async function boot() {
     const bundle = await loadPollData(DATA_URL, EXTRA_URL, META_URL)
     state.raw = mergePolls(bundle.polls, bundle.extra)
     state.polls = normalizePolls(state.raw)
-    state.meta = meta
-    state.updatedLabel = resolveUpdatedStamp(meta, state.polls)
+    state.meta = bundle.meta
+    state.updatedLabel = resolveUpdatedStamp(bundle.meta, state.polls)
     state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
     state.institutes = new Set(state.allInstitutes)
     renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
-    setStamp(); applyCheckMeta(meta); startCheckTimers()
+    setStamp(); applyCheckMeta(bundle.meta); startCheckTimers()
   } catch (err) {
     document.getElementById('chartError').textContent = `Não foi possível carregar as pesquisas: ${err.message}`
   }
@@ -127,7 +127,7 @@ async function refreshDataQuietly() {
     const [pollRes, extraRes, meta] = await Promise.all([
       fetch(DATA_URL + bust, { cache: 'no-store' }),
       fetch(EXTRA_URL + bust, { cache: 'no-store' }),
-      loadMeta(true),
+      loadMeta(META_URL, true),
     ])
     if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
     const data = await pollRes.json()
@@ -140,7 +140,7 @@ async function refreshDataQuietly() {
       } catch {}
     }
     const nextRaw = mergePolls(base, extra)
-    const nextPolls = normalize(nextRaw)
+    const nextPolls = normalizePolls(nextRaw)
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
