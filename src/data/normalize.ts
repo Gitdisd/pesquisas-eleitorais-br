@@ -13,12 +13,12 @@ export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll
   const map = new Map<string, RawPoll>()
   for (const poll of base) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
-    map.set(softPollKey(poll), poll)
+    map.set(canonicalPollKey(poll), poll)
   }
   for (const poll of extra) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
-    const key = softPollKey(poll)
-    if (!map.has(key) || poll.verified === true) map.set(key, poll)
+    const key = canonicalPollKey(poll)
+    if (!map.has(key)) map.set(key, poll)
   }
   return [...map.values()]
 }
@@ -40,7 +40,9 @@ export function normalizePolls(rows: RawPoll[]): NormalizedPoll[] {
       }
     }
 
-    if (results.lula == null || results.flavio == null) return
+    if (round === 2 && (results.lula == null || results.flavio == null)) return
+    if (round === 1 && results.lula == null && results.flavio == null) return
+
     const end = row.fieldwork_end || row.published_date
     if (!end) return
     const t = Date.parse(`${end}T12:00:00Z`)
