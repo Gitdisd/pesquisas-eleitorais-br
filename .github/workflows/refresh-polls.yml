@@ -15,20 +15,21 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: npm ci
 
       - name: Install PDF text + OCR tools
         run: |
@@ -36,22 +37,19 @@ jobs:
           sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por
 
       - name: Discover new polls (headless)
-        id: discover
-        continue-on-error: true
-        run: |
-          set +e
-          npm run discover-polls
-          code=$?
-          echo "discover_exit=$code" >> "$GITHUB_OUTPUT"
-          if [ "$code" -ne 0 ]; then
-            echo "::warning::discover-polls exited $code — continuing so meta/last_check still updates"
-          fi
-          exit 0
+        run: npm run discover-polls
 
       - name: Update polls
         env:
           POLL_SOURCE_URL: ${{ secrets.POLL_SOURCE_URL }}
+          CHECK_INTERVAL_MINUTES: "60"
         run: npm run update-polls
+
+      - name: Validate data and discovery state
+        run: node scripts/quality-gate.mjs
+
+      - name: Build production site
+        run: npm run build
 
       - name: Commit if changed
         run: |
