@@ -1,0 +1,60 @@
+name: Harden discovery once
+on:
+  push:
+    branches: [codex/ts-migration-discovery-2026-09-14]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: discovery-hardening-once
+  cancel-in-progress: true
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Patch discovery script
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs')
+          const p = 'scripts/discover-polls.mjs'
+          let s = fs.readFileSync(p, 'utf8')
+          const imp = 'import { canonicalizeUrl, classifyPollLink } from "./discover-policy.mjs";\n'
+          if (!s.includes('from "./discover-policy.mjs"')) {
+            s = s.replace('import { fileURLToPath } from "url";\n', 'import { fileURLToPath } from "url";\n' + imp)
+          }
+          s = s.replace('const MAX_CANDIDATE_PAGES = 40;', 'const MAX_CANDIDATE_PAGES = 60;')
+          s = s.replace('check_interval_minutes: 190,', 'check_interval_minutes: Number(process.env.CHECK_INTERVAL_MINUTES || prev.check_interval_minutes || 60),')
+          s = s.replace('  try {\n    const u = new URL(href, base);\n    if (u.protocol !== "http:" && u.protocol !== "https:") return null;\n    u.hash = "";\n    return u.toString();\n  } catch {\n    return null;\n  }', '  try {\n    const u = new URL(href, base);\n    if (u.protocol !== "http:" && u.protocol !== "https:") return null;\n    return canonicalizeUrl(u.toString());\n  } catch {\n    return null;\n  }')
+          s = s.replace('  const hay = `${url} ${anchorText}`.toLowerCase();\n  if (/\\.pdf(\\?|$)/i.test(url)) return true;', '  const policy = classifyPollLink(url, anchorText);\n  if (policy.rejected) return false;\n  const hay = `${url} ${anchorText}`.toLowerCase();\n  if (policy.score >= 35 || /\\.pdf(\\?|$)/i.test(url)) return true;')
+          if (!s.includes('process.env.CHECK_INTERVAL_MINUTES')) throw new Error('interval patch failed')
+          if (!s.includes('classifyPollLink(url, anchorText)')) throw new Error('policy patch failed')
+          fs.writeFileSync(p, s)
+          NODE
+          node --check scripts/discover-policy.mjs
+          node --check scripts/discover-polls.mjs
+      - name: Typecheck and build
+        run: |
+          npm run typecheck
+          npm run build
+      - name: Dry-run discovery
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por
+          npm run discover-polls -- --dry-run --max-pages=60
+      - name: Commit discovery hardening
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/discover-polls.mjs scripts/discover-policy.mjs
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'feat(discovery): classify national presidential links and harden refresh interval'
+          git fetch origin codex/ts-migration-discovery-2026-09-14
+          git push --force-with-lease=refs/heads/codex/ts-migration-discovery-2026-09-14
