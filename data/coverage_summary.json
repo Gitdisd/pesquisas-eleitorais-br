@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-08",
+  "as_of": "2026-09-14",
   "scope": "Brazil national presidential voting intention only (1º estimulada for tracked 6 candidates + 2º Lula×Flávio), Jan 2026 onward",
   "tracked_candidates": [
     "Lula",
@@ -9,7 +9,7 @@
     "Ronaldo Caiado",
     "Romeu Zema"
   ],
-  "records": 192,
+  "records": 202,
   "institutes_included": [
     "Alfa Inteligência",
     "AtlasIntel",
