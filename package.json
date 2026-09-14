@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "npx --yes typescript@5.9.3 --noEmit -p tsconfig.json",
+    "typecheck": "npx --yes -p typescript@5.9.3 tsc --noEmit -p tsconfig.json",
     "update-polls": "node scripts/update-polls.mjs",
     "discover-polls": "node scripts/discover-polls.mjs"
   },
