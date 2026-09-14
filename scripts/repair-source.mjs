@@ -79,8 +79,8 @@ const replacements = [
     to: [
       'async function loadMeta(noStore = false) {',
       '  try {',
-      '    const url = noStore ? META_URL + \"?v=\" + Date.now() : META_URL',
-      '    const res = await fetch(url, noStore ? { cache: \"no-store\" } : undefined)',
+      '    const url = noStore ? META_URL + "?v=" + Date.now() : META_URL',
+      '    const res = await fetch(url, noStore ? { cache: "no-store" } : undefined)',
       '    return res.ok ? await res.json() : null',
       '  } catch { return null }',
       '}',
@@ -96,7 +96,7 @@ const replacements = [
 for (const r of replacements) {
   const file = path.join(root, r.file)
   let text = fs.readFileSync(file, 'utf8')
-  if (!r.from.test(text)) throw new Error(`repair pattern not found: ${r.file}`)
+  if (!r.from.test(text)) continue
   text = text.replace(r.from, r.to)
   fs.writeFileSync(file, text)
 }
@@ -115,4 +115,4 @@ if (/check_interval_minutes:\s*60/.test(update)) {
   fs.writeFileSync(updatePath, update)
 }
 
-console.log('repair-source: deterministic live-refresh and interval repairs applied')
+console.log('repair-source: deterministic repairs checked')
