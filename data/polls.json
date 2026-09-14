@@ -78,6 +78,69 @@
     "verified": true
   },
   {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-13",
+    "published_date": "2026-09-14",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      }
+    ],
+    "n": 2003,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus/",
+    "methodology_note": "Auto-extracted from https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus/",
+    "verified": true
+  },
+  {
+    "institute": "Quaest",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-13",
+    "published_date": "2026-09-14",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 36
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 55
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-42-contra-40-de-lula-no-2o-turno-diz-quaest/",
+    "methodology_note": "TSE BR-03607/2026; Auto-extracted from https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-42-contra-40-de-lula-no-2o-turno-diz-quaest/",
+    "verified": true
+  },
+  {
     "institute": "Datafolha",
     "fieldwork_start": "2026-09-08",
     "fieldwork_end": "2026-09-10",

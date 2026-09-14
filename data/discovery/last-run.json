@@ -1,15 +1,28 @@
 {
-  "ran_at": "2026-09-14T16:57:18.961Z",
+  "ran_at": "2026-09-14T20:55:35.390Z",
   "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 405,
+  "candidate_links": 401,
   "pages_fetched": 60,
-  "verified_new": 0,
-  "inbox_new": 38,
-  "skipped_old": 21,
+  "verified_new": 2,
+  "inbox_new": 35,
+  "skipped_old": 22,
   "fetch_errors": 9,
   "dry_run": false,
-  "verified_samples": [],
+  "verified_samples": [
+    {
+      "institute": "PoderData",
+      "published_date": "2026-09-14",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus/"
+    },
+    {
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-42-contra-40-de-lula-no-2o-turno-diz-quaest/"
+    }
+  ],
   "inbox_samples": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -17,7 +30,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T16:56:53.511Z"
+      "found_at": "2026-09-14T20:55:04.821Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-pesquisa-presidente-primeiro-turno-14-setembro.ghtml",
@@ -25,7 +38,15 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T16:56:53.735Z"
+      "found_at": "2026-09-14T20:55:05.168Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-quaest/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-14T20:55:05.356Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -33,15 +54,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-14T16:56:53.841Z"
-    },
-    {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/a-nova-pesquisa-datafolha-para-presidente-apos-julgamento-de-moraes-no-stf.ghtml",
-      "title": "A nova pesquisa Datafolha para presidente após julgamento de Moraes no STF | Eleições 2026 | Valor Econômico Carregando.",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-14",
-      "found_at": "2026-09-14T16:56:54.664Z"
+      "found_at": "2026-09-14T20:55:06.036Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
@@ -49,8 +62,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T16:56:55.041Z"
+      "found_at": "2026-09-14T20:55:06.901Z"
     }
   ],
-  "meta_last_check_at": "2026-09-14T16:57:18.962Z"
+  "meta_last_check_at": "2026-09-14T20:55:35.392Z"
 }

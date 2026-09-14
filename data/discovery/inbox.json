@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-14T16:57:18.961Z",
+  "updated_at": "2026-09-14T20:55:35.391Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -305,6 +305,22 @@
       "institute": "Quaest",
       "published_date": null,
       "found_at": "2026-09-14T16:57:18.960Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-quaest/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-14T20:55:05.356Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/crise-no-stf-maioria-defendem-aumentar-exigencias-para-nomeacao-de-ministros-do-supremo-mostra-pesquisa-quaest.ghtml",
+      "title": "Pesquisa Quaest: 68% defendem novas regras para ministros do STF | G1 Pular para o conteúdo Eleições 2026 Apuração Crise",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T20:55:10.822Z"
     }
   ]
 }
