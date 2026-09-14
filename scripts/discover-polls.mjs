@@ -16,6 +16,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { canonicalizeUrl, classifyPollLink } from "./discover-policy.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,7 +32,7 @@ const REPORT_PATH = path.join(ROOT, "data", "discovery", "last-run.json");
 const UA =
   "pesquisas-eleitorais-br-discover/1.0 (+https://github.com/Gitdisd/pesquisas-eleitorais-br; headless Actions)";
 const FETCH_TIMEOUT_MS = 18_000;
-const MAX_CANDIDATE_PAGES = 40;
+const MAX_CANDIDATE_PAGES = 60;
 const MAX_LINKS_PER_SOURCE = 30;
 
 const CANDIDATE_CANON = [
@@ -186,7 +187,7 @@ function bumpMeta(polls, { contentChanged }) {
     last_updated:
       contentChanged || !prev.last_updated ? nowSaoPauloIso() : prev.last_updated,
     last_check_at: checkedAtUtc,
-    check_interval_minutes: 190,
+    check_interval_minutes: Number(process.env.CHECK_INTERVAL_MINUTES || prev.check_interval_minutes || 60),
     record_count: polls.length,
     source: prev.source || "verified published polls",
     content_hash: prev.content_hash || "",
@@ -245,16 +246,17 @@ function normalizeUrl(href, base) {
   try {
     const u = new URL(href, base);
     if (u.protocol !== "http:" && u.protocol !== "https:") return null;
-    u.hash = "";
-    return u.toString();
+    return canonicalizeUrl(u.toString());
   } catch {
     return null;
   }
 }
 
 function looksLikePollLink(url, anchorText, keywords) {
+  const policy = classifyPollLink(url, anchorText);
+  if (policy.rejected) return false;
   const hay = `${url} ${anchorText}`.toLowerCase();
-  if (/\.pdf(\?|$)/i.test(url)) return true;
+  if (policy.score >= 35 || /\.pdf(\?|$)/i.test(url)) return true;
   if (/pesquisa|intenc|intenç|eleitoral|datafolha|quaest|poderdata|atlas|nexus|btg|gerp|ideia|vox|indexa|futura|cnt|mda|paran/i.test(hay)) {
     return true;
   }
