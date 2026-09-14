@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-14T04:47:32.654Z",
+  "updated_at": "2026-09-14T10:33:30.845Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -625,6 +625,14 @@
       "institute": "Datafolha",
       "published_date": "2026-09-12",
       "found_at": "2026-09-13T06:00:27.238Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-presidente-setembro-2026/",
+      "title": "Nexus/BTG divulga pesquisa a presidente; confira os números Publicidade Encontre matérias e conteúdos da Gazeta do Povo ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-09-14T10:33:12.079Z"
     }
   ]
 }
