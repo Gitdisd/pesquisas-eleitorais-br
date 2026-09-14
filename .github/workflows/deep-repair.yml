@@ -1,0 +1,53 @@
+name: Deep repair, validate and build
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deep-repair-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repair-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply deterministic repairs
+        run: node scripts/repair-source.mjs
+
+      - name: Validate data and discovery state
+        run: node scripts/quality-gate.mjs
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Commit repaired sources
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+        run: |
+          if git diff --quiet; then
+            echo 'No source repair changes were necessary.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/main.js index.html scripts/update-polls.mjs
+          git commit -m 'fix: repair live refresh and data-check timing'
+          git push

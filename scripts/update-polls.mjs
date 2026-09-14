@@ -276,7 +276,7 @@ async function main() {
         ? nowSaoPauloIso()
         : prevMeta.last_updated,
     last_check_at: checkedAtUtc,
-    check_interval_minutes: 60,
+    check_interval_minutes: Number(process.env.CHECK_INTERVAL_MINUTES || 60),
     record_count: sorted.length,
     source: "verified published polls",
     content_hash: hash,

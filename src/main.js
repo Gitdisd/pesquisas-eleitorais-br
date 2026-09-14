@@ -28,7 +28,7 @@ function resolveWindowDays(presetId, customDays) {
   if (presetId === 'ytd') return daysSinceJan1()
   return WINDOW_PRESETS.find((x) => x.id === presetId)?.days ?? 1
 }
-const DEFAULT_CHECK_INTERVAL_MINUTES = 190
+const DEFAULT_CHECK_INTERVAL_MINUTES = 60
 const state = {
   raw: [], polls: [], meta: null, updatedLabel: null, lastCheckAt: null,
   checkIntervalMs: DEFAULT_CHECK_INTERVAL_MINUTES * 60 * 1000,
@@ -94,8 +94,12 @@ async function boot() {
 function chartOpts() {
   return { polls: state.polls, round: state.round, institutes: state.institutes, windowDays: state.windowDays, rangeDays: state.rangeDays, projection: state.projection }
 }
-async function loadMeta() {
-  try { const res = await fetch(META_URL); return res.ok ? await res.json() : null } catch { return null }
+async function loadMeta(noStore = false) {
+  try {
+    const url = noStore ? META_URL + "?v=" + Date.now() : META_URL
+    const res = await fetch(url, noStore ? { cache: "no-store" } : undefined)
+    return res.ok ? await res.json() : null
+  } catch { return null }
 }
 function resolveUpdatedStamp(meta, polls) {
   const fromMeta = formatUpdatedStamp(meta?.last_updated)
@@ -138,34 +142,64 @@ function tickCheckTimer() {
   const lastEl = document.getElementById('lastCheckLine')
   const nextEl = document.getElementById('nextCheckLine')
   if (!lastEl || !nextEl || !state.lastCheckAt) return
-  const elapsed = Date.now() - state.lastCheckAt.getTime()
+  const elapsed = Math.max(0, Date.now() - state.lastCheckAt.getTime())
   const remaining = state.checkIntervalMs - elapsed
-  if (remaining <= 0) {
-    state.awaitingCheck = true
-    state.lastCheckAt = new Date()
-    lastEl.textContent = `Última verificação: ${formatElapsedPt(0)}`
-    nextEl.textContent = 'Verificando em breve…'
-    return
-  }
   lastEl.textContent = `Última verificação: ${formatElapsedPt(elapsed)}`
-  nextEl.textContent = `Próxima verificação em: ${formatCountdown(remaining)}`
+  nextEl.textContent = remaining <= 0 ? 'Verificação em andamento…' : `Próxima verificação em: ${formatCountdown(remaining)}`
+}
+async function refreshDataQuietly() {
+  const bust = `?v=${Date.now()}`
+  try {
+    const [pollRes, extraRes, meta] = await Promise.all([
+      fetch(DATA_URL + bust, { cache: 'no-store' }),
+      fetch(EXTRA_URL + bust, { cache: 'no-store' }),
+      loadMeta(true),
+    ])
+    if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
+    const data = await pollRes.json()
+    const base = Array.isArray(data) ? data : data.polls || []
+    let extra = []
+    if (extraRes.ok) {
+      try {
+        const ex = await extraRes.json()
+        extra = Array.isArray(ex) ? ex : ex.polls || []
+      } catch {}
+    }
+    const nextRaw = mergePolls(base, extra)
+    const nextPolls = normalize(nextRaw)
+    const nextHash = JSON.stringify(nextRaw)
+    const prevHash = JSON.stringify(state.raw)
+    if (nextHash !== prevHash) {
+      state.raw = nextRaw
+      state.polls = nextPolls
+      state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare('pt-BR'))
+      state.institutes = new Set(state.allInstitutes)
+      renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
+      if (state.chart) state.chart.destroy()
+      state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
+      document.getElementById('chartError').textContent = ''
+    }
+    if (meta) {
+      state.meta = meta
+      state.updatedLabel = resolveUpdatedStamp(meta, state.polls)
+      applyCheckMeta(meta)
+      setStamp()
+    }
+    tickCheckTimer()
+  } catch (err) {
+    const errorEl = document.getElementById('chartError')
+    if (errorEl) errorEl.textContent = `Atualização automática falhou: ${err.message}`
+  }
 }
 async function refreshMetaQuietly() {
-  const meta = await loadMeta()
-  if (!meta) return
-  const prevIso = state.meta?.last_check_at || state.meta?.last_updated
-  const nextIso = meta.last_check_at || meta.last_updated
-  applyCheckMeta(meta)
-  const stampLabel = resolveUpdatedStamp(meta, state.polls)
-  if (stampLabel) { state.updatedLabel = stampLabel; setStamp() }
-  if (nextIso && nextIso !== prevIso) tickCheckTimer()
+  await refreshDataQuietly()
 }
 function startCheckTimers() {
   if (state.checkTimerId) clearInterval(state.checkTimerId)
   if (state.metaPollId) clearInterval(state.metaPollId)
   tickCheckTimer()
   state.checkTimerId = setInterval(tickCheckTimer, 1000)
-  state.metaPollId = setInterval(refreshMetaQuietly, 60_000)
+  state.metaPollId = setInterval(refreshDataQuietly, 60_000)
 }
 function normalize(rows) {
   return rows.map((row, idx) => {
