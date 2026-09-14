@@ -124,23 +124,10 @@ function tickCheckTimer() {
 async function refreshDataQuietly() {
   const bust = `?v=${Date.now()}`
   try {
-    const [pollRes, extraRes, meta] = await Promise.all([
-      fetch(DATA_URL + bust, { cache: 'no-store' }),
-      fetch(EXTRA_URL + bust, { cache: 'no-store' }),
-      loadMeta(true),
-    ])
-    if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
-    const data = await pollRes.json()
-    const base = Array.isArray(data) ? data : data.polls || []
-    let extra = []
-    if (extraRes.ok) {
-      try {
-        const ex = await extraRes.json()
-        extra = Array.isArray(ex) ? ex : ex.polls || []
-      } catch {}
-    }
-    const nextRaw = mergePolls(base, extra)
-    const nextPolls = normalize(nextRaw)
+    const bundle = await loadPollData(DATA_URL, EXTRA_URL, META_URL, true)
+    const nextRaw = mergePolls(bundle.polls, bundle.extra)
+    const nextPolls = normalizePolls(nextRaw)
+    const meta = bundle.meta
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
