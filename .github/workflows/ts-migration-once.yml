@@ -1,0 +1,42 @@
+name: Complete TypeScript migration
+
+on:
+  push:
+    branches: [codex/ts-migration-discovery-2026-09-14]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ts-migration-once
+  cancel-in-progress: true
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply main data-layer migration
+        run: node scripts/migrate-main-data-layer.mjs
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build
+        run: npm run build
+      - name: Commit migration
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo 'No migration changes.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/main.js
+          git commit -m 'refactor(ts): migrate frontend data boundary to typed modules'
+          git push
