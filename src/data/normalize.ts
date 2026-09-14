@@ -2,7 +2,7 @@ import { matchCandidate, parseMoe, isFirstRound, isSecondRound } from '../candid
 import type { NormalizedPoll, RawPoll } from './types'
 
 export function canonicalPollKey(p: RawPoll): string {
-  return [p.institute, p.fieldfieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
+  return [p.institute, p.fieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
 }
 
 export function softPollKey(p: RawPoll): string {
