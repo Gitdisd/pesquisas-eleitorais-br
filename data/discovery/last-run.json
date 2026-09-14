@@ -1,36 +1,31 @@
 {
-  "ran_at": "2026-09-14T20:55:35.390Z",
+  "ran_at": "2026-09-14T23:51:32.967Z",
   "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 401,
+  "candidate_links": 404,
   "pages_fetched": 60,
-  "verified_new": 2,
-  "inbox_new": 35,
-  "skipped_old": 22,
+  "verified_new": 0,
+  "inbox_new": 39,
+  "skipped_old": 20,
   "fetch_errors": 9,
   "dry_run": false,
-  "verified_samples": [
+  "verified_samples": [],
+  "inbox_samples": [
     {
-      "institute": "PoderData",
-      "published_date": "2026-09-14",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus/"
-    },
-    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
+      "title": "Quaest: 67% dizem que crise no STF não influencia voto presidencial | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-42-contra-40-de-lula-no-2o-turno-diz-quaest/"
-    }
-  ],
-  "inbox_samples": [
+      "found_at": "2026-09-14T23:50:59.780Z"
+    },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
       "title": "Fio do professor: Felipe Nunes analisa pesquisa Quaest | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Fio d",
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T20:55:04.821Z"
+      "found_at": "2026-09-14T23:51:00.129Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-pesquisa-presidente-primeiro-turno-14-setembro.ghtml",
@@ -38,15 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T20:55:05.168Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-quaest/",
-      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
-      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
-      "institute": null,
-      "published_date": null,
-      "found_at": "2026-09-14T20:55:05.356Z"
+      "found_at": "2026-09-14T23:51:00.338Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -54,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-14T20:55:06.036Z"
+      "found_at": "2026-09-14T23:51:01.049Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
@@ -62,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T20:55:06.901Z"
+      "found_at": "2026-09-14T23:51:01.908Z"
     }
   ],
-  "meta_last_check_at": "2026-09-14T20:55:35.392Z"
+  "meta_last_check_at": "2026-09-14T23:51:32.968Z"
 }

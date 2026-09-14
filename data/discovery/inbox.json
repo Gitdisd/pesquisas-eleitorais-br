@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-14T20:55:35.391Z",
+  "updated_at": "2026-09-14T23:51:32.967Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -321,6 +321,22 @@
       "institute": "Quaest",
       "published_date": "2026-09-14",
       "found_at": "2026-09-14T20:55:10.822Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
+      "title": "Quaest: 67% dizem que crise no STF não influencia voto presidencial | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T23:50:59.780Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/no-1o-turno-lula-tem-36-dos-votos-totais-aponta-quaest-flavio-tem-31-e-cury-7/",
+      "title": "No 1º turno, Lula tem 36% dos votos totais, aponta Quaest; Flávio tem 31% e Cury, 7% No 1º turno, Lula tem 36% dos votos",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-14T23:51:32.965Z"
     }
   ]
 }
