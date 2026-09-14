@@ -3,13 +3,16 @@ import fs from 'node:fs'
 import crypto from 'node:crypto'
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'))
-const fail = (msg) => { console.error(`QUALITY FAIL: ${msg}`); process.exitCode = 1 }
+const errors = []
+const fail = (msg) => errors.push(msg)
 
 const polls = readJson('data/polls.json')
 const extra = readJson('data/polls-extra.json')
 const meta = readJson('data/meta.json')
 const coverage = readJson('data/coverage_summary.json')
 const mirror = readJson('public/data/polls.json')
+const inbox = readJson('data/discovery/inbox.json')
+const lastRun = readJson('data/discovery/last-run.json')
 
 if (!Array.isArray(polls)) fail('data/polls.json is not an array')
 if (!Array.isArray(extra)) fail('data/polls-extra.json is not an array')
@@ -38,14 +41,19 @@ if (!Number.isFinite(Number(meta.check_interval_minutes)) || Number(meta.check_i
 if (!meta.last_check_at) fail('missing meta.last_check_at')
 if (!coverage || typeof coverage !== 'object') fail('coverage summary missing')
 
-const inbox = readJson('data/discovery/inbox.json')
-const lastRun = readJson('data/discovery/last-run.json')
-if (!Array.isArray(inbox)) fail('discovery inbox is not an array')
-if (!lastRun || typeof lastRun !== 'object') fail('discovery last-run is invalid')
+if (!inbox || typeof inbox !== 'object' || !Array.isArray(inbox.items)) fail('discovery inbox must be an object with items[]')
+if (!lastRun || typeof lastRun !== 'object' || !lastRun.ran_at) fail('discovery last-run is invalid')
+if (Array.isArray(inbox.items)) {
+  const urls = new Set()
+  for (const [i, item] of inbox.items.entries()) {
+    if (!item || !item.url) fail(`inbox item ${i} missing url`)
+    if (item.url && urls.has(item.url)) fail(`duplicate inbox URL: ${item.url}`)
+    if (item.url) urls.add(item.url)
+  }
+}
 
-const sourceSet = new Set(polls.map((p) => p.source_url))
-const invalidSources = polls.filter((p) => !sourceSet.has(p.source_url))
-if (invalidSources.length) fail('internal source set validation failed')
-
-if (process.exitCode) process.exit()
-console.log(`QUALITY OK: ${polls.length} verified polls; ${inbox.length} discovery inbox candidates; hash ${computedHash}`)
+if (errors.length) {
+  for (const e of errors) console.error(`QUALITY FAIL: ${e}`)
+  process.exit(1)
+}
+console.log(`QUALITY OK: ${polls.length} verified polls; ${inbox.items.length} discovery inbox candidates; hash ${computedHash}`)
