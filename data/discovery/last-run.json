@@ -1,56 +1,56 @@
 {
-  "ran_at": "2026-09-14T10:33:30.845Z",
-  "watermark": "2026-09-08",
+  "ran_at": "2026-09-14T16:57:18.961Z",
+  "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 414,
-  "pages_fetched": 40,
+  "candidate_links": 405,
+  "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 40,
-  "skipped_old": 0,
+  "inbox_new": 38,
+  "skipped_old": 21,
   "fetch_errors": 9,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/12/datafolha-pe-presidente-setembro.ghtml",
-      "title": "Datafolha em PE: Lula, 55%; Flávio Bolsonaro, 24% | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco Data",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
+      "title": "Fio do professor: Felipe Nunes analisa pesquisa Quaest | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Fio d",
+      "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
-      "published_date": "2026-09-12",
-      "found_at": "2026-09-14T10:33:09.925Z"
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:53.511Z"
     },
     {
-      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/12/datafolha-mg-presidente-12-setembro.ghtml",
-      "title": "Datafolha para presidente em MG: Lula, 37%; Flávio 35%, | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas G",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-pesquisa-presidente-primeiro-turno-14-setembro.ghtml",
+      "title": "Quaest, 1º turno: Lula, 36%; Flávio Bolsonaro, 31%; Cury, 7%; Renan, 4%; Caiado, 4%; Zema, 1% | G1 Pular para o conteúdo",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-12",
-      "found_at": "2026-09-14T10:33:10.327Z"
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:53.735Z"
     },
     {
-      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/12/datafolha-sp-presidente-12-setembro.ghtml",
-      "title": "Datafolha: veja números da disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Da",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-12",
-      "found_at": "2026-09-14T10:33:10.702Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
+      "title": "O que mostra a nova pesquisa Quaest para presidente Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:53.841Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario1.ghtml",
-      "title": "Datafolha 1º turno: Lula tem 39% e Flávio Bolsonaro 35% sem Marçal | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/a-nova-pesquisa-datafolha-para-presidente-apos-julgamento-de-moraes-no-stf.ghtml",
+      "title": "A nova pesquisa Datafolha para presidente após julgamento de Moraes no STF | Eleições 2026 | Valor Econômico Carregando.",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-09-12",
-      "found_at": "2026-09-14T10:33:10.959Z"
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:54.664Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/12/datafolha-1o-turno-11-setembro-recortes-cenario2.ghtml",
-      "title": "Datafolha eleição presidencial: Lula tem 39% e Flávio 33% no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
+      "title": "Pesquisa Quaest: Flávio aparece numericamente à frente de Lula no 2º turno | Eleições 2026 | Valor Econômico Carregando.",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-12",
-      "found_at": "2026-09-14T10:33:11.185Z"
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:55.041Z"
     }
   ],
-  "meta_last_check_at": "2026-09-14T10:33:30.846Z"
+  "meta_last_check_at": "2026-09-14T16:57:18.962Z"
 }

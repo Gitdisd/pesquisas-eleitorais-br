@@ -1,5 +1,310 @@
 {
   "version": 1,
-  "updated_at": "2026-09-14T15:04:12.000Z",
-  "items": []
+  "updated_at": "2026-09-14T16:57:18.961Z",
+  "items": [
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
+      "title": "Fio do professor: Felipe Nunes analisa pesquisa Quaest | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Fio d",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Datafolha",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:53.511Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-pesquisa-presidente-primeiro-turno-14-setembro.ghtml",
+      "title": "Quaest, 1º turno: Lula, 36%; Flávio Bolsonaro, 31%; Cury, 7%; Renan, 4%; Caiado, 4%; Zema, 1% | G1 Pular para o conteúdo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:53.735Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
+      "title": "O que mostra a nova pesquisa Quaest para presidente Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:53.841Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/a-nova-pesquisa-datafolha-para-presidente-apos-julgamento-de-moraes-no-stf.ghtml",
+      "title": "A nova pesquisa Datafolha para presidente após julgamento de Moraes no STF | Eleições 2026 | Valor Econômico Carregando.",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:54.664Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
+      "title": "Pesquisa Quaest: Flávio aparece numericamente à frente de Lula no 2º turno | Eleições 2026 | Valor Econômico Carregando.",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:55.041Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest: entre eleitores i",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:56.748Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-flavio-lula-2-turno-independentes-14-setembro.ghtml",
+      "title": "Quaest: Flávio Bolsonaro lidera entre independentes contra Lula | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleito",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:56.984Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-medo-reeleicao-lula-volta-familia-bolsonaro.ghtml",
+      "title": "Quaest: 44% têm mais medo de reeleição de Lula; 42%, da volta da família Bolsonaro | G1 Pular para o conteúdo Eleições 2",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:57.236Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-transferencia-votos-flavio-segundo-turno.ghtml",
+      "title": "Quaest: transferência de votos de eleitores de Cury, Renan e Caiado favorece Flávio Bolsonaro no 2º turno | G1 Pular par",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:57.465Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/2-turno-lula-e-flavio-bolsonaro-quaest-segmentos.ghtml",
+      "title": "Quaest, 2º turno: veja números detalhados de Lula e Flávio Bolsonaro | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:57.706Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-eleitores-cury-lula-flavio-segundo-turno-setembro.ghtml",
+      "title": "Quaest: entre eleitores de Cury, 25% escolhem Lula e 41%, Flávio Bolsonaro no 2º turno | G1 Pular para o conteúdo Eleiçõ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:57.907Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-2-turno-setembro.ghtml",
+      "title": "Pesquisa Quaest 2º turno: Flávio Bolsonaro 42% e Lula 40% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Qu",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:58.078Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-aprovacao-14-setembro.ghtml",
+      "title": "Pesquisa Quaest: 50% desaprovam e 43% aprovam governo Lula | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Q",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:58.308Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/parana/eleicoes/2026/noticia/2026/09/14/sergio-moro-entrevista-rpc.ghtml",
+      "title": "Sergio Moro promete criar ‘Agência Estadual de Combate à Corrupção’ no Paraná e diz que vai participar de debate na TV |",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:56:58.725Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+      "title": "Pesquisa Eleitoral 2026: acompanhe as intenções de voto Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:58.794Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-roraima-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governo em Roraima Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:59.182Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-minas-gerais-setembro-2026/",
+      "title": "Datafolha: pesquisa para governo e senadores por Minas Gerais Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:59.241Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-pernambuco-setembro-2026/",
+      "title": "Os números do Datafolha para governo e Senado em Pernambuco Publicidade Encontre matérias e conteúdos da Gazeta do Povo ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:59.626Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-distrito-federal-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para o governo no DF Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleições Ele",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:56:59.978Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-senado-sao-paulo-setembro-2026/",
+      "title": "Datafolha divulga números para o Senado em São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo Eleiçõe",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:00.480Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-rio-de-janeiro-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para governo e Senado pelo Rio Publicidade Encontre matérias e conteúdos da Gazeta do Povo El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:00.589Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-sao-paulo-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para governador de São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:00.649Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-mato-grosso-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governador do Mato Grosso Publicidade Encontre matérias e conteúdos da Gazeta do Povo E",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:00.706Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-senador-para-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governo e Senado no Pará Publicidade Encontre matérias e conteúdos da Gazeta do Povo El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:01.021Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/real-time-big-data-governador-parana-setembro-2026/",
+      "title": "Real Time Big Data divulga pesquisa para governador no Paraná Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:01.075Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/real-time-big-data-senado-parana-setembro-2026/",
+      "title": "Real Time Big Data divulga pesquisa para o Senado pelo Paraná Publicidade Encontre matérias e conteúdos da Gazeta do Pov",
+      "reason": "incomplete_extract:no_published_date,no_scenario",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:01.128Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-senado-sao-paulo-setembro-2026/",
+      "title": "Os números do Paraná Pesquisas para o Senado em São Paulo Publicidade Encontre matérias e conteúdos da Gazeta do Povo El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:01.419Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senado-goias-setembro-2026/",
+      "title": "Paraná Pesquisas divulga sondagem para governo em Goiás Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:01.473Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-governo-lula-e-aprovado-por-43percent-enquanto-50percent-desaprovam.ghtml",
+      "title": "Pesquisa Quaest: Governo Lula é aprovado por 43%, enquanto 50% desaprovam | Eleições 2026 | Valor Econômico Carregando..",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:57:02.781Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/flavio-consolida-vantagem-entre-independentes-e-abre-distancia-sobre-lula-no-sudeste-diz-diretor-da-quaest.ghtml",
+      "title": "Flávio consolida vantagem entre independentes e abre distância sobre Lula no Sudeste, diz diretor da Quaest | Eleições 2",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:57:03.149Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/quaest-lula-tem-36-das-intencoes-de-voto-no-1o-turno-flavio-31/",
+      "title": "Quaest: Lula tem 36% das intenções de voto no 1º turno; Flávio, 31% | CNN Brasil Pular para o conteúdo Ao vivo Política ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:08.712Z"
+    },
+    {
+      "url": "https://tools.folha.com.br/feedback?site=online&url=https%3A%2F%2Fwww1.folha.uol.com.br%2Fpoder%2F2026%2F09%2Fdatafolha-lula-tem-39-e-flavio-bolsonaro-35-em-primeiro-turno.shtml",
+      "title": "Comunique Erros - Folha de S.Paulo Abrir sidebar menu Menu Assine Ir para o conteúdo [1] Ir para o menu [2] Ir para o ro",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:13.435Z"
+    },
+    {
+      "url": "https://tools.folha.com.br/feedback?site=ombudsman&url=https%3A%2F%2Fwww1.folha.uol.com.br%2Fpoder%2F2026%2F09%2Fdatafolha-lula-tem-39-e-flavio-bolsonaro-35-em-primeiro-turno.shtml",
+      "title": "Fale com a ombudsman - Folha de S.Paulo Abrir sidebar menu Menu Assine Ir para o conteúdo [1] Ir para o menu [2] Ir para",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:14.781Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml",
+      "title": "Quaest: Flávio marca 42%, e Lula, 40% no 2º turno - 14/09/2026 - Política - Folha Últimas notícias Gostaria de receber a",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:57:15.226Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/btgnexus-lula-tem-42-e-flavio-bolsonaro-37-no-primeiro-turno.shtml",
+      "title": "Nexus: Lula tem 42%, e Flávio Bolsonaro, 37% no 1º turno - 14/09/2026 - Política - Folha Últimas notícias Gostaria de re",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-14T16:57:16.133Z"
+    },
+    {
+      "url": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-14-de-setembro-de-2026/",
+      "title": "Pesquisa BTG/Nexus de intenção de votos para presidente do Brasil – 14 de setembro de 2026 - Nexus Home quem somos por q",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:17.464Z"
+    },
+    {
+      "url": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-8-de-setembro-de-2026/",
+      "title": "Pesquisa BTG/Nexus de intenção de votos para presidente do Brasil – 8 de setembro de 2026 - Nexus Home quem somos por qu",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:18.856Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/lula-so-lidera-fora-da-margem-de-erro-no-2o-turno-contra-zema-mostra-quaest/",
+      "title": "Lula só lidera fora da margem de erro no 2º turno contra Zema, mostra Quaest Lula só lidera fora da margem de erro no 2º",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-14T16:57:18.960Z"
+    }
+  ]
 }
