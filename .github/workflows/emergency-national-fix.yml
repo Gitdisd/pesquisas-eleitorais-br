@@ -9,19 +9,16 @@ permissions:
 
 jobs:
   repair:
-    if: ${{ !contains(github.event.head_commit.message, 'hotfix: repair national boot') }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
-
       - name: Repair broken typed-data wiring
         shell: bash
         run: |
@@ -42,20 +39,16 @@ jobs:
               s = s.replace(old, new)
           p.write_text(s, encoding='utf-8')
           PY
-
-          # Remove this one-shot workflow from the committed result.
-          rm -f .github/workflows/emergency-national-fix.yml
-
       - name: Validate
         run: |
           npm ci
           npm run typecheck
           npm run quality:gate
           npm run build
-
-      - name: Commit repaired source
+      - name: Commit repaired source and remove one-shot workflow
         shell: bash
         run: |
+          rm -f .github/workflows/emergency-national-fix.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/main.js .github/workflows/emergency-national-fix.yml
