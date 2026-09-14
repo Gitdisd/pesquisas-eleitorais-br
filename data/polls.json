@@ -7451,7 +7451,7 @@
       {
         "name": "branco/nulo/não sabe",
         "party_optional": null,
-        "pct": 8.0
+        "pct": 8
       }
     ],
     "n": 1500,
@@ -7510,6 +7510,138 @@
     "verified": true
   },
   {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "n": 5000,
+    "margin_of_error": "±2,5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
+    "verified": true,
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
+    ],
+    "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf. Branco/nulo 9 + indecisos 1 combined."
+  },
+  {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "n": 5000,
+    "margin_of_error": "±2,5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
+    "verified": true,
+    "scenario": "estimulada 1º turno com Marçal",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 11
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 2
+      }
+    ],
+    "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; cenário com Pablo Marçal; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf."
+  },
+  {
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-07",
+    "published_date": "2026-09-09",
+    "n": 5000,
+    "margin_of_error": "±2,5 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
+    "verified": true,
+    "scenario": "estimulada 1º turno sem Marçal",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 39
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 11
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 4
+      }
+    ],
+    "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; cenário sem Pablo Marçal; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf."
+  },
+  {
     "institute": "AtlasIntel",
     "fieldwork_start": "2026-09-04",
     "fieldwork_end": "2026-09-09",
@@ -7548,7 +7680,7 @@
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 43.0
+        "pct": 43
       },
       {
         "name": "Flávio Bolsonaro",

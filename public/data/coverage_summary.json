@@ -9,7 +9,7 @@
     "Ronaldo Caiado",
     "Romeu Zema"
   ],
-  "records": 202,
+  "records": 205,
   "institutes_included": [
     "Alfa Inteligência",
     "AtlasIntel",
@@ -21,6 +21,7 @@
     "Ideia",
     "Indexa/Broadcast",
     "Nexus/BTG",
+    "Palver",
     "Paraná Pesquisas",
     "PoderData",
     "Quaest",
@@ -31,7 +32,6 @@
     "Ipec (Ipsos-Ipec)": "No Brazil-wide presidential poll published in 2026 through 2026-09-08; last national was Dec 2025. State-level only (e.g. Ceará) in 2026 — excluded.",
     "Brasmarket": "State-only (RS) presidential cuts — excluded (not national).",
     "Instituto Methodus": "State-only (RS) — excluded.",
-    "Palver": "Appears in aggregators but treated as lesser-known; omitted pending stronger primary verification.",
     "Veritá / Vetor Arrow / Colectta": "Present in some aggregators; omitted here as contested/less consensus-reputable vs core set."
   },
   "coverage_gaps": [
@@ -55,5 +55,8 @@
     "Quaest_Sep7_2T": "G1 confirms Lula 41 / Flávio 41 (branco/nulo 13 + indecisos 5); some secondary outlets misstated 42–41 — MATCH file to G1",
     "Datafolha_Sep3": "G1/Folha confirm Lula 38 / Flávio 33 / Cury 8; 2T 46–44; N=2002; BR-03669/2026 — MATCH; fieldwork 1–2 Sep",
     "Nexus_latest": "Primary nexus.fsb.com.br: last published round 31 Aug 2026 (no Sep round yet as of 8 Sep) — MATCH"
-  }
+  },
+  "recent_ingest_notes": [
+    "Palver Onda 2 (fieldwork 2026-09-04–07, published 2026-09-09, TSE BR-05420/2026) ingested from primary PDF + press; previously deferred as lesser-known."
+  ]
 }
