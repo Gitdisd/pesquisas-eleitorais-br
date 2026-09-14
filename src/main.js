@@ -1,6 +1,8 @@
 import './style.css'
 import 'hammerjs'
-import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } from './candidates.js'
+import { CANDIDATES } from './candidates.js'
+import { loadPollData } from './data/api.ts'
+import { mergePolls, normalizePolls } from './data/normalize.ts'
 import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToChart } from './chart.js'
 import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
 import { PROJECTION_COPY_PT } from './projection.js'
@@ -50,36 +52,15 @@ function initTheme() {
   if (saved === 'dark' || saved === 'light') return saved
   return 'dark'
 }
-function pollKey(p) {
-  return [p.institute, p.fieldwork_end, p.scenario].join('|')
-}
-function mergePolls(base, extra) {
-  const map = new Map()
-  for (const p of base || []) map.set(pollKey(p), p)
-  for (const p of extra || []) {
-    if (p && p.institute && p.fieldwork_end && p.scenario) map.set(pollKey(p), p)
-  }
-  return [...map.values()]
-}
 async function boot() {
   applyTheme(initTheme())
   document.getElementById('app').innerHTML = shellHTML()
   applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
   fillProjectionCopy(); syncProjectionUI(); bindChrome()
   try {
-    const [pollRes, extraRes, meta] = await Promise.all([fetch(DATA_URL), fetch(EXTRA_URL), loadMeta()])
-    if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
-    const data = await pollRes.json()
-    const base = Array.isArray(data) ? data : data.polls || []
-    let extra = []
-    if (extraRes.ok) {
-      try {
-        const ex = await extraRes.json()
-        extra = Array.isArray(ex) ? ex : ex.polls || []
-      } catch {}
-    }
-    state.raw = mergePolls(base, extra)
-    state.polls = normalize(state.raw)
+    const bundle = await loadPollData(DATA_URL, EXTRA_URL, META_URL)
+    state.raw = mergePolls(bundle.polls, bundle.extra)
+    state.polls = normalizePolls(state.raw)
     state.meta = meta
     state.updatedLabel = resolveUpdatedStamp(meta, state.polls)
     state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
@@ -93,13 +74,6 @@ async function boot() {
 }
 function chartOpts() {
   return { polls: state.polls, round: state.round, institutes: state.institutes, windowDays: state.windowDays, rangeDays: state.rangeDays, projection: state.projection }
-}
-async function loadMeta(noStore = false) {
-  try {
-    const url = noStore ? META_URL + "?v=" + Date.now() : META_URL
-    const res = await fetch(url, noStore ? { cache: "no-store" } : undefined)
-    return res.ok ? await res.json() : null
-  } catch { return null }
 }
 function resolveUpdatedStamp(meta, polls) {
   const fromMeta = formatUpdatedStamp(meta?.last_updated)
@@ -150,23 +124,10 @@ function tickCheckTimer() {
 async function refreshDataQuietly() {
   const bust = `?v=${Date.now()}`
   try {
-    const [pollRes, extraRes, meta] = await Promise.all([
-      fetch(DATA_URL + bust, { cache: 'no-store' }),
-      fetch(EXTRA_URL + bust, { cache: 'no-store' }),
-      loadMeta(true),
-    ])
-    if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
-    const data = await pollRes.json()
-    const base = Array.isArray(data) ? data : data.polls || []
-    let extra = []
-    if (extraRes.ok) {
-      try {
-        const ex = await extraRes.json()
-        extra = Array.isArray(ex) ? ex : ex.polls || []
-      } catch {}
-    }
-    const nextRaw = mergePolls(base, extra)
-    const nextPolls = normalize(nextRaw)
+    const bundle = await loadPollData(DATA_URL, EXTRA_URL, META_URL, true)
+    const nextRaw = mergePolls(bundle.polls, bundle.extra)
+    const nextPolls = normalizePolls(nextRaw)
+    const meta = bundle.meta
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
@@ -200,33 +161,6 @@ function startCheckTimers() {
   tickCheckTimer()
   state.checkTimerId = setInterval(tickCheckTimer, 1000)
   state.metaPollId = setInterval(refreshDataQuietly, 60_000)
-}
-function normalize(rows) {
-  return rows.map((row, idx) => {
-    const scenario = row.scenario || ''
-    let round = null
-    if (isSecondRound(scenario) && /lula/i.test(scenario) && /fl[aá]vio/i.test(scenario)) round = 2
-    else if (isFirstRound(scenario) && !isSecondRound(scenario)) round = 1
-    else if (isSecondRound(scenario)) round = 2
-    else if (isFirstRound(scenario)) round = 1
-    if (!round) return null
-    const results = {}
-    for (const c of row.candidates || []) {
-      const m = matchCandidate(c.name)
-      if (m && typeof c.pct === 'number') results[m.key] = c.pct
-    }
-    if (round === 2 && (results.lula == null || results.flavio == null)) return null
-    if (round === 1 && results.lula == null && results.flavio == null) return null
-    const end = row.fieldwork_end || row.published_date
-    if (!end) return null
-    return {
-      id: `${row.institute}-${end}-${round}-${idx}`, institute: row.institute, published: row.published_date,
-      fieldworkStart: row.fieldwork_start, fieldworkEnd: end, t: Date.parse(end + 'T12:00:00Z'),
-      n: row.n, moe: parseMoe(row.margin_of_error), moeRaw: row.margin_of_error, method: row.methodology_note,
-      tse: (row.methodology_note || '').match(/BR-\d+\/\d+/)?.[0] || null, scenario, round, results,
-      sourceUrl: row.source_url, verified: row.verified !== false, flag: row.flag,
-    }
-  }).filter(Boolean).sort((a, b) => a.t - b.t)
 }
 function shellHTML() {
   const presetBtns = WINDOW_PRESETS.map((p) => `<button type="button" class="chip${p.id === '14' ? ' on' : ''}" data-win="${p.id}">${p.label}</button>`).join('')
