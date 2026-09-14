@@ -1,22 +1,5 @@
 {
   "version": 1,
-  "updated_at": "2026-09-14T11:13:12.000Z",
-  "items": [
-    {
-      "url": "https://docs.google.com/viewerng/viewer?url=https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf",
-      "title": "Palver PDF",
-      "reason": "pdf_needs_manual_or_ocr",
-      "institute": "Palver",
-      "published_date": null,
-      "found_at": "2026-09-12T00:11:20.441Z"
-    },
-    {
-      "url": "https://noticias.uol.com.br/eleicoes/2026/08/31/pesquisa-presidencial-btgnexus-31-agosto.ghtm",
-      "title": "\"BTG/Nexus: Lula lidera no 1° turno, Flávio cai 4 pontos, e Cury sobe 9\"",
-      "reason": "fetch_failed:403",
-      "institute": null,
-      "published_date": null,
-      "found_at": "2026-09-12T00:11:20.713Z"
-    }
-  ]
+  "updated_at": "2026-09-14T15:04:12.000Z",
+  "items": []
 }
