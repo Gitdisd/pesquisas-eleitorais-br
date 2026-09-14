@@ -7451,7 +7451,7 @@
       {
         "name": "branco/nulo/não sabe",
         "party_optional": null,
-        "pct": 8.0
+        "pct": 8
       }
     ],
     "n": 1500,
@@ -7547,7 +7547,7 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
     "verified": true,
-    "scenario": "estimulada 1º turno",
+    "scenario": "estimulada 1º turno com Marçal",
     "candidates": [
       {
         "name": "Lula",
@@ -7601,7 +7601,7 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
     "verified": true,
-    "scenario": "estimulada 1º turno",
+    "scenario": "estimulada 1º turno sem Marçal",
     "candidates": [
       {
         "name": "Lula",
@@ -7680,7 +7680,7 @@
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 43.0
+        "pct": 43
       },
       {
         "name": "Flávio Bolsonaro",
