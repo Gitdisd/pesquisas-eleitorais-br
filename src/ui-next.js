@@ -12,13 +12,13 @@ function injectStyle() {
     .next-tools{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 .7rem}
     .next-tool{border:1px solid var(--border);background:var(--chip-bg);color:var(--text);border-radius:10px;padding:.45rem .65rem;font:inherit;font-size:.75rem;min-height:38px;cursor:pointer}
     .next-tool:hover,.next-tool:focus-visible{border-color:var(--accent);outline:none;box-shadow:var(--ring)}
-    .next-tool[aria-pressed=true]{background:var(--chip-on-bg);border-color:var(--chip-on-border);color:var(--chip-on-text);font-weight:700}
     .next-tool.primary{background:var(--text);color:var(--surface);border-color:var(--text)}
     html[data-theme=dark] .next-tool.primary{background:#e8eaed;color:#0f1216;border-color:#e8eaed}
     .candidate-focus{display:flex;flex-wrap:wrap;gap:.35rem;margin:.2rem 0 .65rem}
     .candidate-focus-label{width:100%;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
     .candidate-focus button{border:1px solid var(--border);background:var(--chip-bg);color:var(--text);border-radius:999px;padding:.3rem .55rem;font:inherit;font-size:.72rem;cursor:pointer;min-height:32px}
     .candidate-focus button[aria-pressed=true]{font-weight:700;background:var(--chip-on-bg);border-color:var(--chip-on-border)}
+    .candidate-focus button:disabled{opacity:.42;cursor:not-allowed}
     .data-toast{position:fixed;left:50%;bottom:1rem;transform:translate(-50%,120%);opacity:0;transition:transform .2s ease,opacity .2s ease;background:var(--text);color:var(--surface);padding:.55rem .8rem;border-radius:10px;z-index:100;font-size:.76rem;box-shadow:0 8px 30px rgba(0,0,0,.25);pointer-events:none}
     .data-toast.show{transform:translate(-50%,0);opacity:1}
     .scroll-top{position:fixed;right:1rem;bottom:1rem;z-index:35;border:1px solid var(--border);background:var(--glass);color:var(--text);backdrop-filter:blur(12px);border-radius:50%;width:42px;height:42px;display:none;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.16)}
@@ -47,6 +47,17 @@ function getChart() {
   return canvas ? Chart.getChart(canvas) : null
 }
 
+function syncCandidateButtons() {
+  const chart = getChart()
+  const labels = new Set(chart?.data.datasets.map((ds) => ds.label) || [])
+  for (const btn of document.querySelectorAll('.candidate-focus button[data-candidate]')) {
+    const label = btn.dataset.candidate
+    const available = labels.has(label) || labels.has(`${label} (média)`)
+    btn.disabled = !available
+    if (!available) btn.setAttribute('aria-pressed', 'false')
+  }
+}
+
 function addCandidateFocus() {
   const panel = document.getElementById('chartPanel')
   const anchor = panel?.querySelector('.chart-below')
@@ -59,25 +70,24 @@ function addCandidateFocus() {
     const btn = document.createElement('button')
     btn.type = 'button'
     btn.textContent = candidate.label
+    btn.dataset.candidate = candidate.label
     btn.setAttribute('aria-pressed', 'true')
     btn.title = `Mostrar ou ocultar ${candidate.label} no gráfico`
     btn.addEventListener('click', () => {
       const chart = getChart()
-      if (!chart) return
+      if (!chart || btn.disabled) return
       const visible = btn.getAttribute('aria-pressed') === 'true'
       const labels = new Set([candidate.label, `${candidate.label} (média)`])
-      for (const ds of chart.data.datasets) {
-        if (labels.has(ds.label)) {
-          const meta = chart.getDatasetMeta(chart.data.datasets.indexOf(ds))
-          meta.hidden = visible
-        }
-      }
+      chart.data.datasets.forEach((ds, index) => {
+        if (labels.has(ds.label)) chart.getDatasetMeta(index).hidden = visible
+      })
       btn.setAttribute('aria-pressed', String(!visible))
       chart.update('none')
     })
     row.appendChild(btn)
   }
   anchor.prepend(row)
+  syncCandidateButtons()
 }
 
 function addQuickTools() {
@@ -97,9 +107,10 @@ function addQuickTools() {
   tools.querySelector('[data-next-focus]').addEventListener('click', () => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }))
   tools.querySelector('[data-next-reset]').addEventListener('click', () => {
     document.getElementById('resetZoom')?.click()
-    for (const b of panel.querySelectorAll('.candidate-focus button')) b.setAttribute('aria-pressed', 'true')
     const chart = getChart()
-    if (chart) for (const meta of chart.getSortedVisibleDatasetMetas()) meta.hidden = false
+    if (chart) chart.data.datasets.forEach((_, index) => { chart.getDatasetMeta(index).hidden = false })
+    for (const b of panel.querySelectorAll('.candidate-focus button')) b.setAttribute('aria-pressed', 'true')
+    syncCandidateButtons()
     chart?.update('none')
     toast('Visualização restaurada')
   })
@@ -108,7 +119,8 @@ function addQuickTools() {
     const share = { title: document.title, text: 'Pesquisas eleitorais — Presidência 2026', url }
     try {
       if (navigator.share) await navigator.share(share)
-      else { await navigator.clipboard.writeText(url); toast('Link copiado') }
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(url); toast('Link copiado') }
+      else toast('Compartilhamento não disponível neste navegador')
     } catch (err) {
       if (err?.name !== 'AbortError') toast('Não foi possível compartilhar')
     }
@@ -158,6 +170,8 @@ function mount() {
   addQuickTools()
   addCandidateFocus()
   addScrollTop()
+  const syncTimer = setInterval(syncCandidateButtons, 800)
+  window.addEventListener('beforeunload', () => clearInterval(syncTimer), { once: true })
   return true
 }
 
