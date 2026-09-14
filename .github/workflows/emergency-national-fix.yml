@@ -43,7 +43,7 @@ jobs:
         run: |
           npm ci
           npm run typecheck
-          npm run quality:gate
+          node scripts/quality-gate.mjs
           npm run build
       - name: Commit repaired source and remove one-shot workflow
         shell: bash
