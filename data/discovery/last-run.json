@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-15T04:46:01.207Z",
+  "ran_at": "2026-09-15T10:00:20.011Z",
   "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 410,
+  "candidate_links": 406,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 42,
@@ -17,15 +17,15 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-15T04:45:43.186Z"
+      "found_at": "2026-09-15T09:59:58.564Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
       "title": "Quaest: 67% dizem que crise no STF não influencia voto presidencial | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
-      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T04:45:43.445Z"
+      "found_at": "2026-09-15T09:59:58.831Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T04:45:43.640Z"
+      "found_at": "2026-09-15T09:59:58.996Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-15T04:45:43.661Z"
+      "found_at": "2026-09-15T09:59:59.029Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T04:45:44.292Z"
+      "found_at": "2026-09-15T09:59:59.695Z"
     }
   ],
-  "meta_last_check_at": "2026-09-15T04:46:01.208Z"
+  "meta_last_check_at": "2026-09-15T10:00:20.012Z"
 }

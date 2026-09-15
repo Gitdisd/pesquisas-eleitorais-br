@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T04:46:01.207Z",
+  "updated_at": "2026-09-15T10:00:20.011Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -377,6 +377,22 @@
       "institute": "Nexus/BTG",
       "published_date": "2026-09-14",
       "found_at": "2026-09-15T04:04:35.913Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-no-1-turno-lula-tem-40-flavio-36-e-cury-7/",
+      "title": "Nexus/BTG: No 1° turno, Lula tem 40%; Flávio, 36% e Cury, 7% | CNN Brasil Pular para o conteúdo Ao vivo Política Money W",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-15T10:00:19.497Z"
+    },
+    {
+      "url": "https://www.canalmeio.com.br/wp-content/uploads/2026/09/Pesquisa-Meio_Ideia-Setembro.pdf",
+      "title": "CNT/MDA PDF",
+      "reason": "pdf_needs_manual_or_ocr",
+      "institute": "CNT/MDA",
+      "published_date": null,
+      "found_at": "2026-09-15T10:00:20.007Z"
     }
   ]
 }
