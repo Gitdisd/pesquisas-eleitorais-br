@@ -106,28 +106,23 @@ function injectVerifyButton() {
   if (document.getElementById('verifyNow')) return true
   const timer = document.getElementById('checkTimer')
   if (!timer) return false
-
   const wrap = document.createElement('div')
   wrap.className = 'hdr-actions'
   wrap.id = 'hdrActions'
-
   const btn = document.createElement('button')
   btn.type = 'button'
   btn.id = 'verifyNow'
   btn.className = 'theme-toggle'
   btn.textContent = 'Verificar agora'
-
   const link = document.createElement('a')
   link.className = 'theme-toggle hdr-link'
   link.href = 'https://github.com/Gitdisd/pesquisas-eleitorais-br/actions/workflows/refresh-polls.yml'
   link.target = '_blank'
   link.rel = 'noopener noreferrer'
   link.textContent = 'Busca no GitHub'
-
   wrap.append(btn, link)
   timer.after(wrap)
   document.querySelectorAll('header .refresh-notice').forEach((n) => n.remove())
-
   btn.addEventListener('click', async () => {
     btn.disabled = true
     btn.textContent = 'Recarregando…'
@@ -149,7 +144,7 @@ function injectVerifyButton() {
 function defaultModel() {
   try {
     const saved = Number(localStorage.getItem('pebr-model'))
-    if ([0, 1, 2, 3, 4, 5].includes(saved)) return saved
+    if ([0, 1, 2, 3, 4, 5, 6, 7].includes(saved)) return saved
   } catch {}
   return 1
 }
@@ -169,11 +164,13 @@ function setProjModel(n) {
   if (hint) {
     hint.classList.toggle('on', n > 0)
     const copy = {
-      1: 'Modelo 1: média antiga.',
-      2: 'Modelo 2: meia-vida + house.',
-      3: 'Modelo 3: meta-análise de efeitos aleatórios. Peso = recência / (erro amostral + tau entre pesquisas). N e margem entram.',
-      4: 'Modelo 4: intencao latente (Kalman). Cada pesquisa atualiza a corrida pelo erro amostral; nao e previsao de urna.',
-      5: 'Modelo 5: reativo. Meia-vida curta e impulso nas pesquisas novas. Sem house effect.',
+      1: 'Exp: média com peso √n e esquecimento exponencial (padrão).',
+      2: 'Casa: meia-vida + house effect + 1/k se a mesma casa repetiu.',
+      3: 'Meta: efeitos aleatórios. Peso = recência / (σ² + τ²) / k.',
+      4: 'Kalman: intenção latente. Cada pesquisa atualiza o estado; não é urna.',
+      5: 'Rápido: meia-vida curta e impulso nas pesquisas novas.',
+      6: 'Dia: média √n do dia de campo. Um ponto por dia; dias vazios não inventam.',
+      7: 'Local: reta local (LOESS) no scatter. A linha pode inclinar no fim da janela.',
     }
     hint.textContent = copy[n] || hint.textContent
   }
@@ -183,24 +180,24 @@ function injectModelToggles() {
   if (document.getElementById('projModelRow')) return !!document.getElementById('projectionToggle')
   const host = document.getElementById('projToggleLabel')?.parentElement || document.querySelector('.controls-secondary')
   if (!host) return false
-
   const row = document.createElement('div')
   row.id = 'projModelRow'
   row.className = 'proj-model-row'
   row.innerHTML = `
     <span class="ctrl">Média</span>
     <button type="button" class="chip" data-proj-model="0">off</button>
-    <button type="button" class="chip" data-proj-model="1">Modelo 1</button>
-    <button type="button" class="chip" data-proj-model="2">Modelo 2</button>
-    <button type="button" class="chip" data-proj-model="3">Modelo 3</button>
-    <button type="button" class="chip" data-proj-model="4">Modelo 4</button>
-    <button type="button" class="chip" data-proj-model="5">Modelo 5</button>
+    <button type="button" class="chip" data-proj-model="1" title="Modelo 1">Exp</button>
+    <button type="button" class="chip" data-proj-model="2" title="Modelo 2">Casa</button>
+    <button type="button" class="chip" data-proj-model="3" title="Modelo 3">Meta</button>
+    <button type="button" class="chip" data-proj-model="4" title="Modelo 4">Kalman</button>
+    <button type="button" class="chip" data-proj-model="5" title="Modelo 5">Rápido</button>
+    <button type="button" class="chip" data-proj-model="6" title="Modelo 6">Dia</button>
+    <button type="button" class="chip" data-proj-model="7" title="Modelo 7">Local</button>
   `
   host.prepend(row)
   row.querySelectorAll('[data-proj-model]').forEach((b) => {
     b.addEventListener('click', () => setProjModel(Number(b.dataset.projModel)))
   })
-
   if (!document.getElementById('projSummary')) {
     const p = document.createElement('p')
     p.id = 'projSummary'
@@ -210,7 +207,6 @@ function injectModelToggles() {
   setProjModel(window.__pebrProjModel == null ? defaultModel() : Number(window.__pebrProjModel))
   return true
 }
-
 
 function injectOverlayToggles() {
   if (document.getElementById('overlayRow')) return true
@@ -249,15 +245,14 @@ function injectOverlayToggles() {
   host.after(row)
   return true
 }
+
 function layoutFix() {
   const stack = document.querySelector('main.main-stack')
   const cards = document.getElementById('cards')
   const chart = document.getElementById('chartPanel')
   if (!stack || !cards || !chart) return false
-
   const tablePanel = [...stack.querySelectorAll(':scope > .panel')].find((p) => p.querySelector('#tbody'))
   const metodo = [...stack.querySelectorAll(':scope > .panel')].find((p) => p.classList.contains('metodologia'))
-
   if (cards.nextElementSibling !== chart && cards !== chart.previousElementSibling) {
     stack.insertBefore(cards, chart)
   }
@@ -265,10 +260,9 @@ function layoutFix() {
     const note = document.createElement('p')
     note.id = 'cardsNote'
     note.className = 'cards-note'
-    note.textContent = 'Padrão: Modelo 1 (fórmula original). Overlays são só visual e não mudam a média.'
+    note.textContent = 'Padrão: Exp (modelo 1). Dia = média do campo daquele dia. Local = reta no scatter. Overlays não mudam a média.'
     cards.after(note)
   }
-
   if (tablePanel) {
     tablePanel.classList.add('panel-table')
     tablePanel.id = 'nationalTablePanel'
@@ -276,7 +270,6 @@ function layoutFix() {
     if (h) h.textContent = 'Tabela nacional'
     if (tablePanel.previousElementSibling !== chart) chart.after(tablePanel)
   }
-
   const below = chart.querySelector('.chart-below')
   if (below && !document.getElementById('chartOpts')) {
     const det = document.createElement('details')
@@ -288,16 +281,13 @@ function layoutFix() {
     det.append(sum, below)
     chart.appendChild(det)
   }
-
   const title = chart.querySelector('.chart-title')
   if (title) title.textContent = 'Nacional — evolução da intenção de voto'
-
   const regional = document.getElementById('allSourcesPanel')
   if (regional) {
     if (metodo) stack.insertBefore(regional, metodo)
     else if (tablePanel) tablePanel.after(regional)
   }
-
   injectModelToggles()
   injectOverlayToggles()
   installThemeCycle()
