@@ -65,6 +65,12 @@ jobs:
       - name: Publish pipeline status for the site
         run: node scripts/publish-pipeline-status.mjs
 
+      - name: Merge supplemental poll values into canonical data
+        run: node scripts/merge-poll-supplements.mjs
+
+      - name: Audit canonical vs supplemental coverage
+        run: node scripts/data-completeness-audit.mjs
+
       - name: Run deterministic integrity audit
         run: node scripts/quality-audit.mjs
 
