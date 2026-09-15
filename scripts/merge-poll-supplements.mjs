@@ -7,6 +7,7 @@ const BASE_PATH = `${ROOT}/data/polls.json`
 const EXTRA_PATHS = [
   `${ROOT}/data/polls-extra.json`,
   `${ROOT}/public/data/polls-extra.json`,
+  `${ROOT}/data/polls-extra-wave-2026-09-15.json`,
 ]
 const OUT_PATH = BASE_PATH
 
@@ -15,7 +16,6 @@ const load = (file) => {
   return Array.isArray(value) ? value : value.polls || []
 }
 
-// Identity is institute + fieldwork + scenario. Article/publish date is coverage.
 const key = (p) => [
   String(p.institute || '').trim(),
   p.fieldwork_start || '',
@@ -132,7 +132,6 @@ for (const extra of extras) {
     if (seen.has(ck)) continue
     if (isResidual(candidate.name) && hasResidual && isGluedResidual(candidate.name)) continue
     if (isResidual(candidate.name) && hasResidual && !glued.length) continue
-
     seen.set(ck, candidate)
     working.push(candidate)
     addedCandidateValues += 1
@@ -164,8 +163,8 @@ const merged = [...byKey.values()].sort((a, b) =>
 
 const oldText = fs.readFileSync(OUT_PATH, 'utf8')
 const newText = `${JSON.stringify(merged, null, 2)}\n`
-const changed = oldText !== newText
-if (changed) fs.writeFileSync(OUT_PATH, newText, 'utf8')
+const fileChanged = oldText !== newText
+if (fileChanged) fs.writeFileSync(OUT_PATH, newText, 'utf8')
 
 const report = {
   version: 4,
@@ -180,11 +179,10 @@ const report = {
   added_candidate_values: addedCandidateValues,
   replaced_glued_residuals: replacedGluedResiduals,
   excluded_candidate_values: excludedCandidateValues,
-  changed,
+  changed: fileChanged,
   content_sha256: crypto.createHash('sha256').update(newText).digest('hex'),
   additions: additions.slice(0, 250),
 }
 fs.mkdirSync(`${ROOT}/data/discovery`, { recursive: true })
 fs.writeFileSync(`${ROOT}/data/discovery/supplement-merge.json`, `${JSON.stringify(report, null, 2)}\n`)
-
 console.log(JSON.stringify(report, null, 2))
