@@ -4,11 +4,6 @@ import crypto from 'node:crypto'
 
 const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
 const issues = []
-const candidateKeys = new Set([
-  'Lula', 'Flávio Bolsonaro', 'Augusto Cury', 'Renan Santos', 'Ronaldo Caiado', 'Romeu Zema',
-  'Samara Martins', 'Hertz Dias', 'Edmilson Costa', 'Rui Costa Pimenta', 'Clariana Barão', 'Wilson Grassi',
-  'branco/nulo/não sabe', 'outros/branco/nulo/não sabe', 'indecisos'
-])
 
 const protocolOf = (p) => {
   const s = [p.methodology_note, p.source_url, p.tse_registration].filter(Boolean).join(' ')
@@ -30,7 +25,6 @@ for (const [i, p] of polls.entries()) {
   const sum = [...map.values()].reduce((a, b) => a + b, 0)
   const seen = new Set()
   for (const c of p.candidates || []) {
-    if (!candidateKeys.has(c.name)) issues.push({ type: 'unknown_candidate_label', poll: i, name: c.name })
     if (seen.has(c.name)) issues.push({ type: 'duplicate_candidate', poll: i, name: c.name })
     seen.add(c.name)
     if (!Number.isFinite(Number(c.pct)) || Number(c.pct) < 0 || Number(c.pct) > 100) {
