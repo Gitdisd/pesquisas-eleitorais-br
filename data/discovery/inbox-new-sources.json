@@ -1,0 +1,27 @@
+{
+  "as_of": "2026-09-15",
+  "rule": "Unknown institutes and aggregators stay here until a human marks verified=true with a TSE protocol and a full table. Do not drop the signal.",
+  "pending": [
+    {
+      "name": "TMC agregador",
+      "url": "https://tmc.com.br/eleicoes/2026/pesquisa/",
+      "kind": "aggregator",
+      "note": "New 2026 compiler. Detect only."
+    },
+    {
+      "name": "ABC Dados",
+      "kind": "aggregator",
+      "note": "Wikipedia listing. Detect only."
+    },
+    {
+      "name": "Plano Político",
+      "kind": "aggregator",
+      "note": "Wikipedia listing. Detect only."
+    },
+    {
+      "name": "Leonardo Avalanche (PRTB)",
+      "kind": "candidate-universe",
+      "note": "Replaced Marçal after 14 Sep TSE. Need name map before plotting."
+    }
+  ]
+}
