@@ -47,6 +47,9 @@ jobs:
       - name: Apply verified data corrections
         run: node scripts/apply-corrections.mjs
 
+      - name: Repair verified missing candidate values
+        run: node scripts/repair-known-missing-candidates.mjs
+
       - name: Expand automatic discovery to all presidential candidates
         run: node scripts/expand-discovery-candidates.mjs
 
