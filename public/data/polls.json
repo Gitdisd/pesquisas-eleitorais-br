@@ -78,42 +78,27 @@
     "verified": true
   },
   {
-    "institute": "PoderData",
-    "fieldwork_start": "2026-09-11",
+    "institute": "Quaest",
+    "fieldwork_start": "2026-09-10",
     "fieldwork_end": "2026-09-13",
     "published_date": "2026-09-14",
-    "scenario": "estimulada 1º turno",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 42
+        "pct": 40
       },
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 37
-      },
-      {
-        "name": "Augusto Cury",
-        "party_optional": "Avante",
-        "pct": 6
-      },
-      {
-        "name": "Renan Santos",
-        "party_optional": "Missão",
-        "pct": 2
-      },
-      {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 5
+        "pct": 42
       }
     ],
-    "n": 2003,
+    "n": 2004,
     "margin_of_error": "±2 pp",
-    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus/",
-    "methodology_note": "Auto-extracted from https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus/",
+    "source_url": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml",
+    "methodology_note": "Quaest; TSE BR-03607/2026; 2,004 interviews, 10–13 Sep 2026.",
     "verified": true
   },
   {
@@ -131,13 +116,43 @@
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 55
+        "pct": 31
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 7
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7
+      },
+      {
+        "name": "indecisos",
+        "party_optional": null,
+        "pct": 10
       }
     ],
     "n": 2004,
     "margin_of_error": "±2 pp",
-    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-42-contra-40-de-lula-no-2o-turno-diz-quaest/",
-    "methodology_note": "TSE BR-03607/2026; Auto-extracted from https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-42-contra-40-de-lula-no-2o-turno-diz-quaest/",
+    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/14/pesquisa-eleitoral-quaest-veja-numeros-percentuais-atualizados.ghtm",
+    "methodology_note": "Quaest; TSE BR-03607/2026; 2,004 interviews, 10–13 Sep 2026. Corrected from a corrupted extraction that used a second-round value (55) as first-round Flávio Bolsonaro.",
     "verified": true
   },
   {

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-14T23:51:32.967Z",
+  "updated_at": "2026-09-15T04:04:35.915Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -337,6 +337,46 @@
       "institute": "Quaest",
       "published_date": null,
       "found_at": "2026-09-14T23:51:32.965Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-2o-turno-veja-os-grupos-em-que-a-disputa-entre-lula-e-flavio-bolsonaro-esta-mais-apertada.ghtml",
+      "title": "Quaest, 2º turno: veja os grupos em que a disputa entre Lula e Flávio Bolsonaro está mais apertada | G1 Pular para o con",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-15T04:04:15.677Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-voto-mulheres-flavio-bolsonaro-lula.ghtml",
+      "title": "Quaest: Flávio Bolsonaro ganha terreno no eleitorado feminino | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
+      "reason": "incomplete_extract:no_fieldwork,no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-15T04:04:19.346Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-1-turno-14-setembro-recortes.ghtml",
+      "title": "Quaest 1º turno: veja recortes de intenção de voto para presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-15T04:04:19.532Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno-pela-1a-vez-na-campanha/",
+      "title": "Quaest: Flávio aparece à frente de Lula no 2º turno pela 1ª vez na campanha | CNN Brasil Pular para o conteúdo Ao vivo P",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Genial/Quaest",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-15T04:04:35.877Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-lula-empata-com-flavio-e-cury-no-2-turno/",
+      "title": "Nexus/BTG: Lula empata com Flávio e Cury no 2° turno | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro I",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": "2026-09-14",
+      "found_at": "2026-09-15T04:04:35.913Z"
     }
   ]
 }

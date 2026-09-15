@@ -1,23 +1,31 @@
 {
-  "ran_at": "2026-09-14T23:51:32.967Z",
+  "ran_at": "2026-09-15T04:04:35.915Z",
   "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 404,
+  "candidate_links": 410,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 39,
-  "skipped_old": 20,
-  "fetch_errors": 9,
+  "inbox_new": 42,
+  "skipped_old": 17,
+  "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-2o-turno-veja-os-grupos-em-que-a-disputa-entre-lula-e-flavio-bolsonaro-esta-mais-apertada.ghtml",
+      "title": "Quaest, 2º turno: veja os grupos em que a disputa entre Lula e Flávio Bolsonaro está mais apertada | G1 Pular para o con",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-15T04:04:15.677Z"
+    },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
       "title": "Quaest: 67% dizem que crise no STF não influencia voto presidencial | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
       "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T23:50:59.780Z"
+      "found_at": "2026-09-15T04:04:15.988Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -25,15 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T23:51:00.129Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/quaest-pesquisa-presidente-primeiro-turno-14-setembro.ghtml",
-      "title": "Quaest, 1º turno: Lula, 36%; Flávio Bolsonaro, 31%; Cury, 7%; Renan, 4%; Caiado, 4%; Zema, 1% | G1 Pular para o conteúdo",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-14",
-      "found_at": "2026-09-14T23:51:00.338Z"
+      "found_at": "2026-09-15T04:04:16.190Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -41,16 +41,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-14T23:51:01.049Z"
+      "found_at": "2026-09-15T04:04:16.249Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
-      "title": "Pesquisa Quaest: Flávio aparece numericamente à frente de Lula no 2º turno | Eleições 2026 | Valor Econômico Carregando.",
+      "title": "Pesquisa Quaest: Flávio aparece numericamente à frente de Lula no segundo turno | Eleições 2026 | Valor Econômico Carreg",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-14T23:51:01.908Z"
+      "found_at": "2026-09-15T04:04:17.030Z"
     }
   ],
-  "meta_last_check_at": "2026-09-14T23:51:32.968Z"
+  "meta_last_check_at": "2026-09-15T04:04:35.915Z"
 }

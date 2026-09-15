@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "status": "resolved",
+  "started_at": "2026-09-15T04:04:36.053Z",
+  "completed_at": "2026-09-15T04:04:40.571Z",
+  "selected_source": "afos-hf-mirror",
+  "trust": "secondary",
+  "requested_url": "https://huggingface.co/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/resolve/main/polls/tse-registry.csv?download=true",
+  "resolved_url": "https://huggingface.co/api/resolve-cache/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/bf3181cf90dae8cd6ab6e3ecf96bfa3f6e13d97f/polls%2Ftse-registry.csv?download=true&etag=%22a56c662e28db78bb2d6e990d84fbaa3303ecf7b6%22",
+  "kind": "csv",
+  "content_type": "text/plain; charset=utf-8",
+  "bytes": 4251392,
+  "sha256": "68bc88af3f9b100d2768486480e02761c4da18586983799d926a6ee610fcc834",
+  "attempts": [
+    {
+      "stage": "ckan_discovery",
+      "status": "failed",
+      "error": "HTTP 403"
+    },
+    {
+      "stage": "download",
+      "status": "failed",
+      "source": "tse-configured-cdn",
+      "trust": "official",
+      "requested_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
+      "error": "HTTP 403"
+    },
+    {
+      "stage": "download",
+      "status": "ok",
+      "source": "afos-hf-mirror",
+      "trust": "secondary",
+      "requested_url": "https://huggingface.co/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/resolve/main/polls/tse-registry.csv?download=true",
+      "resolved_url": "https://huggingface.co/api/resolve-cache/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/bf3181cf90dae8cd6ab6e3ecf96bfa3f6e13d97f/polls%2Ftse-registry.csv?download=true&etag=%22a56c662e28db78bb2d6e990d84fbaa3303ecf7b6%22",
+      "kind": "csv",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 4251392,
+      "sha256": "68bc88af3f9b100d2768486480e02761c4da18586983799d926a6ee610fcc834"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "registry_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "registry_count": 0,
+  "active_registration_count": 0,
+  "accounted_registration_count": 0,
+  "missing_registration_count": 0,
+  "attempted_recovery_count": 0,
+  "recovered_poll_record_count": 0,
+  "conflict_count": 0,
+  "max_recovery_protocols": 40,
+  "status": "covered",
+  "missing_protocols": [],
+  "conflicts": []
+}

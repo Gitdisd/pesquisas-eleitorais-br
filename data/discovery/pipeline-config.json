@@ -1,7 +1,7 @@
 {
   "version": 2,
   "election": "Eleições Gerais 2026",
-  "tse_registry_zip": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
+  "tse_registry_zip": "http://127.0.0.1:35499/tse-registry.zip",
   "tse_registry_ckan_api": "https://dadosabertos.tse.jus.br/api/3/action/package_show?id=6ee9ef02-b6da-4dd2-8fee-37afe4d2db6d",
   "tse_registry_resource_id": "769a663e-12c5-489e-a9c8-04633c2d57a3",
   "tse_registry_hf_mirror": "https://huggingface.co/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/resolve/main/polls/tse-registry.csv?download=true",
@@ -27,17 +27,110 @@
     "www.reuters.com"
   ],
   "candidate_aliases": [
-    { "name": "Lula", "party": "PT", "aliases": ["Lula", "Luiz Inácio Lula da Silva", "Luiz Inacio Lula da Silva"] },
-    { "name": "Flávio Bolsonaro", "party": "PL", "aliases": ["Flávio Bolsonaro", "Flavio Bolsonaro", "Flávio", "Flavio"] },
-    { "name": "Augusto Cury", "party": "Avante", "aliases": ["Augusto Cury", "Escritor Augusto Cury", "Cury"] },
-    { "name": "Renan Santos", "party": "Missão", "aliases": ["Renan Santos", "Renan"] },
-    { "name": "Ronaldo Caiado", "party": "PSD", "aliases": ["Ronaldo Caiado", "Caiado"] },
-    { "name": "Romeu Zema", "party": "Novo", "aliases": ["Romeu Zema", "Zema"] },
-    { "name": "Samara Martins", "party": "UP", "aliases": ["Samara Martins", "Samara"] },
-    { "name": "Hertz Dias", "party": "PSTU", "aliases": ["Hertz Dias", "Hertz"] },
-    { "name": "Edmilson Costa", "party": "PCB", "aliases": ["Edmilson Costa", "Edmilson Dias", "Edmilson"] },
-    { "name": "Rui Costa Pimenta", "party": "PCO", "aliases": ["Rui Costa Pimenta", "Rui Costa", "Pimenta"] },
-    { "name": "Clariana Barão", "party": "DC", "aliases": ["Clariana Barão", "Clariana Barao", "Clariana"] },
-    { "name": "Wilson Grassi", "party": "Democrata", "aliases": ["Wilson Grassi", "Veterinário Wilson Grassi", "Veterinario Wilson Grassi", "Grassi"] }
+    {
+      "name": "Lula",
+      "party": "PT",
+      "aliases": [
+        "Lula",
+        "Luiz Inácio Lula da Silva",
+        "Luiz Inacio Lula da Silva"
+      ]
+    },
+    {
+      "name": "Flávio Bolsonaro",
+      "party": "PL",
+      "aliases": [
+        "Flávio Bolsonaro",
+        "Flavio Bolsonaro",
+        "Flávio",
+        "Flavio"
+      ]
+    },
+    {
+      "name": "Augusto Cury",
+      "party": "Avante",
+      "aliases": [
+        "Augusto Cury",
+        "Escritor Augusto Cury",
+        "Cury"
+      ]
+    },
+    {
+      "name": "Renan Santos",
+      "party": "Missão",
+      "aliases": [
+        "Renan Santos",
+        "Renan"
+      ]
+    },
+    {
+      "name": "Ronaldo Caiado",
+      "party": "PSD",
+      "aliases": [
+        "Ronaldo Caiado",
+        "Caiado"
+      ]
+    },
+    {
+      "name": "Romeu Zema",
+      "party": "Novo",
+      "aliases": [
+        "Romeu Zema",
+        "Zema"
+      ]
+    },
+    {
+      "name": "Samara Martins",
+      "party": "UP",
+      "aliases": [
+        "Samara Martins",
+        "Samara"
+      ]
+    },
+    {
+      "name": "Hertz Dias",
+      "party": "PSTU",
+      "aliases": [
+        "Hertz Dias",
+        "Hertz"
+      ]
+    },
+    {
+      "name": "Edmilson Costa",
+      "party": "PCB",
+      "aliases": [
+        "Edmilson Costa",
+        "Edmilson Dias",
+        "Edmilson"
+      ]
+    },
+    {
+      "name": "Rui Costa Pimenta",
+      "party": "PCO",
+      "aliases": [
+        "Rui Costa Pimenta",
+        "Rui Costa",
+        "Pimenta"
+      ]
+    },
+    {
+      "name": "Clariana Barão",
+      "party": "DC",
+      "aliases": [
+        "Clariana Barão",
+        "Clariana Barao",
+        "Clariana"
+      ]
+    },
+    {
+      "name": "Wilson Grassi",
+      "party": "Democrata",
+      "aliases": [
+        "Wilson Grassi",
+        "Veterinário Wilson Grassi",
+        "Veterinario Wilson Grassi",
+        "Grassi"
+      ]
+    }
   ]
 }
