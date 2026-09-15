@@ -10,7 +10,7 @@
     "typecheck": "npx --yes -p typescript@5.9.3 tsc --noEmit -p tsconfig.json",
     "update-polls": "node scripts/update-polls.mjs",
     "discover-polls": "node scripts/discover-polls.mjs",
-    "poll-pipeline": "node scripts/poll-pipeline.mjs"
+    "poll-pipeline": "node scripts/run-poll-pipeline.mjs"
   },
   "devDependencies": {
     "vite": "^6.3.5"
