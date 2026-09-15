@@ -13,7 +13,7 @@ const T = {
   'Pesquisas publicadas': 'Published polls', 'Institutos': 'Pollsters', 'Campo mais recente': 'Latest fieldwork',
   'Cobertura por turno': 'Coverage by round', 'base nacional publicada': 'published national dataset',
   'presentes nos dados carregados': 'present in loaded data', 'sem data': 'no date', 'realizado hoje': 'today',
-  '1º turno': '1st round', '2º turno': '2nd round', 'linhas': 'rows'
+  '1º turno': '1st round', '2º turno': '2nd round', 'linhas': 'rows', 'Temas': 'Themes'
 }
 const DIRECT_T = {
   'Visão geral do conjunto de pesquisas': 'Overview of the polling dataset',
@@ -81,8 +81,8 @@ function setLanguage(next) {
 }
 
 function addControls() {
-  if (document.querySelector('.site-controls')) return
-  const host = document.querySelector('.app-hdr .wrap') || document.querySelector('.app-hdr')
+  if (document.querySelector('.site-controls')) return true
+  const host = document.querySelector('.app-hdr .hdr-text') || document.querySelector('.app-hdr .wrap') || document.querySelector('.app-hdr')
   if (!host) return false
   const controls = document.createElement('div')
   controls.className = 'site-controls'
@@ -95,7 +95,11 @@ function addControls() {
       <span class="x-profile-row"><img class="x-pfp" src="${X_PFP}" alt=""><span class="x-handle">${X_HANDLE}</span></span>
       <span data-x-label>Seguir</span>
     </a>`
-  host.appendChild(controls)
+
+  const anchor = host.querySelector('.stamp') || host.querySelector('p')
+  if (anchor) host.insertBefore(controls, anchor)
+  else host.appendChild(controls)
+
   controls.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)))
   updateLangButtons()
   return true
@@ -106,7 +110,7 @@ function installStyles() {
   const style = document.createElement('style')
   style.id = 'site-controls-style'
   style.textContent = `
-.site-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}.lang-switch{display:flex;gap:2px;padding:3px;border:1px solid var(--border,#d9dee7);border-radius:999px;background:var(--panel,#fff)}.lang-switch button{border:0;background:transparent;border-radius:999px;padding:7px 11px;font:inherit;font-weight:700;cursor:pointer}.lang-switch button.active{background:var(--accent,#2563eb);color:#fff}.x-follow{width:190px;min-height:72px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;padding:9px 14px;border-radius:14px;background:#000;color:#fff;text-decoration:none;font-weight:800;line-height:1.1;box-shadow:0 2px 8px #0002;transition:transform .15s ease,box-shadow .15s ease}.x-follow:hover{transform:translateY(-1px);box-shadow:0 5px 14px #0003}.x-profile-row{display:flex;align-items:center;gap:8px;width:100%;white-space:nowrap}.x-pfp{width:28px;height:28px;border-radius:50%;object-fit:cover;background:#333}.x-handle{overflow:hidden;text-overflow:ellipsis}.x-follow [data-x-label]{font-size:.95rem}.x-follow:focus-visible,.lang-switch button:focus-visible{outline:2px solid var(--accent,#2563eb);outline-offset:2px}@media(max-width:700px){.site-controls{width:100%;margin-left:0}.x-follow{flex:1;min-width:180px}.lang-switch{flex:none}}
+.site-controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;width:100%;margin:.65rem 0 .15rem}.lang-switch{display:flex;gap:2px;padding:3px;border:1px solid var(--border,#d9dee7);border-radius:999px;background:var(--panel,#fff)}.lang-switch button{border:0;background:transparent;border-radius:999px;padding:7px 11px;font:inherit;font-weight:700;cursor:pointer}.lang-switch button.active{background:var(--accent,#2563eb);color:#fff}.x-follow{width:190px;min-height:72px;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;padding:9px 14px;border-radius:14px;background:#000;color:#fff;text-decoration:none;font-weight:800;line-height:1.1;box-shadow:0 2px 8px #0002;transition:transform .15s ease,box-shadow .15s ease}.x-follow:hover{transform:translateY(-1px);box-shadow:0 5px 14px #0003}.x-profile-row{display:flex;align-items:center;gap:8px;width:100%;white-space:nowrap}.x-pfp{width:28px;height:28px;border-radius:50%;object-fit:cover;background:#333}.x-handle{overflow:hidden;text-overflow:ellipsis}.x-follow [data-x-label]{font-size:.95rem}.x-follow:focus-visible,.lang-switch button:focus-visible{outline:2px solid var(--accent,#2563eb);outline-offset:2px}@media(max-width:700px){.site-controls{width:100%;margin:.45rem 0}.x-follow{flex:0 1 190px}.lang-switch{flex:none}}
 `
   document.head.appendChild(style)
 }
