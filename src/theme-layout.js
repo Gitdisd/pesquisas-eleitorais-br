@@ -8,10 +8,12 @@ const PARTY_THEMES = [
   ['party-novo', 'Novo'],
   ['party-avante', 'Avante'],
 ]
+const PARTY_THEME_KEY = 'pebr-party-theme'
 
 function setSelectedTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme)
-  localStorage.setItem('pebr-theme', theme)
+  if (theme.startsWith('party-')) localStorage.setItem(PARTY_THEME_KEY, theme)
+  else localStorage.removeItem(PARTY_THEME_KEY)
   document.querySelectorAll('[data-party-theme]').forEach((button) => {
     button.classList.toggle('on', button.dataset.partyTheme === theme)
     button.setAttribute('aria-pressed', String(button.dataset.partyTheme === theme))
@@ -37,8 +39,7 @@ function arrangeThemeControls() {
       </div>
     </div>`
 
-  const basic = box.querySelector('.theme-basic')
-  basic.appendChild(themeToggle)
+  box.querySelector('.theme-basic').appendChild(themeToggle)
   themeToggle.classList.add('theme-cycle-button')
   hdrText.appendChild(box)
 
@@ -46,11 +47,9 @@ function arrangeThemeControls() {
     button.addEventListener('click', () => setSelectedTheme(button.dataset.partyTheme))
   })
 
-  const saved = localStorage.getItem('pebr-theme')
-  if (saved && (saved === 'light' || saved === 'dark' || PARTY_THEMES.some(([id]) => id === saved))) {
-    if (saved.startsWith('party-')) setSelectedTheme(saved)
-    else document.querySelectorAll('[data-party-theme]').forEach((button) => button.setAttribute('aria-pressed', 'false'))
-  }
+  const savedParty = localStorage.getItem(PARTY_THEME_KEY)
+  if (PARTY_THEMES.some(([id]) => id === savedParty)) setSelectedTheme(savedParty)
+  else document.querySelectorAll('[data-party-theme]').forEach((button) => button.setAttribute('aria-pressed', 'false'))
 
   const style = document.createElement('style')
   style.id = 'theme-layout-style'
