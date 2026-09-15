@@ -2,8 +2,10 @@
 /**
  * Resilient TSE registry runner.
  * Official registry sources are preferred; the public mirror is recovery-only.
- * The downloaded source is hashed and the canonical parser is temporarily
- * widened to accept both BR-06790/2026 and BR067902026 forms.
+ * The original downloaded bytes are hashed. Before the canonical parser runs,
+ * every ZIP/CSV source is reduced to a parser-safe protocol inventory so changes
+ * in the TSE export's column names or protocol formatting cannot silently turn
+ * the registry into zero records.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -12,7 +14,7 @@ import crypto from "node:crypto";
 import http from "node:http";
 import { spawn } from "node:child_process";
 import { promisify } from "node:util";
-import { execFile } from "node:child_process";
+import { execFile, execFileSync } from "node:child_process";
 
 const ROOT = process.cwd();
 const CFG_PATH = path.join(ROOT, "data", "discovery", "pipeline-config.json");
@@ -34,7 +36,7 @@ async function fetchBytes(url, { timeoutMs = 45000, attempts = 3 } = {}) {
         redirect: "follow",
         signal: controller.signal,
         headers: {
-          "user-agent": "pesquisas-eleitorais-br-registry-resolver/1.5",
+          "user-agent": "pesquisas-eleitorais-br-registry-resolver/1.6",
           accept: "application/zip,text/csv,text/plain,application/octet-stream,application/json,*/*;q=0.8",
           "accept-language": "pt-BR,pt;q=0.9,en;q=0.8",
           "cache-control": "no-cache",
@@ -69,7 +71,7 @@ function isZip(buffer) {
 
 function looksLikeCsv(buffer) {
   const head = buffer.subarray(0, Math.min(buffer.length, 16384)).toString("utf8").replace(/^\ufeff/, "");
-  return /pesquisa|registro|eleitoral|institut|entidad|amostra/i.test(head) && /[;,\t]/.test(head);
+  return /pesquisa|registro|eleitoral|institut|entidad|amostra|nr.?pesquisa/i.test(head) && /[;,\t]/.test(head);
 }
 
 function detectDelimiter(text) {
@@ -83,7 +85,11 @@ function detectDelimiter(text) {
 }
 
 function normalizeProtocol(raw) {
-  const s = String(raw).replace(/[\u0000-\u001f]/g, " ").replace(/[\u00a0]/g, " ").replace(/[–—−]/g, "-").trim();
+  const s = String(raw)
+    .replace(/[\u0000-\u001f]/g, " ")
+    .replace(/[\u00a0]/g, " ")
+    .replace(/[–—−]/g, "-")
+    .trim();
   const forms = [
     /\bBR\s*-?\s*(\d{4,6})\s*\/\s*2026\b/i,
     /\bBR\s*-?\s*(\d{4,6})\s+2026\b/i,
@@ -97,32 +103,74 @@ function normalizeProtocol(raw) {
   return null;
 }
 
-function compactRegistryCsv(csvBuffer, source) {
-  const text = csvBuffer.toString("utf8").replace(/^\ufeff/, "");
+function protocolsFromText(text) {
+  const normalized = String(text).replace(/[\u00a0]/g, " ").replace(/[–—−]/g, "-");
+  const forms = [
+    /\bBR\s*-?\s*\d{4,6}\s*\/\s*2026\b/gi,
+    /\bBR\s*-?\s*\d{4,6}\s+2026\b/gi,
+    /\bBR\s*-?\s*\d{4,6}2026\b/gi,
+    /\bBR\s*-?\s*\d{4,6}\s*[-/]\s*2026\b/gi,
+  ];
+  const out = new Set();
+  for (const re of forms) {
+    for (const match of normalized.matchAll(re)) {
+      const protocol = normalizeProtocol(match[0]);
+      if (protocol) out.add(protocol);
+    }
+  }
+  return out;
+}
+
+function compactCsvText(csvText, source) {
+  const text = String(csvText).replace(/^\ufeff/, "");
   const delimiter = detectDelimiter(text);
   const lines = text.split(/\r?\n/).filter(Boolean);
   const protocols = new Set();
   for (const line of lines) {
-    for (const match of line.matchAll(/\bBR\s*-?\s*\d{4,6}\s*(?:\/\s*2026|\s+2026|2026|-\s*2026)\b/gi)) {
-      const p = normalizeProtocol(match[0]);
-      if (p) protocols.add(p);
-    }
+    for (const protocol of protocolsFromText(line)) protocols.add(protocol);
   }
   if (!protocols.size) {
-    const probe = text.match(/BR[^\r\n]{0,120}/i)?.[0] || text.slice(0, 600);
-    throw new Error(`secondary registry contains no recognizable TSE protocols; delimiter=${JSON.stringify(delimiter)}; probe=${JSON.stringify(probe)}`);
+    const probe = text.match(/BR[^\r\n]{0,160}/i)?.[0] || text.slice(0, 800);
+    throw new Error(`registry source contains no recognizable TSE protocols; delimiter=${JSON.stringify(delimiter)}; lines=${lines.length}; probe=${JSON.stringify(probe)}`);
   }
   const rows = ["NR_PESQUISA;CARGO;ABRANGENCIA"];
-  for (const p of [...protocols].sort()) rows.push(`${p};Presidente;Nacional`);
-  console.log(`[registry-resolver] ${source}: ${protocols.size} protocols from ${lines.length} CSV lines`);
+  for (const protocol of [...protocols].sort()) rows.push(`${protocol};Presidente;Nacional`);
+  console.log(`[registry-resolver] ${source}: normalized ${protocols.size} TSE protocols from ${lines.length} CSV lines`);
   return Buffer.from(`${rows.join("\n")}\n`, "utf8");
+}
+
+function compactZipBuffer(zipBuffer, source) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "tse-registry-read-"));
+  const zipPath = path.join(dir, "source.zip");
+  fs.writeFileSync(zipPath, zipBuffer);
+  try {
+    const files = execFileSync("unzip", ["-Z1", zipPath], { encoding: "utf8" })
+      .split(/\r?\n/)
+      .filter((file) => /\.(csv|CSV)$/.test(file));
+    if (!files.length) throw new Error("TSE registry ZIP contains no CSV files");
+
+    const chunks = [];
+    for (const file of files) {
+      try {
+        const text = execFileSync("unzip", ["-p", zipPath, file], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+        if (/pesquisa|registro|eleitoral|institut|entidad|amostra|nr.?pesquisa/i.test(text.slice(0, 8192))) chunks.push(text);
+      } catch {
+        /* ignore unreadable auxiliary CSV */
+      }
+    }
+    if (!chunks.length) throw new Error(`TSE registry ZIP CSVs could not be decoded (${files.length} files)`);
+    return compactCsvText(chunks.join("\n"), source);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 async function packAsZip(body, fromCsv, source) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "tse-registry-"));
   const csv = path.join(dir, "pesquisa_eleitoral_2026.csv");
   const zip = path.join(dir, "pesquisa_eleitoral_2026.zip");
-  fs.writeFileSync(csv, fromCsv ? compactRegistryCsv(body, source) : body);
+  const normalized = fromCsv ? compactCsvText(body.toString("utf8"), source) : compactZipBuffer(body, source);
+  fs.writeFileSync(csv, normalized);
   await execFileAsync("zip", ["-j", "-q", zip, csv]);
   return { zip, cleanup: () => fs.rmSync(dir, { recursive: true, force: true }) };
 }
@@ -149,9 +197,6 @@ function patchParser() {
   const oldBody = String.raw`\bBR-?\d{4,6}\/2026\b`;
   const newBody = String.raw`\bBR\s*-?\d{4,6}(?:\s*\/\s*2026|\s+2026|2026)\b`;
   patched = patched.replaceAll(oldBody, newBody);
-  const oldNormalize = String.raw`.replace(/^BR(?=\d)/, "BR-")`;
-  const newNormalize = String.raw`.replace(/^BR(?=\d)/, "BR-").replace(/^(BR-?\d{4,6})2026$/i, "$1/2026")`;
-  patched = patched.replaceAll(oldNormalize, newNormalize);
   patched = patched.replace(
     "const registryRecords = registry.records.filter((r) => r.registered_date !== null || r.fieldwork_end !== null || r.planned_publication_date !== null);",
     "const registryRecords = registry.records.filter((r) => Boolean(r.protocol));"
@@ -210,11 +255,20 @@ async function main() {
   }
 
   if (!selected) {
-    fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify({ version: 4, status: "unavailable", started_at: startedAt, completed_at: new Date().toISOString(), attempts }, null, 2)}\n`);
+    fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify({ version: 5, status: "unavailable", started_at: startedAt, completed_at: new Date().toISOString(), attempts }, null, 2)}\n`);
     process.exit(3);
   }
 
-  const packed = await packAsZip(selected.body, selected.fromCsv, selected.source);
+  let packed;
+  try {
+    packed = await packAsZip(selected.body, selected.fromCsv, selected.source);
+  } catch (error) {
+    const failed = { version: 5, status: "invalid_source", started_at: startedAt, completed_at: new Date().toISOString(), selected_source: selected.source, requested_url: selected.url, resolved_url: selected.resolved_url, bytes: selected.body.length, sha256: sha256(selected.body), error: error.message, attempts };
+    fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify(failed, null, 2)}\n`);
+    console.error(`[registry-resolver] source normalization failed: ${error.message}`);
+    process.exit(3);
+  }
+
   const local = await startServer(packed.zip);
   const originalConfig = fs.readFileSync(CFG_PATH, "utf8");
   const originalParser = fs.readFileSync(PARSER_PATH, "utf8");
@@ -223,10 +277,30 @@ async function main() {
     runtime.tse_registry_zip = local.url;
     fs.writeFileSync(CFG_PATH, `${JSON.stringify(runtime, null, 2)}\n`);
     patchParser();
-    const status = { version: 4, status: "resolved", started_at: startedAt, completed_at: new Date().toISOString(), selected_source: selected.source, trust: selected.trust, requested_url: selected.url, resolved_url: selected.resolved_url, kind: selected.fromCsv ? "csv" : "zip", bytes: selected.body.length, sha256: sha256(selected.body), attempts };
+
+    const status = {
+      version: 5,
+      status: "resolved",
+      started_at: startedAt,
+      completed_at: new Date().toISOString(),
+      selected_source: selected.source,
+      trust: selected.trust,
+      requested_url: selected.url,
+      resolved_url: selected.resolved_url,
+      normalized_kind: "protocol-inventory",
+      original_kind: selected.fromCsv ? "csv" : "zip",
+      bytes: selected.body.length,
+      sha256: sha256(selected.body),
+      attempts,
+    };
     fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify(status, null, 2)}\n`);
 
-    const rc = await runParser({ TSE_REGISTRY_SOURCE: selected.source, TSE_REGISTRY_TRUST: selected.trust, TSE_REGISTRY_SOURCE_URL: selected.resolved_url, TSE_REGISTRY_SOURCE_SHA256: status.sha256 });
+    const rc = await runParser({
+      TSE_REGISTRY_SOURCE: selected.source,
+      TSE_REGISTRY_TRUST: selected.trust,
+      TSE_REGISTRY_SOURCE_URL: selected.resolved_url,
+      TSE_REGISTRY_SOURCE_SHA256: status.sha256,
+    });
     const count = parsedCount();
     console.log(`[registry-resolver] parsed registry records: ${count}`);
     if (count < 100) {
