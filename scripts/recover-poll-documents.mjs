@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * Recover poll records from PDF/HTML inbox items.
- * Uses text extraction first, then Portuguese OCR only when the PDF is image-heavy.
- * A record is staged only when source metadata and poll numbers are independently
- * present in the document; otherwise the item remains in inbox.
+ * Uses the PDF text layer first. Image-only PDFs are rendered page-by-page
+ * and OCR'd in Portuguese. Only records with complete metadata and both
+ * principal-round candidates are staged; nothing is fabricated.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -14,7 +14,8 @@ const ROOT = process.cwd()
 const INBOX = path.join(ROOT, 'data/discovery/inbox.json')
 const EXTRA = path.join(ROOT, 'data/polls-extra.json')
 const REPORT = path.join(ROOT, 'data/discovery/document-recovery.json')
-const UA = 'pesquisas-eleitorais-br-document-recovery/1.0'
+const UA = 'pesquisas-eleitorais-br-document-recovery/2.0'
+const OCR_MAX_PAGES = 40
 
 const CANDIDATES = [
   ['Lula', 'PT', ['Lula', 'Luiz Inácio Lula da Silva']],
@@ -51,8 +52,7 @@ function parseDate(raw) {
   m = s.match(/\b(\d{1,2})\s+de\s+([A-Za-zÀ-ÿ]+)\s+de\s+(2026)\b/i)
   if (m) return MONTHS[normalize(m[2])] ? isoDate(m[1], MONTHS[normalize(m[2])], m[3]) : null
   m = s.match(/\b(2026)[-/.](\d{2})[-/.](\d{2})\b/)
-  if (m) return `${m[1]}-${m[2]}-${m[3]}`
-  return null
+  return m ? `${m[1]}-${m[2]}-${m[3]}` : null
 }
 
 function extractFieldwork(text) {
@@ -61,18 +61,16 @@ function extractFieldwork(text) {
     const month = MONTHS[normalize(m[3])]
     if (month) return { start: isoDate(m[1], month, m[4]), end: isoDate(m[2], month, m[4]) }
   }
-  m = text.match(/(?:campo|coleta|entrevistas?|realizado|realizados)[^\d]{0,80}(\d{1,2}[/.\-]\d{1,2}[/.\-]2026)[^\d]{0,60}(\d{1,2}[/.\-]\d{1,2}[/.\-]2026)/i)
+  m = text.match(/(?:campo|coleta|entrevistas?|realizado|realizados)[^\d]{0,80}(\d{1,2}[/.\-]\d{1,2}[/.\-]2026)[^\d]{0,80}(\d{1,2}[/.\-]\d{1,2}[/.\-]2026)/i)
   if (m) {
     const start = parseDate(m[1]); const end = parseDate(m[2]); if (start && end) return { start, end }
   }
-  m = text.match(/\b(2026-\d{2}-\d{2})\b[^\n]{0,80}\b(2026-\d{2}-\d{2})\b/)
-  if (m) return { start: m[1], end: m[2] }
   return null
 }
 
 function extractN(text) {
   const patterns = [
-    /(?:amostra|amostral|foram entrevistad[oa]s?|entrevist(?:as|ados)|n\s*=)[^\d]{0,30}(\d{1,3}(?:[.\s]\d{3})+|\d{3,5})\b/i,
+    /(?:amostra|amostral|foram entrevistad[oa]s?|entrevist(?:as|ados)|n\s*=)[^\d]{0,40}(\d{1,3}(?:[.\s]\d{3})+|\d{3,5})\b/i,
     /\b(\d{1,3}(?:[.\s]\d{3})+|\d{4,5})\s+(?:pessoas|eleitores|entrevistas)/i,
   ]
   for (const re of patterns) {
@@ -112,15 +110,16 @@ function publishedDate(text, url) {
   return m ? `${m[1]}-${m[2]}-${m[3]}` : null
 }
 
-function pctNear(text, aliases, windowSize = 55) {
+function pctNear(text, aliases, windowSize = 75) {
   const n = normalize(text)
   for (const alias of aliases) {
     const a = normalize(alias)
     let pos = n.indexOf(a)
     while (pos >= 0) {
-      const left = n.slice(Math.max(0, pos - windowSize), pos + a.length + windowSize)
-      const after = left.match(new RegExp(`${a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}[^\\d%]{0,${windowSize}}(\\d{1,2}(?:[.,]\\d+)?)\\s*%`, 'i'))
-      const before = left.match(new RegExp(`(\\d{1,2}(?:[.,]\\d+)?)\\s*%[^a-z]{0,20}${a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}`, 'i'))
+      const window = n.slice(Math.max(0, pos - windowSize), Math.min(n.length, pos + a.length + windowSize))
+      const escaped = a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const after = window.match(new RegExp(`${escaped}[^\\d%]{0,${windowSize}}(\\d{1,2}(?:[.,]\\d+)?)\\s*%`, 'i'))
+      const before = window.match(new RegExp(`(\\d{1,2}(?:[.,]\\d+)?)\\s*%[^a-z]{0,20}${escaped}`, 'i'))
       const val = after?.[1] ?? before?.[1]
       if (val != null) {
         const pct = Number(val.replace(',','.'))
@@ -133,17 +132,15 @@ function pctNear(text, aliases, windowSize = 55) {
 }
 
 function candidatesFrom(text) {
-  const out = []
-  for (const [name, party, aliases] of CANDIDATES) {
+  return CANDIDATES.flatMap(([name, party, aliases]) => {
     const pct = pctNear(text, aliases)
-    if (pct != null) out.push({ name, party_optional: party, pct })
-  }
-  return out
+    return pct == null ? [] : [{ name, party_optional: party, pct }]
+  })
 }
 
 function scenarioSections(text) {
   const t = text.toLowerCase()
-  const first = t.search(/1[ºo°]\s*turno|primeiro\s+turno|estimulada/) 
+  const first = t.search(/1[ºo°]\s*turno|primeiro\s+turno|estimulada/)
   const second = t.search(/2[ºo°]\s*turno|segundo\s+turno/)
   if (first >= 0 && second >= 0) {
     if (first < second) return [{ scenario:'estimulada 1º turno', text:text.slice(first,second) },{ scenario:'2º turno Lula x Flávio Bolsonaro', text:text.slice(second) }]
@@ -165,11 +162,29 @@ function pdfText(file) {
   try { return execFileSync('pdftotext',['-layout',file,'-'],{encoding:'utf8',maxBuffer:32*1024*1024}) } catch { return '' }
 }
 
+function pageCount(file) {
+  try {
+    const out = execFileSync('pdfinfo',[file],{encoding:'utf8'})
+    const m = out.match(/\bPages:\s+(\d+)/i)
+    return m ? Number(m[1]) : 1
+  } catch { return 1 }
+}
+
 function ocrPdf(file, work) {
   fs.mkdirSync(work,{recursive:true})
-  execFileSync('pdftoppm',['-jpeg','-r','180','-f','1','-singlefile',file,path.join(work,'page')],{stdio:'ignore'})
-  const image = path.join(work,'page.jpg')
-  return execFileSync('tesseract',[image,'stdout','-l','por'],{encoding:'utf8',maxBuffer:8*1024*1024})
+  const pages = Math.min(pageCount(file), OCR_MAX_PAGES)
+  let all = ''
+  for (let page = 1; page <= pages; page++) {
+    const prefix = path.join(work, `page-${page}`)
+    execFileSync('pdftoppm',['-jpeg','-r','180','-f',String(page),'-singlefile',file,prefix],{stdio:'ignore'})
+    const image = `${prefix}.jpg`
+    try {
+      all += `\n${execFileSync('tesseract',[image,'stdout','-l','por'],{encoding:'utf8',maxBuffer:8*1024*1024})}`
+    } finally {
+      fs.rmSync(image,{force:true})
+    }
+  }
+  return all
 }
 
 const inboxDoc = load(INBOX,{version:1,items:[]})
@@ -193,7 +208,7 @@ for (const item of items) {
     let text = pdfText(target)
     const sparse = text.replace(/\s+/g,' ').trim().length < 1200
     let ocrUsed = false
-    if (sparse) { text += '\n' + ocrPdf(target,temp) ; ocrUsed = true }
+    if (sparse) { text += '\n' + ocrPdf(target,temp); ocrUsed = true }
 
     const inst = institute(text) || item.institute
     const fw = extractFieldwork(text)
@@ -223,5 +238,5 @@ for (const item of items) {
 
 fs.writeFileSync(EXTRA, `${JSON.stringify(extras,null,2)}\n`, 'utf8')
 fs.writeFileSync(INBOX, `${JSON.stringify({version:1,updated_at:new Date().toISOString(),items:retained},null,2)}\n`, 'utf8')
-fs.writeFileSync(REPORT, `${JSON.stringify({version:1,generated_at:new Date().toISOString(),attempted,recovered_count:recovered.length,recovered,failed_count:failures.length,failures,remaining_inbox:retained.length},null,2)}\n`, 'utf8')
+fs.writeFileSync(REPORT, `${JSON.stringify({version:2,generated_at:new Date().toISOString(),attempted,recovered_count:recovered.length,recovered,failed_count:failures.length,failures,remaining_inbox:retained.length,ocr_max_pages:OCR_MAX_PAGES},null,2)}\n`, 'utf8')
 console.log(`[document-recovery] attempted=${attempted} recovered=${recovered.length} failed=${failures.length} remaining_inbox=${retained.length}`)
