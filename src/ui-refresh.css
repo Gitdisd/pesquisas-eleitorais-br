@@ -121,3 +121,56 @@ html[data-theme=dark] .cards .card:hover{box-shadow:0 10px 28px rgba(0,0,0,.24)}
 @media(prefers-reduced-motion:reduce){
   .cards .card{transition:none}
 }
+
+/* White/null result: three-card width, compact height, centered beneath the candidate grid. */
+@media(min-width:901px){
+  .cards{grid-template-columns:repeat(6,minmax(0,1fr));align-items:start}
+  .cards .card[data-c=branco_nulo]{
+    grid-column:2 / span 3;
+    height:96px;
+    min-height:0;
+    padding:.55rem .9rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .cards .card[data-c=branco_nulo] .card-topline{
+    width:100%;
+    justify-content:center;
+    gap:.7rem;
+  }
+  .cards .card[data-c=branco_nulo] .name,
+  .cards .card[data-c=branco_nulo] .val,
+  .cards .card[data-c=branco_nulo] .delta{text-align:center}
+  .cards .card[data-c=branco_nulo] .name{font-size:.76rem}
+  .cards .card[data-c=branco_nulo] .val{font-size:1.35rem;margin:.02rem 0}
+  .cards .card[data-c=branco_nulo] .delta{font-size:.74rem}
+  .cards .card[data-c=branco_nulo] .card-spark{height:14px;margin:.08rem 0 0}
+}
+@media(max-width:900px){
+  .cards .card[data-c=branco_nulo]{
+    grid-column:2 / span 2;
+    height:96px;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .cards .card[data-c=branco_nulo] .card-topline{width:100%;justify-content:center;gap:.55rem}
+  .cards .card[data-c=branco_nulo] .name,
+  .cards .card[data-c=branco_nulo] .val,
+  .cards .card[data-c=branco_nulo] .delta{text-align:center}
+  .cards .card[data-c=branco_nulo] .card-spark{height:14px;margin:.08rem 0 0}
+}
+@media(max-width:600px){
+  .cards .card[data-c=branco_nulo]{grid-column:1 / -1;height:92px;padding:.45rem .65rem}
+  .cards .card[data-c=branco_nulo] .card-topline{gap:.45rem}
+  .cards .card[data-c=branco_nulo] .name{font-size:.7rem}
+  .cards .card[data-c=branco_nulo] .val{font-size:1.2rem}
+  .cards .card[data-c=branco_nulo] .delta{font-size:.7rem}
+  .cards .card[data-c=branco_nulo] .card-spark{height:12px}
+}
