@@ -15,34 +15,6 @@ header.app-hdr .stamp,.header.app-hdr .check-timer{display:block}
 .panel.metodologia{order:5!important}
 .main-stack>footer{order:6!important}
 
-/* Keep the white/null result visible without creating a mostly empty third row. */
-@media(min-width:901px){
-  .cards{grid-template-columns:repeat(6,minmax(0,1fr));align-items:start}
-  .cards .card[data-c=branco_nulo]{
-    grid-column:2 / span 3;
-    height:96px;
-    min-height:0;
-    padding:.55rem .9rem;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-  .cards .card[data-c=branco_nulo] .card-topline{
-    width:100%;
-    justify-content:center;
-    gap:.7rem;
-  }
-  .cards .card[data-c=branco_nulo] .name,
-  .cards .card[data-c=branco_nulo] .val,
-  .cards .card[data-c=branco_nulo] .delta{text-align:center}
-  .cards .card[data-c=branco_nulo] .name{font-size:.76rem}
-  .cards .card[data-c=branco_nulo] .val{font-size:1.35rem;margin:.02rem 0}
-  .cards .card[data-c=branco_nulo] .delta{font-size:.74rem}
-  .cards .card[data-c=branco_nulo] .card-spark{height:14px;margin:.08rem 0 0}
-}
-
 .opts-fold{order:4;margin-top:.55rem;border-top:1px solid var(--border);padding-top:.45rem}
 .opts-fold>summary{
   cursor:pointer;font-size:.82rem;color:var(--muted);list-style:none;
@@ -67,7 +39,6 @@ header.app-hdr .stamp,.header.app-hdr .check-timer{display:block}
 .chart-hover .ch-date{font-weight:700;margin-right:.55rem}
 .chart-hover .ch-row{display:inline-flex;align-items:center;gap:.3rem;margin:.15rem .85rem .15rem 0;white-space:nowrap}
 .chart-hover i{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
-.chart-hover i{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
 
 .chart-box{height:min(62vh,460px);min-height:320px}
 .chapter-kicker{
@@ -89,33 +60,10 @@ table.polls thead th{z-index:3}
 .card[data-c=clariana]{border-top:3px solid #7c3aed}
 .card[data-c=grassi]{border-top:3px solid #57534e}
 
-@media(max-width:900px){
-  .cards .card[data-c=branco_nulo]{
-    grid-column:2 / span 2;
-    height:96px;
-    min-height:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-  .cards .card[data-c=branco_nulo] .card-topline{width:100%;justify-content:center;gap:.55rem}
-  .cards .card[data-c=branco_nulo] .name,
-  .cards .card[data-c=branco_nulo] .val,
-  .cards .card[data-c=branco_nulo] .delta{text-align:center}
-  .cards .card[data-c=branco_nulo] .card-spark{height:14px;margin:.08rem 0 0}
-}
-
 @media(max-width:600px){
   header.app-hdr{padding:.45rem 0;margin-bottom:.4rem}
+  header.app-hdr h1{font-size:1.05rem}
   .cards{grid-template-columns:repeat(2,1fr);gap:.5rem}
-  .cards .card[data-c=branco_nulo]{grid-column:1 / -1;height:92px;padding:.45rem .65rem}
-  .cards .card[data-c=branco_nulo] .card-topline{gap:.45rem}
-  .cards .card[data-c=branco_nulo] .name{font-size:.7rem}
-  .cards .card[data-c=branco_nulo] .val{font-size:1.2rem}
-  .cards .card[data-c=branco_nulo] .delta{font-size:.7rem}
-  .cards .card[data-c=branco_nulo] .card-spark{height:12px}
   .chart-box{height:38vh;min-height:210px;max-height:260px}
   .chart-hover{font-size:.72rem;min-height:2.2rem;padding:.35rem .55rem}
   table.polls{font-size:.75rem}
