@@ -308,11 +308,6 @@
         "name": "outros/branco/nulo/não sabe",
         "party_optional": null,
         "pct": 3.3
-      },
-      {
-        "name": "Pablo Marçal",
-        "party_optional": "PRTB",
-        "pct": 1
       }
     ],
     "n": 5000,
@@ -466,11 +461,6 @@
         "pct": 1
       },
       {
-        "name": "Pablo Marçal",
-        "party_optional": "PRTB",
-        "pct": 1
-      },
-      {
         "name": "outros/branco/nulo/não sabe",
         "party_optional": null,
         "pct": 2
@@ -601,11 +591,6 @@
         "name": "outros/branco/nulo/não sabe",
         "party_optional": null,
         "pct": 7
-      },
-      {
-        "name": "Pablo Marçal",
-        "party_optional": "PRTB",
-        "pct": 1
       }
     ],
     "n": 2002,

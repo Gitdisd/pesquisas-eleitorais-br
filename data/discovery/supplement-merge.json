@@ -1,33 +1,15 @@
 {
-  "version": 2,
-  "generated_at": "2026-09-15T15:22:16.941Z",
+  "version": 3,
+  "generated_at": "2026-09-15T18:55:55.452Z",
   "base_polls": 207,
   "supplemental_rows": 34,
   "merged_polls": 207,
   "added_polls": 0,
   "staged_only_polls": 20,
-  "supplemented_polls": 2,
-  "added_candidate_values": 2,
+  "supplemented_polls": 0,
+  "added_candidate_values": 0,
+  "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "73eb3617c08c9dac56f9ca0570d0aefe2fc233b5500f14ead29e67f7bf4516bd",
-  "additions": [
-    {
-      "type": "candidate",
-      "institute": "AtlasIntel",
-      "published_date": "2026-09-10",
-      "scenario": "estimulada 1º turno",
-      "candidate": "Pablo Marçal",
-      "pct": 1,
-      "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7497900-atlasintel-flavio-tem-464-no-segundo-turno-e-lula-registra-462.html"
-    },
-    {
-      "type": "candidate",
-      "institute": "Nexus/BTG",
-      "published_date": "2026-09-08",
-      "scenario": "estimulada 1º turno",
-      "candidate": "Pablo Marçal",
-      "pct": 1,
-      "source_url": "https://veja.abril.com.br/brasil/o-que-revelam-as-pesquisas-eleitorais-da-semana-sobre-a-disputa-entre-lula-e-flavio/"
-    }
-  ]
+  "content_sha256": "578c403ae229d0b3ba37cfe74ef4c2ce39a1548f22be1ec5cb34f10025315e0e",
+  "additions": []
 }

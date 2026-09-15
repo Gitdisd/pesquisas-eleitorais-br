@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T15:21:43.308Z",
+  "updated_at": "2026-09-15T18:55:21.481Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -417,6 +417,22 @@
       "institute": "Ideia",
       "published_date": null,
       "found_at": "2026-09-15T15:21:42.917Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senador-tocantins-setembro-2026/",
+      "title": "Paraná Pesquisas: sondagem para governador do Tocantins Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-15T18:55:04.065Z"
+    },
+    {
+      "url": "https://ge.globo.com/pr/",
+      "title": "Estado do Paraná | ge/pr Pular para o conteúdo paraná TIMES PR Série A Série B Operário encara o Náutico como duelo dire",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-15T18:55:21.062Z"
     }
   ]
 }

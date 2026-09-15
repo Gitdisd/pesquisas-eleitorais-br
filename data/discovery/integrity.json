@@ -2,20 +2,15 @@
   "version": 2,
   "status": "warn",
   "error_count": 0,
-  "warning_count": 24,
+  "warning_count": 23,
   "poll_count": 207,
-  "content_sha256": "a5be5914d7cf1ec09453d8035a77dd5432657d7c6ce93dd0f4eedb7c17f6f1ea",
+  "content_sha256": "d33600b968162bb7a7854a3cfe12f125e567abeeed65338c69e001e5090a8f99",
   "errors": [],
   "warnings": [
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
       "poll": 1,
       "sum": 101
-    },
-    {
-      "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 7,
-      "sum": 100.99999999999999
     },
     {
       "type": "scenario_url_mismatch",

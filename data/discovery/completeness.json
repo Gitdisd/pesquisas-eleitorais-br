@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-09-15T15:22:16.989Z",
+  "generated_at": "2026-09-15T18:55:55.499Z",
   "base_poll_count": 207,
   "supplemental_poll_count": 16,
   "recent_base_poll_count": 27,
@@ -23,9 +23,18 @@
       "candidate": "não sabe",
       "pct": 4,
       "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml"
+    },
+    {
+      "institute": "AtlasIntel",
+      "fieldwork_end": "2026-09-09",
+      "published_date": "2026-09-10",
+      "scenario": "estimulada 1º turno",
+      "candidate": "Pablo Marçal",
+      "pct": 1,
+      "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7497900-atlasintel-flavio-tem-464-no-segundo-turno-e-lula-registra-462.html"
     }
   ],
-  "missing_supplement_value_count": 2,
+  "missing_supplement_value_count": 3,
   "conflicting_values": [],
   "conflicting_value_count": 0,
   "supplement_only_polls": [
