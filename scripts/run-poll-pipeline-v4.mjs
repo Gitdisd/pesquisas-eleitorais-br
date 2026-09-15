@@ -35,7 +35,7 @@ async function fetchBytes(url, { timeoutMs = 45000, attempts = 3 } = {}) {
         redirect: "follow",
         signal: controller.signal,
         headers: {
-          "user-agent": "pesquisas-eleitorais-br-registry-resolver/1.7",
+          "user-agent": "pesquisas-eleitorais-br-registry-resolver/1.8",
           accept: "application/zip,text/csv,text/plain,application/octet-stream,application/json,*/*;q=0.8",
           "accept-language": "pt-BR,pt;q=0.9,en;q=0.8",
           "cache-control": "no-cache",
@@ -165,49 +165,58 @@ function extractNationalPresidentialProtocols(csvText) {
   const text = String(csvText).replace(/^\ufeff/, "");
   const delimiter = detectDelimiter(text);
   const lines = text.split(/\r?\n/).filter((line) => line.trim());
-  if (!lines.length) return { protocols: new Set(), lines: 0, candidate_rows: 0, presidential_rows: 0, national_rows: 0 };
+  if (!lines.length) return { protocols: new Set(), lines: 0, candidateRows: 0, presidentialRows: 0, nationalRows: 0 };
 
   const headers = parseCsvLine(lines[0], delimiter).map((x) => x.trim());
-  const cargoHeader = headerName(headers, [/cargo/, /eleicao/, /tipo.*cargo/, /cargo.*pesquisa/]);
-  const scopeHeader = headerName(headers, [/abrang/, /uf/, /federativa/, /jurisdicao/, /localidade/]);
-  const protocolHeader = headerName(headers, [/nr.*pesquisa/, /numero.*pesquisa/, /num.*pesquisa/, /cod.*pesquisa/, /registro/]);
+  const cargoHeader = headerName(headers, [/ds_cargos?/, /ds_cargo/, /cargo/]);
+  const scopeHeader = headerName(headers, [/nm_ue/, /sg_ue/, /abrang/, /federativa/, /jurisdicao/, /localidade/]);
+  const protocolHeader = headerName(headers, [/nr_protocolo_registro/, /nr.*pesquisa/, /numero.*pesquisa/, /num.*pesquisa/, /cod.*pesquisa/, /registro/]);
 
   const protocols = new Set();
   let candidateRows = 0;
   let presidentialRows = 0;
   let nationalRows = 0;
 
+  // TSE's 2026 export uses DS_CARGOS for the researched office and NM_UE for
+  // the electoral unit. For national presidential polls NM_UE is "BR".
   for (const line of lines.slice(1)) {
     const cells = parseCsvLine(line, delimiter);
     const row = Object.fromEntries(headers.map((h, i) => [h, cells[i] || ""]));
-    const rowText = normalizeText(Object.values(row).join(" | "));
     const protocolValues = protocolHeader ? [row[protocolHeader]] : Object.values(row);
     const rowProtocols = new Set();
     for (const value of protocolValues) for (const protocol of protocolsFromText(value)) rowProtocols.add(protocol);
-    if (!rowProtocols.size) for (const protocol of protocolsFromText(Object.values(row).join(" "))) rowProtocols.add(protocol);
     if (!rowProtocols.size) continue;
 
     candidateRows++;
-    const cargoText = normalizeText(cargoHeader ? row[cargoHeader] : rowText);
-    const scopeText = normalizeText(scopeHeader ? row[scopeHeader] : rowText);
-    const presidential = /presidente|presidencia|presidencial/.test(cargoText) || (!cargoHeader && /presidente|presidencia|presidencial/.test(rowText));
-    const national = /brasil|nacional|pais|todo.*territ/.test(scopeText) || (!scopeHeader && /brasil|nacional/.test(rowText));
+    const cargoText = normalizeText(cargoHeader ? row[cargoHeader] : "");
+    const unitText = normalizeText(scopeHeader ? row[scopeHeader] : "");
+    const rowText = normalizeText(Object.values(row).join(" | "));
+
+    const presidential = cargoHeader
+      ? /presidente|presidencia|presidencial/.test(cargoText)
+      : /presidente|presidencia|presidencial/.test(rowText);
     if (!presidential) continue;
     presidentialRows++;
+
+    const national = scopeHeader
+      ? /\bbr\b|brasil|nacional/.test(unitText)
+      : /\bbr\b|brasil|nacional/.test(rowText);
     if (!national) continue;
     nationalRows++;
+
     for (const protocol of rowProtocols) protocols.add(protocol);
   }
 
   return {
     protocols,
     lines: Math.max(0, lines.length - 1),
-    candidate_rows: candidateRows,
-    presidential_rows: presidentialRows,
-    national_rows: nationalRows,
-    cargo_header: cargoHeader,
-    scope_header: scopeHeader,
-    protocol_header: protocolHeader,
+    candidateRows,
+    presidentialRows,
+    nationalRows,
+    cargoHeader,
+    scopeHeader,
+    protocolHeader,
+    sampleHeaders: headers.slice(0, 20),
   };
 }
 
@@ -215,11 +224,11 @@ function compactCsvText(csvText, source) {
   const result = extractNationalPresidentialProtocols(csvText);
   if (!result.protocols.size) {
     const probe = String(csvText).match(/BR[^\r\n]{0,160}/i)?.[0] || String(csvText).slice(0, 800);
-    throw new Error(`registry source yielded no national presidential protocols; lines=${result.lines}; candidate_rows=${result.candidate_rows}; presidential_rows=${result.presidential_rows}; national_rows=${result.national_rows}; headers=${JSON.stringify({ cargo: result.cargo_header, scope: result.scope_header, protocol: result.protocol_header })}; probe=${JSON.stringify(probe)}`);
+    throw new Error(`registry source yielded no national presidential protocols; lines=${result.lines}; candidate_rows=${result.candidateRows}; presidential_rows=${result.presidentialRows}; national_rows=${result.nationalRows}; headers=${JSON.stringify({ cargo: result.cargoHeader, scope: result.scopeHeader, protocol: result.protocolHeader, sample: result.sampleHeaders })}; probe=${JSON.stringify(probe)}`);
   }
   const rows = ["NR_PESQUISA;CARGO;ABRANGENCIA"];
   for (const protocol of [...result.protocols].sort()) rows.push(`${protocol};Presidente;Nacional`);
-  console.log(`[registry-resolver] ${source}: ${result.protocols.size} national presidential protocols; source lines=${result.lines}; candidate=${result.candidate_rows}; presidential=${result.presidential_rows}; national=${result.national_rows}; headers=${JSON.stringify({ cargo: result.cargo_header, scope: result.scope_header, protocol: result.protocol_header })}`);
+  console.log(`[registry-resolver] ${source}: ${result.protocols.size} national presidential protocols; source lines=${result.lines}; candidate=${result.candidateRows}; presidential=${result.presidentialRows}; national=${result.nationalRows}; headers=${JSON.stringify({ cargo: result.cargoHeader, scope: result.scopeHeader, protocol: result.protocolHeader })}`);
   return Buffer.from(`${rows.join("\n")}\n`, "utf8");
 }
 
@@ -339,7 +348,7 @@ async function main() {
   }
 
   if (!selected) {
-    fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify({ version: 6, status: "unavailable", started_at: startedAt, completed_at: new Date().toISOString(), attempts }, null, 2)}\n`);
+    fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify({ version: 7, status: "unavailable", started_at: startedAt, completed_at: new Date().toISOString(), attempts }, null, 2)}\n`);
     process.exit(3);
   }
 
@@ -347,7 +356,7 @@ async function main() {
   try {
     packed = await packAsZip(selected.body, selected.fromCsv, selected.source);
   } catch (error) {
-    const failed = { version: 6, status: "invalid_source", started_at: startedAt, completed_at: new Date().toISOString(), selected_source: selected.source, requested_url: selected.url, resolved_url: selected.resolved_url, bytes: selected.body.length, sha256: sha256(selected.body), error: error.message, attempts };
+    const failed = { version: 7, status: "invalid_source", started_at: startedAt, completed_at: new Date().toISOString(), selected_source: selected.source, requested_url: selected.url, resolved_url: selected.resolved_url, bytes: selected.body.length, sha256: sha256(selected.body), error: error.message, attempts };
     fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify(failed, null, 2)}\n`);
     console.error(`[registry-resolver] source normalization failed: ${error.message}`);
     process.exit(3);
@@ -363,7 +372,7 @@ async function main() {
     patchParser();
 
     const status = {
-      version: 6,
+      version: 7,
       status: "resolved",
       started_at: startedAt,
       completed_at: new Date().toISOString(),
