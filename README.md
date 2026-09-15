@@ -6,6 +6,14 @@ Live: https://gitdisd.github.io/pesquisas-eleitorais-br/
 
 ## Docs (leia isto antes de mudar código)
 
+**Start here if you are an agent (Grok / ChatGPT):**
+
+- [AGENTS.md](AGENTS.md) — boot rules
+- [docs/PEBR-ACQUISITION-CONTEXT.md](docs/PEBR-ACQUISITION-CONTEXT.md) — harvest, RSS, 50+ sources, same vs different poll, publish windows
+- [docs/PEBR-RESEARCH-REASONING-CODING.md](docs/PEBR-RESEARCH-REASONING-CODING.md) — identity, audits, display layers, coding order
+
+System docs:
+
 - [docs/SYSTEM.md](docs/SYSTEM.md) — o que cada arquivo e workflow faz
 - [docs/MODELS.md](docs/MODELS.md) — Modelos 1–4 (o que a linha é e o que não é)
 - [docs/CHANGELOG.md](docs/CHANGELOG.md) — o que mudou e quando
