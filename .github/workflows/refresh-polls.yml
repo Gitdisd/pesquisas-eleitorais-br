@@ -1,6 +1,14 @@
 name: Refresh polls
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "data/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/refresh-polls.yml"
   schedule:
     - cron: "10 * * * *"
   workflow_dispatch:
