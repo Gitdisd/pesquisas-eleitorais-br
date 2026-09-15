@@ -19,6 +19,7 @@ const THEME_NEXT_LABEL = {
   'crt-amber': 'CRT verde',
   'crt-green': 'Claro',
 }
+const MODEL_IDS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 function chartTint(theme) {
   if (theme === 'crt-amber') return { grid: 'rgba(255,176,0,.16)', tick: '#c48420', title: '#ffb000' }
@@ -144,7 +145,7 @@ function injectVerifyButton() {
 function defaultModel() {
   try {
     const saved = Number(localStorage.getItem('pebr-model'))
-    if ([0, 1, 2, 3, 4, 5, 6, 7].includes(saved)) return saved
+    if (MODEL_IDS.includes(saved)) return saved
   } catch {}
   return 1
 }
@@ -169,8 +170,13 @@ function setProjModel(n) {
       3: 'Meta: efeitos aleatórios. Peso = recência / (σ² + τ²) / k.',
       4: 'Kalman: intenção latente. Cada pesquisa atualiza o estado; não é urna.',
       5: 'Rápido: meia-vida curta e impulso nas pesquisas novas.',
-      6: 'Dia: média √n do dia de campo. Um ponto por dia; dias vazios não inventam.',
-      7: 'Local: reta local (LOESS) no scatter. A linha pode inclinar no fim da janela.',
+      6: 'Dia: média √n do dia de campo. Um ponto por dia.',
+      7: 'Local: reta local (LOESS) no scatter.',
+      8: 'Média: cada casa na janela vale 1. Sem peso de N.',
+      9: 'Peso: média ponderada √n na janela.',
+      10: 'Mediana: valor do meio. Um outlier não puxa a linha.',
+      11: 'Moda: faixa de 0,5 pp mais repetida. Sem empate claro, usa a mediana.',
+      12: 'Corta: média aparada 20% — tira pontas e média o miolo.',
     }
     hint.textContent = copy[n] || hint.textContent
   }
@@ -184,7 +190,7 @@ function injectModelToggles() {
   row.id = 'projModelRow'
   row.className = 'proj-model-row'
   row.innerHTML = `
-    <span class="ctrl">Média</span>
+    <span class="ctrl">Modelo</span>
     <button type="button" class="chip" data-proj-model="0">off</button>
     <button type="button" class="chip" data-proj-model="1" title="Modelo 1">Exp</button>
     <button type="button" class="chip" data-proj-model="2" title="Modelo 2">Casa</button>
@@ -208,9 +214,36 @@ function injectModelToggles() {
   return true
 }
 
+function injectCenterToggles() {
+  if (document.getElementById('projCenterRow')) return true
+  const host = document.getElementById('projModelRow')
+  if (!host) return false
+  const row = document.createElement('div')
+  row.id = 'projCenterRow'
+  row.className = 'proj-center-row'
+  row.setAttribute('aria-label', 'Medidas de centro')
+  row.innerHTML = `
+    <span class="ctrl">Centro</span>
+    <button type="button" class="chip" data-proj-model="8" title="Média aritmética">Média</button>
+    <button type="button" class="chip" data-proj-model="9" title="Média ponderada por √n">Peso</button>
+    <button type="button" class="chip" data-proj-model="10" title="Mediana">Mediana</button>
+    <button type="button" class="chip" data-proj-model="11" title="Moda em faixas de 0,5 pp">Moda</button>
+    <button type="button" class="chip" data-proj-model="12" title="Média aparada 20%">Corta</button>
+  `
+  host.after(row)
+  row.querySelectorAll('[data-proj-model]').forEach((b) => {
+    b.addEventListener('click', () => setProjModel(Number(b.dataset.projModel)))
+  })
+  const n = window.__pebrProjModel == null ? defaultModel() : Number(window.__pebrProjModel)
+  document.querySelectorAll('[data-proj-model]').forEach((b) => {
+    b.classList.toggle('on', Number(b.dataset.projModel) === n)
+  })
+  return true
+}
+
 function injectOverlayToggles() {
   if (document.getElementById('overlayRow')) return true
-  const host = document.getElementById('projModelRow')
+  const host = document.getElementById('projCenterRow') || document.getElementById('projModelRow')
   if (!host) return false
   const row = document.createElement('div')
   row.id = 'overlayRow'
@@ -260,7 +293,7 @@ function layoutFix() {
     const note = document.createElement('p')
     note.id = 'cardsNote'
     note.className = 'cards-note'
-    note.textContent = 'Padrão: Exp (modelo 1). Dia = média do campo daquele dia. Local = reta no scatter. Overlays não mudam a média.'
+    note.textContent = 'Padrão: Exp. Centro = média, peso, mediana, moda, corta. Overlays não mudam a linha.'
     cards.after(note)
   }
   if (tablePanel) {
@@ -289,6 +322,7 @@ function layoutFix() {
     else if (tablePanel) tablePanel.after(regional)
   }
   injectModelToggles()
+  injectCenterToggles()
   injectOverlayToggles()
   installThemeCycle()
   injectPartyThemes()
@@ -300,5 +334,6 @@ const started = Date.now()
 const id = setInterval(() => {
   injectVerifyButton()
   layoutFix()
+  injectCenterToggles()
   if (document.body.dataset.layoutFixed === '1' || Date.now() - started > 15000) clearInterval(id)
 }, 200)
