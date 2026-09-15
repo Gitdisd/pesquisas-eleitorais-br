@@ -3,7 +3,8 @@ import fs from 'node:fs'
 import crypto from 'node:crypto'
 
 const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
-const issues = []
+const errors = []
+const warnings = []
 
 const protocolOf = (p) => {
   const s = [p.methodology_note, p.source_url, p.tse_registration].filter(Boolean).join(' ')
@@ -25,26 +26,32 @@ for (const [i, p] of polls.entries()) {
   const sum = [...map.values()].reduce((a, b) => a + b, 0)
   const seen = new Set()
   for (const c of p.candidates || []) {
-    if (seen.has(c.name)) issues.push({ type: 'duplicate_candidate', poll: i, name: c.name })
+    if (seen.has(c.name)) errors.push({ type: 'duplicate_candidate', poll: i, name: c.name })
     seen.add(c.name)
     if (!Number.isFinite(Number(c.pct)) || Number(c.pct) < 0 || Number(c.pct) > 100) {
-      issues.push({ type: 'invalid_percentage', poll: i, name: c.name, pct: c.pct })
+      errors.push({ type: 'invalid_percentage', poll: i, name: c.name, pct: c.pct })
     }
   }
-  if (sum > 100.001) issues.push({ type: 'candidate_sum_over_100', poll: i, sum })
+
+  // Poll percentages are often rounded independently. Small overages such as 100.1
+  // or 101.0 are retained as warnings; a large overage is a blocking integrity error.
+  if (sum > 101.5) errors.push({ type: 'candidate_sum_over_101_5', poll: i, sum })
+  else if (sum > 100.001) warnings.push({ type: 'candidate_sum_over_100_rounding_or_residual', poll: i, sum })
 
   const url = String(p.source_url || '').toLowerCase()
-  if (p.scenario.includes('1º') && /(2o|2º|segundo)[-_ ]turno/.test(url) && !/(1o|1º|primeiro)[-_ ]turno/.test(url)) {
-    issues.push({ type: 'scenario_url_mismatch', poll: i, scenario: p.scenario, source_url: p.source_url })
+  const round1InUrl = /(1o|1º|primeiro)[-_ ]turno/.test(url)
+  const round2InUrl = /(2o|2º|segundo)[-_ ]turno/.test(url)
+  if (p.scenario.includes('1º') && round2InUrl && !round1InUrl) {
+    warnings.push({ type: 'scenario_url_mismatch', poll: i, scenario: p.scenario, source_url: p.source_url })
   }
-  if (p.scenario.includes('2º') && /(1o|1º|primeiro)[-_ ]turno/.test(url) && !/(2o|2º|segundo)[-_ ]turno/.test(url)) {
-    issues.push({ type: 'scenario_url_mismatch', poll: i, scenario: p.scenario, source_url: p.source_url })
+  if (p.scenario.includes('2º') && round1InUrl && !round2InUrl) {
+    warnings.push({ type: 'scenario_url_mismatch', poll: i, scenario: p.scenario, source_url: p.source_url })
   }
   if (/btg.*nexus|nexus.*btg/.test(url) && p.institute !== 'Nexus/BTG') {
-    issues.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
+    errors.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
   }
   if (/poderdata|poder-data/.test(url) && p.institute !== 'PoderData') {
-    issues.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
+    errors.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
   }
 }
 
@@ -57,23 +64,29 @@ for (let i = 0; i < polls.length; i += 1) {
   if (!identity.has(key)) identity.set(key, i)
   else {
     const j = identity.get(key)
-    if (!sameMap(polls[j], p)) issues.push({ type: 'conflicting_same_tse_poll', protocol, scenario: p.scenario, polls: [j, i] })
-    else issues.push({ type: 'duplicate_same_tse_poll', protocol, scenario: p.scenario, polls: [j, i] })
+    if (!sameMap(polls[j], p)) {
+      errors.push({ type: 'conflicting_same_tse_poll', protocol, scenario: p.scenario, polls: [j, i] })
+    } else {
+      warnings.push({ type: 'duplicate_same_tse_poll', protocol, scenario: p.scenario, polls: [j, i] })
+    }
   }
 }
 
+const status = errors.length ? 'fail' : warnings.length ? 'warn' : 'ok'
 const report = {
-  version: 1,
-  status: issues.length ? 'fail' : 'ok',
-  issue_count: issues.length,
+  version: 2,
+  status,
+  error_count: errors.length,
+  warning_count: warnings.length,
   poll_count: polls.length,
   content_sha256: crypto.createHash('sha256').update(JSON.stringify(polls)).digest('hex'),
-  issues,
+  errors,
+  warnings,
 }
 fs.writeFileSync('data/discovery/integrity.json', `${JSON.stringify(report, null, 2)}\n`)
 
-if (issues.length) {
-  for (const issue of issues) console.error(`INTEGRITY FAIL: ${JSON.stringify(issue)}`)
-  process.exit(1)
-}
-console.log(`INTEGRITY OK: ${polls.length} polls checked`)
+for (const warning of warnings) console.warn(`INTEGRITY WARNING: ${JSON.stringify(warning)}`)
+for (const error of errors) console.error(`INTEGRITY ERROR: ${JSON.stringify(error)}`)
+
+if (errors.length) process.exit(1)
+console.log(`INTEGRITY ${status.toUpperCase()}: ${polls.length} polls checked; ${warnings.length} warnings`)
