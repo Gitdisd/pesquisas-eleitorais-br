@@ -54,6 +54,9 @@ jobs:
           fi
           exit "$rc"
 
+      - name: Publish pipeline status for the site
+        run: node scripts/publish-pipeline-status.mjs
+
       - name: Run deterministic integrity audit
         run: node scripts/quality-audit.mjs
 
