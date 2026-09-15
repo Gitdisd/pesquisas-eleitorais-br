@@ -70,5 +70,53 @@ table.polls thead th{z-index:3}
   table.polls th,table.polls td{padding:.38rem .4rem}
 }
 
-.overlay-row,.proj-model-row{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.35rem 0}
-.overlay-row .chip,.proj-model-row .chip{font-size:.72rem}
+.overlay-row,.proj-model-row,.proj-center-row{
+  display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;margin:.3rem 0
+}
+
+/* X / Twitter Edit profile pill, scaled to the chart chips */
+.chip,
+.range-seg button,
+.window-presets .chip,
+.axis-btns button,
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  min-height:28px;
+  padding:4px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  font-size:13px;
+  font-weight:700;
+  line-height:16px;
+  letter-spacing:0;
+  cursor:pointer;
+  user-select:none;
+  white-space:nowrap;
+  transition:background .15s ease, border-color .15s ease, color .15s ease;
+}
+.chip:hover,
+.range-seg button:hover,
+.window-presets .chip:hover,
+.theme-toggle:hover{
+  background:color-mix(in srgb, var(--text) 8%, transparent);
+}
+.chip.on,
+.range-seg button.on,
+.window-presets .chip.on{
+  background:var(--text);
+  color:var(--surface, #fff);
+  border-color:var(--text);
+  font-weight:700;
+}
+.overlay-row .chip,
+.proj-model-row .chip,
+.proj-center-row .chip{
+  font-size:12px;
+  min-height:26px;
+  padding:3px 10px;
+}
