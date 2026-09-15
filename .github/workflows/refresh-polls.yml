@@ -54,6 +54,9 @@ jobs:
           fi
           exit "$rc"
 
+      - name: Run deterministic integrity audit
+        run: node scripts/quality-audit.mjs
+
       - name: Update polls
         env:
           POLL_SOURCE_URL: ${{ secrets.POLL_SOURCE_URL }}
