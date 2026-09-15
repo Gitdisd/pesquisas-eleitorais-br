@@ -1,7 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "election": "Eleições Gerais 2026",
   "tse_registry_zip": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
+  "tse_registry_ckan_api": "https://dadosabertos.tse.jus.br/api/3/action/package_show?id=6ee9ef02-b6da-4dd2-8fee-37afe4d2db6d",
+  "tse_registry_resource_id": "769a663e-12c5-489e-a9c8-04633c2d57a3",
+  "tse_registry_hf_mirror": "https://huggingface.co/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/resolve/main/polls/tse-registry.csv?download=true",
+  "tse_registry_secondary_mirrors": [],
   "registry_lookback_days": 45,
   "publication_grace_days": 2,
   "max_recovery_protocols": 40,
