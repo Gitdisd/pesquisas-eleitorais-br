@@ -39,7 +39,27 @@ jobs:
           node scripts/merge-poll-supplements.mjs
           node scripts/data-completeness-audit.mjs
           node scripts/quality-audit.mjs
-          node scripts/quality-gate.mjs
+
+      - name: Synchronize repaired data mirrors and metadata
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs'
+          import crypto from 'node:crypto'
+
+          const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
+          const canonical = JSON.stringify(polls)
+          const meta = JSON.parse(fs.readFileSync('data/meta.json', 'utf8'))
+          meta.record_count = polls.length
+          meta.content_hash = crypto.createHash('sha256').update(canonical).digest('hex')
+
+          fs.mkdirSync('public/data', { recursive: true })
+          fs.writeFileSync('data/meta.json', `${JSON.stringify(meta, null, 2)}\n`)
+          fs.copyFileSync('data/polls.json', 'public/data/polls.json')
+          fs.copyFileSync('data/meta.json', 'public/data/meta.json')
+          NODE
+
+      - name: Validate repaired deployment dataset
+        run: node scripts/quality-gate.mjs
 
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
