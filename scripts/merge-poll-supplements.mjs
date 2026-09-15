@@ -15,12 +15,12 @@ const load = (file) => {
   return Array.isArray(value) ? value : value.polls || []
 }
 
+// Identity is institute + fieldwork + scenario. Article/publish date is coverage.
 const key = (p) => [
-  p.institute,
-  p.fieldwork_start,
-  p.fieldwork_end,
-  p.published_date,
-  p.scenario,
+  String(p.institute || '').trim(),
+  p.fieldwork_start || '',
+  p.fieldwork_end || '',
+  p.scenario || '',
 ].join('|')
 
 const candidateKey = (name) => String(name || '')
@@ -29,16 +29,15 @@ const candidateKey = (name) => String(name || '')
   .toLowerCase()
   .trim()
 
-// Candidates that the site's presidential dataset intentionally excludes must
-// never be reintroduced by the supplemental layer. Otherwise a published
-// residual bucket can be double-counted with an excluded candidate.
 const EXCLUDED_CANDIDATES = new Set(['pablo marcal'])
 
-// Residual response buckets are not interchangeable. They are also the most
-// common source of double-counting when two publishers label the same bucket
-// differently (for example "não sabe" vs "branco/nulo/não sabe"). Do not
-// invent an additional residual bucket on a canonical poll that already has one.
-const isResidual = (name) => /\b(branco|nulo|nao sabe|não sabe|indecis|outros)\b/i.test(candidateKey(name))
+const isResidual = (name) => /\b(branco|nulo|nao sabe|não sabe|indecis|outros|nao iria votar|não iria votar)\b/i.test(candidateKey(name))
+
+const isGluedResidual = (name) => {
+  const k = candidateKey(name)
+  const parts = [k.includes('branco') || k.includes('nulo'), k.includes('nao sabe') || k.includes('indecis'), k.includes('outros')]
+  return parts.filter(Boolean).length >= 2
+}
 
 const dedupeCandidates = (candidates) => {
   const map = new Map()
@@ -51,21 +50,31 @@ const dedupeCandidates = (candidates) => {
 }
 
 const base = load(BASE_PATH)
-const extras = []
+const extrasRaw = []
 for (const file of EXTRA_PATHS) {
   if (!fs.existsSync(file)) continue
-  extras.push(...load(file))
+  extrasRaw.push(...load(file))
 }
 
-const byKey = new Map(base.map((p) => [key(p), structuredClone(p)]))
+const extras = []
+const seenExtra = new Set()
+for (const extra of extrasRaw) {
+  const k = key(extra)
+  if (!k || seenExtra.has(k)) continue
+  seenExtra.add(k)
+  extras.push(extra)
+}
+
+const byKey = new Map()
 let addedPolls = 0
 let supplementedPolls = 0
 let addedCandidateValues = 0
 let stagedOnlyPolls = 0
+let replacedGluedResiduals = 0
 let excludedCandidateValues = 0
 const additions = []
 
-for (const [i, poll] of base.entries()) {
+for (const poll of base) {
   const cleaned = dedupeCandidates(poll.candidates)
   excludedCandidateValues += (poll.candidates || []).length - cleaned.length
   byKey.set(key(poll), { ...structuredClone(poll), candidates: cleaned })
@@ -74,28 +83,58 @@ for (const [i, poll] of base.entries()) {
 for (const extra of extras) {
   if (!extra?.institute || !extra?.fieldwork_end || !extra?.scenario) continue
   const k = key(extra)
-  const existing = byKey.get(k)
+  let existing = byKey.get(k)
 
-  // polls-extra is a supplement/staging layer. A record that has no canonical
-  // counterpart must not be promoted here: update-polls / registry validation
-  // owns creation of new canonical polls. Keep it in the report instead.
   if (!existing) {
+    if (extra.verified === true) {
+      const copy = structuredClone(extra)
+      copy.candidates = dedupeCandidates(copy.candidates)
+      byKey.set(k, copy)
+      addedPolls += 1
+      additions.push({
+        type: 'poll',
+        institute: extra.institute,
+        fieldwork_end: extra.fieldwork_end,
+        scenario: extra.scenario,
+        source_url: extra.source_url,
+      })
+      continue
+    }
     stagedOnlyPolls += 1
     continue
   }
 
+  const extraCands = dedupeCandidates(extra.candidates)
+  const extraSpecific = extraCands.filter((c) => isResidual(c.name) && !isGluedResidual(c.name))
   const before = dedupeCandidates(existing.candidates)
-  const seen = new Map(before.map((c) => [candidateKey(c.name), c]))
-  const hasResidual = before.some((c) => isResidual(c.name))
+  const glued = before.filter((c) => isGluedResidual(c.name))
+  let working = before
   let changed = false
 
-  for (const candidate of dedupeCandidates(extra.candidates)) {
+  if (glued.length && extraSpecific.length) {
+    working = before.filter((c) => !isGluedResidual(c.name))
+    replacedGluedResiduals += glued.length
+    changed = true
+    additions.push({
+      type: 'replace_glued_residual',
+      institute: existing.institute,
+      scenario: existing.scenario,
+      removed: glued.map((c) => `${c.name}=${c.pct}`),
+      source_url: extra.source_url,
+    })
+  }
+
+  const seen = new Map(working.map((c) => [candidateKey(c.name), c]))
+  const hasResidual = working.some((c) => isResidual(c.name))
+
+  for (const candidate of extraCands) {
     const ck = candidateKey(candidate.name)
     if (seen.has(ck)) continue
-    if (isResidual(candidate.name) && hasResidual) continue
+    if (isResidual(candidate.name) && hasResidual && isGluedResidual(candidate.name)) continue
+    if (isResidual(candidate.name) && hasResidual && !glued.length) continue
 
     seen.set(ck, candidate)
-    before.push(candidate)
+    working.push(candidate)
     addedCandidateValues += 1
     changed = true
     additions.push({
@@ -110,7 +149,7 @@ for (const extra of extras) {
   }
 
   if (changed) {
-    existing.candidates = before
+    existing.candidates = working
     byKey.set(k, existing)
     supplementedPolls += 1
   }
@@ -129,8 +168,9 @@ const changed = oldText !== newText
 if (changed) fs.writeFileSync(OUT_PATH, newText, 'utf8')
 
 const report = {
-  version: 3,
+  version: 4,
   generated_at: new Date().toISOString(),
+  identity_key: 'institute|fieldwork_start|fieldwork_end|scenario',
   base_polls: base.length,
   supplemental_rows: extras.length,
   merged_polls: merged.length,
@@ -138,11 +178,13 @@ const report = {
   staged_only_polls: stagedOnlyPolls,
   supplemented_polls: supplementedPolls,
   added_candidate_values: addedCandidateValues,
+  replaced_glued_residuals: replacedGluedResiduals,
   excluded_candidate_values: excludedCandidateValues,
   changed,
   content_sha256: crypto.createHash('sha256').update(newText).digest('hex'),
   additions: additions.slice(0, 250),
 }
+fs.mkdirSync(`${ROOT}/data/discovery`, { recursive: true })
 fs.writeFileSync(`${ROOT}/data/discovery/supplement-merge.json`, `${JSON.stringify(report, null, 2)}\n`)
 
 console.log(JSON.stringify(report, null, 2))
