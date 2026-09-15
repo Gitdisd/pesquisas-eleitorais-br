@@ -2,14 +2,24 @@
   "version": 2,
   "status": "warn",
   "error_count": 0,
-  "warning_count": 22,
+  "warning_count": 24,
   "poll_count": 207,
-  "content_sha256": "e8a1e9d3c6e1eb8101b7d29deb8b961156f3579b1b1a20e65ea3b2b1c5fbdbb1",
+  "content_sha256": "a5be5914d7cf1ec09453d8035a77dd5432657d7c6ce93dd0f4eedb7c17f6f1ea",
   "errors": [],
   "warnings": [
     {
+      "type": "candidate_sum_over_100_rounding_or_residual",
+      "poll": 1,
+      "sum": 101
+    },
+    {
+      "type": "candidate_sum_over_100_rounding_or_residual",
+      "poll": 7,
+      "sum": 100.99999999999999
+    },
+    {
       "type": "scenario_url_mismatch",
-      "poll": 9,
+      "poll": 10,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/"
     },
@@ -26,7 +36,7 @@
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 29,
+      "poll": 28,
       "scenario": "estimulada 1º turno",
       "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-471-contra-426-de-flavio-no-2o-turno-diz-pesquisa/"
     },
@@ -70,12 +80,12 @@
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 104,
+      "poll": 105,
       "sum": 100.3
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 108,
+      "poll": 109,
       "sum": 101
     },
     {
@@ -106,7 +116,7 @@
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 143,
+      "poll": 145,
       "sum": 101
     },
     {

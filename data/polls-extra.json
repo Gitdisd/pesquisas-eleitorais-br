@@ -6,14 +6,46 @@
     "published_date": "2026-09-11",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 39 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 35 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 3 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 2 },
-      { "name": "branco/nulo", "party_optional": null, "pct": 6 },
-      { "name": "não sabe", "party_optional": null, "pct": 4 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 6
+      },
+      {
+        "name": "não sabe",
+        "party_optional": null,
+        "pct": 4
+      }
     ],
     "n": 2002,
     "margin_of_error": "±2,0 pp",
@@ -28,9 +60,21 @@
     "published_date": "2026-09-11",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 46 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 44 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 9 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9
+      }
     ],
     "n": 2002,
     "margin_of_error": "±2,0 pp",
@@ -45,13 +89,41 @@
     "published_date": "2026-09-11",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 39.2 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 33.6 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6.4 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4.4 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 4.3 },
-      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 2.3 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 0.7 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33.6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6.4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4.4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4.3
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 2.3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 0.7
+      }
     ],
     "n": 2000,
     "margin_of_error": "±2,2 pp",
@@ -66,9 +138,21 @@
     "published_date": "2026-09-11",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 45 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 45.4 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 9.6 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.4
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 9.6
+      }
     ],
     "n": 2000,
     "margin_of_error": "±2,2 pp",
@@ -83,13 +167,41 @@
     "published_date": "2026-09-10",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 43 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.4 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 6.5 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 2.1 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1.1 },
-      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.4
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6.6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 6.5
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2.1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1.1
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 1
+      }
     ],
     "n": 5000,
     "margin_of_error": "±1,0 pp",
@@ -104,9 +216,21 @@
     "published_date": "2026-09-10",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 46.2 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46.4 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 7.4 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46.2
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46.4
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 7.4
+      }
     ],
     "n": 5000,
     "margin_of_error": "±1,0 pp",
@@ -121,12 +245,36 @@
     "published_date": "2026-09-10",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 38 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 36 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 10 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 3 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 2 },
-      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 2 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 10
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 2
+      }
     ],
     "n": 3000,
     "margin_of_error": "±1,8 pp",
@@ -141,9 +289,21 @@
     "published_date": "2026-09-10",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 45 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 8 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
     ],
     "n": 3000,
     "margin_of_error": "±1,8 pp",
@@ -158,13 +318,41 @@
     "published_date": "2026-09-09",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 40 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 40 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 11 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 4 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1 },
-      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 40
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 11
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 1
+      }
     ],
     "n": 5000,
     "margin_of_error": "±2,5 pp",
@@ -179,9 +367,21 @@
     "published_date": "2026-09-09",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 44 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 10 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 10
+      }
     ],
     "n": 5000,
     "margin_of_error": "±2,5 pp",
@@ -196,12 +396,36 @@
     "published_date": "2026-09-09",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37 },
-      { "name": "Lula", "party_optional": "PT", "pct": 34 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 5 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 4 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1 }
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 34
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 5
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      }
     ],
     "n": 2400,
     "margin_of_error": "±2,0 pp",
@@ -216,9 +440,21 @@
     "published_date": "2026-09-09",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 40 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 13 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 40
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 13
+      }
     ],
     "n": 2400,
     "margin_of_error": "±2,0 pp",
@@ -233,12 +469,36 @@
     "published_date": "2026-09-09",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 38.4 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.3 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 4 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1.5 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.4
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37.3
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6.6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1.5
+      }
     ],
     "n": 1500,
     "margin_of_error": "±2,5 pp",
@@ -253,9 +513,21 @@
     "published_date": "2026-09-09",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 46 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 8 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
     ],
     "n": 1500,
     "margin_of_error": "±2,5 pp",
@@ -270,13 +542,41 @@
     "published_date": "2026-09-06",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 38.9 },
-      { "name": "Lula", "party_optional": "PT", "pct": 38.4 },
-      { "name": "Augusto Cury", "party_optional": "Avante", "pct": 12.2 },
-      { "name": "Renan Santos", "party_optional": "Missão", "pct": 3.7 },
-      { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1.9 },
-      { "name": "Pablo Marçal", "party_optional": "PRTB", "pct": 1.4 },
-      { "name": "Romeu Zema", "party_optional": "Novo", "pct": 0.3 }
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 38.9
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 38.4
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 12.2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3.7
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1.9
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 1.4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 0.3
+      }
     ],
     "n": 3804,
     "margin_of_error": "±2,0 pp",
@@ -291,9 +591,21 @@
     "published_date": "2026-09-06",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      { "name": "Lula", "party_optional": "PT", "pct": 43.1 },
-      { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 48.5 },
-      { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 8.5 }
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43.1
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 48.5
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8.5
+      }
     ],
     "n": 3804,
     "margin_of_error": "±2,0 pp",

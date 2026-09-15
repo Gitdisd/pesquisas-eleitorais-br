@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "generated_at": "2026-09-15T15:22:16.989Z",
+  "base_poll_count": 207,
+  "supplemental_poll_count": 16,
+  "recent_base_poll_count": 27,
+  "recent_inbox_count": 0,
+  "missing_supplement_values": [
+    {
+      "institute": "Datafolha",
+      "fieldwork_end": "2026-09-10",
+      "published_date": "2026-09-11",
+      "scenario": "estimulada 1º turno",
+      "candidate": "branco/nulo",
+      "pct": 6,
+      "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml"
+    },
+    {
+      "institute": "Datafolha",
+      "fieldwork_end": "2026-09-10",
+      "published_date": "2026-09-11",
+      "scenario": "estimulada 1º turno",
+      "candidate": "não sabe",
+      "pct": 4,
+      "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml"
+    }
+  ],
+  "missing_supplement_value_count": 2,
+  "conflicting_values": [],
+  "conflicting_value_count": 0,
+  "supplement_only_polls": [
+    {
+      "institute": "Futura/Apex",
+      "fieldwork_end": "2026-09-10",
+      "published_date": "2026-09-11",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://exame.com/brasil/pesquisa-futura-lula-tem-392-e-flavio-bolsonaro-336-no-1o-turno/"
+    },
+    {
+      "institute": "Futura/Apex",
+      "fieldwork_end": "2026-09-10",
+      "published_date": "2026-09-11",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-454-contra-45-de-lula-no-2o-turno/"
+    },
+    {
+      "institute": "PoderData",
+      "fieldwork_end": "2026-09-09",
+      "published_date": "2026-09-10",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://sbtnews.sbt.com.br/noticia/eleicoes/poder-data-aya-flavio-bolsonaro-47-x-45-lula-no-2-turno"
+    },
+    {
+      "institute": "PoderData",
+      "fieldwork_end": "2026-09-09",
+      "published_date": "2026-09-10",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/"
+    },
+    {
+      "institute": "Palver",
+      "fieldwork_end": "2026-09-08",
+      "published_date": "2026-09-09",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/"
+    },
+    {
+      "institute": "Palver",
+      "fieldwork_end": "2026-09-08",
+      "published_date": "2026-09-09",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/"
+    },
+    {
+      "institute": "GERP",
+      "fieldwork_end": "2026-09-08",
+      "published_date": "2026-09-09",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/"
+    },
+    {
+      "institute": "GERP",
+      "fieldwork_end": "2026-09-08",
+      "published_date": "2026-09-09",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/"
+    },
+    {
+      "institute": "Veritá",
+      "fieldwork_end": "2026-09-04",
+      "published_date": "2026-09-06",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-389-no-1o-turno-lula-384-e-cury-122/"
+    },
+    {
+      "institute": "Veritá",
+      "fieldwork_end": "2026-09-04",
+      "published_date": "2026-09-06",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-485-no-2o-turno-lula-431/"
+    }
+  ],
+  "supplement_only_poll_count": 10,
+  "recent_inbox_samples": []
+}

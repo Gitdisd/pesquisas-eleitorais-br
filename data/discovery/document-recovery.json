@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "generated_at": "2026-09-15T15:21:43.308Z",
+  "attempted": 1,
+  "recovered_count": 0,
+  "recovered": [],
+  "failed_count": 1,
+  "failures": [
+    {
+      "url": "https://www.canalmeio.com.br/wp-content/uploads/2026/09/Pesquisa-Meio_Ideia-Setembro.pdf",
+      "reason": "missing_poll_metadata"
+    }
+  ],
+  "remaining_inbox": 52,
+  "ocr_max_pages": 40
+}

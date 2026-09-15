@@ -69,12 +69,17 @@
         "name": "outros/branco/nulo/não sabe",
         "party_optional": null,
         "pct": 7
+      },
+      {
+        "name": "Samara Martins",
+        "party_optional": "UP",
+        "pct": 1
       }
     ],
     "n": 2000,
     "margin_of_error": "±2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-presidente-setembro-2026/",
-    "methodology_note": "Nexus for BTG Pactual; TSE BR-04076/2026. Scenario without Pablo Marçal.",
+    "methodology_note": "Nexus for BTG Pactual; TSE BR-04076/2026. Scenario without Pablo Marçal. Verified supplemental candidate value from published source: https://noticias.uol.com.br/eleicoes/2026/09/14/btgnexus-presidenciaveis.ghtm.",
     "verified": true
   },
   {
@@ -303,6 +308,11 @@
         "name": "outros/branco/nulo/não sabe",
         "party_optional": null,
         "pct": 3.3
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 1
       }
     ],
     "n": 5000,
@@ -591,6 +601,11 @@
         "name": "outros/branco/nulo/não sabe",
         "party_optional": null,
         "pct": 7
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 1
       }
     ],
     "n": 2002,
