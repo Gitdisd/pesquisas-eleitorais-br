@@ -1,33 +1,61 @@
+import './party-themes.css'
+
+const PARTY_THEMES = [
+  ['party-pt', 'PT'],
+  ['party-pl', 'PL'],
+  ['party-missao', 'Missão'],
+  ['party-psd', 'PSD'],
+  ['party-novo', 'Novo'],
+  ['party-avante', 'Avante'],
+]
+
+function setSelectedTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme)
+  localStorage.setItem('pebr-theme', theme)
+  document.querySelectorAll('[data-party-theme]').forEach((button) => {
+    button.classList.toggle('on', button.dataset.partyTheme === theme)
+    button.setAttribute('aria-pressed', String(button.dataset.partyTheme === theme))
+  })
+  document.dispatchEvent(new CustomEvent('pebr-theme-change', { detail: { theme } }))
+}
+
 function arrangeThemeControls() {
-  const partyRow = document.getElementById('partyThemes')
   const themeToggle = document.getElementById('themeToggle')
-  if (!partyRow || !themeToggle) return false
+  const hdrText = document.querySelector('.app-hdr .hdr-text')
+  if (!themeToggle || !hdrText) return false
   if (document.getElementById('themeBox')) return true
 
   const box = document.createElement('div')
   box.id = 'themeBox'
   box.className = 'theme-box'
+  box.innerHTML = `
+    <div class="theme-box-label">Temas</div>
+    <div class="theme-box-row">
+      <div class="theme-basic"><span class="theme-basic-label">Padrão</span></div>
+      <div class="party-themes" id="partyThemes" role="group" aria-label="Temas de partidos">
+        ${PARTY_THEMES.map(([id, label]) => `<button type="button" class="chip" data-party-theme="${id}" aria-pressed="false">${label}</button>`).join('')}
+      </div>
+    </div>`
 
-  const label = document.createElement('span')
-  label.className = 'theme-box-label'
-  label.textContent = 'Temas'
-  label.setAttribute('aria-label', 'Temas')
-
-  const row = document.createElement('div')
-  row.className = 'theme-box-row'
-
+  const basic = box.querySelector('.theme-basic')
+  basic.appendChild(themeToggle)
   themeToggle.classList.add('theme-cycle-button')
-  row.appendChild(themeToggle)
-  row.appendChild(partyRow)
-  box.append(label, row)
+  hdrText.appendChild(box)
 
-  const host = partyRow.parentElement
-  host.appendChild(box)
+  box.querySelectorAll('[data-party-theme]').forEach((button) => {
+    button.addEventListener('click', () => setSelectedTheme(button.dataset.partyTheme))
+  })
+
+  const saved = localStorage.getItem('pebr-theme')
+  if (saved && (saved === 'light' || saved === 'dark' || PARTY_THEMES.some(([id]) => id === saved))) {
+    if (saved.startsWith('party-')) setSelectedTheme(saved)
+    else document.querySelectorAll('[data-party-theme]').forEach((button) => button.setAttribute('aria-pressed', 'false'))
+  }
 
   const style = document.createElement('style')
   style.id = 'theme-layout-style'
   style.textContent = `
-.theme-box{margin:.75rem 0 0;padding:.7rem .8rem;border:1px solid var(--border);border-radius:12px;background:var(--chip-bg);box-shadow:var(--shadow);width:100%}.theme-box-label{display:block;margin:0 0 .45rem;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.theme-box-row{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}.theme-cycle-button{flex:0 0 auto}.theme-box .party-themes{margin:0;display:flex;flex:1;gap:.35rem;align-items:center}.theme-box .party-themes .chip{min-height:40px}.theme-box .theme-toggle{min-height:40px}@media(max-width:600px){.theme-box{margin-top:.55rem;padding:.6rem}.theme-box-row{align-items:stretch}.theme-cycle-button{width:100%}.theme-box .party-themes{width:100%}.theme-box .party-themes .chip{flex:1 1 auto}}
+.theme-box{margin:.75rem 0 0;padding:.7rem .8rem;border:1px solid var(--border);border-radius:12px;background:var(--chip-bg);box-shadow:var(--shadow);width:100%}.theme-box-label{display:block;margin:0 0 .5rem;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.theme-box-row{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}.theme-basic{display:flex;align-items:center;gap:.45rem;flex:0 0 auto}.theme-basic-label{font-size:.78rem;color:var(--muted);font-weight:700}.theme-cycle-button{min-height:40px;flex:0 0 auto}.party-themes{display:flex;flex:1;flex-wrap:wrap;align-items:center;gap:.35rem;margin:0}.party-themes .chip{min-height:40px;font-size:.76rem}.party-themes .chip.on{background:var(--chip-on-bg);border-color:var(--chip-on-border);color:var(--chip-on-text);font-weight:800;outline:2px solid var(--accent)}@media(max-width:600px){.theme-box{margin-top:.55rem;padding:.6rem}.theme-box-row{align-items:stretch}.theme-basic{width:100%}.theme-cycle-button{flex:1}.party-themes{width:100%}.party-themes .chip{flex:1 1 auto;min-height:40px}}
 `
   document.head.appendChild(style)
   return true
