@@ -199,8 +199,84 @@ export function weightedTrendV5(points: TrendPoint[], windowDays = 14): SeriesPo
   return out
 }
 
+export function weightedTrendV6(points: TrendPoint[]): SeriesPoint[] {
+  if (!points.length) return []
+  const byDay = new Map<number, Map<string, { y: number; w: number }>>()
+  for (const p of points) {
+    if (p.y == null || !Number.isFinite(p.y)) continue
+    const day = Math.round(p.t / DAY) * DAY
+    const inst = p.institute || '_'
+    const w = Math.sqrt(sampleN(p.n) / N_REF)
+    if (!byDay.has(day)) byDay.set(day, new Map())
+    const bag = byDay.get(day)
+    if (!bag) continue
+    const cur = bag.get(inst)
+    if (!cur) bag.set(inst, { y: p.y, w })
+    else {
+      const nw = cur.w + w
+      bag.set(inst, { y: (cur.y * cur.w + p.y * w) / nw, w: nw })
+    }
+  }
+  const out: SeriesPoint[] = []
+  for (const day of [...byDay.keys()].sort((a, b) => a - b)) {
+    let num = 0
+    let den = 0
+    const bag = byDay.get(day)
+    if (!bag) continue
+    for (const row of bag.values()) {
+      num += row.w * row.y
+      den += row.w
+    }
+    if (den > 0) out.push({ x: day, y: Math.round((num / den) * 100) / 100 })
+  }
+  return out
+}
+
+export function weightedTrendV7(points: TrendPoint[], windowDays = 14): SeriesPoint[] {
+  if (!points.length) return []
+  const sorted = [...points].filter((p) => p.y != null && Number.isFinite(p.y)).sort((a, b) => a.t - b.t)
+  if (!sorted.length) return []
+  const half = Math.max(3, Number(windowDays) || 14)
+  const tMin = sorted[0].t
+  const tMax = sorted[sorted.length - 1].t
+  const out: SeriesPoint[] = []
+  for (let t = tMin; t <= tMax; t += DAY) {
+    let sw = 0
+    let sx = 0
+    let sy = 0
+    let sxx = 0
+    let sxy = 0
+    let nearest = Infinity
+    let nfit = 0
+    for (const p of sorted) {
+      const days = (p.t - t) / DAY
+      const ad = Math.abs(days)
+      if (ad < nearest) nearest = ad
+      if (ad > half) continue
+      const u = ad / half
+      const tricube = (1 - u * u * u) ** 3
+      const k = tricube * Math.sqrt(sampleN(p.n) / N_REF)
+      if (k <= 0) continue
+      sw += k
+      sx += k * days
+      sy += k * p.y
+      sxx += k * days * days
+      sxy += k * days * p.y
+      nfit += 1
+    }
+    if (sw <= 0 || nearest > half) continue
+    const det = sw * sxx - sx * sx
+    let y = sy / sw
+    if (nfit >= 3 && det > 1e-6) y = (sxx * sy - sx * sxy) / det
+    out.push({ x: t, y: Math.round(Math.min(100, Math.max(0, y)) * 100) / 100 })
+  }
+  return out
+}
+
 export function averageTrendAdvanced(points: TrendPoint[], windowDays = 14, model = 3): SeriesPoint[] {
   const m = Number(model)
+  if (m === 7) return weightedTrendV7(points, windowDays)
+  if (m === 6) return weightedTrendV6(points)
   if (m === 5) return weightedTrendV5(points, windowDays)
   if (m === 4) return weightedTrendV4(points, windowDays)
   return weightedTrendV3(points, windowDays)
