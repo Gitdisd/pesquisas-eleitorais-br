@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-09-15T21:03:26.730Z",
-  "watermark": "2026-09-14",
+  "ran_at": "2026-09-15T22:09:20.683Z",
+  "watermark": "2026-09-15",
   "sources": 22,
-  "candidate_links": 404,
+  "candidate_links": 403,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 38,
-  "skipped_old": 16,
+  "inbox_new": 22,
+  "skipped_old": 31,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
@@ -17,31 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-15T21:03:02.494Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
-      "title": "Quaest: 67% dizem que crise no STF não influencia voto presidencial | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
-      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
-      "institute": "Quaest",
-      "published_date": "2026-09-14",
-      "found_at": "2026-09-15T21:03:02.815Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
-      "title": "Fio do professor: Felipe Nunes analisa pesquisa Quaest | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Fio d",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Datafolha",
-      "published_date": "2026-09-14",
-      "found_at": "2026-09-15T21:03:03.011Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026/",
-      "title": "Os números da pesquisa Indexa/Broadcast para presidente Publicidade Encontre matérias e conteúdos da Gazeta do Povo Elei",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Indexa/Broadcast",
-      "published_date": null,
-      "found_at": "2026-09-15T21:03:03.074Z"
+      "found_at": "2026-09-15T22:08:54.470Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -49,8 +25,32 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-15T21:03:03.101Z"
+      "found_at": "2026-09-15T22:08:54.962Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest: Flávio Bolsonaro ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-15T22:08:57.484Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-voto-mulheres-flavio-bolsonaro-lula.ghtml",
+      "title": "Quaest: Flávio Bolsonaro ganha terreno no eleitorado feminino | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
+      "reason": "incomplete_extract:no_fieldwork,no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-15T22:08:57.652Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-1-turno-14-setembro-recortes.ghtml",
+      "title": "Quaest 1º turno: veja recortes de intenção de voto para presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-15T22:08:57.857Z"
     }
   ],
-  "meta_last_check_at": "2026-09-15T21:03:26.731Z"
+  "meta_last_check_at": "2026-09-15T22:09:20.684Z"
 }
