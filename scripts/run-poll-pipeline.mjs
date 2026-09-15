@@ -1,15 +1,11 @@
 #!/usr/bin/env node
 /**
- * Resolve the TSE registry through a layered, auditable source chain, then
- * run the existing registry pipeline against a local HTTP copy.
+ * Layered TSE registry resolver.
  *
- * Source order:
- *  1. TSE CKAN API -> active official resource URL
- *  2. configured official TSE CDN URL
- *  3. independent public mirror built directly from TSE Open Data (Hugging Face)
- *
- * A mirror is never silently treated as the official source: the selected
- * source, response URL, byte hash and retrieval time are recorded separately.
+ * Official sources are always preferred. A secondary mirror is only a recovery
+ * mechanism and is recorded as secondary evidence, never as an official feed.
+ * The resolver also refuses to report success when the downloaded registry
+ * cannot actually be parsed by the registry pipeline.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -23,9 +19,9 @@ import { execFile } from "node:child_process";
 const ROOT = process.cwd();
 const CFG_PATH = path.join(ROOT, "data", "discovery", "pipeline-config.json");
 const SOURCE_STATUS_PATH = path.join(ROOT, "data", "discovery", "registry-source.json");
+const REGISTRY_OUTPUT = path.join(ROOT, "data", "discovery", "tse-registry.json");
 const cfg = JSON.parse(fs.readFileSync(CFG_PATH, "utf8"));
-
-const UA = "pesquisas-eleitorais-br-registry-resolver/1.0 (+https://github.com/Gitdisd/pesquisas-eleitorais-br)";
+const UA = "pesquisas-eleitorais-br-registry-resolver/1.1 (+https://github.com/Gitdisd/pesquisas-eleitorais-br)";
 const execFileAsync = promisify(execFile);
 
 function sha256(buffer) {
@@ -80,16 +76,46 @@ function isZip(buffer) {
   return buffer.length >= 4 && buffer[0] === 0x50 && buffer[1] === 0x4b && (buffer[2] === 0x03 || buffer[2] === 0x05 || buffer[2] === 0x07) && (buffer[3] === 0x04 || buffer[3] === 0x06 || buffer[3] === 0x08);
 }
 
-function looksLikeCsv(buffer) {
-  const head = buffer.subarray(0, Math.min(buffer.length, 4096)).toString("utf8").replace(/^\ufeff/, "");
-  return /pesquisa|registro|eleitoral|instituto|entidade|amostra/i.test(head) && /[;,\t]/.test(head);
+function detectDelimiter(text) {
+  const head = text.split(/\r?\n/, 1)[0] || "";
+  const candidates = [";", ",", "\t"];
+  return candidates.sort((a, b) => (head.split(b).length - 1) - (head.split(a).length - 1))[0];
 }
 
-async function zipSingleCsv(csvBuffer) {
+function looksLikeCsv(buffer) {
+  const head = buffer.subarray(0, Math.min(buffer.length, 8192)).toString("utf8").replace(/^\ufeff/, "");
+  return /pesquisa|registro|eleitoral|institut|entidad|amostra/i.test(head) && /[;,\t]/.test(head);
+}
+
+function compatibilityCsv(csvBuffer, source) {
+  const text = csvBuffer.toString("utf8").replace(/^\ufeff/, "");
+  const delimiter = detectDelimiter(text);
+  const lines = text.split(/\r?\n/);
+  const headerIndex = lines.findIndex((line) => line.trim());
+  if (headerIndex < 0) throw new Error("secondary registry CSV is empty");
+
+  // The AFOS mirror is derived from the presidential-only TSE registry. The
+  // canonical parser also protects against mixed-office exports by requiring
+  // explicit presidential/national markers. Inject those markers into this
+  // *synthetic compatibility layer* only; the original bytes and hash remain
+  // recorded as the authoritative mirror evidence.
+  const header = lines[headerIndex].replace(/[\r\n]+$/, "");
+  const out = [...lines];
+  out[headerIndex] = `${header}${delimiter}__pebr_cargo${delimiter}__pebr_abrangencia`;
+  for (let i = headerIndex + 1; i < out.length; i += 1) {
+    if (!out[i].trim()) continue;
+    out[i] = `${out[i]}${delimiter}Presidente${delimiter}Nacional`;
+  }
+  console.log(`[registry-resolver] compatibility layer: ${source}; delimiter=${JSON.stringify(delimiter)}; lines=${Math.max(0, out.length - headerIndex - 1)}`);
+  return Buffer.from(out.join("\n"), "utf8");
+}
+
+async function zipSingleCsv(csvBuffer, { compatibility = false, source = "unknown" } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "tse-registry-csv-"));
   const csvPath = path.join(dir, "pesquisa_eleitoral_2026.csv");
   const zipPath = path.join(dir, "pesquisa_eleitoral_2026.zip");
-  fs.writeFileSync(csvPath, csvBuffer);
+  const transformed = compatibility ? compatibilityCsv(csvBuffer, source) : csvBuffer;
+  fs.writeFileSync(csvPath, transformed);
   try {
     await execFileAsync("zip", ["-j", "-q", zipPath, csvPath]);
     return { zipPath, cleanup: () => fs.rmSync(dir, { recursive: true, force: true }) };
@@ -149,6 +175,15 @@ function runChild(env) {
   });
 }
 
+function readParsedRegistryCount() {
+  try {
+    const doc = JSON.parse(fs.readFileSync(REGISTRY_OUTPUT, "utf8"));
+    return Array.isArray(doc.records) ? doc.records.length : 0;
+  } catch {
+    return 0;
+  }
+}
+
 async function main() {
   const startedAt = new Date().toISOString();
   const attempts = [];
@@ -168,8 +203,6 @@ async function main() {
   for (const url of cfg.tse_registry_secondary_mirrors || []) {
     candidates.push({ source: "secondary-mirror", trust: "secondary", url });
   }
-
-  // Always include the maintained public mirror as a final recovery route.
   const hfUrl = cfg.tse_registry_hf_mirror || "https://huggingface.co/datasets/AFOS-Analytics1/brazil-2026-electoral-divergence/resolve/main/polls/tse-registry.csv?download=true";
   candidates.push({ source: "afos-hf-mirror", trust: "secondary", url: hfUrl });
 
@@ -199,7 +232,7 @@ async function main() {
 
   if (!selected) {
     const status = {
-      version: 1,
+      version: 2,
       status: "unavailable",
       started_at: startedAt,
       completed_at: new Date().toISOString(),
@@ -207,7 +240,7 @@ async function main() {
     };
     fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify(status, null, 2)}\n`);
     console.error("[registry-resolver] all registry sources failed");
-    process.exit(2);
+    process.exit(3);
   }
 
   let cleanup = null;
@@ -218,7 +251,8 @@ async function main() {
     fs.writeFileSync(zipPath, selected.body);
     cleanup = () => fs.rmSync(dir, { recursive: true, force: true });
   } else {
-    const packed = await zipSingleCsv(selected.body);
+    const mirrorIsPresidential = selected.source === "afos-hf-mirror";
+    const packed = await zipSingleCsv(selected.body, { compatibility: mirrorIsPresidential, source: selected.source });
     zipPath = packed.zipPath;
     cleanup = packed.cleanup;
   }
@@ -231,7 +265,7 @@ async function main() {
     fs.writeFileSync(CFG_PATH, `${JSON.stringify(runtimeCfg, null, 2)}\n`, "utf8");
 
     const status = {
-      version: 1,
+      version: 2,
       status: "resolved",
       started_at: startedAt,
       completed_at: new Date().toISOString(),
@@ -254,7 +288,16 @@ async function main() {
       TSE_REGISTRY_SOURCE_URL: selected.resolved_url || selected.url,
       TSE_REGISTRY_SOURCE_SHA256: status.sha256,
     });
-    process.exit(code);
+    if (code !== 0) process.exit(code);
+
+    const parsedCount = readParsedRegistryCount();
+    if (parsedCount < 100) {
+      console.error(`[registry-resolver] parsed registry is not credible: ${parsedCount} records`);
+      const failedStatus = { ...status, status: "invalid_parse", parsed_registry_records: parsedCount, completed_at: new Date().toISOString() };
+      fs.writeFileSync(SOURCE_STATUS_PATH, `${JSON.stringify(failedStatus, null, 2)}\n`, "utf8");
+      process.exit(3);
+    }
+    console.log(`[registry-resolver] registry parse verified: ${parsedCount} records`);
   } finally {
     fs.writeFileSync(CFG_PATH, originalConfig, "utf8");
     await new Promise((resolve) => local.server.close(resolve));
@@ -264,5 +307,5 @@ async function main() {
 
 main().catch((error) => {
   console.error("[registry-resolver] fatal:", error);
-  process.exit(2);
+  process.exit(3);
 });
