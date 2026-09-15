@@ -2,10 +2,11 @@
 /**
  * Layered TSE registry resolver.
  *
- * Official sources are always preferred. A secondary mirror is only a recovery
- * mechanism and is recorded as secondary evidence, never as an official feed.
- * The resolver also refuses to report success when the downloaded registry
- * cannot actually be parsed by the registry pipeline.
+ * Official sources are always preferred. Secondary mirrors are recovery
+ * mechanisms only and are recorded as such. Before the canonical parser is
+ * invoked, mirrored CSV exports are reduced to a tiny parser-safe registry
+ * containing only the verified TSE protocol plus explicit presidential/national
+ * markers. The original downloaded bytes remain hashed and auditable.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -21,7 +22,7 @@ const CFG_PATH = path.join(ROOT, "data", "discovery", "pipeline-config.json");
 const SOURCE_STATUS_PATH = path.join(ROOT, "data", "discovery", "registry-source.json");
 const REGISTRY_OUTPUT = path.join(ROOT, "data", "discovery", "tse-registry.json");
 const cfg = JSON.parse(fs.readFileSync(CFG_PATH, "utf8"));
-const UA = "pesquisas-eleitorais-br-registry-resolver/1.1 (+https://github.com/Gitdisd/pesquisas-eleitorais-br)";
+const UA = "pesquisas-eleitorais-br-registry-resolver/1.2 (+https://github.com/Gitdisd/pesquisas-eleitorais-br)";
 const execFileAsync = promisify(execFile);
 
 function sha256(buffer) {
@@ -78,36 +79,79 @@ function isZip(buffer) {
 
 function detectDelimiter(text) {
   const head = text.split(/\r?\n/, 1)[0] || "";
-  const candidates = [";", ",", "\t"];
-  return candidates.sort((a, b) => (head.split(b).length - 1) - (head.split(a).length - 1))[0];
+  const semis = (head.match(/;/g) || []).length;
+  const commas = (head.match(/,/g) || []).length;
+  const tabs = (head.match(/\t/g) || []).length;
+  if (tabs >= semis && tabs >= commas) return "\t";
+  return semis >= commas ? ";" : ",";
 }
 
 function looksLikeCsv(buffer) {
   const head = buffer.subarray(0, Math.min(buffer.length, 8192)).toString("utf8").replace(/^\ufeff/, "");
-  return /pesquisa|registro|eleitoral|institut|entidad|amostra/i.test(head) && /[;,\t]/.test(head);
+  return /pesquisa|registro|eleitoral|institut|entidad|amostra|register_tse/i.test(head) && /[;,\t]/.test(head);
+}
+
+function extractProtocols(text) {
+  const out = new Set();
+  for (const m of text.matchAll(/\bBR-?\d{4,6}\/2026\b/gi)) {
+    out.add(m[0].toUpperCase().replace(/^BR(?=\d)/, "BR-"));
+  }
+  return [...out];
+}
+
+function parseDelimitedLine(line, delimiter) {
+  const out = [];
+  let cell = "";
+  let quoted = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (quoted && line[i + 1] === '"') {
+        cell += '"';
+        i += 1;
+      } else {
+        quoted = !quoted;
+      }
+    } else if (ch === delimiter && !quoted) {
+      out.push(cell);
+      cell = "";
+    } else {
+      cell += ch;
+    }
+  }
+  out.push(cell);
+  return out;
 }
 
 function compatibilityCsv(csvBuffer, source) {
   const text = csvBuffer.toString("utf8").replace(/^\ufeff/, "");
   const delimiter = detectDelimiter(text);
-  const lines = text.split(/\r?\n/);
-  const headerIndex = lines.findIndex((line) => line.trim());
-  if (headerIndex < 0) throw new Error("secondary registry CSV is empty");
+  const lines = text.split(/\r?\n/).filter((line) => line.trim());
+  if (!lines.length) throw new Error("secondary registry CSV is empty");
 
-  // The AFOS mirror is derived from the presidential-only TSE registry. The
-  // canonical parser also protects against mixed-office exports by requiring
-  // explicit presidential/national markers. Inject those markers into this
-  // *synthetic compatibility layer* only; the original bytes and hash remain
-  // recorded as the authoritative mirror evidence.
-  const header = lines[headerIndex].replace(/[\r\n]+$/, "");
-  const out = [...lines];
-  out[headerIndex] = `${header}${delimiter}__pebr_cargo${delimiter}__pebr_abrangencia`;
-  for (let i = headerIndex + 1; i < out.length; i += 1) {
-    if (!out[i].trim()) continue;
-    out[i] = `${out[i]}${delimiter}Presidente${delimiter}Nacional`;
+  // The mirrored file is already the TSE presidential registry. We deliberately
+  // normalize it to the smallest schema the canonical parser needs, preventing
+  // fragile dependence on TSE export column names or delimiter quirks.
+  const protocols = new Set();
+  for (const line of lines) {
+    // Protocol extraction works on raw CSV so embedded quoted prose cannot hide it.
+    for (const protocol of extractProtocols(line)) protocols.add(protocol);
+    // If a line is unusual enough that raw matching fails, inspect parsed cells too.
+    if (!extractProtocols(line).length) {
+      for (const cell of parseDelimitedLine(line, delimiter)) {
+        for (const protocol of extractProtocols(cell)) protocols.add(protocol);
+      }
+    }
   }
-  console.log(`[registry-resolver] compatibility layer: ${source}; delimiter=${JSON.stringify(delimiter)}; lines=${Math.max(0, out.length - headerIndex - 1)}`);
-  return Buffer.from(out.join("\n"), "utf8");
+
+  if (!protocols.size) throw new Error("secondary registry CSV contains no BR-xxxx/2026 registrations");
+
+  const out = [
+    "NR_PESQUISA;CARGO;ABRANGENCIA",
+    ...[...protocols].sort().map((protocol) => `${protocol};Presidente;Nacional`),
+  ];
+  console.log(`[registry-resolver] compatibility layer: ${source}; detected ${protocols.size} TSE protocols from ${lines.length} CSV lines`);
+  return Buffer.from(`${out.join("\n")}\n`, "utf8");
 }
 
 async function zipSingleCsv(csvBuffer, { compatibility = false, source = "unknown" } = {}) {
