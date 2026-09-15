@@ -5,11 +5,12 @@ Linha sólida = média do chip ativo. Cartões usam a mesma função.
 **Padrão do site = Exp (modelo 1).**
 Nenhum modelo publica P(vitória) nem inventa pesquisa.
 
-Código: `src/aggregate.ts` (1 e 2), `src/models/advanced.ts` (3–7).
+Código: `src/aggregate.ts` (1 e 2), `src/models/advanced.ts` (3–7), `src/models/school.ts` (8–12).
 Overlays visuais: `src/overlays.js` — não alteram a média.
 Dispatch: `averageTrend(points, windowDays, model)`.
 
-Chips: off, Exp, Casa, Meta, Kalman, Rápido, Dia, Local.
+Chips modelo: off, Exp, Casa, Meta, Kalman, Rápido, Dia, Local.
+Chips centro: Média, Peso, Mediana, Moda, Corta.
 
 ## Entrada comum
 
@@ -24,9 +25,6 @@ Pontos + linha do Exp. Sem tracejado de projeção.
 
 `peso = √(n/2000) × exp(−dias/janela)`
 
-- n ausente → 800; n limitado a 100–8000.
-- Só desenha o dia se existir pesquisa a ≤ janela dias.
-
 ## Casa — modelo 2
 
 `peso = √(n/2000) × 2^(−dias/meiaVida) × 1/k_instituto`
@@ -34,34 +32,37 @@ Pontos + linha do Exp. Sem tracejado de projeção.
 ## Meta — modelo 3
 
 `peso = recência / (σ_i² + τ²) / k_instituto`
-σ via margem/1,96 ou deff 1,3 × √[p(1-p)/n]. τ² = DerSimonian–Laird.
 
 ## Kalman — modelo 4
 
-θ_t = θ_{t-1} + ruído (~0,16 pp/√day). Casa + erro amostral na observação.
+θ_t = θ_{t-1} + ruído (~0,16 pp/√day).
 
 ## Rápido — modelo 5
 
-Meia-vida = max(2, janela/5).
-`peso = √(n/2000) × 2^(-d/half) × (1 + 2 e^(-d/1,8))`
-Sem house. Reage rápido a pesquisa nova.
+Meia-vida curta + impulso nas pesquisas novas.
 
 ## Dia — modelo 6
 
-Agrupa por fim de campo. Primeiro colapsa a mesma casa no mesmo dia (média √n). Depois média √n entre casas. Sem janela: o ponto é só aquele dia. Linha liga os dias que têm pesquisa.
+Média √n só do dia de campo. Sem vazar para o dia seguinte.
 
 ## Local — modelo 7
 
-LOESS de grau 1. Em cada dia t, tricube na janela H, peso √n, reta local y = a + b(t_i-t). Plota a. Se <3 pontos, cai para média ponderada (grau 0).
+LOESS de grau 1 no scatter.
+
+## Centro — escola (janela, uma casa por dia)
+
+- **Média** (8): cada casa vale 1.
+- **Peso** (9): média √n.
+- **Mediana** (10): valor do meio.
+- **Moda** (11): faixa de 0,5 pp mais repetida; empate ou tudo único cai na mediana.
+- **Corta** (12): descarta 20% de cada ponta e média o miolo. Poucas casas → mediana.
 
 ## Overlays (não são modelo)
 
-Cada chip liga/desliga sozinho. Calculados em cima da linha do modelo ativo:
-SMA 7 / 21, EMA 9 / 21, HMA 16, VWMA 14 (peso = n da pesquisa), KAMA 10, Bollinger 20 ± 2σ.
+SMA 7 / 21, EMA 9 / 21, HMA 16, VWMA 14, KAMA 10, Bollinger 20 ± 2σ.
 
 ## O que isto não é
 
 - Não é MRP estadual.
 - Não corrige erro de 2022.
 - Não simula 2º turno.
-- Overlay de pregão não é estatística eleitoral; é régua visual.
