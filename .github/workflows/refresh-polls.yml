@@ -15,7 +15,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -34,10 +34,25 @@ jobs:
       - name: Install PDF text + OCR tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por
+          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por unzip
 
-      - name: Discover new polls (headless)
+      - name: Apply verified data corrections
+        run: node scripts/apply-corrections.mjs
+
+      - name: Discover new polls (broad web pass)
         run: npm run discover-polls
+
+      - name: Run TSE registry recovery and cross-check
+        shell: bash
+        run: |
+          set +e
+          npm run poll-pipeline
+          rc=$?
+          if [ "$rc" -eq 2 ]; then
+            echo "Registry pipeline found missing or conflicting evidence; reports were written and the site data remains conservative."
+            exit 0
+          fi
+          exit "$rc"
 
       - name: Update polls
         env:
@@ -61,5 +76,5 @@ jobs:
             echo "No data changes to commit"
             exit 0
           fi
-          git commit -m "chore(data): refresh polls"
+          git commit -m "chore(data): refresh and audit polls"
           git push
