@@ -1,4 +1,5 @@
 import type { SeriesPoint, TrendPoint } from '../data/types'
+import { schoolCenterTrend } from './school'
 
 const DAY = 86400000
 const DEFF = 1.3
@@ -275,6 +276,11 @@ export function weightedTrendV7(points: TrendPoint[], windowDays = 14): SeriesPo
 
 export function averageTrendAdvanced(points: TrendPoint[], windowDays = 14, model = 3): SeriesPoint[] {
   const m = Number(model)
+  if (m === 12) return schoolCenterTrend(points, windowDays, 'trim')
+  if (m === 11) return schoolCenterTrend(points, windowDays, 'mode')
+  if (m === 10) return schoolCenterTrend(points, windowDays, 'median')
+  if (m === 9) return schoolCenterTrend(points, windowDays, 'weight')
+  if (m === 8) return schoolCenterTrend(points, windowDays, 'mean')
   if (m === 7) return weightedTrendV7(points, windowDays)
   if (m === 6) return weightedTrendV6(points)
   if (m === 5) return weightedTrendV5(points, windowDays)
