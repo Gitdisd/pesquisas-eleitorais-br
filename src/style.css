@@ -35,7 +35,6 @@ header.app-hdr p{margin:.35rem 0 0;color:var(--muted);font-size:.9rem}
 }
 .theme-toggle:hover{border-color:var(--accent)}
 
-/* Stack: chart first in DOM (above-the-fold on mobile); cards follow */
 .main-stack{display:flex;flex-direction:column}
 .chart-panel{order:1;display:flex;flex-direction:column}
 .cards{order:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:0 0 .35rem}
@@ -68,8 +67,10 @@ html[data-theme=dark] .card .delta.down{color:#ef9a9a}
 .chart-below{order:4}
 .controls-secondary{margin-top:.55rem}
 .controls{display:flex;flex-wrap:wrap;gap:.65rem .9rem;align-items:center;margin-bottom:.65rem}
-.controls-primary{margin-bottom:.5rem;flex-wrap:nowrap;gap:.45rem}
+.controls-primary{margin-bottom:.5rem;flex-wrap:wrap;gap:.45rem}
 .controls-primary .seg{flex-shrink:0}
+.range-seg{flex-wrap:wrap;max-width:100%}
+.range-seg button{padding:.4rem .65rem}
 .seg{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden}
 .seg button{border:0;background:transparent;padding:.45rem .9rem;font:inherit;cursor:pointer;color:var(--muted);min-height:40px}
 .seg button.active{background:var(--seg-active-bg);color:var(--seg-active-fg)}
@@ -80,32 +81,26 @@ input[type=number].win-custom{
   width:4.2rem;font:inherit;font-size:.85rem;padding:.35rem .45rem;border:1px solid var(--border);
   border-radius:8px;background:var(--surface);color:var(--text);min-height:36px;
 }
-
 .window-presets{display:inline-flex;flex-wrap:wrap;gap:.3rem;align-items:center}
 .window-presets .chip{min-height:32px;padding:.28rem .55rem;font-size:.75rem}
 .window-row{display:flex;flex-wrap:wrap;gap:.5rem .75rem;align-items:center;width:100%}
-
 .btn-reset,.btn-axis{
   min-height:44px;min-width:44px;padding:.55rem 1rem;font-size:.85rem;
   display:inline-flex;align-items:center;justify-content:center;
 }
 .axis-btns{display:inline-flex;flex-wrap:wrap;gap:.35rem}
-
 .toggle-proj{
   display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--muted);cursor:pointer;user-select:none;
   min-height:40px;
 }
 .toggle-proj input{accent-color:var(--accent);width:1.05rem;height:1.05rem}
-
 .proj-disclaimer{
   font-size:.78rem;color:var(--muted);background:var(--chip-bg);border:1px dashed var(--border);
   border-radius:8px;padding:.55rem .7rem;margin:.35rem 0 .5rem;display:none;
 }
 .proj-disclaimer.on{display:block}
 .proj-chip{margin-left:.25rem;min-height:28px;padding:.2rem .5rem;font-size:.72rem}
-
 .institutes-inline{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.65rem}
-
 .chart-box{position:relative;height:min(58vh,420px);min-height:280px;touch-action:none}
 .chart-box canvas{width:100%!important;height:100%!important}
 .hint{font-size:.78rem;color:var(--muted);margin-top:.5rem}
@@ -113,7 +108,6 @@ input[type=number].win-custom{
 .chip{font-size:.78rem;border:1px solid var(--border);background:var(--chip-bg);border-radius:999px;padding:.35rem .7rem;cursor:pointer;user-select:none;min-height:36px;color:var(--text)}
 .chip.on{background:var(--chip-on-bg);border-color:var(--chip-on-border);color:var(--chip-on-text);font-weight:600}
 .chip.all{font-weight:600}
-
 table.polls{width:100%;border-collapse:collapse;font-size:.82rem}
 table.polls th,table.polls td{padding:.45rem .5rem;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}
 table.polls th{position:sticky;top:0;background:var(--surface);z-index:1;font-weight:600;color:var(--muted);font-size:.75rem;text-transform:uppercase}
@@ -123,15 +117,11 @@ footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);fon
 .legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:.35rem 0 .5rem;font-size:.8rem}
 .legend span{display:inline-flex;align-items:center;gap:.35rem}
 .swatch{width:18px;height:3px;border-radius:2px;display:inline-block}
-
-/* Desktop: cards above chart when space allows */
 @media(min-width:901px){
   .chart-panel{order:2}
   .cards{order:1;margin:0 0 .35rem}
   .cards-note{order:1;margin:0 0 1rem}
 }
-
-/* ~390px mobile: canvas above the fold; cards stay under chart-panel */
 @media(max-width:600px){
   header.app-hdr{padding:.55rem 0;margin-bottom:.45rem}
   header.app-hdr h1{font-size:1.05rem}
@@ -145,7 +135,7 @@ footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);fon
   .panel{padding:.75rem;margin-bottom:.75rem}
   .panel.chart-panel{order:1;padding:.65rem;margin-bottom:.65rem}
   .chart-panel .chart-title{margin:0 0 .4rem;font-size:.95rem}
-  .controls-primary{gap:.35rem;margin-bottom:.4rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .controls-primary{gap:.35rem;margin-bottom:.4rem;flex-wrap:wrap;overflow-x:visible;-webkit-overflow-scrolling:touch}
   .controls-primary .seg button{padding:.35rem .55rem;font-size:.8rem;min-height:36px;white-space:nowrap}
   .chart-box{height:42vh;min-height:220px;max-height:280px}
   .chart-below{margin-top:.45rem}
