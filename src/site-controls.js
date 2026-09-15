@@ -6,33 +6,39 @@ const T = {
   'Visão geral': 'Overview', 'Gráfico': 'Chart', 'Resumo': 'Summary', 'Pesquisas': 'Polls', 'Metodologia': 'Methodology',
   'Início': 'Home', 'Painel de acompanhamento': 'Research dashboard', 'dados públicos': 'public data',
   'Abrir gráfico': 'Open chart', 'Ver pesquisas': 'View polls', 'Filtros por instituto': 'Pollster filters',
-  'Use os chips para incluir ou excluir institutos do gráfico e do resumo.': 'Use the chips to include or exclude pollsters from the chart and summary.',
-  'média selecionada': 'selected average', 'Como usar:': 'How to use:', 'tela cheia': 'fullscreen', 'focar': 'focus',
-  'Filtrar instituto ou campo…': 'Filter pollster or fieldwork…', 'linhas do gráfico': 'chart lines',
-  'Restaurar visualização': 'Reset view', 'Exportar tabela CSV': 'Export table CSV', 'Compartilhar': 'Share',
+  'média selecionada': 'selected average', 'Como usar:': 'How to use:', 'tela cheia': 'Full screen', 'focar': 'Focus',
+  'Filtrar instituto ou campo…': 'Search pollsters or fieldwork…', 'linhas do gráfico': 'chart lines',
+  'Restaurar visualização': 'Reset view', 'Exportar tabela CSV': 'Export table as CSV', 'Compartilhar': 'Share',
   'Pesquisas publicadas': 'Published polls', 'Institutos': 'Pollsters', 'Campo mais recente': 'Latest fieldwork',
   'Cobertura por turno': 'Coverage by round', 'base nacional publicada': 'published national dataset',
-  'presentes nos dados carregados': 'present in loaded data', 'sem data': 'no date', 'realizado hoje': 'today',
-  '1º turno': '1st round', '2º turno': '2nd round', 'linhas': 'rows', 'Temas': 'Themes'
+  'presentes nos dados carregados': 'included in the loaded data', 'sem data': 'no date', 'realizado hoje': 'today',
+  '1º turno': '1st round', '2º turno': '2nd round', 'linhas': 'rows', 'Temas': 'Themes', 'Padrão': 'Default',
+  'Temas de partidos': 'Party themes', 'Tema': 'Theme', 'Evolução da intenção de voto': 'Voting intention over time',
+  'Tabela de pesquisas': 'Poll results', 'Janela da média': 'Averaging window', 'personalizado': 'custom',
+  'Resetar eixos': 'Reset axes', 'Resetar Y': 'Reset Y axis', 'tudo': 'all',
+  'Zoom X/Y: roda do mouse, pinça ou Shift+arrastar. Fontes: TSE e institutos.': 'Zoom X/Y: mouse wheel, pinch, or Shift+drag. Sources: TSE and polling institutes.',
+  'Site estático e sem fins partidários. Hospedagem via GitHub Pages.': 'Static, non-partisan site. Hosted on GitHub Pages.',
+  'Atualizado em': 'Updated', 'Última verificação:': 'Last checked:', 'Próxima verificação em:': 'Next check in:',
+  'Verificação em andamento…': 'Check in progress…', 'há menos de 1 min': 'less than 1 min ago',
+  'há 1 min': '1 min ago', 'há 1 h': '1 hour ago', 'há 1 dia': '1 day ago',
+  'dias': 'days', 'Novas pesquisas publicadas podem levar até cerca de 3 horas para aparecer (busca automática periódica).': 'Newly published polls may take up to about 3 hours to appear (automatic periodic check).'
 }
 const DIRECT_T = {
-  'Visão geral do conjunto de pesquisas': 'Overview of the polling dataset',
-  'Um resumo rápido antes de entrar no gráfico e na tabela. Nada aqui altera os cálculos do site.': 'A quick summary before the chart and table. Nothing here changes the site calculations.',
-  'Um resumo rápido antes de entrar no gráfico e na tabela.': 'A quick summary before the chart and table.',
-  'selecione o turno, ajuste a janela da média e toque em um ponto do gráfico para ler instituto, amostra e margem de erro. Os filtros por instituto afetam o gráfico e o resumo.': 'select the round, adjust the averaging window, and tap a chart point to see pollster, sample size, and margin of error. Pollster filters affect the chart and summary.'
+  'Visão geral do conjunto de pesquisas': 'Polling dataset overview',
+  'Um resumo rápido antes de entrar no gráfico e na tabela. Nada aqui altera os cálculos do site.': 'A quick overview before the chart and table. Nothing here changes the site’s calculations.',
+  'Um resumo rápido antes de entrar no gráfico e na tabela.': 'A quick overview before the chart and table.',
+  'selecione o turno, ajuste a janela da média e toque em um ponto do gráfico para ler instituto, amostra e margem de erro. Os filtros por instituto afetam o gráfico e o resumo.': 'Select the round, adjust the averaging window, and tap a point on the chart to see the pollster, sample size, and margin of error. Pollster filters affect both the chart and the summary.'
 }
 
 let language = localStorage.getItem('pebr-language') === 'en' ? 'en' : 'pt-BR'
 let translating = false
 
 function translateText(text, toEnglish) {
-  if (DIRECT_T[text]) return toEnglish ? DIRECT_T[text] : text
-  if (toEnglish && T[text]) return T[text]
-  if (!toEnglish) {
-    const reverse = Object.entries(T).find(([, en]) => en === text)
-    if (reverse) return reverse[0]
-  }
-  return text
+  if (toEnglish) return DIRECT_T[text] || T[text] || text
+  const directReverse = Object.entries(DIRECT_T).find(([, en]) => en === text)
+  if (directReverse) return directReverse[0]
+  const reverse = Object.entries(T).find(([, en]) => en === text)
+  return reverse ? reverse[0] : text
 }
 
 function translateTree(root, toEnglish) {
@@ -44,11 +50,17 @@ function translateTree(root, toEnglish) {
     while (walker.nextNode()) nodes.push(walker.currentNode)
     for (const node of nodes) {
       if (!node.nodeValue.trim()) continue
-      let text = node.nodeValue
-      const exact = translateText(text.trim(), toEnglish)
-      if (exact !== text.trim()) node.nodeValue = text.replace(text.trim(), exact)
+      const text = node.nodeValue
+      const trimmed = text.trim()
+      const exact = translateText(trimmed, toEnglish)
+      if (exact !== trimmed) node.nodeValue = text.replace(trimmed, exact)
       for (const [pt, en] of Object.entries(T)) {
         if (pt.length < 4) continue
+        const replacement = toEnglish ? en : pt
+        const source = toEnglish ? pt : en
+        if (node.nodeValue.includes(source)) node.nodeValue = node.nodeValue.split(source).join(replacement)
+      }
+      for (const [pt, en] of Object.entries(DIRECT_T)) {
         const replacement = toEnglish ? en : pt
         const source = toEnglish ? pt : en
         if (node.nodeValue.includes(source)) node.nodeValue = node.nodeValue.split(source).join(replacement)
