@@ -7,6 +7,7 @@ on:
       - "scripts/poll-pipeline.mjs"
       - "scripts/run-poll-pipeline.mjs"
       - "scripts/run-poll-pipeline-v3.mjs"
+      - "scripts/run-poll-pipeline-v4.mjs"
       - "data/discovery/pipeline-config.json"
       - "package.json"
       - "package-lock.json"
