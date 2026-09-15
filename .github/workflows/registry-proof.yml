@@ -1,0 +1,105 @@
+name: Registry pipeline proof
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/poll-pipeline.mjs"
+      - "scripts/run-poll-pipeline.mjs"
+      - "data/discovery/pipeline-config.json"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/registry-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: registry-proof
+  cancel-in-progress: true
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies and registry tooling
+        run: |
+          npm ci
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq unzip
+
+      - name: Run registry pipeline and require a real parsed registry
+        shell: bash
+        run: |
+          set +e
+          npm run poll-pipeline
+          rc=$?
+          set -e
+
+          echo "poll-pipeline exit code: $rc"
+
+          if [ ! -f data/discovery/tse-registry.json ]; then
+            echo "PROOF FAIL: tse-registry.json was not produced"
+            exit 1
+          fi
+
+          count=$(node -e 'const x=require("./data/discovery/tse-registry.json"); console.log(Array.isArray(x.records) ? x.records.length : 0)')
+          echo "parsed registry records: $count"
+
+          if [ "$count" -lt 100 ]; then
+            echo "PROOF FAIL: registry parse is empty or implausibly small"
+            exit 1
+          fi
+
+          source_status="data/discovery/registry-source.json"
+          if [ ! -f "$source_status" ]; then
+            echo "PROOF FAIL: registry source audit record missing"
+            exit 1
+          fi
+
+          node - <<'NODE'
+          const fs = require('fs');
+          const s = JSON.parse(fs.readFileSync('data/discovery/registry-source.json', 'utf8'));
+          if (!['resolved'].includes(s.status)) {
+            console.error('PROOF FAIL: registry source status =', s.status);
+            process.exit(1);
+          }
+          if (!s.sha256 || !s.selected_source || !s.requested_url) {
+            console.error('PROOF FAIL: incomplete source audit record');
+            process.exit(1);
+          }
+          console.log(JSON.stringify({
+            status: s.status,
+            selected_source: s.selected_source,
+            trust: s.trust,
+            bytes: s.bytes,
+            sha256: s.sha256,
+            requested_url: s.requested_url,
+            resolved_url: s.resolved_url
+          }, null, 2));
+          NODE
+
+          # Exit 2 means the registry itself parsed successfully but the
+          # coverage audit found missing/conflicting registrations. That is a
+          # valid proof of connectivity/parsing and must remain visible.
+          if [ "$rc" -eq 2 ]; then
+            echo "PROOF OK: registry parsed successfully; coverage needs attention"
+            exit 0
+          fi
+          if [ "$rc" -ne 0 ]; then
+            echo "PROOF FAIL: poll-pipeline hard-failed with exit $rc"
+            exit "$rc"
+          fi
+
+          echo "PROOF OK: registry downloaded, audited, and parsed successfully"
