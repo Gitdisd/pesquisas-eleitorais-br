@@ -116,7 +116,7 @@ export function applyHouseEffects(points: TrendPoint[], house: Record<string, nu
 
 export function averageTrend(points: TrendPoint[], windowDays = 14, model = 1): SeriesPoint[] {
   const m = Number(model)
-  if (m === 3 || m === 4 || m === 5) return averageTrendAdvanced(points, windowDays, m)
+  if (m >= 3 && m <= 7) return averageTrendAdvanced(points, windowDays, m)
   if (m === 2) return weightedTrendV2(applyHouseEffects(points, estimateHouseEffects(points)), windowDays)
   return weightedTrendV1(points, windowDays)
 }
