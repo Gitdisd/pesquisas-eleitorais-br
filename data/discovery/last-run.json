@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-15T18:55:21.064Z",
+  "ran_at": "2026-09-15T21:03:26.730Z",
   "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 400,
+  "candidate_links": 404,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 38,
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-15T18:54:59.221Z"
+      "found_at": "2026-09-15T21:03:02.494Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T18:54:59.476Z"
+      "found_at": "2026-09-15T21:03:02.815Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T18:54:59.748Z"
+      "found_at": "2026-09-15T21:03:03.011Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026/",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-09-15T18:54:59.774Z"
+      "found_at": "2026-09-15T21:03:03.074Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-15T18:54:59.790Z"
+      "found_at": "2026-09-15T21:03:03.101Z"
     }
   ],
-  "meta_last_check_at": "2026-09-15T18:55:21.065Z"
+  "meta_last_check_at": "2026-09-15T21:03:26.731Z"
 }

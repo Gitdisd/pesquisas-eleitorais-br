@@ -1,34 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-09-15T18:55:55.383Z",
-  "removed": 3,
-  "removals": [
-    {
-      "poll": 7,
-      "institute": "AtlasIntel",
-      "published_date": "2026-09-10",
-      "scenario": "estimulada 1º turno",
-      "candidate": "Pablo Marçal",
-      "pct": 1,
-      "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/"
-    },
-    {
-      "poll": 11,
-      "institute": "Palver",
-      "published_date": "2026-09-09",
-      "scenario": "estimulada 1º turno com Marçal",
-      "candidate": "Pablo Marçal",
-      "pct": 1,
-      "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/"
-    },
-    {
-      "poll": 14,
-      "institute": "Nexus/BTG",
-      "published_date": "2026-09-08",
-      "scenario": "estimulada 1º turno",
-      "candidate": "Pablo Marçal",
-      "pct": 1,
-      "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-contra-45-de-lula-no-2o-turno-diz-btg-nexus/"
-    }
-  ]
+  "generated_at": "2026-09-15T21:04:01.061Z",
+  "removed": 0,
+  "removals": []
 }
