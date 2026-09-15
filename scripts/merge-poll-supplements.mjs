@@ -29,6 +29,11 @@ const candidateKey = (name) => String(name || '')
   .toLowerCase()
   .trim()
 
+// Candidates that the site's presidential dataset intentionally excludes must
+// never be reintroduced by the supplemental layer. Otherwise a published
+// residual bucket can be double-counted with an excluded candidate.
+const EXCLUDED_CANDIDATES = new Set(['pablo marcal'])
+
 // Residual response buckets are not interchangeable. They are also the most
 // common source of double-counting when two publishers label the same bucket
 // differently (for example "não sabe" vs "branco/nulo/não sabe"). Do not
@@ -39,6 +44,7 @@ const dedupeCandidates = (candidates) => {
   const map = new Map()
   for (const c of candidates || []) {
     if (!c || !c.name || typeof c.pct !== 'number' || !Number.isFinite(c.pct)) continue
+    if (EXCLUDED_CANDIDATES.has(candidateKey(c.name))) continue
     map.set(candidateKey(c.name), c)
   }
   return [...map.values()]
@@ -56,7 +62,14 @@ let addedPolls = 0
 let supplementedPolls = 0
 let addedCandidateValues = 0
 let stagedOnlyPolls = 0
+let excludedCandidateValues = 0
 const additions = []
+
+for (const [i, poll] of base.entries()) {
+  const cleaned = dedupeCandidates(poll.candidates)
+  excludedCandidateValues += (poll.candidates || []).length - cleaned.length
+  byKey.set(key(poll), { ...structuredClone(poll), candidates: cleaned })
+}
 
 for (const extra of extras) {
   if (!extra?.institute || !extra?.fieldwork_end || !extra?.scenario) continue
@@ -116,7 +129,7 @@ const changed = oldText !== newText
 if (changed) fs.writeFileSync(OUT_PATH, newText, 'utf8')
 
 const report = {
-  version: 2,
+  version: 3,
   generated_at: new Date().toISOString(),
   base_polls: base.length,
   supplemental_rows: extras.length,
@@ -125,10 +138,11 @@ const report = {
   staged_only_polls: stagedOnlyPolls,
   supplemented_polls: supplementedPolls,
   added_candidate_values: addedCandidateValues,
+  excluded_candidate_values: excludedCandidateValues,
   changed,
   content_sha256: crypto.createHash('sha256').update(newText).digest('hex'),
   additions: additions.slice(0, 250),
 }
-fs.writeFileSync(`${ROOT}/data/discovery/supplement-merge.json`, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
+fs.writeFileSync(`${ROOT}/data/discovery/supplement-merge.json`, `${JSON.stringify(report, null, 2)}\n`)
 
 console.log(JSON.stringify(report, null, 2))
