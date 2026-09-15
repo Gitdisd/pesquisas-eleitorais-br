@@ -1,0 +1,90 @@
+name: Repair polls now
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/repair-now.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install PDF text + OCR tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por unzip
+
+      - name: Apply verified corrections
+        run: node scripts/apply-corrections.mjs
+
+      - name: Repair known missing candidate values
+        run: node scripts/repair-known-missing-candidates.mjs
+
+      - name: Expand candidate discovery parser
+        run: node scripts/expand-discovery-candidates.mjs
+
+      - name: Discover current poll pages
+        run: npm run discover-polls
+
+      - name: Recover poll PDFs with text/OCR fallback
+        run: node scripts/recover-poll-documents.mjs
+
+      - name: Run registry recovery
+        shell: bash
+        run: |
+          set +e
+          npm run poll-pipeline
+          rc=$?
+          if [ "$rc" -eq 2 ]; then exit 0; fi
+          exit "$rc"
+
+      - name: Remove excluded candidates
+        run: node scripts/strip-ineligible-candidates.mjs
+
+      - name: Merge validated supplements
+        run: node scripts/merge-poll-supplements.mjs
+
+      - name: Audit completeness
+        run: node scripts/data-completeness-audit.mjs
+
+      - name: Audit integrity
+        run: node scripts/quality-audit.mjs
+
+      - name: Validate data gate
+        run: node scripts/quality-gate.mjs
+
+      - name: Build site
+        run: npm run build
+
+      - name: Publish repaired data
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ public/data/
+          if git diff --cached --quiet; then
+            echo "No repaired data changes needed"
+            exit 0
+          fi
+          git commit -m "chore(data): repair poll dataset and pipeline"
+          git push
