@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-15T04:21:33.927Z",
+  "ran_at": "2026-09-15T04:46:01.207Z",
   "watermark": "2026-09-14",
   "sources": 22,
-  "candidate_links": 409,
+  "candidate_links": 410,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 42,
   "skipped_old": 17,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-15T04:21:11.562Z"
+      "found_at": "2026-09-15T04:45:43.186Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/14/quaest-67percent-dizem-que-crise-no-stf-nao-influencia-voto-para-presidente.ghtml",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T04:21:11.954Z"
+      "found_at": "2026-09-15T04:45:43.445Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T04:21:12.169Z"
+      "found_at": "2026-09-15T04:45:43.640Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-15T04:21:12.223Z"
+      "found_at": "2026-09-15T04:45:43.661Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/14/pesquisa-quaest-flavio-aparece-numericamente-a-frente-de-lula-no-2o-turno.ghtml",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-14",
-      "found_at": "2026-09-15T04:21:13.087Z"
+      "found_at": "2026-09-15T04:45:44.292Z"
     }
   ],
-  "meta_last_check_at": "2026-09-15T04:21:33.927Z"
+  "meta_last_check_at": "2026-09-15T04:46:01.208Z"
 }
