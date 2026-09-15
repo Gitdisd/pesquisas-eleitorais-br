@@ -47,8 +47,14 @@ jobs:
       - name: Apply verified data corrections
         run: node scripts/apply-corrections.mjs
 
+      - name: Expand automatic discovery to all presidential candidates
+        run: node scripts/expand-discovery-candidates.mjs
+
       - name: Discover new polls (broad web pass)
         run: npm run discover-polls
+
+      - name: Recover PDF poll documents with text extraction and OCR fallback
+        run: node scripts/recover-poll-documents.mjs
 
       - name: Run TSE registry recovery and cross-check
         shell: bash
