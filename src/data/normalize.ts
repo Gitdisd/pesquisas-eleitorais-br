@@ -9,16 +9,37 @@ export function softPollKey(p: RawPoll): string {
   return [p.institute, p.fieldwork_end, p.scenario].join('|')
 }
 
+function mergeCandidates(base = [], extra = []) {
+  const merged = []
+  const seen = new Map()
+  for (const candidate of [...base, ...extra]) {
+    if (!candidate?.name || typeof candidate.pct !== 'number' || !Number.isFinite(candidate.pct)) continue
+    const key = String(candidate.name).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim()
+    if (seen.has(key)) continue
+    seen.set(key, candidate)
+    merged.push(candidate)
+  }
+  return merged
+}
+
 export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll[] {
   const map = new Map<string, RawPoll>()
   for (const poll of base) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
-    map.set(canonicalPollKey(poll), poll)
+    map.set(canonicalPollKey(poll), { ...poll, candidates: mergeCandidates(poll.candidates || []) })
   }
   for (const poll of extra) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
     const key = canonicalPollKey(poll)
-    if (!map.has(key)) map.set(key, poll)
+    const current = map.get(key)
+    if (!current) {
+      map.set(key, { ...poll, candidates: mergeCandidates(poll.candidates || []) })
+      continue
+    }
+    map.set(key, {
+      ...current,
+      candidates: mergeCandidates(current.candidates || [], poll.candidates || []),
+    })
   }
   return [...map.values()]
 }
