@@ -4,6 +4,7 @@ import type { SeriesPoint, TrendPoint } from './data/types'
 const DAY_MS = 86400000
 const N_REF = 2000
 const FLOOD_DAYS = 14
+const MAX_MODEL = 12
 
 function sampleSize(n: unknown): number {
   const rawN = Number(n)
@@ -14,9 +15,9 @@ function resolveLiveModel(model: number): number {
   const m = Number(model)
   try {
     const live = Number((globalThis as { __pebrProjModel?: number }).__pebrProjModel)
-    if (Number.isFinite(live) && live >= 0 && live <= 7) return live || 1
+    if (Number.isFinite(live) && live >= 0 && live <= MAX_MODEL) return live || 1
   } catch {}
-  if (m >= 1 && m <= 7) return m
+  if (m >= 1 && m <= MAX_MODEL) return m
   return 1
 }
 
@@ -126,7 +127,7 @@ export function applyHouseEffects(points: TrendPoint[], house: Record<string, nu
 
 export function averageTrend(points: TrendPoint[], windowDays = 14, model = 1): SeriesPoint[] {
   const m = resolveLiveModel(model)
-  if (m >= 3 && m <= 7) return averageTrendAdvanced(points, windowDays, m)
+  if (m >= 3 && m <= MAX_MODEL) return averageTrendAdvanced(points, windowDays, m)
   if (m === 2) return weightedTrendV2(applyHouseEffects(points, estimateHouseEffects(points)), windowDays)
   return weightedTrendV1(points, windowDays)
 }
