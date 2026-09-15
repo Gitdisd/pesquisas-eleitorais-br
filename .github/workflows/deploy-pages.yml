@@ -23,6 +23,24 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+
+      - name: Install PDF text + OCR tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por unzip
+
+      - name: Repair data for deployment
+        run: |
+          node scripts/apply-corrections.mjs
+          node scripts/repair-known-missing-candidates.mjs
+          node scripts/expand-discovery-candidates.mjs
+          node scripts/recover-poll-documents.mjs || true
+          node scripts/strip-ineligible-candidates.mjs
+          node scripts/merge-poll-supplements.mjs
+          node scripts/data-completeness-audit.mjs
+          node scripts/quality-audit.mjs
+          node scripts/quality-gate.mjs
+
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
