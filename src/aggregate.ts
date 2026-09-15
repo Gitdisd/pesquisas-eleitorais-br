@@ -10,6 +10,16 @@ function sampleSize(n: unknown): number {
   return Number.isFinite(rawN) && rawN > 0 ? Math.min(8000, Math.max(100, rawN)) : 800
 }
 
+function resolveLiveModel(model: number): number {
+  const m = Number(model)
+  try {
+    const live = Number((globalThis as { __pebrProjModel?: number }).__pebrProjModel)
+    if (Number.isFinite(live) && live >= 0 && live <= 7) return live || 1
+  } catch {}
+  if (m >= 1 && m <= 7) return m
+  return 1
+}
+
 export function weightedTrendV1(points: TrendPoint[], windowDays = 14): SeriesPoint[] {
   if (!points.length) return []
   const sorted = [...points].sort((a, b) => a.t - b.t)
@@ -115,7 +125,7 @@ export function applyHouseEffects(points: TrendPoint[], house: Record<string, nu
 }
 
 export function averageTrend(points: TrendPoint[], windowDays = 14, model = 1): SeriesPoint[] {
-  const m = Number(model)
+  const m = resolveLiveModel(model)
   if (m >= 3 && m <= 7) return averageTrendAdvanced(points, windowDays, m)
   if (m === 2) return weightedTrendV2(applyHouseEffects(points, estimateHouseEffects(points)), windowDays)
   return weightedTrendV1(points, windowDays)
