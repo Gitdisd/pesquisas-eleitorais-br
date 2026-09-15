@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "election": "Eleições Gerais 2026",
+  "tse_registry_zip": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
+  "registry_lookback_days": 45,
+  "publication_grace_days": 2,
+  "max_recovery_protocols": 40,
+  "max_rss_articles_per_protocol": 12,
+  "request_timeout_ms": 15000,
+  "trusted_evidence_hosts": [
+    "g1.globo.com",
+    "www1.folha.uol.com.br",
+    "noticias.uol.com.br",
+    "www.uol.com.br",
+    "www.bol.uol.com.br",
+    "www.poder360.com.br",
+    "www.gazetadopovo.com.br",
+    "www.cnnbrasil.com.br",
+    "valor.globo.com",
+    "jc.uol.com.br",
+    "www.infomoney.com.br",
+    "www.bbc.com",
+    "www.reuters.com"
+  ],
+  "candidate_aliases": [
+    { "name": "Lula", "party": "PT", "aliases": ["Lula", "Luiz Inácio Lula da Silva", "Luiz Inacio Lula da Silva"] },
+    { "name": "Flávio Bolsonaro", "party": "PL", "aliases": ["Flávio Bolsonaro", "Flavio Bolsonaro", "Flávio", "Flavio"] },
+    { "name": "Augusto Cury", "party": "Avante", "aliases": ["Augusto Cury", "Escritor Augusto Cury", "Cury"] },
+    { "name": "Renan Santos", "party": "Missão", "aliases": ["Renan Santos", "Renan"] },
+    { "name": "Ronaldo Caiado", "party": "PSD", "aliases": ["Ronaldo Caiado", "Caiado"] },
+    { "name": "Romeu Zema", "party": "Novo", "aliases": ["Romeu Zema", "Zema"] },
+    { "name": "Samara Martins", "party": "UP", "aliases": ["Samara Martins", "Samara"] },
+    { "name": "Hertz Dias", "party": "PSTU", "aliases": ["Hertz Dias", "Hertz"] },
+    { "name": "Edmilson Costa", "party": "PCB", "aliases": ["Edmilson Costa", "Edmilson Dias", "Edmilson"] },
+    { "name": "Rui Costa Pimenta", "party": "PCO", "aliases": ["Rui Costa Pimenta", "Rui Costa", "Pimenta"] },
+    { "name": "Clariana Barão", "party": "DC", "aliases": ["Clariana Barão", "Clariana Barao", "Clariana"] },
+    { "name": "Wilson Grassi", "party": "Democrata", "aliases": ["Wilson Grassi", "Veterinário Wilson Grassi", "Veterinario Wilson Grassi", "Grassi"] }
+  ]
+}
