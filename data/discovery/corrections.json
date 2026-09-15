@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "remove-misattributed-btg-nexus",
+      "action": "remove_exact",
+      "match": {
+        "institute": "PoderData",
+        "source_url_contains": "lula-tem-47-contra-46-de-flavio-no-2o-turno-mostra-btg-nexus"
+      },
+      "reason": "The source article is a BTG/Nexus poll, not a PoderData poll. A duplicated Nexus/BTG record already exists for the same fieldwork and protocol.",
+      "evidence": [
+        "https://www1.folha.uol.com.br/poder/2026/09/btgnexus-lula-tem-42-e-flavio-bolsonaro-37-no-primeiro-turno.shtml"
+      ]
+    },
+    {
+      "id": "repair-quaest-2026-09-14-first-round",
+      "action": "replace_by_tse_and_source",
+      "match": {
+        "tse_registration": "BR-03607/2026",
+        "scenario": "estimulada 1º turno"
+      },
+      "source": "https://noticias.uol.com.br/eleicoes/2026/09/14/pesquisa-eleitoral-quaest-veja-numeros-percentuais-atualizados.ghtm",
+      "secondary_source": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml",
+      "record": {
+        "institute": "Quaest",
+        "fieldwork_start": "2026-09-10",
+        "fieldwork_end": "2026-09-13",
+        "published_date": "2026-09-14",
+        "scenario": "estimulada 1º turno",
+        "candidates": [
+          { "name": "Lula", "party_optional": "PT", "pct": 36 },
+          { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 31 },
+          { "name": "Augusto Cury", "party_optional": "Avante", "pct": 7 },
+          { "name": "Renan Santos", "party_optional": "Missão", "pct": 4 },
+          { "name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4 },
+          { "name": "Romeu Zema", "party_optional": "Novo", "pct": 1 },
+          { "name": "branco/nulo/não sabe", "party_optional": null, "pct": 7 },
+          { "name": "indecisos", "party_optional": null, "pct": 10 }
+        ],
+        "n": 2004,
+        "margin_of_error": "±2 pp",
+        "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/14/pesquisa-eleitoral-quaest-veja-numeros-percentuais-atualizados.ghtm",
+        "methodology_note": "Quaest; TSE BR-03607/2026; 2,004 interviews, 10–13 Sep 2026. Corrected from a corrupted extraction that used a second-round value (55) as first-round Flávio Bolsonaro.",
+        "tse_registration": "BR-03607/2026",
+        "verification": {
+          "status": "source-corrected",
+          "primary_source": "https://noticias.uol.com.br/eleicoes/2026/09/14/pesquisa-eleitoral-quaest-veja-numeros-percentuais-atualizados.ghtm",
+          "secondary_source": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml"
+        },
+        "verified": true
+      }
+    },
+    {
+      "id": "add-quaest-2026-09-14-second-round",
+      "action": "ensure_record",
+      "match": {
+        "tse_registration": "BR-03607/2026",
+        "scenario": "2º turno Lula x Flávio Bolsonaro"
+      },
+      "record": {
+        "institute": "Quaest",
+        "fieldwork_start": "2026-09-10",
+        "fieldwork_end": "2026-09-13",
+        "published_date": "2026-09-14",
+        "scenario": "2º turno Lula x Flávio Bolsonaro",
+        "candidates": [
+          { "name": "Lula", "party_optional": "PT", "pct": 40 },
+          { "name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 42 }
+        ],
+        "n": 2004,
+        "margin_of_error": "±2 pp",
+        "source_url": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml",
+        "methodology_note": "Quaest; TSE BR-03607/2026; 2,004 interviews, 10–13 Sep 2026.",
+        "tse_registration": "BR-03607/2026",
+        "verification": {
+          "status": "source-corroborated",
+          "primary_source": "https://noticias.uol.com.br/eleicoes/2026/09/14/pesquisa-eleitoral-quaest-veja-numeros-percentuais-atualizados.ghtm",
+          "secondary_source": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml"
+        },
+        "verified": true
+      }
+    }
+  ]
+}
