@@ -1,0 +1,40 @@
+name: Poll pipeline smoke test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "data/discovery/**"
+      - "package.json"
+      - ".github/workflows/refresh-polls.yml"
+      - ".github/workflows/pipeline-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Syntax check pipeline scripts
+        run: |
+          set -e
+          node --check scripts/poll-pipeline.mjs
+          node --check scripts/apply-corrections.mjs
+          node --check scripts/quality-audit.mjs
+          node --check scripts/publish-pipeline-status.mjs
+      - name: Apply deterministic corrections and audit current dataset
+        run: |
+          node scripts/apply-corrections.mjs
+          node scripts/quality-audit.mjs
+      - run: npm run typecheck
+      - run: npm run build
