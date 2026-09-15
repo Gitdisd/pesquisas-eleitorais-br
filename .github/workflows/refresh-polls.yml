@@ -15,7 +15,7 @@ on:
 
 concurrency:
   group: refresh-polls
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
