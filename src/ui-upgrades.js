@@ -6,7 +6,7 @@ export function formatCount(n) {
 export function latestDate(polls) {
   let max = ''
   for (const p of polls || []) {
-    const d = p.fieldworkEnd || p.published || ''
+    const d = p.fieldwork_end || p.fieldworkEnd || p.published_date || p.published || ''
     if (d > max) max = d
   }
   return max
