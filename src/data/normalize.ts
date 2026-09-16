@@ -1,5 +1,5 @@
 import { matchCandidate, parseMoe, isFirstRound, isSecondRound } from '../candidates.js'
-import type { NormalizedPoll, RawPoll } from './types'
+import type { CandidateResult, NormalizedPoll, RawPoll } from './types'
 
 export function canonicalPollKey(p: RawPoll): string {
   return [p.institute, p.fieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
@@ -9,9 +9,9 @@ export function softPollKey(p: RawPoll): string {
   return [p.institute, p.fieldwork_end, p.scenario].join('|')
 }
 
-function mergeCandidates(base = [], extra = []) {
-  const merged = []
-  const seen = new Map()
+function mergeCandidates(base: CandidateResult[] = [], extra: CandidateResult[] = []): CandidateResult[] {
+  const merged: CandidateResult[] = []
+  const seen = new Map<string, CandidateResult>()
   for (const candidate of [...base, ...extra]) {
     if (!candidate?.name || typeof candidate.pct !== 'number' || !Number.isFinite(candidate.pct)) continue
     const key = String(candidate.name).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim()
