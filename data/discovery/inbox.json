@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T11:24:48.912Z",
+  "updated_at": "2026-09-16T16:46:42.274Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -441,6 +441,30 @@
       "institute": "Ideia",
       "published_date": null,
       "found_at": "2026-09-16T00:14:56.921Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/16/a-nova-pesquisa-quaest-para-presidente-que-vai-testar-o-movimento-de-alta-de-flavio-bolsonaro.ghtml",
+      "title": "A nova pesquisa Quaest para presidente que vai testar o movimento de alta de Flávio Bolsonaro | Eleições 2026 | Valor Ec",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-16",
+      "found_at": "2026-09-16T16:46:14.264Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/16/pesquisa-quaest-lula-e-visto-como-desonesto-por-49percent-e-flavio-bolsonaro-por-42percent.ghtml",
+      "title": "Pesquisa Quaest: Lula é visto como desonesto por 49% e Flávio Bolsonaro, por 42% | Eleições 2026 | Valor Econômico Carre",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-16",
+      "found_at": "2026-09-16T16:46:20.889Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/blogs/pedro-venceslau/eleicoes/ratinho-jr-se-licencia-do-governo-e-quer-frear-moro-no-parana/",
+      "title": "Ratinho Jr. se licencia do governo e quer frear Moro no Paraná | Blogs | CNN Brasil Pular para o conteúdo Ao vivo Políti",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-16T16:46:34.660Z"
     }
   ]
 }
