@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:03:51.944Z",
+  "updated_at": "2026-09-16T23:05:30.969Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -473,6 +473,14 @@
       "institute": "Quaest",
       "published_date": "2026-09-16",
       "found_at": "2026-09-16T20:03:28.041Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/politica/vox-radar-34-dos-internautas-questionam-posturas-de-ministros-na-sessao/",
+      "title": "Vox Radar: 34% questionam nas redes posturas de ministros na sessão | CNN Brasil Pular para o conteúdo Ao vivo Política ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Vox Brasil",
+      "published_date": "2026-09-16",
+      "found_at": "2026-09-16T23:05:23.410Z"
     }
   ]
 }

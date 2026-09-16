@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-09-16T20:03:50.992Z",
+  "ran_at": "2026-09-16T23:05:30.407Z",
   "watermark": "2026-09-15",
   "sources": 22,
-  "candidate_links": 403,
+  "candidate_links": 406,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 24,
-  "skipped_old": 29,
+  "inbox_new": 23,
+  "skipped_old": 27,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-16T20:03:22.885Z"
+      "found_at": "2026-09-16T23:05:07.715Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-16T20:03:23.620Z"
+      "found_at": "2026-09-16T23:05:08.226Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-16T20:03:26.635Z"
+      "found_at": "2026-09-16T23:05:09.885Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-voto-mulheres-flavio-bolsonaro-lula.ghtml",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-16T20:03:26.825Z"
+      "found_at": "2026-09-16T23:05:10.045Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-1-turno-14-setembro-recortes.ghtml",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-16T20:03:27.041Z"
+      "found_at": "2026-09-16T23:05:10.211Z"
     }
   ],
-  "meta_last_check_at": "2026-09-16T20:03:50.993Z"
+  "meta_last_check_at": "2026-09-16T23:05:30.408Z"
 }
