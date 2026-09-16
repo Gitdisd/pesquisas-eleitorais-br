@@ -1,0 +1,57 @@
+[
+  {
+    "institute": "DataTrends",
+    "fieldwork_start": "2026-09-12",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-16",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 39},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 35},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1},
+      {"name": "branco/nulo/indecisos", "party_optional": null, "pct": 12}
+    ],
+    "n": 2000,
+    "margin_of_error": "±2,19 pp",
+    "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html",
+    "methodology_note": "DataTrends first national wave. Phone IVR, 2.000 interviews 12–14 Sep across 27 UFs. TSE BR-08691/2026. Residual 12 = indecisos+ausentes as published. Witness: Correio Braziliense 16 Sep.",
+    "verified": true
+  },
+  {
+    "institute": "DataTrends",
+    "fieldwork_start": "2026-09-12",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-16",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 44},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 45},
+      {"name": "branco/nulo/indecisos", "party_optional": null, "pct": 11}
+    ],
+    "n": 2000,
+    "margin_of_error": "±2,19 pp",
+    "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html",
+    "methodology_note": "DataTrends 2º Lula 44 × Flávio 45. TSE BR-08691/2026.",
+    "verified": true
+  },
+  {
+    "institute": "Veritá",
+    "fieldwork_start": "2026-09-04",
+    "fieldwork_end": "2026-09-12",
+    "published_date": "2026-09-13",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 41.51},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 43.95},
+      {"name": "outros", "party_optional": null, "pct": 14.54}
+    ],
+    "n": 40500,
+    "margin_of_error": "±3,5 pp",
+    "source_url": "https://revistaoeste.com/politica/verita-flavio-lidera-sobre-lula-em-16-estados-e-tem-4395/",
+    "methodology_note": "Veritá 27-UF stacked phone sample 4–12 Sep, n=40.500, votos válidos / turnout-weighted projection. Distinct from Veritá 1–4 Sep n=3.804 (BR-09426/2026). Witness: Revista Oeste 13 Sep.",
+    "verified": true
+  }
+]
