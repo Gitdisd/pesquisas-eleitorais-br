@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T22:09:21.239Z",
+  "updated_at": "2026-09-16T00:15:02.066Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -433,6 +433,14 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-15T18:55:21.062Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/politica/indexa-68-apoiam-impeachment-de-ministros-envolvidos-na-crise-do-stf/",
+      "title": "Indexa: 68% apoiam impeachment de ministros envolvidos na crise do STF | CNN Brasil Pular para o conteúdo Ao vivo Políti",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe,no_scenario",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-09-16T00:14:56.921Z"
     }
   ]
 }

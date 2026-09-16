@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-15T22:09:21.240Z",
+  "generated_at": "2026-09-16T00:15:02.067Z",
   "attempted": 1,
   "recovered_count": 0,
   "recovered": [],
@@ -11,6 +11,6 @@
       "reason": "missing_poll_metadata"
     }
   ],
-  "remaining_inbox": 54,
+  "remaining_inbox": 55,
   "ocr_max_pages": 40
 }
