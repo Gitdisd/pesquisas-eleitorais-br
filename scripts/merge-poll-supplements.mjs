@@ -8,6 +8,7 @@ const EXTRA_PATHS = [
   `${ROOT}/data/polls-extra.json`,
   `${ROOT}/public/data/polls-extra.json`,
   `${ROOT}/data/polls-extra-wave-2026-09-15.json`,
+  `${ROOT}/data/polls-extra-wave-2026-09-16.json`,
 ]
 const OUT_PATH = BASE_PATH
 
