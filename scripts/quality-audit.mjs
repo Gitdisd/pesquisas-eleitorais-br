@@ -6,9 +6,20 @@ const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
 const errors = []
 const warnings = []
 
+const normalizeProtocol = (raw) => {
+  if (!raw) return null
+  return String(raw).toUpperCase().replace(/^BR(?=\d)/, 'BR-')
+}
+
 const protocolOf = (p) => {
-  const s = [p.methodology_note, p.source_url, p.tse_registration].filter(Boolean).join(' ')
-  return s.match(/\bBR-?\d{4,6}\/2026\b/i)?.[0]?.toUpperCase().replace(/^BR(?=\d)/, 'BR-') || null
+  const explicit = String(p.tse_registration || '').match(/\bBR-?\d{4,6}\/2026\b/i)
+  if (explicit) return normalizeProtocol(explicit[0])
+  const note = String(p.methodology_note || '')
+    .replace(/\b(distinct from|not the|diferente de|separate (product|wave) from)[^.]*\./gi, ' ')
+  const owned = note.match(/TSE\s+(BR-?\d{4,6}\/2026)/i)
+  if (owned) return normalizeProtocol(owned[1])
+  const blob = [note, p.source_url].filter(Boolean).join(' ')
+  return normalizeProtocol(blob.match(/\bBR-?\d{4,6}\/2026\b/i)?.[0] || null)
 }
 const candidateMap = (p) => new Map((p.candidates || []).map(c => [c.name, Number(c.pct)]))
 const sameMap = (a, b) => {
