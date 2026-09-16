@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-09-16T16:46:41.560Z",
+  "ran_at": "2026-09-16T20:03:50.992Z",
   "watermark": "2026-09-15",
   "sources": 22,
-  "candidate_links": 397,
+  "candidate_links": 403,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 24,
-  "skipped_old": 28,
+  "skipped_old": 29,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-16T16:46:12.225Z"
+      "found_at": "2026-09-16T20:03:22.885Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -25,15 +25,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-16T16:46:13.443Z"
-    },
-    {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/16/a-nova-pesquisa-quaest-para-presidente-que-vai-testar-o-movimento-de-alta-de-flavio-bolsonaro.ghtml",
-      "title": "A nova pesquisa Quaest para presidente que vai testar o movimento de alta de Flávio Bolsonaro | Eleições 2026 | Valor Ec",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Quaest",
-      "published_date": "2026-09-16",
-      "found_at": "2026-09-16T16:46:14.264Z"
+      "found_at": "2026-09-16T20:03:23.620Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -41,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-16T16:46:17.018Z"
+      "found_at": "2026-09-16T20:03:26.635Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-voto-mulheres-flavio-bolsonaro-lula.ghtml",
@@ -49,8 +41,16 @@
       "reason": "incomplete_extract:no_fieldwork,no_n",
       "institute": "Quaest",
       "published_date": "2026-09-15",
-      "found_at": "2026-09-16T16:46:17.274Z"
+      "found_at": "2026-09-16T20:03:26.825Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-1-turno-14-setembro-recortes.ghtml",
+      "title": "Quaest 1º turno: veja recortes de intenção de voto para presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-15",
+      "found_at": "2026-09-16T20:03:27.041Z"
     }
   ],
-  "meta_last_check_at": "2026-09-16T16:46:41.561Z"
+  "meta_last_check_at": "2026-09-16T20:03:50.993Z"
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T16:46:42.274Z",
+  "updated_at": "2026-09-16T20:03:51.944Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -465,6 +465,14 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-16T16:46:34.660Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/16/quaest-honestidade-candidatos-presidencia.ghtml",
+      "title": "Quaest: 49% não acham Lula honesto; 42% dizem o mesmo sobre Flávio | G1 Pular para o conteúdo Eleições 2026 Apuração Qua",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Quaest",
+      "published_date": "2026-09-16",
+      "found_at": "2026-09-16T20:03:28.041Z"
     }
   ]
 }

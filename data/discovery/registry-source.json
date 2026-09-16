@@ -1,16 +1,16 @@
 {
   "version": 7,
   "status": "resolved",
-  "started_at": "2026-09-16T16:46:42.445Z",
-  "completed_at": "2026-09-16T16:46:44.752Z",
+  "started_at": "2026-09-16T20:03:52.132Z",
+  "completed_at": "2026-09-16T20:03:54.061Z",
   "selected_source": "tse-ckan",
   "trust": "official",
   "requested_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
   "resolved_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
   "normalized_kind": "national-presidential-protocol-inventory",
   "original_kind": "zip",
-  "bytes": 4031037,
-  "sha256": "fb4e2689a2dc8ea66dc94039d2aba0c92a7024ae7348f8cc39e1b94f67912b90",
+  "bytes": 4105620,
+  "sha256": "75cdd729d108d701809a7f0ac8a3f79e96bac45261855a822e27f46b30ce9761",
   "attempts": [
     {
       "stage": "ckan_discovery",
@@ -25,8 +25,8 @@
       "requested_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
       "resolved_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
       "kind": "zip",
-      "bytes": 4031037,
-      "sha256": "fb4e2689a2dc8ea66dc94039d2aba0c92a7024ae7348f8cc39e1b94f67912b90"
+      "bytes": 4105620,
+      "sha256": "75cdd729d108d701809a7f0ac8a3f79e96bac45261855a822e27f46b30ce9761"
     }
   ]
 }
