@@ -1,0 +1,136 @@
+[
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-09-13",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 37},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 36},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 8},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 3},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3},
+      {"name": "Hertz Dias", "party_optional": "PSTU", "pct": 2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1},
+      {"name": "Samara", "party_optional": "UP", "pct": 1},
+      {"name": "Clariana Barão", "party_optional": "DC", "pct": 1},
+      {"name": "Rui Costa Pimenta", "party_optional": "PCO", "pct": 1},
+      {"name": "branco/nulo", "party_optional": null, "pct": 4},
+      {"name": "não sabe", "party_optional": null, "pct": 2}
+    ],
+    "n": 3000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
+    "tse_registration": "BR-00360/2026",
+    "methodology_note": "PoderData/Aya phone 3.000 interviews 13-16 Sep. Marcal excluded per dataset rule. Witness: Gazeta 17 Sep.",
+    "verified": true
+  },
+  {
+    "institute": "PoderData",
+    "fieldwork_start": "2026-09-13",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 44},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46},
+      {"name": "branco/nulo", "party_optional": null, "pct": 8},
+      {"name": "não sabe", "party_optional": null, "pct": 2}
+    ],
+    "n": 3000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
+    "tse_registration": "BR-00360/2026",
+    "methodology_note": "PoderData 2o Flavio 46 x Lula 44.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 44.1},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 41.7},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 5.1},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 3.5},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1.7},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1.1},
+      {"name": "Samara", "party_optional": "UP", "pct": 0.7},
+      {"name": "branco/nulo", "party_optional": null, "pct": 1.6},
+      {"name": "não sabe", "party_optional": null, "pct": 0.5}
+    ],
+    "n": 5018,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm",
+    "tse_registration": "BR-06221/2026",
+    "methodology_note": "Atlas/Bloomberg digital RDR 5.018 interviews 11-16 Sep. Totals not valid votes. Witness: UOL/Gazeta 17 Sep.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 46.8},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47.2},
+      {"name": "branco/nulo/não sabe", "party_optional": null, "pct": 6}
+    ],
+    "n": 5018,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm",
+    "tse_registration": "BR-06221/2026",
+    "methodology_note": "Atlas/Bloomberg 2o totals Flavio 47.2 x Lula 46.8.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-15",
+    "published_date": "2026-09-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 38.3},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.7},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6.5},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4.5},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 3.4},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1},
+      {"name": "Samara", "party_optional": "UP", "pct": 0.2},
+      {"name": "Clariana Barão", "party_optional": "DC", "pct": 0.1},
+      {"name": "Edmilson Costa", "party_optional": "PCB", "pct": 0.1},
+      {"name": "Wilson Grassi", "party_optional": "Democrata", "pct": 0.1},
+      {"name": "branco/nulo", "party_optional": null, "pct": 2.7},
+      {"name": "não sabe", "party_optional": null, "pct": 3.4}
+    ],
+    "n": 2000,
+    "margin_of_error": "±2,2 pp",
+    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm",
+    "tse_registration": "BR-00749/2026",
+    "methodology_note": "Futura/100% Cidades CATI 2.000 interviews 11-15 Sep. Marcal excluded. Witness: UOL 17 Sep.",
+    "verified": true
+  },
+  {
+    "institute": "Futura/Apex",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-15",
+    "published_date": "2026-09-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 43.7},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 48.1},
+      {"name": "branco/nulo", "party_optional": null, "pct": 6.5},
+      {"name": "não sabe", "party_optional": null, "pct": 1.7}
+    ],
+    "n": 2000,
+    "margin_of_error": "±2,2 pp",
+    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm",
+    "tse_registration": "BR-00749/2026",
+    "methodology_note": "Futura 2o Flavio 48.1 x Lula 43.7.",
+    "verified": true
+  }
+]
