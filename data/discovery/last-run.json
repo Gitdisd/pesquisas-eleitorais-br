@@ -1,31 +1,23 @@
 {
-  "ran_at": "2026-09-16T23:05:30.407Z",
-  "watermark": "2026-09-15",
+  "ran_at": "2026-09-17T01:20:17.285Z",
+  "watermark": "2026-09-16",
   "sources": 22,
-  "candidate_links": 406,
+  "candidate_links": 404,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 23,
-  "skipped_old": 27,
+  "inbox_new": 18,
+  "skipped_old": 31,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-2o-turno-veja-os-grupos-em-que-a-disputa-entre-lula-e-flavio-bolsonaro-esta-mais-apertada.ghtml",
-      "title": "Quaest, 2º turno: veja os grupos em que a disputa entre Lula e Flávio Bolsonaro está mais apertada | G1 Pular para o con",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Quaest",
-      "published_date": "2026-09-15",
-      "found_at": "2026-09-16T23:05:07.715Z"
-    },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
       "title": "O que mostra a nova pesquisa Quaest para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-16T23:05:08.226Z"
+      "found_at": "2026-09-17T01:19:43.895Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -33,24 +25,32 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-16T23:05:09.885Z"
+      "found_at": "2026-09-17T01:19:46.460Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-voto-mulheres-flavio-bolsonaro-lula.ghtml",
-      "title": "Quaest: Flávio Bolsonaro ganha terreno no eleitorado feminino | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
-      "reason": "incomplete_extract:no_fieldwork,no_n",
-      "institute": "Quaest",
-      "published_date": "2026-09-15",
-      "found_at": "2026-09-16T23:05:10.045Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+      "title": "Pesquisa Eleitoral 2026: acompanhe as intenções de voto Publicidade Eleições Eleições 2026 Intenções de voto A pesquisa ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-17T01:19:48.116Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/15/quaest-1-turno-14-setembro-recortes.ghtml",
-      "title": "Quaest 1º turno: veja recortes de intenção de voto para presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-15",
-      "found_at": "2026-09-16T23:05:10.211Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senador-tocantins-setembro-2026/",
+      "title": "Paraná Pesquisas: sondagem para governador do Tocantins Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-17T01:19:48.127Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-roraima-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governo em Roraima Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T01:19:48.747Z"
     }
   ],
-  "meta_last_check_at": "2026-09-16T23:05:30.408Z"
+  "meta_last_check_at": "2026-09-17T01:20:17.286Z"
 }

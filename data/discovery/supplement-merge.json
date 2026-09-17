@@ -1,39 +1,17 @@
 {
   "version": 4,
-  "generated_at": "2026-09-16T23:06:00.059Z",
+  "generated_at": "2026-09-17T01:20:48.382Z",
   "identity_key": "institute|fieldwork_start|fieldwork_end|scenario",
-  "base_polls": 221,
+  "base_polls": 224,
   "supplemental_rows": 25,
   "merged_polls": 224,
-  "added_polls": 3,
+  "added_polls": 0,
   "staged_only_polls": 0,
   "supplemented_polls": 0,
   "added_candidate_values": 0,
   "replaced_glued_residuals": 0,
   "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "020e5ed00774f82bf7d060980452c8d683b7a225595935dc0080365b169c379d",
-  "additions": [
-    {
-      "type": "poll",
-      "institute": "DataTrends",
-      "fieldwork_end": "2026-09-14",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html"
-    },
-    {
-      "type": "poll",
-      "institute": "DataTrends",
-      "fieldwork_end": "2026-09-14",
-      "scenario": "2º turno Lula x Flávio Bolsonaro",
-      "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html"
-    },
-    {
-      "type": "poll",
-      "institute": "Veritá",
-      "fieldwork_end": "2026-09-12",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://revistaoeste.com/politica/verita-flavio-lidera-sobre-lula-em-16-estados-e-tem-4395/"
-    }
-  ]
+  "content_sha256": "5679fddb932d295aef792b30ea4801a4a9606ffc2331f513e977734dcde44b35",
+  "additions": []
 }
