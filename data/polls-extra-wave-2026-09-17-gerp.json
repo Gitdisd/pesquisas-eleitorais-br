@@ -1,0 +1,44 @@
+[
+  {
+    "institute": "Gerp",
+    "fieldwork_start": "2026-09-14",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 40},
+      {"name": "Lula", "party_optional": "PT", "pct": 37},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 7},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 3},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1},
+      {"name": "branco/nulo", "party_optional": null, "pct": 4},
+      {"name": "não sabe", "party_optional": null, "pct": 4}
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://exame.com/brasil/pesquisa-gerp-flavio-bolsonaro-tem-40-e-lula-37-no-1o-turno/",
+    "tse_registration": "BR-00535/2026",
+    "methodology_note": "Gerp phone 2.400 interviews 14-16 Sep. Marcal excluded. Witness: Exame/CNN 17 Sep.",
+    "verified": true
+  },
+  {
+    "institute": "Gerp",
+    "fieldwork_start": "2026-09-14",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 43},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 50},
+      {"name": "branco/nulo", "party_optional": null, "pct": 6},
+      {"name": "não sabe", "party_optional": null, "pct": 1}
+    ],
+    "n": 2400,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-50-no-2o-turno-lula-43/",
+    "tse_registration": "BR-00535/2026",
+    "methodology_note": "Gerp 2o Flavio 50 x Lula 43.",
+    "verified": true
+  }
+]
