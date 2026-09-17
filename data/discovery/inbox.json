@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T18:10:20.128Z",
+  "updated_at": "2026-09-17T19:22:34.639Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -633,6 +633,14 @@
       "institute": "PoderData",
       "published_date": null,
       "found_at": "2026-09-17T18:10:13.209Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-piaui-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para governo e Senado no Piauí Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições",
+      "reason": "incomplete_extract:no_published_date,no_n",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-17T19:22:15.978Z"
     }
   ]
 }
