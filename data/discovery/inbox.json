@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T13:23:48.336Z",
+  "updated_at": "2026-09-17T16:02:04.105Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -617,6 +617,14 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-17T13:23:47.136Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/17/proximas-pesquisas-para-presidente-saiba-quando-saem-levantamentos-de-datafolha-e-quaest.ghtml",
+      "title": "Próximas pesquisas para presidente: saiba quando saem levantamentos de Datafolha e Quaest | Eleições 2026 | Valor Econôm",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-17T16:01:40.638Z"
     }
   ]
 }
