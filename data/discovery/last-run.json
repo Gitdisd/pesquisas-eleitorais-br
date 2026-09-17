@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-17T16:02:03.507Z",
-  "watermark": "2026-09-16",
+  "ran_at": "2026-09-17T18:10:19.411Z",
+  "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 400,
+  "candidate_links": 410,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 25,
-  "skipped_old": 28,
-  "fetch_errors": 9,
+  "inbox_new": 24,
+  "skipped_old": 30,
+  "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-17T16:01:38.936Z"
+      "found_at": "2026-09-17T18:09:46.446Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -25,15 +25,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-17T16:01:39.624Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
-      "title": "PoderData divulga nova pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "PoderData",
-      "published_date": null,
-      "found_at": "2026-09-17T16:01:39.636Z"
+      "found_at": "2026-09-17T18:09:47.864Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -41,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-17T16:01:39.648Z"
+      "found_at": "2026-09-17T18:09:48.537Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -49,8 +41,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-17T16:01:39.927Z"
+      "found_at": "2026-09-17T18:09:49.171Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/17/proximas-pesquisas-para-presidente-saiba-quando-saem-levantamentos-de-datafolha-e-quaest.ghtml",
+      "title": "Próximas pesquisas para presidente: saiba quando saem levantamentos de Datafolha e Quaest | Eleições 2026 | Valor Econôm",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-17T18:09:50.699Z"
     }
   ],
-  "meta_last_check_at": "2026-09-17T16:02:03.508Z"
+  "meta_last_check_at": "2026-09-17T18:10:19.412Z"
 }

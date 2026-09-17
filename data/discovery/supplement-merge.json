@@ -1,60 +1,17 @@
 {
   "version": 4,
-  "generated_at": "2026-09-17T16:02:39.462Z",
+  "generated_at": "2026-09-17T18:11:02.179Z",
   "identity_key": "institute|fieldwork_start|fieldwork_end|scenario",
-  "base_polls": 224,
+  "base_polls": 230,
   "supplemental_rows": 31,
   "merged_polls": 230,
-  "added_polls": 6,
+  "added_polls": 0,
   "staged_only_polls": 0,
   "supplemented_polls": 0,
   "added_candidate_values": 0,
   "replaced_glued_residuals": 0,
   "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "f9a3e9305d076a1a301a72f8e4067b37edd0582b762c1a4841a026c62ac3632a",
-  "additions": [
-    {
-      "type": "poll",
-      "institute": "PoderData",
-      "fieldwork_end": "2026-09-16",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/"
-    },
-    {
-      "type": "poll",
-      "institute": "PoderData",
-      "fieldwork_end": "2026-09-16",
-      "scenario": "2º turno Lula x Flávio Bolsonaro",
-      "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/"
-    },
-    {
-      "type": "poll",
-      "institute": "AtlasIntel",
-      "fieldwork_end": "2026-09-16",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm"
-    },
-    {
-      "type": "poll",
-      "institute": "AtlasIntel",
-      "fieldwork_end": "2026-09-16",
-      "scenario": "2º turno Lula x Flávio Bolsonaro",
-      "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm"
-    },
-    {
-      "type": "poll",
-      "institute": "Futura/Apex",
-      "fieldwork_end": "2026-09-15",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm"
-    },
-    {
-      "type": "poll",
-      "institute": "Futura/Apex",
-      "fieldwork_end": "2026-09-15",
-      "scenario": "2º turno Lula x Flávio Bolsonaro",
-      "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm"
-    }
-  ]
+  "content_sha256": "ee522753bf753a4da799350f9999585479567d21c0a9b966795ec4f3d5026efa",
+  "additions": []
 }

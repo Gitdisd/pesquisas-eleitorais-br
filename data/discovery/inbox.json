@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T16:02:04.105Z",
+  "updated_at": "2026-09-17T18:10:20.128Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -625,6 +625,14 @@
       "institute": "Datafolha",
       "published_date": "2026-09-17",
       "found_at": "2026-09-17T16:01:40.638Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/politica/poderdata-aya-57-desaprovam-trabalho-de-moraes-36-de-mendonca/",
+      "title": "PoderData/Aya: 57% desaprovam trabalho de Moraes; 36% de Mendonça | CNN Brasil Pular para o conteúdo Ao vivo Política Mo",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe,no_scenario",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-09-17T18:10:13.209Z"
     }
   ]
 }
