@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-09-17T01:20:17.285Z",
+  "ran_at": "2026-09-17T07:35:00.304Z",
   "watermark": "2026-09-16",
   "sources": 22,
-  "candidate_links": 404,
+  "candidate_links": 411,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 18,
-  "skipped_old": 31,
+  "skipped_old": 32,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-17T01:19:43.895Z"
+      "found_at": "2026-09-17T07:34:32.487Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-17T01:19:46.460Z"
+      "found_at": "2026-09-17T07:34:34.701Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-17T01:19:48.116Z"
+      "found_at": "2026-09-17T07:34:36.269Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senador-tocantins-setembro-2026/",
@@ -41,7 +41,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Paraná Pesquisas",
       "published_date": null,
-      "found_at": "2026-09-17T01:19:48.127Z"
+      "found_at": "2026-09-17T07:34:36.623Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-roraima-setembro-2026/",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-17T01:19:48.747Z"
+      "found_at": "2026-09-17T07:34:36.931Z"
     }
   ],
-  "meta_last_check_at": "2026-09-17T01:20:17.286Z"
+  "meta_last_check_at": "2026-09-17T07:35:00.305Z"
 }
