@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T19:22:34.639Z",
+  "updated_at": "2026-09-17T21:19:17.088Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -641,6 +641,14 @@
       "institute": "Datafolha",
       "published_date": null,
       "found_at": "2026-09-17T19:22:15.978Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/norte-noroeste/videos-meio-dia-parana-maringa/",
+      "title": "Meio Dia Paraná - Maringá Pular para o conteúdo Norte e Noroeste Meio Dia Paraná - Maringá eleições 2026 últimas notícia",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-17T21:19:16.150Z"
     }
   ]
 }

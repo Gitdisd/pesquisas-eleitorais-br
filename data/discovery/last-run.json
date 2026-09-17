@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-09-17T19:22:33.531Z",
+  "ran_at": "2026-09-17T21:19:16.532Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 408,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 24,
-  "skipped_old": 29,
+  "inbox_new": 22,
+  "skipped_old": 30,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-17T19:22:10.448Z"
+      "found_at": "2026-09-17T21:18:50.396Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-17T19:22:11.334Z"
+      "found_at": "2026-09-17T21:18:51.411Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-17T19:22:11.356Z"
+      "found_at": "2026-09-17T21:18:51.469Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
@@ -41,16 +41,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-17T19:22:11.722Z"
+      "found_at": "2026-09-17T21:18:51.530Z"
     },
     {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/17/proximas-pesquisas-para-presidente-saiba-quando-saem-levantamentos-de-datafolha-e-quaest.ghtml",
-      "title": "Próximas pesquisas para presidente: saiba quando saem levantamentos de Datafolha e Quaest | Eleições 2026 | Valor Econôm",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafolha divulga nova pe",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-09-17",
-      "found_at": "2026-09-17T19:22:12.510Z"
+      "published_date": null,
+      "found_at": "2026-09-17T21:18:53.341Z"
     }
   ],
-  "meta_last_check_at": "2026-09-17T19:22:33.531Z"
+  "meta_last_check_at": "2026-09-17T21:19:16.533Z"
 }

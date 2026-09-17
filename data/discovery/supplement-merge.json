@@ -1,32 +1,17 @@
 {
   "version": 4,
-  "generated_at": "2026-09-17T19:23:12.005Z",
+  "generated_at": "2026-09-17T21:19:56.076Z",
   "identity_key": "institute|fieldwork_start|fieldwork_end|scenario",
-  "base_polls": 230,
+  "base_polls": 232,
   "supplemental_rows": 33,
   "merged_polls": 232,
-  "added_polls": 2,
+  "added_polls": 0,
   "staged_only_polls": 0,
   "supplemented_polls": 0,
   "added_candidate_values": 0,
   "replaced_glued_residuals": 0,
   "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "74b8ce4c05450e4a95ce82734bea326c45599f87c20691e1032ce8e63505a671",
-  "additions": [
-    {
-      "type": "poll",
-      "institute": "Gerp",
-      "fieldwork_end": "2026-09-16",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://exame.com/brasil/pesquisa-gerp-flavio-bolsonaro-tem-40-e-lula-37-no-1o-turno/"
-    },
-    {
-      "type": "poll",
-      "institute": "Gerp",
-      "fieldwork_end": "2026-09-16",
-      "scenario": "2º turno Lula x Flávio Bolsonaro",
-      "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-50-no-2o-turno-lula-43/"
-    }
-  ]
+  "content_sha256": "b651889ff47d152b8268f1942578f31274b174f66d8a2e5c4a1dc336cd930190",
+  "additions": []
 }
