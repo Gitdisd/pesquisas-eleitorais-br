@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T07:35:00.706Z",
+  "updated_at": "2026-09-17T13:23:48.336Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -481,6 +481,142 @@
       "institute": "Vox Brasil",
       "published_date": "2026-09-16",
       "found_at": "2026-09-16T23:05:23.410Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
+      "title": "Pesquisa Datafolha: novos números da corrida presidencial hoje (17) | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-17T13:23:22.540Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
+      "title": "Gerp divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenção de voto Saiba ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:23.649Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
+      "title": "PoderData divulga nova pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:23.675Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
+      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:23.700Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-senador-parana-setembro-2026/",
+      "title": "Alfa Inteligência divulga pesquisa para o Senado pelo Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Alfa Inteligência",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:26.952Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/neokemp-senado-parana-setembro-2026-2/",
+      "title": "Neokemp divulga pesquisa ao Senado no Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Veja o resultado Pesq",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:26.975Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/neokemp-governador-parana-setembro-2026-2/",
+      "title": "Neokemp divulga pesquisa para o governo do Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções de vot",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:26.999Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-governador-parana-setembro-2026-2/",
+      "title": "Alfa Inteligência divulga pesquisa para governador no Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:27.590Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-parana-setembro-2026-2/",
+      "title": "Pesquisa AtlasIntel mostra disputa para governador do Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confi",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:27.615Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-pernambuco-setembro-2026/",
+      "title": "AtlasIntel divulga pesquisa para governador de Pernambuco Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intençõe",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:27.638Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-50-no-2o-turno-lula-43/",
+      "title": "Gerp: Flávio tem 50% no 2º turno; Lula, 43% | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro Infra IA E",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:33.624Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-46-no-2o-turno-lula-44/",
+      "title": "PoderData/Aya: Flávio tem 46% no 2º turno; Lula, 44% | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro I",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-16",
+      "found_at": "2026-09-17T13:23:33.654Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/lula-chega-a-44-em-1o-turno-mesmo-com-desaprovacao-de-54-mostra-atlasintel/",
+      "title": "Lula chega a 44% em 1º turno mesmo com desaprovação de 54%, mostra AtlasIntel Lula chega a 44% em 1º turno mesmo com des",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:42.481Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/atlasintel-master-divide-eleitor-mas-crise-do-stf-pesa-mais-sobre-presidente/",
+      "title": "AtlasIntel: Master divide eleitor, mas crise do STF pesa mais sobre presidente AtlasIntel: Master divide eleitor, mas cr",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe,no_scenario",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:42.930Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/atlasintel-flavio-tem-472-e-lula-468-em-empate-tecnico-no-2o-turno/",
+      "title": "AtlasIntel: Flávio tem 47,2% e Lula, 46,8%, em empate técnico no 2º turno AtlasIntel: Flávio tem 47,2% e Lula, 46,8%, em",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:43.396Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/politica/futura-604-desaprovam-o-stf-aprovacao-e-de-293/",
+      "title": "Futura: 60,4% desaprovam o STF; aprovação é de 29,3% | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Agro I",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Futura/Apex",
+      "published_date": "2026-09-16",
+      "found_at": "2026-09-17T13:23:43.664Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/parana/videos-bom-dia-parana/",
+      "title": "Vídeos Bom Dia Paraná - G1 Paraná Pular para o conteúdo Paraná Vídeos Bom Dia Paraná eleições 2026 últimas notícias bom ",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:47.136Z"
     }
   ]
 }

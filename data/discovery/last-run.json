@@ -1,56 +1,56 @@
 {
-  "ran_at": "2026-09-17T07:35:00.304Z",
+  "ran_at": "2026-09-17T13:23:47.896Z",
   "watermark": "2026-09-16",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 410,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 18,
-  "skipped_old": 32,
+  "inbox_new": 27,
+  "skipped_old": 29,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
+      "title": "Pesquisa Datafolha: novos números da corrida presidencial hoje (17) | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-17T13:23:22.540Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
+      "title": "Gerp divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenção de voto Saiba ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:23.649Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
+      "title": "PoderData divulga nova pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:23.675Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
+      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-17T13:23:23.700Z"
+    },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
       "title": "O que mostra a nova pesquisa Quaest para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-17T07:34:32.487Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
-      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest: Flávio Bolsonaro ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-09-17T07:34:34.701Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
-      "title": "Pesquisa Eleitoral 2026: acompanhe as intenções de voto Publicidade Eleições Eleições 2026 Intenções de voto A pesquisa ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-17T07:34:36.269Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senador-tocantins-setembro-2026/",
-      "title": "Paraná Pesquisas: sondagem para governador do Tocantins Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Paraná Pesquisas",
-      "published_date": null,
-      "found_at": "2026-09-17T07:34:36.623Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-roraima-setembro-2026/",
-      "title": "AtlasIntel divulga pesquisa para governo em Roraima Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-09-17T07:34:36.931Z"
+      "found_at": "2026-09-17T13:23:23.725Z"
     }
   ],
-  "meta_last_check_at": "2026-09-17T07:35:00.305Z"
+  "meta_last_check_at": "2026-09-17T13:23:47.896Z"
 }
