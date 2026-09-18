@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-18T00:09:30.990Z",
+  "updated_at": "2026-09-18T03:03:52.547Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -737,6 +737,14 @@
       "institute": "Datafolha",
       "published_date": null,
       "found_at": "2026-09-18T00:09:26.756Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-18T03:03:31.871Z"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-18T00:09:30.448Z",
+  "ran_at": "2026-09-18T03:03:52.179Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 410,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 32,
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-18T00:08:58.789Z"
+      "found_at": "2026-09-18T03:03:31.000Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-presidente-17-setembro.ghtml",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-18T00:08:59.153Z"
+      "found_at": "2026-09-18T03:03:31.256Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
@@ -33,7 +33,15 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-18T00:08:59.379Z"
+      "found_at": "2026-09-18T03:03:31.436Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-18T03:03:31.871Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-3/",
@@ -41,16 +49,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-18T00:08:59.658Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
-      "title": "Gerp divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenção de voto Saiba ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-09-18T00:08:59.690Z"
+      "found_at": "2026-09-18T03:03:32.739Z"
     }
   ],
-  "meta_last_check_at": "2026-09-18T00:09:30.449Z"
+  "meta_last_check_at": "2026-09-18T03:03:52.179Z"
 }

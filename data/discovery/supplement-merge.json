@@ -1,17 +1,32 @@
 {
   "version": 4,
-  "generated_at": "2026-09-18T00:10:02.371Z",
+  "generated_at": "2026-09-18T03:04:26.395Z",
   "identity_key": "institute|fieldwork_start|fieldwork_end|scenario",
   "base_polls": 232,
-  "supplemental_rows": 33,
-  "merged_polls": 232,
-  "added_polls": 0,
+  "supplemental_rows": 35,
+  "merged_polls": 234,
+  "added_polls": 2,
   "staged_only_polls": 0,
   "supplemented_polls": 0,
   "added_candidate_values": 0,
   "replaced_glued_residuals": 0,
   "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "b651889ff47d152b8268f1942578f31274b174f66d8a2e5c4a1dc336cd930190",
-  "additions": []
+  "content_sha256": "31d4bf54fd89a0ecbc7476b67b94db5fdbb5cb8b077d876f13e1ce6c7ab9f6bb",
+  "additions": [
+    {
+      "type": "poll",
+      "institute": "Datafolha",
+      "fieldwork_end": "2026-09-17",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/17/datafolha-lula-39percent-flavio-bolsonaro-36percent-cury-6percent-caiado-4percent-renan-3percent-zema-2percent.ghtml"
+    },
+    {
+      "type": "poll",
+      "institute": "Datafolha",
+      "fieldwork_end": "2026-09-17",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.metropoles.com/brasil/datafolha-lula-tem-46-no-2-turno-flavio-marca-44"
+    }
+  ]
 }

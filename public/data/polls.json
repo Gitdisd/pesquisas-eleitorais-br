@@ -1,5 +1,98 @@
 [
   {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-15",
+    "fieldwork_end": "2026-09-17",
+    "published_date": "2026-09-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 46
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 44
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 8
+      },
+      {
+        "name": "não sabe",
+        "party_optional": null,
+        "pct": 1
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.metropoles.com/brasil/datafolha-lula-tem-46-no-2-turno-flavio-marca-44",
+    "methodology_note": "Datafolha 2o Lula 46 x Flavio 44, same as 11 Sep wave.",
+    "verified": true
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-15",
+    "fieldwork_end": "2026-09-17",
+    "published_date": "2026-09-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "Samara",
+        "party_optional": "UP",
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 6
+      },
+      {
+        "name": "não sabe",
+        "party_optional": null,
+        "pct": 3
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/17/datafolha-lula-39percent-flavio-bolsonaro-36percent-cury-6percent-caiado-4percent-renan-3percent-zema-2percent.ghtml",
+    "methodology_note": "Datafolha face-to-face 2.002 interviews 15-17 Sep. Globo/Folha. Witness: CBN/Valor/Metrópoles 17 Sep 19h.",
+    "verified": true
+  },
+  {
     "institute": "AtlasIntel",
     "fieldwork_start": "2026-09-11",
     "fieldwork_end": "2026-09-16",
