@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T21:19:17.088Z",
+  "updated_at": "2026-09-18T00:09:30.990Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -649,6 +649,94 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-17T21:19:16.150Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-segundo-turno-presidente-17-setembro.ghtml",
+      "title": "Datafolha, 2º turno: Lula, 46%; Flávio Bolsonaro, 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:08:58.789Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-presidente-17-setembro.ghtml",
+      "title": "Lula x Flávio Bolsonaro: Datafolha aponta empate técnico no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:08:59.153Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-3/",
+      "title": "Os números da nova pesquisa Datafolha para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 202",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-18T00:08:59.658Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-17-setembro-lula-flavio-bolsonaro-1-turno-2-turno-rejeicao.ghtml",
+      "title": "Datafolha aponta empate triplo entre Lula e Flávio Bolsonaro; entenda | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:04.083Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-rejeicao-lula-flavio-17-setembro.ghtml",
+      "title": "Datafolha: Lula e Flávio Bolsonaro têm o mesmo patamar de rejeição | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:04.302Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-50percent-desaprovam-e-48percent-aprovam-governo-lula.ghtml",
+      "title": "Datafolha de 17 de setembro: 50% desaprovam e 48% aprovam governo Lula | G1 Pular para o conteúdo Eleições 2026 Pesquisa",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:04.523Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/17/datafolha-bolsa-familia.ghtml",
+      "title": "Datafolha: Lula tem 53% no Bolsa Família e Flávio Bolsonaro, 28% | G1 Pular para o conteúdo Eleições 2026 Apuração Dataf",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:05.211Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/17/datafolha-governo-lula-reprovado-por-50-pontos-percentuais-e-aprovado-por-48.ghtml",
+      "title": "Datafolha: Governo Lula é reprovado por 50% e aprovado por 48% | Eleições 2026 | Valor Econômico Carregando... Acesse su",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:11.371Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/17/datafolha-lula-tem-46percent-e-flavio-44percent-no-segundo-turno.ghtml",
+      "title": "Datafolha: Lula tem 46% e Flávio, 44% no segundo turno | Eleições 2026 | Valor Econômico Carregando... Acesse sua conta ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:11.789Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-e-flavio-bolsonaro-empatam-em-1o-e-2o-turnos.shtml",
+      "title": "Datafolha: Lula e Flávio Bolsonaro empatam nos 2 turnos - 17/09/2026 - Política - Folha Últimas notícias Gostaria de rec",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:09:25.308Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/datafolha-lula-tem-39-e-flavio-chega-a-36-no-primeiro-turno/",
+      "title": "Datafolha: Lula tem 39% e Flávio chega a 36% no primeiro turno Datafolha: Lula tem 39% e Flávio chega a 36% no primeiro ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-18T00:09:26.756Z"
     }
   ]
 }

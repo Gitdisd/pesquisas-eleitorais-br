@@ -1,23 +1,47 @@
 {
-  "ran_at": "2026-09-17T21:19:16.532Z",
+  "ran_at": "2026-09-18T00:09:30.448Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 408,
+  "candidate_links": 411,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 22,
-  "skipped_old": 30,
+  "inbox_new": 32,
+  "skipped_old": 24,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-segundo-turno-presidente-17-setembro.ghtml",
+      "title": "Datafolha, 2º turno: Lula, 46%; Flávio Bolsonaro, 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:08:58.789Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-presidente-17-setembro.ghtml",
+      "title": "Lula x Flávio Bolsonaro: Datafolha aponta empate técnico no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-18T00:08:59.153Z"
+    },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
       "title": "Pesquisa Datafolha: novos números da corrida presidencial hoje (17) | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-17T21:18:50.396Z"
+      "found_at": "2026-09-18T00:08:59.379Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-3/",
+      "title": "Os números da nova pesquisa Datafolha para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 202",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-18T00:08:59.658Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -25,32 +49,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-17T21:18:51.411Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
-      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
-      "reason": "incomplete_extract:no_published_date,no_moe",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-09-17T21:18:51.469Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-3/",
-      "title": "O que mostra a nova pesquisa Quaest para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-09-17T21:18:51.530Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
-      "title": "Eleições 2026 - Pesquisa Eleitoral - g1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafolha divulga nova pe",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-17T21:18:53.341Z"
+      "found_at": "2026-09-18T00:08:59.690Z"
     }
   ],
-  "meta_last_check_at": "2026-09-17T21:19:16.533Z"
+  "meta_last_check_at": "2026-09-18T00:09:30.449Z"
 }
