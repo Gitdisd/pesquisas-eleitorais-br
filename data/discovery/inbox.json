@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-18T18:22:03.045Z",
+  "updated_at": "2026-09-18T21:37:30.044Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -801,6 +801,14 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-18T18:21:59.621Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/datafolha-no-ceara-ciro-tem-47percent-e-elmano-40percent-no-1o-turno.ghtml",
+      "title": "Datafolha: No Ceará, Ciro tem 47% e Elmano, 40% no 1º turno | Eleições 2026 | Valor Econômico Carregando... Acesse sua c",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-18T21:37:06.652Z"
     }
   ]
 }

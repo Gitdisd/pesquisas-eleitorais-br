@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-18T18:22:02.645Z",
+  "ran_at": "2026-09-18T21:37:29.522Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 408,
+  "candidate_links": 402,
   "pages_fetched": 60,
   "verified_new": 0,
   "inbox_new": 34,
   "skipped_old": 21,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-18T18:21:27.974Z"
+      "found_at": "2026-09-18T21:37:02.384Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-presidente-17-setembro.ghtml",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-18T18:21:28.349Z"
+      "found_at": "2026-09-18T21:37:02.707Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-18T18:21:28.599Z"
+      "found_at": "2026-09-18T21:37:02.908Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-3/",
@@ -41,16 +41,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-18T18:21:29.277Z"
+      "found_at": "2026-09-18T21:37:03.014Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
       "title": "Gerp divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenção de voto Saiba ",
       "reason": "incomplete_extract:no_published_date",
-      "institute": "Quaest",
+      "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-18T18:21:29.943Z"
+      "found_at": "2026-09-18T21:37:03.072Z"
     }
   ],
-  "meta_last_check_at": "2026-09-18T18:22:02.646Z"
+  "meta_last_check_at": "2026-09-18T21:37:29.522Z"
 }
