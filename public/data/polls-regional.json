@@ -17,7 +17,7 @@
     "n": 1600,
     "margin_of_error": "±2.4 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-em-sp-flavio-tem-374-no-1o-turno-lula-333/",
-    "methodology_note": "Futura/100% Cidades; eleitores de São Paulo; telefone. Não é pesquisa nacional.",
+    "methodology_note": "Futura/100% Cidades; eleitores de São Paulo. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -34,7 +34,7 @@
     "n": 1600,
     "margin_of_error": "±2.4 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-em-sp-flavio-tem-494-no-2o-turno-lula-403/",
-    "methodology_note": "Futura/100% Cidades; eleitores de São Paulo; telefone. Não é pesquisa nacional.",
+    "methodology_note": "Futura/100% Cidades; eleitores de São Paulo. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -55,7 +55,7 @@
     "n": 1800,
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest estadual São Paulo BR-04705/2026. Não é pesquisa nacional.",
+    "methodology_note": "Quaest estadual São Paulo. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -76,7 +76,7 @@
     "n": 1302,
     "margin_of_error": "±3 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest estadual Rio de Janeiro RJ-04768/2026 / BR-09705/2026. Não é pesquisa nacional.",
+    "methodology_note": "Quaest estadual Rio de Janeiro. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -97,7 +97,7 @@
     "n": 1506,
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest estadual Minas Gerais MG-04716/2026. Não é pesquisa nacional.",
+    "methodology_note": "Quaest estadual Minas Gerais. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -118,7 +118,7 @@
     "n": 1104,
     "margin_of_error": "±3 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest Distrito Federal DF-01987/2026 / BR-04442/2026. Não é pesquisa nacional.",
+    "methodology_note": "Quaest Distrito Federal. Não é pesquisa nacional.",
     "verified": true
   },
   {
@@ -138,121 +138,167 @@
     "n": 1302,
     "margin_of_error": "±3 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/09/quaest-presidente-sp-rj-mg-pe-df-8-setembro.ghtml",
-    "methodology_note": "Quaest Pernambuco PE-00285/2026. Não é pesquisa nacional.",
+    "methodology_note": "Quaest Pernambuco. Não é pesquisa nacional.",
     "verified": true
   },
   {
-    "institute": "Ideia",
-    "geo": "BR",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-07",
-    "published_date": "2026-09-09",
+    "institute": "Real Time Big Data (SC)",
+    "geo": "SC",
+    "fieldwork_start": "2026-09-12",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      {"name": "Lula", "party_optional": "PT", "pct": 38.4},
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37.3},
-      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6.6},
-      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 52},
+      {"name": "Lula", "party_optional": "PT", "pct": 26},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 5},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 5},
       {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 4},
-      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1.5}
-    ],
-    "n": 1500,
-    "margin_of_error": "±2.5 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/meio-ideia-lula-e-flavio-empatam-em-46-no-2o-turno/",
-    "methodology_note": "Meio/Ideia nacional; telefone; TSE BR-07935/2026.",
-    "verified": true
-  },
-  {
-    "institute": "Ideia",
-    "geo": "BR",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-07",
-    "published_date": "2026-09-09",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {"name": "Lula", "party_optional": "PT", "pct": 46},
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46}
-    ],
-    "n": 1500,
-    "margin_of_error": "±2.5 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/meio-ideia-lula-e-flavio-empatam-em-46-no-2o-turno/",
-    "methodology_note": "Meio/Ideia nacional; telefone; TSE BR-07935/2026.",
-    "verified": true
-  },
-  {
-    "institute": "GERP",
-    "geo": "BR",
-    "fieldwork_start": "2026-09-03",
-    "fieldwork_end": "2026-09-08",
-    "published_date": "2026-09-09",
-    "scenario": "estimulada 1º turno",
-    "candidates": [
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37},
-      {"name": "Lula", "party_optional": "PT", "pct": 34},
-      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 6},
-      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 5},
-      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
       {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1}
     ],
-    "n": 2400,
+    "n": 1600,
     "margin_of_error": "±2 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-37-das-intencoes-de-voto-no-1o-turno-lula-34/",
-    "methodology_note": "GERP nacional; telefone; 3 a 8 set 2026.",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-big-data-flavio-lidera-cenarios-de-1o-e-2o-turnos-em-sc/",
+    "tse_registration": "BR-09582/2026",
+    "methodology_note": "Real Time Santa Catarina presidente. TSE BR-09582/2026. Não entra no agregado nacional.",
     "verified": true
   },
   {
-    "institute": "GERP",
-    "geo": "BR",
-    "fieldwork_start": "2026-09-03",
-    "fieldwork_end": "2026-09-08",
-    "published_date": "2026-09-09",
+    "institute": "Real Time Big Data (SC)",
+    "geo": "SC",
+    "fieldwork_start": "2026-09-12",
+    "fieldwork_end": "2026-09-16",
+    "published_date": "2026-09-17",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 62},
+      {"name": "Lula", "party_optional": "PT", "pct": 30},
+      {"name": "branco/nulo", "party_optional": null, "pct": 5},
+      {"name": "não sabe", "party_optional": null, "pct": 3}
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-big-data-flavio-lidera-cenarios-de-1o-e-2o-turnos-em-sc/",
+    "tse_registration": "BR-09582/2026",
+    "methodology_note": "Real Time SC 2o turno. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (TO)",
+    "geo": "TO",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-17",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 38},
+      {"name": "Lula", "party_optional": "PT", "pct": 37},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 5},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 5}
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://noticias.r7.com/eleicoes/2026/flavio-tem-38-contra-37-de-lula-no-1-turno-no-tocantins-diz-real-time-17092026/",
+    "methodology_note": "Real Time Tocantins presidente 10-14 set. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (TO)",
+    "geo": "TO",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-17",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
       {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 47},
-      {"name": "Lula", "party_optional": "PT", "pct": 40}
+      {"name": "Lula", "party_optional": "PT", "pct": 39},
+      {"name": "branco/nulo", "party_optional": null, "pct": 8},
+      {"name": "não sabe", "party_optional": null, "pct": 6}
     ],
-    "n": 2400,
+    "n": 1600,
     "margin_of_error": "±2 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-47-das-intencoes-de-voto-no-2o-turno-lula-40/",
-    "methodology_note": "GERP nacional; telefone; 3 a 8 set 2026.",
+    "source_url": "https://noticias.r7.com/eleicoes/2026/flavio-tem-38-contra-37-de-lula-no-1-turno-no-tocantins-diz-real-time-17092026/",
+    "methodology_note": "Real Time Tocantins 2o turno. Não entra no agregado nacional.",
     "verified": true
   },
   {
-    "institute": "Palver",
-    "geo": "BR",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-07",
-    "published_date": "2026-09-09",
+    "institute": "Real Time Big Data (PA)",
+    "geo": "PA",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-15",
     "scenario": "estimulada 1º turno",
     "candidates": [
-      {"name": "Lula", "party_optional": "PT", "pct": 40},
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 40},
-      {"name": "Renan Santos", "party_optional": "Missão", "pct": 11},
-      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 4},
-      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 1},
-      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1}
+      {"name": "Lula", "party_optional": "PT", "pct": 41},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 33},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 5},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4}
     ],
-    "n": 5000,
-    "margin_of_error": "±3 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
-    "methodology_note": "Palver online nacional; 5.000 entrevistas.",
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://noticias.r7.com/eleicoes/2026/real-time-no-para-lula-lidera-com-41-no-1-turno-flavio-bolsonaro-tem-33-15092026/",
+    "tse_registration": "BR-08918/2026",
+    "methodology_note": "Real Time Pará presidente. TSE BR-08918/2026. Não entra no agregado nacional.",
     "verified": true
   },
   {
-    "institute": "Palver",
-    "geo": "BR",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-07",
-    "published_date": "2026-09-09",
+    "institute": "Real Time Big Data (PA)",
+    "geo": "PA",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-15",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
-      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 46},
-      {"name": "Lula", "party_optional": "PT", "pct": 44}
+      {"name": "Lula", "party_optional": "PT", "pct": 44},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 37},
+      {"name": "branco/nulo", "party_optional": null, "pct": 10},
+      {"name": "não sabe", "party_optional": null, "pct": 9}
     ],
-    "n": 5000,
-    "margin_of_error": "±3 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/",
-    "methodology_note": "Palver online nacional; 5.000 entrevistas.",
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://noticias.r7.com/eleicoes/2026/real-time-no-para-lula-lidera-com-41-no-1-turno-flavio-bolsonaro-tem-33-15092026/",
+    "tse_registration": "BR-08918/2026",
+    "methodology_note": "Real Time Pará 2o turno. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (PE)",
+    "geo": "PE",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-15",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 56},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 25},
+      {"name": "Augusto Cury", "party_optional": "Avante", "pct": 5},
+      {"name": "Renan Santos", "party_optional": "Missão", "pct": 4},
+      {"name": "Ronaldo Caiado", "party_optional": "PSD", "pct": 2},
+      {"name": "Romeu Zema", "party_optional": "Novo", "pct": 1}
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://tmc.com.br/politica/lula-lidera-corrida-em-pernambuco-com-59-dos-votos-contra-36-de-flavio-no-2o-turno-diz-real-time-big-data/",
+    "methodology_note": "Real Time Pernambuco presidente 10-14 set. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (PE)",
+    "geo": "PE",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-14",
+    "published_date": "2026-09-15",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {"name": "Lula", "party_optional": "PT", "pct": 59},
+      {"name": "Flávio Bolsonaro", "party_optional": "PL", "pct": 36},
+      {"name": "branco/nulo", "party_optional": null, "pct": 3},
+      {"name": "não sabe", "party_optional": null, "pct": 2}
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://tmc.com.br/politica/lula-lidera-corrida-em-pernambuco-com-59-dos-votos-contra-36-de-flavio-no-2o-turno-diz-real-time-big-data/",
+    "methodology_note": "Real Time Pernambuco 2o turno. Não entra no agregado nacional.",
     "verified": true
   }
 ]
