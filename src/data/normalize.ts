@@ -44,6 +44,15 @@ export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll
   return [...map.values()]
 }
 
+function protocolOf(row: RawPoll): string | null {
+  const direct = String(row.tse_registration || '').match(/[A-Z]{2}-\d+\/\d+/)
+  if (direct) return direct[0]
+  const note = String(row.methodology_note || '')
+  const cleaned = note.replace(/(distinct from|not the|diferente de)[^.]*$/gi, '')
+  const found = cleaned.match(/[A-Z]{2}-\d+\/\d+/g)
+  return found ? found[found.length - 1] : null
+}
+
 export function normalizePolls(rows: RawPoll[]): NormalizedPoll[] {
   const out: NormalizedPoll[] = []
   rows.forEach((row, idx) => {
@@ -80,7 +89,7 @@ export function normalizePolls(rows: RawPoll[]): NormalizedPoll[] {
       moe: parseMoe(row.margin_of_error),
       moeRaw: row.margin_of_error,
       method: row.methodology_note || '',
-      tse: (row.methodology_note || '').match(/BR-\d+\/\d+/)?.[0] || null,
+      tse: protocolOf(row),
       scenario,
       round,
       results,
