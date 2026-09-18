@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-18T09:39:09.434Z",
+  "updated_at": "2026-09-18T14:24:52.521Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -761,6 +761,30 @@
       "institute": "Datafolha",
       "published_date": "2026-09-18",
       "found_at": "2026-09-18T04:37:33.065Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-senado-parana-setembro-2026-2/",
+      "title": "Paraná Pesquisas divulga intenção de voto ao Senado no Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-18T14:24:36.085Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-parana-setembro-2026-2/",
+      "title": "Paraná Pesquisas divulga números para o governo do Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-18T14:24:36.096Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/09/18/lula-recebe-com-alivio-resultado-do-datafolha-e-trabalha-para-mudar-a-pauta-com-bolsa-familia-e-canetas-emagrecedoras-no-sus.ghtml",
+      "title": "Lula recebe com alívio resultado do Datafolha e trabalha para mudar a pauta com Bolsa Família e canetas emagrecedoras no",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-18T14:24:40.725Z"
     }
   ]
 }
