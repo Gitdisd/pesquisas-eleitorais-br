@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-18T14:24:52.521Z",
+  "updated_at": "2026-09-18T18:22:03.045Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -785,6 +785,22 @@
       "institute": "Datafolha",
       "published_date": "2026-09-18",
       "found_at": "2026-09-18T14:24:40.725Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/brasileiro-pede-mais-uso-de-tecnologia-combate-ao-crime-aponta-quaest/",
+      "title": "Brasileiro pede uso de tecnologia contra o crime, aponta Quaest Publicidade Eleições Eleições 2026 Guia de Candidatos Pe",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe,no_scenario",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-18T18:21:40.543Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/parana/videos-meio-dia-parana/",
+      "title": "Vídeos Meio Dia Paraná - G1 Paraná Pular para o conteúdo Paraná Vídeos Meio Dia Paraná eleições 2026 últimas notícias bo",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-18T18:21:59.621Z"
     }
   ]
 }
