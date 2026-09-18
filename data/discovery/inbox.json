@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-18T03:03:52.547Z",
+  "updated_at": "2026-09-18T04:37:38.349Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -745,6 +745,22 @@
       "institute": null,
       "published_date": null,
       "found_at": "2026-09-18T03:03:31.871Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/18/datafolha-1-turno-17-setembro-recortes.ghtml",
+      "title": "Datafolha,1º turno: veja intenção de voto estratos | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafolha",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-18T04:37:11.771Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-e-flavio-bolsonaro-vao-intensificar-campanha-por-voto-util-para-tentar-vencer-no-1o-turno.shtml",
+      "title": "Lula e Flávio reforçam campanha por voto útil no 1º turno - 18/09/2026 - Política - Folha Últimas notícias Gostaria de r",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-18T04:37:33.065Z"
     }
   ]
 }
