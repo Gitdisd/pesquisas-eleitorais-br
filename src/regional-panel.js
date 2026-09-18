@@ -9,7 +9,7 @@ const REG_URL = `${BASE}data/polls-regional.json`
 const state = {
   polls: [],
   round: 1,
-  geos: new Set(['BR', 'SP', 'MG']),
+  geos: new Set(),
   chart: null,
 }
 
@@ -18,9 +18,7 @@ function normalize(rows) {
     .map((row, idx) => {
       const scenario = row.scenario || ''
       let round = null
-      if (isSecondRound(scenario) && /lula/i.test(scenario) && /fl[áa]vio/i.test(scenario)) round = 2
-      else if (isFirstRound(scenario) && !isSecondRound(scenario)) round = 1
-      else if (isSecondRound(scenario)) round = 2
+      if (isSecondRound(scenario)) round = 2
       else if (isFirstRound(scenario)) round = 1
       if (!round) return null
       const results = {}
@@ -76,7 +74,7 @@ function renderTable() {
     .filter((p) => p.round === state.round)
     .filter((p) => keys.some((c) => p.results[c.key] != null))
     .slice()
-    .reverse()
+    .sort((a, b) => (b.t || 0) - (a.t || 0) || String(b.published || '').localeCompare(String(a.published || '')))
   tbody.innerHTML = rows
     .map((p) => {
       const cells = keys.map((c) => {
@@ -103,12 +101,12 @@ function mount() {
   panel.id = 'allSourcesPanel'
   panel.innerHTML = `
     <p class="chapter-kicker">Capítulo 2</p>
-    <h2 class="chart-title">Todas as fontes (nacional + SP + MG)</h2>
-    <p class="hint">Separado do agregado nacional. Inclui estaduais de <strong>São Paulo</strong> e <strong>Minas Gerais</strong>. A média daqui não é o Brasil — estado ≠ país. GERP, Ideia e Palver de 9/9 entram neste bloco.</p>
+    <h2 class="chart-title">Todas as fontes (nacional + estados)</h2>
+    <p class="hint">Separado do agregado nacional do gráfico de cima. Chips ligam/desligam UF. A linha média daqui <strong>não é o Brasil</strong> se um estado estiver ligado — estado ≠ país. 1º e 2º turno ficam em botões separados.</p>
     <div class="controls controls-primary">
-      <div class="seg" role="group" aria-label="Turno com SP e MG">
-        <button type="button" data-reg-round="1" class="active">1º com SP/MG</button>
-        <button type="button" data-reg-round="2">2º com SP/MG</button>
+      <div class="seg" role="group" aria-label="Turno com estados">
+        <button type="button" data-reg-round="1" class="active">1º turno</button>
+        <button type="button" data-reg-round="2">2º turno</button>
       </div>
       <div class="filters institutes-inline" id="geoChips"></div>
     </div>
@@ -123,7 +121,11 @@ function mount() {
   else if (nationalTable) nationalTable.after(panel)
   else stack.appendChild(panel)
 
-  const geos = [...new Set(state.polls.map((p) => p.geo || 'BR'))].sort()
+  const geos = [...new Set(state.polls.map((p) => p.geo || 'BR'))].sort((a, b) => {
+    if (a === 'BR') return -1
+    if (b === 'BR') return 1
+    return a.localeCompare(b)
+  })
   const chips = document.getElementById('geoChips')
   chips.innerHTML = geos.map((g) => {
     const on = state.geos.has(g) ? ' on' : ''
@@ -174,6 +176,7 @@ async function bootRegional() {
       seen.add(k)
       return true
     })
+    state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
     const started = Date.now()
     const wait = setInterval(() => {
       if (document.getElementById('chartPanel') || Date.now() - started > 8000) {
