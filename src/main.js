@@ -201,8 +201,8 @@ async function refreshDataQuietly() {
       state.institutes = new Set(state.allInstitutes)
       publishDataStore()
       renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
-      if (state.chart) state.chart.destroy()
-      state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
+      if (state.chart) updatePollChart(state.chart, chartOpts())
+      else state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
       document.getElementById('chartError').textContent = ''
     }
     if (meta) {
