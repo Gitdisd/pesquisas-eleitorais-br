@@ -134,9 +134,9 @@ function externalTooltip(context) {
 }
 
 export function createPollChart(canvas, opts) {
-  const { polls, round, institutes, windowDays, rangeDays, onZoom } = opts
+  const { polls, round, institutes, windowDays, rangeDays, onZoom, aggregate = true } = opts
   const model = resolveModel(opts)
-  const datasets = buildDatasets(polls, round, institutes, windowDays, model)
+  const datasets = buildDatasets(polls, round, institutes, windowDays, model, aggregate)
   const { min, max } = rangeBounds(polls, round, institutes, rangeDays, model > 0)
   const tc = themeColors()
   const chart = new Chart(canvas, {
@@ -208,9 +208,9 @@ export function createPollChart(canvas, opts) {
 }
 
 export function updatePollChart(chart, opts) {
-  const { polls, round, institutes, windowDays, rangeDays } = opts
+  const { polls, round, institutes, windowDays, rangeDays, aggregate = true } = opts
   const model = resolveModel(opts)
-  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model)
+  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model, aggregate)
   const tc = themeColors()
   Object.assign(chart.options.scales.y, yScaleForRound(round))
   chart.options.scales.y.ticks.callback = (v) => fmtVote(v)
@@ -304,7 +304,7 @@ function pushProjDatasets(datasets, c, proj, tag) {
   })
 }
 
-function buildDatasets(polls, round, institutes, windowDays, model) {
+function buildDatasets(polls, round, institutes, windowDays, model, aggregate = true) {
   const filtered = polls.filter((p) => {
     if (p.round !== round) return false
     if (institutes.size && !institutes.has(p.institute)) return false
@@ -338,8 +338,8 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
     })
     const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
     const avgModel = model >= 2 && model <= 5 ? model : 1
-    const trend = averageTrend(trendPts, windowDays, avgModel)
-    datasets.push({
+    const trend = aggregate ? averageTrend(trendPts, windowDays, avgModel) : []
+    if (aggregate) datasets.push({
       label: `${c.label} (média)`,
       data: trend,
       showLine: true,
@@ -364,14 +364,14 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       }
     }
 
-    if (model === 1 && trend.length >= 2) {
+    if (aggregate && model === 1 && trend.length >= 2) {
       projByKey[c.key] = projectTrend(trend, {
         fitDays: windowDays,
         horizonDays: 14,
         electionDayMs,
       })
     }
-    if (model === 2 && trendPts.length >= 4) {
+    if (aggregate && model === 2 && trendPts.length >= 4) {
       projByKey[c.key] = projectTrendV2(trendPts, {
         fitDays: windowDays,
         horizonDays: 14,
@@ -380,7 +380,7 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
     }
   }
 
-  if (model === 2) {
+  if (aggregate && model === 2) {
     const lead = keys.filter((c) => c.tier !== 'field').map((c) => c.key)
     rescaleComposition(projByKey, lead.length ? lead : keys.map((c) => c.key))
   }
