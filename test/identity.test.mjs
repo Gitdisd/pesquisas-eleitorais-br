@@ -47,7 +47,7 @@ test('different fieldwork waves remain distinct without a TSE protocol', () => {
 })
 
 test('institute aliases normalize consistently', () => {
-  assert.equal(normalizeInstitute('Folha / Datafolha'), 'folha / datafolha')
+  assert.equal(normalizeInstitute('Folha / Datafolha'), 'datafolha')
   assert.equal(normalizeInstitute('Genial / Quaest'), 'quaest')
   assert.equal(normalizeProtocol('BR12345/2026'), 'BR-12345/2026')
 })
