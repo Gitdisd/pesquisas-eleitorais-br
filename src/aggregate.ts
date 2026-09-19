@@ -150,6 +150,61 @@ export function trendAt(series: SeriesPoint[], dateMs: number): number | null {
   return best.y ?? null
 }
 
+export interface UncertaintyPoint {
+  x: number
+  low: number
+  high: number
+  se: number
+}
+
+export function uncertaintyBand(points: TrendPoint[], windowDays = 14, z = 1.645): UncertaintyPoint[] {
+  if (!points.length) return []
+  const sorted = [...points]
+    .filter((p) => Number.isFinite(p.t) && Number.isFinite(p.y))
+    .sort((a, b) => a.t - b.t)
+  if (!sorted.length) return []
+  const half = Math.max(1, Number(windowDays) || 14)
+  const reach = half * 2.5
+  const minBand = 0.75
+  const tMin = sorted[0].t
+  const tMax = sorted[sorted.length - 1].t
+  const out: UncertaintyPoint[] = []
+
+  for (let t = tMin; t <= tMax; t += DAY_MS) {
+    const bag: Array<{ y: number; w: number; se: number | null }> = []
+    let nearest = Infinity
+    for (const p of sorted) {
+      const days = Math.abs(t - p.t) / DAY_MS
+      if (days < nearest) nearest = days
+      if (days > reach) continue
+      const sample = sampleSize(p.n)
+      const w = Math.sqrt(sample / N_REF) * Math.exp(-days / half)
+      const moe = Number(p.moe)
+      const se = Number.isFinite(moe) && moe > 0 ? Math.max(0.4, moe / 1.96) : null
+      bag.push({ y: p.y, w, se })
+    }
+    if (nearest > half || !bag.length) continue
+
+    const den = bag.reduce((sum, p) => sum + p.w, 0)
+    if (!(den > 0)) continue
+    const mu = bag.reduce((sum, p) => sum + p.w * p.y, 0) / den
+    const sumW2 = bag.reduce((sum, p) => sum + p.w * p.w, 0)
+    const nEff = Math.max(1, (den * den) / Math.max(1e-9, sumW2))
+    const betweenVar = bag.reduce((sum, p) => sum + p.w * (p.y - mu) ** 2, 0) / den
+    const measurementVar = bag.reduce((sum, p) => sum + p.w * p.w * (p.se || 0) ** 2, 0) / Math.max(1e-9, den * den)
+    const se = Math.max(minBand, Math.sqrt(Math.max(0, betweenVar / nEff + measurementVar)))
+    const band = Math.max(minBand, z * se)
+    const center = Math.round(mu * 100) / 100
+    out.push({
+      x: t,
+      low: Math.round(Math.max(0, center - band) * 100) / 100,
+      high: Math.round(Math.min(100, center + band) * 100) / 100,
+      se: Math.round(se * 1000) / 1000,
+    })
+  }
+  return out
+}
+
 export function fmtPct(v: number | null | undefined): string {
   if (v == null || Number.isNaN(v)) return '—'
   return `${(Math.round(v * 100) / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`
