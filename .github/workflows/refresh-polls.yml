@@ -18,6 +18,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   refresh:
@@ -109,3 +110,5 @@ jobs:
           fi
           git commit -m "chore(data): refresh and audit polls"
           git push
+          echo "Triggering Pages deployment for the newly pushed data commit"
+          GH_TOKEN="${{ github.token }}" gh workflow run deploy-pages.yml --ref main --repo "${{ github.repository }}"
