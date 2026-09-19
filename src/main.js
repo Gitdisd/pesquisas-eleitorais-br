@@ -141,7 +141,8 @@ function resolveUpdatedStamp(meta, polls) {
   return null
 }
 function setStamp() {
-  document.getElementById('stamp').textContent = `Dados atualizados em ${state.updatedLabel || '—'} · ${countLabel()}`
+  const latestPublication = state.meta?.latest_publication_date ? fmtDateBR(state.meta.latest_publication_date) : '—'
+  document.getElementById('stamp').textContent = `Dados atualizados em ${state.updatedLabel || '—'} · última publicação ${latestPublication} · ${countLabel()}`
 }
 function applyCheckMeta(meta) {
   state.meta = meta
