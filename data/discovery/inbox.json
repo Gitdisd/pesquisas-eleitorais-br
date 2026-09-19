@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-19T10:50:43.398Z",
+  "updated_at": "2026-09-19T14:21:23.911Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -897,6 +897,22 @@
       "institute": "Datafolha",
       "published_date": "2026-09-18",
       "found_at": "2026-09-19T00:13:12.569Z"
+    },
+    {
+      "url": "https://g1.globo.com/pr/norte-noroeste/noticia/2026/09/19/jovem-tentou-fugir-e-caiu-do-14o-andar-no-parana-porque-soube-que-seria-agredido-novamente-no-dia-seguinte-diz-mp.ghtml",
+      "title": "Jovem tentou fugir e caiu do 14º andar no Paraná porque soube que seria agredido novamente no dia seguinte, diz MP | G1 ",
+      "reason": "incomplete_extract:no_institute,no_fieldwork,no_n,no_moe",
+      "institute": null,
+      "published_date": "2026-09-19",
+      "found_at": "2026-09-19T14:21:05.105Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senador-rio-grande-do-sul-setembro-2026/",
+      "title": "Paraná Pesquisas divulga números para governo e Senado no RS Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-19T14:21:05.233Z"
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
-  "ran_at": "2026-09-19T10:50:42.666Z",
+  "ran_at": "2026-09-19T14:21:23.009Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 405,
+  "candidate_links": 409,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 39,
+  "inbox_new": 41,
   "skipped_old": 18,
   "fetch_errors": 8,
   "dry_run": false,
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-19T10:50:22.933Z"
+      "found_at": "2026-09-19T14:20:57.295Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-19T10:50:22.949Z"
+      "found_at": "2026-09-19T14:20:57.399Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-19T10:50:22.966Z"
+      "found_at": "2026-09-19T14:20:57.456Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
@@ -41,7 +41,7 @@
       "reason": "numbers_not_clean",
       "institute": "Quaest",
       "published_date": "2026-09-18",
-      "found_at": "2026-09-19T10:50:23.380Z"
+      "found_at": "2026-09-19T14:20:58.278Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/datafolha-no-ceara-ciro-tem-47percent-e-elmano-40percent-no-1o-turno.ghtml",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-18",
-      "found_at": "2026-09-19T10:50:23.674Z"
+      "found_at": "2026-09-19T14:20:58.646Z"
     }
   ],
-  "meta_last_check_at": "2026-09-19T10:50:42.667Z"
+  "meta_last_check_at": "2026-09-19T14:21:23.010Z"
 }
