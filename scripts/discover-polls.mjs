@@ -28,6 +28,7 @@ const PUBLIC_META = path.join(ROOT, "public", "data", "meta.json");
 const SOURCES_PATH = path.join(ROOT, "data", "sources.json");
 const INBOX_PATH = path.join(ROOT, "data", "discovery", "inbox.json");
 const REPORT_PATH = path.join(ROOT, "data", "discovery", "last-run.json");
+const STAGING_PATH = path.join(ROOT, "data", "discovery", "discovered-polls.json");
 
 const UA =
   "pesquisas-eleitorais-br-discover/1.0 (+https://github.com/Gitdisd/pesquisas-eleitorais-br; headless Actions)";
@@ -777,6 +778,9 @@ async function main() {
   const watermark = watermarkFromPolls(existing);
   const existingKeys = new Set(existing.map(pollKey));
   const existingUrls = new Set(existing.map((p) => p.source_url));
+  const stagedDoc = readJson(STAGING_PATH, { version: 1, items: [] });
+  const stagedItems = Array.isArray(stagedDoc.items) ? stagedDoc.items : []
+  for (const staged of stagedItems) if (staged?.source_url) existingUrls.add(staged.source_url);
   for (const extraPath of [path.join(ROOT, "data", "polls-extra.json"), path.join(ROOT, "public", "data", "polls-extra.json")]) {
     const extraDoc = readJson(extraPath, []);
     const extraList = Array.isArray(extraDoc) ? extraDoc : extraDoc.polls || [];
@@ -882,8 +886,15 @@ async function main() {
     ...inboxNew,
   ]).slice(0, 200);
 
-  const merged = stableSort([...verifiedNew, ...existing]);
-  const contentChanged = verifiedNew.length > 0;
+  const previousStaged = Array.isArray(stagedItems) ? stagedItems : []
+  const stageMap = new Map()
+  for (const poll of [...previousStaged, ...verifiedNew]) {
+    const key = pollKey(poll)
+    if (!stageMap.has(key)) stageMap.set(key, poll)
+  }
+  const stagedOut = stableSort([...stageMap.values()]).slice(0, 500)
+  const stageChanged = JSON.stringify(previousStaged) !== JSON.stringify(stagedOut)
+  const contentChanged = stageChanged || verifiedNew.length > 0
 
   const report = {
     ran_at: new Date().toISOString(),
@@ -892,6 +903,8 @@ async function main() {
     candidate_links: seedLinks.length,
     pages_fetched: pagesFetched,
     verified_new: verifiedNew.length,
+    staged_verified_new: verifiedNew.length,
+    staging_size: stagedOut.length,
     inbox_new: inboxNew.length,
     skipped_old: skippedOld,
     fetch_errors: fetchErrors.length,
@@ -906,7 +919,7 @@ async function main() {
   };
 
   if (args.dryRun) {
-    console.log("[discover-polls] DRY RUN — not writing polls/meta/inbox");
+    console.log("[discover-polls] DRY RUN — not writing staging/meta/inbox");
     console.log(JSON.stringify(report, null, 2));
     // Still allow inspecting report path optionally
     writeJson(REPORT_PATH, report);
