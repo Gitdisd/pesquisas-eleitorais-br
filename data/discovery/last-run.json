@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-19T00:13:14.772Z",
+  "ran_at": "2026-09-19T05:46:25.604Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 403,
+  "candidate_links": 405,
   "pages_fetched": 60,
   "verified_new": 0,
-  "inbox_new": 41,
+  "inbox_new": 40,
   "skipped_old": 18,
-  "fetch_errors": 8,
+  "fetch_errors": 9,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -17,7 +17,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-19T00:12:55.676Z"
+      "found_at": "2026-09-19T05:45:47.935Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -25,7 +25,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-19T00:12:55.696Z"
+      "found_at": "2026-09-19T05:45:48.621Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -33,7 +33,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-19T00:12:55.712Z"
+      "found_at": "2026-09-19T05:45:49.285Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
@@ -41,7 +41,7 @@
       "reason": "numbers_not_clean",
       "institute": "Datafolha",
       "published_date": "2026-09-18",
-      "found_at": "2026-09-19T00:12:56.231Z"
+      "found_at": "2026-09-19T05:45:50.225Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/datafolha-no-ceara-ciro-tem-47percent-e-elmano-40percent-no-1o-turno.ghtml",
@@ -49,8 +49,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-18",
-      "found_at": "2026-09-19T00:12:56.521Z"
+      "found_at": "2026-09-19T05:45:50.636Z"
     }
   ],
-  "meta_last_check_at": "2026-09-19T00:13:14.773Z"
+  "meta_last_check_at": "2026-09-19T05:46:25.605Z"
 }
