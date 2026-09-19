@@ -128,7 +128,7 @@ async function refreshDataQuietly() {
     const [pollRes, extraRes, meta] = await Promise.all([
       fetch(DATA_URL + bust, { cache: 'no-store' }),
       fetch(EXTRA_URL + bust, { cache: 'no-store' }),
-      loadMeta(META_URL, true),
+      loadMeta(true),
     ])
     if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
     const data = await pollRes.json()
@@ -141,7 +141,7 @@ async function refreshDataQuietly() {
       } catch {}
     }
     const nextRaw = mergePolls(base, extra)
-    const nextPolls = normalizePolls(nextRaw)
+    const nextPolls = normalize(nextRaw)
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
