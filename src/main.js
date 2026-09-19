@@ -183,7 +183,7 @@ function shellHTML() {
     <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
     <div class="stamp" id="stamp">Carregando…</div>
     <div class="check-timer" id="checkTimer" aria-live="polite"><div id="lastCheckLine">Última verificação: —</div><div id="nextCheckLine">Próxima verificação em: —</div></div>
-    <p class="refresh-notice">Novas pesquisas publicadas podem levar até cerca de 3 horas para aparecer (busca automática periódica).</p>
+    <p class="refresh-notice">Novas pesquisas publicadas podem levar até cerca de 1 hora para aparecer (busca automática periódica).</p>
     </div><button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">Escuro</button></div></div></header>
     <main class="wrap main-stack"><section class="panel chart-panel" id="chartPanel">
     <h2 class="chart-title">Evolução da intenção de voto</h2>
