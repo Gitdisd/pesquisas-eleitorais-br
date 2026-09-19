@@ -88,8 +88,16 @@ function unwrapPolls(data) {
 }
 
 function pollProtocols(poll) {
-  const joined = [poll.methodology_note, poll.source_url, poll.tse_registration].filter(Boolean).join(" ");
-  return [...joined.matchAll(/\bBR-?\d{4,6}\/2026\b/gi)].map((m) => m[0].toUpperCase().replace(/^BR(?=\d)/, "BR-"));
+  const joined = [poll?.methodology_note, poll?.source_url, poll?.tse_registration, poll?.tse_protocol]
+    .filter(Boolean)
+    .join(" ");
+  const out = new Set();
+  const re = /\bBR\s*-?\s*\d{4,6}\s*(?:\/\s*2026|\s+2026|2026)\b/gi;
+  for (const match of joined.matchAll(re)) {
+    const normalized = normalizeProtocol(match[0]);
+    if (normalized) out.add(normalized);
+  }
+  return [...out];
 }
 
 function canonicalUrl(url) {
