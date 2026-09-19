@@ -102,9 +102,12 @@ export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll
       remember(fallbackPollKey(poll), key)
       continue
     }
-    const mergedKey = matchKey || key
-    map.set(mergedKey, mergePollMetadata(current, poll))
-    remember(fallbackPollKey(poll), mergedKey)
+    const merged = mergePollMetadata(current, poll)
+    const finalKey = canonicalPollKey(merged)
+    if (matchKey && matchKey !== finalKey) map.delete(matchKey)
+    map.set(finalKey, merged)
+    remember(fallbackPollKey(poll), finalKey)
+    remember(fallbackPollKey(merged), finalKey)
   }
   return [...map.values()]
 }
