@@ -36,3 +36,7 @@ jobs:
         run: npm run build
       - name: Identity and data-contract tests
         run: npm test
+      - name: Quality gate
+        run: node scripts/quality-gate.mjs
+      - name: Integrity audit
+        run: node scripts/quality-audit.mjs
