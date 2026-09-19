@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+import { normalizeGeo, normalizeProtocol } from "../src/data/identity.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -137,6 +138,15 @@ function normalizePoll(poll) {
     methodology_note: poll.methodology_note,
     verified: poll.verified,
   };
+  const tse = normalizeProtocol(poll.tse_registration || poll.tse_protocol);
+  if (tse) out.tse_registration = tse;
+  if (poll.geo != null) out.geo = normalizeGeo(poll.geo);
+  if (Array.isArray(poll.coverage_dates)) {
+    out.coverage_dates = [...new Set(poll.coverage_dates.filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d))))].sort();
+  }
+  if (Array.isArray(poll.witness_urls)) {
+    out.witness_urls = [...new Set(poll.witness_urls.filter((u) => /^https?:\/\//i.test(String(u))))].sort();
+  }
   if (typeof poll.flag === "string" && poll.flag.length > 0) out.flag = poll.flag;
   return out;
 }
@@ -249,6 +259,14 @@ async function main() {
     process.exit(1);
   }
 
+  let existingCount = 0
+  try { existingCount = unwrapPolls(readJsonFile(DATA_POLLS)).length } catch {}
+  const shrinkAllowed = process.env.ALLOW_DATA_SHRINK === "1"
+  if (!shrinkAllowed && existingCount >= 20 && valid.length < Math.floor(existingCount * 0.75)) {
+    console.error(`[update-polls] refusing suspicious dataset shrink: existing=${existingCount}, incoming=${valid.length}. Set ALLOW_DATA_SHRINK=1 only for an intentional reset.`)
+    process.exit(1)
+  }
+
   const sorted = stableSort(valid);
   const pollsText = pretty(sorted);
   const hash = contentHash(sorted);
@@ -269,8 +287,19 @@ async function main() {
   try { prevMeta = readJsonFile(META_PATH); } catch { /* missing */ }
   const needsContentHash = !prevMeta || typeof prevMeta.content_hash !== "string";
   const checkedAtUtc = new Date().toISOString();
+  const latestPublication = sorted.reduce((max, poll) => {
+    const value = String(poll.published_date || '')
+    return value > max ? value : max
+  }, '')
+  const latestFieldwork = sorted.reduce((max, poll) => {
+    const value = String(poll.fieldwork_end || '')
+    return value > max ? value : max
+  }, '')
   const meta = {
-    schema_version: 1,
+    schema_version: 2,
+    latest_publication_date: latestPublication || null,
+    latest_fieldwork_end: latestFieldwork || null,
+    last_successful_pipeline_at: prevMeta?.last_successful_pipeline_at || null,
     last_updated:
       contentChanged || !prevMeta?.last_updated
         ? nowSaoPauloIso()

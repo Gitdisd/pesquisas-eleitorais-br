@@ -1323,35 +1323,6 @@
     "fieldwork_start": "2026-09-04",
     "fieldwork_end": "2026-09-08",
     "published_date": "2026-09-09",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 44
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 46
-      },
-      {
-        "name": "branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 10
-      }
-    ],
-    "n": 5000,
-    "margin_of_error": "±2,5 pp",
-    "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/",
-    "methodology_note": "Palver 2º turno Flávio 46 × Lula 44. TSE BR-05420/2026.",
-    "verified": true
-  },
-  {
-    "institute": "Palver",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-08",
-    "published_date": "2026-09-09",
     "scenario": "estimulada 1º turno",
     "candidates": [
       {
@@ -1389,54 +1360,6 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
     "methodology_note": "Palver; 5.000 online 4–8 set 2026; TSE BR-05420/2026.",
-    "verified": true
-  },
-  {
-    "institute": "Datafolha",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-07",
-    "published_date": "2026-09-18",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 60
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 32
-      }
-    ],
-    "n": 1800,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-em-sp-mede-disputa-entre-tarcisio-e-haddad-a-duas-semanas-da-eleicao.ghtml",
-    "methodology_note": "Auto-extracted from https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-em-sp-mede-disputa-entre-tarcisio-e-haddad-a-duas-semanas-da-eleicao.ghtml",
-    "verified": true
-  },
-  {
-    "institute": "Datafolha",
-    "fieldwork_start": "2026-09-04",
-    "fieldwork_end": "2026-09-07",
-    "published_date": "2026-09-18",
-    "scenario": "estimulada 1º turno",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 54
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 26
-      }
-    ],
-    "n": 1104,
-    "margin_of_error": "±3 pp",
-    "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
-    "methodology_note": "Auto-extracted from https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
     "verified": true
   },
   {
@@ -1543,8 +1466,16 @@
     "n": 5000,
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
-    "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf. Branco/nulo 9 + indecisos 1 combined.",
-    "verified": true
+    "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf. Branco/nulo 9 + indecisos 1 combined. | Palver 2º turno Flávio 46 × Lula 44. TSE BR-05420/2026.",
+    "verified": true,
+    "tse_registration": "BR-05420/2026",
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
+      "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/"
+    ],
+    "coverage_dates": [
+      "2026-09-09"
+    ]
   },
   {
     "institute": "Palver",
@@ -6783,84 +6714,6 @@
     "verified": true
   },
   {
-    "institute": "GERP",
-    "fieldwork_start": "2026-05-07",
-    "fieldwork_end": "2026-05-11",
-    "published_date": "2026-05-12",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 43
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 50
-      },
-      {
-        "name": "branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 8
-      }
-    ],
-    "n": 2000,
-    "margin_of_error": "±2.2 pp",
-    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
-    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
-  },
-  {
-    "institute": "GERP",
-    "fieldwork_start": "2026-05-07",
-    "fieldwork_end": "2026-05-11",
-    "published_date": "2026-05-12",
-    "scenario": "estimulada 1º turno",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 34
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 36
-      },
-      {
-        "name": "Augusto Cury",
-        "party_optional": "Avante",
-        "pct": 1
-      },
-      {
-        "name": "Renan Santos",
-        "party_optional": "Missão",
-        "pct": 1
-      },
-      {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 1
-      },
-      {
-        "name": "Romeu Zema",
-        "party_optional": "Novo",
-        "pct": 5
-      },
-      {
-        "name": "outros/branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 12
-      }
-    ],
-    "n": 2000,
-    "margin_of_error": "±2.2 pp",
-    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
-    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
-  },
-  {
     "institute": "Genial/Quaest",
     "fieldwork_start": "2026-05-08",
     "fieldwork_end": "2026-05-11",
@@ -6936,6 +6789,84 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-07",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 50
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
+    "verified": true
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-07",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 34
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
     "verified": true
   },
   {

@@ -1,61 +1,120 @@
 import { matchCandidate, parseMoe, isFirstRound, isSecondRound } from '../candidates.js'
 import type { CandidateResult, NormalizedPoll, RawPoll } from './types'
+import {
+  canonicalPollKey,
+  fallbackPollKey,
+  coverageDates,
+  normalizeGeo,
+  tseProtocolOf,
+} from './identity.js'
 
-export function canonicalPollKey(p: RawPoll): string {
-  return [p.institute, p.fieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
-}
-
-export function softPollKey(p: RawPoll): string {
-  return [p.institute, p.fieldwork_end, p.scenario].join('|')
+function validDate(value: unknown): string | null {
+  const s = String(value ?? '').slice(0, 10)
+  return /^\d{4}-\d{2}-\d{2}$/.test(s) && Number.isFinite(Date.parse(`${s}T12:00:00Z`)) ? s : null
 }
 
 function mergeCandidates(base: CandidateResult[] = [], extra: CandidateResult[] = []): CandidateResult[] {
-  const merged: CandidateResult[] = []
-  const seen = new Map<string, CandidateResult>()
-  for (const candidate of [...base, ...extra]) {
+  const merged = new Map<string, CandidateResult>()
+  const keyOf = (candidate: CandidateResult) =>
+    String(candidate.name).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim()
+  for (const candidate of base) {
     if (!candidate?.name || typeof candidate.pct !== 'number' || !Number.isFinite(candidate.pct)) continue
-    const key = String(candidate.name).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim()
-    if (seen.has(key)) continue
-    seen.set(key, candidate)
-    merged.push(candidate)
+    merged.set(keyOf(candidate), candidate)
   }
-  return merged
+  for (const candidate of extra) {
+    if (!candidate?.name || typeof candidate.pct !== 'number' || !Number.isFinite(candidate.pct)) continue
+    const key = keyOf(candidate)
+    if (!merged.has(key)) merged.set(key, candidate)
+  }
+  return [...merged.values()]
+}
+
+function mergePollMetadata(current: RawPoll, incoming: RawPoll): RawPoll {
+  const dates = new Set([...coverageDates(current), ...coverageDates(incoming)])
+  const witnessUrls = new Set([
+    ...(Array.isArray(current.witness_urls) ? current.witness_urls : []),
+    ...(Array.isArray(incoming.witness_urls) ? incoming.witness_urls : []),
+    current.source_url,
+    incoming.source_url,
+  ].filter(Boolean))
+  const publishedCandidates = [current.published_date, incoming.published_date]
+    .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d)))
+    .sort()
+  const protocol = tseProtocolOf(current) || tseProtocolOf(incoming)
+  return {
+    ...current,
+    candidates: mergeCandidates(current.candidates || [], incoming.candidates || []),
+    verified: current.verified === true || incoming.verified === true,
+    published_date: publishedCandidates[0] || current.published_date,
+    coverage_dates: [...dates].sort(),
+    witness_urls: [...witnessUrls].sort(),
+    source_url: current.source_url || incoming.source_url,
+    methodology_note: [current.methodology_note, incoming.methodology_note]
+      .filter(Boolean)
+      .filter((value, index, values) => values.indexOf(value) === index)
+      .join(' | '),
+    ...(protocol ? { tse_registration: protocol } : {}),
+    ...(current.geo || incoming.geo ? { geo: normalizeGeo(current.geo || incoming.geo) } : {}),
+  }
 }
 
 export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll[] {
   const map = new Map<string, RawPoll>()
+  const fallbackIndex = new Map<string, string[]>()
+  const remember = (key: string, pollKey: string) => {
+    const list = fallbackIndex.get(key) || []
+    if (!list.includes(pollKey)) list.push(pollKey)
+    fallbackIndex.set(key, list)
+  }
+  const findKey = (poll: RawPoll): string | null => {
+    const exact = canonicalPollKey(poll)
+    if (map.has(exact)) return exact
+    const fallback = fallbackPollKey(poll)
+    const candidates = fallbackIndex.get(fallback) || []
+    return candidates.length === 1 ? candidates[0] : null
+  }
   for (const poll of base) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
-    map.set(canonicalPollKey(poll), { ...poll, candidates: mergeCandidates(poll.candidates || []) })
+    const identityKey = canonicalPollKey(poll)
+    const stored = {
+      ...poll,
+      geo: normalizeGeo(poll.geo),
+      coverage_dates: coverageDates(poll),
+      witness_urls: [...new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))],
+      candidates: mergeCandidates(poll.candidates || []),
+    }
+    map.set(identityKey, stored)
+    remember(fallbackPollKey(poll), identityKey)
   }
   for (const poll of extra) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
     const key = canonicalPollKey(poll)
-    const current = map.get(key)
+    const matchKey = findKey(poll)
+    const current = matchKey ? map.get(matchKey) : undefined
     if (!current) {
-      map.set(key, { ...poll, candidates: mergeCandidates(poll.candidates || []) })
+      map.set(key, {
+        ...poll,
+        geo: normalizeGeo(poll.geo),
+        coverage_dates: coverageDates(poll),
+        witness_urls: [...new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))],
+        candidates: mergeCandidates(poll.candidates || []),
+      })
+      remember(fallbackPollKey(poll), key)
       continue
     }
-    map.set(key, {
-      ...current,
-      candidates: mergeCandidates(current.candidates || [], poll.candidates || []),
-    })
+    const merged = mergePollMetadata(current, poll)
+    const finalKey = canonicalPollKey(merged)
+    if (matchKey && matchKey !== finalKey) map.delete(matchKey)
+    map.set(finalKey, merged)
+    remember(fallbackPollKey(poll), finalKey)
+    remember(fallbackPollKey(merged), finalKey)
   }
   return [...map.values()]
 }
 
-function protocolOf(row: RawPoll): string | null {
-  const direct = String(row.tse_registration || '').match(/[A-Z]{2}-\d+\/\d+/)
-  if (direct) return direct[0]
-  const note = String(row.methodology_note || '')
-  const cleaned = note.replace(/(distinct from|not the|diferente de)[^.]*$/gi, '')
-  const found = cleaned.match(/[A-Z]{2}-\d+\/\d+/g)
-  return found ? found[found.length - 1] : null
-}
-
 export function normalizePolls(rows: RawPoll[]): NormalizedPoll[] {
   const out: NormalizedPoll[] = []
-  rows.forEach((row, idx) => {
+  rows.forEach((row) => {
     const scenario = row.scenario || ''
     let round: 1 | 2 | null = null
     if (isSecondRound(scenario)) round = 2
@@ -71,33 +130,46 @@ export function normalizePolls(rows: RawPoll[]): NormalizedPoll[] {
     }
 
     if (round === 2 && (results.lula == null || results.flavio == null)) return
-    if (round === 1 && results.lula == null && results.flavio == null) return
+    if (round === 1 && (results.lula == null || results.flavio == null)) return
 
-    const end = row.fieldwork_end || row.published_date
+    const end = validDate(row.fieldwork_end || row.published_date)
     if (!end) return
+    const start = validDate(row.fieldwork_start || end) || end
     const t = Date.parse(`${end}T12:00:00Z`)
     if (!Number.isFinite(t)) return
 
+    const published = validDate(row.published_date) || end
+    const pollKey = canonicalPollKey(row)
+    const coverage = coverageDates(row)
+    const witnessUrls = [...new Set([
+      ...(Array.isArray(row.witness_urls) ? row.witness_urls : []),
+      row.source_url,
+    ].filter(Boolean))].sort()
+    const protocol = tseProtocolOf(row)
     const poll: NormalizedPoll = {
-      id: `${row.institute}-${end}-${round}-${idx}`,
+      id: pollKey,
+      pollKey,
       institute: row.institute,
-      published: row.published_date,
-      fieldworkStart: row.fieldwork_start,
+      published,
+      coverageDates: coverage,
+      fieldworkStart: start,
       fieldworkEnd: end,
       t,
       n: Number(row.n) || 0,
       moe: parseMoe(row.margin_of_error),
       moeRaw: row.margin_of_error,
       method: row.methodology_note || '',
-      tse: protocolOf(row),
+      tse: protocol,
       scenario,
       round,
+      geo: normalizeGeo(row.geo),
       results,
       sourceUrl: row.source_url,
+      witnessUrls,
       verified: row.verified !== false,
       ...(row.flag != null ? { flag: row.flag } : {}),
     }
     out.push(poll)
   })
-  return out.sort((a, b) => a.t - b.t)
+  return out.sort((a, b) => a.t - b.t || a.published.localeCompare(b.published) || a.institute.localeCompare(b.institute))
 }

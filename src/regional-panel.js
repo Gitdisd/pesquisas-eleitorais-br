@@ -1,5 +1,6 @@
 import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } from './candidates.js'
 import { createPollChart, updatePollChart } from './chart.js'
+import { canonicalPollKey } from './data/identity.js'
 
 const BASE = import.meta.env.BASE_URL
 const NAT_URL = `${BASE}data/polls.json`
@@ -8,6 +9,7 @@ const REG_URL = `${BASE}data/polls-regional.json`
 
 const state = {
   polls: [],
+  regionalRows: [],
   round: 1,
   geos: new Set(),
   chart: null,
@@ -61,6 +63,7 @@ function chartOpts() {
     windowDays: 14,
     rangeDays: null,
     projection: false,
+    aggregate: state.geos.size <= 1,
   }
 }
 
@@ -69,7 +72,7 @@ function renderTable() {
   const thead = document.getElementById('regThead')
   const tbody = document.getElementById('regTbody')
   if (!thead || !tbody) return
-  thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
+  thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>Publicação</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
   const rows = filtered()
     .filter((p) => p.round === state.round)
     .filter((p) => keys.some((c) => p.results[c.key] != null))
@@ -81,7 +84,8 @@ function renderTable() {
         const v = p.results[c.key]
         return `<td class="num">${v == null ? '—' : String(v).replace('.', ',')}</td>`
       }).join('')
-      return `<tr><td>${p.fieldworkEnd}</td><td>${p.institute}</td><td>${p.geo}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td>${cells}</tr>`
+      const pub = p.published ? new Date(p.published + 'T12:00:00Z').toLocaleDateString('pt-BR') : '—'
+      return `<tr><td>${p.fieldworkStart}–${p.fieldworkEnd}</td><td>${p.institute}</td><td>${p.geo}</td><td>${pub}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td>${cells}</tr>`
     })
     .join('')
 }
@@ -89,6 +93,19 @@ function renderTable() {
 function refresh() {
   if (state.chart) updatePollChart(state.chart, chartOpts())
   renderTable()
+}
+
+function rebuildFromSharedStore(nationalRows = (window.__pebr?.raw || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))) {
+  const merged = normalize([...nationalRows, ...state.regionalRows])
+  const seen = new Set()
+  state.polls = merged.filter((p) => {
+    const k = canonicalPollKey({ ...p, scenario: p.scenario, geo: p.geo })
+    if (seen.has(k)) return false
+    seen.add(k)
+    return true
+  })
+  state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
+  refresh()
 }
 
 function mount() {
@@ -159,24 +176,24 @@ function mount() {
 
 async function bootRegional() {
   try {
-    const [natRes, extraRes, regRes] = await Promise.all([
-      fetch(NAT_URL + '?t=' + Date.now(), { cache: 'no-store' }),
-      fetch(EXTRA_URL + '?t=' + Date.now(), { cache: 'no-store' }),
-      fetch(REG_URL + '?t=' + Date.now(), { cache: 'no-store' }),
-    ])
-    const nat = natRes.ok ? await natRes.json() : []
-    const extraNat = extraRes.ok ? await extraRes.json() : []
+    const getStore = () => window.__pebr || null
+    const store = getStore()
+    if (!store) {
+      await new Promise((resolve) => {
+        const handler = () => { document.removeEventListener('pebr-data-ready', handler); resolve() }
+        document.addEventListener('pebr-data-ready', handler, { once: true })
+        setTimeout(() => { document.removeEventListener('pebr-data-ready', handler); resolve() }, 10000)
+      })
+    }
+
+    const latest = getStore()
+    const natRows = (latest?.raw || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))
+    const regRes = await fetch(REG_URL + '?t=' + Date.now(), { cache: 'no-store' })
     const extra = regRes.ok ? await regRes.json() : []
-    const natRows = [...(Array.isArray(extraNat) ? extraNat : []), ...(Array.isArray(nat) ? nat : nat.polls || [])].map((p) => ({ ...p, geo: p.geo || 'BR' }))
-    const merged = normalize([...natRows, ...extra])
-    const seen = new Set()
-    state.polls = merged.filter((p) => {
-      const k = `${p.institute}|${p.fieldworkEnd}|${p.round}|${p.geo}`
-      if (seen.has(k)) return false
-      seen.add(k)
-      return true
-    })
-    state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
+    state.regionalRows = Array.isArray(extra) ? extra : extra?.polls || []
+    rebuildFromSharedStore(natRows)
+
+
     const started = Date.now()
     const wait = setInterval(() => {
       if (document.getElementById('chartPanel') || Date.now() - started > 8000) {
@@ -188,5 +205,7 @@ async function bootRegional() {
     console.warn('regional panel failed', err)
   }
 }
+
+document.addEventListener('pebr-data-ready', () => rebuildFromSharedStore())
 
 bootRegional()

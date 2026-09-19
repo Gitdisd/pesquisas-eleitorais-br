@@ -26,6 +26,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import readline from "node:readline";
 import { execFileSync } from "node:child_process";
+import { canonicalPollKey, normalizeProtocol } from "../src/data/identity.js";
 
 const ROOT = process.cwd();
 const CFG_PATH = path.join(ROOT, "data", "discovery", "pipeline-config.json");
@@ -34,6 +35,7 @@ const REGISTRY_PATH = path.join(ROOT, "data", "discovery", "tse-registry.json");
 const STATUS_PATH = path.join(ROOT, "data", "discovery", "coverage-status.json");
 const CONFLICTS_PATH = path.join(ROOT, "data", "discovery", "conflicts.json");
 const MISSING_PATH = path.join(ROOT, "data", "discovery", "missing-registered.json");
+const PENDING_PATH = path.join(ROOT, "data", "discovery", "pending-polls.json");
 const UA = "pesquisas-eleitorais-br-pipeline/1.0 (+https://github.com/Gitdisd/pesquisas-eleitorais-br)";
 
 const cfg = JSON.parse(fs.readFileSync(CFG_PATH, "utf8"));
@@ -87,8 +89,16 @@ function unwrapPolls(data) {
 }
 
 function pollProtocols(poll) {
-  const joined = [poll.methodology_note, poll.source_url, poll.tse_registration].filter(Boolean).join(" ");
-  return [...joined.matchAll(/\bBR-?\d{4,6}\/2026\b/gi)].map((m) => m[0].toUpperCase().replace(/^BR(?=\d)/, "BR-"));
+  const joined = [poll?.methodology_note, poll?.source_url, poll?.tse_registration, poll?.tse_protocol]
+    .filter(Boolean)
+    .join(" ");
+  const out = new Set();
+  const re = /\bBR\s*-?\s*\d{4,6}\s*(?:\/\s*2026|\s+2026|2026)\b/gi;
+  for (const match of joined.matchAll(re)) {
+    const normalized = normalizeProtocol(match[0]);
+    if (normalized) out.add(normalized);
+  }
+  return [...out];
 }
 
 function canonicalUrl(url) {
@@ -190,7 +200,9 @@ async function loadTseRegistry() {
   const zipPath = path.join(tmpDir, "pesquisa_eleitoral_2026.zip");
   const csvPath = path.join(tmpDir, "selected.csv");
   try {
-    const buffer = await fetchBuffer(cfg.tse_registry_zip, 45000);
+    const registryUrl = process.env.TSE_REGISTRY_ZIP_URL || cfg.tse_registry_zip;
+    if (!registryUrl) throw new Error('TSE registry source URL is not configured');
+    const buffer = await fetchBuffer(registryUrl, 45000);
     fs.writeFileSync(zipPath, buffer);
 
     const files = execFileSync("unzip", ["-Z1", zipPath], { encoding: "utf8" })
@@ -232,7 +244,7 @@ async function loadTseRegistry() {
       if (cells.length < 2) continue;
       const row = Object.fromEntries(headers.map((h, i) => [h, cleanSpace(cells[i] || "")]));
       const all = normalizeText(Object.values(row).join(" | "));
-      const protocol = String(Object.values(row).join(" ")).match(/\b[A-Z]{2}-\d{4,6}\/2026\b/i)?.[0]?.toUpperCase() || null;
+      const protocol = normalizeProtocol(Object.values(row).join(" "));
       if (!protocol) continue;
       if (!/(presidente|presidencia|presidencial)/i.test(all)) continue;
       if (!/(brasil|nacional)/i.test(all)) {
@@ -549,9 +561,7 @@ function bestPollEvidence(reg, evidence, scenario) {
 }
 
 function pollIdentity(poll) {
-  const protocols = pollProtocols(poll);
-  if (protocols.length) return `tse:${protocols[0]}|${poll.scenario}`;
-  return `fallback:${poll.institute}|${poll.fieldwork_start}|${poll.fieldwork_end}|${poll.published_date}|${poll.scenario}|${canonicalUrl(poll.source_url)}`;
+  return canonicalPollKey(poll);
 }
 
 function expectedProtocols(polls) {
@@ -563,7 +573,7 @@ function expectedProtocols(polls) {
 async function main() {
   const polls = unwrapPolls(JSON.parse(fs.readFileSync(POLLS_PATH, "utf8")));
   const registry = await loadTseRegistry();
-  const registryRecords = registry.records.filter((r) => r.registered_date !== null || r.fieldwork_end !== null || r.planned_publication_date !== null);
+  const registryRecords = registry.records.filter((r) => Boolean(r.protocol));
   const known = expectedProtocols(polls);
   const today = new Date().toISOString().slice(0, 10);
   const graceMs = (cfg.publication_grace_days || 2) * 86400000;
@@ -633,6 +643,24 @@ async function main() {
     status: coverage.status,
     missing_count: stillMissing.length,
     items: stillMissing,
+  });
+  writeJsonStable(PENDING_PATH, {
+    version: 1,
+    generated_at: new Date().toISOString(),
+    queue: "national_president",
+    chart_visible: false,
+    items: stillMissing.map((r) => ({
+      poll_key: `tse:${r.protocol}`,
+      tse_registration: r.protocol,
+      institute: r.institute || null,
+      fieldwork_start: r.fieldwork_start || null,
+      fieldwork_end: r.fieldwork_end || null,
+      planned_publication_date: r.planned_publication_date || null,
+      status: "pending_evidence",
+      verified: false,
+      chart_visible: false,
+      reason: "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered.",
+    })),
   });
   writeJsonStable(CONFLICTS_PATH, { version: 1, conflicts });
   writeJsonStable(STATUS_PATH, coverage);

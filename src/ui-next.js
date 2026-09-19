@@ -100,6 +100,7 @@ function addQuickTools() {
   tools.innerHTML = `
     <button type="button" class="next-tool primary" data-next-share>Compartilhar</button>
     <button type="button" class="next-tool" data-next-csv>Exportar tabela CSV</button>
+    <button type="button" class="next-tool" data-next-json>Exportar JSON</button>
     <button type="button" class="next-tool" data-next-focus>Focar gráfico</button>
     <button type="button" class="next-tool" data-next-reset>Restaurar visualização</button>`
   anchor.prepend(tools)
@@ -115,7 +116,7 @@ function addQuickTools() {
     toast('Visualização restaurada')
   })
   tools.querySelector('[data-next-share]').addEventListener('click', async () => {
-    const url = location.href.split('#')[0]
+    const url = buildShareUrl()
     const share = { title: document.title, text: 'Pesquisas eleitorais — Presidência 2026', url }
     try {
       if (navigator.share) await navigator.share(share)
@@ -126,6 +127,55 @@ function addQuickTools() {
     }
   })
   tools.querySelector('[data-next-csv]').addEventListener('click', exportVisibleTable)
+  tools.querySelector('[data-next-json]').addEventListener('click', exportJson)
+}
+
+function buildShareUrl() {
+  const url = new URL(location.href)
+  const view = window.__pebr?.view || {}
+  const params = new URLSearchParams()
+  if (view.round === 1 || view.round === 2) params.set('round', String(view.round))
+  if (view.rangeDays == null) params.set('range', 'all')
+  else if (Number.isFinite(view.rangeDays)) params.set('range', String(view.rangeDays))
+  if (view.windowPreset && view.windowPreset !== 'custom' && view.windowPreset !== 'ytd') params.set('window', String(view.windowPreset))
+  else if (view.windowPreset === 'ytd') params.set('window', 'ytd')
+  else if (Number.isFinite(view.windowDays)) params.set('window', String(view.windowDays))
+  if (Array.isArray(view.institutes) && view.institutes.length) params.set('institutes', view.institutes.map((x) => encodeURIComponent(x)).join(','))
+  if (Number.isInteger(view.model)) params.set('model', String(view.model))
+  url.search = params.toString()
+  url.hash = ''
+  return url.toString()
+}
+
+function exportJson() {
+  const store = window.__pebr
+  if (!store) return
+  const view = store.view || {}
+  const round = Number(view.round || 1)
+  const institutes = new Set(Array.isArray(view.institutes) ? view.institutes : [])
+  const rows = (store.raw || []).filter((p) => {
+    const scenario = String(p.scenario || '').toLowerCase()
+    const isRound = round === 2 ? /2[ºo°]?\s*turno|segundo\s*turno/.test(scenario) : /1[ºo°]?\s*turno|primeiro\s*turno|estimulada/.test(scenario)
+    return isRound && (!institutes.size || institutes.has(p.institute))
+  })
+  const payload = {
+    schema_version: 1,
+    exported_at: new Date().toISOString(),
+    source: 'window.__pebr',
+    view,
+    record_count: rows.length,
+    polls: rows,
+  }
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' })
+  const blobUrl = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = blobUrl
+  a.download = `pesquisas-eleitorais-${new Date().toISOString().slice(0,10)}.json`
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
+  URL.revokeObjectURL(blobUrl)
+  toast('JSON exportado')
 }
 
 function exportVisibleTable() {

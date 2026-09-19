@@ -55,9 +55,10 @@ function initTheme() {
 }
 async function boot() {
   applyTheme(initTheme())
+  applyUrlViewState()
   document.getElementById('app').innerHTML = shellHTML()
   applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
-  fillProjectionCopy(); syncProjectionUI(); bindChrome()
+  fillProjectionCopy(); syncProjectionUI(); bindChrome(); syncPrimaryControls()
   try {
     const bundle = await loadPollData(DATA_URL, EXTRA_URL, META_URL)
     state.raw = mergePolls(bundle.polls, bundle.extra)
@@ -66,7 +67,9 @@ async function boot() {
     state.updatedLabel = resolveUpdatedStamp(bundle.meta, state.polls)
     state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
     state.institutes = new Set(state.allInstitutes)
-    renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
+    applyUrlViewState(state.allInstitutes)
+    publishDataStore()
+    renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
     setStamp(); applyCheckMeta(bundle.meta); startCheckTimers()
   } catch (err) {
@@ -75,6 +78,59 @@ async function boot() {
 }
 function chartOpts() {
   return { polls: state.polls, round: state.round, institutes: state.institutes, windowDays: state.windowDays, rangeDays: state.rangeDays, projection: state.projection }
+}
+function publishDataStore() {
+  const store = {
+    version: 1,
+    raw: state.raw,
+    polls: state.polls,
+    meta: state.meta,
+    updatedLabel: state.updatedLabel,
+    urls: { data: DATA_URL, extra: EXTRA_URL, meta: META_URL },
+    view: {
+      round: state.round,
+      rangeDays: state.rangeDays,
+      windowDays: state.windowDays,
+      windowPreset: state.windowPreset,
+      institutes: [...state.institutes],
+      model: Number(window.__pebrProjModel ?? 1),
+    },
+  }
+  window.__pebr = store
+  document.dispatchEvent(new CustomEvent('pebr-data-ready', { detail: store }))
+}
+function applyUrlViewState(allInstitutes = []) {
+  const params = new URLSearchParams(location.search)
+  const round = Number(params.get('round'))
+  if (round === 1 || round === 2) state.round = round
+  const range = params.get('range')
+  if (range === 'all') state.rangeDays = null
+  else if (/^\d+$/.test(range || '')) state.rangeDays = Math.max(1, Number(range))
+  const windowValue = params.get('window')
+  if (windowValue === 'ytd') {
+    state.windowPreset = 'ytd'
+    state.windowDays = daysSinceJan1()
+  } else if (WINDOW_PRESETS.some((x) => x.id === windowValue && x.id !== 'ytd')) {
+    state.windowPreset = windowValue
+    state.windowDays = resolveWindowDays(windowValue, state.windowCustom)
+  } else if (/^\d+$/.test(windowValue || '')) {
+    state.windowPreset = 'custom'
+    state.windowCustom = Math.max(1, Number(windowValue))
+    state.windowDays = state.windowCustom
+  }
+  const model = Number(params.get('model'))
+  if (Number.isInteger(model) && model >= 0 && model <= 12) {
+    window.__pebrProjModel = model
+    try { localStorage.setItem('pebr-model', String(model)) } catch {}
+  }
+  if (allInstitutes.length) {
+    const selected = (params.get('institutes') || '')
+      .split(',')
+      .map((v) => decodeURIComponent(v).trim())
+      .filter(Boolean)
+      .filter((v) => allInstitutes.includes(v))
+    if (selected.length) state.institutes = new Set(selected)
+  }
 }
 function resolveUpdatedStamp(meta, polls) {
   const fromMeta = formatUpdatedStamp(meta?.last_updated)
@@ -85,7 +141,9 @@ function resolveUpdatedStamp(meta, polls) {
   return null
 }
 function setStamp() {
-  document.getElementById('stamp').textContent = `Atualizado em ${state.updatedLabel || '—'} · ${countLabel()}`
+  const latestPublication = state.meta?.latest_publication_date ? fmtDateBR(state.meta.latest_publication_date) : '—'
+  const pipeline = state.meta?.last_successful_pipeline_at ? formatUpdatedStamp(state.meta.last_successful_pipeline_at) : '—'
+  document.getElementById('stamp').textContent = `Dados atualizados em ${state.updatedLabel || '—'} · última publicação ${latestPublication} · pipeline auditado ${pipeline} · ${countLabel()}`
 }
 function applyCheckMeta(meta) {
   state.meta = meta
@@ -128,7 +186,7 @@ async function refreshDataQuietly() {
     const [pollRes, extraRes, meta] = await Promise.all([
       fetch(DATA_URL + bust, { cache: 'no-store' }),
       fetch(EXTRA_URL + bust, { cache: 'no-store' }),
-      loadMeta(META_URL, true),
+      loadMeta(true),
     ])
     if (!pollRes.ok) throw new Error(`HTTP ${pollRes.status}`)
     const data = await pollRes.json()
@@ -141,7 +199,7 @@ async function refreshDataQuietly() {
       } catch {}
     }
     const nextRaw = mergePolls(base, extra)
-    const nextPolls = normalizePolls(nextRaw)
+    const nextPolls = normalize(nextRaw)
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
@@ -149,9 +207,10 @@ async function refreshDataQuietly() {
       state.polls = nextPolls
       state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare('pt-BR'))
       state.institutes = new Set(state.allInstitutes)
-      renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
-      if (state.chart) state.chart.destroy()
-      state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
+      publishDataStore()
+      renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
+      if (state.chart) updatePollChart(state.chart, chartOpts())
+      else state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
       document.getElementById('chartError').textContent = ''
     }
     if (meta) {
@@ -159,6 +218,7 @@ async function refreshDataQuietly() {
       state.updatedLabel = resolveUpdatedStamp(meta, state.polls)
       applyCheckMeta(meta)
       setStamp()
+      publishDataStore()
     }
     tickCheckTimer()
   } catch (err) {
@@ -183,7 +243,7 @@ function shellHTML() {
     <p>Agregador neutro com pesquisas nacionais publicadas. Pontos = pesquisas individuais; linhas = média ponderada.</p>
     <div class="stamp" id="stamp">Carregando…</div>
     <div class="check-timer" id="checkTimer" aria-live="polite"><div id="lastCheckLine">Última verificação: —</div><div id="nextCheckLine">Próxima verificação em: —</div></div>
-    <p class="refresh-notice">Novas pesquisas publicadas podem levar até cerca de 3 horas para aparecer (busca automática periódica).</p>
+    <p class="refresh-notice">Novas pesquisas publicadas podem levar até cerca de 1 hora para aparecer (busca automática periódica).</p>
     </div><button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">Escuro</button></div></div></header>
     <main class="wrap main-stack"><section class="panel chart-panel" id="chartPanel">
     <h2 class="chart-title">Evolução da intenção de voto</h2>
@@ -224,6 +284,14 @@ function syncProjectionUI() {
   document.getElementById('projDisclaimer')?.classList.toggle('on', !!state.projection)
   const chip = document.getElementById('projChip')
   if (chip) chip.hidden = !state.projection
+}
+function syncPrimaryControls() {
+  document.querySelectorAll('[data-round]').forEach((b) => b.classList.toggle('active', Number(b.dataset.round) === state.round))
+  document.querySelectorAll('[data-range]').forEach((b) => {
+    const id = b.dataset.range
+    const active = id === 'all' ? state.rangeDays == null : Number(id) === state.rangeDays
+    b.classList.toggle('active', active)
+  })
 }
 function syncWindowUI() {
   const val = document.getElementById('windowVal')
@@ -317,15 +385,20 @@ function renderCards() {
 }
 function renderTable() {
   const keys = state.round === 2 ? ['lula', 'flavio'] : CANDIDATES.map((c) => c.key)
-  document.getElementById('thead').innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>N</th><th>Margem</th>${keys.map((k) => `<th>${CANDIDATES.find((c) => c.key === k).label}</th>`).join('')}<th>Fonte</th></tr>`
+  document.getElementById('thead').innerHTML = `<tr><th>Campo</th><th>Publicação</th><th>Instituto</th><th>Geo</th><th>TSE</th><th>N</th><th>Margem</th>${keys.map((k) => `<th>${CANDIDATES.find((c) => c.key === k).label}</th>`).join('')}<th>Fonte</th></tr>`
   document.getElementById('tbody').innerHTML = [...activePolls()].reverse().map((p) => {
     const cells = keys.map((k) => `<td class="num">${p.results[k] == null ? '—' : p.results[k].toLocaleString('pt-BR')}</td>`).join('')
-    const link = p.sourceUrl ? `<a href="${p.sourceUrl}" target="_blank" rel="noopener noreferrer">ver</a>` : '—'
-    return `<tr><td>${fmtDateBR(p.fieldworkStart)}–${fmtDateBR(p.fieldworkEnd)}</td><td>${escapeHtml(p.institute)}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td><td class="num">${p.moeRaw || (p.moe != null ? '±' + p.moe : '—')}</td>${cells}<td>${link}</td></tr>`
+    const link = p.sourceUrl ? `<a href="${escapeHtml(p.sourceUrl)}" target="_blank" rel="noopener noreferrer">ver</a>` : '—'
+    const published = fmtDateBR(p.published)
+    const geo = escapeHtml(p.geo || 'BR')
+    const tse = escapeHtml(p.tse || '—')
+    const moe = escapeHtml(p.moeRaw || (p.moe != null ? '±' + p.moe : '—'))
+    return `<tr><td>${fmtDateBR(p.fieldworkStart)}–${fmtDateBR(p.fieldworkEnd)}</td><td>${published}</td><td>${escapeHtml(p.institute)}</td><td>${geo}</td><td>${tse}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td><td class="num">${moe}</td>${cells}<td>${link}</td></tr>`
   }).join('')
 }
 function refresh() {
   renderLegend(); renderCards(); renderTable()
+  publishDataStore()
   if (state.chart) updatePollChart(state.chart, chartOpts())
   setStamp()
 }
@@ -333,6 +406,11 @@ function countLabel() {
   return `${state.polls.filter((p) => p.round === 1).length} pesquisas de 1º turno · ${state.polls.filter((p) => p.round === 2).length} de 2º turno`
 }
 function escapeHtml(s) {
-  return String(s).replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"')
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 }
 boot()

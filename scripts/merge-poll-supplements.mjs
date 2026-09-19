@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
+import path from 'node:path'
+import { canonicalPollKey, fallbackPollKey, normalizeGeo } from '../src/data/identity.js'
 
 const ROOT = process.cwd()
 const BASE_PATH = `${ROOT}/data/polls.json`
+const STAGING_PATH = `${ROOT}/data/discovery/discovered-polls.json`
+const WITNESS_PATH = `${ROOT}/data/discovery/witnesses.json`
 const EXTRA_PATHS = [
   `${ROOT}/data/polls-extra.json`,
   `${ROOT}/public/data/polls-extra.json`,
@@ -12,20 +16,16 @@ const EXTRA_PATHS = [
   `${ROOT}/data/polls-extra-wave-2026-09-17.json`,
   `${ROOT}/data/polls-extra-wave-2026-09-17-gerp.json`,
   `${ROOT}/data/polls-extra-wave-2026-09-17-datafolha.json`,
+  STAGING_PATH,
 ]
 const OUT_PATH = BASE_PATH
 
 const load = (file) => {
   const value = JSON.parse(fs.readFileSync(file, 'utf8'))
-  return Array.isArray(value) ? value : value.polls || []
+  return Array.isArray(value) ? value : value.polls || value.items || []
 }
 
-const key = (p) => [
-  String(p.institute || '').trim(),
-  p.fieldwork_start || '',
-  p.fieldwork_end || '',
-  p.scenario || '',
-].join('|')
+const key = (p) => canonicalPollKey(p)
 
 const candidateKey = (name) => String(name || '')
   .normalize('NFD')
@@ -64,12 +64,25 @@ const extras = []
 const seenExtra = new Set()
 for (const extra of extrasRaw) {
   const k = key(extra)
-  if (!k || seenExtra.has(k)) continue
-  seenExtra.add(k)
+  const witnessKey = `${k}\u0000${extra.source_url || ''}`
+  if (!k || seenExtra.has(witnessKey)) continue
+  seenExtra.add(witnessKey)
   extras.push(extra)
 }
 
 const byKey = new Map()
+const fallbackIndex = new Map()
+const remember = (fallback, identity) => {
+  const list = fallbackIndex.get(fallback) || []
+  if (!list.includes(identity)) list.push(identity)
+  fallbackIndex.set(fallback, list)
+}
+const findExistingKey = (poll) => {
+  const exact = canonicalPollKey(poll)
+  if (byKey.has(exact)) return exact
+  const list = fallbackIndex.get(fallbackPollKey(poll)) || []
+  return list.length === 1 ? list[0] : null
+}
 let addedPolls = 0
 let supplementedPolls = 0
 let addedCandidateValues = 0
@@ -81,19 +94,29 @@ const additions = []
 for (const poll of base) {
   const cleaned = dedupeCandidates(poll.candidates)
   excludedCandidateValues += (poll.candidates || []).length - cleaned.length
-  byKey.set(key(poll), { ...structuredClone(poll), candidates: cleaned })
+  const identity = key(poll)
+  byKey.set(identity, { ...structuredClone(poll), geo: normalizeGeo(poll.geo), candidates: cleaned })
+  remember(fallbackPollKey(poll), identity)
 }
 
 for (const extra of extras) {
   if (!extra?.institute || !extra?.fieldwork_end || !extra?.scenario) continue
   const k = key(extra)
-  let existing = byKey.get(k)
+  const matchedKey = findExistingKey(extra)
+  let existing = matchedKey ? byKey.get(matchedKey) : undefined
+
+  if (existing) {
+    existing.witness_urls = [...new Set([...(existing.witness_urls || []), ...(extra.witness_urls || []), extra.source_url].filter(Boolean))].sort()
+    existing.coverage_dates = [...new Set([...(existing.coverage_dates || []), ...(extra.coverage_dates || []), extra.published_date].filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d))))].sort()
+  }
 
   if (!existing) {
     if (extra.verified === true) {
       const copy = structuredClone(extra)
+      copy.geo = normalizeGeo(copy.geo)
       copy.candidates = dedupeCandidates(copy.candidates)
       byKey.set(k, copy)
+      remember(fallbackPollKey(copy), k)
       addedPolls += 1
       additions.push({
         type: 'poll',
@@ -153,7 +176,9 @@ for (const extra of extras) {
 
   if (changed) {
     existing.candidates = working
-    byKey.set(k, existing)
+    const finalKey = matchedKey || k
+    byKey.set(finalKey, existing)
+    remember(fallbackPollKey(extra), finalKey)
     supplementedPolls += 1
   }
 }
@@ -173,7 +198,7 @@ if (fileChanged) fs.writeFileSync(OUT_PATH, newText, 'utf8')
 const report = {
   version: 4,
   generated_at: new Date().toISOString(),
-  identity_key: 'institute|fieldwork_start|fieldwork_end|scenario',
+  identity_key: 'tse_protocol|scenario|geo; fallback institute|fieldwork_start|fieldwork_end|scenario|geo',
   base_polls: base.length,
   supplemental_rows: extras.length,
   merged_polls: merged.length,
@@ -188,5 +213,46 @@ const report = {
   additions: additions.slice(0, 250),
 }
 fs.mkdirSync(`${ROOT}/data/discovery`, { recursive: true })
+const existingWitnessDoc = fs.existsSync(WITNESS_PATH) ? JSON.parse(fs.readFileSync(WITNESS_PATH, 'utf8')) : { version: 1, items: [] }
+const witnessItems = Array.isArray(existingWitnessDoc.items) ? existingWitnessDoc.items : []
+const witnessMap = new Map(witnessItems.map((item) => [`${item.poll_key}\u0000${item.url}`, item]))
+for (const poll of merged) {
+  const pollKey = key(poll)
+  const urls = new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))
+  for (const url of urls) {
+    const id = `${pollKey}\u0000${url}`
+    if (witnessMap.has(id)) continue
+    witnessMap.set(id, {
+      poll_key: pollKey,
+      url,
+      institute: poll.institute,
+      geo: normalizeGeo(poll.geo),
+      fieldwork_start: poll.fieldwork_start,
+      fieldwork_end: poll.fieldwork_end,
+      scenario: poll.scenario,
+      published_date: poll.published_date || null,
+      recorded_at: new Date().toISOString(),
+    })
+  }
+}
+const witnessesOut = [...witnessMap.values()].sort((a, b) =>
+  String(a.recorded_at).localeCompare(String(b.recorded_at)) ||
+  String(a.poll_key).localeCompare(String(b.poll_key)) ||
+  String(a.url).localeCompare(String(b.url))
+)
+fs.mkdirSync(path.dirname(WITNESS_PATH), { recursive: true })
+const witnessItemsOut = witnessesOut.slice(-2000)
+const previousItems = Array.isArray(existingWitnessDoc.items) ? existingWitnessDoc.items : []
+const witnessChanged = JSON.stringify(previousItems) !== JSON.stringify(witnessItemsOut)
+const witnessDocument = {
+  version: 1,
+  updated_at: witnessChanged ? new Date().toISOString() : (existingWitnessDoc.updated_at || null),
+  items: witnessItemsOut,
+}
+const witnessText = JSON.stringify(witnessDocument, null, 2) + '\n'
+if (!fs.existsSync(WITNESS_PATH) || fs.readFileSync(WITNESS_PATH, 'utf8') !== witnessText) {
+  fs.writeFileSync(WITNESS_PATH, witnessText, 'utf8')
+}
+
 fs.writeFileSync(`${ROOT}/data/discovery/supplement-merge.json`, `${JSON.stringify(report, null, 2)}\n`)
 console.log(JSON.stringify(report, null, 2))

@@ -39,3 +39,12 @@ Backup pré-upgrade discover: `backup/pre-discover-upgrade-2026-09-11`.
 - Não inventar número. Inbox / extra para humano.
 - Dedup obrigatório. URL de share é lixo.
 - Mudança de fórmula = entrada em `CHANGELOG.md` + ajuste em `MODELS.md`.
+
+## Current integrity contract
+
+- `published_date` is retained and displayed, but never identifies a poll.
+- `window.__pebr` is the shared national display snapshot.
+- Aggregate uncertainty is an estimated 90% range, not a survey MOE and not an election forecast.
+- Sample-size weighting is capped at N=4,000 before the square-root weight.
+- Multi-geo regional views show points without a blended mean.
+- The TSE parser is static; the resolver passes temporary registry bytes by environment rather than rewriting source files at runtime.

@@ -7,6 +7,17 @@ export function methodologyHTML() {
   <p class="meto-lead">Pense em vários amigos medindo a altura da mesma árvore. Cada um usa uma fita diferente. A gente não escolhe o amigo mais alto de voz. A gente junta as medidas.</p>
 
   <section class="meto-sec">
+    <h3>Regras de inclusão e datas</h3>
+    <ul>
+      <li><strong>Data de campo</strong> = quando as entrevistas foram realizadas e é a data usada no eixo do gráfico.</li>
+      <li><strong>Data de publicação</strong> = quando uma fonte divulgou o levantamento. Ela permanece visível e pode ter mais de uma data de cobertura, mas não cria uma nova pesquisa.</li>
+      <li><strong>Registro TSE</strong> = quando identificado, ajuda a reconhecer a mesma pesquisa mesmo que outra fonte a publique depois.</li>
+      <li><strong>Gráfico nacional</strong> = somente pesquisas verificadas de intenção de voto presidencial no Brasil. Pesquisas estaduais ficam no painel regional.</li>
+      <li><strong>Faixa de incerteza</strong> = estimativa do agregado. Não é a margem de erro de uma pesquisa e não é probabilidade de vitória.</li>
+    </ul>
+  </section>
+
+  <section class="meto-sec">
     <h3>O desenho</h3>
     <ul>
       <li><strong>Bolinha</strong> = uma pesquisa. É só aquela escola, naquele dia.</li>

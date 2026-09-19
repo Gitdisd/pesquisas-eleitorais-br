@@ -36,3 +36,9 @@ npm run update-polls
 - Cron: `.github/workflows/refresh-polls.yml` a cada 3 h (`10 */3 * * *`) + **Run workflow**
 - Discover relê `data/sources.json`, extrai HTML, rejeita estadual e PDF (inbox)
 - `Verificar agora` no site só recarrega o JSON publicado; não dispara Actions
+
+## Data integrity and reproducibility
+
+Publication dates are preserved as coverage metadata; they are not used to create a new poll identity. The canonical identity is TSE protocol + scenario + geography when available, with normalized institute + fieldwork dates + scenario + geography as fallback. The browser exposes a shared `window.__pebr` data store, and shared links preserve the selected round, range, averaging window, institutes, and model.
+
+Unverified TSE registrations remain in a pending audit queue and are excluded from the chart. National and state-president registrations are classified separately. Multi-geo regional views do not display a blended aggregate mean.

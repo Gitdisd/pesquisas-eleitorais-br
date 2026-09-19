@@ -43,3 +43,15 @@ Formato: data (America/Sao_Paulo) · o quê · por que · arquivos.
 2. Se a fórmula da linha mudar, atualizar `docs/MODELS.md`.
 3. Se o pipeline mudar, atualizar `docs/SYSTEM.md`.
 4. Não apagar entradas. Corrigir com uma entrada “correção”.
+
+## 2026-09-19 — Codex robustness pass
+
+- CI revalidated after failure-remediation; validation now covers every script plus publication integrity gates.
+
+- Unified poll identity around TSE protocol + scenario + geography, with fieldwork fallback; publication date remains coverage metadata.
+- Added witness ledger, discovery staging, pending TSE evidence queue, and explicit registry scope queues.
+- Hardened publishing against accidental dataset shrinkage and preserved TSE/geo/witness metadata.
+- Preserved Chart.js pan/zoom/pinch/Shift-drag state during automatic refresh; regional multi-geo views no longer blend incompatible geographies.
+- Added estimated aggregate uncertainty range, N=4,000 sample-weight cap, stable filtered sharing/JSON export, and repository-wide CI gates.
+- Removed the unused legacy v3 pipeline and made deep-repair maintenance manual-only to reduce duplicate failure notifications.
+- Consolidated the duplicate Palver BR-05420/2026 record using the official Palver wave record (fieldwork 4–7 Sep 2026); retained the alternate publication URL as a witness.

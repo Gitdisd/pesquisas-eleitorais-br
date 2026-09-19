@@ -1,19 +1,30 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
+import { canonicalPollKey, normalizeProtocol } from '../src/data/identity.js'
+
+const INSTITUTE_URL_HINTS = [
+  { re: /datafolha/i, name: 'Datafolha' },
+  { re: /quaest/i, name: 'Quaest' },
+  { re: /atlas/i, name: 'AtlasIntel' },
+  { re: /poderdata/i, name: 'PoderData' },
+  { re: /nexus|btg/i, name: 'Nexus/BTG' },
+  { re: /futura/i, name: 'Futura/Apex' },
+  { re: /gerp/i, name: 'GERP' },
+  { re: /palver/i, name: 'Palver' },
+  { re: /verita/i, name: 'Veritá' },
+  { re: /ideia/i, name: 'Ideia' },
+  { re: /parana/i, name: 'Paraná Pesquisas' },
+]
 
 const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
 const errors = []
 const warnings = []
 
-const normalizeProtocol = (raw) => {
-  if (!raw) return null
-  return String(raw).toUpperCase().replace(/^BR(?=\d)/, 'BR-')
-}
 
 const protocolOf = (p) => {
-  const explicit = String(p.tse_registration || '').match(/\bBR-?\d{4,6}\/2026\b/i)
-  if (explicit) return normalizeProtocol(explicit[0])
+  const explicit = normalizeProtocol(p.tse_registration)
+  if (explicit) return explicit
   const note = String(p.methodology_note || '')
     .replace(/\b(distinct from|not the|diferente de|separate (product|wave) from)[^.]*\./gi, ' ')
   const owned = note.match(/TSE\s+(BR-?\d{4,6}\/2026)/i)
@@ -50,6 +61,12 @@ for (const [i, p] of polls.entries()) {
   else if (sum > 100.001) warnings.push({ type: 'candidate_sum_over_100_rounding_or_residual', poll: i, sum })
 
   const url = String(p.source_url || '').toLowerCase()
+  if (/^Auto-extracted from https?:/i.test(String(p.methodology_note || ''))) {
+    const instituteSignals = INSTITUTE_URL_HINTS.filter((x) => x.re.test(url))
+    if (instituteSignals.length === 1 && !instituteSignals[0].re.test(String(p.institute || ''))) {
+      errors.push({ type: 'auto_extract_institute_mismatch', poll: i, institute: p.institute, source_url: p.source_url, expected_signal: instituteSignals[0].name })
+    }
+  }
   const round1InUrl = /(1o|1º|primeiro)[-_ ]turno/.test(url)
   const round2InUrl = /(2o|2º|segundo)[-_ ]turno/.test(url)
   if (p.scenario.includes('1º') && round2InUrl && !round1InUrl) {
@@ -64,6 +81,15 @@ for (const [i, p] of polls.entries()) {
   if (/poderdata|poder-data/.test(url) && p.institute !== 'PoderData') {
     errors.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
   }
+}
+
+const canonicalIdentity = new Map()
+for (let i = 0; i < polls.length; i += 1) {
+  const key = canonicalPollKey(polls[i])
+  const previous = canonicalIdentity.get(key)
+  if (previous != null) {
+    errors.push({ type: 'duplicate_canonical_identity', key, polls: [previous, i] })
+  } else canonicalIdentity.set(key, i)
 }
 
 const identity = new Map()

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "generated_at": null,
+  "scope": "TSE registry scan",
+  "queues": {
+    "national_president": {"status": "not_run", "protocol_count": 0, "protocols": []},
+    "state_president": {"status": "not_run", "protocol_count": 0, "protocols": []},
+    "other_office": {"status": "not_run", "protocol_count": 0, "protocols": []}
+  },
+  "source_rows": {}
+}

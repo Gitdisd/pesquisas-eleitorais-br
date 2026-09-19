@@ -165,7 +165,9 @@ function extractNationalPresidentialProtocols(csvText) {
   const text = String(csvText).replace(/^\ufeff/, "");
   const delimiter = detectDelimiter(text);
   const lines = text.split(/\r?\n/).filter((line) => line.trim());
-  if (!lines.length) return { protocols: new Set(), lines: 0, candidateRows: 0, presidentialRows: 0, nationalRows: 0 };
+  if (!lines.length) {
+    return { protocols: new Set(), statePresidentProtocols: new Set(), otherOfficeProtocols: new Set(), lines: 0, candidateRows: 0, presidentialRows: 0, nationalRows: 0, statePresidentRows: 0, otherOfficeRows: 0 };
+  }
 
   const headers = parseCsvLine(lines[0], delimiter).map((x) => x.trim());
   const cargoHeader = headerName(headers, [/ds_cargos?/, /ds_cargo/, /cargo/]);
@@ -173,12 +175,14 @@ function extractNationalPresidentialProtocols(csvText) {
   const protocolHeader = headerName(headers, [/nr_protocolo_registro/, /nr.*pesquisa/, /numero.*pesquisa/, /num.*pesquisa/, /cod.*pesquisa/, /registro/]);
 
   const protocols = new Set();
+  const statePresidentProtocols = new Set();
+  const otherOfficeProtocols = new Set();
   let candidateRows = 0;
   let presidentialRows = 0;
   let nationalRows = 0;
+  let statePresidentRows = 0;
+  let otherOfficeRows = 0;
 
-  // TSE's 2026 export uses DS_CARGOS for the researched office and NM_UE for
-  // the electoral unit. For national presidential polls NM_UE is "BR".
   for (const line of lines.slice(1)) {
     const cells = parseCsvLine(line, delimiter);
     const row = Object.fromEntries(headers.map((h, i) => [h, cells[i] || ""]));
@@ -191,37 +195,44 @@ function extractNationalPresidentialProtocols(csvText) {
     const cargoText = normalizeText(cargoHeader ? row[cargoHeader] : "");
     const unitText = normalizeText(scopeHeader ? row[scopeHeader] : "");
     const rowText = normalizeText(Object.values(row).join(" | "));
-
-    const presidential = cargoHeader
-      ? /presidente|presidencia|presidencial/.test(cargoText)
-      : /presidente|presidencia|presidencial/.test(rowText);
-    if (!presidential) continue;
+    const presidential = cargoHeader ? /presidente|presidencia|presidencial/.test(cargoText) : /presidente|presidencia|presidencial/.test(rowText);
+    if (!presidential) {
+      otherOfficeRows++;
+      for (const protocol of rowProtocols) otherOfficeProtocols.add(protocol);
+      continue;
+    }
     presidentialRows++;
-
-    const national = scopeHeader
-      ? /\bbr\b|brasil|nacional/.test(unitText)
-      : /\bbr\b|brasil|nacional/.test(rowText);
-    if (!national) continue;
+    const national = scopeHeader ? /^(br|brasil|nacional)$/.test(unitText) : /(^|\b)(brasil|nacional)(\b|$)/.test(rowText);
+    if (!national) {
+      statePresidentRows++;
+      for (const protocol of rowProtocols) statePresidentProtocols.add(protocol);
+      continue;
+    }
     nationalRows++;
-
     for (const protocol of rowProtocols) protocols.add(protocol);
   }
 
-  return {
-    protocols,
-    lines: Math.max(0, lines.length - 1),
-    candidateRows,
-    presidentialRows,
-    nationalRows,
-    cargoHeader,
-    scopeHeader,
-    protocolHeader,
-    sampleHeaders: headers.slice(0, 20),
-  };
+  return { protocols, statePresidentProtocols, otherOfficeProtocols, lines: Math.max(0, lines.length - 1), candidateRows, presidentialRows, nationalRows, statePresidentRows, otherOfficeRows, cargoHeader, scopeHeader, protocolHeader, sampleHeaders: headers.slice(0, 20) };
 }
 
 function compactCsvText(csvText, source) {
   const result = extractNationalPresidentialProtocols(csvText);
+  fs.mkdirSync(path.join(ROOT, "data", "discovery"), { recursive: true });
+  fs.writeFileSync(
+    path.join(ROOT, "data", "discovery", "registry-queues.json"),
+    JSON.stringify({
+      version: 1,
+      generated_at: new Date().toISOString(),
+      scope: "TSE registry scan",
+      queues: {
+        national_president: { status: result.protocols.size ? "active" : "empty", protocol_count: result.protocols.size, protocols: [...result.protocols].sort() },
+        state_president: { status: "scanned_not_harvested", protocol_count: result.statePresidentProtocols.size, protocols: [...result.statePresidentProtocols].sort() },
+        other_office: { status: "scanned_not_harvested", protocol_count: result.otherOfficeProtocols.size, protocols: [...result.otherOfficeProtocols].sort() },
+      },
+      source_rows: { lines: result.lines, candidate_rows: result.candidateRows, presidential_rows: result.presidentialRows, national_rows: result.nationalRows, state_president_rows: result.statePresidentRows, other_office_rows: result.otherOfficeRows },
+    }, null, 2) + "\n",
+    "utf8",
+  );
   if (!result.protocols.size) {
     const probe = String(csvText).match(/BR[^\r\n]{0,160}/i)?.[0] || String(csvText).slice(0, 800);
     throw new Error(`registry source yielded no national presidential protocols; lines=${result.lines}; candidate_rows=${result.candidateRows}; presidential_rows=${result.presidentialRows}; national_rows=${result.nationalRows}; headers=${JSON.stringify({ cargo: result.cargoHeader, scope: result.scopeHeader, protocol: result.protocolHeader, sample: result.sampleHeaders })}; probe=${JSON.stringify(probe)}`);
@@ -282,21 +293,6 @@ function startServer(zip) {
       resolve({ server, url: `http://127.0.0.1:${address.port}/registry.zip` });
     });
   });
-}
-
-function patchParser() {
-  const original = fs.readFileSync(PARSER_PATH, "utf8");
-  let patched = original;
-  const oldBody = String.raw`\bBR-?\d{4,6}\/2026\b`;
-  const newBody = String.raw`\bBR\s*-?\d{4,6}(?:\s*\/\s*2026|\s+2026|2026)\b`;
-  patched = patched.replaceAll(oldBody, newBody);
-  patched = patched.replace(
-    "const registryRecords = registry.records.filter((r) => r.registered_date !== null || r.fieldwork_end !== null || r.planned_publication_date !== null);",
-    "const registryRecords = registry.records.filter((r) => Boolean(r.protocol));"
-  );
-  if (patched === original) throw new Error("canonical parser patch did not match expected source");
-  fs.writeFileSync(PARSER_PATH, patched, "utf8");
-  return original;
 }
 
 function runParser(env) {
@@ -363,14 +359,7 @@ async function main() {
   }
 
   const local = await startServer(packed.zip);
-  const originalConfig = fs.readFileSync(CFG_PATH, "utf8");
-  const originalParser = fs.readFileSync(PARSER_PATH, "utf8");
   try {
-    const runtime = JSON.parse(originalConfig);
-    runtime.tse_registry_zip = local.url;
-    fs.writeFileSync(CFG_PATH, `${JSON.stringify(runtime, null, 2)}\n`);
-    patchParser();
-
     const status = {
       version: 7,
       status: "resolved",
@@ -393,6 +382,7 @@ async function main() {
       TSE_REGISTRY_TRUST: selected.trust,
       TSE_REGISTRY_SOURCE_URL: selected.resolved_url,
       TSE_REGISTRY_SOURCE_SHA256: status.sha256,
+      TSE_REGISTRY_ZIP_URL: local.url,
     });
     const count = parsedCount();
     console.log(`[registry-resolver] parsed registry records: ${count}`);
@@ -404,8 +394,6 @@ async function main() {
     console.log(`[registry-resolver] VERIFIED: ${count} TSE national presidential registry records parsed`);
     process.exit(rc);
   } finally {
-    fs.writeFileSync(CFG_PATH, originalConfig, "utf8");
-    fs.writeFileSync(PARSER_PATH, originalParser, "utf8");
     await new Promise((resolve) => local.server.close(resolve));
     packed.cleanup();
   }

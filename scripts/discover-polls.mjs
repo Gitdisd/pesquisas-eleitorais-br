@@ -7,9 +7,9 @@
  *  2. Fetch curated URLs from data/sources.json
  *  3. Heuristic link scan for poll articles after watermark
  *  4. Fetch candidate pages; regex/JSON-LD extract when possible
- *  5. Merge verified:true records into data/polls.json (never invent numbers)
+ *  5. Stage verified records for the canonical merge (never invent numbers)
  *  6. Unparseable / PDF / hard pages → data/discovery/inbox.json
- *  7. Always bump meta last_check_at + check_interval_minutes 190
+ *  7. Always bump last_check_at; publication metadata is written by the canonical publish step
  *
  * Exit 0 on soft fetch failures (continue-on); exit 1 only on hard local I/O errors.
  */
@@ -28,6 +28,7 @@ const PUBLIC_META = path.join(ROOT, "public", "data", "meta.json");
 const SOURCES_PATH = path.join(ROOT, "data", "sources.json");
 const INBOX_PATH = path.join(ROOT, "data", "discovery", "inbox.json");
 const REPORT_PATH = path.join(ROOT, "data", "discovery", "last-run.json");
+const STAGING_PATH = path.join(ROOT, "data", "discovery", "discovered-polls.json");
 
 const UA =
   "pesquisas-eleitorais-br-discover/1.0 (+https://github.com/Gitdisd/pesquisas-eleitorais-br; headless Actions)";
@@ -35,34 +36,13 @@ const FETCH_TIMEOUT_MS = 18_000;
 const MAX_CANDIDATE_PAGES = 60;
 const MAX_LINKS_PER_SOURCE = 30;
 
-const CANDIDATE_CANON = [
-  { keys: ["lula", "luiz inácio", "luiz inacio"], name: "Lula", party: "PT" },
-  {
-    keys: ["flávio bolsonaro", "flavio bolsonaro", "flávio", "flavio"],
-    name: "Flávio Bolsonaro",
-    party: "PL",
-  },
-  {
-    keys: ["augusto cury", "cury"],
-    name: "Augusto Cury",
-    party: "Avante",
-  },
-  {
-    keys: ["renan santos", "renan"],
-    name: "Renan Santos",
-    party: "Missão",
-  },
-  {
-    keys: ["ronaldo caiado", "caiado"],
-    name: "Ronaldo Caiado",
-    party: "PSD",
-  },
-  {
-    keys: ["romeu zema", "zema"],
-    name: "Romeu Zema",
-    party: "Novo",
-  },
-];
+const CANDIDATE_CANON = CANDIDATES
+  .filter((candidate) => candidate.key !== 'branco_nulo')
+  .map((candidate) => ({
+    keys: candidate.names,
+    name: candidate.label,
+    party: candidate.party || null,
+  }));
 
 const INSTITUTE_PATTERNS = [
   { re: /\bdatafolha\b/i, name: "Datafolha" },
@@ -136,17 +116,7 @@ function watermarkFromPolls(polls) {
 }
 
 function pollKey(p) {
-  return [
-    p.institute,
-    p.fieldwork_start,
-    p.fieldwork_end,
-    p.published_date,
-    p.scenario,
-  ].join("|");
-}
-
-function pollSoftKey(p) {
-  return [p.institute, p.fieldwork_end, p.scenario].join("|");
+  return canonicalPollKey(p);
 }
 
 function scoreCandidateLink(link) {
@@ -183,12 +153,14 @@ function bumpMeta(polls, { contentChanged }) {
   const prev = readJson(META_PATH, {});
   const checkedAtUtc = new Date().toISOString();
   const meta = {
-    schema_version: 1,
-    last_updated:
-      contentChanged || !prev.last_updated ? nowSaoPauloIso() : prev.last_updated,
+    schema_version: 2,
+    last_updated: prev.last_updated || null,
     last_check_at: checkedAtUtc,
     check_interval_minutes: Number(process.env.CHECK_INTERVAL_MINUTES || prev.check_interval_minutes || 60),
     record_count: polls.length,
+    latest_publication_date: prev.latest_publication_date || null,
+    latest_fieldwork_end: prev.latest_fieldwork_end || null,
+    last_successful_pipeline_at: prev.last_successful_pipeline_at || null,
     source: prev.source || "verified published polls",
     content_hash: prev.content_hash || "",
   };
@@ -306,11 +278,32 @@ function extractLinks(html, baseUrl, keywords) {
   return out;
 }
 
-function detectInstitute(text) {
+function detectInstitute(text, pageUrl = "") {
+  const urlText = String(pageUrl || "").toLowerCase();
+  const urlHits = INSTITUTE_PATTERNS.filter(({ re }) => re.test(urlText));
+  if (urlHits.length === 1) return urlHits[0].name;
+
+  // Prefer an institute whose name appears near poll-methodology language.
+  const source = String(text || "");
+  const anchor = /pesquisa|levantamento|intenção de voto|intencao de voto|entrevist|amostra|margem de erro|registro no tse/i;
+  let best = null;
+  let bestScore = -Infinity;
   for (const { re, name } of INSTITUTE_PATTERNS) {
-    if (re.test(text)) return name;
+    const match = re.exec(source);
+    if (!match) continue;
+    const from = Math.max(0, match.index - 1200);
+    const to = Math.min(source.length, match.index + 1200);
+    const window = source.slice(from, to);
+    const score = anchor.test(window) ? 10 : 0;
+    const leading = source.slice(0, 2500);
+    const leadBoost = re.test(leading) ? 2 : 0;
+    const total = score + leadBoost - match.index / 100000;
+    if (total > bestScore) {
+      best = name;
+      bestScore = total;
+    }
   }
-  return null;
+  return best;
 }
 
 function parseBrDate(raw) {
@@ -607,7 +600,7 @@ function buildPollRecord({
 function tryExtractPolls(html, pageUrl, watermark) {
   const text = stripTags(html);
   const jsonLd = extractJsonLd(html);
-  const institute = detectInstitute(text);
+  const institute = detectInstitute(text, pageUrl);
   const published =
     dateFromJsonLd(jsonLd) ||
     parseBrDate(
@@ -786,15 +779,16 @@ async function main() {
   const existing = unwrapPolls(readJson(POLLS_PATH));
   const watermark = watermarkFromPolls(existing);
   const existingKeys = new Set(existing.map(pollKey));
-  const existingSoft = new Set(existing.map(pollSoftKey));
   const existingUrls = new Set(existing.map((p) => p.source_url));
+  const stagedDoc = readJson(STAGING_PATH, { version: 1, items: [] });
+  const stagedItems = Array.isArray(stagedDoc.items) ? stagedDoc.items : []
+  for (const staged of stagedItems) if (staged?.source_url) existingUrls.add(staged.source_url);
   for (const extraPath of [path.join(ROOT, "data", "polls-extra.json"), path.join(ROOT, "public", "data", "polls-extra.json")]) {
     const extraDoc = readJson(extraPath, []);
     const extraList = Array.isArray(extraDoc) ? extraDoc : extraDoc.polls || [];
     for (const ep of extraList) {
       if (!ep || !ep.institute) continue;
       existingKeys.add(pollKey(ep));
-      existingSoft.add(pollSoftKey(ep));
       if (ep.source_url) existingUrls.add(ep.source_url);
     }
   }
@@ -876,10 +870,9 @@ async function main() {
       continue;
     }
     for (const p of extracted.polls) {
-      if (existingKeys.has(pollKey(p)) || existingSoft.has(pollSoftKey(p))) continue;
+      if (existingKeys.has(pollKey(p))) continue;
       verifiedNew.push(p);
       existingKeys.add(pollKey(p));
-      existingSoft.add(pollSoftKey(p));
     }
     if (extracted.inbox) inboxNew.push(extracted.inbox);
   }
@@ -895,8 +888,21 @@ async function main() {
     ...inboxNew,
   ]).slice(0, 200);
 
-  const merged = stableSort([...verifiedNew, ...existing]);
-  const contentChanged = verifiedNew.length > 0;
+  const previousStaged = Array.isArray(stagedItems) ? stagedItems : []
+  const stageMap = new Map()
+  for (const poll of [...previousStaged, ...verifiedNew]) {
+    const key = pollKey(poll)
+    const current = stageMap.get(key)
+    if (!current) {
+      stageMap.set(key, { ...poll, witness_urls: [...new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))] })
+      continue
+    }
+    current.witness_urls = [...new Set([...(current.witness_urls || []), ...(poll.witness_urls || []), current.source_url, poll.source_url].filter(Boolean))].sort()
+    current.coverage_dates = [...new Set([...(current.coverage_dates || []), ...(poll.coverage_dates || []), current.published_date, poll.published_date].filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d))))].sort()
+  }
+  const stagedOut = stableSort([...stageMap.values()]).slice(0, 500)
+  const stageChanged = JSON.stringify(previousStaged) !== JSON.stringify(stagedOut)
+  const contentChanged = stageChanged || verifiedNew.length > 0
 
   const report = {
     ran_at: new Date().toISOString(),
@@ -905,6 +911,8 @@ async function main() {
     candidate_links: seedLinks.length,
     pages_fetched: pagesFetched,
     verified_new: verifiedNew.length,
+    staged_verified_new: verifiedNew.length,
+    staging_size: stagedOut.length,
     inbox_new: inboxNew.length,
     skipped_old: skippedOld,
     fetch_errors: fetchErrors.length,
@@ -919,18 +927,18 @@ async function main() {
   };
 
   if (args.dryRun) {
-    console.log("[discover-polls] DRY RUN — not writing polls/meta/inbox");
+    console.log("[discover-polls] DRY RUN — not writing staging/meta/inbox");
     console.log(JSON.stringify(report, null, 2));
     // Still allow inspecting report path optionally
     writeJson(REPORT_PATH, report);
     return;
   }
 
-  if (contentChanged) {
-    fs.writeFileSync(POLLS_PATH, prettyPolls(merged), "utf8");
-    console.log("[discover-polls] wrote data/polls.json (+%d)", verifiedNew.length);
+  if (stageChanged) {
+    writeJson(STAGING_PATH, { version: 1, updated_at: new Date().toISOString(), items: stagedOut })
+    console.log(`[discover-polls] staged ${stagedOut.length} discovered records for canonical merge`)
   } else {
-    console.log("[discover-polls] no verified new polls to merge");
+    console.log("[discover-polls] no staging changes");
   }
 
   writeJson(INBOX_PATH, {
@@ -939,7 +947,7 @@ async function main() {
     items: inboxItems,
   });
 
-  const meta = bumpMeta(contentChanged ? merged : existing, { contentChanged });
+  const meta = bumpMeta(existing, { contentChanged: false });
   writeJson(REPORT_PATH, { ...report, meta_last_check_at: meta.last_check_at });
 
   console.log("[discover-polls] meta last_check_at =", meta.last_check_at);

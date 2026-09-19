@@ -14,7 +14,7 @@ import 'chartjs-adapter-date-fns'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import { ptBR } from 'date-fns/locale'
 import { CANDIDATES } from './candidates.js'
-import { weightedTrend, averageTrend } from './aggregate.js'
+import { weightedTrend, averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
@@ -103,7 +103,7 @@ function hoverBoxFor(chart) {
 }
 
 function isOverlaySeries(label) {
-  return /\((média|projeção|modelo|banda|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')
+  return /\((média|projeção|modelo|banda|faixa|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')
 }
 
 function externalTooltip(context) {
@@ -127,16 +127,18 @@ function externalTooltip(context) {
     const v = p.parsed?.y
     const meta = p.raw?.meta
     const extra = meta?.institute ? ` · ${meta.institute}` : ''
-    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${fmtVote(v)}%${extra}</span>`
+    const pub = meta?.published ? ` · publicado ${meta.published.split('-').reverse().join('/')}` : ''
+    const tse = meta?.tse ? ` · ${meta.tse}` : ''
+    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${fmtVote(v)}%${extra}${pub}${tse}</span>`
   })
   box.classList.remove('is-empty')
   box.innerHTML = `<span class="ch-date">${date}</span>${rows.join('')}`
 }
 
 export function createPollChart(canvas, opts) {
-  const { polls, round, institutes, windowDays, rangeDays, onZoom } = opts
+  const { polls, round, institutes, windowDays, rangeDays, onZoom, aggregate = true } = opts
   const model = resolveModel(opts)
-  const datasets = buildDatasets(polls, round, institutes, windowDays, model)
+  const datasets = buildDatasets(polls, round, institutes, windowDays, model, aggregate)
   const { min, max } = rangeBounds(polls, round, institutes, rangeDays, model > 0)
   const tc = themeColors()
   const chart = new Chart(canvas, {
@@ -208,9 +210,9 @@ export function createPollChart(canvas, opts) {
 }
 
 export function updatePollChart(chart, opts) {
-  const { polls, round, institutes, windowDays, rangeDays } = opts
+  const { polls, round, institutes, windowDays, rangeDays, aggregate = true } = opts
   const model = resolveModel(opts)
-  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model)
+  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model, aggregate)
   const tc = themeColors()
   Object.assign(chart.options.scales.y, yScaleForRound(round))
   chart.options.scales.y.ticks.callback = (v) => fmtVote(v)
@@ -265,6 +267,36 @@ function rangeBounds(polls, round, institutes, rangeDays, projection) {
   return { min, max: tMax }
 }
 
+function pushUncertaintyDatasets(datasets, c, band) {
+  if (!band.length) return
+  const high = band.map((p) => ({ x: p.x, y: p.high }))
+  const low = band.map((p) => ({ x: p.x, y: p.low }))
+  datasets.push({
+    label: `${c.label} (faixa de incerteza 90%+)`,
+    data: high,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: hexAlpha(c.color, 0.08),
+    fill: '+1',
+    tension: 0.2,
+    order: 5,
+  })
+  datasets.push({
+    label: `${c.label} (faixa de incerteza 90%-)`,
+    data: low,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+    fill: false,
+    tension: 0.2,
+    order: 5,
+  })
+}
+
 function pushProjDatasets(datasets, c, proj, tag) {
   if (!proj.ok || proj.line.length <= 1) return
   datasets.push({
@@ -304,7 +336,7 @@ function pushProjDatasets(datasets, c, proj, tag) {
   })
 }
 
-function buildDatasets(polls, round, institutes, windowDays, model) {
+function buildDatasets(polls, round, institutes, windowDays, model, aggregate = true) {
   const filtered = polls.filter((p) => {
     if (p.round !== round) return false
     if (institutes.size && !institutes.has(p.institute)) return false
@@ -323,7 +355,7 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       pts.push({
         x: p.t,
         y,
-        meta: { institute: p.institute, n: p.n, moe: p.moe, url: p.sourceUrl },
+        meta: { institute: p.institute, n: p.n, moe: p.moe, url: p.sourceUrl, published: p.published, tse: p.tse, fieldworkStart: p.fieldworkStart, fieldworkEnd: p.fieldworkEnd },
       })
     }
     datasets.push({
@@ -338,8 +370,12 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
     })
     const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
     const avgModel = model >= 2 && model <= 5 ? model : 1
-    const trend = averageTrend(trendPts, windowDays, avgModel)
-    datasets.push({
+    const trend = aggregate ? averageTrend(trendPts, windowDays, avgModel) : []
+    if (aggregate) {
+      const band = uncertaintyBand(trendPts, windowDays)
+      pushUncertaintyDatasets(datasets, c, band)
+    }
+    if (aggregate) datasets.push({
       label: `${c.label} (média)`,
       data: trend,
       showLine: true,
@@ -364,14 +400,14 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
       }
     }
 
-    if (model === 1 && trend.length >= 2) {
+    if (aggregate && model === 1 && trend.length >= 2) {
       projByKey[c.key] = projectTrend(trend, {
         fitDays: windowDays,
         horizonDays: 14,
         electionDayMs,
       })
     }
-    if (model === 2 && trendPts.length >= 4) {
+    if (aggregate && model === 2 && trendPts.length >= 4) {
       projByKey[c.key] = projectTrendV2(trendPts, {
         fitDays: windowDays,
         horizonDays: 14,
@@ -380,7 +416,7 @@ function buildDatasets(polls, round, institutes, windowDays, model) {
     }
   }
 
-  if (model === 2) {
+  if (aggregate && model === 2) {
     const lead = keys.filter((c) => c.tier !== 'field').map((c) => c.key)
     rescaleComposition(projByKey, lead.length ? lead : keys.map((c) => c.key))
   }
