@@ -57,7 +57,7 @@ export function tseProtocolOf(row) {
   const note = String(row?.methodology_note || '')
     .replace(/\b(?:distinct from|not the|diferente de|separate (?:product|wave) from)[^.]*\./gi, ' ')
   const found = new Set()
-  for (const match of note.matchAll(/\bBR\\s*-?\\s*\\d{4,6}\\s*(?:\\/\\s*2026|\\s+2026|2026)\\b/gi)) {
+  for (const match of note.matchAll(/\bBR\s*-?\s*\\d{4,6}\s*(?:\/\s*2026|\s+2026|2026)\\b/gi)) {
     const protocol = normalizeProtocol(match[0])
     if (protocol) found.add(protocol)
   }
