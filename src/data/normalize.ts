@@ -40,14 +40,21 @@ function mergePollMetadata(current: RawPoll, incoming: RawPoll): RawPoll {
   const publishedCandidates = [current.published_date, incoming.published_date]
     .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d)))
     .sort()
+  const protocol = tseProtocolOf(current) || tseProtocolOf(incoming)
   return {
     ...current,
-    ...incoming,
+    candidates: mergeCandidates(current.candidates || [], incoming.candidates || []),
+    verified: current.verified === true || incoming.verified === true,
     published_date: publishedCandidates[0] || current.published_date,
     coverage_dates: [...dates].sort(),
     witness_urls: [...witnessUrls].sort(),
-    candidates: mergeCandidates(current.candidates || [], incoming.candidates || []),
-    verified: current.verified === true || incoming.verified === true,
+    source_url: current.source_url || incoming.source_url,
+    methodology_note: [current.methodology_note, incoming.methodology_note]
+      .filter(Boolean)
+      .filter((value, index, values) => values.indexOf(value) === index)
+      .join(' | '),
+    ...(protocol ? { tse_registration: protocol } : {}),
+    ...(current.geo || incoming.geo ? { geo: normalizeGeo(current.geo || incoming.geo) } : {}),
   }
 }
 
