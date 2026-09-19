@@ -348,11 +348,8 @@ async function main() {
   }
 
   const local = await startServer(packed.zip);
-  const originalConfig = fs.readFileSync(CFG_PATH, "utf8");
   try {
     const runtime = JSON.parse(originalConfig);
-    runtime.tse_registry_zip = local.url;
-    fs.writeFileSync(CFG_PATH, `${JSON.stringify(runtime, null, 2)}\n`);
 
     const status = {
       version: 7,
@@ -388,7 +385,6 @@ async function main() {
     console.log(`[registry-resolver] VERIFIED: ${count} TSE national presidential registry records parsed`);
     process.exit(rc);
   } finally {
-    fs.writeFileSync(CFG_PATH, originalConfig, "utf8");
     await new Promise((resolve) => local.server.close(resolve));
     packed.cleanup();
   }
