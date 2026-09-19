@@ -113,4 +113,7 @@ if (errors.length) {
   for (const e of errors) console.error(`QUALITY FAIL: ${e}`)
   process.exit(1)
 }
+meta.last_successful_pipeline_at = new Date().toISOString()
+fs.writeFileSync('data/meta.json', `${JSON.stringify(meta, null, 2)}\n`)
+fs.writeFileSync('public/data/meta.json', `${JSON.stringify(meta, null, 2)}\n`)
 console.log(`QUALITY OK: ${polls.length} verified polls; ${inbox.items.length} discovery inbox candidates; hash ${computedHash}`)
