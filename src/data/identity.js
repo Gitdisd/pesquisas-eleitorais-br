@@ -1,16 +1,17 @@
 /**
  * Single source of truth for poll identity.
- *
- * Publication/coverage dates are deliberately excluded from identity:
- * a later article about the same fieldwork wave is a witness/reprint, not a new poll.
+ * Publication/coverage dates are coverage metadata, never canonical identity.
  */
+
 const INSTITUTE_ALIASES = new Map([
   ['genial/quaest', 'quaest'],
   ['quaest/genial', 'quaest'],
   ['btg/nexus', 'nexus'],
   ['nexus/btg', 'nexus'],
   ['cnt/mda', 'mda'],
+  ['mda/cnt', 'mda'],
   ['meio/ideia', 'ideia'],
+  ['ideia/meio', 'ideia'],
   ['poderdata/aya', 'poderdata'],
   ['poder data/aya', 'poderdata'],
 ]);
@@ -26,7 +27,9 @@ export function normalizeIdentityText(value) {
 
 export function normalizeInstitute(value) {
   const raw = normalizeIdentityText(value).replace(/\s*\/\s*/g, '/');
-  return INSTITUTE_ALIASES.get(raw) || raw;
+  if (INSTITUTE_ALIASES.has(raw)) return INSTITUTE_ALIASES.get(raw);
+  if (raw.includes('datafolha')) return 'datafolha';
+  return raw;
 }
 
 export function normalizeProtocol(value) {
@@ -61,43 +64,39 @@ export function normalizeGeo(value) {
   return geo || 'BR';
 }
 
-export function pollIdentityParts(row) {
-  const scenario = normalizeIdentityText(row?.scenario);
-  const geo = normalizeGeo(row?.geo);
-  const protocol = tseProtocolOf(row);
-  if (protocol) return ['tse', protocol, scenario, geo];
+export function fallbackPollKey(row) {
   return [
     'fallback',
     normalizeInstitute(row?.institute),
     String(row?.fieldwork_start ?? ''),
-    String(row?.fieldwork_end ?? ''),
-    scenario,
-    geo,
-  ];
-}
-
-export function canonicalPollKey(row) {
-  return pollIdentityParts(row).join('|');
-}
-
-export function softPollKey(row) {
-  return [
-    'soft',
-    normalizeInstitute(row?.institute),
     String(row?.fieldwork_end ?? ''),
     normalizeIdentityText(row?.scenario),
     normalizeGeo(row?.geo),
   ].join('|');
 }
 
+export function canonicalPollKey(row) {
+  const protocol = tseProtocolOf(row);
+  const scenario = normalizeIdentityText(row?.scenario);
+  const geo = normalizeGeo(row?.geo);
+  if (protocol) return ['tse', protocol, scenario, geo].join('|');
+  return fallbackPollKey(row);
+}
+
+export function identityMatchKeys(row) {
+  return [...new Set([canonicalPollKey(row), fallbackPollKey(row)])];
+}
+
 export function coverageDates(row) {
   const dates = new Set(
     Array.isArray(row?.coverage_dates)
-      ? row.coverage_dates.filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d)))
+      ? row.coverage_dates
+          .map((d) => String(d))
+          .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d))
       : [],
   );
   if (/^\d{4}-\d{2}-\d{2}$/.test(String(row?.published_date ?? ''))) {
-    dates.add(row.published_date);
+    dates.add(String(row.published_date));
   }
   return [...dates].sort();
 }
