@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
-import { canonicalPollKey, normalizeProtocol } from '../src/data/identity.js'
+import { canonicalPollKey, fallbackPollKey, normalizeProtocol, normalizeIdentityText, tseProtocolOf } from '../src/data/identity.js'
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'))
 const errors = []
@@ -29,15 +29,20 @@ for (const [i, p] of polls.entries()) {
   if (!Number.isFinite(Number(p.n)) || Number(p.n) <= 0) fail(`poll ${i} invalid n`)
   if (p.verified !== true) fail(`poll ${i} is not verified`)
   if (!/^https?:\/\//i.test(String(p.source_url))) fail(`poll ${i} invalid source_url`)
+  const candidateNames = new Set()
   for (const c of p.candidates || []) {
-    if (!Number.isFinite(Number(c.pct)) || Number(c.pct) < 0 || Number(c.pct) > 100) fail(`poll ${i} invalid candidate pct: ${c.name}`)
+    const pct = Number(c.pct)
+    if (!Number.isFinite(pct) || pct < 0 || pct > 100) fail(`poll ${i} invalid candidate pct: ${c.name}`)
+    const name = normalizeIdentityText(c.name)
+    if (candidateNames.has(name)) fail(`poll ${i} duplicate candidate name: ${c.name}`)
+    candidateNames.add(name)
   }
   const key = canonicalPollKey(p)
   if (keys.has(key)) fail(`duplicate canonical poll key: ${key}`)
   keys.add(key)
-  const fallback = String(p.institute || '').toLowerCase().replace(/\s+/g, ' ').trim() + '|' + p.fieldwork_start + '|' + p.fieldwork_end + '|' + String(p.scenario || '').toLowerCase().trim() + '|' + String(p.geo || 'BR').toUpperCase()
+  const fallback = fallbackPollKey(p)
   const prior = fallbackKeys.get(fallback)
-  if (prior != null && prior !== key && (p.tse_registration || '').trim() === '') fail(`poll ${i} may duplicate protocol-enriched poll ${prior}: fallback identity ${fallback}`)
+  if (prior != null && prior !== key && !tseProtocolOf(p)) fail(`poll ${i} may duplicate protocol-enriched poll ${prior}: fallback identity ${fallback}`)
   fallbackKeys.set(fallback, key)
   if (p.fieldwork_start > p.fieldwork_end) fail(`poll ${i} fieldwork dates are reversed`)
   if (p.fieldwork_end > p.published_date) fail(`poll ${i} published_date precedes fieldwork_end`)
