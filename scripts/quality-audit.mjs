@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
+import { canonicalPollKey, normalizeProtocol } from '../src/data/identity.js'
 
 const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
 const errors = []
@@ -64,6 +65,15 @@ for (const [i, p] of polls.entries()) {
   if (/poderdata|poder-data/.test(url) && p.institute !== 'PoderData') {
     errors.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
   }
+}
+
+const canonicalIdentity = new Map()
+for (let i = 0; i < polls.length; i += 1) {
+  const key = canonicalPollKey(polls[i])
+  const previous = canonicalIdentity.get(key)
+  if (previous != null) {
+    errors.push({ type: 'duplicate_canonical_identity', key, polls: [previous, i] })
+  } else canonicalIdentity.set(key, i)
 }
 
 const identity = new Map()
