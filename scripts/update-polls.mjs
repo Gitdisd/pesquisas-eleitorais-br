@@ -142,10 +142,10 @@ function normalizePoll(poll) {
   if (tse) out.tse_registration = tse;
   if (poll.geo != null) out.geo = normalizeGeo(poll.geo);
   if (Array.isArray(poll.coverage_dates)) {
-    out.coverage_dates = [...new Set(poll.coverage_dates.filter((d) => /^\\d{4}-\\d{2}-\\d{2}$/.test(String(d))))].sort();
+    out.coverage_dates = [...new Set(poll.coverage_dates.filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d))))].sort();
   }
   if (Array.isArray(poll.witness_urls)) {
-    out.witness_urls = [...new Set(poll.witness_urls.filter((u) => /^https?:\\/\\//i.test(String(u))))].sort();
+    out.witness_urls = [...new Set(poll.witness_urls.filter((u) => /^https?:\/\//i.test(String(u))))].sort();
   }
   if (typeof poll.flag === "string" && poll.flag.length > 0) out.flag = poll.flag;
   return out;
