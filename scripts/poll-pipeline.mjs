@@ -35,6 +35,7 @@ const REGISTRY_PATH = path.join(ROOT, "data", "discovery", "tse-registry.json");
 const STATUS_PATH = path.join(ROOT, "data", "discovery", "coverage-status.json");
 const CONFLICTS_PATH = path.join(ROOT, "data", "discovery", "conflicts.json");
 const MISSING_PATH = path.join(ROOT, "data", "discovery", "missing-registered.json");
+const PENDING_PATH = path.join(ROOT, "data", "discovery", "pending-polls.json");
 const UA = "pesquisas-eleitorais-br-pipeline/1.0 (+https://github.com/Gitdisd/pesquisas-eleitorais-br)";
 
 const cfg = JSON.parse(fs.readFileSync(CFG_PATH, "utf8"));
@@ -642,6 +643,24 @@ async function main() {
     status: coverage.status,
     missing_count: stillMissing.length,
     items: stillMissing,
+  });
+  writeJsonStable(PENDING_PATH, {
+    version: 1,
+    generated_at: new Date().toISOString(),
+    queue: "national_president",
+    chart_visible: false,
+    items: stillMissing.map((r) => ({
+      poll_key: `tse:${r.protocol}`,
+      tse_registration: r.protocol,
+      institute: r.institute || null,
+      fieldwork_start: r.fieldwork_start || null,
+      fieldwork_end: r.fieldwork_end || null,
+      planned_publication_date: r.planned_publication_date || null,
+      status: "pending_evidence",
+      verified: false,
+      chart_visible: false,
+      reason: "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered.",
+    })),
   });
   writeJsonStable(CONFLICTS_PATH, { version: 1, conflicts });
   writeJsonStable(STATUS_PATH, coverage);
