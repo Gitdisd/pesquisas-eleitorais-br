@@ -2,6 +2,7 @@ import { matchCandidate, parseMoe, isFirstRound, isSecondRound } from '../candid
 import type { CandidateResult, NormalizedPoll, RawPoll } from './types'
 import {
   canonicalPollKey,
+  fallbackPollKey,
   coverageDates,
   normalizeGeo,
   tseProtocolOf,
@@ -52,20 +53,37 @@ function mergePollMetadata(current: RawPoll, incoming: RawPoll): RawPoll {
 
 export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll[] {
   const map = new Map<string, RawPoll>()
+  const fallbackIndex = new Map<string, string[]>()
+  const remember = (key: string, pollKey: string) => {
+    const list = fallbackIndex.get(key) || []
+    if (!list.includes(pollKey)) list.push(pollKey)
+    fallbackIndex.set(key, list)
+  }
+  const findKey = (poll: RawPoll): string | null => {
+    const exact = canonicalPollKey(poll)
+    if (map.has(exact)) return exact
+    const fallback = fallbackPollKey(poll)
+    const candidates = fallbackIndex.get(fallback) || []
+    return candidates.length === 1 ? candidates[0] : null
+  }
   for (const poll of base) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
-    map.set(canonicalPollKey(poll), {
+    const identityKey = canonicalPollKey(poll)
+    const stored = {
       ...poll,
       geo: normalizeGeo(poll.geo),
       coverage_dates: coverageDates(poll),
       witness_urls: [...new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))],
       candidates: mergeCandidates(poll.candidates || []),
-    })
+    }
+    map.set(identityKey, stored)
+    remember(fallbackPollKey(poll), identityKey)
   }
   for (const poll of extra) {
     if (!poll?.institute || !poll?.fieldwork_end || !poll?.scenario) continue
     const key = canonicalPollKey(poll)
-    const current = map.get(key)
+    const matchKey = findKey(poll)
+    const current = matchKey ? map.get(matchKey) : undefined
     if (!current) {
       map.set(key, {
         ...poll,
@@ -74,9 +92,12 @@ export function mergePolls(base: RawPoll[] = [], extra: RawPoll[] = []): RawPoll
         witness_urls: [...new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))],
         candidates: mergeCandidates(poll.candidates || []),
       })
+      remember(fallbackPollKey(poll), key)
       continue
     }
-    map.set(key, mergePollMetadata(current, poll))
+    const mergedKey = matchKey || key
+    map.set(mergedKey, mergePollMetadata(current, poll))
+    remember(fallbackPollKey(poll), mergedKey)
   }
   return [...map.values()]
 }
