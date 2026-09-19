@@ -13,8 +13,11 @@ const EXTRA_PATHS = [
   `${ROOT}/data/polls-extra-wave-2026-09-17.json`,
   `${ROOT}/data/polls-extra-wave-2026-09-17-gerp.json`,
   `${ROOT}/data/polls-extra-wave-2026-09-17-datafolha.json`,
+  STAGING_PATH,
 ]
 const OUT_PATH = BASE_PATH
+const STAGING_PATH = `${ROOT}/data/discovery/discovered-polls.json`
+const WITNESS_PATH = `${ROOT}/data/discovery/witnesses.json`
 
 const load = (file) => {
   const value = JSON.parse(fs.readFileSync(file, 'utf8'))
@@ -99,6 +102,11 @@ for (const extra of extras) {
   const k = key(extra)
   const matchedKey = findExistingKey(extra)
   let existing = matchedKey ? byKey.get(matchedKey) : undefined
+
+  if (existing) {
+    existing.witness_urls = [...new Set([...(existing.witness_urls || []), ...(extra.witness_urls || []), extra.source_url].filter(Boolean))].sort()
+    existing.coverage_dates = [...new Set([...(existing.coverage_dates || []), ...(extra.coverage_dates || []), extra.published_date].filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d))))].sort()
+  }
 
   if (!existing) {
     if (extra.verified === true) {
@@ -203,5 +211,38 @@ const report = {
   additions: additions.slice(0, 250),
 }
 fs.mkdirSync(`${ROOT}/data/discovery`, { recursive: true })
+const existingWitnessDoc = fs.existsSync(WITNESS_PATH) ? load(WITNESS_PATH) : { version: 1, items: [] }
+const witnessItems = Array.isArray(existingWitnessDoc.items) ? existingWitnessDoc.items : []
+const witnessMap = new Map(witnessItems.map((item) => [`${item.poll_key}\u0000${item.url}`, item]))
+for (const poll of merged) {
+  const pollKey = key(poll)
+  const urls = new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))
+  for (const url of urls) {
+    const id = `${pollKey}\u0000${url}`
+    if (witnessMap.has(id)) continue
+    witnessMap.set(id, {
+      poll_key: pollKey,
+      url,
+      institute: poll.institute,
+      geo: normalizeGeo(poll.geo),
+      fieldwork_start: poll.fieldwork_start,
+      fieldwork_end: poll.fieldwork_end,
+      scenario: poll.scenario,
+      published_date: poll.published_date || null,
+      recorded_at: new Date().toISOString(),
+    })
+  }
+}
+const witnessesOut = [...witnessMap.values()].sort((a, b) =>
+  String(a.recorded_at).localeCompare(String(b.recorded_at)) ||
+  String(a.poll_key).localeCompare(String(b.poll_key)) ||
+  String(a.url).localeCompare(String(b.url))
+)
+fs.mkdirSync(path.dirname(WITNESS_PATH), { recursive: true })
+const witnessText = `${JSON.stringify({ version: 1, updated_at: new Date().toISOString(), items: witnessesOut.slice(-2000) }, null, 2)}\n`
+if (!fs.existsSync(WITNESS_PATH) || fs.readFileSync(WITNESS_PATH, 'utf8') !== witnessText) {
+  fs.writeFileSync(WITNESS_PATH, witnessText, 'utf8')
+}
+
 fs.writeFileSync(`${ROOT}/data/discovery/supplement-merge.json`, `${JSON.stringify(report, null, 2)}\n`)
 console.log(JSON.stringify(report, null, 2))
