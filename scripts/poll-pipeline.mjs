@@ -26,6 +26,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import readline from "node:readline";
 import { execFileSync } from "node:child_process";
+import { canonicalPollKey, normalizeProtocol } from "../src/data/identity.js";
 
 const ROOT = process.cwd();
 const CFG_PATH = path.join(ROOT, "data", "discovery", "pipeline-config.json");
@@ -232,7 +233,7 @@ async function loadTseRegistry() {
       if (cells.length < 2) continue;
       const row = Object.fromEntries(headers.map((h, i) => [h, cleanSpace(cells[i] || "")]));
       const all = normalizeText(Object.values(row).join(" | "));
-      const protocol = String(Object.values(row).join(" ")).match(/\b[A-Z]{2}-\d{4,6}\/2026\b/i)?.[0]?.toUpperCase() || null;
+      const protocol = normalizeProtocol(Object.values(row).join(" "));
       if (!protocol) continue;
       if (!/(presidente|presidencia|presidencial)/i.test(all)) continue;
       if (!/(brasil|nacional)/i.test(all)) {
@@ -549,9 +550,7 @@ function bestPollEvidence(reg, evidence, scenario) {
 }
 
 function pollIdentity(poll) {
-  const protocols = pollProtocols(poll);
-  if (protocols.length) return `tse:${protocols[0]}|${poll.scenario}`;
-  return `fallback:${poll.institute}|${poll.fieldwork_start}|${poll.fieldwork_end}|${poll.published_date}|${poll.scenario}|${canonicalUrl(poll.source_url)}`;
+  return canonicalPollKey(poll);
 }
 
 function expectedProtocols(polls) {
@@ -563,7 +562,7 @@ function expectedProtocols(polls) {
 async function main() {
   const polls = unwrapPolls(JSON.parse(fs.readFileSync(POLLS_PATH, "utf8")));
   const registry = await loadTseRegistry();
-  const registryRecords = registry.records.filter((r) => r.registered_date !== null || r.fieldwork_end !== null || r.planned_publication_date !== null);
+  const registryRecords = registry.records.filter((r) => Boolean(r.protocol));
   const known = expectedProtocols(polls);
   const today = new Date().toISOString().slice(0, 10);
   const graceMs = (cfg.publication_grace_days || 2) * 86400000;
