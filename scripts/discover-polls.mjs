@@ -277,11 +277,32 @@ function extractLinks(html, baseUrl, keywords) {
   return out;
 }
 
-function detectInstitute(text) {
+function detectInstitute(text, pageUrl = "") {
+  const urlText = String(pageUrl || "").toLowerCase();
+  const urlHits = INSTITUTE_PATTERNS.filter(({ re }) => re.test(urlText));
+  if (urlHits.length === 1) return urlHits[0].name;
+
+  // Prefer an institute whose name appears near poll-methodology language.
+  const source = String(text || "");
+  const anchor = /pesquisa|levantamento|intenção de voto|intencao de voto|entrevist|amostra|margem de erro|registro no tse/i;
+  let best = null;
+  let bestScore = -Infinity;
   for (const { re, name } of INSTITUTE_PATTERNS) {
-    if (re.test(text)) return name;
+    const match = re.exec(source);
+    if (!match) continue;
+    const from = Math.max(0, match.index - 1200);
+    const to = Math.min(source.length, match.index + 1200);
+    const window = source.slice(from, to);
+    const score = anchor.test(window) ? 10 : 0;
+    const leading = source.slice(0, 2500);
+    const leadBoost = re.test(leading) ? 2 : 0;
+    const total = score + leadBoost - match.index / 100000;
+    if (total > bestScore) {
+      best = name;
+      bestScore = total;
+    }
   }
-  return null;
+  return best;
 }
 
 function parseBrDate(raw) {
@@ -578,7 +599,7 @@ function buildPollRecord({
 function tryExtractPolls(html, pageUrl, watermark) {
   const text = stripTags(html);
   const jsonLd = extractJsonLd(html);
-  const institute = detectInstitute(text);
+  const institute = detectInstitute(text, pageUrl);
   const published =
     dateFromJsonLd(jsonLd) ||
     parseBrDate(
