@@ -1,5 +1,6 @@
 import './ui-refresh.css'
 import { CANDIDATES } from './candidates.js'
+import { canonicalPollKey } from './data/identity.js'
 import { formatCount, latestDate, daysSince, freshnessClass } from './ui-upgrades.js'
 
 const BASE = import.meta.env.BASE_URL
@@ -38,7 +39,7 @@ async function getPublishedStats() {
   ]
   const seen = new Set()
   const unique = rows.filter((p) => {
-    const key = [p.institute, p.fieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
+    const key = canonicalPollKey(p)
     if (seen.has(key)) return false
     seen.add(key)
     return true
