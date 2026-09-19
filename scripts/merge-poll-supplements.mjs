@@ -166,7 +166,9 @@ for (const extra of extras) {
 
   if (changed) {
     existing.candidates = working
-    byKey.set(k, existing)
+    const finalKey = matchedKey || k
+    byKey.set(finalKey, existing)
+    remember(fallbackPollKey(extra), finalKey)
     supplementedPolls += 1
   }
 }
@@ -186,7 +188,7 @@ if (fileChanged) fs.writeFileSync(OUT_PATH, newText, 'utf8')
 const report = {
   version: 4,
   generated_at: new Date().toISOString(),
-  identity_key: 'institute|fieldwork_start|fieldwork_end|scenario',
+  identity_key: 'tse_protocol|scenario|geo; fallback institute|fieldwork_start|fieldwork_end|scenario|geo',
   base_polls: base.length,
   supplemental_rows: extras.length,
   merged_polls: merged.length,
