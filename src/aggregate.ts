@@ -8,7 +8,7 @@ const MAX_MODEL = 12
 
 function sampleSize(n: unknown): number {
   const rawN = Number(n)
-  return Number.isFinite(rawN) && rawN > 0 ? Math.min(8000, Math.max(100, rawN)) : 800
+  return Number.isFinite(rawN) && rawN > 0 ? Math.min(4000, Math.max(100, rawN)) : 800
 }
 
 function resolveLiveModel(model: number): number {
