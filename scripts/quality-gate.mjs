@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
+import { canonicalPollKey, normalizeProtocol } from '../src/data/identity.js'
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'))
 const errors = []
@@ -27,11 +28,22 @@ for (const [i, p] of polls.entries()) {
   if (!Number.isFinite(Number(p.n)) || Number(p.n) <= 0) fail(`poll ${i} invalid n`)
   if (p.verified !== true) fail(`poll ${i} is not verified`)
   if (!/^https?:\/\//i.test(String(p.source_url))) fail(`poll ${i} invalid source_url`)
-  const key = [p.institute, p.fieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
+  const key = canonicalPollKey(p)
   if (keys.has(key)) fail(`duplicate canonical poll key: ${key}`)
   keys.add(key)
   if (p.fieldwork_start > p.fieldwork_end) fail(`poll ${i} fieldwork dates are reversed`)
   if (p.fieldwork_end > p.published_date) fail(`poll ${i} published_date precedes fieldwork_end`)
+  if (p.tse_registration && !normalizeProtocol(p.tse_registration)) fail(`poll ${i} has malformed tse_registration`)
+  if (p.coverage_dates && !Array.isArray(p.coverage_dates)) fail(`poll ${i} coverage_dates must be an array`)
+  if (Array.isArray(p.coverage_dates)) for (const d of p.coverage_dates) if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(String(d))) fail(`poll ${i} has invalid coverage date ${d}`)
+}
+
+const identitySeen = new Map()
+for (const [i, p] of polls.entries()) {
+  const key = canonicalPollKey(p)
+  const previous = identitySeen.get(key)
+  if (previous != null) fail(`duplicate canonical identity at polls ${previous} and ${i}: ${key}`)
+  identitySeen.set(key, i)
 }
 
 const computedHash = crypto.createHash('sha256').update(JSON.stringify(polls)).digest('hex')
