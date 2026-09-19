@@ -61,6 +61,10 @@ LOESS de grau 1 no scatter.
 
 SMA 7 / 21, EMA 9 / 21, HMA 16, VWMA 14, KAMA 10, Bollinger 20 ± 2σ.
 
+## Faixa de incerteza do agregado
+
+Quando exibida, a faixa de 90% é uma estimativa do conjunto baseada em dispersão entre pesquisas, tamanho efetivo de peso e as margens de erro informadas. Ela não é a margem de erro de nenhuma pesquisa individual e não é probabilidade de vitória.
+
 ## O que isto não é
 
 - Não é MRP estadual.
