@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
-import { canonicalPollKey, normalizeGeo } from '../src/data/identity.js'
+import { canonicalPollKey, fallbackPollKey, normalizeGeo } from '../src/data/identity.js'
 
 const ROOT = process.cwd()
 const BASE_PATH = `${ROOT}/data/polls.json`
@@ -66,6 +66,18 @@ for (const extra of extrasRaw) {
 }
 
 const byKey = new Map()
+const fallbackIndex = new Map()
+const remember = (fallback, identity) => {
+  const list = fallbackIndex.get(fallback) || []
+  if (!list.includes(identity)) list.push(identity)
+  fallbackIndex.set(fallback, list)
+}
+const findExistingKey = (poll) => {
+  const exact = canonicalPollKey(poll)
+  if (byKey.has(exact)) return exact
+  const list = fallbackIndex.get(fallbackPollKey(poll)) || []
+  return list.length === 1 ? list[0] : null
+}
 let addedPolls = 0
 let supplementedPolls = 0
 let addedCandidateValues = 0
@@ -77,13 +89,16 @@ const additions = []
 for (const poll of base) {
   const cleaned = dedupeCandidates(poll.candidates)
   excludedCandidateValues += (poll.candidates || []).length - cleaned.length
-  byKey.set(key(poll), { ...structuredClone(poll), geo: normalizeGeo(poll.geo), candidates: cleaned })
+  const identity = key(poll)
+  byKey.set(identity, { ...structuredClone(poll), geo: normalizeGeo(poll.geo), candidates: cleaned })
+  remember(fallbackPollKey(poll), identity)
 }
 
 for (const extra of extras) {
   if (!extra?.institute || !extra?.fieldwork_end || !extra?.scenario) continue
   const k = key(extra)
-  let existing = byKey.get(k)
+  const matchedKey = findExistingKey(extra)
+  let existing = matchedKey ? byKey.get(matchedKey) : undefined
 
   if (!existing) {
     if (extra.verified === true) {
@@ -91,6 +106,7 @@ for (const extra of extras) {
       copy.geo = normalizeGeo(copy.geo)
       copy.candidates = dedupeCandidates(copy.candidates)
       byKey.set(k, copy)
+      remember(fallbackPollKey(copy), k)
       addedPolls += 1
       additions.push({
         type: 'poll',
