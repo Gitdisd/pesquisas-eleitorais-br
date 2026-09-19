@@ -1,28 +1,17 @@
 {
-  "ran_at": "2026-09-19T17:58:34.727Z",
+  "ran_at": "2026-09-19T22:40:16.646Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 397,
+  "candidate_links": 409,
   "pages_fetched": 60,
-  "verified_new": 2,
-  "inbox_new": 38,
+  "verified_new": 0,
+  "staged_verified_new": 0,
+  "staging_size": 0,
+  "inbox_new": 41,
   "skipped_old": 18,
   "fetch_errors": 8,
   "dry_run": false,
-  "verified_samples": [
-    {
-      "institute": "Datafolha",
-      "published_date": "2026-09-18",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml"
-    },
-    {
-      "institute": "Datafolha",
-      "published_date": "2026-09-18",
-      "scenario": "2º turno Lula x Flávio Bolsonaro",
-      "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-em-sp-mede-disputa-entre-tarcisio-e-haddad-a-duas-semanas-da-eleicao.ghtml"
-    }
-  ],
+  "verified_samples": [],
   "inbox_samples": [
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-3/",
@@ -30,7 +19,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-19T17:58:08.829Z"
+      "found_at": "2026-09-19T22:39:39.303Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -38,7 +27,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-19T17:58:08.850Z"
+      "found_at": "2026-09-19T22:39:40.012Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -46,7 +35,15 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-19T17:58:09.164Z"
+      "found_at": "2026-09-19T22:39:40.673Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
+      "title": "Nova pesquisa Quaest no DF testará liderança de Celina Leão no DF e briga pelo 2º turno | Eleições 2026 | Valor Econômic",
+      "reason": "numbers_not_clean",
+      "institute": "Quaest",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T22:39:41.616Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-segundo-turno-presidente-17-setembro.ghtml",
@@ -54,16 +51,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-19T17:58:11.109Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-presidente-17-setembro.ghtml",
-      "title": "Lula x Flávio Bolsonaro: Datafolha aponta empate técnico no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-17",
-      "found_at": "2026-09-19T17:58:11.554Z"
+      "found_at": "2026-09-19T22:39:43.090Z"
     }
   ],
-  "meta_last_check_at": "2026-09-19T17:58:34.729Z"
+  "meta_last_check_at": "2026-09-19T22:40:16.654Z"
 }

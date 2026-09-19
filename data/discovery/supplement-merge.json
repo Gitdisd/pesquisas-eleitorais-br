@@ -1,10 +1,10 @@
 {
   "version": 4,
-  "generated_at": "2026-09-19T17:59:08.642Z",
-  "identity_key": "institute|fieldwork_start|fieldwork_end|scenario",
-  "base_polls": 236,
+  "generated_at": "2026-09-19T22:40:49.927Z",
+  "identity_key": "tse_protocol|scenario|geo; fallback institute|fieldwork_start|fieldwork_end|scenario|geo",
+  "base_polls": 233,
   "supplemental_rows": 35,
-  "merged_polls": 236,
+  "merged_polls": 233,
   "added_polls": 0,
   "staged_only_polls": 0,
   "supplemented_polls": 0,
@@ -12,6 +12,6 @@
   "replaced_glued_residuals": 0,
   "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "4156682e079e843383b938f6ce3af1821d1dd664b9afcb0a3cead9a876f1c3de",
+  "content_sha256": "7ce84c0ff8811679e72633e32c2c27adcd11f3266ba8cb154549bfa5c2f046cc",
   "additions": []
 }

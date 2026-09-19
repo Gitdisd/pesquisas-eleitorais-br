@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-19T18:35:56.353Z",
+  "updated_at": "2026-09-19T22:40:17.191Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -913,6 +913,22 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-19T14:21:05.233Z"
+    },
+    {
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-481-contra-437-de-lula-no-2o-turno-diz-pesquisa/",
+      "title": "Flávio tem 48,1% contra 43,7% de Lula no 2º turno, diz pesquisa --> Flávio tem 48,1% contra 43,7% de Lula no 2º turno, d",
+      "reason": "incomplete_extract:no_moe",
+      "institute": "Futura/Apex",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-19T22:40:14.274Z"
+    },
+    {
+      "url": "https://www.poder360.com.br/poderdata/poderdata-aya-lula-tem-37-contra-36-de-flavio-no-1o-turno/",
+      "title": "PoderData/Aya: Lula tem 37% contra 36% de Flávio no 1º turno --> PoderData/Aya: Lula tem 37% contra 36% de Flávio no 1º ",
+      "reason": "incomplete_extract:no_moe",
+      "institute": "PoderData",
+      "published_date": "2026-09-17",
+      "found_at": "2026-09-19T22:40:14.303Z"
     }
   ]
 }

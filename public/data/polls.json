@@ -31,7 +31,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.metropoles.com/brasil/datafolha-lula-tem-46-no-2-turno-flavio-marca-44",
     "methodology_note": "Datafolha 2o Lula 46 x Flavio 44, same as 11 Sep wave.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://www.metropoles.com/brasil/datafolha-lula-tem-46-no-2-turno-flavio-marca-44"
+    ]
   },
   {
     "institute": "Datafolha",
@@ -90,7 +97,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/17/datafolha-lula-39percent-flavio-bolsonaro-36percent-cury-6percent-caiado-4percent-renan-3percent-zema-2percent.ghtml",
     "methodology_note": "Datafolha face-to-face 2.002 interviews 15-17 Sep. Globo/Folha. Witness: CBN/Valor/Metrópoles 17 Sep 19h.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/17/datafolha-lula-39percent-flavio-bolsonaro-36percent-cury-6percent-caiado-4percent-renan-3percent-zema-2percent.ghtml"
+    ]
   },
   {
     "institute": "AtlasIntel",
@@ -119,7 +133,14 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm",
     "methodology_note": "Atlas/Bloomberg 2o totals Flavio 47.2 x Lula 46.8.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm"
+    ]
   },
   {
     "institute": "AtlasIntel",
@@ -178,7 +199,14 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm",
     "methodology_note": "Atlas/Bloomberg digital RDR 5.018 interviews 11-16 Sep. Totals not valid votes. Witness: UOL/Gazeta 17 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://noticias.uol.com.br/eleicoes/2026/09/17/atlasbloomberg-lula-e-flavio-aparecem-tecnicamente-empatados-no-2-turno.ghtm"
+    ]
   },
   {
     "institute": "Gerp",
@@ -212,7 +240,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-50-no-2o-turno-lula-43/",
     "methodology_note": "Gerp 2o Flavio 50 x Lula 43.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-50-no-2o-turno-lula-43/"
+    ]
   },
   {
     "institute": "Gerp",
@@ -266,7 +301,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://exame.com/brasil/pesquisa-gerp-flavio-bolsonaro-tem-40-e-lula-37-no-1o-turno/",
     "methodology_note": "Gerp phone 2.400 interviews 14-16 Sep. Marcal excluded. Witness: Exame/CNN 17 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://exame.com/brasil/pesquisa-gerp-flavio-bolsonaro-tem-40-e-lula-37-no-1o-turno/"
+    ]
   },
   {
     "institute": "PoderData",
@@ -300,7 +342,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
     "methodology_note": "PoderData 2o Flavio 46 x Lula 44.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/"
+    ]
   },
   {
     "institute": "PoderData",
@@ -374,7 +423,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/",
     "methodology_note": "PoderData/Aya phone 3.000 interviews 13-16 Sep. Marcal excluded per dataset rule. Witness: Gazeta 17 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-2/"
+    ]
   },
   {
     "institute": "Futura/Apex",
@@ -408,7 +464,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm",
     "methodology_note": "Futura 2o Flavio 48.1 x Lula 43.7.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm"
+    ]
   },
   {
     "institute": "Futura/Apex",
@@ -482,7 +545,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm",
     "methodology_note": "Futura/100% Cidades CATI 2.000 interviews 11-15 Sep. Marcal excluded. Witness: UOL 17 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-17"
+    ],
+    "witness_urls": [
+      "https://noticias.uol.com.br/eleicoes/2026/09/17/futura100-cidades-flavio-bolsonaro-aparece-a-frente-de-lula-no-2-turno.ghtm"
+    ]
   },
   {
     "institute": "DataTrends",
@@ -511,7 +581,14 @@
     "margin_of_error": "±2,19 pp",
     "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html",
     "methodology_note": "DataTrends 2o Lula 44 x Flavio 45.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-16"
+    ],
+    "witness_urls": [
+      "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html"
+    ]
   },
   {
     "institute": "DataTrends",
@@ -560,7 +637,14 @@
     "margin_of_error": "±2,19 pp",
     "source_url": "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html",
     "methodology_note": "DataTrends first national wave. Phone IVR, 2.000 interviews 12-14 Sep across 27 UFs. Residual 12 = indecisos+ausentes as published. Witness: Correio Braziliense 16 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-16"
+    ],
+    "witness_urls": [
+      "https://www.correiobraziliense.com.br/politica/2026/09/7500750-datatrends-divulga-1-pesquisa-sobre-corrida-presidencial-nesta-quarta.html"
+    ]
   },
   {
     "institute": "CNT/MDA",
@@ -594,7 +678,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/cnt-mda-presidente-setembro-2026/",
     "methodology_note": "MDA for CNT 2º turno. TSE BR-06902/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-15"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/cnt-mda-presidente-setembro-2026/"
+    ]
   },
   {
     "institute": "CNT/MDA",
@@ -653,7 +744,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/cnt-mda-presidente-setembro-2026/",
     "methodology_note": "MDA for CNT; 2.002 interviews 9–13 Sep 2026; TSE BR-06902/2026. Marçal 1.8 excluded from totals per dataset rule. Witness: Gazeta 15 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-15"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/cnt-mda-presidente-setembro-2026/"
+    ]
   },
   {
     "institute": "Indexa/Broadcast",
@@ -692,7 +790,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://www.estadao.com.br/politica/indexabroadcast-lula-tem-43-e-flavio-bolsonaro-42-em-empate-tecnico-no-2-turno/",
     "methodology_note": "Indexa/Broadcast 2º turno Lula 43 × Flávio 42. TSE BR-03482/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-15"
+    ],
+    "witness_urls": [
+      "https://www.estadao.com.br/politica/indexabroadcast-lula-tem-43-e-flavio-bolsonaro-42-em-empate-tecnico-no-2-turno/"
+    ]
   },
   {
     "institute": "Indexa/Broadcast",
@@ -751,7 +856,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026/",
     "methodology_note": "Indexa/Broadcast for Agência Estado; 2.000 phone interviews 10–13 Sep 2026; TSE BR-03482/2026. Flávio 34 per Gazeta/Estadão.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-15"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026/"
+    ]
   },
   {
     "institute": "Nexus/BTG",
@@ -780,7 +892,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-presidente-setembro-2026/",
     "methodology_note": "Nexus for BTG Pactual; TSE BR-04076/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -834,7 +947,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-presidente-setembro-2026/",
     "methodology_note": "Nexus for BTG Pactual; TSE BR-04076/2026. Scenario without Pablo Marçal. Verified supplemental candidate value from published source: https://noticias.uol.com.br/eleicoes/2026/09/14/btgnexus-presidenciaveis.ghtm.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Quaest",
@@ -858,7 +972,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www1.folha.uol.com.br/poder/2026/09/quaest-flavio-marca-42-e-lula-40-no-2o-turno.shtml",
     "methodology_note": "Quaest; TSE BR-03607/2026; 2,004 interviews, 10–13 Sep 2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Quaest",
@@ -912,7 +1027,9 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/14/pesquisa-eleitoral-quaest-veja-numeros-percentuais-atualizados.ghtm",
     "methodology_note": "Quaest; TSE BR-03607/2026; 2,004 interviews, 10–13 Sep 2026. Corrected from a corrupted extraction that used a second-round value (55) as first-round Flávio Bolsonaro.",
-    "verified": true
+    "verified": true,
+    "tse_registration": "BR-03607/2026",
+    "geo": "BR"
   },
   {
     "institute": "Veritá",
@@ -941,7 +1058,14 @@
     "margin_of_error": "±3,5 pp",
     "source_url": "https://revistaoeste.com/politica/verita-flavio-lidera-sobre-lula-em-16-estados-e-tem-4395/",
     "methodology_note": "Verita stacked 27-UF phone sample 4-12 Sep, n=40500, valid votes / turnout-weighted projection. Separate product from the earlier 1-4 Sep national IVR wave. Witness: Revista Oeste 13 Sep.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-13"
+    ],
+    "witness_urls": [
+      "https://revistaoeste.com/politica/verita-flavio-lidera-sobre-lula-em-16-estados-e-tem-4395/"
+    ]
   },
   {
     "institute": "Datafolha",
@@ -970,7 +1094,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-2o-turno-presidente-11-setembro.ghtml",
     "methodology_note": "Face-to-face; Globo/Folha; TSE BR-01833/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-11"
+    ],
+    "witness_urls": [
+      "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/11/datafolha-lula-tem-46percent-e-flavio-bolsonaro-44percent-em-cenario-de-2o-turno.ghtml"
+    ]
   },
   {
     "institute": "Datafolha",
@@ -1024,7 +1155,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-2/",
     "methodology_note": "Face-to-face; Globo/Folha; TSE BR-01833/2026. Scenario without Pablo Marçal.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-11"
+    ],
+    "witness_urls": [
+      "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml"
+    ]
   },
   {
     "institute": "Futura/Apex",
@@ -1053,7 +1191,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-454-contra-45-de-lula-no-2o-turno/",
     "methodology_note": "Futura/100% Cidades 2º turno Flávio 45,4 × Lula 45. TSE BR-02322/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-11"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/futura-flavio-tem-454-contra-45-de-lula-no-2o-turno/"
+    ]
   },
   {
     "institute": "Futura/Apex",
@@ -1097,7 +1242,14 @@
     "margin_of_error": "±2,2 pp",
     "source_url": "https://exame.com/brasil/pesquisa-futura-lula-tem-392-e-flavio-bolsonaro-336-no-1o-turno/",
     "methodology_note": "Futura/100% Cidades; 2.000 CATI 4–10 set 2026; TSE BR-02322/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-11"
+    ],
+    "witness_urls": [
+      "https://exame.com/brasil/pesquisa-futura-lula-tem-392-e-flavio-bolsonaro-336-no-1o-turno/"
+    ]
   },
   {
     "institute": "AtlasIntel",
@@ -1126,7 +1278,14 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/",
     "methodology_note": "Online electronic form; self-commissioned; TSE BR-01452/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-10"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/atlasintel-bloomberg-flavio-tem-464-no-2o-turno-lula-462/"
+    ]
   },
   {
     "institute": "AtlasIntel",
@@ -1175,7 +1334,14 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026/",
     "methodology_note": "Online electronic form; self-commissioned; TSE BR-01452/2026. Published stimulated list included Pablo Marçal 1.0%.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-10"
+    ],
+    "witness_urls": [
+      "https://www.correiobraziliense.com.br/politica/2026/09/7497900-atlasintel-flavio-tem-464-no-segundo-turno-e-lula-registra-462.html"
+    ]
   },
   {
     "institute": "PoderData",
@@ -1204,7 +1370,14 @@
     "margin_of_error": "±1,8 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/",
     "methodology_note": "PoderData/Aya 2º turno. TSE BR-04914/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-10"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/"
+    ]
   },
   {
     "institute": "PoderData",
@@ -1243,7 +1416,14 @@
     "margin_of_error": "±1,8 pp",
     "source_url": "https://sbtnews.sbt.com.br/noticia/eleicoes/poder-data-aya-flavio-bolsonaro-47-x-45-lula-no-2-turno",
     "methodology_note": "PoderData/Aya; 3.000 entrevistas, 6–9 set 2026; TSE BR-04914/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-10"
+    ],
+    "witness_urls": [
+      "https://sbtnews.sbt.com.br/noticia/eleicoes/poder-data-aya-flavio-bolsonaro-47-x-45-lula-no-2-turno"
+    ]
   },
   {
     "institute": "GERP",
@@ -1272,7 +1452,14 @@
     "margin_of_error": "±2,0 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
     "methodology_note": "GERP 2º turno Flávio 47 × Lula 40.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-09"
+    ],
+    "witness_urls": [
+      "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/"
+    ]
   },
   {
     "institute": "GERP",
@@ -1316,7 +1503,14 @@
     "margin_of_error": "±2,0 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
     "methodology_note": "GERP nacional; 2.400 entrevistas 3–8 set 2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-09"
+    ],
+    "witness_urls": [
+      "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/"
+    ]
   },
   {
     "institute": "Palver",
@@ -1360,7 +1554,14 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
     "methodology_note": "Palver; 5.000 online 4–8 set 2026; TSE BR-05420/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-09"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/"
+    ]
   },
   {
     "institute": "Ideia",
@@ -1389,7 +1590,14 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
     "methodology_note": "Meio/Ideia; Canal Meio S.A.; TSE BR-07935/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-09"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/"
+    ]
   },
   {
     "institute": "Ideia",
@@ -1438,7 +1646,14 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
     "methodology_note": "Meio/Ideia; Canal Meio S.A.; TSE BR-07935/2026. Stimulated list included Pablo Marçal 1.5%.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-09"
+    ],
+    "witness_urls": [
+      "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/"
+    ]
   },
   {
     "institute": "Palver",
@@ -1469,12 +1684,13 @@
     "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf. Branco/nulo 9 + indecisos 1 combined. | Palver 2º turno Flávio 46 × Lula 44. TSE BR-05420/2026.",
     "verified": true,
     "tse_registration": "BR-05420/2026",
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-09"
+    ],
     "witness_urls": [
       "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
       "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-tecnicamente-com-flavio-caiado-e-zema-no-2o-turno/"
-    ],
-    "coverage_dates": [
-      "2026-09-09"
     ]
   },
   {
@@ -1524,7 +1740,8 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
     "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; cenário com Pablo Marçal; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Palver",
@@ -1573,7 +1790,8 @@
     "margin_of_error": "±2,5 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/",
     "methodology_note": "Online non-probabilistic survey (social-ad recruitment), calibrated; TSE BR-05420/2026; cenário sem Pablo Marçal; PDF https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/09/Pesquisa-Eleitoral-Palver-Onda-2-1.pdf.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -1602,7 +1820,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-contra-45-de-lula-no-2o-turno-diz-btg-nexus/",
     "methodology_note": "Phone CATI; Nexus for BTG Pactual; TSE BR-06790/2026; PDF https://static.poder360.com.br/uploads/2026/09/BTG-Nexus-nacional-8set2026.pdf.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-08"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-lula-tem-empate-tecnico-com-flavio-caiado-e-cury-no-2o-turno/"
+    ]
   },
   {
     "institute": "Nexus/BTG",
@@ -1651,7 +1876,14 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-contra-45-de-lula-no-2o-turno-diz-btg-nexus/",
     "methodology_note": "Phone CATI; Nexus for BTG Pactual; TSE BR-06790/2026; PDF https://static.poder360.com.br/uploads/2026/09/BTG-Nexus-nacional-8set2026.pdf. Cenario 1 sem Pablo Marcal.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-08"
+    ],
+    "witness_urls": [
+      "https://veja.abril.com.br/brasil/o-que-revelam-as-pesquisas-eleitorais-da-semana-sobre-a-disputa-entre-lula-e-flavio/"
+    ]
   },
   {
     "institute": "Quaest",
@@ -1680,7 +1912,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-2-turno-7-de-setembro.ghtml",
     "methodology_note": "Face-to-face; TSE BR-01720/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Quaest",
@@ -1729,7 +1962,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-presidente-7-setembro.ghtml",
     "methodology_note": "Face-to-face; Globo/O Globo; TSE BR-01720/2026. Without Marçal.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Veritá",
@@ -1758,7 +1992,14 @@
     "margin_of_error": "±2,0 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-485-no-2o-turno-lula-431/",
     "methodology_note": "Veritá 2º turno Flávio 48,5 × Lula 43,1. TSE BR-09426/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-06"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-485-no-2o-turno-lula-431/"
+    ]
   },
   {
     "institute": "Veritá",
@@ -1802,7 +2043,14 @@
     "margin_of_error": "±2,0 pp",
     "source_url": "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-389-no-1o-turno-lula-384-e-cury-122/",
     "methodology_note": "Veritá; 3.804 entrevistas 1–4 set 2026; TSE BR-09426/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-06"
+    ],
+    "witness_urls": [
+      "https://www.cnnbrasil.com.br/eleicoes/verita-flavio-tem-389-no-1o-turno-lula-384-e-cury-122/"
+    ]
   },
   {
     "institute": "Datafolha",
@@ -1831,7 +2079,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-2o-turno-presidente-3-setembro.ghtml",
     "methodology_note": "Face-to-face; TSE BR-03669/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -1881,6 +2130,7 @@
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-presidente-3-setembro.ghtml",
     "methodology_note": "Face-to-face, pontos de fluxo; Globo/Folha; TSE BR-03669/2026. Scenario without Pablo Marçal.",
     "verified": true,
+    "geo": "BR",
     "flag": "fieldwork_end aligned to Folha/G1 (1–2 Sep); title sometimes says through 3 Sep."
   },
   {
@@ -1910,7 +2160,8 @@
     "margin_of_error": "±1.8 pp",
     "source_url": "https://www.poder360.com.br/poderdata/flavio-tem-45-e-lula-registra-44-no-2o-turno-diz-poderdata-aya/",
     "methodology_note": "Phone IVR; TSE BR-07561/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -1959,7 +2210,8 @@
     "margin_of_error": "±1.8 pp",
     "source_url": "https://www.poder360.com.br/poderdata/poderdata-aya-augusto-cury-vai-de-4-para-10-no-1o-turno/",
     "methodology_note": "Phone IVR (URA); PoderData/Aya; TSE BR-07561/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -1988,7 +2240,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-387-das-intencoes-de-voto-contra-336-de-flavio/",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02793/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -2037,7 +2290,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-387-das-intencoes-de-voto-contra-336-de-flavio/",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02793/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Quaest",
@@ -2066,7 +2320,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/02/quaest-presidente-2-setembro.ghtml",
     "methodology_note": "Face-to-face; TSE BR-07065/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Quaest",
@@ -2115,7 +2370,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/02/quaest-presidente-2-setembro.ghtml",
     "methodology_note": "Face-to-face domiciliar; Globo/O Globo; TSE BR-07065/2026. Without Marçal.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -2144,7 +2400,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.infomoney.com.br/politica/real-time-big-data-lula-e-flavio-bolsonaro-empatam-com-44-no-2o-turno/",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03490/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -2194,6 +2451,7 @@
     "source_url": "https://gauchazh.clicrbs.com.br/politica/eleicoes/noticia/2026/09/real-time-big-data-divulga-nova-pesquisa-para-presidente-veja-os-numeros-cmtiihl5a00gp011jsm3hy1kq.html",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03490/2026.",
     "verified": true,
+    "geo": "BR",
     "flag": "Aug scenario with Marçal on GZH: Lula 38 Flávio 29 Cury 10 Renan 6 Caiado 4 Zema 2; without Marçal Flávio 30 Cury 11 Renan 7."
   },
   {
@@ -2223,7 +2481,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-471-contra-426-de-flavio-no-2o-turno-diz-pesquisa/",
     "methodology_note": "Online panel; TSE BR-07972/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -2272,7 +2531,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-471-contra-426-de-flavio-no-2o-turno-diz-pesquisa/",
     "methodology_note": "Electronic form / online panel; self-funded; TSE BR-07972/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -2301,7 +2561,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-08900/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -2350,7 +2611,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-31-de-agosto-de-2026/",
     "methodology_note": "Phone CATI; BTG Pactual; TSE BR-08900/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -2379,7 +2641,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://static.poder360.com.br/uploads/2026/08/RELATORIO-VOX-BRASIL-NACIONAL-6-29-08-2026-1.pdf",
     "methodology_note": "Face-to-face domiciliar; TSE BR-05519/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -2428,7 +2691,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://static.poder360.com.br/uploads/2026/08/RELATORIO-VOX-BRASIL-NACIONAL-6-29-08-2026-1.pdf",
     "methodology_note": "Face-to-face domiciliar; TSE BR-05519/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -2457,7 +2721,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR; TSE BR-04974/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -2506,7 +2771,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-04974/2026. Often branded PoderData/Aya.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -2535,7 +2801,8 @@
     "margin_of_error": "±2.0 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-agosto-2026-2/",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03547/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -2585,6 +2852,7 @@
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-agosto-2026-2/",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03547/2026. Aug 21-25 contracted by AESP.",
     "verified": true,
+    "geo": "BR",
     "flag": "BBC lists Aug 20-23 GERP as 37.2/37.6; Gazeta rounds to 37/38."
   },
   {
@@ -2614,7 +2882,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.broadcast.com.br/news/lula-tem-39-e-flavio-34-no-primeiro-turno-mostra-pesquisa-indexa-broadcast/",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-06366/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -2663,7 +2932,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.broadcast.com.br/news/lula-tem-39-e-flavio-34-no-primeiro-turno-mostra-pesquisa-indexa-broadcast/",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-06366/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -2692,7 +2962,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-09028/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -2741,7 +3012,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-09028/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -2770,7 +3042,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/02/quem-esta-na-frente-para-presidente-veja-resultados-das-ultimas-pesquisas.ghtml",
     "methodology_note": "Face-to-face; TSE BR-04496/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -2820,6 +3093,7 @@
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-presidente-3-setembro.ghtml",
     "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-04496/2026. Prior round cited on Sep 3 G1.",
     "verified": true,
+    "geo": "BR",
     "flag": "Full Aug detail also on Valor; scenario without Marçal."
   },
   {
@@ -2849,7 +3123,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-03317/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -2898,7 +3173,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-03317/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -2927,7 +3203,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-06773/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -2976,7 +3253,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-06773/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -3005,7 +3283,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR; TSE BR-06868/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -3054,7 +3333,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-06868/2026. Often branded PoderData/Aya.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -3083,7 +3363,8 @@
     "margin_of_error": "±2.0 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-08045/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -3132,7 +3413,8 @@
     "margin_of_error": "±2.0 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-08045/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "CNT/MDA",
@@ -3161,7 +3443,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://revistaforum.com.br/politica/cnt-mda-nova-pesquisa-lula-flavio/",
     "methodology_note": "Face-to-face; TSE BR-06935/2026. Fórum reports Lula 48% Flávio 39%; BBC 48.0/39.1.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "CNT/MDA",
@@ -3211,6 +3494,7 @@
     "source_url": "https://static.poder360.com.br/uploads/2026/08/Relatorio-Pesquisa-CNT-de-Opiniao-R169-AGOSTO26.pdf",
     "methodology_note": "Face-to-face domiciliar e ponto de fluxo; MDA for CNT; TSE BR-06935/2026. 169ª rodada.",
     "verified": true,
+    "geo": "BR",
     "flag": "Detailed % also in Revista Fórum / BBC (42.4/28.7)."
   },
   {
@@ -3240,7 +3524,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08428/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -3289,7 +3574,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08428/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -3318,7 +3604,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08109/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -3367,7 +3654,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08109/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -3396,7 +3684,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-06591/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -3445,7 +3734,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-06591/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -3474,7 +3764,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-agosto-2026/",
     "methodology_note": "Phone CATI; TSE BR-04579/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -3523,7 +3814,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-agosto-2026/",
     "methodology_note": "Phone CATI; Canal Meio; TSE BR-04579/2026. Latest Ideia national as of Sep 2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -3552,7 +3844,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-02874/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -3601,7 +3894,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-02874/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -3630,7 +3924,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR; TSE BR-07845/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -3679,7 +3974,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-07845/2026. Often branded PoderData/Aya.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Alfa Inteligência",
@@ -3708,7 +4004,8 @@
     "margin_of_error": "±1.8 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-04488/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Alfa Inteligência",
@@ -3757,7 +4054,8 @@
     "margin_of_error": "±1.8 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-04488/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -3786,7 +4084,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-01084/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -3835,7 +4134,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-01084/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -3864,7 +4164,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel; TSE BR-08602/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -3913,7 +4214,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-08602/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -3942,7 +4244,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01489/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -3991,7 +4294,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01489/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -4020,7 +4324,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-01166/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -4069,7 +4374,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/24/datafolha-primeiro-turno-julho.ghtml",
     "methodology_note": "Face-to-face; TSE BR-01166/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -4098,7 +4404,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-05026/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -4147,7 +4454,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-05026/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -4176,7 +4484,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09247/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -4225,7 +4534,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09247/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -4254,7 +4564,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02904/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -4303,7 +4614,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02904/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -4332,7 +4644,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR; TSE BR-00059/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -4381,7 +4694,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-00059/2026. Often branded PoderData/Aya.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -4410,7 +4724,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/15/quaest-1o-turno-julho-lula-flavio-bolsonaro.ghtml",
     "methodology_note": "Face-to-face; TSE BR-07181/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -4459,7 +4774,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/15/quaest-1o-turno-julho-lula-flavio-bolsonaro.ghtml",
     "methodology_note": "Face-to-face; Genial Investimentos; TSE BR-07181/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -4488,7 +4804,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07981/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -4537,7 +4854,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07981/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -4566,7 +4884,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-07294/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -4615,7 +4934,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-07294/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -4644,7 +4964,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03067/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -4693,7 +5014,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03067/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -4722,7 +5044,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-05628/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -4771,7 +5094,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-05628/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -4800,7 +5124,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel; TSE BR-04582/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -4849,7 +5174,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-04582/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -4878,7 +5204,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08521/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -4927,7 +5254,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-08521/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -4956,7 +5284,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-06630/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -5005,7 +5334,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-06630/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -5034,7 +5364,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR; TSE BR-05722/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -5083,7 +5414,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-05722/2026. Often branded PoderData/Aya.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -5112,7 +5444,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-08944/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -5161,7 +5494,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-08944/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -5190,7 +5524,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/06/20/datafolha-lula-tem-41percent-e-flavio-bolsonaro-31percent-das-intencoes-de-voto-no-1o-turno.ghtml",
     "methodology_note": "Face-to-face; TSE BR-09956/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -5239,7 +5574,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/06/20/datafolha-lula-tem-41percent-e-flavio-bolsonaro-31percent-das-intencoes-de-voto-no-1o-turno.ghtml",
     "methodology_note": "Face-to-face; TSE BR-09956/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -5268,7 +5604,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-09657/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -5317,7 +5654,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-09657/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "CNT/MDA",
@@ -5346,7 +5684,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-04256/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "CNT/MDA",
@@ -5395,7 +5734,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-04256/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -5424,7 +5764,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-06645/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -5473,7 +5814,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-06645/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -5502,7 +5844,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-01461/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -5551,7 +5894,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-01461/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Alfa Inteligência",
@@ -5580,7 +5924,8 @@
     "margin_of_error": "±2.6 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-03496/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Alfa Inteligência",
@@ -5624,7 +5969,8 @@
     "margin_of_error": "±2.6 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Alfa Inteligência / Alfa/TMC; TSE BR-03496/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -5653,7 +5999,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-07661/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -5702,7 +6049,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-07661/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -5731,7 +6079,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-01792/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -5780,7 +6129,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-01792/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -5809,7 +6159,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-08016/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -5858,7 +6209,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-08016/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -5887,7 +6239,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-05864/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -5936,7 +6289,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-05864/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -5965,7 +6319,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR; TSE BR-04882/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "PoderData",
@@ -6014,7 +6369,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone IVR (URA) landline+mobile; TSE BR-04882/2026. Often branded PoderData/Aya.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -6043,7 +6399,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-02918/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -6087,7 +6444,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-02918/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -6116,7 +6474,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02154/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Indexa/Broadcast",
@@ -6165,7 +6524,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Indexa for Broadcast/Agência Estado; TSE BR-02154/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -6194,7 +6554,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-04193/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -6243,7 +6604,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-04193/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -6272,7 +6634,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-07971/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -6321,7 +6684,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-07971/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -6350,7 +6714,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-07489/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -6399,7 +6764,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-07489/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -6428,7 +6794,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06529/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -6477,7 +6844,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06529/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -6506,7 +6874,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-02416/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -6555,7 +6924,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-02416/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -6584,7 +6954,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/05/16/datafolha-maio-primeiro-turno.ghtml",
     "methodology_note": "Face-to-face; TSE BR-00290/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -6633,7 +7004,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/05/16/datafolha-maio-primeiro-turno.ghtml",
     "methodology_note": "Face-to-face; TSE BR-00290/2026; most interviews before Vorcaro audio leak.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -6662,7 +7034,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-02423/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Vox Brasil",
@@ -6711,85 +7084,8 @@
     "margin_of_error": "±2.15 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-02423/2026. PDF hosted by Poder360 for Aug round.",
-    "verified": true
-  },
-  {
-    "institute": "Genial/Quaest",
-    "fieldwork_start": "2026-05-08",
-    "fieldwork_end": "2026-05-11",
-    "published_date": "2026-05-12",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 42
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 41
-      },
-      {
-        "name": "branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 17
-      }
-    ],
-    "n": 2004,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
-    "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
-    "verified": true
-  },
-  {
-    "institute": "Genial/Quaest",
-    "fieldwork_start": "2026-05-08",
-    "fieldwork_end": "2026-05-11",
-    "published_date": "2026-05-12",
-    "scenario": "estimulada 1º turno",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 39
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 33
-      },
-      {
-        "name": "Augusto Cury",
-        "party_optional": "Avante",
-        "pct": 1
-      },
-      {
-        "name": "Renan Santos",
-        "party_optional": "Missão",
-        "pct": 2
-      },
-      {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 4
-      },
-      {
-        "name": "Romeu Zema",
-        "party_optional": "Novo",
-        "pct": 4
-      },
-      {
-        "name": "outros/branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 15
-      }
-    ],
-    "n": 2004,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
-    "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -6818,7 +7114,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -6867,7 +7164,88 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-05-08",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 42
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 17
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
+    "verified": true,
+    "geo": "BR"
+  },
+  {
+    "institute": "Genial/Quaest",
+    "fieldwork_start": "2026-05-08",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 33
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 15
+      }
+    ],
+    "n": 2004,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -6896,7 +7274,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-03678/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -6945,7 +7324,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-03678/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -6974,7 +7354,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-05356/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -7023,7 +7404,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-05356/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -7052,7 +7434,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03627/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -7101,7 +7484,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-03627/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -7130,7 +7514,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel; TSE BR-07992/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -7179,7 +7564,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-07992/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -7208,7 +7594,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01075/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -7257,7 +7644,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-01075/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -7286,7 +7674,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-09285/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -7335,7 +7724,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-09285/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "CNT/MDA",
@@ -7364,7 +7754,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-02847/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "CNT/MDA",
@@ -7408,7 +7799,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar/fluxo; TSE BR-02847/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -7437,7 +7829,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08282/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -7486,7 +7879,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08282/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -7516,6 +7910,7 @@
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-03770/2026.",
     "verified": true,
+    "geo": "BR",
     "flag": "Numbers from BBC/PollingData TSE table (major outlet); Folha/G1 page not re-fetched this session."
   },
   {
@@ -7561,6 +7956,7 @@
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face, pontos de fluxo; TSE BR-03770/2026.",
     "verified": true,
+    "geo": "BR",
     "flag": "Numbers from BBC/PollingData TSE table (major outlet); Folha/G1 page not re-fetched this session."
   },
   {
@@ -7590,7 +7986,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-00605/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -7634,7 +8031,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-00605/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -7663,7 +8061,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07875/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Nexus/BTG",
@@ -7707,7 +8106,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Nexus/FSB for BTG Pactual; TSE BR-07875/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Paraná Pesquisas",
@@ -7736,7 +8136,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-presidente-marco-2026/",
     "methodology_note": "Face-to-face domiciliar; TSE BR-00873/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Paraná Pesquisas",
@@ -7781,6 +8182,7 @@
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-presidente-marco-2026/",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-00873/2026. Latest national presidential from institute as of Sep 2026.",
     "verified": true,
+    "geo": "BR",
     "flag": "AGE: ~5 months old — no national presidential poll from Paraná Pesquisas since March 2026 (state polls only in Aug/Sep)."
   },
   {
@@ -7810,7 +8212,8 @@
     "margin_of_error": "±2.24 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-02846/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -7854,7 +8257,8 @@
     "margin_of_error": "±2.24 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-02846/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -7883,7 +8287,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel; TSE BR-04227/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -7927,7 +8332,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-04227/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -7956,7 +8362,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-00386/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -8000,7 +8407,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-00386/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -8029,7 +8437,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.estadao.com.br/politica/lua-de-mel-de-flavio-e-remontada-de-lula-o-que-mostraram-as-pesquisas-eleitorais-do-1-semestre/",
     "methodology_note": "Face-to-face domiciliar; TSE BR-05809/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -8073,7 +8482,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-05809/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -8102,7 +8512,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06607/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -8141,7 +8552,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-06607/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Datafolha",
@@ -8171,6 +8583,7 @@
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/03/07/datafolha-1o-turno.ghtml",
     "methodology_note": "Face-to-face, pontos de fluxo.",
     "verified": true,
+    "geo": "BR",
     "flag": "2º-turno figures from BBC/PollingData (Estadão/G1 series consistent)."
   },
   {
@@ -8206,6 +8619,7 @@
     "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/03/07/datafolha-1o-turno.ghtml",
     "methodology_note": "Face-to-face, pontos de fluxo; TSE-registered; Folha/Globo.",
     "verified": true,
+    "geo": "BR",
     "flag": "Cury not in this scenario; Caiado tested in separate scenario (Lula 39%, Flávio 33%, Caiado 4%, Zema 5%)."
   },
   {
@@ -8235,7 +8649,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09353/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Real Time Big Data",
@@ -8279,7 +8694,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-09353/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Paraná Pesquisas",
@@ -8308,7 +8724,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face; TSE BR-07974/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Paraná Pesquisas",
@@ -8352,7 +8769,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-presidente-fevereiro-2026-2/",
     "methodology_note": "Face-to-face domiciliar; self-funded; TSE BR-07974/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -8381,7 +8799,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel; TSE BR-07600/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -8425,7 +8844,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-07600/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -8454,7 +8874,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-00249/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -8498,7 +8919,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-00249/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -8527,7 +8949,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02276/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -8571,7 +8994,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-02276/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -8600,7 +9024,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-08425/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -8644,7 +9069,8 @@
     "margin_of_error": "±2.5 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-08425/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -8673,7 +9099,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-04519/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "GERP",
@@ -8717,7 +9144,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-04519/2026. Aug 21-25 contracted by AESP.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Paraná Pesquisas",
@@ -8746,7 +9174,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-08254/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Paraná Pesquisas",
@@ -8790,7 +9219,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-08254/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -8819,7 +9249,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel; TSE BR-02804/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "AtlasIntel",
@@ -8863,7 +9294,8 @@
     "margin_of_error": "±1 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Online panel / recrutamento digital aleatório; TSE BR-02804/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -8892,7 +9324,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08233/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Futura/Apex",
@@ -8936,7 +9369,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; Futura Inteligência (often Futura/Apex or Futura/100% Cidades); TSE BR-08233/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -8965,7 +9399,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; TSE BR-06731/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Ideia",
@@ -9009,7 +9444,8 @@
     "margin_of_error": "±2.2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Phone CATI; often Meio/Ideia; TSE BR-06731/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -9038,7 +9474,8 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-00835/2026.",
-    "verified": true
+    "verified": true,
+    "geo": "BR"
   },
   {
     "institute": "Genial/Quaest",
@@ -9078,6 +9515,7 @@
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; Genial Investimentos; TSE BR-00835/2026. Scenario with Caiado (no Ratinho).",
     "verified": true,
+    "geo": "BR",
     "flag": "Cury not yet tested; Zema in alternate scenario."
   }
 ]
