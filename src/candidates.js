@@ -1,8 +1,8 @@
 /**
- * Field as of 9 Sep 2026 (TSE / O Globo / G1).
- * 13 registered. Pablo Marçal (PRTB) is ineligible through 2032 and is omitted
- * from cards/lines; polls that still test him are ignored for the series.
- * Dropped/replaced before registro: Cabo Daciolo, Joaquim Barbosa, Aldo Rebelo, Heró Bezerra.
+ * Candidate set aligned to the TSE presidential-registration status reported on 11 Sep 2026:
+ * 12 candidacies in the race after the TSE denied Pablo Marçal's request. The site
+ * excludes Marçal from national series and keeps the tracked valid candidates here.
+ * Source: TSE, 11 Sep 2026. Update this block when the official candidate set changes.
  */
 export const CANDIDATES = [
   { key: 'lula', names: ['Lula', 'Luiz Inácio Lula da Silva'], label: 'Lula', party: 'PT', number: '13', tier: 'lead', color: '#c62828', borderDash: [], borderWidth: 2.5 },
