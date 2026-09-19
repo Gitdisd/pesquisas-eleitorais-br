@@ -58,7 +58,7 @@ async function boot() {
   applyUrlViewState()
   document.getElementById('app').innerHTML = shellHTML()
   applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
-  fillProjectionCopy(); syncProjectionUI(); bindChrome()
+  fillProjectionCopy(); syncProjectionUI(); bindChrome(); syncPrimaryControls()
   try {
     const bundle = await loadPollData(DATA_URL, EXTRA_URL, META_URL)
     state.raw = mergePolls(bundle.polls, bundle.extra)
@@ -69,7 +69,7 @@ async function boot() {
     state.institutes = new Set(state.allInstitutes)
     applyUrlViewState(state.allInstitutes)
     publishDataStore()
-    renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
+    renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
     setStamp(); applyCheckMeta(bundle.meta); startCheckTimers()
   } catch (err) {
@@ -135,7 +135,7 @@ function resolveUpdatedStamp(meta, polls) {
   return null
 }
 function setStamp() {
-  document.getElementById('stamp').textContent = `Atualizado em ${state.updatedLabel || '—'} · ${countLabel()}`
+  document.getElementById('stamp').textContent = `Dados atualizados em ${state.updatedLabel || '—'} · ${countLabel()}`
 }
 function applyCheckMeta(meta) {
   state.meta = meta
@@ -200,7 +200,7 @@ async function refreshDataQuietly() {
       state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare('pt-BR'))
       state.institutes = new Set(state.allInstitutes)
       publishDataStore()
-      renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
+      renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
       if (state.chart) state.chart.destroy()
       state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
       document.getElementById('chartError').textContent = ''
@@ -276,6 +276,14 @@ function syncProjectionUI() {
   document.getElementById('projDisclaimer')?.classList.toggle('on', !!state.projection)
   const chip = document.getElementById('projChip')
   if (chip) chip.hidden = !state.projection
+}
+function syncPrimaryControls() {
+  document.querySelectorAll('[data-round]').forEach((b) => b.classList.toggle('active', Number(b.dataset.round) === state.round))
+  document.querySelectorAll('[data-range]').forEach((b) => {
+    const id = b.dataset.range
+    const active = id === 'all' ? state.rangeDays == null : Number(id) === state.rangeDays
+    b.classList.toggle('active', active)
+  })
 }
 function syncWindowUI() {
   const val = document.getElementById('windowVal')
