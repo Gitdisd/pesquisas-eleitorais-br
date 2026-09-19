@@ -272,7 +272,7 @@ function pushUncertaintyDatasets(datasets, c, band) {
   const high = band.map((p) => ({ x: p.x, y: p.high }))
   const low = band.map((p) => ({ x: p.x, y: p.low }))
   datasets.push({
-    label: \`undefined (faixa de incerteza 90%+)\`,
+    label: `${c.label} (faixa de incerteza 90%+)`,
     data: high,
     showLine: true,
     pointRadius: 0,
@@ -284,7 +284,7 @@ function pushUncertaintyDatasets(datasets, c, band) {
     order: 5,
   })
   datasets.push({
-    label: \`undefined (faixa de incerteza 90%-)\`,
+    label: `${c.label} (faixa de incerteza 90%-)`,
     data: low,
     showLine: true,
     pointRadius: 0,
