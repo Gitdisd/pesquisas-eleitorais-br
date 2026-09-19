@@ -14,7 +14,7 @@ import 'chartjs-adapter-date-fns'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import { ptBR } from 'date-fns/locale'
 import { CANDIDATES } from './candidates.js'
-import { weightedTrend, averageTrend } from './aggregate.js'
+import { weightedTrend, averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
@@ -103,7 +103,7 @@ function hoverBoxFor(chart) {
 }
 
 function isOverlaySeries(label) {
-  return /\((média|projeção|modelo|banda|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')
+  return /\((média|projeção|modelo|banda|faixa|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')
 }
 
 function externalTooltip(context) {
@@ -267,6 +267,36 @@ function rangeBounds(polls, round, institutes, rangeDays, projection) {
   return { min, max: tMax }
 }
 
+function pushUncertaintyDatasets(datasets, c, band) {
+  if (!band.length) return
+  const high = band.map((p) => ({ x: p.x, y: p.high }))
+  const low = band.map((p) => ({ x: p.x, y: p.low }))
+  datasets.push({
+    label: \`undefined (faixa de incerteza 90%+)\`,
+    data: high,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: hexAlpha(c.color, 0.08),
+    fill: '+1',
+    tension: 0.2,
+    order: 5,
+  })
+  datasets.push({
+    label: \`undefined (faixa de incerteza 90%-)\`,
+    data: low,
+    showLine: true,
+    pointRadius: 0,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+    fill: false,
+    tension: 0.2,
+    order: 5,
+  })
+}
+
 function pushProjDatasets(datasets, c, proj, tag) {
   if (!proj.ok || proj.line.length <= 1) return
   datasets.push({
@@ -341,6 +371,10 @@ function buildDatasets(polls, round, institutes, windowDays, model, aggregate = 
     const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
     const avgModel = model >= 2 && model <= 5 ? model : 1
     const trend = aggregate ? averageTrend(trendPts, windowDays, avgModel) : []
+    if (aggregate) {
+      const band = uncertaintyBand(trendPts, windowDays)
+      pushUncertaintyDatasets(datasets, c, band)
+    }
     if (aggregate) datasets.push({
       label: `${c.label} (média)`,
       data: trend,
