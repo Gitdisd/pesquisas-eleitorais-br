@@ -14,6 +14,8 @@ const coverage = readJson('data/coverage_summary.json')
 const mirror = readJson('public/data/polls.json')
 const inbox = readJson('data/discovery/inbox.json')
 const lastRun = readJson('data/discovery/last-run.json')
+const witnesses = readJson('data/discovery/witnesses.json')
+const staged = readJson('data/discovery/discovered-polls.json')
 
 if (!Array.isArray(polls)) fail('data/polls.json is not an array')
 if (!Array.isArray(extra)) fail('data/polls-extra.json is not an array')
@@ -68,12 +70,32 @@ if (!coverage || typeof coverage !== 'object') fail('coverage summary missing')
 
 if (!inbox || typeof inbox !== 'object' || !Array.isArray(inbox.items)) fail('discovery inbox must be an object with items[]')
 if (!lastRun || typeof lastRun !== 'object' || !lastRun.ran_at) fail('discovery last-run is invalid')
+if (!witnesses || typeof witnesses !== 'object' || !Array.isArray(witnesses.items)) fail('witness ledger must be an object with items[]')
+if (!staged || typeof staged !== 'object' || !Array.isArray(staged.items)) fail('discovery staging queue must be an object with items[]')
 if (Array.isArray(inbox.items)) {
   const urls = new Set()
   for (const [i, item] of inbox.items.entries()) {
     if (!item || !item.url) fail(`inbox item ${i} missing url`)
     if (item.url && urls.has(item.url)) fail(`duplicate inbox URL: ${item.url}`)
     if (item.url) urls.add(item.url)
+  }
+}
+if (Array.isArray(witnesses?.items)) {
+  const ids = new Set()
+  for (const [i, item] of witnesses.items.entries()) {
+    if (!item || typeof item.url !== 'string' || !item.url) fail(`witness ${i} missing url`)
+    if (!item?.poll_key) fail(`witness ${i} missing poll_key`)
+    const id = `${item?.poll_key || ''}\\u0000${item?.url || ''}`
+    if (ids.has(id)) fail(`duplicate witness: ${id}`)
+    ids.add(id)
+  }
+}
+if (Array.isArray(staged?.items)) {
+  const stagedIds = new Set()
+  for (const [i, item] of staged.items.entries()) {
+    const key = canonicalPollKey(item || {})
+    if (stagedIds.has(key)) fail(`duplicate staged poll identity at item ${i}: ${key}`)
+    stagedIds.add(key)
   }
 }
 
