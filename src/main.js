@@ -66,6 +66,7 @@ async function boot() {
     state.updatedLabel = resolveUpdatedStamp(bundle.meta, state.polls)
     state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
     state.institutes = new Set(state.allInstitutes)
+    publishDataStore()
     renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
     setStamp(); applyCheckMeta(bundle.meta); startCheckTimers()
@@ -75,6 +76,18 @@ async function boot() {
 }
 function chartOpts() {
   return { polls: state.polls, round: state.round, institutes: state.institutes, windowDays: state.windowDays, rangeDays: state.rangeDays, projection: state.projection }
+}
+function publishDataStore() {
+  const store = {
+    version: 1,
+    raw: state.raw,
+    polls: state.polls,
+    meta: state.meta,
+    updatedLabel: state.updatedLabel,
+    urls: { data: DATA_URL, extra: EXTRA_URL, meta: META_URL },
+  }
+  window.__pebr = store
+  document.dispatchEvent(new CustomEvent('pebr-data-ready', { detail: store }))
 }
 function resolveUpdatedStamp(meta, polls) {
   const fromMeta = formatUpdatedStamp(meta?.last_updated)
@@ -149,6 +162,7 @@ async function refreshDataQuietly() {
       state.polls = nextPolls
       state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare('pt-BR'))
       state.institutes = new Set(state.allInstitutes)
+      publishDataStore()
       renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
       if (state.chart) state.chart.destroy()
       state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
@@ -159,6 +173,7 @@ async function refreshDataQuietly() {
       state.updatedLabel = resolveUpdatedStamp(meta, state.polls)
       applyCheckMeta(meta)
       setStamp()
+      publishDataStore()
     }
     tickCheckTimer()
   } catch (err) {
