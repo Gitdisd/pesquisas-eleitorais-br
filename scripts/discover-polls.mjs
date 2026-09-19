@@ -7,9 +7,9 @@
  *  2. Fetch curated URLs from data/sources.json
  *  3. Heuristic link scan for poll articles after watermark
  *  4. Fetch candidate pages; regex/JSON-LD extract when possible
- *  5. Merge verified:true records into data/polls.json (never invent numbers)
+ *  5. Stage verified records for the canonical merge (never invent numbers)
  *  6. Unparseable / PDF / hard pages → data/discovery/inbox.json
- *  7. Always bump meta last_check_at + check_interval_minutes 190
+ *  7. Always bump last_check_at; publication metadata is written by the canonical publish step
  *
  * Exit 0 on soft fetch failures (continue-on); exit 1 only on hard local I/O errors.
  */
