@@ -241,7 +241,15 @@ const witnessesOut = [...witnessMap.values()].sort((a, b) =>
   String(a.url).localeCompare(String(b.url))
 )
 fs.mkdirSync(path.dirname(WITNESS_PATH), { recursive: true })
-const witnessText = `${JSON.stringify({ version: 1, updated_at: new Date().toISOString(), items: witnessesOut.slice(-2000) }, null, 2)}\n`
+const witnessItemsOut = witnessesOut.slice(-2000)
+const previousItems = Array.isArray(existingWitnessDoc.items) ? existingWitnessDoc.items : []
+const witnessChanged = JSON.stringify(previousItems) !== JSON.stringify(witnessItemsOut)
+const witnessDocument = {
+  version: 1,
+  updated_at: witnessChanged ? new Date().toISOString() : (existingWitnessDoc.updated_at || null),
+  items: witnessItemsOut,
+}
+const witnessText = JSON.stringify(witnessDocument, null, 2) + '\n'
 if (!fs.existsSync(WITNESS_PATH) || fs.readFileSync(WITNESS_PATH, 'utf8') !== witnessText) {
   fs.writeFileSync(WITNESS_PATH, witnessText, 'utf8')
 }
