@@ -349,8 +349,6 @@ async function main() {
 
   const local = await startServer(packed.zip);
   try {
-    const runtime = JSON.parse(originalConfig);
-
     const status = {
       version: 7,
       status: "resolved",
@@ -373,7 +371,7 @@ async function main() {
       TSE_REGISTRY_TRUST: selected.trust,
       TSE_REGISTRY_SOURCE_URL: selected.resolved_url,
       TSE_REGISTRY_SOURCE_SHA256: status.sha256,
-      TSE_REGISTRY_SOURCE_URL: local.url,
+      TSE_REGISTRY_ZIP_URL: local.url,
     });
     const count = parsedCount();
     console.log(`[registry-resolver] parsed registry records: ${count}`);
