@@ -107,7 +107,13 @@ function applyUrlViewState(allInstitutes = []) {
   if (range === 'all') state.rangeDays = null
   else if (/^\d+$/.test(range || '')) state.rangeDays = Math.max(1, Number(range))
   const windowValue = params.get('window')
-  if (/^\d+$/.test(windowValue || '')) {
+  if (windowValue === 'ytd') {
+    state.windowPreset = 'ytd'
+    state.windowDays = daysSinceJan1()
+  } else if (WINDOW_PRESETS.some((x) => x.id === windowValue && x.id !== 'ytd')) {
+    state.windowPreset = windowValue
+    state.windowDays = resolveWindowDays(windowValue, state.windowCustom)
+  } else if (/^\d+$/.test(windowValue || '')) {
     state.windowPreset = 'custom'
     state.windowCustom = Math.max(1, Number(windowValue))
     state.windowDays = state.windowCustom
