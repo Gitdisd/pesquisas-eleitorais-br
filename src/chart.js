@@ -127,7 +127,9 @@ function externalTooltip(context) {
     const v = p.parsed?.y
     const meta = p.raw?.meta
     const extra = meta?.institute ? ` · ${meta.institute}` : ''
-    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${fmtVote(v)}%${extra}</span>`
+    const pub = meta?.published ? ` · publicado ${meta.published.split('-').reverse().join('/')}` : ''
+    const tse = meta?.tse ? ` · ${meta.tse}` : ''
+    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${fmtVote(v)}%${extra}${pub}${tse}</span>`
   })
   box.classList.remove('is-empty')
   box.innerHTML = `<span class="ch-date">${date}</span>${rows.join('')}`
@@ -323,7 +325,7 @@ function buildDatasets(polls, round, institutes, windowDays, model, aggregate = 
       pts.push({
         x: p.t,
         y,
-        meta: { institute: p.institute, n: p.n, moe: p.moe, url: p.sourceUrl },
+        meta: { institute: p.institute, n: p.n, moe: p.moe, url: p.sourceUrl, published: p.published, tse: p.tse, fieldworkStart: p.fieldworkStart, fieldworkEnd: p.fieldworkEnd },
       })
     }
     datasets.push({
