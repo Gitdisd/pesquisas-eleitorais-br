@@ -22,7 +22,8 @@ function mergeCandidates(base: CandidateResult[] = [], extra: CandidateResult[] 
   }
   for (const candidate of extra) {
     if (!candidate?.name || typeof candidate.pct !== 'number' || !Number.isFinite(candidate.pct)) continue
-    merged.set(keyOf(candidate), candidate)
+    const key = keyOf(candidate)
+    if (!merged.has(key)) merged.set(key, candidate)
   }
   return [...merged.values()]
 }
