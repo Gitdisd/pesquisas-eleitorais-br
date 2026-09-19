@@ -35,7 +35,7 @@ for (const [i, p] of polls.entries()) {
   if (p.fieldwork_end > p.published_date) fail(`poll ${i} published_date precedes fieldwork_end`)
   if (p.tse_registration && !normalizeProtocol(p.tse_registration)) fail(`poll ${i} has malformed tse_registration`)
   if (p.coverage_dates && !Array.isArray(p.coverage_dates)) fail(`poll ${i} coverage_dates must be an array`)
-  if (Array.isArray(p.coverage_dates)) for (const d of p.coverage_dates) if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(String(d))) fail(`poll ${i} has invalid coverage date ${d}`)
+  if (Array.isArray(p.coverage_dates)) for (const d of p.coverage_dates) if (!/^\d{4}-\d{2}-\d{2}$/.test(String(d))) fail(`poll ${i} has invalid coverage date ${d}`)
 }
 
 const identitySeen = new Map()
