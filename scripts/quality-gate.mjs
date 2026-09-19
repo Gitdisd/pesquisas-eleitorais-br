@@ -22,15 +22,23 @@ if (JSON.stringify(polls) !== JSON.stringify(mirror)) fail('public/data/polls.js
 
 const required = ['institute','fieldwork_start','fieldwork_end','published_date','scenario','candidates','n','margin_of_error','source_url','methodology_note','verified']
 const keys = new Set()
+const fallbackKeys = new Map()
 for (const [i, p] of polls.entries()) {
   for (const k of required) if (!(k in p)) fail(`poll ${i} missing ${k}`)
   if (!Array.isArray(p.candidates) || p.candidates.length === 0) fail(`poll ${i} has no candidates`)
   if (!Number.isFinite(Number(p.n)) || Number(p.n) <= 0) fail(`poll ${i} invalid n`)
   if (p.verified !== true) fail(`poll ${i} is not verified`)
   if (!/^https?:\/\//i.test(String(p.source_url))) fail(`poll ${i} invalid source_url`)
+  for (const c of p.candidates || []) {
+    if (!Number.isFinite(Number(c.pct)) || Number(c.pct) < 0 || Number(c.pct) > 100) fail(`poll ${i} invalid candidate pct: ${c.name}`)
+  }
   const key = canonicalPollKey(p)
   if (keys.has(key)) fail(`duplicate canonical poll key: ${key}`)
   keys.add(key)
+  const fallback = String(p.institute || '').toLowerCase().replace(/\s+/g, ' ').trim() + '|' + p.fieldwork_start + '|' + p.fieldwork_end + '|' + String(p.scenario || '').toLowerCase().trim() + '|' + String(p.geo || 'BR').toUpperCase()
+  const prior = fallbackKeys.get(fallback)
+  if (prior != null && prior !== key && (p.tse_registration || '').trim() === '') fail(`poll ${i} may duplicate protocol-enriched poll ${prior}: fallback identity ${fallback}`)
+  fallbackKeys.set(fallback, key)
   if (p.fieldwork_start > p.fieldwork_end) fail(`poll ${i} fieldwork dates are reversed`)
   if (p.fieldwork_end > p.published_date) fail(`poll ${i} published_date precedes fieldwork_end`)
   if (p.tse_registration && !normalizeProtocol(p.tse_registration)) fail(`poll ${i} has malformed tse_registration`)
