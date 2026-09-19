@@ -284,21 +284,6 @@ function startServer(zip) {
   });
 }
 
-function patchParser() {
-  const original = fs.readFileSync(PARSER_PATH, "utf8");
-  let patched = original;
-  const oldBody = String.raw`\bBR-?\d{4,6}\/2026\b`;
-  const newBody = String.raw`\bBR\s*-?\d{4,6}(?:\s*\/\s*2026|\s+2026|2026)\b`;
-  patched = patched.replaceAll(oldBody, newBody);
-  patched = patched.replace(
-    "const registryRecords = registry.records.filter((r) => r.registered_date !== null || r.fieldwork_end !== null || r.planned_publication_date !== null);",
-    "const registryRecords = registry.records.filter((r) => Boolean(r.protocol));"
-  );
-  if (patched === original) throw new Error("canonical parser patch did not match expected source");
-  fs.writeFileSync(PARSER_PATH, patched, "utf8");
-  return original;
-}
-
 function runParser(env) {
   return new Promise((resolve) => {
     const child = spawn(process.execPath, [PARSER_PATH], { cwd: ROOT, env: { ...process.env, ...env }, stdio: "inherit" });
@@ -364,12 +349,10 @@ async function main() {
 
   const local = await startServer(packed.zip);
   const originalConfig = fs.readFileSync(CFG_PATH, "utf8");
-  const originalParser = fs.readFileSync(PARSER_PATH, "utf8");
   try {
     const runtime = JSON.parse(originalConfig);
     runtime.tse_registry_zip = local.url;
     fs.writeFileSync(CFG_PATH, `${JSON.stringify(runtime, null, 2)}\n`);
-    patchParser();
 
     const status = {
       version: 7,
@@ -393,6 +376,7 @@ async function main() {
       TSE_REGISTRY_TRUST: selected.trust,
       TSE_REGISTRY_SOURCE_URL: selected.resolved_url,
       TSE_REGISTRY_SOURCE_SHA256: status.sha256,
+      TSE_REGISTRY_SOURCE_URL: local.url,
     });
     const count = parsedCount();
     console.log(`[registry-resolver] parsed registry records: ${count}`);
@@ -405,7 +389,6 @@ async function main() {
     process.exit(rc);
   } finally {
     fs.writeFileSync(CFG_PATH, originalConfig, "utf8");
-    fs.writeFileSync(PARSER_PATH, originalParser, "utf8");
     await new Promise((resolve) => local.server.close(resolve));
     packed.cleanup();
   }
