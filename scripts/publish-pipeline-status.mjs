@@ -5,6 +5,8 @@ const mappings = [
   ['data/discovery/coverage-status.json', 'public/data/pipeline-status.json'],
   ['data/discovery/missing-registered.json', 'public/data/missing-registered.json'],
   ['data/discovery/conflicts.json', 'public/data/poll-conflicts.json'],
+  ['data/discovery/pending-polls.json', 'public/data/pending-polls.json'],
+  ['data/discovery/witnesses.json', 'public/data/witnesses.json'],
 ]
 
 for (const [source, target] of mappings) {
