@@ -9,6 +9,7 @@ const REG_URL = `${BASE}data/polls-regional.json`
 
 const state = {
   polls: [],
+  regionalRows: [],
   round: 1,
   geos: new Set(),
   chart: null,
@@ -94,6 +95,19 @@ function refresh() {
   renderTable()
 }
 
+function rebuildFromSharedStore(nationalRows = (window.__pebr?.raw || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))) {
+  const merged = normalize([...nationalRows, ...state.regionalRows])
+  const seen = new Set()
+  state.polls = merged.filter((p) => {
+    const k = canonicalPollKey({ ...p, scenario: p.scenario, geo: p.geo })
+    if (seen.has(k)) return false
+    seen.add(k)
+    return true
+  })
+  state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
+  refresh()
+}
+
 function mount() {
   if (document.getElementById('allSourcesPanel')) return
   const stack = document.querySelector('main.wrap') || document.getElementById('app')
@@ -176,17 +190,9 @@ async function bootRegional() {
     const natRows = (latest?.raw || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))
     const regRes = await fetch(REG_URL + '?t=' + Date.now(), { cache: 'no-store' })
     const extra = regRes.ok ? await regRes.json() : []
-    const regRows = Array.isArray(extra) ? extra : extra?.polls || []
-    const merged = normalize([...natRows, ...regRows])
+    state.regionalRows = Array.isArray(extra) ? extra : extra?.polls || []
+    rebuildFromSharedStore(natRows)
 
-    const seen = new Set()
-    state.polls = merged.filter((p) => {
-      const k = canonicalPollKey({ ...p, scenario: p.scenario, geo: p.geo })
-      if (seen.has(k)) return false
-      seen.add(k)
-      return true
-    })
-    state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
 
     const started = Date.now()
     const wait = setInterval(() => {
@@ -199,5 +205,7 @@ async function bootRegional() {
     console.warn('regional panel failed', err)
   }
 }
+
+document.addEventListener('pebr-data-ready', () => rebuildFromSharedStore())
 
 bootRegional()
