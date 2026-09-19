@@ -153,12 +153,13 @@ function bumpMeta(polls, { contentChanged }) {
   const prev = readJson(META_PATH, {});
   const checkedAtUtc = new Date().toISOString();
   const meta = {
-    schema_version: 1,
-    last_updated:
-      contentChanged || !prev.last_updated ? nowSaoPauloIso() : prev.last_updated,
+    schema_version: 2,
+    last_updated: prev.last_updated || null,
     last_check_at: checkedAtUtc,
     check_interval_minutes: Number(process.env.CHECK_INTERVAL_MINUTES || prev.check_interval_minutes || 60),
     record_count: polls.length,
+    latest_publication_date: prev.latest_publication_date || null,
+    latest_fieldwork_end: prev.latest_fieldwork_end || null,
     source: prev.source || "verified published polls",
     content_hash: prev.content_hash || "",
   };
@@ -924,7 +925,7 @@ async function main() {
     items: inboxItems,
   });
 
-  const meta = bumpMeta(contentChanged ? merged : existing, { contentChanged });
+  const meta = bumpMeta(existing, { contentChanged: false });
   writeJson(REPORT_PATH, { ...report, meta_last_check_at: meta.last_check_at });
 
   console.log("[discover-polls] meta last_check_at =", meta.last_check_at);
