@@ -16,6 +16,8 @@ const inbox = readJson('data/discovery/inbox.json')
 const lastRun = readJson('data/discovery/last-run.json')
 const witnesses = readJson('data/discovery/witnesses.json')
 const staged = readJson('data/discovery/discovered-polls.json')
+const pending = readJson('data/discovery/pending-polls.json')
+const queues = readJson('data/discovery/registry-queues.json')
 
 if (!Array.isArray(polls)) fail('data/polls.json is not an array')
 if (!Array.isArray(extra)) fail('data/polls-extra.json is not an array')
@@ -72,6 +74,8 @@ if (!inbox || typeof inbox !== 'object' || !Array.isArray(inbox.items)) fail('di
 if (!lastRun || typeof lastRun !== 'object' || !lastRun.ran_at) fail('discovery last-run is invalid')
 if (!witnesses || typeof witnesses !== 'object' || !Array.isArray(witnesses.items)) fail('witness ledger must be an object with items[]')
 if (!staged || typeof staged !== 'object' || !Array.isArray(staged.items)) fail('discovery staging queue must be an object with items[]')
+if (!pending || typeof pending !== 'object' || !Array.isArray(pending.items)) fail('pending poll queue must be an object with items[]')
+if (!queues || typeof queues !== 'object' || !queues.queues) fail('registry queue report is invalid')
 if (Array.isArray(inbox.items)) {
   const urls = new Set()
   for (const [i, item] of inbox.items.entries()) {
@@ -88,6 +92,12 @@ if (Array.isArray(witnesses?.items)) {
     const id = `${item?.poll_key || ''}\\u0000${item?.url || ''}`
     if (ids.has(id)) fail(`duplicate witness: ${id}`)
     ids.add(id)
+  }
+}
+if (Array.isArray(pending?.items)) {
+  for (const [i, item] of pending.items.entries()) {
+    if (item?.verified === true || item?.chart_visible === true) fail(`pending poll ${i} is incorrectly publishable`)
+    if (!item?.tse_registration) fail(`pending poll ${i} missing TSE registration`)
   }
 }
 if (Array.isArray(staged?.items)) {
