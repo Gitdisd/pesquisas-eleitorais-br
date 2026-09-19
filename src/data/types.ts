@@ -53,6 +53,7 @@ export interface PollMeta {
   schema_version?: number
   latest_publication_date?: string | null
   latest_fieldwork_end?: string | null
+  last_successful_pipeline_at?: string | null
   last_updated?: string
   last_check_at?: string
   check_interval_minutes?: number
