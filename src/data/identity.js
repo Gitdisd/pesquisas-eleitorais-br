@@ -50,13 +50,11 @@ export function normalizeProtocol(value) {
 }
 
 export function tseProtocolOf(row) {
-  return normalizeProtocol(
-    row?.tse_registration ??
-    row?.tse_protocol ??
-    row?.tseProtocol ??
-    row?.tse ??
-    null,
-  );
+  for (const value of [row?.tse_registration, row?.tse_protocol, row?.tseProtocol, row?.tse]) {
+    const protocol = normalizeProtocol(value)
+    if (protocol) return protocol
+  }
+  return null
 }
 
 export function normalizeGeo(value) {
