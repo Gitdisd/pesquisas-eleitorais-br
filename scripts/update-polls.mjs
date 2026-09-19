@@ -259,6 +259,14 @@ async function main() {
     process.exit(1);
   }
 
+  let existingCount = 0
+  try { existingCount = unwrapPolls(readJsonFile(DATA_POLLS)).length } catch {}
+  const shrinkAllowed = process.env.ALLOW_DATA_SHRINK === "1"
+  if (!shrinkAllowed && existingCount >= 20 && valid.length < Math.floor(existingCount * 0.75)) {
+    console.error(`[update-polls] refusing suspicious dataset shrink: existing=${existingCount}, incoming=${valid.length}. Set ALLOW_DATA_SHRINK=1 only for an intentional reset.`)
+    process.exit(1)
+  }
+
   const sorted = stableSort(valid);
   const pollsText = pretty(sorted);
   const hash = contentHash(sorted);
