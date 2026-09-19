@@ -142,7 +142,8 @@ function resolveUpdatedStamp(meta, polls) {
 }
 function setStamp() {
   const latestPublication = state.meta?.latest_publication_date ? fmtDateBR(state.meta.latest_publication_date) : '—'
-  document.getElementById('stamp').textContent = `Dados atualizados em ${state.updatedLabel || '—'} · última publicação ${latestPublication} · ${countLabel()}`
+  const pipeline = state.meta?.last_successful_pipeline_at ? formatUpdatedStamp(state.meta.last_successful_pipeline_at) : '—'
+  document.getElementById('stamp').textContent = `Dados atualizados em ${state.updatedLabel || '—'} · última publicação ${latestPublication} · pipeline auditado ${pipeline} · ${countLabel()}`
 }
 function applyCheckMeta(meta) {
   state.meta = meta
