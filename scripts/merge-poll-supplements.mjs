@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
+import path from 'node:path'
 import { canonicalPollKey, fallbackPollKey, normalizeGeo } from '../src/data/identity.js'
 
 const ROOT = process.cwd()
 const BASE_PATH = `${ROOT}/data/polls.json`
+const STAGING_PATH = `${ROOT}/data/discovery/discovered-polls.json`
+const WITNESS_PATH = `${ROOT}/data/discovery/witnesses.json`
 const EXTRA_PATHS = [
   `${ROOT}/data/polls-extra.json`,
   `${ROOT}/public/data/polls-extra.json`,
@@ -16,8 +19,6 @@ const EXTRA_PATHS = [
   STAGING_PATH,
 ]
 const OUT_PATH = BASE_PATH
-const STAGING_PATH = `${ROOT}/data/discovery/discovered-polls.json`
-const WITNESS_PATH = `${ROOT}/data/discovery/witnesses.json`
 
 const load = (file) => {
   const value = JSON.parse(fs.readFileSync(file, 'utf8'))
