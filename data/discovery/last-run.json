@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-19T22:40:16.646Z",
+  "ran_at": "2026-09-19T22:44:07.848Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 409,
+  "candidate_links": 408,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -19,7 +19,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-19T22:39:39.303Z"
+      "found_at": "2026-09-19T22:43:47.970Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -27,7 +27,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-19T22:39:40.012Z"
+      "found_at": "2026-09-19T22:43:48.312Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -35,7 +35,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-19T22:39:40.673Z"
+      "found_at": "2026-09-19T22:43:48.323Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
@@ -43,7 +43,7 @@
       "reason": "numbers_not_clean",
       "institute": "Quaest",
       "published_date": "2026-09-18",
-      "found_at": "2026-09-19T22:39:41.616Z"
+      "found_at": "2026-09-19T22:43:48.781Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-segundo-turno-presidente-17-setembro.ghtml",
@@ -51,8 +51,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-19T22:39:43.090Z"
+      "found_at": "2026-09-19T22:43:49.472Z"
     }
   ],
-  "meta_last_check_at": "2026-09-19T22:40:16.654Z"
+  "meta_last_check_at": "2026-09-19T22:44:07.849Z"
 }
