@@ -36,34 +36,13 @@ const FETCH_TIMEOUT_MS = 18_000;
 const MAX_CANDIDATE_PAGES = 60;
 const MAX_LINKS_PER_SOURCE = 30;
 
-const CANDIDATE_CANON = [
-  { keys: ["lula", "luiz inácio", "luiz inacio"], name: "Lula", party: "PT" },
-  {
-    keys: ["flávio bolsonaro", "flavio bolsonaro", "flávio", "flavio"],
-    name: "Flávio Bolsonaro",
-    party: "PL",
-  },
-  {
-    keys: ["augusto cury", "cury"],
-    name: "Augusto Cury",
-    party: "Avante",
-  },
-  {
-    keys: ["renan santos", "renan"],
-    name: "Renan Santos",
-    party: "Missão",
-  },
-  {
-    keys: ["ronaldo caiado", "caiado"],
-    name: "Ronaldo Caiado",
-    party: "PSD",
-  },
-  {
-    keys: ["romeu zema", "zema"],
-    name: "Romeu Zema",
-    party: "Novo",
-  },
-];
+const CANDIDATE_CANON = CANDIDATES
+  .filter((candidate) => candidate.key !== 'branco_nulo')
+  .map((candidate) => ({
+    keys: candidate.names,
+    name: candidate.label,
+    party: candidate.party || null,
+  }));
 
 const INSTITUTE_PATTERNS = [
   { re: /\bdatafolha\b/i, name: "Datafolha" },
