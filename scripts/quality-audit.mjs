@@ -7,14 +7,10 @@ const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
 const errors = []
 const warnings = []
 
-const normalizeProtocol = (raw) => {
-  if (!raw) return null
-  return String(raw).toUpperCase().replace(/^BR(?=\d)/, 'BR-')
-}
 
 const protocolOf = (p) => {
-  const explicit = String(p.tse_registration || '').match(/\bBR-?\d{4,6}\/2026\b/i)
-  if (explicit) return normalizeProtocol(explicit[0])
+  const explicit = normalizeProtocol(p.tse_registration)
+  if (explicit) return explicit
   const note = String(p.methodology_note || '')
     .replace(/\b(distinct from|not the|diferente de|separate (product|wave) from)[^.]*\./gi, ' ')
   const owned = note.match(/TSE\s+(BR-?\d{4,6}\/2026)/i)
