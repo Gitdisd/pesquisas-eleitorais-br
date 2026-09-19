@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
+import { canonicalPollKey } from '../src/data/identity.js'
 
 const ROOT = process.cwd()
 const BASE_PATH = `${ROOT}/data/polls.json`
@@ -20,7 +21,7 @@ const base = load(BASE_PATH, [])
 const extra = load(EXTRA_PATH, [])
 const inbox = load(INBOX_PATH, [])
 
-const key = (p) => [p.institute, p.fieldwork_start, p.fieldwork_end, p.published_date, p.scenario].join('|')
+const key = (p) => canonicalPollKey(p)
 const norm = (s) => String(s || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim()
 
 const baseByKey = new Map(base.map((p) => [key(p), p]))
