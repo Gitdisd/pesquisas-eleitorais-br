@@ -51,6 +51,7 @@ export function tseProtocolOf(row) {
     row?.tse_registration ??
     row?.tse_protocol ??
     row?.tseProtocol ??
+    row?.tse ??
     null,
   );
 }
