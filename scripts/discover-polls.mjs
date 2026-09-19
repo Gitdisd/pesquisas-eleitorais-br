@@ -160,6 +160,7 @@ function bumpMeta(polls, { contentChanged }) {
     record_count: polls.length,
     latest_publication_date: prev.latest_publication_date || null,
     latest_fieldwork_end: prev.latest_fieldwork_end || null,
+    last_successful_pipeline_at: prev.last_successful_pipeline_at || null,
     source: prev.source || "verified published polls",
     content_hash: prev.content_hash || "",
   };
