@@ -22,7 +22,7 @@ const OUT_PATH = BASE_PATH
 
 const load = (file) => {
   const value = JSON.parse(fs.readFileSync(file, 'utf8'))
-  return Array.isArray(value) ? value : value.polls || []
+  return Array.isArray(value) ? value : value.polls || value.items || []
 }
 
 const key = (p) => canonicalPollKey(p)
@@ -213,7 +213,7 @@ const report = {
   additions: additions.slice(0, 250),
 }
 fs.mkdirSync(`${ROOT}/data/discovery`, { recursive: true })
-const existingWitnessDoc = fs.existsSync(WITNESS_PATH) ? load(WITNESS_PATH) : { version: 1, items: [] }
+const existingWitnessDoc = fs.existsSync(WITNESS_PATH) ? JSON.parse(fs.readFileSync(WITNESS_PATH, 'utf8')) : { version: 1, items: [] }
 const witnessItems = Array.isArray(existingWitnessDoc.items) ? existingWitnessDoc.items : []
 const witnessMap = new Map(witnessItems.map((item) => [`${item.poll_key}\u0000${item.url}`, item]))
 for (const poll of merged) {
