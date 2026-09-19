@@ -890,7 +890,13 @@ async function main() {
   const stageMap = new Map()
   for (const poll of [...previousStaged, ...verifiedNew]) {
     const key = pollKey(poll)
-    if (!stageMap.has(key)) stageMap.set(key, poll)
+    const current = stageMap.get(key)
+    if (!current) {
+      stageMap.set(key, { ...poll, witness_urls: [...new Set([...(poll.witness_urls || []), poll.source_url].filter(Boolean))] })
+      continue
+    }
+    current.witness_urls = [...new Set([...(current.witness_urls || []), ...(poll.witness_urls || []), current.source_url, poll.source_url].filter(Boolean))].sort()
+    current.coverage_dates = [...new Set([...(current.coverage_dates || []), ...(poll.coverage_dates || []), current.published_date, poll.published_date].filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(String(d))))].sort()
   }
   const stagedOut = stableSort([...stageMap.values()]).slice(0, 500)
   const stageChanged = JSON.stringify(previousStaged) !== JSON.stringify(stagedOut)
