@@ -296,7 +296,7 @@ async function main() {
     return value > max ? value : max
   }, '')
   const meta = {
-    schema_version: 1,
+    schema_version: 2,
     latest_publication_date: latestPublication || null,
     latest_fieldwork_end: latestFieldwork || null,
     last_updated:
