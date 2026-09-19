@@ -7,7 +7,7 @@ export type SchoolKind = 'mean' | 'weight' | 'median' | 'mode' | 'trim'
 
 function sampleN(n: unknown): number {
   const v = Number(n)
-  return Number.isFinite(v) && v > 0 ? Math.min(8000, Math.max(100, v)) : 800
+  return Number.isFinite(v) && v > 0 ? Math.min(4000, Math.max(100, v)) : 800
 }
 
 function round2(y: number): number {
