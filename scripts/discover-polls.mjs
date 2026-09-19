@@ -926,11 +926,11 @@ async function main() {
     return;
   }
 
-  if (contentChanged) {
-    fs.writeFileSync(POLLS_PATH, prettyPolls(merged), "utf8");
-    console.log("[discover-polls] wrote data/polls.json (+%d)", verifiedNew.length);
+  if (stageChanged) {
+    writeJson(STAGING_PATH, { version: 1, updated_at: new Date().toISOString(), items: stagedOut })
+    console.log(`[discover-polls] staged ${stagedOut.length} discovered records for canonical merge`)
   } else {
-    console.log("[discover-polls] no verified new polls to merge");
+    console.log("[discover-polls] no staging changes");
   }
 
   writeJson(INBOX_PATH, {
