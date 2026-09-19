@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
+import { canonicalPollKey, normalizeGeo } from '../src/data/identity.js'
 
 const ROOT = process.cwd()
 const BASE_PATH = `${ROOT}/data/polls.json`
@@ -20,12 +21,7 @@ const load = (file) => {
   return Array.isArray(value) ? value : value.polls || []
 }
 
-const key = (p) => [
-  String(p.institute || '').trim(),
-  p.fieldwork_start || '',
-  p.fieldwork_end || '',
-  p.scenario || '',
-].join('|')
+const key = (p) => canonicalPollKey(p)
 
 const candidateKey = (name) => String(name || '')
   .normalize('NFD')
@@ -81,7 +77,7 @@ const additions = []
 for (const poll of base) {
   const cleaned = dedupeCandidates(poll.candidates)
   excludedCandidateValues += (poll.candidates || []).length - cleaned.length
-  byKey.set(key(poll), { ...structuredClone(poll), candidates: cleaned })
+  byKey.set(key(poll), { ...structuredClone(poll), geo: normalizeGeo(poll.geo), candidates: cleaned })
 }
 
 for (const extra of extras) {
@@ -92,6 +88,7 @@ for (const extra of extras) {
   if (!existing) {
     if (extra.verified === true) {
       const copy = structuredClone(extra)
+      copy.geo = normalizeGeo(copy.geo)
       copy.candidates = dedupeCandidates(copy.candidates)
       byKey.set(k, copy)
       addedPolls += 1
