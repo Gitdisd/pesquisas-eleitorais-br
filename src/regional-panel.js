@@ -61,6 +61,7 @@ function chartOpts() {
     windowDays: 14,
     rangeDays: null,
     projection: false,
+    aggregate: state.geos.size <= 1,
   }
 }
 
@@ -69,7 +70,7 @@ function renderTable() {
   const thead = document.getElementById('regThead')
   const tbody = document.getElementById('regTbody')
   if (!thead || !tbody) return
-  thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
+  thead.innerHTML = `<tr><th>Campo</th><th>Instituto</th><th>Geo</th><th>Publicação</th><th>N</th>${keys.map((c) => `<th>${c.label}</th>`).join('')}</tr>`
   const rows = filtered()
     .filter((p) => p.round === state.round)
     .filter((p) => keys.some((c) => p.results[c.key] != null))
@@ -81,7 +82,8 @@ function renderTable() {
         const v = p.results[c.key]
         return `<td class="num">${v == null ? '—' : String(v).replace('.', ',')}</td>`
       }).join('')
-      return `<tr><td>${p.fieldworkEnd}</td><td>${p.institute}</td><td>${p.geo}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td>${cells}</tr>`
+      const pub = p.published ? new Date(p.published + 'T12:00:00Z').toLocaleDateString('pt-BR') : '—'
+      return `<tr><td>${p.fieldworkStart}–${p.fieldworkEnd}</td><td>${p.institute}</td><td>${p.geo}</td><td>${pub}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td>${cells}</tr>`
     })
     .join('')
 }
