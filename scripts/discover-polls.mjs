@@ -136,17 +136,7 @@ function watermarkFromPolls(polls) {
 }
 
 function pollKey(p) {
-  return [
-    p.institute,
-    p.fieldwork_start,
-    p.fieldwork_end,
-    p.published_date,
-    p.scenario,
-  ].join("|");
-}
-
-function pollSoftKey(p) {
-  return [p.institute, p.fieldwork_end, p.scenario].join("|");
+  return canonicalPollKey(p);
 }
 
 function scoreCandidateLink(link) {
@@ -786,7 +776,6 @@ async function main() {
   const existing = unwrapPolls(readJson(POLLS_PATH));
   const watermark = watermarkFromPolls(existing);
   const existingKeys = new Set(existing.map(pollKey));
-  const existingSoft = new Set(existing.map(pollSoftKey));
   const existingUrls = new Set(existing.map((p) => p.source_url));
   for (const extraPath of [path.join(ROOT, "data", "polls-extra.json"), path.join(ROOT, "public", "data", "polls-extra.json")]) {
     const extraDoc = readJson(extraPath, []);
@@ -794,7 +783,6 @@ async function main() {
     for (const ep of extraList) {
       if (!ep || !ep.institute) continue;
       existingKeys.add(pollKey(ep));
-      existingSoft.add(pollSoftKey(ep));
       if (ep.source_url) existingUrls.add(ep.source_url);
     }
   }
@@ -876,7 +864,7 @@ async function main() {
       continue;
     }
     for (const p of extracted.polls) {
-      if (existingKeys.has(pollKey(p)) || existingSoft.has(pollSoftKey(p))) continue;
+      if (existingKeys.has(pollKey(p))) continue;
       verifiedNew.push(p);
       existingKeys.add(pollKey(p));
       existingSoft.add(pollSoftKey(p));
