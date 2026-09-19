@@ -64,8 +64,9 @@ const extras = []
 const seenExtra = new Set()
 for (const extra of extrasRaw) {
   const k = key(extra)
-  if (!k || seenExtra.has(k)) continue
-  seenExtra.add(k)
+  const witnessKey = `${k}\u0000${extra.source_url || ''}`
+  if (!k || seenExtra.has(witnessKey)) continue
+  seenExtra.add(witnessKey)
   extras.push(extra)
 }
 
