@@ -5,6 +5,7 @@ import {
   normalizeInstitute,
   normalizeProtocol,
   coverageDates,
+  tseProtocolOf,
 } from '../src/data/identity.js'
 
 test('publication date is not part of canonical poll identity', () => {
@@ -58,4 +59,12 @@ test('coverage dates retain publication witnesses without changing identity', ()
     coverage_dates: ['2026-09-13', '2026-09-15', 'bad'],
   }
   assert.deepEqual(coverageDates(row), ['2026-09-13', '2026-09-15'])
+})
+
+
+test('TSE protocol can be recovered from an unambiguous methodology note', () => {
+  assert.equal(
+    tseProtocolOf({ methodology_note: 'Pesquisa registrada no TSE BR-12345/2026.' }),
+    'BR-12345/2026',
+  )
 })
