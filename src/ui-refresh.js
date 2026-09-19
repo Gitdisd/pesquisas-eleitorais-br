@@ -23,29 +23,12 @@ function brDate(text) {
 }
 
 async function getPublishedStats() {
-  const [pollRes, extraRes, metaRes] = await Promise.all([
-    fetch(`${BASE}data/polls.json?ui=${Date.now()}`, { cache: 'no-store' }),
-    fetch(`${BASE}data/polls-extra.json?ui=${Date.now()}`, { cache: 'no-store' }).catch(() => null),
-    fetch(`${BASE}data/meta.json?ui=${Date.now()}`, { cache: 'no-store' }).catch(() => null),
-  ])
-  const base = pollRes.ok ? await pollRes.json() : []
-  let extra = []
-  if (extraRes?.ok) {
-    try { extra = await extraRes.json() } catch {}
+  const store = window.__pebr
+  if (!store) return { rows: [], meta: null }
+  return {
+    rows: Array.isArray(store.raw) ? store.raw : [],
+    meta: store.meta || null,
   }
-  const rows = [
-    ...(Array.isArray(base) ? base : base?.polls || []),
-    ...(Array.isArray(extra) ? extra : extra?.polls || []),
-  ]
-  const seen = new Set()
-  const unique = rows.filter((p) => {
-    const key = canonicalPollKey(p)
-    if (seen.has(key)) return false
-    seen.add(key)
-    return true
-  })
-  const meta = metaRes?.ok ? await metaRes.json().catch(() => null) : null
-  return { rows: unique, meta }
 }
 
 function injectHeaderBrand() {
@@ -171,12 +154,8 @@ function buildSparkMap(rows) {
 }
 
 async function loadSparkRows() {
-  if (sparkRowsPromise) return sparkRowsPromise
-  sparkRowsPromise = fetch(`${BASE}data/polls.json?cards=1`, { cache: 'force-cache' })
-    .then((res) => res.ok ? res.json() : [])
-    .then((data) => Array.isArray(data) ? data : data?.polls || [])
-    .catch(() => [])
-  return sparkRowsPromise
+  const store = window.__pebr
+  return Array.isArray(store?.raw) ? store.raw : []
 }
 
 async function enrichCardSparklines() {
@@ -272,7 +251,7 @@ async function mount() {
   if (mounted) return
   const chart = document.getElementById('chartPanel')
   const cards = document.getElementById('cards')
-  if (!chart || !cards) return
+  if (!chart || !cards || !window.__pebr) return
   mounted = true
   document.body.classList.add('pebr-enhanced')
   try { addOverview(await getPublishedStats()) } catch { addOverview({ rows: [], meta: null }) }
@@ -285,3 +264,4 @@ const bootWait = window.setInterval(() => {
   mount()
   if (mounted) window.clearInterval(bootWait)
 }, 150)
+document.addEventListener('pebr-data-ready', () => { mount() }, { once: true })
