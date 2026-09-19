@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-18T21:37:30.044Z",
+  "updated_at": "2026-09-19T00:13:15.525Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -809,6 +809,94 @@
       "institute": "Datafolha",
       "published_date": "2026-09-18",
       "found_at": "2026-09-18T21:37:06.652Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
+      "title": "Nova pesquisa Quaest no DF testará liderança de Celina Leão no DF e briga pelo 2º turno | Eleições 2026 | Valor Econômic",
+      "reason": "numbers_not_clean",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:12:56.231Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/18/datafolha-sentimentos-brasileiro-otimismo-pessimismo.ghtml",
+      "title": "Datafolha: 43% estão otimistas com o Brasil e 37%, pessimistas | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:12:59.539Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/18/datafolha-crise-no-stf-e-campanha-eleitoral.ghtml",
+      "title": "Datafolha: 38% dizem que crise no STF prejudica Lula e 31%, Flávio | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:12:59.696Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/18/datafolha-confianca-instituicoes.ghtml",
+      "title": "Datafolha: Desconfiança no STF sobe a 48% e bate recorde | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:12:59.859Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/18/datafolha-caso-master-envolve-mais-politicos-de-esquerda-ou-direita.ghtml",
+      "title": "Datafolha: 34% veem esquerda e 27% direita no Caso Master | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Da",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:13:00.015Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/18/datafolha-eleicao-senado-stf-voto.ghtml",
+      "title": "Datafolha mostra impacto do caso Master e da crise no STF na eleição | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:13:00.172Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-governador-senador-ceara-setembro-2026/",
+      "title": "Datafolha divulga pesquisa para governo e Senado no Ceará Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-19T00:13:00.895Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-ce-mede-temor-politico-entre-mais-um-mandato-de-lula-e-volta-dos-bolsonaro.ghtml",
+      "title": "Nova pesquisa Quaest no CE mede 'temor político' entre mais um mandato de Lula e volta dos Bolsonaro | Eleições 2026 | V",
+      "reason": "incomplete_extract:no_fieldwork,no_n",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:13:02.808Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-em-sp-mede-disputa-entre-tarcisio-e-haddad-a-duas-semanas-da-eleicao.ghtml",
+      "title": "Nova pesquisa Quaest em SP mede disputa entre Tarcísio e Haddad a duas semanas da eleição | Eleições 2026 | Valor Econôm",
+      "reason": "numbers_not_clean",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:13:03.170Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-rj-testa-apoios-de-lula-e-flavio-bolsonaro-ao-governo-em-2026.ghtml",
+      "title": "Nova pesquisa Quaest no RJ testa apoios de Lula e Flávio Bolsonaro ao governo nas eleições 2026 | Eleições 2026 | Valor ",
+      "reason": "numbers_not_clean",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:13:03.461Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-47-dizem-que-crise-no-stf-tera-alguma-influencia-no-voto-para-presidente.shtml",
+      "title": "Datafolha: Crise no STF terá influência no voto para 47% - 18/09/2026 - Política - Folha Últimas notícias Gostaria de re",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-18",
+      "found_at": "2026-09-19T00:13:12.569Z"
     }
   ]
 }
