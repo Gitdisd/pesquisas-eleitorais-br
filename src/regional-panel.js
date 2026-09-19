@@ -1,5 +1,6 @@
 import { CANDIDATES, matchCandidate, parseMoe, isFirstRound, isSecondRound } from './candidates.js'
 import { createPollChart, updatePollChart } from './chart.js'
+import { canonicalPollKey } from './data/identity.js'
 
 const BASE = import.meta.env.BASE_URL
 const NAT_URL = `${BASE}data/polls.json`
@@ -173,7 +174,7 @@ async function bootRegional() {
     const merged = normalize([...natRows, ...extra])
     const seen = new Set()
     state.polls = merged.filter((p) => {
-      const k = `${p.institute}|${p.fieldworkEnd}|${p.round}|${p.geo}`
+      const k = canonicalPollKey({ ...p, scenario: p.scenario, geo: p.geo })
       if (seen.has(k)) return false
       seen.add(k)
       return true
