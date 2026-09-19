@@ -199,7 +199,7 @@ async function loadTseRegistry() {
   const zipPath = path.join(tmpDir, "pesquisa_eleitoral_2026.zip");
   const csvPath = path.join(tmpDir, "selected.csv");
   try {
-    const registryUrl = process.env.TSE_REGISTRY_SOURCE_URL || cfg.tse_registry_zip;
+    const registryUrl = process.env.TSE_REGISTRY_ZIP_URL || cfg.tse_registry_zip;
     if (!registryUrl) throw new Error('TSE registry source URL is not configured');
     const buffer = await fetchBuffer(registryUrl, 45000);
     fs.writeFileSync(zipPath, buffer);
