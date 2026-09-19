@@ -867,7 +867,6 @@ async function main() {
       if (existingKeys.has(pollKey(p))) continue;
       verifiedNew.push(p);
       existingKeys.add(pollKey(p));
-      existingSoft.add(pollSoftKey(p));
     }
     if (extracted.inbox) inboxNew.push(extracted.inbox);
   }
