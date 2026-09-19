@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+import { normalizeGeo, normalizeProtocol } from "../src/data/identity.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -137,6 +138,15 @@ function normalizePoll(poll) {
     methodology_note: poll.methodology_note,
     verified: poll.verified,
   };
+  const tse = normalizeProtocol(poll.tse_registration || poll.tse_protocol);
+  if (tse) out.tse_registration = tse;
+  if (poll.geo != null) out.geo = normalizeGeo(poll.geo);
+  if (Array.isArray(poll.coverage_dates)) {
+    out.coverage_dates = [...new Set(poll.coverage_dates.filter((d) => /^\\d{4}-\\d{2}-\\d{2}$/.test(String(d))))].sort();
+  }
+  if (Array.isArray(poll.witness_urls)) {
+    out.witness_urls = [...new Set(poll.witness_urls.filter((u) => /^https?:\\/\\//i.test(String(u))))].sort();
+  }
   if (typeof poll.flag === "string" && poll.flag.length > 0) out.flag = poll.flag;
   return out;
 }
