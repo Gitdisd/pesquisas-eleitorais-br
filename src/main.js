@@ -55,6 +55,7 @@ function initTheme() {
 }
 async function boot() {
   applyTheme(initTheme())
+  applyUrlViewState()
   document.getElementById('app').innerHTML = shellHTML()
   applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
   fillProjectionCopy(); syncProjectionUI(); bindChrome()
@@ -66,6 +67,7 @@ async function boot() {
     state.updatedLabel = resolveUpdatedStamp(bundle.meta, state.polls)
     state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
     state.institutes = new Set(state.allInstitutes)
+    applyUrlViewState(state.allInstitutes)
     publishDataStore()
     renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
@@ -85,9 +87,44 @@ function publishDataStore() {
     meta: state.meta,
     updatedLabel: state.updatedLabel,
     urls: { data: DATA_URL, extra: EXTRA_URL, meta: META_URL },
+    view: {
+      round: state.round,
+      rangeDays: state.rangeDays,
+      windowDays: state.windowDays,
+      windowPreset: state.windowPreset,
+      institutes: [...state.institutes],
+      model: Number(window.__pebrProjModel ?? 1),
+    },
   }
   window.__pebr = store
   document.dispatchEvent(new CustomEvent('pebr-data-ready', { detail: store }))
+}
+function applyUrlViewState(allInstitutes = []) {
+  const params = new URLSearchParams(location.search)
+  const round = Number(params.get('round'))
+  if (round === 1 || round === 2) state.round = round
+  const range = params.get('range')
+  if (range === 'all') state.rangeDays = null
+  else if (/^\d+$/.test(range || '')) state.rangeDays = Math.max(1, Number(range))
+  const windowValue = params.get('window')
+  if (/^\d+$/.test(windowValue || '')) {
+    state.windowPreset = 'custom'
+    state.windowCustom = Math.max(1, Number(windowValue))
+    state.windowDays = state.windowCustom
+  }
+  const model = Number(params.get('model'))
+  if (Number.isInteger(model) && model >= 0 && model <= 12) {
+    window.__pebrProjModel = model
+    try { localStorage.setItem('pebr-model', String(model)) } catch {}
+  }
+  if (allInstitutes.length) {
+    const selected = (params.get('institutes') || '')
+      .split(',')
+      .map((v) => decodeURIComponent(v).trim())
+      .filter(Boolean)
+      .filter((v) => allInstitutes.includes(v))
+    if (selected.length) state.institutes = new Set(selected)
+  }
 }
 function resolveUpdatedStamp(meta, polls) {
   const fromMeta = formatUpdatedStamp(meta?.last_updated)
@@ -345,6 +382,7 @@ function renderTable() {
 }
 function refresh() {
   renderLegend(); renderCards(); renderTable()
+  publishDataStore()
   if (state.chart) updatePollChart(state.chart, chartOpts())
   setStamp()
 }
