@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-19T22:44:07.848Z",
+  "ran_at": "2026-09-19T22:56:41.170Z",
   "watermark": "2026-09-17",
   "sources": 22,
-  "candidate_links": 408,
+  "candidate_links": 378,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 0,
-  "inbox_new": 41,
+  "inbox_new": 40,
   "skipped_old": 18,
-  "fetch_errors": 8,
+  "fetch_errors": 9,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -19,7 +19,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-19T22:43:47.970Z"
+      "found_at": "2026-09-19T22:56:17.471Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-2/",
@@ -27,7 +27,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-19T22:43:48.312Z"
+      "found_at": "2026-09-19T22:56:17.497Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-2/",
@@ -35,7 +35,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-19T22:43:48.323Z"
+      "found_at": "2026-09-19T22:56:17.521Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/18/nova-pesquisa-quaest-no-df-testara-lideranca-de-celina-leao-no-df-e-briga-pelo-2o-turno.ghtml",
@@ -43,7 +43,7 @@
       "reason": "numbers_not_clean",
       "institute": "Quaest",
       "published_date": "2026-09-18",
-      "found_at": "2026-09-19T22:43:48.781Z"
+      "found_at": "2026-09-19T22:56:18.021Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/17/datafolha-segundo-turno-presidente-17-setembro.ghtml",
@@ -51,8 +51,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-17",
-      "found_at": "2026-09-19T22:43:49.472Z"
+      "found_at": "2026-09-19T22:56:18.773Z"
     }
   ],
-  "meta_last_check_at": "2026-09-19T22:44:07.849Z"
+  "meta_last_check_at": "2026-09-19T22:56:41.171Z"
 }
