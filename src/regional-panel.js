@@ -162,16 +162,23 @@ function mount() {
 
 async function bootRegional() {
   try {
-    const [natRes, extraRes, regRes] = await Promise.all([
-      fetch(NAT_URL + '?t=' + Date.now(), { cache: 'no-store' }),
-      fetch(EXTRA_URL + '?t=' + Date.now(), { cache: 'no-store' }),
-      fetch(REG_URL + '?t=' + Date.now(), { cache: 'no-store' }),
-    ])
-    const nat = natRes.ok ? await natRes.json() : []
-    const extraNat = extraRes.ok ? await extraRes.json() : []
+    const getStore = () => window.__pebr || null
+    const store = getStore()
+    if (!store) {
+      await new Promise((resolve) => {
+        const handler = () => { document.removeEventListener('pebr-data-ready', handler); resolve() }
+        document.addEventListener('pebr-data-ready', handler, { once: true })
+        setTimeout(() => { document.removeEventListener('pebr-data-ready', handler); resolve() }, 10000)
+      })
+    }
+
+    const latest = getStore()
+    const natRows = (latest?.raw || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))
+    const regRes = await fetch(REG_URL + '?t=' + Date.now(), { cache: 'no-store' })
     const extra = regRes.ok ? await regRes.json() : []
-    const natRows = [...(Array.isArray(extraNat) ? extraNat : []), ...(Array.isArray(nat) ? nat : nat.polls || [])].map((p) => ({ ...p, geo: p.geo || 'BR' }))
-    const merged = normalize([...natRows, ...extra])
+    const regRows = Array.isArray(extra) ? extra : extra?.polls || []
+    const merged = normalize([...natRows, ...regRows])
+
     const seen = new Set()
     state.polls = merged.filter((p) => {
       const k = canonicalPollKey({ ...p, scenario: p.scenario, geo: p.geo })
@@ -180,6 +187,7 @@ async function bootRegional() {
       return true
     })
     state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
+
     const started = Date.now()
     const wait = setInterval(() => {
       if (document.getElementById('chartPanel') || Date.now() - started > 8000) {
