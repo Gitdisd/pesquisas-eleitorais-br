@@ -16,6 +16,8 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { CANDIDATES } from "../src/candidates.js";
+import { canonicalPollKey } from "../src/data/identity.js";
 import { canonicalizeUrl, classifyPollLink } from "./discover-policy.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
