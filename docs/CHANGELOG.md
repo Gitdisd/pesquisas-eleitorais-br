@@ -46,6 +46,8 @@ Formato: data (America/Sao_Paulo) · o quê · por que · arquivos.
 
 ## 2026-09-19 — Codex robustness pass
 
+- CI revalidated after failure-remediation; validation now covers every script plus publication integrity gates.
+
 - Unified poll identity around TSE protocol + scenario + geography, with fieldwork fallback; publication date remains coverage metadata.
 - Added witness ledger, discovery staging, pending TSE evidence queue, and explicit registry scope queues.
 - Hardened publishing against accidental dataset shrinkage and preserved TSE/geo/witness metadata.
