@@ -287,8 +287,18 @@ async function main() {
   try { prevMeta = readJsonFile(META_PATH); } catch { /* missing */ }
   const needsContentHash = !prevMeta || typeof prevMeta.content_hash !== "string";
   const checkedAtUtc = new Date().toISOString();
+  const latestPublication = sorted.reduce((max, poll) => {
+    const value = String(poll.published_date || '')
+    return value > max ? value : max
+  }, '')
+  const latestFieldwork = sorted.reduce((max, poll) => {
+    const value = String(poll.fieldwork_end || '')
+    return value > max ? value : max
+  }, '')
   const meta = {
     schema_version: 1,
+    latest_publication_date: latestPublication || null,
+    latest_fieldwork_end: latestFieldwork || null,
     last_updated:
       contentChanged || !prevMeta?.last_updated
         ? nowSaoPauloIso()
