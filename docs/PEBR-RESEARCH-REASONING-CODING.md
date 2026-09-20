@@ -1,11 +1,11 @@
 # PEBR — Research → Reasoning → Coding brief
 
 **Product:** https://gitdisd.github.io/pesquisas-eleitorais-br/  
-**Repo:** Gitdisd/pesquisas-eleitorais-br  
-**Written:** 2026-09-15 (America/Sao_Paulo)  
-**Purpose:** One file so research, reasoning, and coding do not drift. Next coding session starts here. Do not invent a fifth pipeline.
+**Repo:** gitdisd/pesquisas-eleitorais-br  
+**Updated:** 2026-09-20 (America/Sao_Paulo)  
+**Purpose:** One file so research, reasoning, and coding do not drift.
 
-See the full maintained copy in this path. Companion: [PEBR-ACQUISITION-CONTEXT.md](PEBR-ACQUISITION-CONTEXT.md).
+See the maintained acquisition context in [PEBR-ACQUISITION-CONTEXT.md](PEBR-ACQUISITION-CONTEXT.md).
 
 ## Boot
 
@@ -13,56 +13,79 @@ Read this file and `docs/PEBR-ACQUISITION-CONTEXT.md` before changing discovery,
 
 ## User thesis (accepted)
 
-Multiple outlets reprint the same poll. That is not noise. That is **witnesses**.
+Multiple outlets reprint the same poll. That is not noise. They are **witnesses**.
 
-- The written table on outlet A can fill cells that outlet B omitted (branco/nulo, não sabe, n, MOE, TSE code).
-- Article `published_at` tells you if coverage is new — not whether the poll is new.
-- Same institute + same fieldwork window + same scenario = same poll, even if CNN posts at 20:01 and G1 posts at 21:17.
+- A witness can fill cells that another source omitted.
+- Article `published_at` tells you when coverage appeared — not whether the poll is new.
+- Same institute + same fieldwork window + same scenario normally describes the same poll.
 - Never invent a number to close a hole.
 
-## Identity (freeze)
+## Identity contract
 
-**Primary:** `tse_protocol + scenario` when protocol exists.  
-**Fallback:** `norm(institute) + fieldwork_start + fieldwork_end + scenario`
+**Primary:** `tse_protocol + scenario + geography` when protocol exists.  
+**Fallback:** normalized `institute + fieldwork_start + fieldwork_end + scenario + geography`.
 
-`published_date` is NOT in the identity.
+`published_date` is NOT in identity.
+
+TSE enrichment can re-key a fallback record to its registered protocol instead of creating a duplicate.
 
 ## Three clocks
 
 | Clock | Field | Meaning |
 |---|---|---|
-| Fieldwork | fieldwork_start, fieldwork_end | When people were asked. Identity. |
-| Registry | tse_protocol | Legal identity. Best key. |
-| Coverage | witnesses[].article_published_at | When a site wrote about it. NOT identity. |
+| Fieldwork | fieldwork_start, fieldwork_end | When people were asked. Identity |
+| Registry | tse_protocol | Legal/registration identity |
+| Coverage | published_date / witness coverage dates | When coverage appeared; not identity |
 
 ## Pipeline shape
 
 SIGNAL → WITNESSES → IDENTITY → CELL RESOLVE → AUDIT → PUBLISH → DISPLAY
 
+## Current pipeline
+
+1. **Discover:** configured source pages/RSS/signals are fetched; complete evidence is staged, not written directly into the canonical national dataset.
+2. **Recover:** PDF/text/OCR evidence is placed into the discovery state for later reconciliation.
+3. **Registry:** TSE evidence is recovered and classified into national-president, state-president, or other-office queues.
+4. **Merge:** canonical polls, supplements and witnesses are reconciled using the shared identity module.
+5. **Audit:** deterministic integrity and completeness checks run before publication.
+6. **Publish:** canonical and public mirrors plus metadata are updated.
+7. **Display:** the browser consumes one shared `window.__pebr` national snapshot.
+
 ## Coding order
 
-Do not add workflows or UI modules first.
-
-1. Docs freeze (CHANGELOG 2026-09-15, SYSTEM.md match code).
-2. One identity module used by scripts and front. Remove published_date from keys.
-3. witnesses.json append-only per URL; merge cells onto one poll.
-4. One runner behind refresh-polls.yml.
-5. window.__pebr shared store; ui-refresh must not refetch JSON.
+1. Read acquisition + reasoning docs.
+2. Reuse `src/data/identity.js` for every poll identity operation.
+3. Preserve publication dates as coverage metadata.
+4. Treat witnesses as evidence, not new polls.
+5. Keep national and regional/state-president data separated.
+6. Keep the chart refresh in-place so pan/zoom/pinch state survives.
+7. Run typecheck, build, tests and quality/integrity audits before merging.
 
 ## Definition of done
 
-1. Datafolha 8–10 set residuals appear from Folha/G1 witness without a manual extra row.
-2. Reprint on day D+2 does not create a new poll.
-3. Overview never says sem data when polls exist.
-4. One cron, one identity function, one publish.
+1. Same-poll reprints do not create duplicate identities.
+2. TSE-enriched fallback records can be reconciled without duplicate rows.
+3. Publication dates remain visible.
+4. National chart reads only national presidential data.
+5. Regional multi-geo views never display a blended mean.
+6. Uncertainty ribbon is clearly distinguished from individual survey MOE.
+7. Refresh, CI and Pages deployment all complete successfully.
+
+## Current operational notes
+
+- Scheduled refresh: hourly at minute 10.
+- If refresh changes data, it explicitly dispatches the Pages deployment after the `GITHUB_TOKEN` push.
+- Deep repair is manual-only and read-only.
+- `Verificar agora` reloads published JSON; it does not trigger Actions.
 
 ## Prompt for next coding pass
 
 ```
 Read docs/PEBR-ACQUISITION-CONTEXT.md and docs/PEBR-RESEARCH-REASONING-CODING.md in full.
-Do not add workflows or UI modules.
-Implement identity module first.
-Identity key must not include published_date.
-Witnesses are sources; polls are identities.
-Never invent percentages.
+Reuse src/data/identity.js for poll identity.
+Do not include published_date in identity.
+Treat witnesses as evidence, not separate polls.
+Do not invent percentages.
+Preserve national/state-president separation.
+Run tests, quality gates, and the production build before merging.
 ```

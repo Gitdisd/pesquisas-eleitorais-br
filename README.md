@@ -9,16 +9,16 @@ Live: https://gitdisd.github.io/pesquisas-eleitorais-br/
 **Start here if you are an agent (Grok / ChatGPT):**
 
 - [AGENTS.md](AGENTS.md) — boot rules
-- [docs/PEBR-ACQUISITION-CONTEXT.md](docs/PEBR-ACQUISITION-CONTEXT.md) — harvest, RSS, 50+ sources, same vs different poll, publish windows
+- [docs/PEBR-ACQUISITION-CONTEXT.md](docs/PEBR-ACQUISITION-CONTEXT.md) — harvest, RSS, sources, same vs different poll, publish windows
 - [docs/PEBR-RESEARCH-REASONING-CODING.md](docs/PEBR-RESEARCH-REASONING-CODING.md) — identity, audits, display layers, coding order
 
 System docs:
 
 - [docs/SYSTEM.md](docs/SYSTEM.md) — o que cada arquivo e workflow faz
-- [docs/MODELS.md](docs/MODELS.md) — Modelos 1–4 (o que a linha é e o que não é)
+- [docs/MODELS.md](docs/MODELS.md) — Modelos 1–7 + escola de centro 8–12
 - [docs/CHANGELOG.md](docs/CHANGELOG.md) — o que mudou e quando
-- [docs/discovery.md](docs/discovery.md) — busca de pesquisas
-- [docs/modo-projecao-math.md](docs/modo-projecao-math.md) — math do tracejado antigo
+- [docs/discovery.md](docs/discovery.md) — busca e staging de pesquisas
+- [docs/modo-projecao-math.md](docs/modo-projecao-math.md) — math do modo projeção legado
 
 Toda mudança de comportamento leva uma linha no changelog **no mesmo commit**.
 
@@ -30,11 +30,15 @@ npm run dev
 npm run build
 npm run discover-polls
 npm run update-polls
+npm run poll-pipeline
+npm test
 ```
 
 - Front: Vite, base `/pesquisas-eleitorais-br/`, `outDir dist`
-- Cron: `.github/workflows/refresh-polls.yml` a cada 3 h (`10 */3 * * *`) + **Run workflow**
-- Discover relê `data/sources.json`, extrai HTML, rejeita estadual e PDF (inbox)
+- Refresh: `.github/workflows/refresh-polls.yml` a cada hora no minuto 10 (`10 * * * *`) + **Run workflow**
+- Deploy: `.github/workflows/deploy-pages.yml`; o refresh dispara esse workflow explicitamente depois de publicar um commit de dados
+- Discover lê `data/sources.json`, busca sinais/páginas e **estagia** descobertas verificadas em `data/discovery/discovered-polls.json`; não grava diretamente em `data/polls.json`
+- TSE recovery mantém registros pendentes/conflictantes fora do gráfico até haver evidência suficiente
 - `Verificar agora` no site só recarrega o JSON publicado; não dispara Actions
 
 ## Data integrity and reproducibility
@@ -42,3 +46,11 @@ npm run update-polls
 Publication dates are preserved as coverage metadata; they are not used to create a new poll identity. The canonical identity is TSE protocol + scenario + geography when available, with normalized institute + fieldwork dates + scenario + geography as fallback. The browser exposes a shared `window.__pebr` data store, and shared links preserve the selected round, range, averaging window, institutes, and model.
 
 Unverified TSE registrations remain in a pending audit queue and are excluded from the chart. National and state-president registrations are classified separately. Multi-geo regional views do not display a blended aggregate mean.
+
+Sample-size influence is capped at N=4,000 before square-root weighting. The chart's aggregate uncertainty ribbon is an estimated 90% range from the poll set; it is not an individual survey MOE and not an election forecast.
+
+## Refresh / maintenance
+
+The scheduled refresh performs discovery, document recovery, TSE registry recovery, supplemental merge, deterministic audits, quality-gate validation, and a production build. If data changes, it commits the canonical/public data and explicitly dispatches the Pages deployment.
+
+The deep-repair workflow is **manual-only** and read-only. It validates, typechecks, tests, and builds; it does not push changes or open PRs.

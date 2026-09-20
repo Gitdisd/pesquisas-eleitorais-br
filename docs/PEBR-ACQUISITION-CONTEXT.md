@@ -3,103 +3,83 @@
 **Load this file at the start of every research / reasoning / coding session.**  
 Companion: [PEBR-RESEARCH-REASONING-CODING.md](PEBR-RESEARCH-REASONING-CODING.md).
 
-Updated: 2026-09-15 America/Sao_Paulo.
+Updated: 2026-09-20 America/Sao_Paulo.
 
 ## A. What an aggregator is
 
 Four jobs: **Detect** (RSS/alerts/TSE) → **Identify** (institute + fieldwork + scenario + TSE protocol) → **Extract** (HTML/PDF cells) → **Compile** (one row, then averages).
 
-CJR Pollfinder: Google Alerts every 30 min → LLM “is this a poll? is it new?” → human confirms.
-Poder360 agregador is the BR analog. This repo is a compiler with a weak detector and a confused identifier.
+This repository is a compiler with automated discovery, staged evidence, TSE registry recovery, deterministic audits, and a conservative publish gate.
 
 ## B. Harvest shape
 
 ```
 SIGNAL → CLUSTER → WITNESS FETCH → CELL RESOLVE
-RSS/News/TSE/X → same or new poll? → 3–8 article URLs → fill empty cells, never invent
+RSS/News/TSE/X → same or new poll? → article/PDF URLs → fill empty cells, never invent
 ```
 
 Article time = coverage. Fieldwork + TSE protocol = identity.
-Folha residuals + G1 horse-race + CNN noon read = three witnesses, one poll.
 
 ## C. Same vs different
 
-Same poll if after alias-normalize: institute family + fieldwork overlap + same scenario + Brasil/presidente, OR same TSE `BR-#####/2026`.
+Same poll when the shared identity contract matches: TSE `BR-#####/2026` + scenario + geography when available, otherwise normalized institute family + fieldwork start/end + scenario + geography.
+
 Different poll if new TSE protocol, new fieldwork wave, or different scenario (1T vs 2T).
+
 Roundups, TV graphics, Wikipedia, other aggregators = signals only.
-Conflict: store both; prefer institute PDF / PesqEle; flag Auditoria.
+Conflict: preserve evidence, prefer institute/PesqEle where the evidence is stronger, and flag the audit state.
 
 Aliases: Genial/Quaest→quaest; BTG/Nexus→nexus; CNT/MDA→mda; Meio/Ideia→ideia; PoderData/Aya→poderdata; Folha/Datafolha→datafolha.
-Residuals: branco/nulo→blank_null; não sabe→dk; glued combo only if institute glued them. Marçal on 1T national after cutoff → out_of_universe.
+Residuals: branco/nulo→blank_null; não sabe→dk; glued combo only if institute glued them.
 
-## D. Publish windows (BRT)
+## D. Publish / refresh cadence
 
-Hottest harvest: **12:00–13:30** and **20:00–21:30**.
-Suggested cadence: 07:10, 10:10, 12:10, 15:10, 18:10, 20:10, 21:40 + TSE 08:00 and 20:00.
-Embargo pattern: PDF ~11:00 → TV ~12:06 → Folha ~12:40 → G1 ~13:10. First extract incomplete is normal; second witness at +90 min fills residuals.
-`Verificar agora` on the site does not run discovery.
+The production refresh workflow runs **hourly at minute 10** (`10 * * * *`) plus manual dispatch. This is intentionally offset from the top of the hour.
+
+A refresh can perform discovery, PDF/OCR recovery, TSE registry recovery, merge, audits, quality validation and production build. If canonical/public data changes, it commits the data and explicitly dispatches the Pages deployment.
+
+`Verificar agora` on the site does not run discovery or GitHub Actions.
 
 ## E. Official sources first
 
-1. PesqEle consulta (protocol, n, MOE, fieldwork, cargo). Register ≥5 days before disclosure (Lei 9.504 art. 33; Res. 23.600 / 23.747).
-2. TSE Dados Abertos grupo Pesquisas Eleitorais 2026 — https://dadosabertos.tse.jus.br/
-3. https://www.tse.jus.br/eleicoes/eleicoes-2026/pesquisas-eleitorais
-4. Institute PDFs (Datafolha, Quaest, Atlas, Paraná, Nexus)
-5. G1 pesquisas UI as witness, not identity
+1. PesqEle consulta (protocol, n, MOE, fieldwork, cargo).
+2. TSE Dados Abertos — https://dadosabertos.tse.jus.br/
+3. TSE pesquisas eleitorais — https://www.tse.jus.br/eleicoes/eleicoes-2026/pesquisas-eleitorais
+4. Institute PDFs.
+5. Major outlets as witnesses, not identity authorities when a stronger registration/source exists.
 
 TSE certifies registration, not that the percentages are true.
 
 ## F. Extract layers
 
-0. Catalog in sources.json (kind, trust A/B/C, rss[], notes).
-1. Signals: native RSS + Google News RSS + Composio SEARCH_NEWS/WEB.
-2. Fetch public HTML only. No login, no paywall bypass, 1 req / 2–4s / host, honor robots. PDF → OCR sidecar. Save url, fetched_at, hash, article_published_at.
-3. Cluster by identity; union cells; write one poll + witnesses[].
+0. Catalog sources in `data/sources.json`.
+1. Signals: configured RSS/HTML discovery.
+2. Fetch public HTML only; no login or paywall bypass. PDFs can go through text extraction/OCR, but uncertain extraction remains evidence/inbox rather than invented data.
+3. Stage complete verified discoveries in `data/discovery/discovered-polls.json`.
+4. Cluster by identity; union witness evidence and resolve cells.
+5. Publish only after deterministic integrity + quality gates.
 
-## G. Minimum harvest set (~90% of national waves)
+## G. Site vs acquisition
 
-G1 + Folha + Poder360 + CNN + Estadão + O Globo + Valor + Gazeta do Povo + UOL + institute sites + PesqEle.
+Acquisition writes canonical data plus discovery/audit state.
+Display reads one store (`window.__pebr`). Label fieldwork and publication clocks. Never create a second poll row just because another outlet publishes the same fieldwork wave later.
 
-### A — source of record
-Folha Poder (Datafolha), G1 Eleições (rss2 dynamo pesquisas), Poder360 `/feed/`, CNN `/politica/feed/`, Estadão política Arc feed, O Globo, Valor, Quaest, AtlasIntel, Nexus, Paraná Pesquisas, Ideia.
+## H. Operational safety
 
-### B — mirrors
-UOL, Metrópoles, Correio Braziliense `/feed`, EM, O Tempo, Gazeta do Povo, GZH, InfoMoney, BBC Brasil, Reuters, Agência Brasil, Jovem Pan `/noticias/politica/feed`, BandNews, SBT News, R7, Terra, iG, Exame, Veja, IstoÉ, CartaCapital `/politica/feed/`, Brazilian Report Beehiiv, Rio Times, Nexo, JOTA, Congresso em Foco, Intercept `/feed/`.
+- Sample dataset shrinkage is guarded in `update-polls.mjs`; large unexpected reductions fail unless explicitly overridden.
+- Pending/conflicting TSE registrations remain outside chart-visible national data.
+- National-president, state-president and other-office registry queues are separated.
+- Deep repair is manual-only, read-only, and cannot push or open pull requests.
 
-### C — regional reprints
-O Povo, Diário do Nordeste, A Tarde, Diário de Pernambuco, Folha PE, O Liberal, Correio do Povo, Zero Hora, O Popular, Campo Grande News, NSC, A Gazeta ES, Tribuna do Norte, Jornal do Commercio PE, Meio Norte, Correio do Estado MS.
-
-### D — detect only
-Poder360 Agregador, G1 tracker, PollingData, BBC agregador, ViésLab, Money Times, Wikipedia 2026, this site itself.
-
-### E — signal only
-Brasil 247, DCM, Pragmatismo, Oeste, Diário do Poder, Politize `/feed/`, Planalto RSS.
-
-Bias ≠ false table. Folha and Jovem Pan reprinting Datafolha should match; if not, parse error.
-
-## H. RSS
-
-RSS = title + link + pubDate (coverage clock), not the table.
-Live-ish: Poder360, CNN política, CartaCapital política, Jovem Pan política, Politize, Intercept, Correio Braziliense, G1 dynamo pesquisas, Google News queries in sources.json, Brazilian Report, Planalto, Estadão Arc (fragile).
-HEAD-check feeds; when dead, section HTML + Composio News.
-
-## I. Site vs acquisition
-
-Acquisition writes polls.json + witnesses.json + completeness/integrity.
-Display reads one store (`window.__pebr`). Label two clocks. Auditoria chip for missing cells + TSE-not-in-file. Do not add chart overlays until Datafolha 8–10 set residuals fill from Folha automatically.
-
-## J. Legal (BR 2026)
-
-Public pages only. No barrier bypass. Cite URL. Quote numbers, not full articles. PesqEle/Dados Abertos are for machines.
-
-## K. Session boot
+## I. Session boot
 
 1. Read this file and the research-reasoning brief.
-2. No new workflow until this harvest exists.
+2. Reuse the shared identity module; do not create another poll-key implementation.
 3. Article datetime ≠ poll identity.
-4. Fill a cell from a second witness rather than create a row.
-5. Append learning under L. Log.
+4. Fill a cell from a second witness rather than create a duplicate row.
+5. Run audits/quality gate before considering a change publishable.
 
-## L. Log
+## J. Log
 
 - 2026-09-15 — File created and committed. Aggregators, TSE, BR windows, 50+ outlets, RSS, polite scrape, same-vs-different rules.
+- 2026-09-20 — Updated for staged discovery, TSE recovery queues, hourly refresh, explicit refresh→Pages dispatch, conservative PDF/OCR handling, and read-only manual deep repair.
