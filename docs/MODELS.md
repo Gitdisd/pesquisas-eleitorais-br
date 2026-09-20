@@ -5,7 +5,7 @@ Linha sólida = média do chip ativo. Cartões usam a mesma função.
 **Padrão do site = Exp (modelo 1).**
 Nenhum modelo publica P(vitória) nem inventa pesquisa.
 
-Código: `src/aggregate.ts` (1 e 2), `src/models/advanced.ts` (3–7), `src/models/school.ts` (8–12).
+Código: `src/aggregate.ts` (dispatch + modelos 1–2), `src/models-advanced.js` (3–7), `src/models/school.ts` (8–12).
 Overlays visuais: `src/overlays.js` — não alteram a média.
 Dispatch: `averageTrend(points, windowDays, model)`.
 
@@ -60,6 +60,10 @@ LOESS de grau 1 no scatter.
 ## Overlays (não são modelo)
 
 SMA 7 / 21, EMA 9 / 21, HMA 16, VWMA 14, KAMA 10, Bollinger 20 ± 2σ.
+
+## Influência do tamanho da amostra
+
+O tamanho da amostra usado nos pesos é limitado a **N=4.000** antes da raiz quadrada. Isso impede que uma pesquisa muito grande domine o agregado apenas pelo tamanho amostral.
 
 ## Faixa de incerteza do agregado
 
