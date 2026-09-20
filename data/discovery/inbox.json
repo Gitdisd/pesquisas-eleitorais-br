@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-19T22:56:41.724Z",
+  "updated_at": "2026-09-20T01:01:16.505Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -929,6 +929,14 @@
       "institute": "PoderData",
       "published_date": "2026-09-17",
       "found_at": "2026-09-19T22:40:14.303Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/quem-e-alexandre-salomao-candidato-ao-governo-do-parana/",
+      "title": "Quem é Alexandre Salomão, candidato ao governo do Paraná | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW Ag",
+      "reason": "incomplete_extract:no_institute,no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": null,
+      "published_date": null,
+      "found_at": "2026-09-20T01:01:15.559Z"
     }
   ]
 }
