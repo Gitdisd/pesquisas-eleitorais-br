@@ -38,12 +38,20 @@ def rolling_origin(
     min_history: int = 5,
 ) -> list[BacktestPoint]:
     rows = sorted((p for p in points if p.y == p.y), key=lambda p: p.t)
-    origins = rows[min_history - 1 : -max(horizons)] if len(rows) > min_history + max(horizons) else []
+    if len(rows) < min_history:
+        return []
+
+    # Use unique observation dates as forecast origins. This prevents multiple
+    # polls sharing the same date from leaking an arbitrary within-day ordering
+    # into the backtest.
+    origin_times = sorted({p.t for p in rows})
     out: list[BacktestPoint] = []
 
-    for origin_row in origins:
-        origin = origin_row.t
+    for origin in origin_times[min_history - 1 :]:
         history = [p for p in rows if p.t <= origin]
+        if len(history) < min_history:
+            continue
+
         for horizon in horizons:
             target = origin + horizon * 86_400_000
             actual = next((p for p in rows if p.t >= target), None)
