@@ -1,15 +1,9 @@
 import { averageTrendAdvanced } from './models/advanced'
+import { sampleSize, pollWeight as canonicalPollWeight, DAY_MS, N_REF } from './stats/contract'
 import type { SeriesPoint, TrendPoint } from './data/types'
 
-const DAY_MS = 86400000
-const N_REF = 2000
 const FLOOD_DAYS = 14
 const MAX_MODEL = 12
-
-function sampleSize(n: unknown): number {
-  const rawN = Number(n)
-  return Number.isFinite(rawN) && rawN > 0 ? Math.min(4000, Math.max(100, rawN)) : 800
-}
 
 function resolveLiveModel(model: number): number {
   const m = Number(model)
@@ -47,9 +41,7 @@ export function weightedTrendV1(points: TrendPoint[], windowDays = 14): SeriesPo
 }
 
 export function pollWeightV2(point: TrendPoint, t: number, halfLifeDays: number, floodCount = 1): number {
-  const days = Math.abs(t - point.t) / DAY_MS
-  const half = Math.max(1, Number(halfLifeDays) || 14)
-  return Math.sqrt(sampleSize(point.n) / N_REF) * Math.pow(2, -days / half) / Math.max(1, floodCount)
+  return canonicalPollWeight(point, t, halfLifeDays, floodCount).total
 }
 
 function buildFloodIndex(points: TrendPoint[], half: number): Map<string, number> {
