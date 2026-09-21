@@ -1,5 +1,87 @@
 [
   {
+    "institute": "Veritá",
+    "fieldwork_start": "2026-09-10",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-20",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.53
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41.76
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 5.68
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 3.03
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1.84
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 0.59
+      },
+      {
+        "name": "Clariana Barão",
+        "party_optional": "DC",
+        "pct": 0.33
+      },
+      {
+        "name": "Samara",
+        "party_optional": "UP",
+        "pct": 0.2
+      },
+      {
+        "name": "Hertz Dias",
+        "party_optional": "PSTU",
+        "pct": 0.15
+      },
+      {
+        "name": "Edmilson Costa",
+        "party_optional": "PCB",
+        "pct": 0.15
+      },
+      {
+        "name": "Rui Costa Pimenta",
+        "party_optional": "PCO",
+        "pct": 0.1
+      },
+      {
+        "name": "Wilson Grassi",
+        "party_optional": "Democrata",
+        "pct": 0.04
+      }
+    ],
+    "n": 40500,
+    "margin_of_error": "±2–3.5 pp (state samples)",
+    "source_url": "https://www.blogdobgpb.com.br/2026/09/20/pesquisa-verita-votos-validos-flavio-lidera-no-1o-turno-com-4553-seguido-por-lula-com-4176-em-levantamento-com-405-mil-entrevistados-nos-26-estados-e-no-df/",
+    "methodology_note": "Veritá national aggregate from 27 state presidential polls, 10–19 Sep 2026, n=40,500. Percentages are valid-vote results; national figures are electorate-weighted across the 27 UFs. TSE state protocols: AC BR-02386/2026; AL BR-04383/2026; AP BR-07861/2026; AM BR-07214/2026; BA BR-07197/2026; CE BR-07551/2026; DF BR-01988/2026; ES BR-00729/2026; GO BR-06701/2026; MA BR-07504/2026; MT BR-02939/2026; MS BR-07855/2026; MG BR-03240/2026; PB BR-08734/2026; PR BR-01839/2026; PA BR-01223/2026; PE BR-07802/2026; PI BR-07059/2026; RO BR-07923/2026; RN BR-02399/2026; RS BR-06983/2026; RJ BR-02698/2026; RR BR-07242/2026; SC BR-09322/2026; SP BR-04470/2026; SE BR-01212/2026; TO BR-09946/2026.",
+    "verified": true,
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-20"
+    ],
+    "witness_urls": [
+      "https://www.blogdobgpb.com.br/2026/09/20/pesquisa-verita-votos-validos-flavio-lidera-no-1o-turno-com-4553-seguido-por-lula-com-4176-em-levantamento-com-405-mil-entrevistados-nos-26-estados-e-no-df/"
+    ],
+    "flag": "votos válidos; agregado nacional ponderado de 27 pesquisas estaduais"
+  },
+  {
     "institute": "Datafolha",
     "fieldwork_start": "2026-09-15",
     "fieldwork_end": "2026-09-17",
@@ -7088,86 +7170,6 @@
     "geo": "BR"
   },
   {
-    "institute": "GERP",
-    "fieldwork_start": "2026-05-07",
-    "fieldwork_end": "2026-05-11",
-    "published_date": "2026-05-12",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 43
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 50
-      },
-      {
-        "name": "branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 8
-      }
-    ],
-    "n": 2000,
-    "margin_of_error": "±2.2 pp",
-    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
-    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
-    "verified": true,
-    "geo": "BR"
-  },
-  {
-    "institute": "GERP",
-    "fieldwork_start": "2026-05-07",
-    "fieldwork_end": "2026-05-11",
-    "published_date": "2026-05-12",
-    "scenario": "estimulada 1º turno",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 34
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 36
-      },
-      {
-        "name": "Augusto Cury",
-        "party_optional": "Avante",
-        "pct": 1
-      },
-      {
-        "name": "Renan Santos",
-        "party_optional": "Missão",
-        "pct": 1
-      },
-      {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 1
-      },
-      {
-        "name": "Romeu Zema",
-        "party_optional": "Novo",
-        "pct": 5
-      },
-      {
-        "name": "outros/branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 12
-      }
-    ],
-    "n": 2000,
-    "margin_of_error": "±2.2 pp",
-    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
-    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
-    "verified": true,
-    "geo": "BR"
-  },
-  {
     "institute": "Genial/Quaest",
     "fieldwork_start": "2026-05-08",
     "fieldwork_end": "2026-05-11",
@@ -7244,6 +7246,86 @@
     "margin_of_error": "±2 pp",
     "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
     "methodology_note": "Face-to-face domiciliar; TSE BR-03598/2026.",
+    "verified": true,
+    "geo": "BR"
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-07",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 43
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 50
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 8
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
+    "verified": true,
+    "geo": "BR"
+  },
+  {
+    "institute": "GERP",
+    "fieldwork_start": "2026-05-07",
+    "fieldwork_end": "2026-05-11",
+    "published_date": "2026-05-12",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 34
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 36
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 1
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 1
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 5
+      },
+      {
+        "name": "outros/branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 12
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.bbc.com/portuguese/articles/czd2prld130o",
+    "methodology_note": "Phone CATI (GerpCati) and/or face-to-face per round; TSE BR-03369/2026. Aug 21-25 contracted by AESP.",
     "verified": true,
     "geo": "BR"
   },
