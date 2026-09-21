@@ -8,5 +8,8 @@ version = "0.1.0"
 description = "Research and backtesting engine for Pesquisas Eleitorais BR"
 requires-python = ">=3.11"
 
+[project.optional-dependencies]
+test = ["pytest>=9"]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
