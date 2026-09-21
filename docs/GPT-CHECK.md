@@ -51,10 +51,10 @@
 - [ ] Inspect the exact uncertaintyBand() implementation.
 - [ ] Verify that the uncertainty band corresponds to the estimator actually shown.
 - [ ] Distinguish poll sampling error, between-poll heterogeneity, house effects, temporal/model uncertainty, and forecast uncertainty.
-- [ ] Avoid presenting a hand-built RMSE/process-SD envelope as a calibrated confidence/credible interval unless calibration has been demonstrated.
+- [x] Avoid presenting a hand-built RMSE/process-SD envelope as a calibrated confidence/credible interval unless calibration has been demonstrated.
 - [ ] Prefer simulation/bootstrap/posterior intervals where practical.
 - [ ] Backtest interval coverage, not only point-estimate RMSE.
-- [ ] Label model-derived envelopes accurately if they are not calibrated intervals.
+- [x] Label model-derived envelopes accurately if they are not calibrated intervals.
 
 ## 5. Tracking polls and overlapping fieldwork
 - [ ] Inspect current flood/overlap correction.
