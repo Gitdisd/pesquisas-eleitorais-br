@@ -30,8 +30,7 @@ export function weightedTrendV1(points: TrendPoint[], windowDays = 14): SeriesPo
       const days = Math.abs(t - p.t) / DAY_MS
       if (days < nearest) nearest = days
       if (days > half * 2.5) continue
-      const sample = sampleSize(p.n)
-      const w = Math.sqrt(sample / N_REF) * Math.exp(-days / half)
+      const w = canonicalPollWeight(p, t, half).total
       num += w * p.y
       den += w
     }
