@@ -23,7 +23,7 @@ Pontos + linha do Exp. Sem tracejado de projeção.
 
 ## Exp — modelo 1 (padrão)
 
-`peso = √(n/2000) × exp(−dias/janela)`
+`peso = √(clamp(n, 100..4000)/2000) × 2^(−dias/janela)`
 
 ## Casa — modelo 2
 
@@ -67,7 +67,7 @@ O tamanho da amostra usado nos pesos é limitado a **N=4.000** antes da raiz qua
 
 ## Faixa de incerteza do agregado
 
-Quando exibida, a faixa de 90% é uma estimativa do conjunto baseada em dispersão entre pesquisas, tamanho efetivo de peso e as margens de erro informadas. Ela não é a margem de erro de nenhuma pesquisa individual e não é probabilidade de vitória.
+Quando exibida, a faixa é uma faixa de incerteza derivada do conjunto e **não é calibrada empiricamente ainda**. Ela não é a margem de erro de nenhuma pesquisa individual e não é probabilidade de vitória. A calibração por backtest/coverage continua em aberto.
 
 ## O que isto não é
 
