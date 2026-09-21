@@ -75,7 +75,7 @@ function hoverBoxFor(el) {
 
 function setExternalHover(el, params) {
   const box = hoverBoxFor(el)
-  const rows = (params || []).filter((p) => p.seriesRole === 'poll' || p.seriesRole === 'aggregate')
+  const rows = (params || []).filter((p) => p.seriesId?.endsWith('-polls') || p.seriesId?.endsWith('-aggregate'))
   if (!rows.length) {
     box.classList.add('is-empty')
     box.textContent = 'Toque um ponto — a leitura aparece aqui, não em cima do gráfico.'
