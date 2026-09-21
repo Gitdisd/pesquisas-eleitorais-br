@@ -50,7 +50,7 @@ def main() -> None:
         metrics.append(metric.__dict__)
 
     report = {"groups": len(groups), "backtest_points": len(all_rows), "metrics": metrics}
-    payload = json.dumps(report, indent=2, sort_keys=True) + "\\n"
+    payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         output = Path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
