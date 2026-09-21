@@ -1,45 +1,17 @@
-import {
-  Chart,
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  TimeScale,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from 'chart.js'
-import 'chartjs-adapter-date-fns'
-import zoomPlugin from 'chartjs-plugin-zoom'
-import { ptBR } from 'date-fns/locale'
+import * as echarts from 'echarts'
 import { CANDIDATES } from './candidates.js'
-import { weightedTrend, averageTrend, uncertaintyBand } from './aggregate.js'
+import { averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
 
-Chart.register(
-  LineController,
-  LineElement,
-  PointElement,
-  LinearScale,
-  TimeScale,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-  zoomPlugin,
-)
-
 const DAY_MS = 86400000
-const RIGHT_PAD_DAYS = 18
+const OBSERVED_PAD_DAYS = 1.5
+let chartElement = null
 
 function resolveModel(opts = {}) {
   if (opts.projectionModel != null) return Number(opts.projectionModel)
-  if (typeof window !== 'undefined' && window.__pebrProjModel != null) {
-    return Number(window.__pebrProjModel)
-  }
+  if (typeof window !== 'undefined' && window.__pebrProjModel != null) return Number(window.__pebrProjModel)
   return opts.projection ? 1 : 0
 }
 
@@ -49,370 +21,172 @@ function themeColors() {
     grid: dark ? 'rgba(255,255,255,.08)' : 'rgba(0,0,0,.06)',
     tick: dark ? '#a8b0ba' : '#5c6570',
     title: dark ? '#e8eaed' : '#1a1d21',
-  }
-}
-
-function yScaleForRound(round) {
-  if (round === 2) return { min: 30, max: 58, suggestedMin: 30, suggestedMax: 55 }
-  return { min: 0, max: undefined, suggestedMin: 0, suggestedMax: 50 }
-}
-
-function timeConfigForSpan(min, max) {
-  const days = min != null && max != null ? (max - min) / DAY_MS : 400
-  if (days <= 45) {
-    return {
-      unit: 'day',
-      displayFormats: { day: 'dd/MM', week: 'dd/MM', month: 'MMM yyyy' },
-      tooltipFormat: 'dd/MM/yyyy',
-    }
-  }
-  if (days <= 120) {
-    return {
-      unit: 'day',
-      displayFormats: { day: 'dd/MM', week: 'dd/MM', month: 'MMM yyyy' },
-      tooltipFormat: 'dd/MM/yyyy',
-    }
-  }
-  return {
-    unit: 'week',
-    displayFormats: { day: 'dd/MM', week: 'dd/MM', month: 'MMM yyyy' },
-    tooltipFormat: 'dd/MM/yyyy',
+    panel: dark ? '#15181d' : '#ffffff',
+    text: dark ? '#e8eaed' : '#1a1d21',
   }
 }
 
 function fmtVote(v) {
   if (v == null || Number.isNaN(Number(v))) return '—'
-  return Number(v).toLocaleString('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })
+  return Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }
 
-function hoverBoxFor(chart) {
-  const canvas = chart.canvas
-  const panel = canvas.closest('.chart-panel') || canvas.parentElement
+function rangeBounds(polls, round, institutes, rangeDays, projection) {
+  const filtered = polls.filter((p) => p.round === round && (!institutes?.size || institutes.has(p.institute)))
+  if (!filtered.length) return { min: null, max: null }
+  const tMaxObs = Math.max(...filtered.map((p) => p.t))
+  const tMinAll = Math.min(...filtered.map((p) => p.t))
+  const max = tMaxObs + (projection ? 15 : OBSERVED_PAD_DAYS) * DAY_MS
+  const min = !rangeDays ? tMinAll : Math.max(tMinAll, tMaxObs - rangeDays * DAY_MS)
+  return { min, max }
+}
+
+function yScaleForRound(round, series) {
+  const values = []
+  for (const s of series || []) for (const p of s.data || []) {
+    const v = Array.isArray(p) ? p[1] : p?.value?.[1]
+    if (Number.isFinite(v)) values.push(v)
+  }
+  if (round === 2) {
+    const lo = values.length ? Math.min(...values) : 0
+    const hi = values.length ? Math.max(...values) : 60
+    return { min: Math.max(0, Math.floor(lo - 2)), max: Math.min(100, Math.ceil(hi + 2)) }
+  }
+  const hi = values.length ? Math.max(...values) : 50
+  return { min: 0, max: Math.min(100, Math.max(50, Math.ceil(hi + 3))) }
+}
+
+function lineData(series) {
+  return (series || []).map((p) => [p.x, p.y])
+}
+
+function hoverBoxFor(el) {
+  const panel = el.closest('.chart-panel') || el.parentElement
   let box = panel.querySelector(':scope > .chart-hover')
   if (!box) {
     box = document.createElement('div')
     box.className = 'chart-hover is-empty'
     box.textContent = 'Toque um ponto — a leitura aparece aqui, não em cima do gráfico.'
-    const chartBox = canvas.closest('.chart-box') || canvas
+    const chartBox = el.closest('.chart-box') || el
     chartBox.parentNode.insertBefore(box, chartBox)
   }
   return box
 }
 
-function isOverlaySeries(label) {
-  return /\((média|projeção|modelo|banda|faixa|SMA|EMA|HMA|VWMA|KAMA|Bollinger)/i.test(label || '')
-}
-
-function externalTooltip(context) {
-  const box = hoverBoxFor(context.chart)
-  const tip = context.tooltip
-  if (!tip || tip.opacity === 0 || !tip.dataPoints?.length) {
+function setExternalHover(el, params) {
+  const box = hoverBoxFor(el)
+  const rows = (params || []).filter((p) => p.seriesRole === 'poll' || p.seriesRole === 'aggregate')
+  if (!rows.length) {
     box.classList.add('is-empty')
     box.textContent = 'Toque um ponto — a leitura aparece aqui, não em cima do gráfico.'
     return
   }
-  const pts = tip.dataPoints
-  const raw = pts.filter((p) => !isOverlaySeries(p.dataset.label))
-  const show = raw.length ? raw : pts.filter((p) => /média/i.test(p.dataset.label || ''))
-  const use = show.length ? show : pts
-  const x = use[0]?.parsed?.x
-  const date = x
-    ? new Date(x).toLocaleDateString('pt-BR', { timeZone: 'UTC', day: '2-digit', month: '2-digit', year: 'numeric' })
-    : ''
-  const rows = use.map((p) => {
-    const color = p.dataset.borderColor || p.dataset.backgroundColor || '#888'
-    const v = p.parsed?.y
-    const meta = p.raw?.meta
-    const extra = meta?.institute ? ` · ${meta.institute}` : ''
-    const pub = meta?.published ? ` · publicado ${meta.published.split('-').reverse().join('/')}` : ''
-    const tse = meta?.tse ? ` · ${meta.tse}` : ''
-    return `<span class="ch-row"><i style="background:${color}"></i>${p.dataset.label}: ${fmtVote(v)}%${extra}${pub}${tse}</span>`
-  })
+  const date = rows[0]?.value?.[0]
+  const dateText = date ? new Date(date).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) : ''
+  const html = rows.map((p) => {
+    const meta = p.data?.meta || {}
+    const extra = meta.institute ? ' · ' + meta.institute : ''
+    const pub = meta.published ? ' · publicado ' + meta.published.split('-').reverse().join('/') : ''
+    const tse = meta.tse ? ' · ' + meta.tse : ''
+    return '<span class="ch-row"><i style="background:' + (p.color || '#888') + '"></i>' +
+      p.seriesName + ': ' + fmtVote(p.value?.[1]) + '%' + extra + pub + tse + '</span>'
+  }).join('')
   box.classList.remove('is-empty')
-  box.innerHTML = `<span class="ch-date">${date}</span>${rows.join('')}`
+  box.innerHTML = '<span class="ch-date">' + dateText + '</span>' + html
 }
 
-export function createPollChart(canvas, opts) {
-  const { polls, round, institutes, windowDays, rangeDays, onZoom, aggregate = true } = opts
-  const model = resolveModel(opts)
-  const datasets = buildDatasets(polls, round, institutes, windowDays, model, aggregate)
-  const { min, max } = rangeBounds(polls, round, institutes, rangeDays, model > 0)
-  const tc = themeColors()
-  const chart = new Chart(canvas, {
-    type: 'line',
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: { duration: 280 },
-      interaction: { mode: 'nearest', axis: 'x', intersect: false },
-      layout: { padding: { right: 8 } },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          enabled: false,
-          external: externalTooltip,
-        },
-        zoom: {
-          limits: {
-            x: { min: 'original', max: 'original' },
-            y: { min: 0, max: 100, minRange: 0.4 },
-          },
-          pan: {
-            enabled: true,
-            mode: 'xy',
-            modifierKey: null,
-            scaleMode: 'xy',
-          },
-          zoom: {
-            wheel: { enabled: true, speed: 0.08 },
-            pinch: { enabled: true },
-            mode: 'xy',
-            scaleMode: 'xy',
-            drag: {
-              enabled: true,
-              backgroundColor: 'rgba(37,99,235,.12)',
-              borderColor: 'rgba(37,99,235,.45)',
-              borderWidth: 1,
-              modifierKey: 'shift',
-            },
-            onZoomComplete: ({ chart: c }) => onZoom?.(c),
-          },
-        },
-      },
-      scales: {
-        x: {
-          type: 'time',
-          adapters: { date: { locale: ptBR } },
-          time: timeConfigForSpan(min, max),
-          min: min ?? undefined,
-          max: max ?? undefined,
-          grid: { color: tc.grid },
-          ticks: { maxRotation: 45, autoSkip: true, autoSkipPadding: 6, maxTicksLimit: 16, color: tc.tick },
-        },
-        y: {
-          title: { display: true, text: 'Intenção de voto (%)', color: tc.title },
-          ...yScaleForRound(round),
-          grid: { color: tc.grid },
-          ticks: {
-            color: tc.tick,
-            callback: (v) => fmtVote(v),
-          },
-        },
-      },
-    },
-  })
-  hoverBoxFor(chart)
-  return chart
-}
-
-export function updatePollChart(chart, opts) {
-  const { polls, round, institutes, windowDays, rangeDays, aggregate = true } = opts
-  const model = resolveModel(opts)
-  chart.data.datasets = buildDatasets(polls, round, institutes, windowDays, model, aggregate)
-  const tc = themeColors()
-  Object.assign(chart.options.scales.y, yScaleForRound(round))
-  chart.options.scales.y.ticks.callback = (v) => fmtVote(v)
-  chart.options.scales.x.grid.color = tc.grid
-  chart.options.scales.y.grid.color = tc.grid
-  chart.options.scales.x.ticks.color = tc.tick
-  chart.options.scales.y.ticks.color = tc.tick
-  chart.options.scales.y.title.color = tc.title
-  applyDateRange(chart, polls, round, institutes, rangeDays, model > 0)
-  const xmin = chart.options.scales.x.min
-  const xmax = chart.options.scales.x.max
-  chart.options.scales.x.time = timeConfigForSpan(xmin, xmax)
-  chart.update('none')
-}
-
-export function applyThemeToChart(chart) {
-  if (!chart) return
-  const tc = themeColors()
-  chart.options.scales.x.grid.color = tc.grid
-  chart.options.scales.y.grid.color = tc.grid
-  chart.options.scales.x.ticks.color = tc.tick
-  chart.options.scales.y.ticks.color = tc.tick
-  chart.options.scales.y.title.color = tc.title
-  chart.update('none')
-}
-
-export function applyDateRange(chart, polls, round, institutes, rangeDays, projection) {
-  const { min, max } = rangeBounds(polls, round, institutes, rangeDays, projection)
-  if (min == null || max == null) {
-    chart.options.scales.x.min = undefined
-    chart.options.scales.x.max = undefined
-  } else {
-    chart.options.scales.x.min = min
-    chart.options.scales.x.max = max
-  }
-  chart.options.scales.x.time = timeConfigForSpan(min, max)
-}
-
-function rangeBounds(polls, round, institutes, rangeDays, projection) {
-  const filtered = polls.filter((p) => {
-    if (p.round !== round) return false
-    if (institutes?.size && !institutes.has(p.institute)) return false
-    return true
-  })
-  if (!filtered.length) return { min: null, max: null }
-  const tMaxObs = filtered.reduce((m, p) => Math.max(m, p.t), filtered[0].t)
-  const tMinAll = filtered.reduce((m, p) => Math.min(m, p.t), filtered[0].t)
-  const projPad = projection ? 14 * DAY_MS : 0
-  const tMax = tMaxObs + projPad + RIGHT_PAD_DAYS * DAY_MS
-  if (!rangeDays) return { min: tMinAll, max: tMax }
-  const min = Math.max(tMinAll, tMaxObs - rangeDays * DAY_MS)
-  return { min, max: tMax }
-}
-
-function pushUncertaintyDatasets(datasets, c, band) {
+function pushUncertainty(series, c, band) {
   if (!band.length) return
-  const high = band.map((p) => ({ x: p.x, y: p.high }))
-  const low = band.map((p) => ({ x: p.x, y: p.low }))
-  datasets.push({
-    label: `${c.label} (faixa de incerteza 90%+)`,
-    data: high,
-    showLine: true,
-    pointRadius: 0,
-    borderWidth: 0,
-    borderColor: 'transparent',
-    backgroundColor: hexAlpha(c.color, 0.08),
-    fill: '+1',
-    tension: 0.2,
-    order: 5,
+  const low = band.map((p) => [p.x, p.low])
+  const delta = band.map((p) => [p.x, Math.max(0, p.high - p.low)])
+  series.push({
+    id: c.key + '-uncertainty-low', name: c.label + ' — lower uncertainty', seriesRole: 'uncertainty',
+    type: 'line', data: low, stack: c.key + '-uncertainty', symbol: 'none',
+    lineStyle: { opacity: 0 }, areaStyle: { opacity: 0 }, tooltip: { show: false }, z: 1,
   })
-  datasets.push({
-    label: `${c.label} (faixa de incerteza 90%-)`,
-    data: low,
-    showLine: true,
-    pointRadius: 0,
-    borderWidth: 0,
-    borderColor: 'transparent',
-    backgroundColor: 'transparent',
-    fill: false,
-    tension: 0.2,
-    order: 5,
+  series.push({
+    id: c.key + '-uncertainty-band', name: c.label + ' — 90% uncertainty band', seriesRole: 'uncertainty',
+    type: 'line', data: delta, stack: c.key + '-uncertainty', symbol: 'none',
+    lineStyle: { opacity: 0 }, areaStyle: { color: hexAlpha(c.color, 0.10) }, tooltip: { show: false }, z: 1,
   })
 }
 
-function pushProjDatasets(datasets, c, proj, tag) {
+function pushProjection(series, c, proj, tag) {
   if (!proj.ok || proj.line.length <= 1) return
-  datasets.push({
-    label: `${c.label} (banda+)`,
-    data: proj.bandHigh,
-    showLine: true,
-    pointRadius: 0,
-    borderWidth: 0,
-    backgroundColor: hexAlpha(c.color, 0.14),
-    borderColor: 'transparent',
-    fill: '+1',
-    tension: 0.2,
-    order: 3,
+  const low = proj.bandLow.map((p) => [p.x, p.y])
+  const delta = proj.bandHigh.map((p, i) => [p.x, Math.max(0, p.y - (proj.bandLow[i]?.y ?? p.y))])
+  series.push({
+    id: c.key + '-projection-low', name: c.label + ' — projection lower', seriesRole: 'projection',
+    type: 'line', data: low, stack: c.key + '-projection', symbol: 'none',
+    lineStyle: { opacity: 0 }, areaStyle: { opacity: 0 }, tooltip: { show: false }, z: 2,
   })
-  datasets.push({
-    label: `${c.label} (banda-)`,
-    data: proj.bandLow,
-    showLine: true,
-    pointRadius: 0,
-    borderWidth: 0,
-    backgroundColor: 'transparent',
-    borderColor: 'transparent',
-    fill: false,
-    tension: 0.2,
-    order: 3,
+  series.push({
+    id: c.key + '-projection-band', name: c.label + ' — projection band', seriesRole: 'projection',
+    type: 'line', data: delta, stack: c.key + '-projection', symbol: 'none',
+    lineStyle: { opacity: 0 }, areaStyle: { color: hexAlpha(c.color, 0.14) }, tooltip: { show: false }, z: 2,
   })
-  datasets.push({
-    label: `${c.label} (${tag})`,
-    data: proj.line,
-    showLine: true,
-    pointRadius: 0,
-    borderColor: c.color,
-    borderWidth: 2,
-    borderDash: tag === 'modelo 2' ? [2, 3] : [6, 4],
-    tension: 0.2,
-    order: 0,
+  series.push({
+    id: c.key + '-projection-line', name: c.label + ' (' + tag + ')', seriesRole: 'projection',
+    type: 'line', data: lineData(proj.line), symbol: 'none',
+    lineStyle: { color: c.color, width: 2, type: tag === 'modelo 2' ? 'dotted' : 'dashed' }, z: 3,
   })
 }
 
-function buildDatasets(polls, round, institutes, windowDays, model, aggregate = true) {
-  const filtered = polls.filter((p) => {
-    if (p.round !== round) return false
-    if (institutes.size && !institutes.has(p.institute)) return false
-    return true
-  })
-  const keys = round === 2 ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio' || c.key === 'branco_nulo') : CANDIDATES
-  const datasets = []
+function buildOption(polls, round, institutes, windowDays, model, rangeDays, aggregate) {
+  const filtered = polls.filter((p) => p.round === round && (!institutes?.size || institutes.has(p.institute)))
+  const keys = round === 2
+    ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio' || c.key === 'branco_nulo')
+    : CANDIDATES
+  const series = []
   const projByKey = {}
   const electionDayMs = round === 2 ? ELECTION_ROUND2_MS : ELECTION_ROUND1_MS
+  const ovState = readOverlayState()
 
   for (const c of keys) {
-    const pts = []
-    for (const p of filtered) {
-      const y = p.results[c.key]
-      if (y == null) continue
-      pts.push({
-        x: p.t,
-        y,
-        meta: { institute: p.institute, n: p.n, moe: p.moe, url: p.sourceUrl, published: p.published, tse: p.tse, fieldworkStart: p.fieldworkStart, fieldworkEnd: p.fieldworkEnd },
-      })
-    }
-    datasets.push({
-      label: c.label,
-      data: pts,
-      showLine: false,
-      pointRadius: 3.2,
-      pointHoverRadius: 5,
-      backgroundColor: c.color,
-      borderColor: c.color,
-      order: 2,
+    const pts = filtered.filter((p) => p.results[c.key] != null).map((p) => ({
+      value: [p.t, p.results[c.key]],
+      meta: { institute: p.institute, n: p.n, moe: p.moe, url: p.sourceUrl, published: p.published, tse: p.tse, fieldworkStart: p.fieldworkStart, fieldworkEnd: p.fieldworkEnd },
+    }))
+    series.push({
+      id: c.key + '-polls', name: c.label, seriesRole: 'poll', type: 'scatter', data: pts,
+      symbolSize: 8, itemStyle: { color: c.color }, z: 4,
     })
-    const trendPts = pts.map((p) => ({ t: p.x, y: p.y, n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
-    const avgModel = model >= 2 && model <= 5 ? model : 1
-    const trend = aggregate ? averageTrend(trendPts, windowDays, avgModel) : []
-    if (aggregate) {
-      const band = uncertaintyBand(trendPts, windowDays)
-      pushUncertaintyDatasets(datasets, c, band)
-    }
-    if (aggregate) datasets.push({
-      label: `${c.label} (média)`,
-      data: trend,
-      showLine: true,
-      pointRadius: 0,
-      borderColor: c.color,
-      borderWidth: c.borderWidth,
-      borderDash: c.borderDash,
-      tension: 0.25,
-      order: 1,
+    const trendPts = pts.map((p) => ({ t: p.value[0], y: p.value[1], n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
+    const trend = aggregate ? averageTrend(trendPts, windowDays, model) : []
+    if (aggregate) pushUncertainty(series, c, uncertaintyBand(trendPts, windowDays))
+    if (aggregate) series.push({
+      id: c.key + '-aggregate', name: c.label + ' (média)', seriesRole: 'aggregate', type: 'line',
+      data: lineData(trend), symbol: 'none', smooth: 0.2,
+      lineStyle: { color: c.color, width: c.borderWidth || 2, type: c.borderDash?.length ? 'dashed' : 'solid' }, z: 5,
     })
 
-    const ovState = readOverlayState()
-    for (const def of OVERLAY_DEFS) {
+    if (aggregate) for (const def of OVERLAY_DEFS) {
       if (!ovState[def.id]) continue
       const ov = computeOverlay(def.id, trend, trendPts)
       if (def.kind === 'band' && ov.high.length) {
-        datasets.push({ label: `${c.label} (${def.label}+)`, data: ov.high, showLine: true, pointRadius: 0, borderWidth: 1, borderColor: hexAlpha(c.color, 0.35), backgroundColor: hexAlpha(c.color, 0.08), borderDash: def.dash, fill: '+1', tension: 0.2, order: 4 })
-        datasets.push({ label: `${c.label} (${def.label}-)`, data: ov.low, showLine: true, pointRadius: 0, borderWidth: 1, borderColor: hexAlpha(c.color, 0.35), backgroundColor: 'transparent', borderDash: def.dash, fill: false, tension: 0.2, order: 4 })
-      }
-      if (ov.mid.length) {
-        datasets.push({ label: `${c.label} (${def.label})`, data: ov.mid, showLine: true, pointRadius: 0, borderWidth: 1.35, borderColor: hexAlpha(c.color, 0.72), borderDash: def.dash, tension: 0.2, order: 4 })
+        series.push({
+          id: c.key + '-' + def.id + '-high', name: c.label + ' (' + def.label + '+)', seriesRole: 'overlay',
+          type: 'line', data: lineData(ov.high), symbol: 'none',
+          lineStyle: { color: hexAlpha(c.color, 0.35), width: 1 }, areaStyle: { color: hexAlpha(c.color, 0.08) }, z: 2,
+        })
+        series.push({
+          id: c.key + '-' + def.id + '-low', name: c.label + ' (' + def.label + '-)', seriesRole: 'overlay',
+          type: 'line', data: lineData(ov.low), symbol: 'none', lineStyle: { opacity: 0 }, tooltip: { show: false }, z: 2,
+        })
+      } else if (ov.mid.length) {
+        series.push({
+          id: c.key + '-' + def.id + '-mid', name: c.label + ' (' + def.label + ')', seriesRole: 'overlay',
+          type: 'line', data: lineData(ov.mid), symbol: 'none',
+          lineStyle: { color: hexAlpha(c.color, 0.72), width: 1, type: def.dash ? 'dashed' : 'solid' }, z: 2,
+        })
       }
     }
 
     if (aggregate && model === 1 && trend.length >= 2) {
-      projByKey[c.key] = projectTrend(trend, {
-        fitDays: windowDays,
-        horizonDays: 14,
-        electionDayMs,
-      })
+      projByKey[c.key] = projectTrend(trend, { fitDays: windowDays, horizonDays: 14, electionDayMs })
     }
     if (aggregate && model === 2 && trendPts.length >= 4) {
-      projByKey[c.key] = projectTrendV2(trendPts, {
-        fitDays: windowDays,
-        horizonDays: 14,
-        electionDayMs,
-      })
+      projByKey[c.key] = projectTrendV2(trendPts, { fitDays: windowDays, horizonDays: 14, electionDayMs })
     }
   }
 
@@ -422,34 +196,95 @@ function buildDatasets(polls, round, institutes, windowDays, model, aggregate = 
   }
 
   const tag = model === 2 ? 'modelo 2' : 'projeção'
-  for (const c of keys) {
-    if (projByKey[c.key]) pushProjDatasets(datasets, c, projByKey[c.key], tag)
-  }
+  for (const c of keys) if (projByKey[c.key]) pushProjection(series, c, projByKey[c.key], tag)
 
   if (typeof window !== 'undefined') {
     const labels = Object.fromEntries(CANDIDATES.map((c) => [c.key, c.label.split(' ')[0]]))
-    const failed = Object.entries(projByKey)
-      .filter(([, p]) => p && !p.ok)
-      .map(([k, p]) => `${labels[k] || k}:${p.reason}`)
-    window.__pebrProjSummary =
-      model === 0
-        ? ''
-        : formatProjSummary(projByKey, labels) ||
-          (failed.length
-            ? `Modelo ${model} sem sinal (${failed.slice(0, 4).join(', ')})`
-            : '')
+    window.__pebrProjSummary = model === 0 ? '' : formatProjSummary(projByKey, labels) || ''
     window.__pebrLastProjByKey = projByKey
     const el = document.getElementById('projSummary')
     if (el) el.textContent = window.__pebrProjSummary
   }
 
-  return datasets
+  const bounds = rangeBounds(polls, round, institutes, rangeDays, model > 0)
+  const tc = themeColors()
+  const ys = yScaleForRound(round, series)
+  return {
+    animation: { duration: 180 },
+    backgroundColor: 'transparent',
+    grid: { left: 52, right: 18, top: 18, bottom: 72, containLabel: true },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'cross', snap: false },
+      backgroundColor: tc.panel,
+      borderColor: tc.grid,
+      textStyle: { color: tc.text },
+      formatter: function (params) { setExternalHover(chartElement, params); return '' },
+    },
+    legend: { show: false },
+    xAxis: {
+      type: 'time', min: bounds.min ?? undefined, max: bounds.max ?? undefined,
+      axisLabel: { color: tc.tick }, axisLine: { lineStyle: { color: tc.grid } },
+      splitLine: { lineStyle: { color: tc.grid } }, axisPointer: { label: { show: true } },
+    },
+    yAxis: {
+      type: 'value', min: ys.min, max: ys.max, name: 'Intenção de voto (%)',
+      nameTextStyle: { color: tc.title },
+      axisLabel: { color: tc.tick, formatter: (v) => fmtVote(v) },
+      splitLine: { lineStyle: { color: tc.grid } },
+    },
+    dataZoom: [
+      { type: 'inside', xAxisIndex: 0, filterMode: 'none', zoomOnMouseWheel: true, moveOnMouseMove: true, moveOnMouseWheel: true, pinch: true },
+      { type: 'slider', xAxisIndex: 0, height: 22, bottom: 22, borderColor: tc.grid, backgroundColor: tc.panel, fillerColor: 'rgba(100,130,180,.18)', handleStyle: { opacity: 0.75 }, textStyle: { color: tc.tick } },
+    ],
+    series,
+  }
+}
+
+export function createPollChart(canvas, opts) {
+  const container = canvas.parentElement || canvas
+  canvas.style.display = 'none'
+  container.classList.add('echarts-container')
+  chartElement = container
+  const chart = echarts.init(container, null, { renderer: 'canvas', useDirtyRect: true })
+  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false))
+  chart.on('datazoom', () => opts.onZoom?.(chart))
+  hoverBoxFor(container)
+  window.addEventListener('resize', () => chart.resize())
+  return chart
+}
+
+export function updatePollChart(chart, opts) {
+  if (!chart) return
+  chartElement = chart.getDom()
+  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false), true)
+  chart.resize()
+}
+
+export function applyThemeToChart(chart) {
+  if (!chart) return
+  chart.setOption({
+    backgroundColor: 'transparent',
+    textStyle: { color: themeColors().text },
+    xAxis: { axisLabel: { color: themeColors().tick }, axisLine: { lineStyle: { color: themeColors().grid } }, splitLine: { lineStyle: { color: themeColors().grid } } },
+    yAxis: { axisLabel: { color: themeColors().tick }, splitLine: { lineStyle: { color: themeColors().grid } }, nameTextStyle: { color: themeColors().title } },
+  })
+  chart.resize()
+}
+
+export function applyDateRange(chart, polls, round, institutes, rangeDays, projection) {
+  if (!chart) return
+  const bounds = rangeBounds(polls, round, institutes, rangeDays, projection)
+  chart.setOption({ xAxis: { min: bounds.min ?? undefined, max: bounds.max ?? undefined } })
 }
 
 export function resetZoom(chart) {
-  chart.resetZoom()
+  if (!chart) return
+  chart.dispatchAction({ type: 'dataZoom', start: 0, end: 100 })
 }
 
 export function resetYScale(chart, round) {
-  Object.assign(chart.options.scales.y, yScaleForRound(round))
+  if (!chart) return
+  const option = chart.getOption()
+  chart.setOption({ yAxis: yScaleForRound(round, option.series || []) })
 }
