@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pebr_stats.backtest import BacktestPoint, rolling_origin, summarize
 from pebr_stats.dataset import candidate_series, load_poll_rows
