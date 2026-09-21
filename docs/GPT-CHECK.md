@@ -15,16 +15,16 @@
 
 ## 1. Immediate production bugs
 ### 1.1 Automatic refresh crash — CRITICAL
-- [ ] Inspect src/main.js refresh path.
-- [ ] Replace undefined normalize(nextRaw) with the actual imported normalizePolls(nextRaw) if the current code still matches the diagnosed bug.
+- [x] Inspect src/main.js refresh path.
+- [x] Replace undefined normalize(nextRaw) with the actual imported normalizePolls(nextRaw) if the current code still matches the diagnosed bug.
 - [ ] Add a regression test exercising the hourly/background refresh path.
 - [ ] Verify refresh failure cannot silently leave stale chart state.
 
 ### 1.2 Round-2 y-axis contradiction — CRITICAL
-- [ ] Inspect yScaleForRound() and round-2 candidate keys.
-- [ ] Confirm whether branco_nulo is intentionally displayed.
-- [ ] If displayed, ensure its values are never clipped by a minimum y-axis of 30.
-- [ ] Prefer a dynamic scale based on visible data or an explicitly designed principal-candidates mode.
+- [x] Inspect yScaleForRound() and round-2 candidate keys.
+- [x] Confirm whether branco_nulo is intentionally displayed.
+- [x] If displayed, ensure its values are never clipped by a minimum y-axis of 30.
+- [x] Prefer a dynamic scale based on visible data or an explicitly designed principal-candidates mode.
 - [ ] Test round 2 with low-value series such as branco/nulo.
 
 ## 2. Canonical statistical model contract
@@ -41,7 +41,7 @@
 ## 3. Aggregation/model architecture
 - [ ] Trace every weightedTrendV1–V7 implementation and every averageTrendAdvanced model number.
 - [ ] Verify that UI-selected model numbers actually reach the intended runtime implementation.
-- [ ] Resolve model-selector drift where models 6–12 may fall back to model 1.
+- [x] Resolve model-selector drift where models 6–12 may fall back to model 1.
 - [ ] Define a single estimator interface returning date, candidate/result key, central estimate, lower bound, upper bound, and effective sample size/information metric.
 - [ ] Decide explicitly whether candidate series are independently estimated or constrained as a composition.
 - [ ] If independent estimation is retained, document that candidate curves need not sum to exactly 100%.
@@ -164,13 +164,13 @@
 - [ ] Avoid making every mathematical series look equally authoritative.
 
 ## 17. Research/backtesting
-- [ ] Build a reproducible historical backtest harness.
-- [ ] Use rolling-origin cutoffs rather than one arbitrary holdout.
-- [ ] Evaluate multiple horizons.
-- [ ] Compare simple baselines against sophisticated models.
+- [x] Build a reproducible historical backtest harness.
+- [x] Use rolling-origin cutoffs rather than one arbitrary holdout.
+- [x] Evaluate multiple horizons.
+- [x] Compare simple baselines against sophisticated models.
 - [ ] Measure RMSE/MAE and interval coverage where appropriate.
 - [ ] Examine performance separately for sparse, dense, tracking-heavy, and different-round periods.
-- [ ] Record results so model changes are evidence-driven.
+- [ ] Record validated results so model changes are evidence-driven.
 
 ## 18. Code quality / maintainability
 - [ ] Prefer TypeScript for core statistical contracts where practical.
