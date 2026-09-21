@@ -1,7 +1,7 @@
 import './layout-fix.css'
 import './crt-theme.css'
 import './party-themes.css'
-import { Chart } from 'chart.js'
+import * as echarts from 'echarts'
 
 const BASE_THEMES = ['light', 'dark', 'crt-amber', 'crt-green']
 const PARTY_THEMES = [
@@ -37,15 +37,14 @@ function chartTint(theme) {
 function tintCharts() {
   const t = document.documentElement.getAttribute('data-theme') || 'light'
   const tc = chartTint(t)
-  document.querySelectorAll('canvas').forEach((el) => {
-    const ch = Chart.getChart(el)
-    if (!ch?.options?.scales) return
-    if (ch.options.scales.x?.grid) ch.options.scales.x.grid.color = tc.grid
-    if (ch.options.scales.y?.grid) ch.options.scales.y.grid.color = tc.grid
-    if (ch.options.scales.x?.ticks) ch.options.scales.x.ticks.color = tc.tick
-    if (ch.options.scales.y?.ticks) ch.options.scales.y.ticks.color = tc.tick
-    if (ch.options.scales.y?.title) ch.options.scales.y.title.color = tc.title
-    ch.update('none')
+  document.querySelectorAll('.echarts-container').forEach((el) => {
+    const ch = echarts.getInstanceByDom(el)
+    if (!ch) return
+    ch.setOption({
+      xAxis: { axisLabel: { color: tc.tick }, axisLine: { lineStyle: { color: tc.grid } }, splitLine: { lineStyle: { color: tc.grid } } },
+      yAxis: { axisLabel: { color: tc.tick }, splitLine: { lineStyle: { color: tc.grid } }, nameTextStyle: { color: tc.title } },
+    })
+    ch.resize()
   })
 }
 
