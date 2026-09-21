@@ -8,9 +8,9 @@ Repo: gitdisd/pesquisas-eleitorais-br · branch `main` · Pages via workflow `de
 | Arquivo | Função |
 |---|---|
 | `src/main.js` | Boot, national data store, cards, table, controls, automatic refresh |
-| `src/chart.js` | Chart.js, points, aggregate line, uncertainty ribbon, pan/zoom |
+| `src/chart.js` | ECharts renderer, poll points, aggregate line, uncertainty ribbon, pan/zoom |
 | `src/aggregate.ts` | Aggregate models 1–2 + `averageTrend` |
-| `src/models-advanced.js` | Models 3–7 |
+| `src/models/advanced.ts` | Models 3–7 |
 | `src/candidates.js` | Shared candidate registry / names / normalization |
 | `src/data/identity.js` | Canonical poll identity, TSE protocol, geography and fallback keys |
 | `src/data/normalize.ts` | Raw → normalized poll records and merge identity |
@@ -69,7 +69,7 @@ After a successful refresh that changes data, `refresh-polls.yml` explicitly dis
 - Sample-size influence is capped at N=4,000 before square-root weighting.
 - Aggregate uncertainty is an estimated 90% range, not a survey MOE or election forecast.
 - Multi-geo regional views do not display a blended mean.
-- Existing Chart.js pan/zoom/pinch/resize behavior must survive data refresh; refresh updates the chart in place rather than destroying/recreating it.
+- Existing TradingView-style pan/zoom/pinch/resize behavior must survive data refresh; ECharts is updated in place rather than destroying/recreating it.
 - Share URLs preserve round/range/window/model/institute filters.
 - JSON/CSV exports reflect the current filtered view.
 
