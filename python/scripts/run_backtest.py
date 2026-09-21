@@ -14,6 +14,7 @@ from pebr_stats.dataset import candidate_series, load_poll_rows
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run rolling-origin poll backtests.")
     parser.add_argument("path", help="Path to data/polls.json")
+    parser.add_argument("--output", help="Write the JSON report to this path")
     args = parser.parse_args()
 
     groups = candidate_series(load_poll_rows(args.path))
@@ -48,7 +49,13 @@ def main() -> None:
     ):
         metrics.append(metric.__dict__)
 
-    print(json.dumps({"groups": len(groups), "backtest_points": len(all_rows), "metrics": metrics}, indent=2))
+    report = {"groups": len(groups), "backtest_points": len(all_rows), "metrics": metrics}
+    payload = json.dumps(report, indent=2, sort_keys=True) + "\\n"
+    if args.output:
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(payload, encoding="utf-8")
+    print(payload, end="")
 
 
 if __name__ == "__main__":
