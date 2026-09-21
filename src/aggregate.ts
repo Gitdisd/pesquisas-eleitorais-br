@@ -168,8 +168,7 @@ export function uncertaintyBand(points: TrendPoint[], windowDays = 14, z = 1.645
       const days = Math.abs(t - p.t) / DAY_MS
       if (days < nearest) nearest = days
       if (days > reach) continue
-      const sample = sampleSize(p.n)
-      const w = Math.sqrt(sample / N_REF) * Math.exp(-days / half)
+      const w = canonicalPollWeight(p, t, half).total
       const moe = Number(p.moe)
       const se = Number.isFinite(moe) && moe > 0 ? Math.max(0.4, moe / 1.96) : null
       bag.push({ y: p.y, w, se })
