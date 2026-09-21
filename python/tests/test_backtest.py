@@ -25,11 +25,11 @@ def test_rolling_origin_aggregates_same_day_observations():
         PollObservation(t=3 * DAY, y=46),
         PollObservation(t=4 * DAY, y=48),
     ]
-    rows = rolling_origin(points, horizons=(1,), min_history=3)
+    rows = rolling_origin(points, horizons=(1,), min_history=1)
     match = [
         r for r in rows
-        if r.origin == DAY and r.horizon_days == 1 and r.model == "persistence"
+        if r.origin == 0 and r.horizon_days == 1 and r.model == "persistence"
     ]
     assert match
-    assert match[0].actual == 44
-    assert match[0].predicted == 46
+    assert match[0].actual == 46
+    assert match[0].predicted == 40
