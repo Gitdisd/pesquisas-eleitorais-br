@@ -48,4 +48,7 @@ The migration is incremental. Existing production statistical behavior is not si
 - ECharts renderer: migrated.
 - Python research package: scaffolded with core weighting primitive.
 - Rust/WASM core: scaffolded with matching sample-size and weighting primitive.
+- Canonical observation/weight contract: established in JS, Python, and Rust with a shared golden fixture.
+- Production aggregation: now consumes the shared JS contract for sample-size/recency weighting.
+- Legacy advanced estimators: still retained pending numerical validation against Python/Rust.
 - Legacy aggregation: retained as compatibility path pending numerical validation.
