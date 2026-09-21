@@ -54,3 +54,6 @@ The migration is incremental. Existing production statistical behavior is not si
 - Legacy advanced estimators: still retained pending numerical validation against Python/Rust.
 - Legacy aggregation: retained as compatibility path pending numerical validation.
 - Estimator bounds remain unset until rolling-origin interval calibration is completed.
+- Rolling-origin backtesting: date-safe harness added with persistence and canonical-weighted baselines at 1/3/7-day horizons; same-day polls no longer impose an arbitrary within-day ordering.
+- Real-data backtest input: reproducible loader added for `data/polls.json`, grouped by scenario and candidate; production benchmark results are not yet promoted to model-selection decisions.
+- Migration task register: tracked in GitHub issue #14.
