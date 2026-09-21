@@ -2,10 +2,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from math import sqrt
-from typing import Callable, Iterable, Sequence
+from typing import Iterable, Sequence
 
 from .contract import PollObservation
 from .estimator import weighted_estimate
+
+
+DAY_MS = 86_400_000
 
 
 @dataclass(frozen=True)
@@ -26,9 +29,16 @@ class BacktestMetrics:
     rmse: float
 
 
+def _date_mean(points: Sequence[PollObservation], t: float) -> float | None:
+    values = [p.y for p in points if p.t == t and p.y == p.y]
+    return sum(values) / len(values) if values else None
+
+
 def _persistence(points: Sequence[PollObservation], origin: float) -> float | None:
-    eligible = [p for p in points if p.t <= origin and p.y == p.y]
-    return eligible[-1].y if eligible else None
+    dates = sorted({p.t for p in points if p.t <= origin and p.y == p.y})
+    if not dates:
+        return None
+    return _date_mean(points, dates[-1])
 
 
 def rolling_origin(
@@ -38,29 +48,28 @@ def rolling_origin(
     min_history: int = 5,
 ) -> list[BacktestPoint]:
     rows = sorted((p for p in points if p.y == p.y), key=lambda p: p.t)
-    if len(rows) < min_history:
+    origin_times = sorted({p.t for p in rows})
+    if len(origin_times) < min_history:
         return []
 
-    # Use unique observation dates as forecast origins. This prevents multiple
-    # polls sharing the same date from leaking an arbitrary within-day ordering
-    # into the backtest.
-    origin_times = sorted({p.t for p in rows})
     out: list[BacktestPoint] = []
 
     for origin in origin_times[min_history - 1 :]:
         history = [p for p in rows if p.t <= origin]
-        if len(history) < min_history:
-            continue
-
         for horizon in horizons:
-            target = origin + horizon * 86_400_000
-            actual = next((p for p in rows if p.t >= target), None)
+            target = origin + horizon * DAY_MS
+            future_dates = [t for t in origin_times if t >= target]
+            if not future_dates:
+                continue
+
+            actual_date = future_dates[0]
+            actual = _date_mean(rows, actual_date)
             if actual is None:
                 continue
 
             persistence = _persistence(history, origin)
             if persistence is not None:
-                out.append(BacktestPoint(origin, horizon, actual.y, persistence, "persistence"))
+                out.append(BacktestPoint(origin, horizon, actual, persistence, "persistence"))
 
             estimate = weighted_estimate(
                 history,
@@ -69,7 +78,7 @@ def rolling_origin(
                 half_life_days=14,
             ).estimate
             if estimate is not None:
-                out.append(BacktestPoint(origin, horizon, actual.y, estimate, "canonical-weighted"))
+                out.append(BacktestPoint(origin, horizon, actual, estimate, "canonical-weighted"))
     return out
 
 
