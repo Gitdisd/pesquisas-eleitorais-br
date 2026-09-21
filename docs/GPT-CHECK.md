@@ -78,9 +78,9 @@
 - [ ] Keep the primary public chart and research/model-lab capabilities conceptually separate.
 - [ ] Preserve the interactive/trading-style chart experience.
 - [ ] Use semantic dataset roles: poll, aggregate, uncertainty, projection, overlay.
-- [ ] Stop relying on dataset-label regexes to determine behavior.
-- [ ] Make tooltip logic branch on semantic role.
-- [ ] Make visibility/toggling branch on semantic role.
+- [x] Stop relying on dataset-label regexes to determine behavior.
+- [x] Make tooltip logic branch on semantic role.
+- [x] Make visibility/toggling branch on semantic role.
 - [ ] Keep observed polls visually distinguishable from modeled curves.
 
 ## 8. TradingView-style interaction — PRESERVE AND IMPROVE
@@ -96,8 +96,8 @@
 - [ ] Ensure zooming does not break y-axis readability.
 - [ ] Ensure tooltips remain useful while zoomed deeply.
 - [ ] Ensure touch gestures do not conflict with page scrolling.
-- [ ] Keep interaction state stable when datasets refresh.
-- [ ] Preserve the user's viewport when new polls arrive unless there is a strong reason to recenter.
+- [x] Keep interaction state stable when datasets refresh.
+- [x] Preserve the user's viewport when new polls arrive unless there is a strong reason to recenter.
 - [ ] Test interaction after automatic data refresh.
 - [ ] Test mobile and desktop separately.
 
@@ -124,11 +124,11 @@
 
 ## 12. ECharts data/performance
 - [ ] Verify whether data are sorted and unique by internal index.
-- [ ] Use ECharts time-series data in sorted chronological order.
+- [x] Use ECharts time-series data in sorted chronological order.
 - [ ] Evaluate ECharts progressive rendering/large-data options only where they materially help.
 - [ ] Prefer domain-aware downsampling for statistical curves if generic decimation would distort important polling changes.
 - [ ] Ensure canvas rendering remains smooth on mobile with the full history.
-- [ ] Preserve dataZoom inside interaction and the visible range slider.
+- [x] Preserve dataZoom inside interaction and the visible range slider.
 - [ ] Test large tooltip payloads and many visible datasets.
 
 ## 13. Tooltip/data inspection
