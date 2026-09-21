@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from math import exp, sqrt
 from typing import Iterable, Sequence
 
-from .contract import PollObservation, pollWeight
+from .contract import PollObservation, poll_weight
 
 
 DAY_MS = 86_400_000
@@ -54,7 +54,7 @@ def weighted_trend(
             nearest = min(nearest, days)
             if days > half * 2.5:
                 continue
-            weight = pollWeight(point, t, half).total
+            weight = poll_weight(point, t, half).total
             numerator += weight * point.y
             denominator += weight
         if denominator > 0 and nearest <= half:
