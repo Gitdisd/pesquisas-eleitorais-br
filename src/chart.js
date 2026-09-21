@@ -75,7 +75,12 @@ function hoverBoxFor(el) {
 
 function setExternalHover(el, params) {
   const box = hoverBoxFor(el)
-  const rows = (params || []).filter((p) => p.seriesId?.endsWith('-polls') || p.seriesId?.endsWith('-aggregate'))
+  const chart = echarts.getInstanceByDom(el)
+  const optionSeries = chart?.getOption()?.series || []
+  const rows = (params || []).filter((p) => {
+    const role = optionSeries[p.seriesIndex]?.seriesRole
+    return role === 'poll' || role === 'aggregate'
+  })
   if (!rows.length) {
     box.classList.add('is-empty')
     box.textContent = 'Toque um ponto — a leitura aparece aqui, não em cima do gráfico.'
@@ -257,7 +262,27 @@ export function createPollChart(canvas, opts) {
 export function updatePollChart(chart, opts) {
   if (!chart) return
   chartElement = chart.getDom()
+  const previousZoom = (chart.getOption()?.dataZoom || [])
+    .find((z) => z?.xAxisIndex === 0 && (
+      z.startValue != null || z.endValue != null || z.start != null || z.end != null
+    ))
   chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false), true)
+  if (previousZoom) {
+    const action = previousZoom.startValue != null || previousZoom.endValue != null
+      ? {
+          type: 'dataZoom',
+          xAxisIndex: 0,
+          startValue: previousZoom.startValue,
+          endValue: previousZoom.endValue,
+        }
+      : {
+          type: 'dataZoom',
+          xAxisIndex: 0,
+          start: previousZoom.start,
+          end: previousZoom.end,
+        }
+    chart.dispatchAction(action)
+  }
   chart.resize()
 }
 
