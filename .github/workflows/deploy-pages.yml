@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-      - run: npm ci
+      - run: npm install
 
       - name: Install PDF text + OCR tools
         run: |
