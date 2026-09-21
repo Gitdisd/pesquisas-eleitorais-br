@@ -39,7 +39,6 @@ def rolling_origin(
 ) -> list[BacktestPoint]:
     rows = sorted((p for p in points if p.y == p.y), key=lambda p: p.t)
     origins = rows[min_history - 1 : -max(horizons)] if len(rows) > min_history + max(horizons) else []
-    actual_by_time = {p.t: p for p in rows}
     out: list[BacktestPoint] = []
 
     for origin_row in origins:
@@ -47,7 +46,7 @@ def rolling_origin(
         history = [p for p in rows if p.t <= origin]
         for horizon in horizons:
             target = origin + horizon * 86_400_000
-            actual = actual_by_time.get(target)
+            actual = next((p for p in rows if p.t >= target), None)
             if actual is None:
                 continue
 
