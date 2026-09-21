@@ -1,5 +1,5 @@
 from pebr_stats.backtest import BacktestPoint
-from pebr_stats.projection_calibration import calibrate_projection, project_trend
+from pebr_stats.projection_calibration import ProjectionBacktestPoint, calibrate_projection, project_trend
 
 
 def test_project_trend_is_anchored_to_last_observation():
@@ -15,7 +15,7 @@ def test_calibrate_projection_uses_only_earlier_origins():
     rows = []
     for i, err in enumerate([1.0, 1.2, 1.5, 1.8, 2.0, 2.2, 4.0, 4.5, 5.0, 5.5]):
         rows.append(
-            __import__("pebr_stats.projection_calibration", fromlist=["ProjectionBacktestPoint"]).ProjectionBacktestPoint(
+            ProjectionBacktestPoint(
                 origin=float(i),
                 horizon_days=7,
                 actual=0.0,
