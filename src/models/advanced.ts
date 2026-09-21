@@ -1,14 +1,10 @@
 import type { SeriesPoint, TrendPoint } from '../data/types'
 import { schoolCenterTrend } from './school'
+import { sampleSize, N_REF, DAY_MS } from '../stats/contract'
 
-const DAY = 86400000
+const DAY = DAY_MS
 const DEFF = 1.3
-const N_REF = 2000
-
-function sampleN(n: unknown): number {
-  const v = Number(n)
-  return Number.isFinite(v) && v > 0 ? Math.min(4000, Math.max(100, v)) : 800
-}
+const sampleN = sampleSize
 
 export function pollSE(p: TrendPoint): number {
   const moe = Number(p.moe)
