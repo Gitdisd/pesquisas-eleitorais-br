@@ -110,7 +110,7 @@ function pushUncertainty(series, c, band) {
     lineStyle: { opacity: 0 }, areaStyle: { opacity: 0 }, tooltip: { show: false }, z: 1,
   })
   series.push({
-    id: c.key + '-uncertainty-band', name: c.label + ' — 90% uncertainty band', seriesRole: 'uncertainty',
+    id: c.key + '-uncertainty-band', name: c.label + ' — estimated uncertainty band', seriesRole: 'uncertainty',
     type: 'line', data: delta, stack: c.key + '-uncertainty', symbol: 'none',
     lineStyle: { opacity: 0 }, areaStyle: { color: hexAlpha(c.color, 0.10) }, tooltip: { show: false }, z: 1,
   })
