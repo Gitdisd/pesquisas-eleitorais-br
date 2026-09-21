@@ -12,7 +12,7 @@
     "discover-polls": "node scripts/discover-polls.mjs",
     "poll-pipeline": "node scripts/run-poll-pipeline-v4.mjs",
     "test": "node --test test/*.test.mjs",
-    "build:rust": "wasm-pack build rust/polling-core --target web --out-dir ../../src/wasm/polling-core --release",
+    "build:rust": "wasm-pack build rust/polling-core --target web --out-dir src/wasm/polling-core --release",
     "test:python": "python -m pytest python/tests -q",
     "test:rust": "cargo test --manifest-path rust/polling-core/Cargo.toml"
   },
