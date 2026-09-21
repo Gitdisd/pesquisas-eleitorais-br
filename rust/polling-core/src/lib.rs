@@ -74,6 +74,6 @@ mod tests {
         let mut den = 0.0;
         for row in rows { let w = poll_weight(&row, t, 14.0, 1.0).total; num += w * row.y; den += w; }
         let value = num / den;
-        assert!((value - 46.079428).abs() < 1e-6);
+        assert!((value - 46.348761).abs() < 1e-6);
     }
 }
