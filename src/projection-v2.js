@@ -2,6 +2,8 @@ import { weightedTrendV2 } from './aggregate.js'
 import { projectTrend } from './projection.js'
 
 const DAY = 86400000
+const N_REF = 2000
+const MAX_SAMPLE = 4000
 const CAMPAIGN_MS = Date.parse('2026-08-16T12:00:00Z')
 
 function nearest(line, x) {
@@ -35,7 +37,8 @@ export function estimateHouseEffects(points, peerDays = 14) {
       if (q.y == null || !q.institute || q.institute === p.institute) continue
       const days = Math.abs(q.t - p.t) / DAY
       if (days > peerDays) continue
-      const w = Math.sqrt((Number(q.n) > 0 ? q.n : 800) / 2000)
+      const n = Number(q.n) > 0 ? Math.min(MAX_SAMPLE, Math.max(100, Number(q.n))) : 800
+      const w = Math.sqrt(n / N_REF)
       num += w * q.y
       den += w
     }
