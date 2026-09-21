@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pebr_stats.backtest import BacktestPoint, rolling_origin, summarize
+from pebr_stats.calibration import calibrate_empirical_intervals
 from pebr_stats.dataset import candidate_series, load_poll_rows
 
 
@@ -34,22 +35,33 @@ def main() -> None:
                 }
             )
 
-    metrics = []
-    for metric in summarize(
-        [
-            BacktestPoint(
-                origin=row["origin"],
-                horizon_days=row["horizon_days"],
-                actual=row["actual"],
-                predicted=row["predicted"],
-                model=row["model"],
-            )
-            for row in all_rows
-        ]
-    ):
-        metrics.append(metric.__dict__)
+    backtest_points = [
+        BacktestPoint(
+            origin=row["origin"],
+            horizon_days=row["horizon_days"],
+            actual=row["actual"],
+            predicted=row["predicted"],
+            model=row["model"],
+        )
+        for row in all_rows
+    ]
 
-    report = {"groups": len(groups), "backtest_points": len(all_rows), "metrics": metrics}
+    metrics = [metric.__dict__ for metric in summarize(backtest_points)]
+    calibration = [
+        item.__dict__
+        for item in calibrate_empirical_intervals(
+            backtest_points,
+            model="canonical-weighted",
+            target_coverage=0.90,
+        )
+    ]
+
+    report = {
+        "groups": len(groups),
+        "backtest_points": len(all_rows),
+        "metrics": metrics,
+        "canonical_weighted_empirical_interval_calibration": calibration,
+    }
     payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
         output = Path(args.output)
