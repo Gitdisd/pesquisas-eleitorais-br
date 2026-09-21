@@ -3,8 +3,8 @@ from __future__ import annotations
 import argparse
 import json
 
-from pebr_stats.backtest import rolling_origin, summarize
-from pebr_stats.dataset import candidate_series
+from pebr_stats.backtest import BacktestPoint, rolling_origin, summarize
+from pebr_stats.dataset import candidate_series, load_poll_rows
 
 
 def main() -> None:
@@ -12,7 +12,7 @@ def main() -> None:
     parser.add_argument("path", help="Path to data/polls.json")
     args = parser.parse_args()
 
-    groups = candidate_series(__import__("pebr_stats.dataset", fromlist=["load_poll_rows"]).load_poll_rows(args.path))
+    groups = candidate_series(load_poll_rows(args.path))
     all_rows = []
     for (scenario, candidate), observations in groups.items():
         rows = rolling_origin(observations)
@@ -32,7 +32,7 @@ def main() -> None:
     metrics = []
     for metric in summarize(
         [
-            __import__("pebr_stats.backtest", fromlist=["BacktestPoint"]).BacktestPoint(
+            BacktestPoint(
                 origin=row["origin"],
                 horizon_days=row["horizon_days"],
                 actual=row["actual"],
