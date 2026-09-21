@@ -1,4 +1,4 @@
-import { Chart } from 'chart.js'
+import * as echarts from 'echarts'
 import { CANDIDATES } from './candidates.js'
 
 const STYLE_ID = 'pebr-ui-next-style'
@@ -43,16 +43,16 @@ function toast(message) {
 }
 
 function getChart() {
-  const canvas = document.getElementById('pollChart')
-  return canvas ? Chart.getChart(canvas) : null
+  const el = document.querySelector('.echarts-container')
+  return el ? echarts.getInstanceByDom(el) : null
 }
 
 function syncCandidateButtons() {
   const chart = getChart()
-  const labels = new Set(chart?.data.datasets.map((ds) => ds.label) || [])
+  const labels = new Set((chart?.getOption()?.series || []).map((s) => s.name))
   for (const btn of document.querySelectorAll('.candidate-focus button[data-candidate]')) {
     const label = btn.dataset.candidate
-    const available = labels.has(label) || labels.has(`${label} (média)`)
+    const available = labels.has(label) || labels.has(label + ' (média)')
     btn.disabled = !available
     if (!available) btn.setAttribute('aria-pressed', 'false')
   }
@@ -77,12 +77,11 @@ function addCandidateFocus() {
       const chart = getChart()
       if (!chart || btn.disabled) return
       const visible = btn.getAttribute('aria-pressed') === 'true'
-      const labels = new Set([candidate.label, `${candidate.label} (média)`])
-      chart.data.datasets.forEach((ds, index) => {
-        if (labels.has(ds.label)) chart.getDatasetMeta(index).hidden = visible
-      })
+      const names = [candidate.label, candidate.label + ' (média)']
+      for (const name of names) {
+        chart.dispatchAction({ type: visible ? 'legendUnSelect' : 'legendSelect', name })
+      }
       btn.setAttribute('aria-pressed', String(!visible))
-      chart.update('none')
     })
     row.appendChild(btn)
   }
@@ -109,10 +108,10 @@ function addQuickTools() {
   tools.querySelector('[data-next-reset]').addEventListener('click', () => {
     document.getElementById('resetZoom')?.click()
     const chart = getChart()
-    if (chart) chart.data.datasets.forEach((_, index) => { chart.getDatasetMeta(index).hidden = false })
+    if (chart) for (const item of chart.getOption().series || []) chart.dispatchAction({ type: 'legendSelect', name: item.name })
     for (const b of panel.querySelectorAll('.candidate-focus button')) b.setAttribute('aria-pressed', 'true')
     syncCandidateButtons()
-    chart?.update('none')
+    chart?.resize()
     toast('Visualização restaurada')
   })
   tools.querySelector('[data-next-share]').addEventListener('click', async () => {
