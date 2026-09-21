@@ -151,7 +151,7 @@ def rolling_projection_backtest(
                 continue
             actual = _date_mean(rows, target)
             forecast = by_x.get(target)
-            if actual is None or forecast is None or forecast[2] <= 0:
+            if actual is None or forecast is None or forecast[1] <= 0:
                 continue
             out.append(
                 ProjectionBacktestPoint(
