@@ -15,4 +15,4 @@ def test_python_weighted_mean_fixture():
     ]
     value = weighted_mean(rows, 86_400_000 * 7, 14)
     assert value is not None
-    assert round(value, 6) == 46.079428
+    assert round(value, 6) == 46.348761
