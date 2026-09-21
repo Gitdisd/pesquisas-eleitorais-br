@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-21 — ECharts + statistical validation pass
+
+- **ECharts hardening:** removed the remaining legacy Chart.js reset call, added semantic `seriesRole` filtering, preserved the user's dataZoom viewport across in-place refreshes, and kept observed-only right padding small.
+- **Axis/uncertainty semantics:** round-2 bounds remain data-derived; the uncertainty ribbon is now labeled as estimated rather than implying calibrated 90% coverage.
+- **Backtesting:** added a reproducible real-data runner and CI artifact, leakage-safe same-day aggregation, and empirical interval-calibration utilities.
+- **Projection research:** evaluated the current public projection interval and model-2 path against historical origins; model-1 under-coverage is documented separately from model-2 calibration evidence. No production calibration multiplier has been introduced yet.
+- **Conversation audit:** retained the transcript-to-repository gap analysis in `docs/CONVERSATION-AUDIT-2026-09-21.md`.
+ 
 ## 2026-09-21 — Conversation audit / migration reconciliation
 
 - Added `docs/CONVERSATION-AUDIT-2026-09-21.md`, mapping the uploaded project transcript to repository implementation and validation state.
