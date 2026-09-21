@@ -335,8 +335,7 @@ function bindChrome() {
   document.getElementById('resetY')?.addEventListener('click', () => {
     if (!state.chart) return
     resetYScale(state.chart, state.round)
-    try { state.chart.resetZoom('y') } catch {}
-    state.chart.update('none')
+    updatePollChart(state.chart, chartOpts())
   })
 }
 function renderInstituteChips() {
