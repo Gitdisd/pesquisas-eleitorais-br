@@ -1,32 +1,52 @@
 use wasm_bindgen::prelude::*;
 use serde::{Deserialize, Serialize};
 
+pub const N_REF: f64 = 2000.0;
+pub const MIN_SAMPLE: f64 = 100.0;
+pub const MAX_SAMPLE: f64 = 4000.0;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Observation {
+pub struct PollObservation {
     pub t: f64,
     pub y: f64,
-    pub n: f64,
+    pub n: Option<f64>,
+    pub institute: Option<String>,
+    pub moe: Option<f64>,
 }
 
-fn sample_size(n: f64) -> f64 {
-    if n.is_finite() && n > 0.0 { n.clamp(100.0, 4000.0) } else { 800.0 }
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PollWeight {
+    pub total: f64,
+    pub sample: f64,
+    pub recency: f64,
+    pub flood: f64,
 }
 
-fn weight(observation: &Observation, t: f64, half_life_days: f64) -> f64 {
-    let days = ((t - observation.t).abs() / 86_400_000.0).max(0.0);
+pub fn sample_size(n: Option<f64>) -> f64 {
+    match n {
+        Some(v) if v.is_finite() && v > 0.0 => v.clamp(MIN_SAMPLE, MAX_SAMPLE),
+        _ => 800.0,
+    }
+}
+
+pub fn poll_weight(point: &PollObservation, t: f64, half_life_days: f64, flood_count: f64) -> PollWeight {
+    let days = ((t - point.t).abs() / 86_400_000.0).max(0.0);
     let half = half_life_days.max(1.0);
-    (sample_size(observation.n) / 2000.0).sqrt() * 2.0_f64.powf(-days / half)
+    let sample = (sample_size(point.n) / N_REF).sqrt();
+    let recency = 2.0_f64.powf(-days / half);
+    let flood = flood_count.max(1.0);
+    PollWeight { total: sample * recency / flood, sample, recency, flood }
 }
 
 #[wasm_bindgen]
 pub fn weighted_mean(observations: JsValue, t: f64, half_life_days: f64) -> Result<f64, JsValue> {
-    let rows: Vec<Observation> = serde_wasm_bindgen::from_value(observations)
+    let rows: Vec<PollObservation> = serde_wasm_bindgen::from_value(observations)
         .map_err(|e| JsValue::from_str(&e.to_string()))?;
     let mut num = 0.0;
     let mut den = 0.0;
     for row in rows {
         if !row.y.is_finite() { continue; }
-        let w = weight(&row, t, half_life_days);
+        let w = poll_weight(&row, t, half_life_days, 1.0).total;
         num += w * row.y;
         den += w;
     }
@@ -37,8 +57,23 @@ pub fn weighted_mean(observations: JsValue, t: f64, half_life_days: f64) -> Resu
 mod tests {
     use super::*;
     #[test]
-    fn sample_size_is_capped() {
-        assert_eq!(sample_size(9000.0), 4000.0);
-        assert_eq!(sample_size(50.0), 100.0);
+    fn canonical_sample_cap() {
+        assert_eq!(sample_size(Some(9000.0)), 4000.0);
+        assert_eq!(sample_size(Some(50.0)), 100.0);
+        assert_eq!(sample_size(None), 800.0);
+    }
+    #[test]
+    fn rust_weighted_mean_fixture() {
+        let rows = vec![
+            PollObservation { t: 0.0, y: 40.0, n: Some(2000.0), institute: None, moe: None },
+            PollObservation { t: 86_400_000.0 * 7.0, y: 50.0, n: Some(4000.0), institute: None, moe: None },
+            PollObservation { t: 86_400_000.0 * 14.0, y: 45.0, n: Some(1000.0), institute: None, moe: None },
+        ];
+        let t = 86_400_000.0 * 7.0;
+        let mut num = 0.0;
+        let mut den = 0.0;
+        for row in rows { let w = poll_weight(&row, t, 14.0, 1.0).total; num += w * row.y; den += w; }
+        let value = num / den;
+        assert!((value - 46.079428).abs() < 1e-6);
     }
 }
