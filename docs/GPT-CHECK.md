@@ -5,7 +5,7 @@
 > **Important design requirement:** preserve the TradingView-style maneuverability. Pan, zoom, range navigation, crosshair/date-centric inspection, and smooth exploration are desirable product behavior. The goal is to make the underlying statistical model and chart architecture correct **without removing that interaction model**.
 
 ## 0. Scope and acceptance criteria
-- [ ] Treat the bottom chart as a complete system: data ingestion → normalization → aggregation → uncertainty → projection → overlays → Chart.js rendering → interaction → responsive/accessibility behavior.
+- [ ] Treat the bottom chart as a complete system: data ingestion → normalization → aggregation → uncertainty → projection → overlays → ECharts rendering → interaction → responsive/accessibility behavior.
 - [ ] Keep TradingView-style navigation as a first-class requirement, not an experimental feature.
 - [ ] Separate statistical correctness from visual/interaction convenience.
 - [ ] Avoid patching symptoms where a shared model contract is missing.
@@ -122,13 +122,13 @@
 - [ ] Reconsider VWMA: raw sample size is not literal trading volume.
 - [ ] If VWMA-like weighting is retained, document its statistical interpretation rather than calling it volume in the trading sense.
 
-## 12. Chart.js data/performance
+## 12. ECharts data/performance
 - [ ] Verify whether data are sorted and unique by internal index.
-- [ ] Consider parsing:false when data are pre-normalized into Chart.js expected internal format.
-- [ ] Consider normalized:true for sorted/unique data.
-- [ ] Evaluate decimation only where it materially helps.
+- [ ] Use ECharts time-series data in sorted chronological order.
+- [ ] Evaluate ECharts progressive rendering/large-data options only where they materially help.
 - [ ] Prefer domain-aware downsampling for statistical curves if generic decimation would distort important polling changes.
-- [ ] Ensure performance remains smooth on mobile with the full history.
+- [ ] Ensure canvas rendering remains smooth on mobile with the full history.
+- [ ] Preserve dataZoom inside interaction and the visible range slider.
 - [ ] Test large tooltip payloads and many visible datasets.
 
 ## 13. Tooltip/data inspection
@@ -216,11 +216,9 @@
 - FiveThirtyEight uncertainty/tracking example: https://fivethirtyeight.com/features/how-were-tracking-joe-bidens-approval-rating/
 - FiveThirtyEight polling-average redesign: https://fivethirtyeight.com/features/introducing-our-brand-new-polling-averages/
 - The Economist methodology: https://projects.economist.com/us-2020-forecast/president/how-this-works
-- Chart.js time scale: https://www.chartjs.org/docs/latest/samples/scales/time-line.html
-- Chart.js interactions: https://www.chartjs.org/docs/latest/configuration/interactions.html
-- Chart.js decimation: https://www.chartjs.org/docs/latest/configuration/decimation.html
-- Chart.js performance: https://www.chartjs.org/docs/latest/general/performance.html
-- Chart.js accessibility: https://www.chartjs.org/docs/latest/general/accessibility.html
+- Apache ECharts documentation: https://echarts.apache.org/en/index.html
+- Apache ECharts dataZoom: https://echarts.apache.org/en/option.html#dataZoom
+- Apache ECharts axisPointer: https://echarts.apache.org/en/option.html#axisPointer
 - Brazilian polling aggregator examples: https://depoisdas17.com.br/, https://agregadordepesquisas.com.br/, https://noticias.uol.com.br/eleicoes/agregador-de-pesquisas-eleitorais/
 
 ## Product requirement captured from user
