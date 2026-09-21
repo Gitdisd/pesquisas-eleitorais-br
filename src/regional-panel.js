@@ -36,6 +36,7 @@ function normalize(rows) {
         id: `reg-${row.institute}-${end}-${round}-${idx}`,
         institute: row.institute,
         published: row.published_date,
+        fieldworkStart: row.fieldwork_start || end,
         fieldworkEnd: end,
         t: Date.parse(end + 'T12:00:00Z'),
         n: row.n,
