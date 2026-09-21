@@ -50,5 +50,7 @@ The migration is incremental. Existing production statistical behavior is not si
 - Rust/WASM core: scaffolded with matching sample-size and weighting primitive.
 - Canonical observation/weight contract: established in JS, Python, and Rust with a shared golden fixture.
 - Production aggregation: now consumes the shared JS contract for sample-size/recency weighting.
+- Canonical estimator interface: now defined in JS and Python with a real-data golden fixture.
 - Legacy advanced estimators: still retained pending numerical validation against Python/Rust.
 - Legacy aggregation: retained as compatibility path pending numerical validation.
+- Estimator bounds remain unset until rolling-origin interval calibration is completed.
