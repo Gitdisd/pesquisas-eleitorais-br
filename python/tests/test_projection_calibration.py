@@ -1,5 +1,6 @@
 from pebr_stats.backtest import BacktestPoint
-from pebr_stats.projection_calibration import ProjectionBacktestPoint, calibrate_projection, project_trend
+from pebr_stats.contract import PollObservation
+from pebr_stats.projection_calibration import ProjectionBacktestPoint, calibrate_projection, project_trend, rolling_projection_backtest
 
 
 def test_project_trend_is_anchored_to_last_observation():
@@ -32,3 +33,15 @@ def test_calibrate_projection_uses_only_earlier_origins():
     assert item.validation_n == 3
     assert item.scale_factor > 1.0
     assert item.validation_coverage < item.calibration_coverage
+
+
+def test_rolling_projection_backtest_returns_points():
+    day = 86_400_000
+    points = [
+        PollObservation(t=i * day, y=40.0 + 0.1 * i, n=2000)
+        for i in range(24)
+    ]
+    rows = rolling_projection_backtest(points, scenario="s", candidate="c", horizons=(1, 3))
+    assert rows
+    assert {row.horizon_days for row in rows} == {1, 3}
+    assert all(row.half_width > 0 for row in rows)
