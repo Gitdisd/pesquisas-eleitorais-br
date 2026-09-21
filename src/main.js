@@ -1,5 +1,4 @@
 import './style.css'
-import 'hammerjs'
 import { CANDIDATES } from './candidates.js'
 import { loadPollData, loadMeta } from './data/api.ts'
 import { mergePolls, normalizePolls } from './data/normalize.ts'
@@ -199,7 +198,7 @@ async function refreshDataQuietly() {
       } catch {}
     }
     const nextRaw = mergePolls(base, extra)
-    const nextPolls = normalize(nextRaw)
+    const nextPolls = normalizePolls(nextRaw)
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
