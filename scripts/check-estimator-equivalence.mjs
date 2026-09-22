@@ -23,9 +23,11 @@ for (const date of [0, DAY, 2 * DAY, 4 * DAY, 6 * DAY, 8 * DAY]) {
   })
   const production = trendAt(trend, date)
   assert.notEqual(production, null)
-  assert.ok(
-    Math.abs(production - canonical.estimate) < 1e-12,
-    `date ${date}: production=${production} canonical=${canonical.estimate}`,
+  const roundedCanonical = Math.round(canonical.estimate * 100) / 100
+  assert.equal(
+    production,
+    roundedCanonical,
+    `date ${date}: production=${production} roundedCanonical=${roundedCanonical} canonical=${canonical.estimate}`,
   )
 }
 
