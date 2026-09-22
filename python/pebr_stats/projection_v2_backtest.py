@@ -8,7 +8,7 @@ from .contract import DAY_MS, N_REF, PollObservation, sample_size, poll_weight
 from .projection_calibration import project_trend
 
 
-CAMPAIGN_MS = 1_471_319_200_000  # 2026-08-16T12:00:00Z
+CAMPAIGN_MS = 1_786_881_600_000  # 2026-08-16T12:00:00Z
 
 
 @dataclass(frozen=True)
