@@ -1,6 +1,7 @@
 import { weightedEstimate } from './estimator.js'
 
 let wasmModulePromise = null
+let wasmModule = null
 
 function wasmModuleUrl() {
   const base = import.meta.env.BASE_URL || '/'
@@ -13,7 +14,8 @@ export async function loadWasmEstimator() {
     wasmModulePromise = import(/* @vite-ignore */ wasmModuleUrl())
       .then(async (module) => {
         if (typeof module.default === 'function') await module.default()
-        if (typeof module.weighted_estimate !== 'function') throw new Error('WASM estimator export missing')
+        if (typeof module.weighted_estimate !== 'function' || typeof module.weighted_trend !== 'function') throw new Error('WASM estimator exports missing')
+        wasmModule = module
         return module
       })
       .catch(() => null)
@@ -56,4 +58,20 @@ export async function warmWasmEstimator() {
     parityDifference,
     parityOk: parityDifference == null || parityDifference < 1e-12,
   }
+}
+
+export function weightedTrendBrowser(points, options = {}) {
+  const halfLifeDays = Number(options.halfLifeDays ?? 14)
+  if (wasmModule && typeof wasmModule.weighted_trend === 'function') {
+    try {
+      const raw = wasmModule.weighted_trend(points || [], halfLifeDays)
+      return Array.isArray(raw) ? raw.map((p) => ({ x: Number(p.x), y: Number(p.y) })) : []
+    } catch {}
+  }
+
+  return []
+}
+
+export function wasmTrendReady() {
+  return !!wasmModule && typeof wasmModule.weighted_trend === 'function'
 }
