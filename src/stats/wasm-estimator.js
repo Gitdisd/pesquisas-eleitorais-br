@@ -50,10 +50,12 @@ export async function warmWasmEstimator() {
     result.estimate == null || fallback.estimate == null
       ? null
       : Math.abs(Number(result.estimate) - Number(fallback.estimate))
+  const available = result.source === 'wasm'
   return {
-    available: result.source === 'wasm',
+    available,
     source: result.source,
-    parityDifference,
-    parityOk: parityDifference == null || parityDifference < 1e-12,
+    parityDifference: available ? parityDifference : null,
+    parityOk: available ? (parityDifference == null || parityDifference < 1e-12) : null,
+    runtimeVerified: available,
   }
 }

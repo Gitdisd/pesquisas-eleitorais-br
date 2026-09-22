@@ -29,6 +29,15 @@ function fmtVote(v) {
   return Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function rangeBounds(polls, round, institutes, rangeDays, projection) {
   const filtered = polls.filter((p) => p.round === round && (!institutes?.size || institutes.has(p.institute)))
   if (!filtered.length) return { min: null, max: null }
@@ -88,11 +97,11 @@ function setExternalHover(el, params) {
   const dateText = date ? new Date(date).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) : ''
   const html = rows.map((p) => {
     const meta = p.data?.meta || {}
-    const extra = meta.institute ? ' · ' + meta.institute : ''
-    const pub = meta.published ? ' · publicado ' + meta.published.split('-').reverse().join('/') : ''
-    const tse = meta.tse ? ' · ' + meta.tse : ''
-    return '<span class="ch-row"><i style="background:' + (p.color || '#888') + '"></i>' +
-      p.seriesName + ': ' + fmtVote(p.value?.[1]) + '%' + extra + pub + tse + '</span>'
+    const extra = meta.institute ? ' · ' + escapeHtml(meta.institute) : ''
+    const pub = meta.published ? ' · publicado ' + escapeHtml(meta.published.split('-').reverse().join('/')) : ''
+    const tse = meta.tse ? ' · ' + escapeHtml(meta.tse) : ''
+    return '<span class="ch-row"><i style="background:' + escapeHtml(p.color || '#888') + '"></i>' +
+      escapeHtml(p.seriesName) + ': ' + fmtVote(p.value?.[1]) + '%' + extra + pub + tse + '</span>'
   }).join('')
   box.classList.remove('is-empty')
   box.innerHTML = '<span class="ch-date">' + dateText + '</span>' + html
@@ -215,6 +224,10 @@ function buildOption(polls, round, institutes, windowDays, model, rangeDays, agg
   return {
     animation: { duration: 180 },
     backgroundColor: 'transparent',
+    aria: {
+      show: true,
+      description: 'Evolução da intenção de voto ao longo do tempo. Pontos representam pesquisas individuais; linhas representam a média ponderada.',
+    },
     grid: { left: 52, right: 18, top: 18, bottom: 72, containLabel: true },
     tooltip: {
       trigger: 'axis',
@@ -248,6 +261,10 @@ export function createPollChart(canvas, opts) {
   const container = canvas.parentElement || canvas
   canvas.style.display = 'none'
   container.classList.add('echarts-container')
+  container.setAttribute('role', 'img')
+  container.setAttribute('aria-label', opts?.regional
+    ? 'Gráfico de pesquisas de todas as fontes'
+    : 'Evolução da intenção de voto nas pesquisas nacionais')
   const chart = echarts.init(container, null, { renderer: 'canvas', useDirtyRect: true })
   chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, container))
   chart.on('datazoom', () => opts.onZoom?.(chart))
@@ -258,11 +275,18 @@ export function createPollChart(canvas, opts) {
 
 export function updatePollChart(chart, opts) {
   if (!chart) return
-  const previousZoom = (chart.getOption()?.dataZoom || [])
+  const previousOption = chart.getOption()
+  const previousZoom = (previousOption?.dataZoom || [])
     .find((z) => z?.xAxisIndex === 0 && (
       z.startValue != null || z.endValue != null || z.start != null || z.end != null
     ))
+  const previousLegendSelected = previousOption?.legend?.[0]?.selected
   chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, chart.getDom()), true)
+  if (previousLegendSelected && typeof previousLegendSelected === 'object') {
+    for (const [name, selected] of Object.entries(previousLegendSelected)) {
+      chart.dispatchAction({ type: selected ? 'legendSelect' : 'legendUnSelect', name })
+    }
+  }
   if (previousZoom) {
     const action = previousZoom.startValue != null || previousZoom.endValue != null
       ? {
