@@ -27,6 +27,7 @@ This certifies absence from the repository's current execution graph. It does no
 | File | Evidence | Disposition |
 |---|---|---|
 | `docs/deploy-pages.yml.example` | Contains only the literal placeholder `workflow placeholder`; it is not executable YAML, not referenced by the build or workflows, and is not linked as a maintained example. | **Removed** |
+| `date-fns` dependency | No current source import/reference was found across the application modules inspected; the package existed only as a direct manifest/lockfile dependency. Vite/ECharts/runtime code does not import it. | **Removed from manifest + lockfile** |
 | `src/fetch-bust.js` | No `index.html` entry and no current source import. Cache-busting is implemented directly by `main.js` for background refreshes. | **Removed** |
 | `src/models-advanced.js` | 37-byte re-export shim; no current source/test/workflow import. The live TypeScript module is imported directly as `src/models/advanced.ts`. | **Removed** |
 | `scripts/repair-source.mjs` | One-time self-modifying repair helper; no current package/workflow execution path. Current system documentation states the self-modifying parser behavior was removed. | **Removed** |
