@@ -21,6 +21,8 @@ from pebr_stats.projection_v2_backtest import (
     summarize_projection_v2,
 )
 from pebr_stats.dataset import candidate_series, load_poll_rows
+from pebr_stats.tracking import TrackingPoll, rolling_tracking_sensitivity
+from pebr_stats.composition import load_composition_polls, rolling_composition_backtest
 
 
 def main() -> None:
@@ -125,6 +127,58 @@ def main() -> None:
     projection_multifold_summary = summarize_validation_coverage(
         projection_multifold_folds
     )
+    tracking_metrics = []
+    tracking_overlap_pairs = 0
+    for (scenario, candidate), observations in groups.items():
+        tracking_rows = []
+        raw_rows = load_poll_rows(args.path)
+        normalized_names = {candidate.casefold()}
+        for row in raw_rows:
+            if str(row.get("scenario") or "").strip() != scenario:
+                continue
+            start = str(row.get("fieldwork_start") or row.get("fieldwork_end") or "")[:10]
+            end = str(row.get("fieldwork_end") or row.get("published_date") or "")[:10]
+            try:
+                from datetime import datetime, timezone
+                start_ms = datetime.fromisoformat(start).replace(tzinfo=timezone.utc).timestamp() * 1000
+                end_ms = datetime.fromisoformat(end).replace(tzinfo=timezone.utc).timestamp() * 1000
+            except ValueError:
+                continue
+            for raw_candidate in row.get("candidates") or []:
+                if str(raw_candidate.get("name") or "").casefold() not in normalized_names:
+                    continue
+                try:
+                    value = float(raw_candidate.get("pct"))
+                except (TypeError, ValueError):
+                    continue
+                tracking_rows.append(
+                    TrackingPoll(
+                        institute=str(row.get("institute") or ""),
+                        scenario=scenario,
+                        geo=str(row.get("geo") or "BR"),
+                        start=start_ms,
+                        end=end_ms,
+                        y=value,
+                        n=float(row.get("n") or 0),
+                    )
+                )
+        metrics_for_group, overlap_pairs = rolling_tracking_sensitivity(tracking_rows)
+        tracking_overlap_pairs += overlap_pairs
+        tracking_metrics.extend(
+            {
+                "scenario": scenario,
+                "candidate": candidate,
+                **metric.__dict__,
+            }
+            for metric in metrics_for_group
+        )
+
+    composition_polls = load_composition_polls(load_poll_rows(args.path))
+    composition_metrics = [
+        metric.__dict__
+        for metric in rolling_composition_backtest(composition_polls)
+    ]
+
     projection_metrics = []
     for horizon in sorted({row.horizon_days for row in projection_rows}):
         group = [row for row in projection_rows if row.horizon_days == horizon]
@@ -151,6 +205,10 @@ def main() -> None:
         "projection_multifold_summary": projection_multifold_summary,
         "projection_v2_gate": projection_v2_result.gate.__dict__,
         "projection_v2_metrics": projection_v2_metrics,
+        "tracking_overlap_pair_count": tracking_overlap_pairs,
+        "tracking_sensitivity": tracking_metrics,
+        "first_round_composition_complete_case_polls": len(composition_polls),
+        "first_round_composition_metrics": composition_metrics,
     }
     payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
