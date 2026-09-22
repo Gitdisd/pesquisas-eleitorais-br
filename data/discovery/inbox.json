@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-22T14:45:06.288Z",
+  "updated_at": "2026-09-22T18:48:45.993Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1217,6 +1217,30 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-22T14:44:41.846Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/22/quaest-pesquisa-posicao-politica-familia.ghtml",
+      "title": "Quaest: 59% dizem que pessoas com quem moram têm posições políticas muito parecidas com as suas | G1 Pular para o conteú",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Quaest",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-22T18:48:31.781Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/22/nova-pesquisa-quaest-no-para-mede-impacto-da-suspensao-da-conta-de-hana-ghassan.ghtml",
+      "title": "Nova pesquisa Quaest no Pará mede impacto da suspensão da conta de Hana Ghassan | Eleições 2026 | Valor Econômico Carreg",
+      "reason": "incomplete_extract:no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-22T18:48:33.951Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/22/nova-pesquisa-datafolha-no-ceara-mede-efeitos-do-cironaro-no-duelo-entre-ciro-e-elmano.ghtml",
+      "title": "Nova pesquisa Datafolha no Ceará mede efeitos do 'Cironaro' no duelo entre Ciro e Elmano | Eleições 2026 | Valor Econômi",
+      "reason": "numbers_not_clean",
+      "institute": "Datafolha",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-22T18:48:34.241Z"
     }
   ]
 }
