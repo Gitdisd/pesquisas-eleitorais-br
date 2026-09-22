@@ -62,8 +62,32 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Canonical estimator equivalence
+        run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
+
       - name: Advanced model rolling backtest
         run: npm run backtest:advanced
+      - name: Setup wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: v0.13.1
+
+      - name: Add wasm32 target
+        run: rustup target add wasm32-unknown-unknown
+
+      - name: Build Rust/WASM package
+        run: npm run build:rust
+
+      - name: WASM/JS parity
+        run: npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
+
+      - name: Upload Rust/WASM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-package-${{ github.sha }}
+          path: public/wasm/polling-core
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Canonical estimator equivalence
         run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
