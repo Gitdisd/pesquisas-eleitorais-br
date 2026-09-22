@@ -43,7 +43,7 @@ function toast(message) {
 }
 
 function getChart() {
-  const el = document.querySelector('.echarts-container')
+  const el = document.querySelector('#chartPanel .echarts-container')
   return el ? echarts.getInstanceByDom(el) : null
 }
 
