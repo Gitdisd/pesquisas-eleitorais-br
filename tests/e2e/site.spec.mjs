@@ -103,4 +103,42 @@ test.describe('polling site browser smoke', () => {
     }
   })
 
+  test('uses a time x-axis with tight observed padding and supports cross-date inspection', async ({ page }) => {
+    const geometry = await page.evaluate(() => {
+      const chart = window.__pebrE2E.nationalChart
+      const option = chart.getOption()
+      const points = (option.series || [])
+        .filter((s) => s.seriesRole === 'poll')
+        .flatMap((s) => s.data || [])
+        .map((point) => Array.isArray(point?.value) ? point.value : point?.value?.value)
+        .filter((value) => Array.isArray(value) && Number.isFinite(Number(value[0])))
+      const times = points.map((value) => Number(value[0]))
+      return {
+        axisType: option.xAxis?.[0]?.type,
+        min: Number(option.xAxis?.[0]?.min),
+        max: Number(option.xAxis?.[0]?.max),
+        observedMin: Math.min(...times),
+        observedMax: Math.max(...times),
+        rect: document.querySelector('#chartPanel .echarts-container')?.getBoundingClientRect(),
+        probeTime: times[Math.floor(times.length / 2)],
+      }
+    })
+
+    expect(geometry.axisType).toBe('time')
+    expect(geometry.max - geometry.observedMax).toBeGreaterThanOrEqual(0)
+    expect(geometry.max - geometry.observedMax).toBeLessThanOrEqual(2 * 86_400_000)
+    expect(geometry.observedMin).toBeGreaterThanOrEqual(geometry.min)
+
+    const pointer = await page.evaluate((input) => {
+      const chart = window.__pebrE2E.nationalChart
+      const pixel = chart.convertToPixel({ xAxisIndex: 0 }, input.probeTime)
+      const rect = document.querySelector('#chartPanel .echarts-container')?.getBoundingClientRect()
+      return { x: rect.x + pixel, y: rect.y + rect.height / 2 }
+    }, geometry)
+
+    await page.mouse.move(pointer.x, pointer.y)
+    await expect(page.locator('#chartPanel .chart-hover:not(.is-empty)')).toBeVisible()
+    await expect(page.locator('#chartPanel .chart-hover')).toContainText('/')
+  })
+
 })
