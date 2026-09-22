@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-22T05:10:04.142Z",
+  "ran_at": "2026-09-22T09:53:00.369Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 417,
+  "candidate_links": 410,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 0,
-  "inbox_new": 39,
-  "skipped_old": 20,
+  "inbox_new": 38,
+  "skipped_old": 21,
   "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
@@ -19,7 +19,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-22T05:09:44.116Z"
+      "found_at": "2026-09-22T09:52:45.184Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/fio-do-professor-felipe-nunes-quaest-21-setembro.ghtml",
@@ -27,7 +27,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T05:09:44.424Z"
+      "found_at": "2026-09-22T09:52:45.439Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-2o-turno-21-setembro.ghtml",
@@ -35,7 +35,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T05:09:44.603Z"
+      "found_at": "2026-09-22T09:52:45.599Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-1o-turno-21-setembro.ghtml",
@@ -43,7 +43,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T05:09:44.780Z"
+      "found_at": "2026-09-22T09:52:45.757Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
@@ -51,8 +51,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-22T05:09:44.803Z"
+      "found_at": "2026-09-22T09:52:45.796Z"
     }
   ],
-  "meta_last_check_at": "2026-09-22T05:10:04.145Z"
+  "meta_last_check_at": "2026-09-22T09:53:00.370Z"
 }

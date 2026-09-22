@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-22T05:10:04.898Z",
+  "updated_at": "2026-09-22T09:53:01.119Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1145,6 +1145,30 @@
       "institute": "Nexus/BTG",
       "published_date": null,
       "found_at": "2026-09-22T05:09:59.660Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/nova-pesquisa-datafolha-no-rio-de-janeiro-testa-corrida-ao-governo-sem-garotinho.ghtml",
+      "title": "Nova pesquisa Datafolha no Rio de Janeiro testa corrida ao governo sem Garotinho | Eleições 2026 | Valor Econômico Carre",
+      "reason": "numbers_not_clean",
+      "institute": "Datafolha",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T09:52:50.996Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/quaest-lula-tem-37-e-flavio-bolsonaro-33-no-1o-turno-candidatos-empatam-no-2o-turno.shtml",
+      "title": "Quaest: Lula tem 37%, e Flávio Bolsonaro, 33% no 1º turno - 21/09/2026 - Política - Folha Últimas notícias Gostaria de r",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T09:53:00.021Z"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/colunas/painel/2026/09/pesquisa-palver-mostra-flavio-com-42-e-lula-com-41-no-primeiro-turno.shtml",
+      "title": "Palver mostra Flávio com 42% e Lula com 41% no 1º turno - 21/09/2026 - Painel - Folha Últimas notícias Gostaria de receb",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Palver",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T09:53:00.304Z"
     }
   ]
 }
