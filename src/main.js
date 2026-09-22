@@ -7,6 +7,7 @@ import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, form
 import { PROJECTION_COPY_PT } from './projection.js'
 import { methodologyHTML } from './methodology.js'
 import { warmWasmEstimator } from './stats/wasm-estimator.js'
+import { exposeE2E } from './e2e-hooks.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
 const EXTRA_URL = `${import.meta.env.BASE_URL}data/polls-extra.json`
@@ -250,6 +251,9 @@ async function refreshDataQuietly() {
 async function refreshMetaQuietly() {
   await refreshDataQuietly()
 }
+
+exposeE2E('refreshDataQuietly', refreshDataQuietly)
+exposeE2E('getState', () => state)
 function startCheckTimers() {
   if (state.checkTimerId) clearInterval(state.checkTimerId)
   if (state.metaPollId) clearInterval(state.metaPollId)

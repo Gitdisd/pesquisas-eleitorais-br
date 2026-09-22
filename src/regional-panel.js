@@ -56,8 +56,18 @@ function filtered() {
   return state.polls.filter((p) => state.geos.has(p.geo || 'BR'))
 }
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function chartOpts() {
   return {
+    regional: true,
     polls: filtered(),
     round: state.round,
     institutes: new Set(),
@@ -83,10 +93,10 @@ function renderTable() {
     .map((p) => {
       const cells = keys.map((c) => {
         const v = p.results[c.key]
-        return `<td class="num">${v == null ? '—' : String(v).replace('.', ',')}</td>`
+        return `<td class="num">${v == null ? '—' : escapeHtml(String(v).replace('.', ','))}</td>`
       }).join('')
       const pub = p.published ? new Date(p.published + 'T12:00:00Z').toLocaleDateString('pt-BR') : '—'
-      return `<tr><td>${p.fieldworkStart}–${p.fieldworkEnd}</td><td>${p.institute}</td><td>${p.geo}</td><td>${pub}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td>${cells}</tr>`
+      return `<tr><td>${escapeHtml(p.fieldworkStart)}–${escapeHtml(p.fieldworkEnd)}</td><td>${escapeHtml(p.institute)}</td><td>${escapeHtml(p.geo)}</td><td>${escapeHtml(pub)}</td><td class="num">${p.n?.toLocaleString('pt-BR') ?? '—'}</td>${cells}</tr>`
     })
     .join('')
 }
@@ -99,13 +109,20 @@ function refresh() {
 function rebuildFromSharedStore(nationalRows = (window.__pebr?.raw || []).map((p) => ({ ...p, geo: p.geo || 'BR' }))) {
   const merged = normalize([...nationalRows, ...state.regionalRows])
   const seen = new Set()
+  const previousGeos = new Set(state.geos)
+  const hadAllGeosSelected = state.polls.length > 0
+    && [...new Set(state.polls.map((p) => p.geo || 'BR'))].every((geo) => previousGeos.has(geo))
   state.polls = merged.filter((p) => {
     const k = canonicalPollKey({ ...p, scenario: p.scenario, geo: p.geo })
     if (seen.has(k)) return false
     seen.add(k)
     return true
   })
-  state.geos = new Set(state.polls.map((p) => p.geo || 'BR'))
+  const availableGeos = new Set(state.polls.map((p) => p.geo || 'BR'))
+  state.geos = hadAllGeosSelected
+    ? availableGeos
+    : new Set([...previousGeos].filter((geo) => availableGeos.has(geo)))
+  if (!state.geos.size && availableGeos.size) state.geos = new Set(availableGeos)
   refresh()
 }
 
@@ -148,7 +165,7 @@ function mount() {
   chips.innerHTML = geos.map((g) => {
     const on = state.geos.has(g) ? ' on' : ''
     const label = g === 'BR' ? 'Nacional' : g
-    return `<button type="button" class="chip${on}" data-geo="${g}">${label}</button>`
+    return `<button type="button" class="chip${on}" data-geo="${escapeHtml(g)}">${escapeHtml(label)}</button>`
   }).join('')
 
   chips.querySelectorAll('[data-geo]').forEach((btn) => {

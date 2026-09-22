@@ -1,0 +1,59 @@
+name: Browser smoke
+# Current executable browser regression suite
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "tests/e2e/**"
+      - ".github/workflows/browser-smoke.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "tests/e2e/**"
+      - ".github/workflows/browser-smoke.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: browser-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: v0.13.1
+      - run: rustup target add wasm32-unknown-unknown
+      - run: npm ci
+      - run: npm run build:rust
+      - run: VITE_E2E=1 npm run build
+      - run: npx --yes playwright@1.63.0 install --with-deps chromium
+      - run: npm install --no-save --package-lock=false @playwright/test@1.63.0
+      - run: npx playwright test --config=tests/e2e/playwright.config.mjs
+
+# Trigger current browser regression revision

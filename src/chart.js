@@ -4,6 +4,7 @@ import { averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
+import { exposeE2E } from './e2e-hooks.js'
 
 const DAY_MS = 86400000
 const OBSERVED_PAD_DAYS = 1.5
@@ -144,7 +145,7 @@ function pushProjection(series, c, proj, tag) {
   })
 }
 
-function buildOption(polls, round, institutes, windowDays, model, rangeDays, aggregate, hoverTarget) {
+function buildOption(polls, round, institutes, windowDays, model, rangeDays, aggregate, hoverTarget, regional = false) {
   const filtered = polls.filter((p) => p.round === round && (!institutes?.size || institutes.has(p.institute)))
   const keys = round === 2
     ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio' || c.key === 'branco_nulo')
@@ -226,7 +227,7 @@ function buildOption(polls, round, institutes, windowDays, model, rangeDays, agg
     backgroundColor: 'transparent',
     aria: {
       show: true,
-      description: 'Evolução da intenção de voto ao longo do tempo. Pontos representam pesquisas individuais; linhas representam a média ponderada.',
+      description: regional ? 'Gráfico de pesquisas de todas as fontes, incluindo pesquisas nacionais e estaduais.' : 'Evolução da intenção de voto ao longo do tempo. Pontos representam pesquisas individuais; linhas representam a média ponderada.',
     },
     grid: { left: 52, right: 18, top: 18, bottom: 72, containLabel: true },
     tooltip: {
@@ -266,7 +267,8 @@ export function createPollChart(canvas, opts) {
     ? 'Gráfico de pesquisas de todas as fontes'
     : 'Evolução da intenção de voto nas pesquisas nacionais')
   const chart = echarts.init(container, null, { renderer: 'canvas', useDirtyRect: true })
-  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, container))
+  exposeE2E(canvas.id === 'allSourcesChart' ? 'regionalChart' : 'nationalChart', chart)
+  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, container, opts.regional === true))
   chart.on('datazoom', () => opts.onZoom?.(chart))
   hoverBoxFor(container)
   window.addEventListener('resize', () => chart.resize())
@@ -281,7 +283,7 @@ export function updatePollChart(chart, opts) {
       z.startValue != null || z.endValue != null || z.start != null || z.end != null
     ))
   const previousLegendSelected = previousOption?.legend?.[0]?.selected
-  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, chart.getDom()), true)
+  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, chart.getDom(), opts.regional === true), true)
   if (previousLegendSelected && typeof previousLegendSelected === 'object') {
     for (const [name, selected] of Object.entries(previousLegendSelected)) {
       chart.dispatchAction({ type: selected ? 'legendSelect' : 'legendUnSelect', name })
