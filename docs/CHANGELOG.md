@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — Browser WASM adapter
+
+- Added the non-breaking Rust/WASM browser estimator adapter with explicit JS fallback and startup parity smoke reporting.
+- CI and GitHub Pages now build the wasm32 package reproducibly and verify generated WASM against the canonical JS estimator before deployment.
+- Added a production-estimator equivalence regression check; no production statistical behavior was changed by the WASM migration.
+
 ## 2026-09-22 — Advanced-model and interval research
 
 - Added a direct rolling-origin evaluator for production models 3–12 and recorded the current 240-record diagnostics in docs/research/ADVANCED-MODELS-BACKTEST-2026-09-22.md.
