@@ -4,6 +4,7 @@ import { averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
+import { weightedTrendBrowser } from './stats/wasm-estimator.js'
 
 const DAY_MS = 86400000
 const OBSERVED_PAD_DAYS = 1.5
@@ -157,7 +158,9 @@ function buildOption(polls, round, institutes, windowDays, model, rangeDays, agg
       symbolSize: 8, itemStyle: { color: c.color }, z: 4,
     })
     const trendPts = pts.map((p) => ({ t: p.value[0], y: p.value[1], n: p.meta.n, institute: p.meta.institute, moe: p.meta.moe }))
-    const trend = aggregate ? averageTrend(trendPts, windowDays, model) : []
+    const trend = aggregate
+      ? (model === 1 ? weightedTrendBrowser(trendPts, { halfLifeDays: windowDays }) : averageTrend(trendPts, windowDays, model))
+      : []
     if (aggregate) pushUncertainty(series, c, uncertaintyBand(trendPts, windowDays))
     if (aggregate) series.push({
       id: c.key + '-aggregate', name: c.label + ' (média)', seriesRole: 'aggregate', type: 'line',
