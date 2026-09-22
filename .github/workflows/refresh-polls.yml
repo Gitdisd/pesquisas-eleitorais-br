@@ -134,7 +134,9 @@ jobs:
             fi
 
             if git push origin HEAD:main; then
-              echo "Data commit pushed; the Pages workflow deploys automatically from the main-branch push."
+              echo "Data commit pushed; starting the Pages deployment explicitly because GITHUB_TOKEN pushes do not trigger push workflows."
+              GH_TOKEN="${{ github.token }}" gh workflow run deploy-pages.yml --ref main --repo "${{ github.repository }}"
+              echo "Pages deployment workflow dispatched."
               exit 0
             fi
 
