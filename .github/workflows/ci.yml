@@ -19,7 +19,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -35,7 +35,7 @@ jobs:
           node-version: "22"
           cache: npm
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Syntax check scripts and JavaScript
         shell: bash
         run: |
@@ -51,9 +51,7 @@ jobs:
           python -m pip install -e "./python[test]"
           python -m pytest python/tests -q
       - name: Real-data rolling backtest
-        run: |
-          python python/scripts/run_backtest.py data/polls.json --output backtest-report.json
-
+        run: python python/scripts/run_backtest.py data/polls.json --output backtest-report.json
       - name: Upload backtest report
         uses: actions/upload-artifact@v4
         with:
@@ -61,15 +59,12 @@ jobs:
           path: backtest-report.json
           if-no-files-found: error
           retention-days: 30
-
       - name: Canonical estimator equivalence
         run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
-
       - name: Advanced model rolling backtest
         run: npm run backtest:advanced
       - name: Fieldwork overlap audit
         run: python python/scripts/run_overlap_audit.py data/polls.json --output overlap-report.json
-
       - name: Upload overlap report
         uses: actions/upload-artifact@v4
         with:
@@ -81,16 +76,12 @@ jobs:
         uses: jetli/wasm-pack-action@v0.4.0
         with:
           version: v0.13.1
-
       - name: Add wasm32 target
         run: rustup target add wasm32-unknown-unknown
-
       - name: Build Rust/WASM package
         run: npm run build:rust
-
       - name: WASM/JS parity
         run: npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
-
       - name: Upload Rust/WASM artifact
         uses: actions/upload-artifact@v4
         with:
@@ -98,10 +89,6 @@ jobs:
           path: public/wasm/polling-core
           if-no-files-found: error
           retention-days: 30
-
-      - name: Canonical estimator equivalence
-        run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
-
       - name: Upload advanced backtest report
         uses: actions/upload-artifact@v4
         with:
@@ -109,7 +96,6 @@ jobs:
           path: advanced-backtest-report.json
           if-no-files-found: error
           retention-days: 30
-
       - name: Build
         run: npm run build
       - name: Identity and data-contract tests
