@@ -107,15 +107,39 @@ jobs:
           npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
           npm run build
       - name: Commit if changed
+        shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add -- data/ public/data/
           if git diff --cached --quiet; then
             echo "No data changes to commit"
             exit 0
           fi
+
           git commit -m "chore(data): refresh and audit polls"
-          git push
-          echo "Data commit pushed; the Pages workflow deploys automatically from the main-branch push."
+
+          # A refresh can overlap a human merge or another protected main update.
+          # Rebase onto the current remote tip before publishing, and never force
+          # an overwrite. A conflicting data rebase is a safe failure: the next
+          # refresh can recompute against the new canonical main state.
+          for attempt in 1 2 3; do
+            git fetch --no-tags origin main
+            if ! git rebase origin/main; then
+              echo "Refresh commit cannot be rebased cleanly onto current main; aborting without overwriting remote data."
+              git rebase --abort || true
+              exit 1
+            fi
+
+            if git push origin HEAD:main; then
+              echo "Data commit pushed; the Pages workflow deploys automatically from the main-branch push."
+              exit 0
+            fi
+
+            echo "Remote main moved during push attempt $attempt; retrying rebase/push."
+          done
+
+          echo "Unable to publish refresh after three race-safe attempts."
+          exit 1
