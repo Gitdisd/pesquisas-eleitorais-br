@@ -28,7 +28,7 @@
 - [ ] Test round 2 with low-value series such as branco/nulo.
 
 ## 2. Canonical statistical model contract
-- [ ] Define one authoritative PollObservation structure: poll identity, institute, fieldwork start/end, publication date, sample size, margin of error, geography, round/scenario, candidate/result shares, tracking/overlap metadata.
+- [ ] Define one authoritative PollObservation structure: poll identity, institute, fieldwork start/end, publication date, sample size, margin of error, geography, round/scenario, candidate/result shares, tracking/overlap metadata. Core numeric fields are now mirrored across JS/Python/Rust; identity/metadata consolidation remains open.
 - [ ] Define one authoritative PollWeight structure.
 - [ ] Centralize sample-size handling.
 - [ ] Enforce the documented sample-size cap consistently (currently 4,000 where that cap is intended).
@@ -70,7 +70,7 @@
 - [ ] Replace the single last-7-days holdout gate with rolling-origin backtesting across multiple historical cutoffs/horizons where data volume permits.
 - [ ] Compare against simple baselines such as persistence and EWMA.
 - [ ] Evaluate state-space/Kalman/local-regression alternatives.
-- [ ] Calibrate projection intervals empirically.
+- [x] Calibrate projection intervals empirically in research via expanding temporal folds; production interval calibration remains open.
 - [ ] Keep forecast visually distinct from observed polling and current aggregate.
 - [ ] Do not let projection logic silently alter the observed historical series.
 
