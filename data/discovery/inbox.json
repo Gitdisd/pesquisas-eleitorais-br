@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-21T00:10:38.356Z",
+  "updated_at": "2026-09-22T05:10:04.898Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -945,6 +945,206 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-20T06:07:11.538Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/22/quaest-2o-turno-veja-os-grupos-em-que-a-disputa-entre-lula-e-flavio-bolsonaro-esta-mais-apertada.ghtml",
+      "title": "Quaest, 2º turno: veja números detalhados de Lula e Flávio Bolsonaro | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-22T05:09:44.116Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/fio-do-professor-felipe-nunes-quaest-21-setembro.ghtml",
+      "title": "Fio do Professor Felipe Nunes: análise da pesquisa Quaest para presidente de 21 de setembro | G1 Pular para o conteúdo E",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:44.424Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-2o-turno-21-setembro.ghtml",
+      "title": "Quaest, 2º turno: Flávio Bolsonaro, 42%; Lula, 41% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest, 2",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:44.603Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-1o-turno-21-setembro.ghtml",
+      "title": "Quaest: Lula tem 37%, e Flávio Bolsonaro aparece com 33% no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:44.780Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
+      "title": "Veja os números da nova pesquisa Quaest para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:44.803Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026/",
+      "title": "O que mostra a pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O que",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Palver",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:45.079Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-setembro-2026-2/",
+      "title": "Nexus/BTG divulga pesquisa a presidente; confira os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiçõ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:45.381Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/nova-pesquisa-datafolha-para-presidente-poe-lula-e-flavio-bolsonaro-a-prova-e-testa-crise-do-stf.ghtml",
+      "title": "Nova pesquisa Datafolha para presidente põe Lula e Flávio Bolsonaro à prova e testa crise do STF | Eleições 2026 | Valor",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Datafolha",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:46.853Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-divulga-nova-pesquisa-eleitoral-para-presidente-nesta-segunda-21.ghtml",
+      "title": "Pesquisa Quaest para presidente: Globo divulga novos números hoje | G1 Pular para o conteúdo Eleições 2026 Pesquisa elei",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:47.552Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/22/quaest-1-turno-21-setembro-recortes.ghtml",
+      "title": "Pesquisa Quaest 1º turno: Lula tem 37% e Flávio Bolsonaro 33% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-22T05:09:49.109Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-rejeicao-21-setembro.ghtml",
+      "title": "Quaest: rejeição a Flávio Bolsonaro é de 56% e a Lula, de 55% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:49.285Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-impactos-do-caso-master-e-crise-no-stf.ghtml",
+      "title": "Quaest: quem é mais afetado pelo escândalo do Master? | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest",
+      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:49.493Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-aprova-desaprova-governo-21-setembro.ghtml",
+      "title": "Quaest: 50% desaprovam governo Lula e 44% aprovam | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest: 50",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:49.670Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/datafolha-17-set-segmentos.ghtml",
+      "title": "Datafolha: grupos em que disputa entre Lula e Flávio é mais acirrada | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Datafolha",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:49.882Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-senador-ceara-setembro-2026-2/",
+      "title": "O que diz pesquisa da AtlasIntel para governo e Senado no Ceará Publicidade Eleições Eleições 2026 Pesquisa Eleitoral El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:50.353Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/real-time-big-data-senado-parana-setembro-2026-2/",
+      "title": "Real Time Big Data divulga pesquisa para o Senado pelo Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Real Time Big Data",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:50.623Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/real-time-big-data-governador-parana-setembro-2026-2/",
+      "title": "Real Time Big Data divulga pesquisa para governador no Paraná Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inte",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Real Time Big Data",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:50.635Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senado-alagoas-setembro-2026/",
+      "title": "Paraná Pesquisas: sondagem para governo e Senado em Alagoas Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiçõ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:50.946Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/jorginho-mantem-a-vantagem-pesquisa-quaest-em-sc-revela-novo-retrato-da-eleicao.ghtml",
+      "title": "Jorginho mantém a vantagem? Pesquisa Quaest em SC revela novo retrato da eleição | Eleições 2026 | Valor Econômico Carre",
+      "reason": "incomplete_extract:no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:54.320Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/quaest-flavio-tem-42percent-e-lula-41percent-no-segundo-turno.ghtml",
+      "title": "Quaest: Flávio empata com Lula no primeiro e segundo turnos | Eleições 2026 | Valor Econômico Carregando... Acesse sua c",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:54.778Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/moro-vai-manter-a-folga-nova-pesquisa-quaest-testa-corrida-ao-governo-do-parana.ghtml",
+      "title": "Moro vai manter a vantagem? Nova pesquisa Quaest testa corrida ao governo do Paraná | Eleições 2026 | Valor Econômico Ca",
+      "reason": "incomplete_extract:no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:54.980Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/pesquisa-quaest-no-rs-mede-novo-capitulo-do-duelo-entre-juliana-brizola-e-luciano-zucco.ghtml",
+      "title": "Pesquisa Quaest no RS mede novo capítulo do duelo entre Juliana Brizola e Luciano Zucco | Eleições 2026 | Valor Econômic",
+      "reason": "incomplete_extract:no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:55.175Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/21/nova-pesquisa-quaest-na-ba-testa-impacto-de-nunes-marques-na-disputa-jeronimo-e-acm-neto.ghtml",
+      "title": "Nova pesquisa Quaest na BA testa impacto de Nunes Marques na disputa Jerônimo e ACM Neto | Eleições 2026 | Valor Econômi",
+      "reason": "incomplete_extract:no_fieldwork,no_n",
+      "institute": "Quaest",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:55.368Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-2o-turno-lula-empata-com-caiado-e-tem-empate-tecnico-com-flavio/",
+      "title": "Nexus/BTG 2º turno: Lula empata com Caiado e tem empate técnico com Flávio | CNN Brasil Pular para o conteúdo Ao vivo Po",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": "2026-09-21",
+      "found_at": "2026-09-22T05:09:59.651Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-lula-tem-40-no-1o-turno-flavio-37-e-cury-6/",
+      "title": "Nexus/BTG: Lula tem 40% no 1º turno; Flávio, 37% e Cury, 6% | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-09-22T05:09:59.660Z"
     }
   ]
 }

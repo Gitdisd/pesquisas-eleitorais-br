@@ -2,143 +2,149 @@
   "version": 2,
   "status": "warn",
   "error_count": 0,
-  "warning_count": 25,
-  "poll_count": 233,
-  "content_sha256": "d2ba37161c3feea773193834a0d03701ff4fea735446633d74a7c6eac47ff3a0",
+  "warning_count": 26,
+  "poll_count": 240,
+  "content_sha256": "5b195b2be2a8516418274e3b281e34bc32ac7a268f20f28bf5c7d3c36934bdea",
   "errors": [],
   "warnings": [
     {
+      "type": "scenario_url_mismatch",
+      "poll": 0,
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/quaest-lula-tem-37-no-1o-turno-flavio-33/"
+    },
+    {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 17,
+      "poll": 24,
       "sum": 101
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 30,
+      "poll": 37,
       "scenario": "estimulada 1º turno",
       "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/"
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 34,
+      "poll": 41,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-e-flavio-empatam-em-40-no-1o-turno/"
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 38,
+      "poll": 45,
       "scenario": "estimulada 1º turno",
       "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-contra-45-de-lula-no-2o-turno-diz-btg-nexus/"
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 41,
+      "poll": 48,
       "sum": 100.1
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 43,
+      "poll": 50,
       "sum": 101
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 54,
+      "poll": 61,
       "scenario": "estimulada 1º turno",
       "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-471-contra-426-de-flavio-no-2o-turno-diz-pesquisa/"
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 63,
+      "poll": 70,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://www.broadcast.com.br/news/lula-tem-39-e-flavio-34-no-primeiro-turno-mostra-pesquisa-indexa-broadcast/"
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 67,
+      "poll": 74,
       "sum": 101
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 87,
+      "poll": 94,
       "sum": 101
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 99,
+      "poll": 106,
       "sum": 101
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 108,
+      "poll": 115,
       "sum": 101
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 109,
+      "poll": 116,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/07/15/quaest-1o-turno-julho-lula-flavio-bolsonaro.ghtml"
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 129,
+      "poll": 136,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/06/20/datafolha-lula-tem-41percent-e-flavio-bolsonaro-31percent-das-intencoes-de-voto-no-1o-turno.ghtml"
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 131,
+      "poll": 138,
       "sum": 100.3
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 135,
+      "poll": 142,
       "sum": 101
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 143,
+      "poll": 150,
       "sum": 100.10000000000001
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 151,
+      "poll": 158,
       "sum": 100.10000000000001
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 159,
+      "poll": 166,
       "sum": 101
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 161,
+      "poll": 168,
       "sum": 100.10000000000001
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 165,
+      "poll": 172,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/05/16/datafolha-maio-primeiro-turno.ghtml"
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 171,
+      "poll": 178,
       "sum": 101
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 197,
+      "poll": 204,
       "sum": 101
     },
     {
       "type": "scenario_url_mismatch",
-      "poll": 207,
+      "poll": 214,
       "scenario": "2º turno Lula x Flávio Bolsonaro",
       "source_url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/03/07/datafolha-1o-turno.ghtml"
     },
     {
       "type": "candidate_sum_over_100_rounding_or_residual",
-      "poll": 211,
+      "poll": 218,
       "sum": 100.1
     }
   ]

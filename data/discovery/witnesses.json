@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-19T22:40:49.932Z",
+  "updated_at": "2026-09-22T05:10:36.327Z",
   "items": [
     {
       "poll_key": "fallback|atlasintel|2026-09-11|2026-09-16|2º turno lula x flavio bolsonaro|BR",
@@ -2641,6 +2641,127 @@
       "scenario": "estimulada 1º turno",
       "published_date": "2026-03-03",
       "recorded_at": "2026-09-19T22:40:49.931Z"
+    },
+    {
+      "poll_key": "fallback|verita|2026-09-10|2026-09-19|estimulada 1º turno|BR",
+      "url": "https://www.blogdobgpb.com.br/2026/09/20/pesquisa-verita-votos-validos-flavio-lidera-no-1o-turno-com-4553-seguido-por-lula-com-4176-em-levantamento-com-405-mil-entrevistados-nos-26-estados-e-no-df/",
+      "institute": "Veritá",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-10",
+      "fieldwork_end": "2026-09-19",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-20",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00485/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-lula-tem-46-no-2o-turno-flavio-45/",
+      "institute": "Nexus/BTG",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-18",
+      "fieldwork_end": "2026-09-20",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00485/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-21-de-setembro-de-2026/",
+      "institute": "Nexus/BTG",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-18",
+      "fieldwork_end": "2026-09-20",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00485/2026|estimulada 1º turno|BR",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/nexus-btg-lula-tem-40-no-1o-turno-flavio-37-e-cury-6/",
+      "institute": "Nexus/BTG",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-18",
+      "fieldwork_end": "2026-09-20",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00485/2026|estimulada 1º turno|BR",
+      "url": "https://www.nexus.fsb.com.br/estudos-divulgados/pesquisa-btg-nexus-de-intencao-de-votos-para-presidente-do-brasil-21-de-setembro-de-2026/",
+      "institute": "Nexus/BTG",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-18",
+      "fieldwork_end": "2026-09-20",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00860/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://noticias.uol.com.br/eleicoes/2026/09/21/palver-pesquisa-presidencial-setembro.ghtm",
+      "institute": "Palver",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-18",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00860/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www.correiobraziliense.com.br/politica/2026/09/amp/7504821-palver-flavio-e-lula-empatados-na-estimulada-e-na-espontanea-no-1-turno.html",
+      "institute": "Palver",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-18",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00860/2026|estimulada 1º turno|BR",
+      "url": "https://noticias.uol.com.br/eleicoes/2026/09/21/palver-pesquisa-presidencial-setembro.ghtm",
+      "institute": "Palver",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-18",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-00860/2026|estimulada 1º turno|BR",
+      "url": "https://www.correiobraziliense.com.br/politica/2026/09/amp/7504821-palver-flavio-e-lula-empatados-na-estimulada-e-na-espontanea-no-1-turno.html",
+      "institute": "Palver",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-18",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-06004/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/quaest-lula-tem-37-no-1o-turno-flavio-33/",
+      "institute": "Genial/Quaest",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-17",
+      "fieldwork_end": "2026-09-20",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "tse|BR-06004/2026|estimulada 1º turno|BR",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/quaest-lula-tem-37-no-1o-turno-flavio-33/",
+      "institute": "Genial/Quaest",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-17",
+      "fieldwork_end": "2026-09-20",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-21",
+      "recorded_at": "2026-09-22T05:10:36.324Z"
     }
   ]
 }
