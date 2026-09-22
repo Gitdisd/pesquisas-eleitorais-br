@@ -15,7 +15,7 @@ This audit maps:
 |---|---|---|
 | 1 | Preserve continuity after context-window crashes | Contextual; no code action required |
 | 2 | Identify the polling site/project | Confirmed as `Gitdisd/pesquisas-eleitorais-br` |
-| 3 | Check new polls, update chart/tables, verify site, and keep documentation synchronized | **Implemented historically; current end-to-end browser validation remains open.** The repository currently has 234 canonical poll records and synchronized public data; recent Veritá addition is present. |
+| 3 | Check new polls, update chart/tables, verify site, and keep documentation synchronized | **Implemented historically; current end-to-end browser validation remains open.** The repository currently has 240 canonical poll records and synchronized public data, including the verified September 21 Quaest, BTG/Nexus and Palver releases. |
 | 4 | Deep audit every aspect of the bottom chart, research alternatives, and propose a stronger architecture without sacrificing maneuverability | **Research completed.** The full issue set was captured in `docs/GPT-CHECK.md`; implementation is partial and ongoing. |
 | 5 | Save the chart audit as `GPT-CHECK` and preserve TradingView-style maneuverability | **Completed.** `docs/GPT-CHECK.md` exists and explicitly preserves that requirement. |
 | 6 | Use the checklist for future changes; question JS/Vite stack | **Completed as process.** The checklist is the governing engineering reference. |
@@ -37,9 +37,9 @@ This audit maps:
 - Round-2 y-axis is dynamically derived rather than hard-coded to a minimum of 30.
 - Model-selector drift for models 6–12 was corrected.
 - Poll identity/deduplication work, witness handling, discovery staging, TSE queues, and national/state separation are represented in the current repository.
-- Current canonical `data/polls.json` contains **234 records**, spanning 2026-01-12 through 2026-09-20.
+- Current canonical `data/polls.json` contains **240 records**, spanning 2026-01-12 through 2026-09-20.
 - The current canonical and public poll files use the same content blob in the repository.
-- The latest verified addition in the retained transcript is the Veritá national record; Palver BR-00860 remained pending because the published vote table was not sufficiently verified.
+- The September 21 Quaest, BTG/Nexus and Palver releases were subsequently source-checked and added with TSE registrations and witness URLs; the current data snapshot is 240 records.
 
 ### Architecture migration
 
@@ -69,7 +69,7 @@ Still open:
 - verify chart and table visually consume the same refreshed dataset;
 - verify viewport preservation with a real refresh/new-poll event.
 
-### 2. Statistical uncertainty is not yet calibrated
+### 2. Statistical uncertainty remains uncalibrated in production
 
 `uncertaintyBand()` remains a separate hand-built uncertainty calculation rather than an interval calibrated to the displayed estimator through rolling-origin coverage.
 
@@ -80,25 +80,31 @@ Still open:
 - sparse/dense/tracking-heavy stratification;
 - explicit separation of sampling, heterogeneity, model and forecast uncertainty.
 
-### 3. Projection validation remains incomplete
+### 3. Projection validation is now materially advanced, but production calibration remains incomplete
 
 `projection-v2.js` still contains a single seven-day holdout gate and hand-built forecast uncertainty.
 
-Still open:
+Completed research layers:
 - rolling-origin validation of projection-v2;
-- comparison against persistence/EWMA and other candidates;
-- empirical interval calibration;
-- only then changing production projection behavior.
+- comparison against persistence on the same scored origins;
+- multi-fold interval calibration diagnostics;
+- no production projection behavior was changed.
 
-### 4. Duplicate statistical implementations remain
+Still open:
+- model-2-specific interval calibration and density stratification;
+- broader temporal/subgroup validation before any production projection change.
+
+### 4. Duplicate statistical implementations are partially reconciled
 
 The advanced models and house-effect logic still have multiple implementations.
 
+Completed:
+- house-effect implementation was centralized;
+- model families 3–12 now have direct rolling-origin diagnostics;
+- canonical estimator equivalence against production weightedTrendV1 is regression-checked.
+
 Still open:
-- reconcile house-effect implementations;
-- document which implementation is authoritative;
-- validate model 2 / advanced models numerically against the canonical research implementation;
-- only then remove legacy duplicates.
+- remove remaining model-specific duplicate primitives only after broader equivalence review.
 
 ### 5. First-round composition remains unresolved
 
@@ -140,16 +146,19 @@ Still open:
 - high-density tooltip behavior;
 - performance across mobile/desktop.
 
-### 9. Rust/WASM is not yet production-executed in the browser
+### 9. Rust/WASM browser path is implemented but live-runtime validation remains open
 
 The Rust crate and WASM-facing API exist, but the browser build/adapter is not yet the production statistical path.
 
+Completed:
+- reproducible WASM build in CI and Pages workflow;
+- browser adapter with JS fallback;
+- generated-package JS/WASM parity test;
+- canonical estimator equivalence regression guard.
+
 Still open:
-- reproducible WASM build in CI;
-- browser adapter;
-- JS fallback;
-- JS/Python/Rust parity tests in the browser;
-- only after parity, remove duplicate JS primitives.
+- live browser smoke test and deployed-runtime verification;
+- removal of remaining duplicate JS primitives beyond the validated weighted estimator.
 
 ### 10. Backtest reporting is not yet a durable benchmark artifact
 
