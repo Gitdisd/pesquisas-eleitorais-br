@@ -51,10 +51,11 @@ The migration is incremental. Existing production statistical behavior is not si
 - Canonical observation/weight contract: established in JS, Python, and Rust with a shared golden fixture.
 - Production aggregation: now consumes the shared JS contract for sample-size/recency weighting.
 - Canonical estimator interface: now defined in JS and Python with a real-data golden fixture.
-- Legacy advanced estimators: still retained pending numerical validation against Python/Rust.
+- Legacy advanced estimators: still retained pending numerical validation against Python/Rust; model families 3–12 are still awaiting the comparable rolling-origin evaluation.
 - Legacy aggregation: retained as compatibility path pending numerical validation.
 - Estimator bounds remain unset until rolling-origin interval calibration is completed.
 - Rolling-origin backtesting: date-safe harness added with persistence and canonical-weighted baselines at 1/3/7-day horizons; same-day polls no longer impose an arbitrary within-day ordering.
 - House-effect estimation: consolidated into `src/stats/house-effects.js` and reused by aggregate, advanced model 4, and projection-v2 without changing the existing formula.
 - Real-data backtest input: reproducible loader added for `data/polls.json`, grouped by scenario and candidate; current corrected runs use unique origin dates and date-level actual/persistence means to avoid arbitrary same-day ordering. Metrics are research evidence only and are not yet promoted to model-selection decisions.
+- Projection-v2 rolling-origin evaluator: added under `python/pebr_stats/projection_v2_backtest.py`; CI now records gate availability and conditional out-of-sample metrics without changing production projection behavior.
 - Migration task register: tracked in GitHub issue #14.
