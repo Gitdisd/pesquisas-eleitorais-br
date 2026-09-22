@@ -1,4 +1,4 @@
-import * as echarts from 'echarts'
+import { echarts } from './echarts-runtime.js'
 import { CANDIDATES } from './candidates.js'
 
 const STYLE_ID = 'pebr-ui-next-style'
