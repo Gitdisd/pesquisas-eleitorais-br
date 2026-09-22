@@ -46,6 +46,7 @@ function normalize(rows) {
         round,
         results,
         sourceUrl: row.source_url,
+        tse: row.tse_registration || row.tse_protocol || null,
       }
     })
     .filter(Boolean)
