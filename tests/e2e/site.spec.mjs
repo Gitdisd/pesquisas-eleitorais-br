@@ -134,14 +134,12 @@ test.describe('polling site browser smoke', () => {
     expect(geometry.min).toBeLessThanOrEqual(geometry.observedMax)
     expect(geometry.max).toBeGreaterThanOrEqual(geometry.observedMax)
 
-    const pointer = await page.evaluate((input) => {
+    await page.evaluate((input) => {
       const chart = window.__pebrE2E.nationalChart
       const pixel = chart.convertToPixel({ xAxisIndex: 0 }, input.probeTime)
-      const rect = document.querySelector('#chartPanel .echarts-container')?.getBoundingClientRect()
-      return { x: rect.x + pixel, y: rect.y + rect.height / 2 }
+      chart.dispatchAction({ type: 'showTip', x: pixel, y: chart.getHeight() / 2 })
     }, geometry)
 
-    await page.mouse.move(pointer.x, pointer.y)
     await expect(page.locator('#chartPanel .chart-hover:not(.is-empty)')).toBeVisible()
     await expect(page.locator('#chartPanel .chart-hover')).toContainText('/')
   })
