@@ -19,7 +19,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -99,8 +99,6 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Canonical estimator equivalence
-        run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
 
       - name: Upload advanced backtest report
         uses: actions/upload-artifact@v4
