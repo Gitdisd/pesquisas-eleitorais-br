@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-22T18:48:45.993Z",
+  "updated_at": "2026-09-22T20:44:05.813Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1241,6 +1241,14 @@
       "institute": "Datafolha",
       "published_date": "2026-09-22",
       "found_at": "2026-09-22T18:48:34.241Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/eleicoes/palver-lula-empata-com-flavio-caiado-e-zema-no-2o-turno/",
+      "title": "Palver: Lula empata com Flávio, Caiado e Zema no 2º turno | CNN Brasil Pular para o conteúdo Ao vivo Política Money WW A",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Palver",
+      "published_date": null,
+      "found_at": "2026-09-22T20:43:58.296Z"
     }
   ]
 }

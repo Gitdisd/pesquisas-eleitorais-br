@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-22T18:48:45.072Z",
+  "ran_at": "2026-09-22T20:44:04.801Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 405,
+  "candidate_links": 411,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 0,
   "inbox_new": 41,
   "skipped_old": 18,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -19,7 +19,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-22T18:48:28.847Z"
+      "found_at": "2026-09-22T20:43:46.054Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/fio-do-professor-felipe-nunes-quaest-21-setembro.ghtml",
@@ -27,7 +27,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T18:48:29.144Z"
+      "found_at": "2026-09-22T20:43:46.368Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-2o-turno-21-setembro.ghtml",
@@ -35,7 +35,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T18:48:29.308Z"
+      "found_at": "2026-09-22T20:43:46.706Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
@@ -43,7 +43,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-22T18:48:29.346Z"
+      "found_at": "2026-09-22T20:43:46.767Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026/",
@@ -51,8 +51,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-22T18:48:29.364Z"
+      "found_at": "2026-09-22T20:43:46.793Z"
     }
   ],
-  "meta_last_check_at": "2026-09-22T18:48:45.073Z"
+  "meta_last_check_at": "2026-09-22T20:44:04.803Z"
 }
