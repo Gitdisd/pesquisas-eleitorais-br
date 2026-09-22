@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-22 — Repository cleanup certification
+
+- Removed the unused direct `date-fns` dependency from `package.json` and `package-lock.json`; no current application source imports it, while Vite and ECharts remain active dependencies.
+- Removed five files proven outside the current browser/build/test/workflow execution graph: `src/fetch-bust.js`, `src/models-advanced.js`, `scripts/repair-source.mjs`, and the obsolete `scripts/run-poll-pipeline.mjs`.
+- Removed the empty `docs/deploy-pages.yml.example` workflow placeholder; it contained no executable workflow and had no repository execution reference.
+- Removed stale registry-proof path filters for the deleted legacy runner and nonexistent v3 runner; the proof workflow continues to target the active v4 resolver and canonical registry parser.
+- Added `docs/REPO-CLEANUP-2026-09-22.md` documenting the evidence standard, retained active components, exact-duplicate data caveat, and future deletion rule.
+- Deliberately retained CI-only, manual-maintenance, research, browser-imported compatibility, and published audit files where repository execution or Pages delivery still depends on them.
+
+
 ## 2026-09-22 — Final validation / release closure
 
 - Browser Smoke #19 passed 10/10 across desktop and Pixel-5-sized mobile Chromium on revision `d78b326fb83c1a6276c6f7e009f2d7ed9899e979`, including both charts, the regional poll audit, WASM parity, round-2 low-value series, dataZoom/legend preservation, time-axis bounds and cross-date inspection rendering.

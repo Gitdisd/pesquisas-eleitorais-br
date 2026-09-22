@@ -18,6 +18,7 @@ System docs:
 - [docs/MODELS.md](docs/MODELS.md) — Modelos 1–7 + escola de centro 8–12
 - [docs/CHANGELOG.md](docs/CHANGELOG.md) — o que mudou e quando
 - [docs/discovery.md](docs/discovery.md) — busca e staging de pesquisas
+- [docs/REPO-CLEANUP-2026-09-22.md](docs/REPO-CLEANUP-2026-09-22.md) — certificação de limpeza e critérios para remover código
 - [docs/modo-projecao-math.md](docs/modo-projecao-math.md) — math do modo projeção legado
 
 Toda mudança de comportamento leva uma linha no changelog **no mesmo commit**.
