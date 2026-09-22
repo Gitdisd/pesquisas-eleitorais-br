@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from 'playwright/test'
 
 test.describe('polling site browser smoke', () => {
   test.beforeEach(async ({ page }) => {
