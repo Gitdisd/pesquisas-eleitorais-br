@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — Refresh → Pages dispatch reconciliation
+
+- Corrected the documented deployment flow so the repository records the explicit `deploy-pages.yml` dispatch performed after a refresh commit.
+- This keeps the documentation aligned with the race-safe refresh workflow and avoids relying on a `GITHUB_TOKEN` push to trigger another workflow.
+- Current fix commit: `0a12061ffb95b8a89b9295cffcab15e692d75fe8`.
+
 ## 2026-09-22 — Full repository audit / production hardening
 
 - Reconciled the retained project conversation records against the current repository, branches, pull requests, workflow history, deployment history, data/discovery artifacts, frontend, statistical engines, Rust/WASM, and GitHub Pages pipeline.
