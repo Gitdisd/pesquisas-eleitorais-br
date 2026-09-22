@@ -1,6 +1,9 @@
 import { averageTrendAdvanced } from './models/advanced'
-import { sampleSize, pollWeight as canonicalPollWeight, DAY_MS, N_REF } from './stats/contract'
+import { pollWeight as canonicalPollWeight, DAY_MS } from './stats/contract'
+import { estimateHouseEffects } from './stats/house-effects'
 import type { SeriesPoint, TrendPoint } from './data/types'
+
+export { estimateHouseEffects } from './stats/house-effects'
 
 const FLOOD_DAYS = 14
 const MAX_MODEL = 12
@@ -80,34 +83,6 @@ export function weightedTrendV2(points: TrendPoint[], windowDays = 14): SeriesPo
       den += w
     }
     if (den > 0 && nearest <= half) out.push({ x: t, y: Math.round((num / den) * 100) / 100 })
-  }
-  return out
-}
-
-export function estimateHouseEffects(points: TrendPoint[], peerDays = 14): Record<string, number> {
-  const acc = new Map<string, { s: number; n: number }>()
-  for (const p of points) {
-    if (p.y == null || !p.institute) continue
-    let num = 0
-    let den = 0
-    for (const q of points) {
-      if (q.y == null || !q.institute || q.institute === p.institute) continue
-      const days = Math.abs(q.t - p.t) / DAY_MS
-      if (days > peerDays) continue
-      const w = Math.sqrt(sampleSize(q.n) / N_REF)
-      num += w * q.y
-      den += w
-    }
-    if (den <= 0) continue
-    const current = acc.get(p.institute) || { s: 0, n: 0 }
-    current.s += p.y - num / den
-    current.n += 1
-    acc.set(p.institute, current)
-  }
-  const out: Record<string, number> = {}
-  for (const [key, value] of acc) {
-    const raw = value.s / value.n
-    out[key] = Math.abs(raw) < 0.05 ? 0 : raw * (value.n / (value.n + 4))
   }
   return out
 }
