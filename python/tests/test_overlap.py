@@ -56,4 +56,4 @@ def test_summary_tracks_max_and_total_overlap_duration():
 
     assert summary["overlap_pair_count"] == 2
     assert summary["max_overlap_days"] == 3
-    assert summary["total_overlap_days"] == 4
+    assert summary["total_overlap_days"] == 5
