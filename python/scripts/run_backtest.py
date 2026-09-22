@@ -19,6 +19,7 @@ from pebr_stats.projection_v2_backtest import (
     ProjectionV2GateSummary,
     rolling_projection_v2_backtest,
     summarize_projection_v2,
+    calibrate_projection_v2,
 )
 from pebr_stats.dataset import candidate_series, load_poll_rows
 from pebr_stats.tracking import TrackingPoll, rolling_tracking_sensitivity
@@ -133,6 +134,14 @@ def main() -> None:
     projection_v2_metrics = [
         item.__dict__ for item in summarize_projection_v2(projection_v2_result)
     ]
+    projection_v2_calibration = [
+        item.__dict__
+        for item in calibrate_projection_v2(
+            projection_v2_result.rows,
+            target_coverage=0.90,
+            calibration_fraction=0.70,
+        )
+    ]
     projection_multifold_folds = rolling_temporal_calibration(
         projection_rows,
         target_coverage=0.90,
@@ -226,6 +235,7 @@ def main() -> None:
         "projection_multifold_summary": projection_multifold_summary,
         "projection_v2_gate": projection_v2_result.gate.__dict__,
         "projection_v2_metrics": projection_v2_metrics,
+        "projection_v2_calibration": projection_v2_calibration,
         "tracking_overlap_pair_count": tracking_overlap_pairs,
         "tracking_sensitivity": tracking_metrics,
         "first_round_composition_complete_case_polls": len(composition_polls),
