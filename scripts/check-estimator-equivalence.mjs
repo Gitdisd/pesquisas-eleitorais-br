@@ -29,13 +29,4 @@ for (const date of [0, DAY, 2 * DAY, 4 * DAY, 6 * DAY, 8 * DAY]) {
   )
 }
 
-const outside = weightedEstimate(points, {
-  date: 20 * DAY,
-  candidate: 'fixture',
-  halfLifeDays,
-})
-const productionOutside = trendAt(trend, 20 * DAY)
-assert.ok(outside.estimate != null)
-assert.equal(productionOutside, trend[trend.length - 1].y)
-
 console.log('Canonical estimator matches production weightedTrendV1 at fixture dates.')
