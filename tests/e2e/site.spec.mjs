@@ -74,4 +74,33 @@ test.describe('polling site browser smoke', () => {
     expect(result.hidden).toBe(false)
     expect(result.hasLowRound2Series).toBe(true)
   })
+  test('renders the newly audited regional presidential releases in the table and chart at fieldwork-end dates', async ({ page }) => {
+    const expected = [
+      { institute: 'AtlasIntel (PE)', geo: 'PE', end: '2026-09-20', tse: 'BR-09256/2026' },
+      { institute: 'Real Time Big Data (GO)', geo: 'GO', end: '2026-09-21', tse: 'GO-04652/2026' },
+      { institute: 'Real Time Big Data (SP)', geo: 'SP', end: '2026-09-19', tse: 'BR-09702/2026' },
+      { institute: 'Real Time Big Data (MG)', geo: 'MG', end: '2026-09-19', tse: 'BR-01531/2026' },
+      { institute: 'Itatiaia/Ver (MG)', geo: 'MG', end: '2026-09-19', tse: 'MG-07337/2026' },
+      { institute: 'Real Time Big Data (PR)', geo: 'PR', end: '2026-09-15', tse: 'BR-08843/2026' },
+    ]
+
+    const tableRows = await page.locator('#allSourcesPanel tbody tr').allTextContents()
+    for (const item of expected) {
+      expect(tableRows.some((text) => text.includes(item.institute) && text.includes(item.geo) && text.includes(item.end))).toBe(true)
+    }
+
+    const chartRows = await page.evaluate(() => {
+      const chart = window.__pebrE2E.regionalChart
+      return (chart.getOption().series || [])
+        .flatMap((series) => series.data || [])
+        .map((point) => point?.meta)
+        .filter(Boolean)
+        .map((meta) => ({ institute: meta.institute, published: meta.published, tse: meta.tse, fieldworkEnd: meta.fieldworkEnd }))
+    })
+
+    for (const item of expected) {
+      expect(chartRows.some((row) => row.institute === item.institute && row.fieldworkEnd === item.end && row.tse === item.tse)).toBe(true)
+    }
+  })
+
 })
