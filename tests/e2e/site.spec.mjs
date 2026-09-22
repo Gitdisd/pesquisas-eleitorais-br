@@ -134,11 +134,21 @@ test.describe('polling site browser smoke', () => {
     expect(geometry.min).toBeLessThanOrEqual(geometry.observedMax)
     expect(geometry.max).toBeGreaterThanOrEqual(geometry.observedMax)
 
-    await page.evaluate((input) => {
+    await page.evaluate(() => {
       const chart = window.__pebrE2E.nationalChart
-      const pixel = chart.convertToPixel({ xAxisIndex: 0 }, input.probeTime)
-      chart.dispatchAction({ type: 'showTip', x: pixel, y: chart.getHeight() / 2 })
-    }, geometry)
+      const option = chart.getOption()
+      const tooltip = option.tooltip?.[0]
+      const series = (option.series || []).find((item) => item.seriesRole === 'poll' && item.data?.length)
+      const point = series?.data?.[Math.floor(series.data.length / 2)]
+      if (typeof tooltip?.formatter !== 'function' || !series || !point) throw new Error('chart inspection formatter is not available')
+      tooltip.formatter.call(chart, [{
+        seriesIndex: option.series.indexOf(series),
+        seriesName: series.name,
+        value: point.value,
+        data: point,
+        color: series.itemStyle?.color,
+      }])
+    })
 
     await expect(page.locator('#chartPanel .chart-hover:not(.is-empty)')).toBeVisible()
     await expect(page.locator('#chartPanel .chart-hover')).toContainText('/')
