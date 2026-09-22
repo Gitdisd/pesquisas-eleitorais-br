@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-22 — Projection-v2 research validation
+
+- Added a reproducible rolling-origin evaluator for projection-v2, including the production house-effect correction, weighted trend, holdout gate, sparse-target handling and conditional accuracy/coverage metrics.
+- CI backtest artifacts now include projection-v2 gate availability and horizon metrics. No production projection constants were changed.
+
 ## 2026-09-21 — House-effect consolidation
 
 - Centralized the existing house-effect formula in `src/stats/house-effects.js` and routed aggregate, advanced model 4, and projection-v2 through the same implementation. The refactor is intended to preserve existing numerical behavior.
