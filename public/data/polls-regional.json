@@ -1,5 +1,602 @@
 [
   {
+    "institute": "AtlasIntel (PE)",
+    "geo": "PE",
+    "fieldwork_start": "2026-09-15",
+    "fieldwork_end": "2026-09-20",
+    "published_date": "2026-09-22",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 58.3
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 29.9
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 3.2
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 2.6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 1.8
+      },
+      {
+        "name": "outros",
+        "party_optional": null,
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 2.3
+      },
+      {
+        "name": "não sabe",
+        "party_optional": null,
+        "pct": 0.7
+      }
+    ],
+    "n": 1836,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/atlasintel-em-pe-lula-lidera-cenarios-de-1o-e-2o-turno/",
+    "tse_registration": "BR-09256/2026",
+    "methodology_note": "AtlasIntel Pernambuco; recrutamento digital aleatório (Atlas RDR); 1.836 eleitores; campo 15–20/09/2026; margem de erro ±2 pp; 95% de confiança; TSE BR-09256/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "AtlasIntel (PE)",
+    "geo": "PE",
+    "fieldwork_start": "2026-09-15",
+    "fieldwork_end": "2026-09-20",
+    "published_date": "2026-09-22",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 60.5
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 32.7
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 6.9
+      }
+    ],
+    "n": 1836,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/atlasintel-em-pe-lula-lidera-cenarios-de-1o-e-2o-turno/",
+    "tse_registration": "BR-09256/2026",
+    "methodology_note": "AtlasIntel Pernambuco; segundo turno Lula x Flávio; 1.836 eleitores; campo 15–20/09/2026; margem de erro ±2 pp; 95% de confiança; TSE BR-09256/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (GO)",
+    "geo": "GO",
+    "fieldwork_start": "2026-09-17",
+    "fieldwork_end": "2026-09-21",
+    "published_date": "2026-09-22",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 31
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 30
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 26
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      },
+      {
+        "name": "outros",
+        "party_optional": null,
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 2
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 1
+      }
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-caiado-tem-31-flavio-30-e-lula-26-no-1o-turno-em-go/",
+    "tse_registration": "GO-04652/2026",
+    "methodology_note": "Real Time Big Data Goiás; 1.600 eleitores; campo 17–21/09/2026; margem de erro ±2 pp; 95% de confiança; TSE GO-04652/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (GO)",
+    "geo": "GO",
+    "fieldwork_start": "2026-09-17",
+    "fieldwork_end": "2026-09-21",
+    "published_date": "2026-09-22",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 57
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 33
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 6
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 4
+      }
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-caiado-tem-31-flavio-30-e-lula-26-no-1o-turno-em-go/",
+    "tse_registration": "GO-04652/2026",
+    "methodology_note": "Real Time Big Data Goiás; segundo turno Lula x Flávio; 1.600 eleitores; campo 17–21/09/2026; margem de erro ±2 pp; 95% de confiança; TSE GO-04652/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (SP)",
+    "geo": "SP",
+    "fieldwork_start": "2026-09-16",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 41
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 35
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 3
+      },
+      {
+        "name": "outros",
+        "party_optional": null,
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 3
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 3
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-big-data-flavio-lidera-cenarios-de-1o-e-2o-turnos-em-sp/",
+    "tse_registration": "BR-09702/2026",
+    "methodology_note": "Real Time Big Data São Paulo; 2.000 eleitores; campo 16–19/09/2026; telefone + recrutamento digital; margem de erro ±2 pp; 95% de confiança; TSE BR-09702/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (SP)",
+    "geo": "SP",
+    "fieldwork_start": "2026-09-16",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 51
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 2
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 2
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-big-data-flavio-lidera-cenarios-de-1o-e-2o-turnos-em-sp/",
+    "tse_registration": "BR-09702/2026",
+    "methodology_note": "Real Time Big Data São Paulo; segundo turno Lula x Flávio; 2.000 eleitores; campo 16–19/09/2026; telefone + recrutamento digital; margem de erro ±2 pp; 95% de confiança; TSE BR-09702/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (MG)",
+    "geo": "MG",
+    "fieldwork_start": "2026-09-16",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 39
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 35
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 8
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 7
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "outros",
+        "party_optional": null,
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 2
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 2
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-flavio-tem-46-no-2o-turno-em-minas-lula-45/",
+    "tse_registration": "BR-01531/2026",
+    "methodology_note": "Real Time Big Data Minas Gerais; 2.000 eleitores; campo 16–19/09/2026; telefone + recrutamento digital; margem de erro ±2 pp; 95% de confiança; TSE BR-01531/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (MG)",
+    "geo": "MG",
+    "fieldwork_start": "2026-09-16",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 46
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 5
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 4
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-flavio-tem-46-no-2o-turno-em-minas-lula-45/",
+    "tse_registration": "BR-01531/2026",
+    "methodology_note": "Real Time Big Data Minas Gerais; segundo turno Lula x Flávio; 2.000 eleitores; campo 16–19/09/2026; telefone + recrutamento digital; margem de erro ±2 pp; 95% de confiança; TSE BR-01531/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Itatiaia/Ver (MG)",
+    "geo": "MG",
+    "fieldwork_start": "2026-09-17",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 34.6
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 34.6
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6.7
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 4.6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 3.4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 0.7
+      },
+      {
+        "name": "Edmilson Costa",
+        "party_optional": "PCB",
+        "pct": 0.4
+      },
+      {
+        "name": "Samara Martins",
+        "party_optional": "UP",
+        "pct": 0.3
+      },
+      {
+        "name": "Wilson Grassi",
+        "party_optional": "Democrata",
+        "pct": 0.2
+      },
+      {
+        "name": "Hertz Dias",
+        "party_optional": "PSTU",
+        "pct": 0.1
+      },
+      {
+        "name": "Rui Costa Pimenta",
+        "party_optional": "PCO",
+        "pct": 0.1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 6.1
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 8.1
+      }
+    ],
+    "n": 1197,
+    "margin_of_error": "±2.8 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/itatiaia-ver-lula-e-flavio-empatam-com-346-no-1o-turno-em-minas/",
+    "tse_registration": "MG-07337/2026",
+    "methodology_note": "Itatiaia/Ver Minas Gerais; 1.197 eleitores 16+; campo 17–19/09/2026; margem de erro ±2,8 pp; 95% de confiança; contratado pela Itatiaia; TSE MG-07337/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Itatiaia/Ver (MG)",
+    "geo": "MG",
+    "fieldwork_start": "2026-09-17",
+    "fieldwork_end": "2026-09-19",
+    "published_date": "2026-09-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45.8
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 9.6
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 3.6
+      }
+    ],
+    "n": 1197,
+    "margin_of_error": "±2.8 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/itatiaia-ver-flavio-tem-458-e-lula-41-no-2o-turno-em-mg/",
+    "tse_registration": "MG-07337/2026",
+    "methodology_note": "Itatiaia/Ver Minas Gerais; segundo turno Lula x Flávio; 1.197 eleitores 16+; campo 17–19/09/2026; margem de erro ±2,8 pp; 95% de confiança; contratado pela Itatiaia; TSE MG-07337/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (PR)",
+    "geo": "PR",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-15",
+    "published_date": "2026-09-21",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 30
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 4
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 4
+      },
+      {
+        "name": "Pablo Marçal",
+        "party_optional": "PRTB",
+        "pct": 2
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 2
+      },
+      {
+        "name": "outros",
+        "party_optional": null,
+        "pct": 1
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 5
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 3
+      }
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-big-data-flavio-lidera-cenarios-de-1o-e-2o-turnos-no-parana/",
+    "tse_registration": "BR-08843/2026",
+    "methodology_note": "Real Time Big Data Paraná; 1.600 eleitores; campo 11–15/09/2026; telefone + recrutamento digital; margem de erro ±2 pp; 95% de confiança; TSE BR-08843/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
+    "institute": "Real Time Big Data (PR)",
+    "geo": "PR",
+    "fieldwork_start": "2026-09-11",
+    "fieldwork_end": "2026-09-15",
+    "published_date": "2026-09-21",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 61
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 30
+      },
+      {
+        "name": "branco/nulo",
+        "party_optional": null,
+        "pct": 5
+      },
+      {
+        "name": "não sabe/não respondeu",
+        "party_optional": null,
+        "pct": 4
+      }
+    ],
+    "n": 1600,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www.cnnbrasil.com.br/eleicoes/real-time-big-data-flavio-lidera-cenarios-de-1o-e-2o-turnos-no-parana/",
+    "tse_registration": "BR-08843/2026",
+    "methodology_note": "Real Time Big Data Paraná; segundo turno Lula x Flávio; 1.600 eleitores; campo 11–15/09/2026; telefone + recrutamento digital; margem de erro ±2 pp; 95% de confiança; TSE BR-08843/2026. Não entra no agregado nacional.",
+    "verified": true
+  },
+  {
     "institute": "Data Control (AC)",
     "geo": "AC",
     "fieldwork_start": "2026-09-12",
