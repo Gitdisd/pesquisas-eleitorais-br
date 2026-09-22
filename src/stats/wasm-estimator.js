@@ -1,4 +1,5 @@
 import { weightedEstimate } from './estimator.js'
+import { weightedTrendV1 } from '../aggregate.js'
 
 let wasmModulePromise = null
 let wasmModule = null
@@ -69,7 +70,7 @@ export function weightedTrendBrowser(points, options = {}) {
     } catch {}
   }
 
-  return []
+  return weightedTrendV1(points || [], halfLifeDays)
 }
 
 export function wasmTrendReady() {
