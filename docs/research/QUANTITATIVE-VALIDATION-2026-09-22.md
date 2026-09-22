@@ -62,3 +62,62 @@ The regional additions were checked against published source pages before insert
 ## Validation status
 
 The exact numerical outputs are stored in the CI polling-backtest artifact for the validated revision. Production constants are not changed by these research extensions.
+
+
+## Measured results from CI run #286
+
+Validated revision: `8f8f4916704d4714d7e71ee44dbc100ec86986e1`.
+
+### Canonical weighted estimator
+
+Across 1-, 3-, and 7-day rolling-origin evaluations:
+
+| Horizon | N | MAE | RMSE |
+|---|---:|---:|---:|
+| 1 day | 364 | 1.990 | 2.612 |
+| 3 days | 358 | 1.869 | 2.499 |
+| 7 days | 342 | 2.014 | 2.684 |
+
+Persistence was worse at every reported horizon (MAE 2.723, 2.615 and 2.671 respectively).
+
+The retrospective empirical 90% error quantiles were 4.222, 3.847 and 4.731 percentage points for 1-, 3- and 7-day horizons. These values are useful calibration diagnostics but are not treated as prospective production coverage.
+
+### Tracking-correlation sensitivity
+
+The current canonical dataset contains only two overlapping fieldwork pairs under the implemented same-institute + same-scenario + same-geography definition.
+
+Across the tested rho grid (0, 0.10, 0.25, 0.50, 0.75), aggregate MAE was effectively unchanged. At 3 and 7 days, increasing rho consistently moved error slightly upward; the largest tested rho therefore does not justify production adoption. The project keeps rho=0 in production.
+
+This result is also a data-identification result: the current metadata does not establish shared respondent panels, so overlap is treated as a possible-dependence signal rather than a factual panel identifier.
+
+### First-round composition benchmark
+
+N=95 complete-case first-round polls were available for the six-component benchmark.
+
+The joint additive-log-ratio benchmark was materially worse than the independently weighted + renormalized baseline:
+
+| Horizon | Joint ALR MAE | Independent-renormalized MAE |
+|---|---:|---:|
+| 1 day | 5.658 | 1.653 |
+| 3 days | 5.936 | 1.660 |
+| 7 days | 6.096 | 1.529 |
+
+Both approaches were simplex-safe. The joint ALR benchmark is therefore retained as research code but is not promoted into the production estimator.
+
+### Projection-v2 interval calibration
+
+Raw projection-v2 nominal coverage was 88.1%, 91.7%, 89.1% and 87.6% at 1, 3, 7 and 14 days respectively.
+
+Temporal 70/30 holdout calibration produced scale factors 0.989, 0.971, 0.994 and 1.033, with validation coverage 84.7%, 90.0%, 87.7% and 90.2%. The dispersion across horizons is too large to justify changing production constants on this run alone. Production projection behavior therefore remains unchanged.
+
+### Sample-density interval calibration
+
+In the held-out density audit, high-density validation coverage was 86.5% at 1 day, 81.1% at 3 days and 89.8% at 7 days. Medium-density validation had only 8 observations per reported horizon and is not sufficient to support a production rule. No qualifying low-density validation stratum was available.
+
+The result supports keeping the production band explicitly described as estimated/uncalibrated rather than labeling it a guaranteed 90% interval.
+
+### CI / browser evidence
+
+CI #286 passed all repository validation steps through the final integrity checks.
+
+The earlier browser regression found and fixed a genuine regional TSE-metadata-loss bug. The later x-axis test failure was corrected as a test assumption: explicit viewport bounds can start after an earlier hidden/filtered observation. The browser suite still needs a fresh successful run against this exact final revision before the corresponding live-site task is marked complete.
