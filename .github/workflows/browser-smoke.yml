@@ -55,3 +55,5 @@ jobs:
       - run: npx --yes playwright@1.63.0 install --with-deps chromium
       - run: npm install --no-save --package-lock=false @playwright/test@1.63.0
       - run: npx playwright test --config=tests/e2e/playwright.config.mjs
+
+# Trigger current browser regression revision
