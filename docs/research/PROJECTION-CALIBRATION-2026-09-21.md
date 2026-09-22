@@ -72,3 +72,25 @@ Before changing production interval width:
 3. examine coverage by horizon and sample-density regime;
 4. compare against the current uncalibrated band;
 5. only then consider a production change, with a regression fixture and CI artifact retaining the evidence.
+
+
+## Current three-fold calibration result
+
+On the current 240-record dataset, the CI runner used three expanding temporal validation folds, with each fold's scale factor estimated only from earlier origins.
+
+| Horizon | Validation n | Pooled validation coverage | Min factor | Mean factor | Max factor |
+|---:|---:|---:|---:|---:|---:|
+| 1 day | 336 | 91.37% | 1.2672 | 1.3761 | 1.5083 |
+| 3 days | 322 | 90.37% | 1.1700 | 1.1860 | 1.1970 |
+| 7 days | 286 | 91.96% | 1.3368 | 1.4003 | 1.4730 |
+| 14 days | 144 | 92.36% | 1.2241 | 1.5798 | 1.8220 |
+
+Fold-by-fold validation coverage was:
+- 1 day: 92.86%, 91.96%, 89.29%.
+- 3 days: 88.89%, 93.52%, 88.68%.
+- 7 days: 86.46%, 97.92%, 91.49%.
+- 14 days: 93.75%, 100.00%, 83.33%.
+
+The factors vary materially for 1-, 7-, and especially 14-day horizons, while 3-day factors are comparatively close. This is evidence for retaining horizon-specific research factors rather than collapsing them into one constant.
+
+These measurements still do not justify changing the production band automatically: the validation is based on historical origins, and coverage should also be examined by poll-density regime and across additional temporal periods.
