@@ -6,6 +6,7 @@
 - Preserved fieldwork dates, sample sizes, margins of error, TSE registrations, candidate values and regional-only scope; these rows are excluded from the national aggregate.
 - Added browser regression assertions for all six releases, checking both table presence and chart point metadata/fieldwork-end placement.
 - Regional dataset now contains 30 rows.
+- Preserved TSE registration/protocol metadata when regional rows are normalized for the ECharts layer, so regional chart points retain source identity in hover metadata.
 
 ## 2026-09-22 — Refresh → Pages dispatch reconciliation
 
