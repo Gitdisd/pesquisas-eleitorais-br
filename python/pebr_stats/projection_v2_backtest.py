@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from math import sqrt
 from typing import Iterable, Sequence
 
-from .contract import DAY_MS, N_REF, PollObservation, sample_size, poll_weight
+from .contract import DAY_MS, PollObservation, poll_weight
 from .projection_calibration import project_trend
 
 
@@ -56,39 +56,7 @@ def process_sd_for(t_last: float) -> float:
     return 0.12
 
 
-def estimate_house_effects(
-    points: Sequence[PollObservation],
-    *,
-    peer_days: int = 14,
-) -> dict[str, float]:
-    acc: dict[str, list[float]] = {}
-    for point in points:
-        if point.y != point.y or not point.institute:
-            continue
-        numerator = 0.0
-        denominator = 0.0
-        for peer in points:
-            if peer.y != peer.y or not peer.institute or peer.institute == point.institute:
-                continue
-            days = abs(peer.t - point.t) / DAY_MS
-            if days > peer_days:
-                continue
-            weight = sqrt(sample_size(peer.n) / N_REF)
-            numerator += weight * peer.y
-            denominator += weight
-        if denominator <= 0:
-            continue
-        bucket = acc.setdefault(point.institute, [0.0, 0.0])
-        bucket[0] += point.y - numerator / denominator
-        bucket[1] += 1.0
-
-    out: dict[str, float] = {}
-    for institute, (total, count) in acc.items():
-        raw = total / count
-        out[institute] = 0.0 if abs(raw) < 0.05 else raw * (count / (count + 4.0))
-    return out
-
-
+from .house_effects import estimate_house_effects
 def weighted_trend_v2(
     points: Sequence[PollObservation],
     *,
