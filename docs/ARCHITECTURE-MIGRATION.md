@@ -59,3 +59,7 @@ The migration is incremental. Existing production statistical behavior is not si
 - Real-data backtest input: reproducible loader added for `data/polls.json`, grouped by scenario and candidate; current corrected runs use unique origin dates and date-level actual/persistence means to avoid arbitrary same-day ordering. Metrics are research evidence only and are not yet promoted to model-selection decisions.
 - Projection-v2 rolling-origin evaluator: added under `python/pebr_stats/projection_v2_backtest.py`; CI now records gate availability and conditional out-of-sample metrics without changing production projection behavior.
 - Migration task register: tracked in GitHub issue #14.
+
+- Advanced model research: production models 3–12 now have a direct date-safe rolling-origin evaluator at scripts/run_advanced_backtest.mjs, with retained CI artifact diagnostics; no production model switch has been made.
+- Projection interval research: expanding three-fold calibration is implemented at python/pebr_stats/multifold_projection_calibration.py and reported in the CI backtest artifact; production interval width remains unchanged.
+- Data state: the canonical dataset contains 240 records through publication date 2026-09-21, with zero duplicate fallback identities in the current audit.
