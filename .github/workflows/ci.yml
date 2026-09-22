@@ -62,6 +62,17 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Advanced model rolling backtest
+        run: npm run backtest:advanced
+
+      - name: Upload advanced backtest report
+        uses: actions/upload-artifact@v4
+        with:
+          name: advanced-backtest-${{ github.sha }}
+          path: advanced-backtest-report.json
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Build
         run: npm run build
       - name: Identity and data-contract tests
