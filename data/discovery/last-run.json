@@ -1,15 +1,507 @@
 {
-  "ran_at": "2026-09-22T20:44:04.801Z",
+  "ran_at": "2026-09-22T21:16:11.044Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 380,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 0,
-  "inbox_new": 41,
+  "inbox_new": 40,
   "skipped_old": 18,
-  "fetch_errors": 8,
+  "fetch_errors": 9,
+  "source_health": [
+    {
+      "source_id": "gnews-presidencial",
+      "attempts": 8,
+      "successes": 8,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "cnn-brasil-eleicoes",
+      "attempts": 3,
+      "successes": 3,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.cnnbrasil.com.br/eleicoes/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.cnnbrasil.com.br/politica/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-flavio-tem-47-no-2o-turno-lula-45/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "uol-eleicoes",
+      "attempts": 2,
+      "successes": 0,
+      "failures": 2,
+      "statuses": [
+        {
+          "url": "https://noticias.uol.com.br/eleicoes/",
+          "status": 403,
+          "error": null
+        },
+        {
+          "url": "https://noticias.uol.com.br/politica/",
+          "status": 403,
+          "error": null
+        }
+      ],
+      "redundancy_ok": false,
+      "fully_failed": true
+    },
+    {
+      "source_id": "wikipedia-polling-2026",
+      "attempts": 2,
+      "successes": 1,
+      "failures": 1,
+      "statuses": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pesquisas_de_opini%C3%A3o_para_a_elei%C3%A7%C3%A3o_presidencial_do_Brasil_em_2026",
+          "status": 404,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "datafolha-folha",
+      "attempts": 4,
+      "successes": 4,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-39-e-flavio-bolsonaro-35-em-primeiro-turno.shtml",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www1.folha.uol.com.br/poder/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "quaest-genial",
+      "attempts": 2,
+      "successes": 2,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.quaest.com.br/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "atlasintel",
+      "attempts": 2,
+      "successes": 2,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.atlasintel.org/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.poder360.com.br/tag/atlasintel/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "poderdata-poder360",
+      "attempts": 4,
+      "successes": 4,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.poder360.com.br/poderdata/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.poder360.com.br/poder-eleicoes-2026/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.poder360.com.br/feed/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "nexus-btg",
+      "attempts": 2,
+      "successes": 2,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.nexus.fsb.com.br/estudos-divulgados/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.poder360.com.br/tag/nexus/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "parana-pesquisas",
+      "attempts": 2,
+      "successes": 1,
+      "failures": 1,
+      "statuses": [
+        {
+          "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.paranapesquisas.com.br/",
+          "status": 403,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "ideia",
+      "attempts": 3,
+      "successes": 3,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://ideia.com.br/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "cnt-mda",
+      "attempts": 2,
+      "successes": 1,
+      "failures": 1,
+      "statuses": [
+        {
+          "url": "https://www.cnt.org.br/",
+          "status": null,
+          "error": "fetch failed"
+        },
+        {
+          "url": "https://www.poder360.com.br/tag/cnt/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "realtime-bigdata",
+      "attempts": 2,
+      "successes": 1,
+      "failures": 1,
+      "statuses": [
+        {
+          "url": "https://www.infomoney.com.br/politica/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://gauchazh.clicrbs.com.br/politica/eleicoes/",
+          "status": 404,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "futura",
+      "attempts": 2,
+      "successes": 2,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.poder360.com.br/tag/futura/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "gerp",
+      "attempts": 2,
+      "successes": 2,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.poder360.com.br/poder-eleicoes-2026/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "indexa-broadcast",
+      "attempts": 2,
+      "successes": 1,
+      "failures": 1,
+      "statuses": [
+        {
+          "url": "https://www.broadcast.com.br/",
+          "status": null,
+          "error": "fetch failed"
+        },
+        {
+          "url": "https://valor.globo.com/politica/eleicoes-2026/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "vox-brasil",
+      "attempts": 1,
+      "successes": 1,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.poder360.com.br/tag/vox/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "alfa-inteligencia",
+      "attempts": 2,
+      "successes": 2,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.poder360.com.br/tag/alfa/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "g1-pesquisas",
+      "attempts": 3,
+      "successes": 3,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/11/datafolha-presidente-11-setembro.ghtml",
+          "status": 200,
+          "error": null
+        },
+        {
+          "url": "https://g1.globo.com/dynamo/politica/eleicoes/2026/pesquisa-eleitoral/rss2.xml",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "valor-eleicoes",
+      "attempts": 1,
+      "successes": 1,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://valor.globo.com/politica/eleicoes-2026/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    },
+    {
+      "source_id": "reuters-br-politics",
+      "attempts": 2,
+      "successes": 0,
+      "failures": 2,
+      "statuses": [
+        {
+          "url": "https://www.bbc.com/portuguese/topics/c404v14pdw4t",
+          "status": 404,
+          "error": null
+        },
+        {
+          "url": "https://www.reuters.com/world/americas/",
+          "status": 401,
+          "error": null
+        }
+      ],
+      "redundancy_ok": false,
+      "fully_failed": true
+    },
+    {
+      "source_id": "poder360-feed",
+      "attempts": 1,
+      "successes": 1,
+      "failures": 0,
+      "statuses": [
+        {
+          "url": "https://www.poder360.com.br/feed/",
+          "status": 200,
+          "error": null
+        }
+      ],
+      "redundancy_ok": true,
+      "fully_failed": false
+    }
+  ],
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
@@ -19,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-22T20:43:46.054Z"
+      "found_at": "2026-09-22T21:15:54.852Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/fio-do-professor-felipe-nunes-quaest-21-setembro.ghtml",
@@ -27,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T20:43:46.368Z"
+      "found_at": "2026-09-22T21:15:55.130Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-2o-turno-21-setembro.ghtml",
@@ -35,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T20:43:46.706Z"
+      "found_at": "2026-09-22T21:15:55.341Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
@@ -43,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-22T20:43:46.767Z"
+      "found_at": "2026-09-22T21:15:55.380Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026/",
@@ -51,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-22T20:43:46.793Z"
+      "found_at": "2026-09-22T21:15:55.395Z"
     }
   ],
-  "meta_last_check_at": "2026-09-22T20:44:04.803Z"
+  "meta_last_check_at": "2026-09-22T21:16:11.046Z"
 }
