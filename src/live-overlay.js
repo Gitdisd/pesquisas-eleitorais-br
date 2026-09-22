@@ -1,7 +1,7 @@
 import './layout-fix.css'
 import './crt-theme.css'
 import './party-themes.css'
-import * as echarts from 'echarts'
+import { echarts } from './echarts-runtime.js'
 
 const BASE_THEMES = ['light', 'dark', 'crt-amber', 'crt-green']
 const PARTY_THEMES = [
