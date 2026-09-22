@@ -62,6 +62,9 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Canonical estimator equivalence
+        run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
+
       - name: Advanced model rolling backtest
         run: npm run backtest:advanced
       - name: Setup wasm-pack
