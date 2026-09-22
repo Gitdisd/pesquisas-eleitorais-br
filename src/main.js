@@ -85,7 +85,7 @@ async function initializeWasmSmoke() {
     document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: wasm }))
   } catch (err) {
     if (!window.__pebr) return
-    window.__pebr.wasm = { available: false, source: 'js-fallback', parityDifference: null, parityOk: true }
+    window.__pebr.wasm = { available: false, source: 'js-fallback', parityDifference: null, parityOk: null, runtimeVerified: false }
     document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: window.__pebr.wasm }))
     console.warn('WASM estimator smoke check failed; using JS fallback.', err)
   }
@@ -218,10 +218,16 @@ async function refreshDataQuietly() {
     const nextHash = JSON.stringify(nextRaw)
     const prevHash = JSON.stringify(state.raw)
     if (nextHash !== prevHash) {
+      const hadAllInstitutesSelected = state.allInstitutes.length > 0
+        && state.institutes.size === state.allInstitutes.length
+      const previouslySelected = new Set(state.institutes)
       state.raw = nextRaw
       state.polls = nextPolls
       state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare('pt-BR'))
-      state.institutes = new Set(state.allInstitutes)
+      state.institutes = hadAllInstitutesSelected
+        ? new Set(state.allInstitutes)
+        : new Set([...previouslySelected].filter((name) => state.allInstitutes.includes(name)))
+      if (!state.institutes.size && state.allInstitutes.length) state.institutes = new Set(state.allInstitutes)
       publishDataStore()
       renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
       if (state.chart) updatePollChart(state.chart, chartOpts())
