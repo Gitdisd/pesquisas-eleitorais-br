@@ -78,6 +78,9 @@ jobs:
       - name: Build Rust/WASM package
         run: npm run build:rust
 
+      - name: WASM/JS parity
+        run: npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
+
       - name: Upload Rust/WASM artifact
         uses: actions/upload-artifact@v4
         with:
