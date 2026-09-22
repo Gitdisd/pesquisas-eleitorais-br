@@ -6,6 +6,7 @@ import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToC
 import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
 import { PROJECTION_COPY_PT } from './projection.js'
 import { methodologyHTML } from './methodology.js'
+import { warmWasmEstimator } from './stats/wasm-estimator.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
 const EXTRA_URL = `${import.meta.env.BASE_URL}data/polls-extra.json`
@@ -71,10 +72,25 @@ async function boot() {
     renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
     setStamp(); applyCheckMeta(bundle.meta); startCheckTimers()
+    void initializeWasmSmoke()
   } catch (err) {
     document.getElementById('chartError').textContent = `Não foi possível carregar as pesquisas: ${err.message}`
   }
 }
+async function initializeWasmSmoke() {
+  try {
+    const wasm = await warmWasmEstimator()
+    if (!window.__pebr) return
+    window.__pebr.wasm = wasm
+    document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: wasm }))
+  } catch (err) {
+    if (!window.__pebr) return
+    window.__pebr.wasm = { available: false, source: 'js-fallback', parityDifference: null, parityOk: true }
+    document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: window.__pebr.wasm }))
+    console.warn('WASM estimator smoke check failed; using JS fallback.', err)
+  }
+}
+
 function chartOpts() {
   return { polls: state.polls, round: state.round, institutes: state.institutes, windowDays: state.windowDays, rangeDays: state.rangeDays, projection: state.projection }
 }
