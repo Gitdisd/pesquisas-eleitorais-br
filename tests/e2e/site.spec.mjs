@@ -125,6 +125,10 @@ test.describe('polling site browser smoke', () => {
     })
 
     expect(geometry.axisType).toBe('time')
+    expect(Number.isFinite(geometry.min)).toBe(true)
+    expect(Number.isFinite(geometry.max)).toBe(true)
+    expect(Number.isFinite(geometry.probeTime)).toBe(true)
+    expect(geometry.max).toBeGreaterThan(geometry.min)
     expect(geometry.max - geometry.observedMax).toBeGreaterThanOrEqual(0)
     expect(geometry.max - geometry.observedMax).toBeLessThanOrEqual(2 * 86_400_000)
     expect(geometry.min).toBeLessThanOrEqual(geometry.observedMax)
