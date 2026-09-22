@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-22T22:01:22.536Z",
+  "updated_at": "2026-09-22T22:21:03.481Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1249,6 +1249,22 @@
       "institute": "Palver",
       "published_date": null,
       "found_at": "2026-09-22T20:43:58.296Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-pernambuco-setembro-2026-2/",
+      "title": "AtlasIntel: pesquisa para governo de Pernambuco Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Atla",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-22T22:20:49.458Z"
+    },
+    {
+      "url": "https://static.poder360.com.br/uploads/2026/09/presidente-atlasintel-pernambuco-setembro.pdf",
+      "title": "AtlasIntel PDF",
+      "reason": "pdf_needs_manual_or_ocr",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-22T22:21:01.366Z"
     }
   ]
 }

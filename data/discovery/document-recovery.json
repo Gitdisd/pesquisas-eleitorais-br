@@ -1,16 +1,20 @@
 {
   "version": 2,
-  "generated_at": "2026-09-22T22:01:22.536Z",
-  "attempted": 1,
+  "generated_at": "2026-09-22T22:21:03.482Z",
+  "attempted": 2,
   "recovered_count": 0,
   "recovered": [],
-  "failed_count": 1,
+  "failed_count": 2,
   "failures": [
     {
       "url": "https://www.canalmeio.com.br/wp-content/uploads/2026/09/Pesquisa-Meio_Ideia-Setembro.pdf",
       "reason": "missing_poll_metadata"
+    },
+    {
+      "url": "https://static.poder360.com.br/uploads/2026/09/presidente-atlasintel-pernambuco-setembro.pdf",
+      "reason": "no_new_verified_records"
     }
   ],
-  "remaining_inbox": 156,
+  "remaining_inbox": 158,
   "ocr_max_pages": 40
 }
