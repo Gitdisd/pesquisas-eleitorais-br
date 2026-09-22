@@ -256,7 +256,9 @@ def rolling_projection_v2_backtest(
             continue
 
         by_x = {x: (y, half_width) for x, y, half_width in projection}
-        persistence = history[-1].y
+        persistence = _date_mean(history, origin)
+        if persistence is None:
+            continue
         for horizon in horizons:
             targets = [date for date in dates if date >= origin + horizon * DAY_MS]
             if not targets:
