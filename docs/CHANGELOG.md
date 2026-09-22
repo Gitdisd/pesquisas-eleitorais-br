@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-22 — Final validation / release closure
+
+- Browser Smoke #19 passed 10/10 across desktop and Pixel-5-sized mobile Chromium on revision `d78b326fb83c1a6276c6f7e009f2d7ed9899e979`, including both charts, the regional poll audit, WASM parity, round-2 low-value series, dataZoom/legend preservation, time-axis bounds and cross-date inspection rendering.
+- CI #291 passed on the same revision.
+- GitHub Pages deployment #390 succeeded on the same revision after the complete application/statistical validation and Rust/WASM build stages.
+- Direct public Pages HTTP/DOM fetching remains unavailable through the current browsing environment, so no independent external-DOM claim is made.
+- No production projection constants, correlation factor, or first-round composition model were changed by the research closure; the measured results did not justify replacing the current production behavior.
+
 ## 2026-09-22 — Statistical research closure pass
 
 - Added reproducible tracking-correlation sensitivity evaluation across rho = 0, 0.10, 0.25, 0.50 and 0.75; the current dataset has only two qualifying overlapping fieldwork pairs, and positive rho produced no meaningful out-of-sample improvement, so production weighting remains unchanged.
