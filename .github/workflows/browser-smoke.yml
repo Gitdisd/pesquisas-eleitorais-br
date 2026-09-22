@@ -52,4 +52,4 @@ jobs:
       - run: npm run build:rust
       - run: VITE_E2E=1 npm run build
       - run: npx --yes playwright@1.63.0 install --with-deps chromium
-      - run: npx --yes @playwright/test@1.63.0 test --config=tests/e2e/playwright.config.mjs
+      - run: npx --yes playwright/test@1.63.0 test --config=tests/e2e/playwright.config.mjs
