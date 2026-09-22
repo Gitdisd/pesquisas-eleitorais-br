@@ -264,7 +264,9 @@ def rolling_projection_v2_backtest(
             if not targets:
                 continue
             target_date = targets[0]
-            if target_date > origin + max(horizons) * DAY_MS:
+            # A sparse target may arrive after the requested nominal horizon;
+            # it remains valid while it falls inside the production 14-day cap.
+            if target_date > origin + 14 * DAY_MS:
                 continue
             actual = _date_mean(rows, target_date)
             forecast = by_x.get(target_date)
