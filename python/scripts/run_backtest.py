@@ -23,6 +23,8 @@ from pebr_stats.projection_v2_backtest import (
 from pebr_stats.dataset import candidate_series, load_poll_rows
 from pebr_stats.tracking import TrackingPoll, rolling_tracking_sensitivity
 from pebr_stats.composition import load_composition_polls, rolling_composition_backtest
+from pebr_stats.density import calibrate_by_density
+from pebr_stats.contract import DAY_MS
 
 
 def main() -> None:
@@ -33,6 +35,7 @@ def main() -> None:
 
     groups = candidate_series(load_poll_rows(args.path))
     all_rows = []
+    density_rows = []
     for (scenario, candidate), observations in groups.items():
         rows = rolling_origin(observations)
         for row in rows:
@@ -45,6 +48,21 @@ def main() -> None:
                     "actual": row.actual,
                     "predicted": row.predicted,
                     "model": row.model,
+                }
+            )
+            density = sum(
+                1 for observation in observations
+                if row.origin - 14 * DAY_MS <= observation.t <= row.origin
+            )
+            density_rows.append(
+                {
+                    "scenario": scenario,
+                    "candidate": candidate,
+                    "origin": row.origin,
+                    "horizon_days": row.horizon_days,
+                    "actual": row.actual,
+                    "predicted": row.predicted,
+                    "density": density,
                 }
             )
 
@@ -129,9 +147,9 @@ def main() -> None:
     )
     tracking_metrics = []
     tracking_overlap_pairs = 0
+    raw_rows = load_poll_rows(args.path)
     for (scenario, candidate), observations in groups.items():
         tracking_rows = []
-        raw_rows = load_poll_rows(args.path)
         normalized_names = {candidate.casefold()}
         for row in raw_rows:
             if str(row.get("scenario") or "").strip() != scenario:
@@ -163,7 +181,7 @@ def main() -> None:
                     )
                 )
         metrics_for_group, overlap_pairs = rolling_tracking_sensitivity(tracking_rows)
-        tracking_overlap_pairs += overlap_pairs
+        tracking_overlap_pairs = max(tracking_overlap_pairs, overlap_pairs)
         tracking_metrics.extend(
             {
                 "scenario": scenario,
@@ -172,6 +190,8 @@ def main() -> None:
             }
             for metric in metrics_for_group
         )
+
+    density_calibration = [item.__dict__ for item in calibrate_by_density(density_rows)]
 
     composition_polls = load_composition_polls(load_poll_rows(args.path))
     composition_metrics = [
@@ -199,6 +219,7 @@ def main() -> None:
         "backtest_points": len(all_rows),
         "metrics": metrics,
         "canonical_weighted_empirical_interval_calibration": calibration,
+        "canonical_weighted_density_calibration": density_calibration,
         "projection_metrics": projection_metrics,
         "projection_calibration": projection_calibration,
         "projection_multifold_calibration": projection_multifold_calibration,
