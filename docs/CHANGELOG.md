@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-22 — Regional presidential poll source re-audit
+
+- Re-audited the newest regional presidential releases against publication/source evidence and added six verified releases (12 first/second-round rows) for PE, GO, SP, MG and PR to `public/data/polls-regional.json`.
+- Preserved fieldwork dates, sample sizes, margins of error, TSE registrations, candidate values and regional-only scope; these rows are excluded from the national aggregate.
+- Added browser regression assertions for all six releases, checking both table presence and chart point metadata/fieldwork-end placement.
+- Regional dataset now contains 30 rows.
+
 ## 2026-09-22 — Refresh → Pages dispatch reconciliation
 
 - Corrected the documented deployment flow so the repository records the explicit `deploy-pages.yml` dispatch performed after a refresh commit.
