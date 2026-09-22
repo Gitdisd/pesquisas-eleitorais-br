@@ -1,76 +1,90 @@
 # Modelos da linha (não são prognóstico de urna)
 
-Pontos no gráfico = pesquisas brutas, data = **fim de campo**.
-Linha sólida = média do chip ativo. Cartões usam a mesma função.
-**Padrão do site = Exp (modelo 1).**
-Nenhum modelo publica P(vitória) nem inventa pesquisa.
+Pontos no gráfico = pesquisas brutas; a data exibida é o **fim de campo**. A linha sólida é a estimativa do modelo ativo. Nenhum modelo publica P(vitória) nem inventa pesquisa.
 
-Código: `src/aggregate.ts` (dispatch + modelos 1–2), `src/models/advanced.ts` (3–7), `src/models/school.ts` (8–12).
-Overlays visuais: `src/overlays.js` — não alteram a média.
-Dispatch: `averageTrend(points, windowDays, model)`.
+## Código atual
 
-Chips modelo: off, Exp, Casa, Meta, Kalman, Rápido, Dia, Local.
-Chips centro: Média, Peso, Mediana, Moda, Corta.
+- `src/aggregate.ts`: despacho e modelos 1–2.
+- `src/models/advanced.ts`: modelos 3–7.
+- `src/models/school.ts`: centros 8–12.
+- `src/stats/contract.js`: contrato canônico de amostra/peso.
+- `src/stats/house-effects.js`: efeito de casa compartilhado.
+- `src/overlays.js`: indicadores experimentais que não alteram a média principal.
 
 ## Entrada comum
 
-Cada ponto: `{ t, y, n, institute, moe? }`.
-`windowDays` = chip da janela (padrão 14).
+Cada ponto de tendência tem `{ t, y, n, institute, moe? }`. A função canônica `sampleSize(n)` limita o tamanho amostral a **100–4.000**, com fallback explícito no contrato.
 
-## off
+## Modelo 1 — Exp (padrão)
 
-Pontos + linha do Exp. Sem tracejado de projeção.
+`weightedTrendV1()` usa o peso canônico:
 
-## Exp — modelo 1 (padrão)
+`peso = sqrt(clamp(N,100..4000)/2000) × 2^(−|dias|/janela)`
 
-`peso = √(clamp(n, 100..4000)/2000) × 2^(−dias/janela)`
+A série é calculada diariamente dentro do alcance temporal e só é emitida quando existe observação suficientemente próxima.
 
-## Casa — modelo 2
+## Modelo 2 — Casa
 
-`peso = √(n/2000) × 2^(−dias/meiaVida) × 1/k_instituto`
+`averageTrend()` aplica primeiro o efeito de casa compartilhado e depois `weightedTrendV2()`.
 
-## Meta — modelo 3
+A agregação usa o mesmo contrato de amostra do modelo 1, recência exponencial e um fator de flooding por instituto/período.
 
-`peso = recência / (σ_i² + τ²) / k_instituto`
+## Modelo 3 — erro de pesquisa
 
-## Kalman — modelo 4
+`weightedTrendV3()` combina erro padrão da pesquisa, variância entre pesquisas, recência e flooding. Quando a MOE existe, ela informa o erro padrão; na ausência, o modelo estima o erro a partir de N e da proporção.
 
-θ_t = θ_{t-1} + ruído (~0,16 pp/√day).
+## Modelo 4 — estado temporal / Kalman
 
-## Rápido — modelo 5
+`weightedTrendV4()` remove efeito de casa e estima uma trajetória temporal com evolução diária, atualização Kalman e suavização retrospectiva.
 
-Meia-vida curta + impulso nas pesquisas novas.
+## Modelo 5 — Rápido
 
-## Dia — modelo 6
+`weightedTrendV5()` reduz a meia-vida efetiva e dá impulso adicional às observações muito recentes.
 
-Média √n só do dia de campo. Sem vazar para o dia seguinte.
+## Modelo 6 — Dia
 
-## Local — modelo 7
+`weightedTrendV6()` agrega primeiro por dia e instituto com peso baseado no N normalizado e depois resume os institutos naquele dia.
 
-LOESS de grau 1 no scatter.
+## Modelo 7 — Local
 
-## Centro — escola (janela, uma casa por dia)
+`weightedTrendV7()` é uma regressão local ponderada no tempo usando kernel tricúbico e peso de tamanho amostral.
 
-- **Média** (8): cada casa vale 1.
-- **Peso** (9): média √n.
-- **Mediana** (10): valor do meio.
-- **Moda** (11): faixa de 0,5 pp mais repetida; empate ou tudo único cai na mediana.
-- **Corta** (12): descarta 20% de cada ponta e média o miolo. Poucas casas → mediana.
+## Modelos 8–12 — Centros
 
-## Overlays (não são modelo)
-
-SMA 7 / 21, EMA 9 / 21, HMA 16, VWMA 14, KAMA 10, Bollinger 20 ± 2σ.
+`src/models/school.ts` fornece:
+- **8 Média:** centros por dia com contribuição igual por instituto.
+- **9 Peso:** centros ponderados pelo tamanho amostral.
+- **10 Mediana:** mediana das observações.
+- **11 Moda:** faixa modal; em empates/baixa repetição usa mediana.
+- **12 Corta:** remove 20% das pontas e resume o miolo; com poucos pontos usa mediana.
 
 ## Influência do tamanho da amostra
 
-O tamanho da amostra usado nos pesos é limitado a **N=4.000** antes da raiz quadrada. Isso impede que uma pesquisa muito grande domine o agregado apenas pelo tamanho amostral.
+A regra canônica está em `src/stats/contract.js` e aplica **N máximo de 4.000** antes da raiz quadrada. Não devem existir novas constantes de cap em componentes individuais sem uma exceção documentada.
 
-## Faixa de incerteza do agregado
+## Incerteza
 
-Quando exibida, a faixa é uma faixa de incerteza derivada do conjunto e **não é calibrada empiricamente ainda**. Ela não é a margem de erro de nenhuma pesquisa individual e não é probabilidade de vitória. A calibração por backtest/coverage continua em aberto.
+A faixa do gráfico é uma **faixa de incerteza estimada**, não uma MOE de uma pesquisa individual e não um intervalo de cobertura empiricamente garantido. A calibração temporal existe como pesquisa reproduzível e não foi aplicada silenciosamente à largura pública.
 
-## O que isto não é
+## Projeções
 
-- Não é MRP estadual.
-- Não corrige erro de 2022.
-- Não simula 2º turno.
+As projeções são visualmente separadas da observação e da média. Os modelos de projeção têm validadores/backtests próprios; as pesquisas de calibração não significam seleção automática de modelo.
+
+## Overlays experimentais
+
+`src/overlays.js` contém SMA, EMA, HMA, VWMA, KAMA e Bollinger. São indicadores analíticos experimentais, não intervalos de confiança, MOE ou probabilidade eleitoral. VWMA usa N como ponderação matemática; isso não deve ser confundido com volume de mercado.
+
+## Composição da primeira rodada
+
+As participações dos candidatos formam uma composição. O sistema atual ainda não impõe uma trajetória conjunta por log-ratio/softmax que some a 100% por construção. Essa é uma questão de pesquisa aberta; simples normalização visual não deve ser apresentada como modelo estatístico.
+
+## Data de referência
+
+O eixo temporal usa `fieldwork_end`. `published_date` é mantida como metadado de disponibilidade/publicação para não misturar “opinião durante o campo” com “informação que já estava pública”.
+
+## Limites de pesquisa ainda abertos
+
+- Tracking-overlap: existe auditoria de sobreposição, mas ainda não um estimador de correlação validado na produção.
+- Calibração: cobertura histórica foi estudada em múltiplos folds, mas a largura de produção continua explicitamente não calibrada.
+- JavaScript: ainda há código legado fora do núcleo tipado.
+- Acessibilidade: a camada ECharts/ARIA e as tabelas foram reforçadas; a associação semântica completa continua como melhoria.
