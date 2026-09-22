@@ -6,7 +6,7 @@ import { createPollChart, updatePollChart, resetZoom, resetYScale, applyThemeToC
 import { weightedTrend, averageTrend, trendAt, fmtPct, fmtDelta, fmtDateBR, formatUpdatedStamp } from './aggregate.js'
 import { PROJECTION_COPY_PT } from './projection.js'
 import { methodologyHTML } from './methodology.js'
-import { warmWasmEstimator } from './stats/wasm-estimator.js'
+import { warmWasmEstimator, weightedTrendBrowser } from './stats/wasm-estimator.js'
 
 const DATA_URL = `${import.meta.env.BASE_URL}data/polls.json`
 const EXTRA_URL = `${import.meta.env.BASE_URL}data/polls-extra.json`
@@ -81,14 +81,15 @@ async function boot() {
 async function initializeWasmSmoke() {
   try {
     const wasm = await warmWasmEstimator()
-    if (!window.__pebr) return
-    window.__pebr.wasm = wasm
+    if (window.__pebr) window.__pebr.wasm = wasm
     document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: wasm }))
+    return wasm
   } catch (err) {
-    if (!window.__pebr) return
-    window.__pebr.wasm = { available: false, source: 'js-fallback', parityDifference: null, parityOk: true }
-    document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: window.__pebr.wasm }))
+    const fallback = { available: false, source: 'js-fallback', parityDifference: null, parityOk: true }
+    if (window.__pebr) window.__pebr.wasm = fallback
+    document.dispatchEvent(new CustomEvent('pebr-wasm-ready', { detail: fallback }))
     console.warn('WASM estimator smoke check failed; using JS fallback.', err)
+    return fallback
   }
 }
 
@@ -393,7 +394,7 @@ function renderCards() {
     const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute, moe: p.moe }))
     const avgModel = Number(window.__pebrProjModel == null ? 1 : window.__pebrProjModel)
     const trend = avgModel === 1
-      ? weightedTrend(pts, state.windowDays)
+      ? weightedTrendBrowser(pts, { halfLifeDays: state.windowDays })
       : averageTrend(pts, state.windowDays, avgModel)
     const cur = trendAt(trend, now), then = trendAt(trend, ago)
     const d = fmtDelta(cur != null && then != null ? cur - then : null)
