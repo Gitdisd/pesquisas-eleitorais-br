@@ -275,7 +275,7 @@ function shellHTML() {
     <div class="chart-box"><canvas id="pollChart" aria-label="Gráfico de pesquisas"></canvas></div>
     <div class="chart-below"><div class="controls controls-secondary">
       <div class="window-row"><span class="ctrl">Janela da média</span><div class="window-presets" role="group">${presetBtns}</div>
-      <label class="ctrl">personalizado <input type="number" class="win-custom" id="windowCustom" min="1" step="1" value="1" inputmode="numeric" /> <strong id="windowVal">1d</strong></label></div>
+      <label class="ctrl">personalizado <input type="number" class="win-custom" id="windowCustom" min="1" step="1" value="14" inputmode="numeric" /> <strong id="windowVal">1d</strong></label></div>
       <label class="toggle-proj"><input type="checkbox" id="projectionToggle" /><span id="projToggleText"></span><span class="chip proj-chip" id="projChip" hidden></span></label>
       <div class="axis-btns"><button type="button" class="chip btn-reset" id="resetZoom">Resetar eixos</button><button type="button" class="chip btn-axis" id="resetY">Resetar Y</button></div>
     </div>
@@ -364,12 +364,12 @@ function renderInstituteChips() {
   const el = document.getElementById('institutes')
   el.innerHTML = ''
   const all = document.createElement('button')
-  all.type = 'button'; all.className = 'chip all on'; all.textContent = 'Todos'
+  all.type = 'button'; all.className = `chip all${state.institutes.size === state.allInstitutes.length ? ' on' : ''}`; all.textContent = 'Todos'
   all.addEventListener('click', () => { state.institutes = new Set(state.allInstitutes); Array.from(el.querySelectorAll('.chip')).forEach((c) => c.classList.add('on')); refresh() })
   el.appendChild(all)
   for (const name of state.allInstitutes) {
     const b = document.createElement('button')
-    b.type = 'button'; b.className = 'chip on'; b.textContent = name
+    b.type = 'button'; b.className = `chip${state.institutes.has(name) ? ' on' : ''}`; b.textContent = name
     b.addEventListener('click', () => {
       if (state.institutes.has(name) && state.institutes.size === 1) return
       if (state.institutes.has(name)) state.institutes.delete(name); else state.institutes.add(name)
