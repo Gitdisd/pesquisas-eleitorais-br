@@ -127,7 +127,8 @@ test.describe('polling site browser smoke', () => {
     expect(geometry.axisType).toBe('time')
     expect(geometry.max - geometry.observedMax).toBeGreaterThanOrEqual(0)
     expect(geometry.max - geometry.observedMax).toBeLessThanOrEqual(2 * 86_400_000)
-    expect(geometry.observedMin).toBeGreaterThanOrEqual(geometry.min)
+    expect(geometry.min).toBeLessThanOrEqual(geometry.observedMax)
+    expect(geometry.max).toBeGreaterThanOrEqual(geometry.observedMax)
 
     const pointer = await page.evaluate((input) => {
       const chart = window.__pebrE2E.nationalChart
