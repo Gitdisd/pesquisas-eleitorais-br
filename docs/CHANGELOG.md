@@ -2,6 +2,7 @@
 
 ## 2026-09-22 — Repository cleanup certification
 
+- Removed the unused direct `date-fns` dependency from `package.json` and `package-lock.json`; no current application source imports it, while Vite and ECharts remain active dependencies.
 - Removed five files proven outside the current browser/build/test/workflow execution graph: `src/fetch-bust.js`, `src/models-advanced.js`, `scripts/repair-source.mjs`, and the obsolete `scripts/run-poll-pipeline.mjs`.
 - Removed the empty `docs/deploy-pages.yml.example` workflow placeholder; it contained no executable workflow and had no repository execution reference.
 - Removed stale registry-proof path filters for the deleted legacy runner and nonexistent v3 runner; the proof workflow continues to target the active v4 resolver and canonical registry parser.
