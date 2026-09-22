@@ -49,7 +49,7 @@ Witness URLs and coverage dates are accumulated rather than creating duplicate p
 | `.github/workflows/deep-repair.yml` | Manual read-only validation/build maintenance |
 | `Verificar agora` | Reloads published JSON only; does **not** run Actions |
 
-After a successful refresh that changes data, `refresh-polls.yml` commits the refreshed data to `main`; the normal `push` trigger of `deploy-pages.yml` then builds and publishes Pages. The refresh workflow does not need to force-dispatch deployment.
+After a successful refresh that changes data, `refresh-polls.yml` commits the refreshed data to `main` and explicitly dispatches `deploy-pages.yml`. This explicit dispatch is required because a push made with `GITHUB_TOKEN` does not start another workflow via the normal `push` trigger. The Pages workflow then builds, validates, and publishes that exact current `main` revision.
 
 ## Discovery / audit state
 
