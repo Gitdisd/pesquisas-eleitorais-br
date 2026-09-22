@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-21 — House-effect consolidation
+
+- Centralized the existing house-effect formula in `src/stats/house-effects.js` and routed aggregate, advanced model 4, and projection-v2 through the same implementation. The refactor is intended to preserve existing numerical behavior.
+
 ## 2026-09-21 — ECharts + statistical validation pass
 
 - **ECharts hardening:** removed the remaining legacy Chart.js reset call, added semantic `seriesRole` filtering, preserved the user's dataZoom viewport across in-place refreshes, and kept observed-only right padding small.
