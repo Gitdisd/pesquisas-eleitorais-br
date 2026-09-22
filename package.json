@@ -21,7 +21,6 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "date-fns": "^4.1.0",
     "echarts": "^6.0.0"
   }
 }
