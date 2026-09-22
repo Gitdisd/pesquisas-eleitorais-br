@@ -800,13 +800,31 @@ async function main() {
   console.log("[discover-polls] sources =", sources.length);
 
   const fetchErrors = [];
+  const sourceHealth = new Map(
+    sources.map((src) => [
+      src.id,
+      { source_id: src.id, attempts: 0, successes: 0, failures: 0, statuses: [] },
+    ])
+  );
   const seedLinks = [];
   const seenSeed = new Set();
 
   for (const src of sources) {
     for (const url of src.urls || []) {
       process.stdout.write(`[discover-polls] fetch source ${src.id}: ${url}\n`);
+      const health = sourceHealth.get(src.id);
+      if (health) health.attempts += 1;
       const res = await fetchText(url);
+      if (health) {
+        if (res.ok) health.successes += 1;
+        else health.failures += 1;
+        health.statuses.push({
+          url,
+          status: res.status || null,
+          error: res.error || null,
+        });
+        if (health.statuses.length > 12) health.statuses.shift();
+      }
       if (!res.ok) {
         fetchErrors.push({ source_id: src.id, url, status: res.status, error: res.error || null });
         console.warn("[discover-polls] soft fail", src.id, url, res.status, res.error || "");
@@ -918,6 +936,11 @@ async function main() {
     inbox_new: inboxNew.length,
     skipped_old: skippedOld,
     fetch_errors: fetchErrors.length,
+    source_health: [...sourceHealth.values()].map((health) => ({
+      ...health,
+      redundancy_ok: health.successes > 0,
+      fully_failed: health.attempts > 0 && health.successes === 0,
+    })),
     dry_run: args.dryRun,
     verified_samples: verifiedNew.slice(0, 5).map((p) => ({
       institute: p.institute,
