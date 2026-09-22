@@ -10,6 +10,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from pebr_stats.backtest import BacktestPoint, rolling_origin, summarize
 from pebr_stats.calibration import calibrate_empirical_intervals
 from pebr_stats.projection_calibration import calibrate_projection, rolling_projection_backtest
+from pebr_stats.projection_v2_backtest import (
+    ProjectionV2BacktestResult,
+    ProjectionV2GateSummary,
+    rolling_projection_v2_backtest,
+    summarize_projection_v2,
+)
 from pebr_stats.dataset import candidate_series, load_poll_rows
 
 
@@ -74,6 +80,35 @@ def main() -> None:
             calibration_fraction=0.70,
         )
     ]
+
+    projection_v2_rows = []
+    projection_v2_gate_eligible = 0
+    projection_v2_gate_passes = 0
+    for (scenario, candidate), observations in groups.items():
+        result = rolling_projection_v2_backtest(
+            observations,
+            scenario=scenario,
+            candidate=candidate,
+        )
+        projection_v2_rows.extend(result.rows)
+        projection_v2_gate_eligible += result.gate.eligible_origins
+        projection_v2_gate_passes += result.gate.gate_pass_origins
+
+    projection_v2_result = ProjectionV2BacktestResult(
+        rows=tuple(projection_v2_rows),
+        gate=ProjectionV2GateSummary(
+            eligible_origins=projection_v2_gate_eligible,
+            gate_pass_origins=projection_v2_gate_passes,
+            pass_rate=(
+                projection_v2_gate_passes / projection_v2_gate_eligible
+                if projection_v2_gate_eligible
+                else 0.0
+            ),
+        ),
+    )
+    projection_v2_metrics = [
+        item.__dict__ for item in summarize_projection_v2(projection_v2_result)
+    ]
     projection_metrics = []
     for horizon in sorted({row.horizon_days for row in projection_rows}):
         group = [row for row in projection_rows if row.horizon_days == horizon]
@@ -96,6 +131,8 @@ def main() -> None:
         "canonical_weighted_empirical_interval_calibration": calibration,
         "projection_metrics": projection_metrics,
         "projection_calibration": projection_calibration,
+        "projection_v2_gate": projection_v2_result.gate.__dict__,
+        "projection_v2_metrics": projection_v2_metrics,
     }
     payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.output:
