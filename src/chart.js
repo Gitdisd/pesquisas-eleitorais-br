@@ -4,6 +4,7 @@ import { averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
 import { projectTrend, hexAlpha, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS } from './projection.js'
 import { projectTrendV2, rescaleComposition, formatProjSummary } from './projection-v2.js'
+import { exposeE2E } from './e2e-hooks.js'
 
 const DAY_MS = 86400000
 const OBSERVED_PAD_DAYS = 1.5
@@ -266,6 +267,7 @@ export function createPollChart(canvas, opts) {
     ? 'Gráfico de pesquisas de todas as fontes'
     : 'Evolução da intenção de voto nas pesquisas nacionais')
   const chart = echarts.init(container, null, { renderer: 'canvas', useDirtyRect: true })
+  exposeE2E(canvas.id === 'allSourcesChart' ? 'regionalChart' : 'nationalChart', chart)
   chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, container))
   chart.on('datazoom', () => opts.onZoom?.(chart))
   hoverBoxFor(container)
