@@ -34,8 +34,8 @@
 - [ ] Enforce the documented sample-size cap consistently (currently 4,000 where that cap is intended).
 - [ ] Centralize recency weighting.
 - [ ] Centralize flood/duplicate/tracking handling.
-- [ ] Centralize house-effect estimation.
-- [ ] Remove or reconcile duplicate house-effect implementations across aggregate.ts, projection-v2.js, and models/advanced.ts.
+- [x] Centralize house-effect estimation.
+- [x] Remove or reconcile duplicate house-effect implementations across aggregate.ts, projection-v2.js, and models/advanced.ts.
 - [ ] Ensure every model uses the same sample-size convention unless explicitly documented otherwise.
 
 ## 3. Aggregation/model architecture
@@ -168,7 +168,7 @@
 - [x] Use rolling-origin cutoffs rather than one arbitrary holdout.
 - [x] Evaluate multiple horizons.
 - [x] Compare simple baselines against sophisticated models.
-- [ ] Measure RMSE/MAE and interval coverage where appropriate.
+- [x] Measure RMSE/MAE and interval coverage where appropriate.
 - [ ] Examine performance separately for sparse, dense, tracking-heavy, and different-round periods.
 - [ ] Record validated results so model changes are evidence-driven.
 

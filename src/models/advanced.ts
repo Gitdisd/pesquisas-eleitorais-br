@@ -1,6 +1,7 @@
 import type { SeriesPoint, TrendPoint } from '../data/types'
 import { schoolCenterTrend } from './school'
 import { sampleSize, N_REF, DAY_MS } from '../stats/contract'
+import { estimateHouseEffects } from '../stats/house-effects'
 
 const DAY = DAY_MS
 const DEFF = 1.3
@@ -62,33 +63,6 @@ export function dlTau2(items: Array<{ y: number; se: number }>): number {
   return Math.min(25, tau)
 }
 
-function houseMap(points: TrendPoint[]): Record<string, number> {
-  const acc = new Map<string, { s: number; n: number }>()
-  for (const p of points) {
-    if (p.y == null || !p.institute) continue
-    let num = 0
-    let den = 0
-    for (const q of points) {
-      if (q.y == null || !q.institute || q.institute === p.institute) continue
-      if (Math.abs(q.t - p.t) / DAY > 14) continue
-      const w = Math.sqrt(sampleN(q.n) / N_REF)
-      num += w * q.y
-      den += w
-    }
-    if (den <= 0) continue
-    const current = acc.get(p.institute) || { s: 0, n: 0 }
-    current.s += p.y - num / den
-    current.n += 1
-    acc.set(p.institute, current)
-  }
-  const out: Record<string, number> = {}
-  for (const [key, value] of acc) {
-    const raw = value.s / value.n
-    out[key] = Math.abs(raw) < 0.05 ? 0 : raw * (value.n / (value.n + 4))
-  }
-  return out
-}
-
 export function weightedTrendV3(points: TrendPoint[], windowDays = 14): SeriesPoint[] {
   if (!points.length) return []
   const sorted = [...points].sort((a, b) => a.t - b.t)
@@ -127,7 +101,7 @@ export function weightedTrendV3(points: TrendPoint[], windowDays = 14): SeriesPo
 
 export function weightedTrendV4(points: TrendPoint[], _windowDays = 14): SeriesPoint[] {
   if (!points.length) return []
-  const house = houseMap(points)
+  const house = estimateHouseEffects(points)
   const sorted = [...points]
     .map((p) => ({ ...p, y: p.y - (house[p.institute || ''] || 0) }))
     .sort((a, b) => a.t - b.t)

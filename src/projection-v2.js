@@ -1,9 +1,10 @@
 import { weightedTrendV2 } from './aggregate.js'
 import { projectTrend } from './projection.js'
+import { estimateHouseEffects } from './stats/house-effects.js'
+
+export { estimateHouseEffects } from './stats/house-effects.js'
 
 const DAY = 86400000
-const N_REF = 2000
-const MAX_SAMPLE = 4000
 const CAMPAIGN_MS = Date.parse('2026-08-16T12:00:00Z')
 
 function nearest(line, x) {
@@ -25,37 +26,6 @@ export function processSdFor(tLast, electionDayMs) {
   if (tLast >= CAMPAIGN_MS) sd = 0.18
   if (electionDayMs && (electionDayMs - tLast) / DAY <= 14) sd = 0.26
   return sd
-}
-
-export function estimateHouseEffects(points, peerDays = 14) {
-  const acc = new Map()
-  for (const p of points) {
-    if (p.y == null || !p.institute) continue
-    let num = 0
-    let den = 0
-    for (const q of points) {
-      if (q.y == null || !q.institute || q.institute === p.institute) continue
-      const days = Math.abs(q.t - p.t) / DAY
-      if (days > peerDays) continue
-      const n = Number(q.n) > 0 ? Math.min(MAX_SAMPLE, Math.max(100, Number(q.n))) : 800
-      const w = Math.sqrt(n / N_REF)
-      num += w * q.y
-      den += w
-    }
-    if (den <= 0) continue
-    const peer = num / den
-    if (!acc.has(p.institute)) acc.set(p.institute, { s: 0, n: 0 })
-    const a = acc.get(p.institute)
-    a.s += p.y - peer
-    a.n += 1
-  }
-  const out = {}
-  for (const [k, v] of acc) {
-    const raw = v.s / v.n
-    const shrink = v.n / (v.n + 4)
-    out[k] = Math.abs(raw) < 0.05 ? 0 : raw * shrink
-  }
-  return out
 }
 
 export function holdoutGate(series, opts = {}) {

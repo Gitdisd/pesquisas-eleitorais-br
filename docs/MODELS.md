@@ -5,7 +5,7 @@ Linha sólida = média do chip ativo. Cartões usam a mesma função.
 **Padrão do site = Exp (modelo 1).**
 Nenhum modelo publica P(vitória) nem inventa pesquisa.
 
-Código: `src/aggregate.ts` (dispatch + modelos 1–2), `src/models-advanced.js` (3–7), `src/models/school.ts` (8–12).
+Código: `src/aggregate.ts` (dispatch + modelos 1–2), `src/models/advanced.ts` (3–7), `src/models/school.ts` (8–12).
 Overlays visuais: `src/overlays.js` — não alteram a média.
 Dispatch: `averageTrend(points, windowDays, model)`.
 
