@@ -73,6 +73,54 @@ pub fn weighted_estimate(observations: JsValue, date: f64, candidate: String, ha
     serde_wasm_bindgen::to_value(&result).map_err(|e| JsValue::from_str(&e.to_string()))
 }
 
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SeriesPoint {
+    pub x: f64,
+    pub y: f64,
+}
+
+#[wasm_bindgen]
+pub fn weighted_trend(observations: JsValue, half_life_days: f64) -> Result<JsValue, JsValue> {
+    let mut rows: Vec<PollObservation> = serde_wasm_bindgen::from_value(observations)
+        .map_err(|e| JsValue::from_str(&e.to_string()))?;
+    rows.retain(|row| row.y.is_finite() && row.t.is_finite());
+    rows.sort_by(|a, b| a.t.partial_cmp(&b.t).unwrap_or(std::cmp::Ordering::Equal));
+    if rows.is_empty() {
+        return serde_wasm_bindgen::to_value(&Vec::<SeriesPoint>::new())
+            .map_err(|e| JsValue::from_str(&e.to_string()));
+    }
+
+    let half = half_life_days.max(1.0);
+    let reach = half * 2.5;
+    let start = rows.first().map(|row| row.t).unwrap_or(0.0);
+    let end = rows.last().map(|row| row.t).unwrap_or(start);
+    let mut out = Vec::<SeriesPoint>::new();
+    let mut t = start;
+    while t <= end + 1.0 {
+        let mut numerator = 0.0;
+        let mut denominator = 0.0;
+        let mut nearest = f64::INFINITY;
+        for row in &rows {
+            let days = ((t - row.t).abs() / 86_400_000.0).max(0.0);
+            if days < nearest { nearest = days; }
+            if days > reach { continue; }
+            let weight = poll_weight(row, t, half, 1.0).total;
+            numerator += weight * row.y;
+            denominator += weight;
+        }
+        if denominator > 0.0 && nearest <= half {
+            out.push(SeriesPoint {
+                x: t,
+                y: (numerator / denominator * 100.0).round() / 100.0,
+            });
+        }
+        t += 86_400_000.0;
+    }
+
+    serde_wasm_bindgen::to_value(&out).map_err(|e| JsValue::from_str(&e.to_string()))
+}
+
 #[wasm_bindgen]
 pub fn weighted_mean(observations: JsValue, t: f64, half_life_days: f64) -> Result<f64, JsValue> {
     let rows: Vec<PollObservation> = serde_wasm_bindgen::from_value(observations)
@@ -120,6 +168,22 @@ mod tests {
         }
         assert!((num / den - 39.844918909571696).abs() < 1e-12);
         assert!((den * den / sum_w2 - 7.627807236011811).abs() < 1e-12);
+    }
+
+    #[test]
+    fn weighted_trend_fixture_is_daily_and_rounded() {
+        let rows = vec![
+            PollObservation { t: 0.0, y: 40.0, n: Some(2000.0), institute: None, moe: None },
+            PollObservation { t: 86_400_000.0 * 2.0, y: 42.0, n: Some(2000.0), institute: None, moe: None },
+        ];
+        let mut rows = rows;
+        rows.sort_by(|a, b| a.t.partial_cmp(&b.t).unwrap());
+        let start = rows[0].t;
+        let end = rows[1].t;
+        let mut count = 0;
+        let mut t = start;
+        while t <= end + 1.0 { count += 1; t += 86_400_000.0; }
+        assert_eq!(count, 3);
     }
 
     #[test]
