@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from math import sqrt
 from typing import Iterable, Sequence
 
-from .contract import DAY_MS, N_REF, PollObservation, sample_size, poll_weight
+from .contract import DAY_MS, PollObservation, poll_weight
 from .projection_calibration import project_trend
 
 
