@@ -1,4 +1,4 @@
-import * as echarts from 'echarts'
+import { echarts } from './echarts-runtime.js'
 import { CANDIDATES } from './candidates.js'
 import { averageTrend, uncertaintyBand } from './aggregate.js'
 import { OVERLAY_DEFS, computeOverlay, readOverlayState } from './overlays.js'
