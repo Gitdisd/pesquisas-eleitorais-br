@@ -45,6 +45,17 @@ class ProjectionV2Metrics:
 
 
 @dataclass(frozen=True)
+class ProjectionV2Calibration:
+    horizon_days: int
+    calibration_n: int
+    validation_n: int
+    target_coverage: float
+    scale_factor: float
+    calibration_coverage: float
+    validation_coverage: float
+
+
+@dataclass(frozen=True)
 class ProjectionV2BacktestResult:
     rows: tuple[ProjectionV2BacktestPoint, ...]
     gate: ProjectionV2GateSummary
@@ -261,6 +272,68 @@ def rolling_projection_v2_backtest(
         pass_rate=gate_passes / eligible if eligible else 0.0,
     )
     return ProjectionV2BacktestResult(rows=tuple(scored), gate=gate)
+
+
+def _quantile(values: Sequence[float], probability: float) -> float:
+    ordered = sorted(values)
+    if not ordered:
+        raise ValueError("quantile requires at least one value")
+    if len(ordered) == 1:
+        return ordered[0]
+    p = max(0.0, min(1.0, probability))
+    position = (len(ordered) - 1) * p
+    lo = int(position)
+    hi = min(lo + 1, len(ordered) - 1)
+    return ordered[lo] + (ordered[hi] - ordered[lo]) * (position - lo)
+
+
+def calibrate_projection_v2(
+    rows: Iterable[ProjectionV2BacktestPoint],
+    *,
+    target_coverage: float = 0.90,
+    calibration_fraction: float = 0.70,
+) -> list[ProjectionV2Calibration]:
+    grouped: dict[int, list[ProjectionV2BacktestPoint]] = {}
+    for row in rows:
+        grouped.setdefault(row.horizon_days, []).append(row)
+
+    output: list[ProjectionV2Calibration] = []
+    for horizon, group in sorted(grouped.items()):
+        origins = sorted({row.origin for row in group})
+        if len(origins) < 3:
+            continue
+        cut_index = max(1, min(len(origins) - 1, int(len(origins) * calibration_fraction)))
+        cutoff = origins[cut_index - 1]
+        calibration = [row for row in group if row.origin <= cutoff]
+        validation = [row for row in group if row.origin > cutoff]
+        ratios = [
+            abs(row.predicted - row.actual) / row.half_width
+            for row in calibration
+            if row.half_width > 0
+        ]
+        if not ratios or not validation:
+            continue
+        factor = _quantile(ratios, target_coverage)
+        calibration_coverage = sum(
+            abs(row.predicted - row.actual) <= factor * row.half_width + 1e-12
+            for row in calibration
+        ) / len(calibration)
+        validation_coverage = sum(
+            abs(row.predicted - row.actual) <= factor * row.half_width + 1e-12
+            for row in validation
+        ) / len(validation)
+        output.append(
+            ProjectionV2Calibration(
+                horizon_days=horizon,
+                calibration_n=len(calibration),
+                validation_n=len(validation),
+                target_coverage=target_coverage,
+                scale_factor=factor,
+                calibration_coverage=calibration_coverage,
+                validation_coverage=validation_coverage,
+            )
+        )
+    return output
 
 
 def summarize_projection_v2(
