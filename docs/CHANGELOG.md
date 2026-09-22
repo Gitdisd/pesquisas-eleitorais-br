@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-22 — Advanced-model and interval research
+
+- Added a direct rolling-origin evaluator for production models 3–12 and recorded the current 240-record diagnostics in docs/research/ADVANCED-MODELS-BACKTEST-2026-09-22.md.
+- Added expanding three-fold temporal calibration diagnostics for the public model-1 projection interval.
+- Recorded current multi-fold validation coverage and factor stability in docs/research/PROJECTION-CALIBRATION-2026-09-21.md.
+- These research changes do not select a production model or change production projection constants.
+
 ## 2026-09-22 — Projection-v2 research validation
 
 - Added a reproducible rolling-origin evaluator for projection-v2, including the production house-effect correction, weighted trend, holdout gate, sparse-target handling and conditional accuracy/coverage metrics.
