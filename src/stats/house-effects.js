@@ -1,6 +1,7 @@
 import { DAY_MS, N_REF, sampleSize } from './contract.js'
 
 /**
+ * @returns {Record<string, number>}
  * Estimate per-institute house effects against contemporaneous peers.
  *
  * This preserves the existing production formula while giving aggregate,
