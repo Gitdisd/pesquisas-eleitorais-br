@@ -10,6 +10,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from pebr_stats.backtest import BacktestPoint, rolling_origin, summarize
 from pebr_stats.calibration import calibrate_empirical_intervals
 from pebr_stats.projection_calibration import calibrate_projection, rolling_projection_backtest
+from pebr_stats.multifold_projection_calibration import (
+    rolling_temporal_calibration,
+    summarize_validation_coverage,
+)
 from pebr_stats.projection_v2_backtest import (
     ProjectionV2BacktestResult,
     ProjectionV2GateSummary,
@@ -109,6 +113,18 @@ def main() -> None:
     projection_v2_metrics = [
         item.__dict__ for item in summarize_projection_v2(projection_v2_result)
     ]
+    projection_multifold_folds = rolling_temporal_calibration(
+        projection_rows,
+        target_coverage=0.90,
+        fold_count=3,
+        min_calibration_origins=5,
+    )
+    projection_multifold_calibration = [
+        item.__dict__ for item in projection_multifold_folds
+    ]
+    projection_multifold_summary = summarize_validation_coverage(
+        projection_multifold_folds
+    )
     projection_metrics = []
     for horizon in sorted({row.horizon_days for row in projection_rows}):
         group = [row for row in projection_rows if row.horizon_days == horizon]
@@ -131,6 +147,8 @@ def main() -> None:
         "canonical_weighted_empirical_interval_calibration": calibration,
         "projection_metrics": projection_metrics,
         "projection_calibration": projection_calibration,
+        "projection_multifold_calibration": projection_multifold_calibration,
+        "projection_multifold_summary": projection_multifold_summary,
         "projection_v2_gate": projection_v2_result.gate.__dict__,
         "projection_v2_metrics": projection_v2_metrics,
     }
