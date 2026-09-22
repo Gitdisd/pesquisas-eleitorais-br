@@ -1,4 +1,5 @@
 name: Browser smoke
+# Current executable browser regression suite
 
 on:
   pull_request:
