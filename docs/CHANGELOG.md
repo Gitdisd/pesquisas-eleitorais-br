@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-22 — Statistical research closure pass
+
+- Added reproducible tracking-correlation sensitivity evaluation across rho = 0, 0.10, 0.25, 0.50 and 0.75; the current dataset has only two qualifying overlapping fieldwork pairs, and positive rho produced no meaningful out-of-sample improvement, so production weighting remains unchanged.
+- Added a simplex-safe first-round composition benchmark using additive log-ratios against a residual component; 95 complete-case polls were available, and the joint benchmark materially underperformed the existing independently weighted + renormalized baseline at 1, 3 and 7 days.
+- Added temporal 70/30 holdout calibration for projection-v2 intervals and density-stratified empirical interval coverage. Results are recorded without changing production constants because coverage is not uniformly stable by horizon/density regime.
+- Added discovery-source health telemetry so each configured source records attempts, successes, failures and recent status evidence; soft-failing sources remain quarantined rather than treated as missing data.
+- Added browser regression coverage for regional TSE metadata, time-axis bounds and cross-date inspection.
+- CI run #286 passed the full repository validation on revision `8f8f4916704d4714d7e71ee44dbc100ec86986e1`.
+
 ## 2026-09-22 — Regional presidential poll source re-audit
 
 - Re-audited the newest regional presidential releases against publication/source evidence and added six verified releases (12 first/second-round rows) for PE, GO, SP, MG and PR to `public/data/polls-regional.json`.
