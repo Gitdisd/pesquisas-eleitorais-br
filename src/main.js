@@ -36,7 +36,7 @@ const state = {
   raw: [], polls: [], meta: null, updatedLabel: null, lastCheckAt: null,
   checkIntervalMs: DEFAULT_CHECK_INTERVAL_MINUTES * 60 * 1000,
   checkTimerId: null, metaPollId: null, awaitingCheck: false,
-  round: 1, institutes: new Set(), allInstitutes: [],
+  round: 1, institutes: new Set(), allInstitutes: [], wasm: null,
   windowPreset: '14', windowCustom: 14, windowDays: 14,
   rangeDays: 30, projection: false, chart: null,
 }
@@ -68,11 +68,12 @@ async function boot() {
     state.allInstitutes = [...new Set(state.polls.map((p) => p.institute))].sort((a, b) => a.localeCompare(b, 'pt-BR'))
     state.institutes = new Set(state.allInstitutes)
     applyUrlViewState(state.allInstitutes)
+    const wasmSmoke = await initializeWasmSmoke()
+    state.wasm = wasmSmoke
     publishDataStore()
     renderInstituteChips(); renderLegend(); renderCards(); renderTable(); syncWindowUI(); syncPrimaryControls()
     state.chart = createPollChart(document.getElementById('pollChart'), chartOpts())
     setStamp(); applyCheckMeta(bundle.meta); startCheckTimers()
-    void initializeWasmSmoke()
   } catch (err) {
     document.getElementById('chartError').textContent = `Não foi possível carregar as pesquisas: ${err.message}`
   }
@@ -109,6 +110,7 @@ function publishDataStore() {
       windowPreset: state.windowPreset,
       institutes: [...state.institutes],
       model: Number(window.__pebrProjModel ?? 1),
+    wasm: state.wasm,
     },
   }
   window.__pebr = store
@@ -390,7 +392,9 @@ function renderCards() {
     const c = CANDIDATES.find((x) => x.key === key)
     const pts = polls.filter((p) => p.results[key] != null).map((p) => ({ t: p.t, y: p.results[key], n: p.n, institute: p.institute, moe: p.moe }))
     const avgModel = Number(window.__pebrProjModel == null ? 1 : window.__pebrProjModel)
-    const trend = averageTrend(pts, state.windowDays, avgModel)
+    const trend = avgModel === 1
+      ? weightedTrend(pts, state.windowDays)
+      : averageTrend(pts, state.windowDays, avgModel)
     const cur = trendAt(trend, now), then = trendAt(trend, ago)
     const d = fmtDelta(cur != null && then != null ? cur - then : null)
     return `<article class="card" data-c="${key}"><div class="name">${c.label}</div><div class="val">${fmtPct(cur)}</div><div class="delta ${d.cls}">${d.text}</div></article>`
