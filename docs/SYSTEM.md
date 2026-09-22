@@ -49,7 +49,7 @@ Witness URLs and coverage dates are accumulated rather than creating duplicate p
 | `.github/workflows/deep-repair.yml` | Manual read-only validation/build maintenance |
 | `Verificar agora` | Reloads published JSON only; does **not** run Actions |
 
-After a successful refresh that changes data, `refresh-polls.yml` explicitly dispatches `deploy-pages.yml`. This is required because the refresh push uses `GITHUB_TOKEN`.
+After a successful refresh that changes data, `refresh-polls.yml` commits the refreshed data to `main`; the normal `push` trigger of `deploy-pages.yml` then builds and publishes Pages. The refresh workflow does not need to force-dispatch deployment.
 
 ## Discovery / audit state
 
@@ -72,6 +72,16 @@ After a successful refresh that changes data, `refresh-polls.yml` explicitly dis
 - Existing TradingView-style pan/zoom/pinch/resize behavior must survive data refresh; ECharts is updated in place rather than destroying/recreating it.
 - Share URLs preserve round/range/window/model/institute filters.
 - JSON/CSV exports reflect the current filtered view.
+
+## Browser validation
+
+- `browser-smoke.yml` builds the production bundle with the Rust/WASM adapter and exercises it in Chromium at desktop and Pixel-5-sized mobile viewports.
+- The browser suite checks both ECharts instances, the polling table, WASM runtime/parity, round-2 low-value series, zoom preservation and legend preservation.
+- The public Pages URL is separately subject to environment-dependent live-fetch availability; hosted Chromium is the reproducible runtime smoke test.
+
+## Runtime architecture
+
+The public site is a static Vite application. There is no conventional long-running server backend; the effective backend/data-processing layer is GitHub Actions plus the Node/Python/Rust/WASM pipeline. The browser consumes published JSON and the generated WASM package.
 
 ## Backward-compatibility / maintenance
 
