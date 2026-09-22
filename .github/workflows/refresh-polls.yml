@@ -23,42 +23,47 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
           persist-credentials: true
-
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
-
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Setup wasm-pack
+        uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: v0.13.1
+      - name: Add wasm32 target
+        run: rustup target add wasm32-unknown-unknown
       - name: Install dependencies
         run: npm ci
-
+      - name: Install Python test package
+        run: python -m pip install -e "./python[test]"
       - name: Install PDF text + OCR tools
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por unzip
-
       - name: Apply verified data corrections
         run: node scripts/apply-corrections.mjs
-
       - name: Repair verified missing candidate values
         run: node scripts/repair-known-missing-candidates.mjs
-
       - name: Expand automatic discovery to all presidential candidates
         run: node scripts/expand-discovery-candidates.mjs
-
       - name: Discover new polls (broad web pass)
         run: npm run discover-polls
-
       - name: Recover PDF poll documents with text extraction and OCR fallback
         run: node scripts/recover-poll-documents.mjs
-
       - name: Run TSE registry recovery and cross-check
         shell: bash
         run: |
@@ -70,37 +75,40 @@ jobs:
             exit 0
           fi
           exit "$rc"
-
       - name: Publish pipeline status for the site
         run: node scripts/publish-pipeline-status.mjs
-
       - name: Remove excluded presidential candidates from canonical data
         run: node scripts/strip-ineligible-candidates.mjs
-
       - name: Merge supplemental poll values into canonical data
         run: node scripts/merge-poll-supplements.mjs
-
       - name: Audit canonical vs supplemental coverage
         run: node scripts/data-completeness-audit.mjs
-
       - name: Run deterministic integrity audit
         run: node scripts/quality-audit.mjs
-
       - name: Update polls
         env:
           POLL_SOURCE_URL: ${{ secrets.POLL_SOURCE_URL }}
           CHECK_INTERVAL_MINUTES: "60"
         run: npm run update-polls
-
       - name: Validate data and discovery state
         run: node scripts/quality-gate.mjs
-
-      - name: Build production site
-        run: npm run build
-
+      - name: Full pre-publication validation
+        run: |
+          set -euo pipefail
+          npm run typecheck
+          npm test
+          python -m pytest python/tests -q
+          cargo test --manifest-path rust/polling-core/Cargo.toml
+          python python/scripts/run_backtest.py data/polls.json --output backtest-report.json
+          npm run backtest:advanced
+          python python/scripts/run_overlap_audit.py data/polls.json --output overlap-report.json
+          npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
+          npm run build:rust
+          npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
+          npm run build
       - name: Commit if changed
         run: |
-          set -e
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- data/ public/data/
@@ -110,5 +118,4 @@ jobs:
           fi
           git commit -m "chore(data): refresh and audit polls"
           git push
-          echo "Triggering Pages deployment for the newly pushed data commit"
-          GH_TOKEN="${{ github.token }}" gh workflow run deploy-pages.yml --ref main --repo "${{ github.repository }}"
+          echo "Data commit pushed; the Pages workflow deploys automatically from the main-branch push."
