@@ -7,8 +7,6 @@ import { projectTrendV2, rescaleComposition, formatProjSummary } from './project
 
 const DAY_MS = 86400000
 const OBSERVED_PAD_DAYS = 1.5
-let chartElement = null
-
 function resolveModel(opts = {}) {
   if (opts.projectionModel != null) return Number(opts.projectionModel)
   if (typeof window !== 'undefined' && window.__pebrProjModel != null) return Number(window.__pebrProjModel)
@@ -137,7 +135,7 @@ function pushProjection(series, c, proj, tag) {
   })
 }
 
-function buildOption(polls, round, institutes, windowDays, model, rangeDays, aggregate) {
+function buildOption(polls, round, institutes, windowDays, model, rangeDays, aggregate, hoverTarget) {
   const filtered = polls.filter((p) => p.round === round && (!institutes?.size || institutes.has(p.institute)))
   const keys = round === 2
     ? CANDIDATES.filter((c) => c.key === 'lula' || c.key === 'flavio' || c.key === 'branco_nulo')
@@ -224,7 +222,7 @@ function buildOption(polls, round, institutes, windowDays, model, rangeDays, agg
       backgroundColor: tc.panel,
       borderColor: tc.grid,
       textStyle: { color: tc.text },
-      formatter: function (params) { setExternalHover(chartElement, params); return '' },
+      formatter: function (params) { setExternalHover(hoverTarget, params); return '' },
     },
     legend: { show: false },
     xAxis: {
@@ -250,9 +248,8 @@ export function createPollChart(canvas, opts) {
   const container = canvas.parentElement || canvas
   canvas.style.display = 'none'
   container.classList.add('echarts-container')
-  chartElement = container
   const chart = echarts.init(container, null, { renderer: 'canvas', useDirtyRect: true })
-  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false))
+  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, container))
   chart.on('datazoom', () => opts.onZoom?.(chart))
   hoverBoxFor(container)
   window.addEventListener('resize', () => chart.resize())
@@ -261,12 +258,11 @@ export function createPollChart(canvas, opts) {
 
 export function updatePollChart(chart, opts) {
   if (!chart) return
-  chartElement = chart.getDom()
   const previousZoom = (chart.getOption()?.dataZoom || [])
     .find((z) => z?.xAxisIndex === 0 && (
       z.startValue != null || z.endValue != null || z.start != null || z.end != null
     ))
-  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false), true)
+  chart.setOption(buildOption(opts.polls, opts.round, opts.institutes, opts.windowDays, resolveModel(opts), opts.rangeDays, opts.aggregate !== false, chart.getDom()), true)
   if (previousZoom) {
     const action = previousZoom.startValue != null || previousZoom.endValue != null
       ? {
