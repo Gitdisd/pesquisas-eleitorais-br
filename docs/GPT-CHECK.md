@@ -240,7 +240,7 @@ This addendum records the current evidence state after the full repository/deplo
 - ✅ ECharts tree-shaken runtime reduced the main JavaScript bundle from approximately 1.238 MB minified / 414 kB gzip to approximately 669 kB minified / 225 kB gzip.
 - ✅ Python projection-v2 house-effect duplication was consolidated onto the shared implementation.
 - ✅ Refresh publication race was fixed and a full refresh completed through final commit/push.
-- ✅ GitHub Pages build/deploy succeeded for the last validated production head (`ed2fb7af4a97397360667c1acd5c60e4094db244`); the current `main` now contains newer regional-data/test/changelog commits pending current-head deployment validation.
+- ✅ GitHub Pages build/deploy succeeded for the last validated production head (`ebfc574e9c8fc0a4a044823857468b5dee4b5362`), which includes the latest refresh metadata; the current `main` now contains newer regional-data/test/changelog evidence pending current-head deployment validation.
 - ✅ Desktop + mobile Chromium smoke suite passes 6/6 on the corrected test head.
 
 ## Still intentionally open
