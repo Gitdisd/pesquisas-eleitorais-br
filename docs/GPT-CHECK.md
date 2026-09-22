@@ -223,3 +223,40 @@
 
 ## Product requirement captured from user
 **Do not fix the chart by removing its TradingView-like maneuverability.** The ability to maneuver through the historical polling data is explicitly valued. Any refactor should preserve or improve pan, zoom, range navigation, cross-date inspection, touch interaction, viewport persistence through data refresh, reset/home navigation, and smooth performance.
+
+# 2026-09-22 evidence addendum
+
+This addendum records the current evidence state after the full repository/deployment audit. Older checklist boxes are preserved as historical prompts; the statuses below are the current evidence-backed state.
+
+## Completed and verified
+
+- ✅ Refresh-path `normalizePolls` runtime bug fixed and exercised through successful refresh validation.
+- ✅ Round-2 low-value series no longer clipped by a hard 30% axis minimum.
+- ✅ Model-selector dispatch reaches models 1–12 as implemented by `src/aggregate.ts`.
+- ✅ Semantic ECharts series roles are used by tooltip/visibility logic.
+- ✅ National institute selection and regional geography selection persist across refresh.
+- ✅ ECharts dataZoom/legend viewport state persists across refresh.
+- ✅ Rust/WASM build and JS parity are validated in CI; browser WASM execution is covered by Chromium smoke tests.
+- ✅ ECharts tree-shaken runtime reduced the main JavaScript bundle from approximately 1.238 MB minified / 414 kB gzip to approximately 669 kB minified / 225 kB gzip.
+- ✅ Python projection-v2 house-effect duplication was consolidated onto the shared implementation.
+- ✅ Refresh publication race was fixed and a full refresh completed through final commit/push.
+- ✅ GitHub Pages build/deploy succeeded for the current production head.
+- ✅ Desktop + mobile Chromium smoke suite passes 6/6 on the corrected test head.
+
+## Still intentionally open
+
+- 🟡 Tracking-poll overlap is audited but not yet incorporated as a validated correlation-weighting estimator.
+- 🟡 First-round composition is not yet modelled jointly with a validated log-ratio/softmax/state-space production model.
+- 🟡 Production uncertainty coverage remains explicitly uncalibrated; multi-fold calibration exists as research.
+- 🟡 Projection-v2 interval calibration and deeper horizon validation remain research.
+- 🟡 Technical trading-style overlays remain experimental and need clearer product separation/documentation.
+- 🟡 Full JS→TS migration is not complete.
+- 🟡 Accessibility can be deepened further by stronger chart↔table semantics and keyboard data access.
+- 🟡 Discovery-source redundancy can be improved for the current 403/401/404 soft-failing sources.
+- 🟡 Direct public Pages DOM/HTTP validation remains environment-limited; hosted Chromium is the reproducible runtime check.
+
+## Audit limitations
+
+The full repository tree, branch tips, PRs, Actions history, relevant logs, source files, data artifacts and current workflows were inspected. The Actions history contains hundreds of historical non-success runs; their metadata was enumerated and the relevant recent failures/cancellations were inspected at log level. This is not a claim that every historical log line of every old cancelled run was manually read.
+
+The current application is a static Vite/GitHub Pages site. The effective backend/data-processing layer is GitHub Actions plus Node/Python/Rust/WASM rather than a long-running server.

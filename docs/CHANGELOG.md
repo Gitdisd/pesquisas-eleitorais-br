@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-22 — Full repository audit / production hardening
+
+- Reconciled the retained project conversation records against the current repository, branches, pull requests, workflow history, deployment history, data/discovery artifacts, frontend, statistical engines, Rust/WASM, and GitHub Pages pipeline.
+- Fixed dependency-lock drift so the authoritative workflows use `npm ci` successfully.
+- Made refresh publication race-safe: refresh commits now rebase onto current `main`, retry a moving remote, and never force-overwrite concurrent changes.
+- Preserved national institute filters, regional geography filters, legend visibility, and chart viewport state across background data refresh.
+- Made WASM status truthful when the browser uses JS fallback.
+- Fixed ECharts-generated regional ARIA descriptions and added desktop/mobile Chromium smoke coverage.
+- Replaced the full ECharts import with a shared tree-shaken runtime. Main JS bundle measured ~1,238 kB → ~669 kB minified and ~414 kB → ~225 kB gzip.
+- Centralized the Python projection-v2 house-effect implementation onto the canonical sample-size contract.
+- Added a durable repository audit documenting completed work versus intentionally open statistical research questions.
+- Current canonical dataset at audit time: 240 records; latest publication 2026-09-21; latest fieldwork end 2026-09-20; last successful pipeline 2026-09-22T05:10:36Z.
+
+
 ## 2026-09-22 — Browser WASM adapter
 
 - Added the non-breaking Rust/WASM browser estimator adapter with explicit JS fallback and startup parity smoke reporting.
