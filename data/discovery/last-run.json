@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-22T21:16:11.044Z",
+  "ran_at": "2026-09-22T22:01:21.722Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 380,
+  "candidate_links": 412,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 0,
   "inbox_new": 40,
   "skipped_old": 18,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -374,13 +374,13 @@
     {
       "source_id": "indexa-broadcast",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.broadcast.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         },
         {
           "url": "https://valor.globo.com/politica/eleicoes-2026/",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-22T21:15:54.852Z"
+      "found_at": "2026-09-22T22:01:01.869Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/fio-do-professor-felipe-nunes-quaest-21-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T21:15:55.130Z"
+      "found_at": "2026-09-22T22:01:02.269Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/21/quaest-presidente-2o-turno-21-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-21",
-      "found_at": "2026-09-22T21:15:55.341Z"
+      "found_at": "2026-09-22T22:01:02.461Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-22T21:15:55.380Z"
+      "found_at": "2026-09-22T22:01:02.521Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-22T21:15:55.395Z"
+      "found_at": "2026-09-22T22:01:02.545Z"
     }
   ],
-  "meta_last_check_at": "2026-09-22T21:16:11.046Z"
+  "meta_last_check_at": "2026-09-22T22:01:21.723Z"
 }
