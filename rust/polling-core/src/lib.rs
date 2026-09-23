@@ -12,7 +12,7 @@ mod projection;
 mod candidates;
 mod identity;
 
-pub use aggregation::{uncertainty_band, weighted_trend_v1, SeriesPoint, UncertaintyPoint};
+pub use aggregation::{weighted_trend_v1, SeriesPoint};
 pub use house_effects::estimate_house_effects;
 pub use projection::{project_trend, ProjectPoint, ProjectionResult};
 pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};

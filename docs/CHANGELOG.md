@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 13:24:01 -03:00 / 2026-09-23T16:24:01Z — Rust uncertainty export correction
+
+- CI #325 identified an export wiring error introduced during the uncertainty migration: `uncertainty_band` and `UncertaintyPoint` were implemented in the shared core root but incorrectly reexported from `aggregation`.
+- Corrected only the public export path; the uncertainty implementation itself is unchanged.
+- Recorded CI #325's concrete failure in the migration map before the next validation.
+- Files: rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:23:00 -03:00 / 2026-09-23T16:23:00Z — WeightedTrendV2 escape correction before validation
 
 - Static inspection of the newly added Rust flood-index implementation found the separator encoded as a literal `\\u{0000}` rather than Rust's intended null-character escape.
