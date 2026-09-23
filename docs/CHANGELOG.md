@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:23:00 -03:00 / 2026-09-23T16:23:00Z — WeightedTrendV2 escape correction before validation
+
+- Static inspection of the newly added Rust flood-index implementation found the separator encoded as a literal `\\u{0000}` rather than Rust's intended null-character escape.
+- Corrected the key separator before the CI gate so the Rust implementation matches the production key structure.
+- No production code path was changed or removed.
+- Updated the migration map to record this pre-validation correction.
+- Files: rust/polling-core/src/aggregation.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:22:09 -03:00 / 2026-09-23T16:22:09Z — WeightedTrendV2 moved into shared Rust core
 
 - Added the Rust equivalent of the production `weightedTrendV2`, including the same institute/day flood index, 2.5 × half-life reach, canonical poll weighting, nearest-point gate and two-decimal rounding.

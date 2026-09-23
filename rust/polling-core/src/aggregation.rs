@@ -82,7 +82,7 @@ pub fn weighted_trend_v2(points: &[PollObservation], window_days: f64) -> Vec<Se
         };
         let day = (point.t / DAY_MS).round() as i64;
         for offset in -span..=span {
-            let key = format!("{institute}\\u{0000}{}", day + offset);
+            let key = format!("{institute}\u{0000}{}", day + offset);
             *flood_index.entry(key).or_insert(0.0) += 1.0;
         }
     }
@@ -102,7 +102,7 @@ pub fn weighted_trend_v2(points: &[PollObservation], window_days: f64) -> Vec<Se
                 .filter(|value| !value.is_empty())
                 .map(|institute| {
                     let day = (t / DAY_MS).round() as i64;
-                    flood_index.get(&format!("{institute}\\u{0000}{day}")).copied().unwrap_or(1.0)
+                    flood_index.get(&format!("{institute}\u{0000}{day}")).copied().unwrap_or(1.0)
                 })
                 .unwrap_or(1.0);
             let weight = poll_weight(point, t, half, flood).total;
