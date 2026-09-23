@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 02:09:31 -03:00 / 2026-09-23T05:09:31Z — Dioxus warning-as-error cleanup
+
+- CI #319 reached the Rust/Dioxus WebAssembly crate and failed on three warnings promoted to errors by the repository `-D warnings` policy: unused migration-schema fields in `RawPoll`/`Poll` and the public `App` component's non-snake-case name.
+- Marked the intentionally forward-compatible migration data structs as allowed dead code until their pending UI fields are migrated, and explicitly allowed the Dioxus `App` component naming convention.
+- No runtime logic, statistical formula, production Vite/JavaScript/TypeScript/Apache ECharts path, or published data was changed.
+- Updated the migration map with the verified CI #319 failure state.
+- Files: rust/web-ui/src/data.rs, rust/web-ui/src/app.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 02:08:10 -03:00 / 2026-09-23T05:08:10Z — Canonical weighted trend moved into shared Rust core
 
 - Moved the production-equivalent `weightedTrendV1` daily aggregation primitive into `rust/polling-core`.

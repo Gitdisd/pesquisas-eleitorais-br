@@ -14,6 +14,7 @@ pub struct CandidateResult {
 }
 
 #[derive(Clone, Debug, Deserialize)]
+#[allow(dead_code)]
 pub struct RawPoll {
     pub institute: String,
     pub fieldwork_start: Option<String>,
@@ -39,6 +40,7 @@ enum PollPayload {
 }
 
 #[derive(Clone, Debug)]
+#[allow(dead_code)]
 pub struct Poll {
     pub id: String,
     pub institute: String,

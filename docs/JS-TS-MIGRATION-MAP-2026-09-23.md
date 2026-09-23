@@ -78,9 +78,10 @@ Latest validation sequence:
 - CI #315: previous validation target before the latest corrections; historical result retained.
 - CI #317: **failed** on Dioxus RSX point-loop syntax.
 - CI #318: **cancelled** after the subsequent correction superseded it.
-- CI #319: **in progress** against the current head `d90cc58b9f3cf405970c3a3555c2a79123a8f638`.
+- CI #319: **failed** on intentionally unused migration-schema fields and the public Dioxus component name `App`; these are source warnings elevated to errors by `-D warnings`.
 - No existing JS/TS production module is certified removable.
-- Canonical `weightedTrendV1` now has a shared Rust implementation and the Rust/Dioxus chart delegates to it. The old JS/TS implementation remains protected until numerical parity and production cutover gates pass.
+- Canonical `weightedTrendV1` now has a shared Rust implementation and the Rust/Dioxus chart delegates to it.
+- The latest compile failure is limited to migration-schema dead-code warnings and the Dioxus component naming lint; no runtime/data-path failure was reached. The old JS/TS implementation remains protected until numerical parity and production cutover gates pass.
 - No production cutover or live-site behavior change has occurred.
 
 The validation record is intentionally kept chronological so failures and corrections remain auditable rather than being rewritten away.

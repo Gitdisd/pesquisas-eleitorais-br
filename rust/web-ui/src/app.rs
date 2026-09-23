@@ -12,6 +12,7 @@ struct ViewState {
     geo_index: usize,
 }
 
+#[allow(non_snake_case)]
 pub fn App() -> Element {
     let mut view = use_signal(|| ViewState {
         candidate: Candidate::Lula,
