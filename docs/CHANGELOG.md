@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 02:14:22 -03:00 / 2026-09-23T05:14:22Z — Shared Rust aggregation wrapper correction
+
+- CI #321 identified a structural refactor error in `rust/web-ui/src/chart.rs`: the old local `weighted_trend` implementation remained alongside the new shared-core wrapper, while required imports were dropped.
+- Removed the duplicate implementation and restored the explicit `poll_weight` import used only by the remaining tests.
+- Updated the migration map to preserve the CI failure chronology.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was changed or removed.
+- Files: rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 02:09:31 -03:00 / 2026-09-23T05:09:31Z — Dioxus warning-as-error cleanup
 
 - CI #319 reached the Rust/Dioxus WebAssembly crate and failed on three warnings promoted to errors by the repository `-D warnings` policy: unused migration-schema fields in `RawPoll`/`Poll` and the public `App` component's non-snake-case name.

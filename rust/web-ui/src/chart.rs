@@ -1,4 +1,4 @@
-use polling_core::{weighted_trend_v1, PollObservation};
+use polling_core::{poll_weight, weighted_trend_v1, PollObservation};
 pub const WIDTH: f64 = 1100.0;
 pub const HEIGHT: f64 = 470.0;
 pub const LEFT: f64 = 58.0;
@@ -11,44 +11,6 @@ const DAY_MS: f64 = 86_400_000.0;
 pub struct TrendPoint {
     pub day: i64,
     pub value: f64,
-}
-
-pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
-    if rows.is_empty() { return Vec::new(); }
-    let min_day = rows.first().map(|p| p.day).unwrap_or(0);
-    let max_day = rows.last().map(|p| p.day).unwrap_or(min_day);
-    let half = half_life_days.max(1.0);
-    let reach = (half * 2.5).ceil() as i64;
-    let mut out = Vec::new();
-
-    for day in min_day..=max_day {
-        let mut numerator = 0.0;
-        let mut denominator = 0.0;
-        let mut nearest = i64::MAX;
-        for row in rows {
-            let distance = (day - row.day).abs();
-            nearest = nearest.min(distance);
-            if distance > reach { continue; }
-            let point = PollObservation {
-                t: row.day as f64 * DAY_MS,
-                y: row.value,
-                n: Some(row.n),
-                institute: Some(row.institute.clone()),
-                moe: None,
-            };
-            let target = day as f64 * DAY_MS;
-            let weight = poll_weight(&point, target, half, 1.0).total;
-            numerator += weight * row.value;
-            denominator += weight;
-        }
-        if denominator > 0.0 && nearest as f64 <= half {
-            out.push(TrendPoint {
-                day,
-                value: (numerator / denominator * 100.0).round() / 100.0,
-            });
-        }
-    }
-    out
 }
 
 pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
