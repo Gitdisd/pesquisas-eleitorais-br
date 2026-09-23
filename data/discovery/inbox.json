@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-22T22:21:03.481Z",
+  "updated_at": "2026-09-23T00:23:52.928Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1265,6 +1265,30 @@
       "institute": "AtlasIntel",
       "published_date": null,
       "found_at": "2026-09-22T22:21:01.366Z"
+    },
+    {
+      "url": "https://g1.globo.com/pb/paraiba/eleicoes/2026/noticia/2026/09/22/quaest-paraiba-presidente-22-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial na Paraíba | G1 Pular para o conteúdo Paraíba Eleições 2026 na Paraíba Quae",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-23T00:23:36.872Z"
+    },
+    {
+      "url": "https://g1.globo.com/pb/paraiba/eleicoes/2026/noticia/2026/09/22/quaest-paraiba-avaliacao-governo-22-setembro.ghtml",
+      "title": "Quaest: veja como está a avaliação do governo da Paraíba | G1 Pular para o conteúdo Paraíba Eleições 2026 na Paraíba Qua",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe,no_scenario",
+      "institute": "Quaest",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-23T00:23:38.846Z"
+    },
+    {
+      "url": "https://www.infomoney.com.br/politica/parana-pesquisas-tarcisio-lidera-com-507-dos-votos-em-sp-e-pode-vencer-no-1o-turno/",
+      "title": "Paraná Pesquisas: Tarcísio lidera com 50,7% dos votos em SP e pode vencer no 1º turno Paraná Pesquisas: Tarcísio lidera ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-23T00:23:51.563Z"
     }
   ]
 }
