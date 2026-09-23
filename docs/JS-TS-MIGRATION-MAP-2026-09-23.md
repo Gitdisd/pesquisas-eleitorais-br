@@ -1,0 +1,71 @@
+# Browser JS/TS migration map — 2026-09-23
+
+## Audit timestamp
+- UTC: 2026-09-23T04:46:06Z
+- America/Sao_Paulo: 2026-09-23T01:46:06-03:00
+- Branch: `migration-rust-ui-2026-09-23`
+
+This is a migration map, not deletion authorization. A current browser module remains protected until its references are audited, its responsibility is replaced, numerical behavior is checked where applicable, desktop/mobile behavior is validated, the replacement is included in the production build and the deployed replacement is verified.
+
+## Browser/application inventory
+
+| Path | Responsibility | Rust/Dioxus destination | Status |
+|---|---|---|---|
+| `index.html` | production shell/bootstrap | `rust/web-ui/index.html` + Dioxus | parallel replacement |
+| `src/main.js` | boot, data store, cards/table, controls, refresh | Dioxus app/state | not migrated |
+| `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | first slice exists |
+| `src/aggregate.js` | TS aggregate compatibility re-export | Rust aggregate | protected |
+| `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | not migrated |
+| `src/projection.js` | projection UI/math | Rust projection + Dioxus | not migrated |
+| `src/projection-v2.js` | projection-v2 | Rust projection | not migrated |
+| `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
+| `src/data/api.ts` | JSON loading | Rust data client | first slice exists |
+| `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | not migrated |
+| `src/data/normalize.ts` | raw→normalized/merge | Rust normalization | partial |
+| `src/data/types.ts` | TypeScript contracts | Rust structs/contracts | partial |
+| `src/models/advanced.ts` | models 3–7 | Rust statistical models | not migrated |
+| `src/models/school.ts` | models 8–12 | Rust statistical models | not migrated |
+| `src/stats/contract.js` | canonical weighting contract | `rust/polling-core` | Rust primitive exists; callers remain |
+| `src/stats/estimator.js` | JS estimator compatibility path | Rust/WASM estimator | partial |
+| `src/stats/house-effects.js` | house-effect calculation | Rust statistics | not migrated |
+| `src/stats/wasm-estimator.js` | JS WASM adapter | Rust/Dioxus boundary | not migrated |
+| `src/overlays.js` | chart overlays/projection/uncertainty | Rust/SVG components | not migrated |
+| `src/live-overlay.js` | live status/data overlay | Dioxus components | not migrated |
+| `src/regional-panel.js` | regional chart/table/isolation | Dioxus regional view | not migrated |
+| `src/site-controls.js` | site controls/share/filter state | Dioxus state/router | not migrated |
+| `src/theme-layout.js` | theme/layout behavior | Dioxus + CSS | not migrated |
+| `src/ui-refresh.js` | dashboard refresh layer | Dioxus components | not migrated |
+| `src/ui-next.js` | share URLs and CSV/JSON export | Rust/Dioxus export layer | not migrated |
+| `src/ui-upgrades.js` | UI enhancement hooks | Dioxus components | not migrated |
+| `src/methodology.js` | methodology/diagnostic UI | Dioxus components | not migrated |
+| `src/echarts-runtime.js` | ECharts runtime loading | removed from final architecture | protected until last caller disappears |
+| `src/e2e-hooks.js` | browser smoke hooks | Dioxus/browser test instrumentation | not migrated |
+| `vite.config.js` | Vite production build | Dioxus/static build | protected until cutover |
+
+## CSS coupling
+
+The old CSS files are also protected until their old DOM dependencies disappear:
+`src/style.css`, `src/crt-theme.css`, `src/layout-fix.css`, `src/methodology.css`, `src/party-themes.css`, and `src/ui-refresh.css`.
+
+The Rust/Dioxus slice has independent styling in `rust/web-ui/assets/style.css`.
+
+## Node pipeline boundary
+
+`scripts/*.mjs` are acquisition, refresh, recovery, audit, publication and research tooling. They are not browser UI modules. The browser migration does not authorize their deletion. Any later Node→Python/Rust pipeline migration requires its own execution-graph audit and timestamped decision.
+
+## Migration order
+
+1. Canonical data contracts and identity.
+2. Canonical aggregation/uncertainty.
+3. Projection and models.
+4. Dioxus state/layout/data refresh.
+5. Custom SVG crosshair, pan, pinch, wheel zoom and range navigation.
+6. Regional/methodology/diagnostic surfaces.
+7. Share/export/theme/accessibility/performance parity.
+8. Production build and Pages cutover.
+9. Repository-wide browser JS/TS execution-graph certification.
+10. Remove Vite/ECharts/legacy browser modules only after deployed replacement verification.
+
+## Current status
+
+Production is unchanged. Apache ECharts is not part of the target architecture. PR #40 contains the parallel Rust/Dioxus replacement. The first Rust/Dioxus WASM compile failed on CI #307; the identified scaffold errors were corrected in commit `7fc0302be558a12acc6951c5105697d46db572e3`, and CI #310 is the current validation run. No existing JS/TS production module is certified removable.
