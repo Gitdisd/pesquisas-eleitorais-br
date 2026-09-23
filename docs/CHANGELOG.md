@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 01:47:23 -03:00 / 2026-09-23T04:47:23Z — Rust canonical data-contract slice
+
+- Moved candidate keys/aliases and round recognition into the shared Rust statistical core; the Dioxus loader now imports these primitives instead of carrying its own duplicate implementation.
+- Added the first shared Rust poll-identity contract for institute normalization, TSE protocol parsing, canonical/fallback keys, geography and coverage dates.
+- Kept identity migration explicitly partial: methodology-note protocol recovery still requires parity validation against the production JavaScript implementation before the old identity module can be retired.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/polling-core/src/lib.rs, rust/polling-core/src/candidates.rs, rust/polling-core/src/identity.rs, rust/web-ui/src/data.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 01:48:40 -03:00 / 2026-09-23T04:48:40Z — Dioxus RSX loop correction
 
 - Replaced unsupported `as f64` conversions inside Dioxus RSX loops with typed `u32` counters and `f64::from`.

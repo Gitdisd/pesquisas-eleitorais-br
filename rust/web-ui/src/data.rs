@@ -1,6 +1,10 @@
 use gloo_net::http::Request;
 use serde::Deserialize;
 
+pub use polling_core::{
+    candidate_key, is_first_round, is_second_round, normalize_geo, Candidate,
+};
+
 const DATA_URL: &str = "data/polls.json";
 
 #[derive(Clone, Debug, Deserialize)]
@@ -48,69 +52,6 @@ pub struct Poll {
     pub value: f64,
     pub round: u8,
     pub day: i64,
-}
-
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum Candidate {
-    Lula,
-    Flavio,
-    Cury,
-    Renan,
-    Caiado,
-    Zema,
-    Samara,
-    Hertz,
-    Edmilson,
-    Rui,
-    Clariana,
-    Grassi,
-    BrancoNulo,
-}
-
-impl Candidate {
-    pub fn key(self) -> &'static str {
-        match self {
-            Self::Lula => "lula",
-            Self::Flavio => "flavio",
-            Self::Cury => "cury",
-            Self::Renan => "renan",
-            Self::Caiado => "caiado",
-            Self::Zema => "zema",
-            Self::Samara => "samara",
-            Self::Hertz => "hertz",
-            Self::Edmilson => "edmilson",
-            Self::Rui => "rui",
-            Self::Clariana => "clariana",
-            Self::Grassi => "grassi",
-            Self::BrancoNulo => "branco_nulo",
-        }
-    }
-
-    pub fn label(self) -> &'static str {
-        match self {
-            Self::Lula => "Lula",
-            Self::Flavio => "Flávio Bolsonaro",
-            Self::Cury => "Augusto Cury",
-            Self::Renan => "Renan Santos",
-            Self::Caiado => "Ronaldo Caiado",
-            Self::Zema => "Romeu Zema",
-            Self::Samara => "Samara Martins",
-            Self::Hertz => "Hertz Dias",
-            Self::Edmilson => "Edmilson Costa",
-            Self::Rui => "Rui Costa Pimenta",
-            Self::Clariana => "Clariana Barão",
-            Self::Grassi => "Wilson Grassi",
-            Self::BrancoNulo => "Brancos ou nulos",
-        }
-    }
-
-    pub fn all() -> &'static [Candidate] {
-        &[
-            Self::Lula, Self::Flavio, Self::Cury, Self::Renan, Self::Caiado, Self::Zema,
-            Self::Samara, Self::Hertz, Self::Edmilson, Self::Rui, Self::Clariana,
-            Self::Grassi, Self::BrancoNulo,
-        ]
-    }
 }
 
 pub async fn load_polls() -> Result<Vec<Poll>, String> {
@@ -164,13 +105,29 @@ pub async fn load_polls() -> Result<Vec<Poll>, String> {
         }
     }
 
-    out.sort_by(|a, b| a.day.cmp(&b.day).then_with(|| a.institute.cmp(&b.institute)).then_with(|| a.candidate_key.cmp(&b.candidate_key)));
+    out.sort_by(|a, b| {
+        a.day
+            .cmp(&b.day)
+            .then_with(|| a.institute.cmp(&b.institute))
+            .then_with(|| a.candidate_key.cmp(&b.candidate_key))
+    });
     Ok(out)
 }
 
-pub fn filter_polls(polls: &[Poll], candidate: Candidate, round: u8, geo: &str, range_days: Option<i64>) -> Vec<Poll> {
-    let mut rows: Vec<Poll> = polls.iter()
-        .filter(|p| p.round == round && p.candidate_key == candidate.key() && (geo == "ALL" || p.geo == geo))
+pub fn filter_polls(
+    polls: &[Poll],
+    candidate: Candidate,
+    round: u8,
+    geo: &str,
+    range_days: Option<i64>,
+) -> Vec<Poll> {
+    let mut rows: Vec<Poll> = polls
+        .iter()
+        .filter(|p| {
+            p.round == round
+                && p.candidate_key == candidate.key()
+                && (geo == "ALL" || p.geo == geo)
+        })
         .cloned()
         .collect();
 
@@ -203,7 +160,6 @@ pub fn parse_day(value: &str) -> Option<i64> {
         return None;
     }
 
-    // Howard Hinnant proleptic-Gregorian civil-date conversion.
     let y = y - i64::from(m <= 2);
     let era = if y >= 0 { y } else { y - 399 } / 400;
     let yoe = y - era * 400;
@@ -211,60 +167,6 @@ pub fn parse_day(value: &str) -> Option<i64> {
     let doy = (153 * mp + 2) / 5 + d - 1;
     let doe = yoe * 365 + yoe / 4 - yoe / 100 + doy;
     Some(era * 146097 + doe - 719468)
-}
-
-fn normalize_geo(value: Option<&str>) -> String {
-    let value = value.unwrap_or("BR").trim();
-    if value.is_empty() { "BR".to_string() } else { value.to_ascii_uppercase() }
-}
-
-fn ascii_fold(value: &str) -> String {
-    value.chars().map(|c| match c {
-        'á'|'à'|'ã'|'â'|'ä'|'Á'|'À'|'Ã'|'Â'|'Ä' => 'a',
-        'é'|'è'|'ê'|'ë'|'É'|'È'|'Ê'|'Ë' => 'e',
-        'í'|'ì'|'î'|'ï'|'Í'|'Ì'|'Î'|'Ï' => 'i',
-        'ó'|'ò'|'õ'|'ô'|'ö'|'Ó'|'Ò'|'Õ'|'Ô'|'Ö' => 'o',
-        'ú'|'ù'|'û'|'ü'|'Ú'|'Ù'|'Û'|'Ü' => 'u',
-        'ç'|'Ç' => 'c',
-        _ => c,
-    }).collect()
-}
-
-pub fn candidate_key(value: &str) -> String {
-    let n = ascii_fold(value).to_ascii_lowercase();
-    let n = n.trim();
-
-    let aliases: &[(&str, &str)] = &[
-        ("luiz inacio lula da silva", "lula"), ("lula", "lula"),
-        ("flavio bolsonaro", "flavio"), ("flavio", "flavio"),
-        ("augusto cury", "cury"), ("escritor augusto cury", "cury"), ("cury", "cury"),
-        ("renan santos", "renan"), ("renan", "renan"),
-        ("ronaldo caiado", "caiado"), ("caiado", "caiado"),
-        ("romeu zema", "zema"), ("zema", "zema"),
-        ("samara martins", "samara"), ("samara", "samara"),
-        ("hertz dias", "hertz"), ("hertz", "hertz"),
-        ("edmilson costa", "edmilson"), ("edmilson dias", "edmilson"), ("edmilson", "edmilson"),
-        ("rui costa pimenta", "rui"), ("rui costa", "rui"), ("pimenta", "rui"),
-        ("clariana barao", "clariana"), ("clariana barão", "clariana"), ("clariana", "clariana"),
-        ("wilson grassi", "grassi"), ("veterinario wilson grassi", "grassi"), ("grassi", "grassi"),
-        ("branco/nulo", "branco_nulo"), ("brancos ou nulos", "branco_nulo"),
-        ("ninguem/branco/nulo", "branco_nulo"), ("branco/nulo/nenhum", "branco_nulo"),
-        ("branco/nulo/nao sabe", "branco_nulo"), ("outros/branco/nulo/nao sabe", "branco_nulo"),
-    ];
-
-    aliases.iter().find_map(|(alias, key)| {
-        if n == *alias || n.contains(alias) || alias.contains(n) { Some((*key).to_string()) } else { None }
-    }).unwrap_or_default()
-}
-
-fn is_first_round(value: &str) -> bool {
-    let n = ascii_fold(value).to_ascii_lowercase();
-    n.contains("1 turno") || n.contains("1º turno") || n.contains("primeiro turno") || n.contains("estimulad")
-}
-
-fn is_second_round(value: &str) -> bool {
-    let n = ascii_fold(value).to_ascii_lowercase();
-    n.contains("2 turno") || n.contains("2º turno") || n.contains("segundo turno")
 }
 
 #[cfg(test)]
@@ -278,14 +180,15 @@ mod tests {
     }
 
     #[test]
-    fn maps_current_candidate_aliases() {
+    fn shared_identity_aliases_are_used() {
         assert_eq!(candidate_key("Luiz Inácio Lula da Silva"), "lula");
         assert_eq!(candidate_key("Flávio Bolsonaro"), "flavio");
-        assert_eq!(candidate_key("Ninguém/Branco/Nulo"), "branco_nulo");
+        assert!(candidate_key("Pablo Marçal").is_empty());
+        assert_eq!(normalize_geo(Some("mg")), "MG");
     }
 
     #[test]
     fn rejects_unknown_candidate() {
-        assert!(candidate_key("Pablo Marçal").is_empty());
+        assert!(candidate_key("unknown person").is_empty());
     }
 }

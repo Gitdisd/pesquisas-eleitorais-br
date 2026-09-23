@@ -5,6 +5,15 @@ pub const N_REF: f64 = 2000.0;
 pub const MIN_SAMPLE: f64 = 100.0;
 pub const MAX_SAMPLE: f64 = 4000.0;
 
+mod candidates;
+mod identity;
+
+pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
+pub use identity::{
+    canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,
+    normalize_geo, normalize_identity_text, normalize_institute, normalize_protocol,
+};
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PollObservation {
     pub t: f64,
@@ -97,6 +106,7 @@ mod tests {
         assert_eq!(sample_size(Some(50.0)), 100.0);
         assert_eq!(sample_size(None), 800.0);
     }
+    #[test]
     #[test]
     fn rust_real_fixture_matches_python_reference() {
         let rows = vec![
