@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::chart::{polyline_path, viewbox, weighted_trend, x_for, y_for, HEIGHT, LEFT, RIGHT, TOP, BOTTOM};
+use crate::chart::{polyline_path, viewbox, weighted_trend, x_for, y_for, LEFT, RIGHT};
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
 
 const STYLE: &str = include_str!("../assets/style.css");
@@ -175,6 +175,10 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             (value, y)
         })
         .collect();
+    let point_coords: Vec<(&Poll, f64, f64)> = filtered.iter()
+        .map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high)))
+        .collect();
+
     let x_ticks: Vec<(f64, String)> = (0..=6)
         .map(|i| {
             let frac = i as f64 / 6.0;

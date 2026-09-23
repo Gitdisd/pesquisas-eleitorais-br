@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 01:58:12 -03:00 / 2026-09-23T04:58:12Z — Dioxus point-coordinate correction
+
+- CI #316 found the remaining RSX restriction: chart-point `let` bindings were still being performed inside the RSX loop.
+- Moved point coordinate calculation entirely outside RSX and reduced the chart import set to the symbols actually used.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
 ## 2026-09-23 01:54:39 -03:00 / 2026-09-23T04:54:39Z — Migration validation record synchronized
 
 - Updated the browser migration map with the actual CI sequence through the current branch head `a03989e5188bb50774a6b3dd9e19fdadf8827666`.
