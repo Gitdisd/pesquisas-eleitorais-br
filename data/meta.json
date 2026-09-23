@@ -2,11 +2,11 @@
   "schema_version": 2,
   "latest_publication_date": "2026-09-21",
   "latest_fieldwork_end": "2026-09-20",
-  "last_successful_pipeline_at": "2026-09-23T05:53:49.601Z",
-  "last_updated": "2026-09-23T02:53:49-03:00",
-  "last_check_at": "2026-09-23T05:53:49.513Z",
+  "last_successful_pipeline_at": "2026-09-23T11:27:17.396Z",
+  "last_updated": "2026-09-23T08:27:17-03:00",
+  "last_check_at": "2026-09-23T11:27:17.265Z",
   "check_interval_minutes": 60,
   "record_count": 240,
   "source": "verified published polls",
-  "content_hash": "a36540bf2df9b76de04647fc7374462ec176b42401ab2d4f7218ccdab5e97d3b"
+  "content_hash": "0460a9b9284e13c80d325fdcac19346946edc607936db66e71372f12b69fc1a8"
 }

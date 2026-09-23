@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-22T05:10:36.327Z",
+  "updated_at": "2026-09-23T11:27:16.976Z",
   "items": [
     {
       "poll_key": "fallback|atlasintel|2026-09-11|2026-09-16|2º turno lula x flavio bolsonaro|BR",
@@ -2762,6 +2762,17 @@
       "scenario": "estimulada 1º turno",
       "published_date": "2026-09-21",
       "recorded_at": "2026-09-22T05:10:36.324Z"
+    },
+    {
+      "poll_key": "fallback|datafolha|2026-09-15|2026-09-17|estimulada 1º turno|BR",
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml",
+      "institute": "Datafolha",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-17",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-17",
+      "recorded_at": "2026-09-23T11:27:16.973Z"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T05:53:14.959Z",
+  "updated_at": "2026-09-23T11:26:45.975Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1313,6 +1313,38 @@
       "institute": "Datafolha",
       "published_date": "2026-09-22",
       "found_at": "2026-09-23T05:53:13.054Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-3/",
+      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-23T11:26:16.144Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-senado-santa-catarina-setembro-2026/",
+      "title": "Paraná Pesquisa divulga sondagem ao Senado por Santa Catarina Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inte",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-23T11:26:21.553Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-santa-catarina-setembro-2026/",
+      "title": "Paraná Pesquisa divulga sondagem ao governo de Santa Catarina Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-23T11:26:22.163Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/parana-pesquisas-governador-senado-rio-de-janeiro-setembro-2026-2/",
+      "title": "Paraná Pesquisas: as intenções de voto a governo e Senado no Rio de Janeiro Publicidade Eleições Eleições 2026 Pesquisa ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Paraná Pesquisas",
+      "published_date": null,
+      "found_at": "2026-09-23T11:26:22.759Z"
     }
   ]
 }

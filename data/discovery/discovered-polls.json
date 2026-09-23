@@ -1,5 +1,48 @@
 {
   "version": 1,
-  "updated_at": null,
-  "items": []
+  "updated_at": "2026-09-23T11:26:44.761Z",
+  "items": [
+    {
+      "institute": "Datafolha",
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-17",
+      "published_date": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "candidates": [
+        {
+          "name": "Lula",
+          "party_optional": "PT",
+          "pct": 26
+        },
+        {
+          "name": "Flávio Bolsonaro",
+          "party_optional": "PL",
+          "pct": 17
+        },
+        {
+          "name": "Augusto Cury",
+          "party_optional": "Avante",
+          "pct": 43
+        },
+        {
+          "name": "Renan Santos",
+          "party_optional": "Missão",
+          "pct": 43
+        },
+        {
+          "name": "Ronaldo Caiado",
+          "party_optional": "PSD",
+          "pct": 43
+        }
+      ],
+      "n": 4003,
+      "margin_of_error": "±4 pp",
+      "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml",
+      "methodology_note": "TSE BR-04029/2026; Auto-extracted from https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml",
+      "verified": true,
+      "witness_urls": [
+        "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml"
+      ]
+    }
+  ]
 }

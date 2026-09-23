@@ -518,10 +518,12 @@
     "verified": true,
     "geo": "BR",
     "coverage_dates": [
-      "2026-09-17"
+      "2026-09-17",
+      "2026-09-23"
     ],
     "witness_urls": [
-      "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/17/datafolha-lula-39percent-flavio-bolsonaro-36percent-cury-6percent-caiado-4percent-renan-3percent-zema-2percent.ghtml"
+      "https://cbn.globo.com/coberturas/eleicoes-2026/noticia/2026/09/17/datafolha-lula-39percent-flavio-bolsonaro-36percent-cury-6percent-caiado-4percent-renan-3percent-zema-2percent.ghtml",
+      "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml"
     ]
   },
   {

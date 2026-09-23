@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-23T05:53:13.055Z",
+  "ran_at": "2026-09-23T11:26:44.761Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 408,
+  "candidate_links": 415,
   "pages_fetched": 60,
-  "verified_new": 0,
-  "staged_verified_new": 0,
-  "staging_size": 0,
-  "inbox_new": 44,
-  "skipped_old": 15,
+  "verified_new": 1,
+  "staged_verified_new": 1,
+  "staging_size": 1,
+  "inbox_new": 41,
+  "skipped_old": 17,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -503,7 +503,14 @@
     }
   ],
   "dry_run": false,
-  "verified_samples": [],
+  "verified_samples": [
+    {
+      "institute": "Datafolha",
+      "published_date": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml"
+    }
+  ],
   "inbox_samples": [
     {
       "url": "https://g1.globo.com/pb/paraiba/eleicoes/2026/noticia/2026/09/22/quaest-paraiba-presidente-22-setembro.ghtml",
@@ -511,7 +518,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-23T05:52:50.351Z"
+      "found_at": "2026-09-23T11:26:15.116Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/22/quaest-2o-turno-veja-os-grupos-em-que-a-disputa-entre-lula-e-flavio-bolsonaro-esta-mais-apertada.ghtml",
@@ -519,7 +526,15 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-23T05:52:50.660Z"
+      "found_at": "2026-09-23T11:26:15.485Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-3/",
+      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-23T11:26:16.144Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
@@ -527,7 +542,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-23T05:52:50.723Z"
+      "found_at": "2026-09-23T11:26:16.156Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026/",
@@ -535,16 +550,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-23T05:52:50.746Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-setembro-2026-2/",
-      "title": "Nexus/BTG divulga pesquisa a presidente; confira os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiçõ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
-      "institute": "Nexus/BTG",
-      "published_date": null,
-      "found_at": "2026-09-23T05:52:51.090Z"
+      "found_at": "2026-09-23T11:26:16.794Z"
     }
   ],
-  "meta_last_check_at": "2026-09-23T05:53:13.056Z"
+  "meta_last_check_at": "2026-09-23T11:26:44.762Z"
 }
