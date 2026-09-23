@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 01:54:39 -03:00 / 2026-09-23T04:54:39Z — Migration validation record synchronized
+
+- Updated the browser migration map with the actual CI sequence through the current branch head `a03989e5188bb50774a6b3dd9e19fdadf8827666`.
+- Recorded that CI #315 is the current validation run; prior failures remain documented rather than overwritten.
+- Production remains unchanged and no JS/TS/ECharts removal has been certified.
+- Files: docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 01:53:46 -03:00 / 2026-09-23T04:53:46Z — Rust core test-attribute correction
 
 - Removed the duplicated `#[test]` attribute identified by CI #314 in the shared Rust core.

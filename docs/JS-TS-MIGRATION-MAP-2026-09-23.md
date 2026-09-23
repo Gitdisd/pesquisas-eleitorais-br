@@ -68,4 +68,16 @@ The Rust/Dioxus slice has independent styling in `rust/web-ui/assets/style.css`.
 
 ## Current status
 
-Production is unchanged. Apache ECharts is not part of the target architecture. PR #40 contains the parallel Rust/Dioxus replacement. The first Rust/Dioxus WASM compile failed on CI #307; the identified scaffold errors were corrected in commit `7fc0302be558a12acc6951c5105697d46db572e3`, and CI #310 is the current validation run. No existing JS/TS production module is certified removable.
+Production is unchanged. Apache ECharts is not part of the target architecture. PR #40 contains the parallel Rust/Dioxus replacement.
+
+Latest validation sequence:
+- CI #307: Rust/Dioxus compile failed on initial RSX syntax.
+- CI #310: superseded/cancelled while the first correction was being refined.
+- CI #312: found the remaining RSX loop-binding syntax issue.
+- CI #314: found one duplicated `#[test]` attribute in the newly shared core.
+- Current head: `a03989e5188bb50774a6b3dd9e19fdadf8827666`.
+- CI #315: **in progress** against the current head.
+- No existing JS/TS production module is certified removable.
+- No production cutover or live-site behavior change has occurred.
+
+The validation record is intentionally kept chronological so failures and corrections remain auditable rather than being rewritten away.
