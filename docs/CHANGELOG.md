@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:29:31 -03:00 / 2026-09-23T16:29:31Z — Rust UI model-2 import correction
+
+- CI #330 identified two concrete import issues in the model-2 integration: `Poll` was missing from `chart.rs`, while the obsolete `poll_weight` import remained.
+- Restored the `Poll` type import, added the model-2 wrapper when absent from the current head, and removed the stale import.
+- No statistical formula or production path was changed.
+- Updated the migration map and changelog for the observed CI failure.
+- Files: rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:27:51 -03:00 / 2026-09-23T16:27:51Z — Rust UI model-2 integration
 
 - Connected the new Rust/Dioxus UI to the migrated institute house-effect estimator and `weightedTrendV2` implementation.
