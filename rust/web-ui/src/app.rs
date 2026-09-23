@@ -48,6 +48,7 @@ pub fn App() -> Element {
                     let filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
                     let trend = weighted_trend(&filtered, 14.0);
                     let latest = filtered.last();
+                    let round_label = if state.round == 1 { "1º turno" } else { "2º turno" };
                     rsx! {
                         section { class: "panel",
                             div { class: "toolbar",
@@ -101,7 +102,7 @@ pub fn App() -> Element {
                         }
 
                         section { class: "panel",
-                            h2 { "{state.candidate.label()} — {if state.round == 1 { "1º turno" } else { "2º turno" }}" }
+                            h2 { "{state.candidate.label()} — {round_label}" }
                             p { class: "muted", "Pontos são pesquisas individuais; a linha é a média ponderada canônica. Data = fim de campo." }
                             div { class: "chart-wrap",
                                 {chart_svg(&filtered, &trend)}
@@ -168,6 +169,8 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
     let path = polyline_path(trend, min_day, max_day, low, high);
     let y_steps = 5;
     let x_steps = 6;
+    let y_steps_f = y_steps as f64;
+    let x_steps_f = x_steps as f64;
 
     rsx! {
         svg {
@@ -180,7 +183,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             rect { x: "0", y: "0", width: "1100", height: "{HEIGHT}", fill: "#0d1117" }
 
             for i in 0..=y_steps {
-                let frac = i as f64 / y_steps as f64;
+                let frac = i as f64 / y_steps_f;
                 let value = high - frac * (high - low);
                 let y = y_for(value, low, high);
                 line {
@@ -197,7 +200,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             }
 
             for i in 0..=x_steps {
-                let frac = i as f64 / x_steps as f64;
+                let frac = i as f64 / x_steps_f;
                 let day = min_day + frac * (max_day - min_day);
                 let label = format_day_axis(day);
                 let x = LEFT + frac * (1100.0 - LEFT - RIGHT);
@@ -253,7 +256,6 @@ fn format_day_axis(day: f64) -> String {
     let era = if z >= 0 { z } else { z - 146096 } / 146097;
     let doe = z - era * 146097;
     let yoe = (doe - doe/1460 + doe/36524 - doe/146096) / 365;
-    let y = yoe + era * 400;
     let doy = doe - (365*yoe + yoe/4 - yoe/100);
     let mp = (5*doy + 2) / 153;
     let d = doy - (153*mp+2)/5 + 1;

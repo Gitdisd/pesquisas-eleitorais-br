@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 01:44:52 -03:00 / 2026-09-23T04:44:52Z — Rust/Dioxus compile-gate correction
+
+- Fixed the first Rust/Dioxus scaffold compile errors revealed by CI #307: RSX nested-string parsing, numeric conversions inside RSX loops, the poll-row identifier format string, and an unused date-conversion variable.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/src/data.rs, docs/CHANGELOG.md.
+- Validation target: rerun the Rust/Dioxus WebAssembly compile gate before advancing the migration.
+
 ## 2026-09-23 01:40:52 -03:00 / 2026-09-23T04:40:52Z — Rust UI canonicalization correction
 
 - Corrected the new Rust/SVG trend scaffold to use the same 2.5 × half-life reach rule as the canonical production weighting path.

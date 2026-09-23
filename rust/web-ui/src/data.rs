@@ -148,7 +148,7 @@ pub async fn load_polls() -> Result<Vec<Poll>, String> {
                 continue;
             }
             out.push(Poll {
-                id: format!("{row_index}:{geo}:{}:{key}", row.fieldwork_end, row.institute),
+                id: format!("{row_index}:{geo}:{}:{}:{key}", row.fieldwork_end, row.institute),
                 institute: row.institute.clone(),
                 fieldwork_end: row.fieldwork_end.clone(),
                 published_date: row.published_date.clone(),
