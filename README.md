@@ -19,6 +19,7 @@ System docs:
 - [docs/CHANGELOG.md](docs/CHANGELOG.md) — o que mudou e quando
 - [docs/discovery.md](docs/discovery.md) — busca e staging de pesquisas
 - [docs/REPO-CLEANUP-2026-09-22.md](docs/REPO-CLEANUP-2026-09-22.md) — certificação de limpeza e critérios para remover código
+- [docs/UI-MIGRATION-2026-09-23.md](docs/UI-MIGRATION-2026-09-23.md) — decisão e registro da migração para Rust/Dioxus + SVG customizado
 - [docs/modo-projecao-math.md](docs/modo-projecao-math.md) — math do modo projeção legado
 
 Toda mudança de comportamento leva uma linha no changelog **no mesmo commit**.
@@ -33,9 +34,13 @@ npm run discover-polls
 npm run update-polls
 npm run poll-pipeline
 npm test
+
+# Rust/Dioxus web-ui migration slice
+cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
 ```
 
-- Front: Vite, base `/pesquisas-eleitorais-br/`, `outDir dist`
+- Front atual (fase intermediária): Vite + JavaScript/TypeScript + ECharts
+- Front de destino: Rust + Dioxus 0.7.10 + SVG customizado, em `rust/web-ui/`
 - Refresh: `.github/workflows/refresh-polls.yml` a cada hora no minuto 10 (`10 * * * *`) + **Run workflow**
 - Deploy: `.github/workflows/deploy-pages.yml`; o refresh dispara esse workflow explicitamente depois de publicar um commit de dados
 - Discover lê `data/sources.json`, busca sinais/páginas e **estagia** descobertas verificadas em `data/discovery/discovered-polls.json`; não grava diretamente em `data/polls.json`

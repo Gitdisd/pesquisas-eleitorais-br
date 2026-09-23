@@ -1,0 +1,11 @@
+[application]
+name = "pesquisas-eleitorais-br"
+asset_dir = "assets"
+
+[web.app]
+title = "Pesquisas Eleitorais BR — 2026"
+base_path = "pesquisas-eleitorais-br"
+
+[web.watcher]
+watch_path = ["src", "assets"]
+reload_html = true

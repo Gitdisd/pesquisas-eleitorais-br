@@ -78,6 +78,8 @@ jobs:
           version: v0.13.1
       - name: Add wasm32 target
         run: rustup target add wasm32-unknown-unknown
+      - name: Check Rust/Dioxus web UI
+        run: cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
       - name: Build Rust/WASM package
         run: npm run build:rust
       - name: WASM/JS parity

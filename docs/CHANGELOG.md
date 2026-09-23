@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-23 01:35:01 -03:00 / 2026-09-23T04:35:01Z — Rust/Dioxus migration started
+
+- Reclassified the earlier Python + Rust/WASM + Apache ECharts implementation as an intermediate architecture; it is no longer the final UI target.
+- Adopted Rust + Dioxus 0.7.10 for the application/UI layer and custom Rust/SVG for chart rendering.
+- Added the first parallel Rust web application under rust/web-ui without removing or altering the production Vite/JS/TS/ECharts path.
+- The new slice loads the published poll dataset, normalizes candidate/round/geography fields, uses the shared Rust poll-weight primitive, renders a custom SVG trend, and exposes an inspection table.
+- Added an explicit no-authored-JS/TS target rule, deletion gates, and timestamp/change-log requirements in docs/UI-MIGRATION-2026-09-23.md and docs/ARCHITECTURE-MIGRATION.md.
+- Added CI validation for the Dioxus web crate; production deployment is intentionally unchanged until browser/parity/deployment gates pass.
+- Decision basis: Dioxus supports Rust/WASM web applications, DOM/SVG rendering, browser event handlers, and documented GitHub Pages static deployment.
+
 ## 2026-09-22 — Repository cleanup certification
 
 - Removed the unused direct `date-fns` dependency from `package.json` and `package-lock.json`; no current application source imports it, while Vite and ECharts remain active dependencies.
