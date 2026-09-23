@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:20:34 -03:00 / 2026-09-23T16:20:34Z — House-effect estimator moved into shared Rust core
+
+- Added the Rust equivalent of the existing institute house-effect estimator, preserving peer-window filtering, sample-size weighting, exclusion of same-institute peers, shrinkage and the ±0.05 dead-zone.
+- Added deterministic unit tests for missing-institute handling and the symmetric two-institute case.
+- The old JavaScript implementation remains active as a protected compatibility caller; no production cutover or deletion is authorized by this slice.
+- Updated the migration map and recorded this change in the changelog.
+- Files: rust/polling-core/src/house_effects.rs, rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:19:44 -03:00 / 2026-09-23T16:19:44Z — Aggregate uncertainty band moved into shared Rust core
 
 - Moved the existing production uncertainty-band formula into `rust/polling-core`, including sample/recency weights, 2.5 × half-life reach, measurement-SE fallback, between-poll variance, effective sample size, minimum band floor and two-decimal bounds.

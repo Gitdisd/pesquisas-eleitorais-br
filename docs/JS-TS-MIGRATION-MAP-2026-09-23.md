@@ -27,7 +27,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/models/school.ts` | models 8–12 | Rust statistical models | not migrated |
 | `src/stats/contract.js` | canonical weighting contract | `rust/polling-core` | Rust sample/recency weighting and weightedTrendV1 exist; callers remain |
 | `src/stats/estimator.js` | JS estimator compatibility path | Rust/WASM estimator | partial |
-| `src/stats/house-effects.js` | house-effect calculation | Rust statistics | not migrated |
+| `src/stats/house-effects.js` | house-effect calculation | Rust statistics | Rust equivalent exists; production callers remain |
 | `src/stats/wasm-estimator.js` | JS WASM adapter | Rust/Dioxus boundary | not migrated |
 | `src/overlays.js` | chart overlays/projection/uncertainty | Rust/SVG components | not migrated |
 | `src/live-overlay.js` | live status/data overlay | Dioxus components | not migrated |
