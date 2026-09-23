@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-23 01:40:52 -03:00 / 2026-09-23T04:40:52Z — Rust UI canonicalization correction
+
+- Corrected the new Rust/SVG trend scaffold to use the same 2.5 × half-life reach rule as the canonical production weighting path.
+- Kept the initial Rust/Dioxus slice non-production; no live Vite/JS/TS/ECharts behavior was changed.
+- Files: rust/web-ui/src/chart.rs, rust/web-ui/src/app.rs.
+
 ## 2026-09-23 01:35:01 -03:00 / 2026-09-23T04:35:01Z — Rust/Dioxus migration started
 
 - Reclassified the earlier Python + Rust/WASM + Apache ECharts implementation as an intermediate architecture; it is no longer the final UI target.
