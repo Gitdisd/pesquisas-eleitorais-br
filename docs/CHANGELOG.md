@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:26:31 -03:00 / 2026-09-23T16:26:31Z — Explicit staging lints for pending Rust migration APIs
+
+- CI #328 correctly stopped on three migration-stage `dead_code` lints: the newly ported `weighted_trend_v2` has no Rust UI caller yet, and the base projection election-date constants are not yet consumed by the replacement UI.
+- Marked only those specific pending APIs with `#[allow(dead_code)]`; no repository-wide warning suppression was added.
+- Recorded the failure in the migration map so the validation history remains chronological.
+- Production remains unchanged.
+- Files: rust/polling-core/src/aggregation.rs, rust/polling-core/src/projection.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:25:11 -03:00 / 2026-09-23T16:25:11Z — Rust UI consumes migrated uncertainty band
 
 - Wired the Rust/Dioxus SVG chart to the shared Rust uncertainty-band primitive and renders the resulting bounds as an SVG polygon.

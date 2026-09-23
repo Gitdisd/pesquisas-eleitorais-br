@@ -1,6 +1,8 @@
 use crate::{DAY_MS, SeriesPoint};
 
+#[allow(dead_code)]
 pub const ELECTION_ROUND1_MS: f64 = 1_791_100_800_000.0;
+#[allow(dead_code)]
 pub const ELECTION_ROUND2_MS: f64 = 1_792_912_800_000.0;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
