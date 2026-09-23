@@ -167,8 +167,23 @@ pub fn App() -> Element {
 fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
     let (min_day, max_day, low, high) = viewbox(rows, trend);
     let path = polyline_path(trend, min_day, max_day, low, high);
-    let y_steps: u32 = 5;
-    let x_steps: u32 = 6;
+    let y_ticks: Vec<(f64, f64)> = (0..=5)
+        .map(|i| {
+            let frac = i as f64 / 5.0;
+            let value = high - frac * (high - low);
+            let y = y_for(value, low, high);
+            (value, y)
+        })
+        .collect();
+    let x_ticks: Vec<(f64, String)> = (0..=6)
+        .map(|i| {
+            let frac = i as f64 / 6.0;
+            let day = min_day + frac * (max_day - min_day);
+            let label = format_day_axis(day);
+            let x = LEFT + frac * (1100.0 - LEFT - RIGHT);
+            (x, label)
+        })
+        .collect();
 
     rsx! {
         svg {
@@ -180,10 +195,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             height: "{HEIGHT}",
             rect { x: "0", y: "0", width: "1100", height: "{HEIGHT}", fill: "#0d1117" }
 
-            for i in 0..=y_steps {
-                let frac = f64::from(i) / f64::from(y_steps);
-                let value = high - frac * (high - low);
-                let y = y_for(value, low, high);
+            for (value, y) in y_ticks.iter().copied() {
                 line {
                     class: "grid-line",
                     x1: "{LEFT}", x2: "{1100.0 - RIGHT}",
@@ -197,11 +209,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
                 }
             }
 
-            for i in 0..=x_steps {
-                let frac = f64::from(i) / f64::from(x_steps);
-                let day = min_day + frac * (max_day - min_day);
-                let label = format_day_axis(day);
-                let x = LEFT + frac * (1100.0 - LEFT - RIGHT);
+            for (x, label) in x_ticks.iter() {
                 line {
                     class: "grid-line",
                     x1: "{x:.2}", x2: "{x:.2}",

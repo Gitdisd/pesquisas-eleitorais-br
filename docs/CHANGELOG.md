@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 01:52:17 -03:00 / 2026-09-23T04:52:17Z — Dioxus RSX axis precomputation
+
+- Moved chart-axis arithmetic out of Dioxus RSX `for` blocks after CI #312 showed that inline arithmetic bindings are rejected by the RSX parser.
+- The SVG markup now iterates over precomputed Rust tick tuples, keeping the UI macro declarative while preserving the same chart coordinates and labels.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
 ## 2026-09-23 01:47:23 -03:00 / 2026-09-23T04:47:23Z — Rust canonical data-contract slice
 
 - Moved candidate keys/aliases and round recognition into the shared Rust statistical core; the Dioxus loader now imports these primitives instead of carrying its own duplicate implementation.
