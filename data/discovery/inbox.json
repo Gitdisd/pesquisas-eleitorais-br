@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T16:50:07.065Z",
+  "updated_at": "2026-09-23T20:14:36.281Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1417,6 +1417,62 @@
       "institute": "Quaest",
       "published_date": "2026-09-23",
       "found_at": "2026-09-23T16:49:49.357Z"
+    },
+    {
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/23/quaest-sp-presidente-23-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Quaes",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:24.074Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/23/quaest-mg-presidente-23-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerais",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:24.308Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-rj-governador-23-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa pelo governo do RJ | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio de Ja",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:26.119Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/23/quaest-mg-governador-23-setembro.ghtml",
+      "title": "Quaest em MG: Cleitinho, 37%; Patrus, 16%; Kalil, 8%; Simões, 7%; | G1 Pular para o conteúdo Minas Gerais Eleições 2026 ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:26.284Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/23/quaest-em-pe-1-turno-23-setembro.ghtml",
+      "title": "Quaest em Pernambuco: Raquel Lyra, 41%; João Campos, 39% | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambu",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:26.492Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/23/quaest-df-governador-23-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa pelo governo no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no Distrit",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:26.669Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/23/quaest-mg-governador-2-turno-23-setembro.ghtml",
+      "title": "Quaest em MG, 2º turno: veja cenários da disputa ao governo | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Min",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T20:14:26.891Z"
     }
   ]
 }
