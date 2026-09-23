@@ -167,6 +167,10 @@ pub fn App() -> Element {
 fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
     let (min_day, max_day, low, high) = viewbox(rows, trend);
     let path = polyline_path(trend, min_day, max_day, low, high);
+    let point_coords: Vec<(&Poll, f64, f64)> = rows.iter()
+        .map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high)))
+        .collect();
+
     let y_ticks: Vec<(f64, f64)> = (0..=5)
         .map(|i| {
             let frac = i as f64 / 5.0;
@@ -229,7 +233,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
                 style: "--series: #70a7ff;"
             }
 
-            for (poll, x, y) in rows.iter().map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high))) {
+            for (poll, x, y) in point_coords.iter().copied() {
                 circle {
                     class: "poll-point",
                     cx: "{x:.2}",

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 02:06:19 -03:00 / 2026-09-23T05:06:19Z — Dioxus point-coordinate precomputation correction
+
+- The prior CI #317 correction still evaluated chart-point coordinates inside the RSX loop expression.
+- Restored precomputation before `rsx!` and changed the SVG point loop to consume prepared tuples, satisfying the parser constraint without changing chart math.
+- Production remains unchanged; no Vite/JavaScript/TypeScript/Apache ECharts production path was removed or switched.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
 ## 2026-09-23 02:05:19 -03:00 / 2026-09-23T05:05:19Z — Dioxus SVG point-loop compile correction
 
 - CI #317 failed the Dioxus WebAssembly compile gate on two concrete issues: an out-of-scope temporary and a `let` binding inside an RSX loop.
