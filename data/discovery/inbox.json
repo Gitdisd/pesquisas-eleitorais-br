@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T11:26:45.975Z",
+  "updated_at": "2026-09-23T16:50:07.065Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1345,6 +1345,78 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-23T11:26:22.759Z"
+    },
+    {
+      "url": "https://g1.globo.com/ce/ceara/eleicoes/2026/noticia/2026/09/23/quaest-ce-presidente-23-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial no Ceará | G1 Pular para o conteúdo Ceará Eleições 2026 no Ceará Quaest no ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T16:49:33.148Z"
+    },
+    {
+      "url": "https://g1.globo.com/ce/ceara/eleicoes/2026/noticia/2026/09/23/quaest-ce-avaliacao-governo-22-setembro.ghtml",
+      "title": "Quaest: veja como está a avaliação do governo do Ceará | G1 Pular para o conteúdo Ceará Eleições 2026 no Ceará Quaest no",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T16:49:37.522Z"
+    },
+    {
+      "url": "https://g1.globo.com/ce/ceara/eleicoes/2026/noticia/2026/09/23/quaest-ce-governador-23-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa pelo governo do Ceará | G1 Pular para o conteúdo Ceará Eleições 2026 no Ceará Quaest no",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T16:49:38.185Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-ceara-setembro-2026-2/",
+      "title": "Quaest divulga pesquisa para governo e Senado no Ceará Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "reason": "incomplete_extract:no_published_date,no_n",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-23T16:49:38.205Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-sao-paulo-setembro-2026-2/",
+      "title": "AtlasIntel divulga pesquisa para governador de São Paulo Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-23T16:49:38.854Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-rio-de-janeiro-setembro-2026-2/",
+      "title": "AtlasIntel: pesquisa para governador no Rio de Janeiro Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-23T16:49:39.510Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-minas-gerais-setembro-2026-2/",
+      "title": "AtlasIntel: pesquisa para governador de Minas Gerais Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-23T16:49:40.339Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-governador-rio-grande-do-sul-setembro-2026-2/",
+      "title": "AtlasIntel divulga pesquisa para governo no RS Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Atlas",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-23T16:49:40.348Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/23/quaest-ciro-e-elmano-de-freitas-esto-em-empate-tcnico-em-disputa-pelo-governo-do-cear.ghtml",
+      "title": "Quaest: Ciro e Elmano de Freitas estão em empate técnico em disputa pelo governo do Ceará | Eleições 2026 | Valor Econôm",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T16:49:49.357Z"
     }
   ]
 }

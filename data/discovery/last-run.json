@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-23T11:26:44.761Z",
+  "ran_at": "2026-09-23T16:50:05.783Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 415,
+  "candidate_links": 405,
   "pages_fetched": 60,
-  "verified_new": 1,
-  "staged_verified_new": 1,
+  "verified_new": 0,
+  "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 41,
-  "skipped_old": 17,
+  "inbox_new": 45,
+  "skipped_old": 14,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -503,30 +503,23 @@
     }
   ],
   "dry_run": false,
-  "verified_samples": [
-    {
-      "institute": "Datafolha",
-      "published_date": "2026-09-23",
-      "scenario": "estimulada 1º turno",
-      "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml"
-    }
-  ],
+  "verified_samples": [],
   "inbox_samples": [
+    {
+      "url": "https://g1.globo.com/ce/ceara/eleicoes/2026/noticia/2026/09/23/quaest-ce-presidente-23-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial no Ceará | G1 Pular para o conteúdo Ceará Eleições 2026 no Ceará Quaest no ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T16:49:33.148Z"
+    },
     {
       "url": "https://g1.globo.com/pb/paraiba/eleicoes/2026/noticia/2026/09/22/quaest-paraiba-presidente-22-setembro.ghtml",
       "title": "Quaest: veja números da disputa presidencial na Paraíba | G1 Pular para o conteúdo Paraíba Eleições 2026 na Paraíba Quae",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-22",
-      "found_at": "2026-09-23T11:26:15.116Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/22/quaest-2o-turno-veja-os-grupos-em-que-a-disputa-entre-lula-e-flavio-bolsonaro-esta-mais-apertada.ghtml",
-      "title": "Quaest, 2º turno: veja números detalhados de Lula e Flávio Bolsonaro | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Quaest",
-      "published_date": "2026-09-22",
-      "found_at": "2026-09-23T11:26:15.485Z"
+      "found_at": "2026-09-23T16:49:33.556Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-3/",
@@ -534,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-23T11:26:16.144Z"
+      "found_at": "2026-09-23T16:49:33.573Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
@@ -542,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-23T11:26:16.156Z"
+      "found_at": "2026-09-23T16:49:34.209Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026/",
@@ -550,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-23T11:26:16.794Z"
+      "found_at": "2026-09-23T16:49:34.877Z"
     }
   ],
-  "meta_last_check_at": "2026-09-23T11:26:44.762Z"
+  "meta_last_check_at": "2026-09-23T16:50:05.784Z"
 }

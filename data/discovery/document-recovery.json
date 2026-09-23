@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-23T11:26:45.976Z",
+  "generated_at": "2026-09-23T16:50:07.066Z",
   "attempted": 2,
   "recovered_count": 0,
   "recovered": [],
@@ -15,6 +15,6 @@
       "reason": "no_new_verified_records"
     }
   ],
-  "remaining_inbox": 168,
+  "remaining_inbox": 177,
   "ocr_max_pages": 40
 }
