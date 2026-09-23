@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:22:09 -03:00 / 2026-09-23T16:22:09Z — WeightedTrendV2 moved into shared Rust core
+
+- Added the Rust equivalent of the production `weightedTrendV2`, including the same institute/day flood index, 2.5 × half-life reach, canonical poll weighting, nearest-point gate and two-decimal rounding.
+- Added a regression test proving the institute flood divisor changes relative institute influence while preserving the canonical weighting contract.
+- Updated the migration map; the JS model dispatcher remains protected until model-2 integration and numerical parity are completed.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/aggregation.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:21:20 -03:00 / 2026-09-23T16:21:20Z — Base projection math moved into shared Rust core
 
 - Added the Rust implementation of the existing base projection model: fit-window clamp, minimum-point gate, election-day horizon cap, bounded slope, damped extrapolation, RMSE calculation and expanding uncertainty band.
