@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T00:23:52.928Z",
+  "updated_at": "2026-09-23T05:53:14.959Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1289,6 +1289,30 @@
       "institute": "Paraná Pesquisas",
       "published_date": null,
       "found_at": "2026-09-23T00:23:51.563Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/23/quaest-divulga-novas-pesquisas-eleitorais-em-6-estados-e-no-df-nesta-quarta-feira-23.ghtml",
+      "title": "Quaest divulga pesquisas eleitorais em 6 estados e DF nesta quarta | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T05:52:52.717Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-paraiba-setembro-2026/",
+      "title": "Quaest divulga pesquisa ao governo e ao Senado na Paraíba Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-23T05:52:53.523Z"
+    },
+    {
+      "url": "https://www.cnnbrasil.com.br/blogs/iuri-pitta/eleicoes/datafolha-lula-3-repete-avaliacao-de-bolsonaro-em-reta-final-de-campanha/",
+      "title": "Datafolha: Lula 3 repete avaliação de Bolsonaro em reta final de campanha | Blogs | CNN Brasil Pular para o conteúdo Ao ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-22",
+      "found_at": "2026-09-23T05:53:13.054Z"
     }
   ]
 }
