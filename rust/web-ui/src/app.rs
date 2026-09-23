@@ -46,7 +46,7 @@ pub fn App() -> Element {
                         geos.get(state.geo_index).cloned().unwrap_or_else(|| "BR".to_string())
                     };
                     let filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
-                    let trend = weighted_trend(&filtered);
+                    let trend = weighted_trend(&filtered, 14.0);
                     let latest = filtered.last();
                     rsx! {
                         section { class: "panel",
@@ -174,9 +174,8 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             class: "chart",
             view_box: "0 0 1100 470",
             role: "img",
-            aria_label: "Gráfico customizado de pesquisas eleitorais",
-            preserve_aspect_ratio: "none",
-            width: "1100",
+            "aria-label": "Gráfico customizado de pesquisas eleitorais",
+                        width: "1100",
             height: "{HEIGHT}",
             rect { x: "0", y: "0", width: "1100", height: "{HEIGHT}", fill: "#0d1117" }
 
