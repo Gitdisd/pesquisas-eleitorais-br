@@ -5,9 +5,11 @@ pub const N_REF: f64 = 2000.0;
 pub const MIN_SAMPLE: f64 = 100.0;
 pub const MAX_SAMPLE: f64 = 4000.0;
 
+mod aggregation;
 mod candidates;
 mod identity;
 
+pub use aggregation::{weighted_trend_v1, SeriesPoint};
 pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
 pub use identity::{
     canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,

@@ -15,7 +15,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/main.js` | boot, data store, cards/table, controls, refresh | Dioxus app/state | not migrated |
 | `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | first slice exists |
 | `src/aggregate.js` | TS aggregate compatibility re-export | Rust aggregate | protected |
-| `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | not migrated |
+| `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | canonical weightedTrendV1 moved to shared Rust core; uncertainty/model dispatch remain |
 | `src/projection.js` | projection UI/math | Rust projection + Dioxus | not migrated |
 | `src/projection-v2.js` | projection-v2 | Rust projection | not migrated |
 | `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
@@ -25,7 +25,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/data/types.ts` | TypeScript contracts | Rust structs/contracts | partial |
 | `src/models/advanced.ts` | models 3–7 | Rust statistical models | not migrated |
 | `src/models/school.ts` | models 8–12 | Rust statistical models | not migrated |
-| `src/stats/contract.js` | canonical weighting contract | `rust/polling-core` | Rust primitive exists; callers remain |
+| `src/stats/contract.js` | canonical weighting contract | `rust/polling-core` | Rust sample/recency weighting and weightedTrendV1 exist; callers remain |
 | `src/stats/estimator.js` | JS estimator compatibility path | Rust/WASM estimator | partial |
 | `src/stats/house-effects.js` | house-effect calculation | Rust statistics | not migrated |
 | `src/stats/wasm-estimator.js` | JS WASM adapter | Rust/Dioxus boundary | not migrated |
@@ -75,9 +75,12 @@ Latest validation sequence:
 - CI #310: superseded/cancelled while the first correction was being refined.
 - CI #312: found the remaining RSX loop-binding syntax issue.
 - CI #314: found one duplicated `#[test]` attribute in the newly shared core.
-- Current head: `a03989e5188bb50774a6b3dd9e19fdadf8827666`.
-- CI #315: **in progress** against the current head.
+- CI #315: previous validation target before the latest corrections; historical result retained.
+- CI #317: **failed** on Dioxus RSX point-loop syntax.
+- CI #318: **cancelled** after the subsequent correction superseded it.
+- CI #319: **in progress** against the current head `d90cc58b9f3cf405970c3a3555c2a79123a8f638`.
 - No existing JS/TS production module is certified removable.
+- Canonical `weightedTrendV1` now has a shared Rust implementation and the Rust/Dioxus chart delegates to it. The old JS/TS implementation remains protected until numerical parity and production cutover gates pass.
 - No production cutover or live-site behavior change has occurred.
 
 The validation record is intentionally kept chronological so failures and corrections remain auditable rather than being rewritten away.

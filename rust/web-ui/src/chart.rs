@@ -1,6 +1,4 @@
-use polling_core::{poll_weight, PollObservation};
-use crate::data::Poll;
-
+use polling_core::{weighted_trend_v1, PollObservation};
 pub const WIDTH: f64 = 1100.0;
 pub const HEIGHT: f64 = 470.0;
 pub const LEFT: f64 = 58.0;
@@ -51,6 +49,27 @@ pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
         }
     }
     out
+}
+
+pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
+    let observations: Vec<PollObservation> = rows
+        .iter()
+        .map(|row| PollObservation {
+            t: row.day as f64 * DAY_MS,
+            y: row.value,
+            n: Some(row.n),
+            institute: Some(row.institute.clone()),
+            moe: None,
+        })
+        .collect();
+
+    weighted_trend_v1(&observations, half_life_days)
+        .into_iter()
+        .map(|point| TrendPoint {
+            day: (point.x / DAY_MS).round() as i64,
+            value: point.y,
+        })
+        .collect()
 }
 
 pub fn viewbox(rows: &[Poll], trend: &[TrendPoint]) -> (f64, f64, f64, f64) {

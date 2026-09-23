@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-23 02:08:10 -03:00 / 2026-09-23T05:08:10Z — Canonical weighted trend moved into shared Rust core
+
+- Moved the production-equivalent `weightedTrendV1` daily aggregation primitive into `rust/polling-core`.
+- Preserved sample-size weighting, exponential recency weighting, 2.5 × half-life reach, nearest-observation gating and two-decimal rounding.
+- Changed the migration chart wrapper to adapt `Poll` rows into the shared Rust observation contract instead of reimplementing the aggregation loop locally.
+- Added a Rust regression fixture matching the existing migration fixture value; this is a replacement slice, not production cutover or JS/TS deletion authorization.
+- Updated the migration map to mark `src/aggregate.ts` as partially migrated.
+- Production remains unchanged; no Vite/JavaScript/TypeScript/Apache ECharts production path was removed or switched.
+- Files: rust/polling-core/src/aggregation.rs, rust/polling-core/src/lib.rs, rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 02:06:19 -03:00 / 2026-09-23T05:06:19Z — Dioxus point-coordinate precomputation correction
 
 - The prior CI #317 correction still evaluated chart-point coordinates inside the RSX loop expression.
