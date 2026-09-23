@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23 01:48:40 -03:00 / 2026-09-23T04:48:40Z — Dioxus RSX loop correction
+
+- Replaced unsupported `as f64` conversions inside Dioxus RSX loops with typed `u32` counters and `f64::from`.
+- This addresses the remaining compile error reported by CI #310.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
 ## 2026-09-23 01:46:06 -03:00 / 2026-09-23T04:46:06Z — Browser JS/TS migration inventory
 
 - Mapped every currently tracked browser-side JavaScript/TypeScript module to its current responsibility, Rust/Dioxus destination and migration status.

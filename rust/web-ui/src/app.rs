@@ -167,10 +167,8 @@ pub fn App() -> Element {
 fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
     let (min_day, max_day, low, high) = viewbox(rows, trend);
     let path = polyline_path(trend, min_day, max_day, low, high);
-    let y_steps = 5;
-    let x_steps = 6;
-    let y_steps_f = y_steps as f64;
-    let x_steps_f = x_steps as f64;
+    let y_steps: u32 = 5;
+    let x_steps: u32 = 6;
 
     rsx! {
         svg {
@@ -183,7 +181,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             rect { x: "0", y: "0", width: "1100", height: "{HEIGHT}", fill: "#0d1117" }
 
             for i in 0..=y_steps {
-                let frac = i as f64 / y_steps_f;
+                let frac = f64::from(i) / f64::from(y_steps);
                 let value = high - frac * (high - low);
                 let y = y_for(value, low, high);
                 line {
@@ -200,7 +198,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             }
 
             for i in 0..=x_steps {
-                let frac = i as f64 / x_steps_f;
+                let frac = f64::from(i) / f64::from(x_steps);
                 let day = min_day + frac * (max_day - min_day);
                 let label = format_day_axis(day);
                 let x = LEFT + frac * (1100.0 - LEFT - RIGHT);
