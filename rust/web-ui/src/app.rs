@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::chart::{polyline_path, viewbox, weighted_trend, x_for, y_for, LEFT, RIGHT};
+use crate::chart::{polyline_path, viewbox, weighted_trend, x_for, y_for, BOTTOM, HEIGHT, LEFT, RIGHT, TOP};
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
 
 const STYLE: &str = include_str!("../assets/style.css");
@@ -175,10 +175,6 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             (value, y)
         })
         .collect();
-    let point_coords: Vec<(&Poll, f64, f64)> = filtered.iter()
-        .map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high)))
-        .collect();
-
     let x_ticks: Vec<(f64, String)> = (0..=6)
         .map(|i| {
             let frac = i as f64 / 6.0;
@@ -233,9 +229,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
                 style: "--series: #70a7ff;"
             }
 
-            for poll in rows.iter() {
-                let x = x_for(poll.day, min_day, max_day);
-                let y = y_for(poll.value, low, high);
+            for (poll, x, y) in rows.iter().map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high))) {
                 circle {
                     class: "poll-point",
                     cx: "{x:.2}",
