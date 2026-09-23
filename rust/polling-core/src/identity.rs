@@ -112,6 +112,39 @@ pub fn tse_protocol_of(row: &IdentityFields) -> Option<String> {
     .into_iter()
     .flatten()
     .find_map(normalize_protocol)
+    .or_else(|| {
+        let note = row.methodology_note.as_deref().unwrap_or("");
+        let cleaned = regex::Regex::new(r"(?i)\b(?:distinct from|not the|diferente de|separate (?:product|wave) from)[^.]*\.")
+            .ok()
+            .map(|re| re.replace_all(note, " ").into_owned())
+            .unwrap_or_else(|| note.to_string());
+        let re = regex::Regex::new(r"(?i)\bBR\s*-?\s*\d{4,6}\s*(?:/\s*2026|\s+2026|2026)\b").ok()?;
+        let mut found = std::collections::BTreeSet::new();
+        for m in re.find_iter(&cleaned) {
+            if let Some(protocol) = normalize_protocol(m.as_str()) {
+                found.insert(protocol);
+            }
+        }
+        if found.len() == 1 { found.into_iter().next() } else { None }
+    })
+}
+
+
+pub fn identity_description(row: &IdentityFields) -> String {
+    let geo = normalize_geo(row.geo.as_deref());
+    let scenario = normalize_identity_text(&row.scenario);
+    if let Some(protocol) = tse_protocol_of(row) {
+        format!("{protocol} · {scenario} · {geo}")
+    } else {
+        format!(
+            "{} · {}–{} · {} · {}",
+            normalize_institute(&row.institute),
+            row.fieldwork_start.as_deref().unwrap_or("?"),
+            row.fieldwork_end.as_deref().unwrap_or("?"),
+            scenario,
+            geo,
+        )
+    }
 }
 
 pub fn normalize_geo(value: Option<&str>) -> String {
@@ -188,6 +221,37 @@ mod tests {
         assert_eq!(normalize_protocol("BR-06902/2026").as_deref(), Some("BR-06902/2026"));
         assert_eq!(normalize_protocol("br 06902 2026").as_deref(), Some("BR-06902/2026"));
         assert_eq!(normalize_protocol("BR069022026").as_deref(), Some("BR-06902/2026"));
+    }
+
+    #[test]
+    fn protocol_can_be_recovered_from_methodology_note() {
+        let row = IdentityFields {
+            methodology_note: Some("Registro BR-06902/2026; separado de produto BR-12345/2026.".into()),
+            ..Default::default()
+        };
+        assert_eq!(tse_protocol_of(&row).as_deref(), Some("BR-06902/2026"));
+    }
+
+    #[test]
+    fn ambiguous_methodology_protocols_are_not_selected() {
+        let row = IdentityFields {
+            methodology_note: Some("Ondas BR-06902/2026 e BR-01531/2026.".into()),
+            ..Default::default()
+        };
+        assert_eq!(tse_protocol_of(&row), None);
+    }
+
+    #[test]
+    fn identity_description_matches_canonical_shape() {
+        let row = IdentityFields {
+            institute: "Datafolha".into(),
+            scenario: "1º turno".into(),
+            geo: Some("BR".into()),
+            fieldwork_start: Some("2026-09-10".into()),
+            fieldwork_end: Some("2026-09-13".into()),
+            ..Default::default()
+        };
+        assert_eq!(identity_description(&row), "datafolha · 2026-09-10–2026-09-13 · 1º turno · BR");
     }
 
     #[test]

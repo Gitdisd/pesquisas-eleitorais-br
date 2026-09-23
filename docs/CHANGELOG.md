@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-23 13:31:09 -03:00 / 2026-09-23T16:31:09Z — Poll identity parity completed in Rust core
+
+- Added Rust parity for the JavaScript identity module's methodology-note protocol recovery, including exclusion of explicitly separate products/waves and rejection of ambiguous multiple protocols.
+- Added the canonical identity-description formatter used to explain protocol-based versus fallback identity.
+- Added regression tests for note extraction, ambiguity handling and fallback description shape.
+- Added the `regex` dependency only to the Rust polling core for this parity slice.
+- The JavaScript identity module remains protected until its downstream production callers are migrated and deletion certification passes.
+- Files: rust/polling-core/Cargo.toml, rust/polling-core/src/identity.rs, rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:29:31 -03:00 / 2026-09-23T16:29:31Z — Rust UI model-2 import correction
 
 - CI #330 identified two concrete import issues in the model-2 integration: `Poll` was missing from `chart.rs`, while the obsolete `poll_weight` import remained.

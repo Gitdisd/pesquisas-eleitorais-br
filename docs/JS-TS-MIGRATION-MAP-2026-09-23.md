@@ -20,7 +20,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/projection-v2.js` | projection-v2 | Rust projection | not migrated |
 | `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
 | `src/data/api.ts` | JSON loading | Rust data client | first slice exists |
-| `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | not migrated |
+| `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | protocol-note recovery and identity description migrated; production JS caller remains |
 | `src/data/normalize.ts` | raw→normalized/merge | Rust normalization | partial |
 | `src/data/types.ts` | TypeScript contracts | Rust structs/contracts | partial |
 | `src/models/advanced.ts` | models 3–7 | Rust statistical models | not migrated |
