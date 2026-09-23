@@ -11,6 +11,7 @@ struct ViewState {
     round: u8,
     range_days: Option<i64>,
     geo_index: usize,
+    model: u8,
 }
 
 #[allow(non_snake_case)]
@@ -20,6 +21,7 @@ pub fn App() -> Element {
         round: 1,
         range_days: Some(30),
         geo_index: 0,
+        model: 1,
     });
 
     let polls = use_resource(|| async { load_polls().await });
@@ -48,7 +50,11 @@ pub fn App() -> Element {
                         geos.get(state.geo_index).cloned().unwrap_or_else(|| "BR".to_string())
                     };
                     let filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
-                    let trend = weighted_trend(&filtered, 14.0);
+                    let trend = if state.model == 2 {
+                        crate::chart::weighted_trend_model_2(&filtered, 14.0)
+                    } else {
+                        weighted_trend(&filtered, 14.0)
+                    };
                     let latest = filtered.last();
                     let round_label = if state.round == 1 { "1º turno" } else { "2º turno" };
                     rsx! {
@@ -74,6 +80,19 @@ pub fn App() -> Element {
                                         onclick: move |_| view.write().range_days = days,
                                         "{label}"
                                     }
+                                }
+                            }
+                            div { class: "toolbar",
+                                strong { "Modelo" }
+                                button {
+                                    class: if state.model == 1 { "active" } else { "" },
+                                    onclick: move |_| view.write().model = 1,
+                                    "Canônica"
+                                }
+                                button {
+                                    class: if state.model == 2 { "active" } else { "" },
+                                    onclick: move |_| view.write().model = 2,
+                                    "Casa"
                                 }
                             }
                             div { class: "toolbar",

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-23 13:27:51 -03:00 / 2026-09-23T16:27:51Z — Rust UI model-2 integration
+
+- Connected the new Rust/Dioxus UI to the migrated institute house-effect estimator and `weightedTrendV2` implementation.
+- Added a model selector with the existing model-1 canonical path and model-2 house-effect-corrected path.
+- Preserved the production model-2 sequence: estimate house effects, debias observations, then apply weightedTrendV2.
+- Updated the migration map to record that the migrated Rust functions now have an active replacement UI caller.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:26:31 -03:00 / 2026-09-23T16:26:31Z — Explicit staging lints for pending Rust migration APIs
 
 - CI #328 correctly stopped on three migration-stage `dead_code` lints: the newly ported `weighted_trend_v2` has no Rust UI caller yet, and the base projection election-date constants are not yet consumed by the replacement UI.

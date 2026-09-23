@@ -1,4 +1,4 @@
-use polling_core::{poll_weight, weighted_trend_v1, PollObservation};
+use polling_core::{estimate_house_effects, poll_weight, weighted_trend_v1, weighted_trend_v2 as core_weighted_trend_v2, PollObservation};
 pub const WIDTH: f64 = 1100.0;
 pub const HEIGHT: f64 = 470.0;
 pub const LEFT: f64 = 58.0;
@@ -31,6 +31,32 @@ pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
             day: (point.x / DAY_MS).round() as i64,
             value: point.y,
         })
+        .collect()
+}
+
+pub fn weighted_trend_model_2(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
+    let observations: Vec<PollObservation> = rows.iter()
+        .map(|row| PollObservation {
+            t: row.day as f64 * DAY_MS,
+            y: row.value,
+            n: Some(row.n),
+            institute: Some(row.institute.clone()),
+            moe: None,
+        })
+        .collect();
+    let house = estimate_house_effects(&observations, 14.0);
+    let debiased: Vec<PollObservation> = observations.iter()
+        .map(|point| {
+            let adjustment = point.institute.as_deref()
+                .and_then(|key| house.get(key))
+                .copied()
+                .unwrap_or(0.0);
+            PollObservation { y: point.y - adjustment, ..point.clone() }
+        })
+        .collect();
+    core_weighted_trend_v2(&debiased, half_life_days)
+        .into_iter()
+        .map(|point| TrendPoint { day: (point.x / DAY_MS).round() as i64, value: point.y })
         .collect()
 }
 
