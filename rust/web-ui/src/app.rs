@@ -1,4 +1,5 @@
 use dioxus::prelude::*;
+use polling_core::{uncertainty_band, PollObservation};
 use crate::chart::{polyline_path, viewbox, weighted_trend, x_for, y_for, BOTTOM, HEIGHT, LEFT, RIGHT, TOP};
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
 
@@ -168,6 +169,24 @@ pub fn App() -> Element {
 fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
     let (min_day, max_day, low, high) = viewbox(rows, trend);
     let path = polyline_path(trend, min_day, max_day, low, high);
+    let uncertainty_rows: Vec<PollObservation> = rows.iter()
+        .map(|row| PollObservation {
+            t: row.day as f64 * 86_400_000.0,
+            y: row.value,
+            n: Some(row.n),
+            institute: Some(row.institute.clone()),
+            moe: None,
+        })
+        .collect();
+    let uncertainty = uncertainty_band(&uncertainty_rows, 14.0, 1.645);
+    let band_points = {
+        let mut points: Vec<String> = uncertainty.iter()
+            .map(|point| format!("{:.2},{:.2}", x_for((point.x / 86_400_000.0).round() as i64, min_day, max_day), y_for(point.low, low, high)))
+            .collect();
+        points.extend(uncertainty.iter().rev()
+            .map(|point| format!("{:.2},{:.2}", x_for((point.x / 86_400_000.0).round() as i64, min_day, max_day), y_for(point.high, low, high))));
+        points.join(" ")
+    };
     let point_coords: Vec<(&Poll, f64, f64)> = rows.iter()
         .map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high)))
         .collect();
@@ -226,6 +245,11 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
                     y: "{HEIGHT - 17.0:.2}",
                     "{label}"
                 }
+            }
+
+            polygon {
+                class: "uncertainty-band",
+                points: "{band_points}"
             }
 
             polyline {

@@ -122,6 +122,11 @@ p { margin: .35rem 0; }
   font-size: 11px;
 }
 
+.uncertainty-band {
+  fill: var(--accent);
+  opacity: .12;
+}
+
 .series-line {
   fill: none;
   stroke: var(--series);

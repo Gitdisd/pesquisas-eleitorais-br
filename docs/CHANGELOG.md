@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:25:11 -03:00 / 2026-09-23T16:25:11Z — Rust UI consumes migrated uncertainty band
+
+- Wired the Rust/Dioxus SVG chart to the shared Rust uncertainty-band primitive and renders the resulting bounds as an SVG polygon.
+- Preserved the current semantics: estimated aggregate uncertainty, not a survey margin of error and not calibrated coverage.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Updated the migration map and changelog together with the code change.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/assets/style.css, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:24:01 -03:00 / 2026-09-23T16:24:01Z — Rust uncertainty export correction
 
 - CI #325 identified an export wiring error introduced during the uncertainty migration: `uncertainty_band` and `UncertaintyPoint` were implemented in the shared core root but incorrectly reexported from `aggregation`.
