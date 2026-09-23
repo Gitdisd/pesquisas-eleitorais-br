@@ -16,7 +16,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | first slice exists |
 | `src/aggregate.js` | TS aggregate compatibility re-export | Rust aggregate | protected |
 | `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | weightedTrendV1 and uncertainty band moved to shared Rust core; model dispatch remains |
-| `src/projection.js` | projection UI/math | Rust projection + Dioxus | not migrated |
+| `src/projection.js` | projection UI/math | Rust projection + Dioxus | base projection math migrated to Rust; UI/copy integration remains |
 | `src/projection-v2.js` | projection-v2 | Rust projection | not migrated |
 | `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
 | `src/data/api.ts` | JSON loading | Rust data client | first slice exists |

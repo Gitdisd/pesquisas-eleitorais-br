@@ -4,14 +4,17 @@ use serde::{Deserialize, Serialize};
 pub const N_REF: f64 = 2000.0;
 pub const MIN_SAMPLE: f64 = 100.0;
 pub const MAX_SAMPLE: f64 = 4000.0;
+pub const DAY_MS: f64 = 86_400_000.0;
 
 mod aggregation;
 mod house_effects;
+mod projection;
 mod candidates;
 mod identity;
 
 pub use aggregation::{uncertainty_band, weighted_trend_v1, SeriesPoint, UncertaintyPoint};
 pub use house_effects::estimate_house_effects;
+pub use projection::{project_trend, ProjectPoint, ProjectionResult};
 pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
 pub use identity::{
     canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,

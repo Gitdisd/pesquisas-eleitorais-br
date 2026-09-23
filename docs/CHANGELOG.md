@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:21:20 -03:00 / 2026-09-23T16:21:20Z — Base projection math moved into shared Rust core
+
+- Added the Rust implementation of the existing base projection model: fit-window clamp, minimum-point gate, election-day horizon cap, bounded slope, damped extrapolation, RMSE calculation and expanding uncertainty band.
+- Preserved the existing production defaults and formulas; this is a computational replacement only, not a production model switch.
+- Added Rust tests for empty-series behavior, slope capping, current-point preservation and horizon length.
+- Updated the migration map. The JavaScript projection module remains protected because UI/copy integration and production cutover are still pending.
+- Files: rust/polling-core/src/projection.rs, rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 13:20:34 -03:00 / 2026-09-23T16:20:34Z — House-effect estimator moved into shared Rust core
 
 - Added the Rust equivalent of the existing institute house-effect estimator, preserving peer-window filtering, sample-size weighting, exclusion of same-institute peers, shrinkage and the ±0.05 dead-zone.
