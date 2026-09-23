@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-23 01:53:46 -03:00 / 2026-09-23T04:53:46Z — Rust core test-attribute correction
+
+- Removed the duplicated `#[test]` attribute identified by CI #314 in the shared Rust core.
+- No application behavior or production JS/TS/ECharts path was changed.
+- Files: rust/polling-core/src/lib.rs, docs/CHANGELOG.md.
+
 ## 2026-09-23 01:52:17 -03:00 / 2026-09-23T04:52:17Z — Dioxus RSX axis precomputation
 
 - Moved chart-axis arithmetic out of Dioxus RSX `for` blocks after CI #312 showed that inline arithmetic bindings are rejected by the RSX parser.

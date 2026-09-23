@@ -107,7 +107,6 @@ mod tests {
         assert_eq!(sample_size(None), 800.0);
     }
     #[test]
-    #[test]
     fn rust_real_fixture_matches_python_reference() {
         let rows = vec![
             PollObservation { t: 0.0, y: 41.76, n: Some(40500.0), institute: Some("Veritá".into()), moe: None },
