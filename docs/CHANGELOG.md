@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 13:19:44 -03:00 / 2026-09-23T16:19:44Z — Aggregate uncertainty band moved into shared Rust core
+
+- Moved the existing production uncertainty-band formula into `rust/polling-core`, including sample/recency weights, 2.5 × half-life reach, measurement-SE fallback, between-poll variance, effective sample size, minimum band floor and two-decimal bounds.
+- Kept the result explicitly as an estimated aggregate uncertainty range; no calibrated-coverage claim or production interval-width change was introduced.
+- Updated the migration map to record uncertainty as migrated while model dispatch remains pending.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23 02:14:22 -03:00 / 2026-09-23T05:14:22Z — Shared Rust aggregation wrapper correction
 
 - CI #321 identified a structural refactor error in `rust/web-ui/src/chart.rs`: the old local `weighted_trend` implementation remained alongside the new shared-core wrapper, while required imports were dropped.

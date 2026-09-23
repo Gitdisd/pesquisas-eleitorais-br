@@ -9,7 +9,7 @@ mod aggregation;
 mod candidates;
 mod identity;
 
-pub use aggregation::{weighted_trend_v1, SeriesPoint};
+pub use aggregation::{uncertainty_band, weighted_trend_v1, SeriesPoint, UncertaintyPoint};
 pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
 pub use identity::{
     canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,
@@ -57,6 +57,84 @@ pub fn poll_weight(point: &PollObservation, t: f64, half_life_days: f64, flood_c
     let recency = 2.0_f64.powf(-days / half);
     let flood = flood_count.max(1.0);
     PollWeight { total: sample * recency / flood, sample, recency, flood }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct UncertaintyPoint {
+    pub x: f64,
+    pub low: f64,
+    pub high: f64,
+    pub se: f64,
+}
+
+/// Estimated 90% aggregate uncertainty band matching the production formula.
+/// This is not a survey margin of error and does not assert calibrated coverage.
+pub fn uncertainty_band(points: &[PollObservation], window_days: f64, z: f64) -> Vec<UncertaintyPoint> {
+    if points.is_empty() {
+        return Vec::new();
+    }
+    let mut sorted: Vec<&PollObservation> = points
+        .iter()
+        .filter(|p| p.t.is_finite() && p.y.is_finite())
+        .collect();
+    sorted.sort_by(|a, b| a.t.total_cmp(&b.t));
+    if sorted.is_empty() {
+        return Vec::new();
+    }
+
+    let requested = if window_days.is_finite() && window_days != 0.0 { window_days } else { 14.0 };
+    let half = requested.max(1.0);
+    let reach = half * 2.5;
+    let min_band = 0.75_f64;
+    let t_min = sorted[0].t;
+    let t_max = sorted[sorted.len() - 1].t;
+    let mut out = Vec::new();
+    let mut t = t_min;
+
+    while t <= t_max {
+        let mut bag: Vec<(f64, f64, Option<f64>)> = Vec::new();
+        let mut nearest = f64::INFINITY;
+        for point in &sorted {
+            let days = (t - point.t).abs() / DAY_MS;
+            if days < nearest { nearest = days; }
+            if days > reach { continue; }
+            let weight = poll_weight(point, t, half, 1.0).total;
+            let se = match point.moe {
+                Some(moe) if moe.is_finite() && moe > 0.0 => Some((moe / 1.96).max(0.4)),
+                _ => None,
+            };
+            bag.push((point.y, weight, se));
+        }
+        if nearest > half || bag.is_empty() {
+            t += DAY_MS;
+            continue;
+        }
+        let den: f64 = bag.iter().map(|(_, w, _)| *w).sum();
+        if !(den > 0.0) {
+            t += DAY_MS;
+            continue;
+        }
+        let mu = bag.iter().map(|(y, w, _)| w * y).sum::<f64>() / den;
+        let sum_w2 = bag.iter().map(|(_, w, _)| w * w).sum::<f64>();
+        let n_eff = (den * den) / sum_w2.max(1e-9);
+        let between_var = bag.iter().map(|(y, w, _)| w * (y - mu).powi(2)).sum::<f64>() / den;
+        let measurement_var = bag.iter()
+            .map(|(_, w, se)| w * w * se.unwrap_or(0.0).powi(2))
+            .sum::<f64>() / (den * den).max(1e-9);
+        let se_value = min_band.max((between_var / n_eff + measurement_var).max(0.0).sqrt());
+        let band = min_band.max(z * se_value);
+        let center = (mu * 100.0).round() / 100.0;
+        let low = (center - band).max(0.0).min(100.0);
+        let high = (center + band).max(0.0).min(100.0);
+        out.push(UncertaintyPoint {
+            x: t,
+            low: (low * 100.0).round() / 100.0,
+            high: (high * 100.0).round() / 100.0,
+            se: (se_value * 1000.0).round() / 1000.0,
+        });
+        t += DAY_MS;
+    }
+    out
 }
 
 #[wasm_bindgen]
