@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T20:14:36.281Z",
+  "updated_at": "2026-09-23T23:37:45.674Z",
   "items": [
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/14/fio-felipe-nunes-14-setembro.ghtml",
@@ -1473,6 +1473,134 @@
       "institute": "Quaest",
       "published_date": "2026-09-23",
       "found_at": "2026-09-23T20:14:26.891Z"
+    },
+    {
+      "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-to-presidente-23-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial no TO | G1 Pular para o conteúdo Tocantins Eleições 2026 no Tocantins Quaes",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:37.663Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/23/quaest-presidente-estados.ghtml",
+      "title": "Quaest: veja como está a disputa presidencial nos estados e no DF | G1 Pular para o conteúdo Eleições 2026 Pesquisa elei",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:37.958Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-no-rj-cenarios-de-2o-turno-23-setembro.ghtml",
+      "title": "Quaest no RJ: Paes mantém liderança em todos os cenários de 2º turno | G1 Pular para o conteúdo Rio de Janeiro Eleições ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:38.327Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-rj-presidente-23-09.ghtml",
+      "title": "Quaest no RJ: Flávio, 37%; Lula, 30%; Cury, 4%; Caiado, 3%; Renan, 2% | G1 Pular para o conteúdo Rio de Janeiro Eleições",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:38.501Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/23/quaest-pe-presidente-23-de-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa presidencial em PE | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco Qu",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:38.819Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/23/quaest-df-presidente-23-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa para a Presidência no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no D",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:38.983Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/23/quaest-df-governador-2-turno-23-setembro.ghtml",
+      "title": "Quaest: veja como está o segundo turno para o governo do DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:40.115Z"
+    },
+    {
+      "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-to-avaliacao-governo-23-setembro.ghtml",
+      "title": "Quaest: veja como está a avaliação do governo do TO | G1 Pular para o conteúdo Tocantins Eleições 2026 no Tocantins Quae",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:40.254Z"
+    },
+    {
+      "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-no-to-professora-dorinha-42percent-vicentinho-junior-29percent.ghtml",
+      "title": "Quaest: veja como está a disputa pelo governo do TO | G1 Pular para o conteúdo Tocantins Eleições 2026 no Tocantins Quae",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:40.420Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-rj-avaliacao-governo-23-09.ghtml",
+      "title": "Quaest: veja como está a aprovação do governo Couto | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio de Ja",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:40.592Z"
+    },
+    {
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/23/quaest-em-sp-58percent-aprovam-e-25percent-desaprovam-governo-de-tarcisio-de-freitas.ghtml",
+      "title": "Quaest em SP: 58% aprovam e 25% desaprovam governo de Tarcísio de Freitas | G1 Pular para o conteúdo São Paulo Eleições ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:40.760Z"
+    },
+    {
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/23/quaest-sp-governador-23-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa pelo governo de SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Quae",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:40.922Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/23/quaest-em-pe-2-turno-23-setembro.ghtml",
+      "title": "Quaest em PE: no 2º turno, Raquel Lyra tem 43%, e João Campos, 41% | G1 Pular para o conteúdo Pernambuco Eleições 2026 e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-23",
+      "found_at": "2026-09-23T23:37:41.828Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-pernambuco-setembro-2026-2/",
+      "title": "Quaest divulga pesquisa para governo e Senado em Pernambuco Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiçõ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-23T23:37:42.365Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-distrito-federal-setembro-2026-2/",
+      "title": "Quaest divulga pesquisa ao governo e Senado no Distrito Federal Publicidade Eleições Eleições 2026 Pesquisa Eleitoral El",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-23T23:37:42.381Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-governador-senador-rio-de-janeiro-setembro-2026-2/",
+      "title": "Quaest divulga pesquisa para governo e Senado no Rio de Janeiro Publicidade Eleições Eleições 2026 Pesquisa Eleitoral El",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-23T23:37:42.395Z"
     }
   ]
 }
