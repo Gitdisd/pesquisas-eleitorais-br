@@ -1,4 +1,4 @@
-## CI validation history
+- CI #348: **failed** at the Rust/Dioxus web UI gate on merge ref `da07af8d8a57dd69989447d7b4b6e40c177e2a1d`; the projection-v2 helper existed in `chart.rs` but its import was omitted from `app.rs`. Fixed in the next branch commit.\n## CI validation history
 
 - CI #346: **failed** at Rust unit tests for head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; the new projection-v2 boundary derived `Serialize` for `ProjectionV2Result` without deriving it on shared `ProjectPoint`. Corrected on the next branch commit; later CI gates were not reached.
 - CI #346 failed at Rust unit tests on head `dd4d692eb49a11a8e0cade8ed17b962819c94e55` before WASM, browser or parity gates. The failure was a missing `Serialize` derive on shared `ProjectPoint`; the correction is recorded in the next commit. No legacy JS/TS module is certified removable.

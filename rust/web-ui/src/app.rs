@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use gloo_timers::callback::Interval;
 use polling_core::{uncertainty_band, PollObservation};
 use crate::chart::{
-    model_label, polyline_path, trend_for_model, viewbox, x_for, y_for,
+    model_label, polyline_path, projection_v2_for_round, trend_for_model, viewbox, x_for, y_for,
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};

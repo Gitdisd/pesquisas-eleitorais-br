@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-24T13:34:00-03:00 / 2026-09-24T16:34:00Z — CI #348 web-UI import correction
+
+- CI #348 passed all statistical/data/WASM setup gates but failed at the Rust/Dioxus UI compile gate because `projection_v2_for_round` was not imported into `app.rs`.
+- Added the missing module import only; no behavior or production path changed.
+- Progressive research confirmed Dioxus 0.7 event-handler APIs and element-relative mouse coordinates for the next interaction slice.
+
+# Changelog
+
 ## 2026-09-24T15:09:57Z / 2026-09-24 12:09:57 -03:00 — CI #346 projection serialization correction
 
 - CI #346 failed at the Rust unit-test gate before WASM build/parity because `ProjectionV2Result` serializes vectors of the shared `ProjectPoint` type, while that type lacked `serde::Serialize`.
