@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23T22:01:46-03:00 / 2026-09-24T01:01:46Z — Dioxus chart import continuity correction
+
+- CI #335 reached the Rust/Dioxus WebAssembly compile stage and found that rust/web-ui/src/chart.rs was missing the Poll type import while still importing unused poll_weight.
+- Restored the required crate::data::Poll import and removed only the unused compatibility import.
+- No chart geometry, statistical formula, production path or published data changed.
+- The projection-v2 migration remains non-production and the old JS/TS/ECharts path remains protected.
+- Files: rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T21:59:15-03:00 / 2026-09-24T00:59:15Z — Projection-v2 core migrated with holdout gate
 
 - Ported the production projection-v2 process-noise selection, seven-day holdout gate, house-effect correction and final projection orchestration into the shared Rust core.

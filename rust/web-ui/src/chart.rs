@@ -1,4 +1,5 @@
-use polling_core::{estimate_house_effects, poll_weight, weighted_trend_v1, weighted_trend_v2 as core_weighted_trend_v2, PollObservation};
+use crate::data::Poll;
+use polling_core::{estimate_house_effects, weighted_trend_v1, weighted_trend_v2 as core_weighted_trend_v2, PollObservation};
 pub const WIDTH: f64 = 1100.0;
 pub const HEIGHT: f64 = 470.0;
 pub const LEFT: f64 = 58.0;

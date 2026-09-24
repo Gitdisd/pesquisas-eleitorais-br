@@ -79,7 +79,8 @@ Latest validation sequence:
 - CI #317: **failed** on Dioxus RSX point-loop syntax.
 - CI #318: **cancelled** after the subsequent correction superseded it.
 - CI #319: **failed** on intentionally unused migration-schema fields and the public Dioxus component name `App`; these are source warnings elevated to errors by `-D warnings`.
-- CI #333: **failed** during Rust core tests on `identity::tests::protocol_can_be_recovered_from_methodology_note`: the newly added regression fixture asserted `separado de produto`, which the production `src/data/identity.js` does not exclude. The fixture is corrected to the actual production exclusion pattern before further migration work.
+- CI #333: **failed** during Rust core tests on `identity::tests::protocol_can_be_recovered_from_methodology_note`: the newly added regression fixture asserted `separado de produto`, which the production `src/data/identity.js` does not exclude. The fixture was corrected to the actual production exclusion pattern before the projection-v2 slice.
+- CI #335: **failed** at the Rust/Dioxus web compile gate because `rust/web-ui/src/chart.rs` had lost its `Poll` import and retained an obsolete `poll_weight` import. This is a source-continuity correction; no chart or statistical formula was changed.
 - No existing JS/TS production module is certified removable.
 - Canonical `weightedTrendV1` now has a shared Rust implementation and the Rust/Dioxus chart delegates to it.
 - The latest compile failure is limited to migration-schema dead-code warnings and the Dioxus component naming lint; no runtime/data-path failure was reached. The old JS/TS implementation remains protected until numerical parity and production cutover gates pass.
