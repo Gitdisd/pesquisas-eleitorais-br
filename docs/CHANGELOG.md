@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-24T13:36:00-03:00 / 2026-09-24T16:36:00Z — Dioxus custom SVG hover inspection
+
+- Added chart hover state and a native Dioxus SVG crosshair using element-relative mouse coordinates.
+- Added a nearest-poll inspection tooltip showing fieldwork date, value and institute without adding a chart library.
+- Kept zoom, pan, pinch and range-navigation behavior separate for the next interaction slice.
+- Progressive research: verified Dioxus 0.7 mouse event and element-coordinate APIs before implementation.
+- Files: `rust/web-ui/src/app.rs`, `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`.
+
+# Changelog
+
 ## 2026-09-24T13:34:00-03:00 / 2026-09-24T16:34:00Z — CI #348 web-UI import correction
 
 - CI #348 passed all statistical/data/WASM setup gates but failed at the Rust/Dioxus UI compile gate because `projection_v2_for_round` was not imported into `app.rs`.

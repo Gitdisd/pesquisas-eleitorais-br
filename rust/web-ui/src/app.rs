@@ -17,6 +17,7 @@ struct ViewState {
     range_days: Option<i64>,
     geo_index: usize,
     model: u8,
+    hover_day: Option<i64>,
 }
 
 #[allow(non_snake_case)]
@@ -27,6 +28,7 @@ pub fn App() -> Element {
         range_days: Some(30),
         geo_index: 0,
         model: 1,
+        hover_day: None,
     });
 
     let mut refresh_tick = use_signal(|| 0_u64);
@@ -139,7 +141,7 @@ pub fn App() -> Element {
                             h2 { "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
                             p { class: "muted", "Pontos são pesquisas individuais; a linha usa o modelo selecionado. Data = fim de campo." }
                             div { class: "chart-wrap",
-                                {chart_svg(&filtered, &trend, projection.as_ref())}
+                                {chart_svg(&filtered, &trend, projection.as_ref(), state.hover_day)}
                             }
                             if state.model == 2 {
                                 p { class: "muted projection-status", "{projection_status_text(projection.as_ref())}" }
@@ -201,7 +203,7 @@ pub fn App() -> Element {
     }
 }
 
-fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>) -> Element {
+fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>) -> Element {
     let (min_day, max_day, low, high) = viewbox(rows, trend, projection);
     let path = polyline_path(trend, min_day, max_day, low, high);
     let uncertainty_rows: Vec<PollObservation> = rows.iter()
@@ -225,6 +227,10 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
     let point_coords: Vec<(&Poll, f64, f64)> = rows.iter()
         .map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high)))
         .collect();
+    let hover_x = hover_day.map(|day| x_for(day, min_day, max_day));
+    let hover_poll = hover_day.and_then(|day| {
+        rows.iter().min_by_key(|poll| (poll.day - day).abs())
+    });
     let projection_active = matches!(projection, Some(proj) if proj.ok && proj.line.len() > 1);
     let projection_band_points = if projection_active {
         let proj = projection.expect("projection is present when active");
@@ -280,6 +286,16 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
         svg {
             class: "chart",
             view_box: "0 0 1100 470",
+            onmousemove: move |event| {
+                let x = event.element_coordinates().x;
+                let plot_width = 1100.0 - LEFT - RIGHT;
+                let clamped = x.clamp(LEFT, LEFT + plot_width);
+                let day = (min_day + ((clamped - LEFT) / plot_width) * (max_day - min_day)).round() as i64;
+                view.write().hover_day = Some(day);
+            },
+            onmouseleave: move |_| {
+                view.write().hover_day = None;
+            },
             role: "img",
             "aria-label": "Gráfico customizado de pesquisas eleitorais",
                         width: "1100",
@@ -317,6 +333,35 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
             polygon {
                 class: "uncertainty-band",
                 points: "{band_points}"
+            }
+
+            if let Some(x) = hover_x {
+                line {
+                    class: "hover-crosshair",
+                    x1: "{x:.2}", x2: "{x:.2}",
+                    y1: "{TOP}", y2: "{HEIGHT - BOTTOM}"
+                }
+            }
+
+            if let Some(poll) = hover_poll {
+                rect {
+                    class: "hover-tooltip",
+                    x: "{(hover_x.unwrap_or(LEFT) + 10.0).min(930.0):.2}",
+                    y: "{TOP + 8.0}",
+                    width: "160", height: "52", rx: "5"
+                }
+                text {
+                    class: "hover-tooltip-text",
+                    x: "{(hover_x.unwrap_or(LEFT) + 18.0).min(938.0):.2}",
+                    y: "{TOP + 27.0}",
+                    "{format_date(&poll.fieldwork_end)} · {format_pct(poll.value)}"
+                }
+                text {
+                    class: "hover-tooltip-text",
+                    x: "{(hover_x.unwrap_or(LEFT) + 18.0).min(938.0):.2}",
+                    y: "{TOP + 45.0}",
+                    "{poll.institute}"
+                }
             }
 
             if projection_active {
