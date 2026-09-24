@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-23T23:37:44.658Z",
+  "ran_at": "2026-09-24T04:37:43.736Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 418,
+  "candidate_links": 426,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 60,
   "skipped_old": 0,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         }
       ],
       "redundancy_ok": true,
@@ -506,20 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
+      "title": "Datafolha divulga novas pesquisas eleitorais nesta quinta (24) | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-24",
+      "found_at": "2026-09-24T04:37:30.587Z"
+    },
+    {
       "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-to-presidente-23-setembro.ghtml",
       "title": "Quaest: veja números da disputa presidencial no TO | G1 Pular para o conteúdo Tocantins Eleições 2026 no Tocantins Quaes",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-23T23:37:37.663Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/23/quaest-presidente-estados.ghtml",
-      "title": "Quaest: veja como está a disputa presidencial nos estados e no DF | G1 Pular para o conteúdo Eleições 2026 Pesquisa elei",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-23",
-      "found_at": "2026-09-23T23:37:37.958Z"
+      "found_at": "2026-09-24T04:37:30.886Z"
     },
     {
       "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/23/quaest-sp-presidente-23-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-23T23:37:38.131Z"
+      "found_at": "2026-09-24T04:37:31.067Z"
     },
     {
       "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-no-rj-cenarios-de-2o-turno-23-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-23T23:37:38.327Z"
+      "found_at": "2026-09-24T04:37:31.247Z"
     },
     {
       "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-rj-presidente-23-09.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-23T23:37:38.501Z"
+      "found_at": "2026-09-24T04:37:31.423Z"
     }
   ],
-  "meta_last_check_at": "2026-09-23T23:37:44.660Z"
+  "meta_last_check_at": "2026-09-24T04:37:43.738Z"
 }
