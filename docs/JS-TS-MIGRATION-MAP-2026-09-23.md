@@ -22,9 +22,9 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/data/api.ts` | JSON loading | Rust data client | first slice exists |
 | `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | protocol-note recovery and identity description migrated; production JS caller remains |
 | `src/data/normalize.ts` | raw→normalized/merge | Rust normalization | partial |
-| `src/data/types.ts` | TypeScript contracts | Rust structs/contracts | partial |
-| `src/models/advanced.ts` | models 3–7 | Rust statistical models | Rust implementations 3–7 migrated to shared core; direct WASM↔production parity harness added; production dispatcher remains |
-| `src/models/school.ts` | models 8–12 | Rust statistical models | Rust school-center implementations 8–12 migrated to shared core; direct WASM↔production parity harness covers models 8–12; production dispatcher remains |
+| `src/data/types.ts` | TypeScript contracts | Rust structs/contracts | Rust parallel `Poll` contract now preserves parsed MOE; broader normalization/merge parity remains |
+| `src/models/advanced.ts` | models 3–7 | Rust statistical models | Rust implementations 3–7 migrated to shared core; direct WASM↔production parity harness passes; Dioxus dispatcher now exposes models 3–7; production dispatcher remains |
+| `src/models/school.ts` | models 8–12 | Rust statistical models | Rust school-center implementations 8–12 migrated to shared core; direct WASM↔production parity harness passes for 8–12; Dioxus dispatcher now exposes models 8–12; production dispatcher remains |
 | `src/stats/contract.js` | canonical weighting contract | `rust/polling-core` | Rust sample/recency weighting and weightedTrendV1 exist; callers remain |
 | `src/stats/estimator.js` | JS estimator compatibility path | Rust/WASM estimator | partial |
 | `src/stats/house-effects.js` | house-effect calculation | Rust statistics | Rust equivalent exists; production callers remain |

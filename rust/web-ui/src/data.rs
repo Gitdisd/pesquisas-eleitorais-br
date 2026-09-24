@@ -50,10 +50,38 @@ pub struct Poll {
     pub n: f64,
     pub geo: String,
     pub source_url: String,
+    pub moe: Option<f64>,
     pub candidate_key: String,
     pub value: f64,
     pub round: u8,
     pub day: i64,
+}
+
+fn parse_moe_value(value: &Option<serde_json::Value>) -> Option<f64> {
+    match value {
+        Some(serde_json::Value::Number(number)) => number.as_f64(),
+        Some(serde_json::Value::String(text)) => {
+            let normalized = text.replace(',', ".");
+            let mut token = String::new();
+            let mut started = false;
+            let mut decimal = false;
+
+            for ch in normalized.chars() {
+                if ch.is_ascii_digit() {
+                    started = true;
+                    token.push(ch);
+                } else if ch == '.' && started && !decimal {
+                    decimal = true;
+                    token.push(ch);
+                } else if started {
+                    break;
+                }
+            }
+
+            if token.is_empty() { None } else { token.parse::<f64>().ok() }
+        }
+        _ => None,
+    }
 }
 
 pub async fn load_polls() -> Result<Vec<Poll>, String> {
@@ -99,6 +127,7 @@ pub async fn load_polls() -> Result<Vec<Poll>, String> {
                 n: row.n.unwrap_or(800.0),
                 geo: geo.clone(),
                 source_url: row.source_url.clone(),
+                moe: parse_moe_value(&row.margin_of_error),
                 candidate_key: key,
                 value: candidate.pct,
                 round,
@@ -179,6 +208,15 @@ mod tests {
     fn parses_iso_day() {
         assert_eq!(parse_day("1970-01-01"), Some(0));
         assert_eq!(parse_day("2026-09-21"), Some(20717));
+    }
+
+    #[test]
+    fn parses_moe_values_like_production() {
+        assert_eq!(parse_moe_value(&Some(serde_json::json!(2.4))), Some(2.4));
+        assert_eq!(parse_moe_value(&Some(serde_json::json!("±2,4 pontos"))), Some(2.4));
+        assert_eq!(parse_moe_value(&Some(serde_json::json!("margem 1.8 p.p."))), Some(1.8));
+        assert_eq!(parse_moe_value(&Some(serde_json::json!("sem informação"))), None);
+        assert_eq!(parse_moe_value(&None), None);
     }
 
     #[test]

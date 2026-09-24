@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23T22:19:21-03:00 / 2026-09-24T01:19:21Z — Dioxus model dispatcher 1–12 + MOE preservation
+
+- Connected the parallel Rust/Dioxus chart to the shared Rust dispatcher for models 1–12 using the existing short labels: Exp, Casa, Meta, Kalman, Rápido, Dia, Local, Média, Peso, Mediana, Moda and Corta.
+- Preserved parsed poll margin-of-error values in the Rust `Poll` contract and forwarded them into `PollObservation`; this prevents models 3, 4 and 7 from silently losing production MOE inputs.
+- The integration follows the direct WASM↔production parity gate from CI #339; models 3–12 passed numerical parity before the Dioxus selector was expanded.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched. The migration UI remains non-production.
+- Files: rust/web-ui/src/data.rs, rust/web-ui/src/chart.rs, rust/web-ui/src/app.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T22:10:57-03:00 / 2026-09-24T01:10:57Z — Direct WASM parity gate for models 3–12
 
 - Exposed the migrated Rust advanced-model dispatcher through the WASM boundary and made `SeriesPoint` serializable for browser parity checks.

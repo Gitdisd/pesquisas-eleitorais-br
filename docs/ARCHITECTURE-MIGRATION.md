@@ -54,7 +54,7 @@ The current parallel migration slice provides:
 - Accessible chart role and label.
 - Inspection table.
 - Shared Rust base projection and projection-v2 holdout-gate computation, retained as non-production until UI and parity gates pass.
-- Shared Rust advanced-model core for models 3–12, retained as non-production until numerical parity and UI gates pass.
+- Shared Rust advanced-model core for models 3–12, with direct WASM↔production parity; the parallel Dioxus UI now exposes models 1–12 and preserves poll MOE inputs needed by models 3, 4 and 7. The parallel UI remains non-production until browser/deployment gates pass.
 
 Not yet migrated in this slice:
 

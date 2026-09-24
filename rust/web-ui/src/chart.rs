@@ -1,5 +1,8 @@
 use crate::data::Poll;
-use polling_core::{estimate_house_effects, weighted_trend_v1, weighted_trend_v2 as core_weighted_trend_v2, PollObservation};
+use polling_core::{
+    average_trend_advanced, estimate_house_effects, weighted_trend_v1,
+    weighted_trend_v2 as core_weighted_trend_v2, PollObservation,
+};
 pub const WIDTH: f64 = 1100.0;
 pub const HEIGHT: f64 = 470.0;
 pub const LEFT: f64 = 58.0;
@@ -14,19 +17,43 @@ pub struct TrendPoint {
     pub value: f64,
 }
 
-pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
-    let observations: Vec<PollObservation> = rows
+pub const MODEL_OPTIONS: &[(u8, &str)] = &[
+    (1, "Exp"),
+    (2, "Casa"),
+    (3, "Meta"),
+    (4, "Kalman"),
+    (5, "Rápido"),
+    (6, "Dia"),
+    (7, "Local"),
+    (8, "Média"),
+    (9, "Peso"),
+    (10, "Mediana"),
+    (11, "Moda"),
+    (12, "Corta"),
+];
+
+pub fn model_label(model: u8) -> &'static str {
+    MODEL_OPTIONS
         .iter()
+        .find(|(value, _)| *value == model)
+        .map(|(_, label)| *label)
+        .unwrap_or("Exp")
+}
+
+fn observations(rows: &[Poll]) -> Vec<PollObservation> {
+    rows.iter()
         .map(|row| PollObservation {
             t: row.day as f64 * DAY_MS,
             y: row.value,
             n: Some(row.n),
             institute: Some(row.institute.clone()),
-            moe: None,
+            moe: row.moe,
         })
-        .collect();
+        .collect()
+}
 
-    weighted_trend_v1(&observations, half_life_days)
+pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
+    weighted_trend_v1(&observations(rows), half_life_days)
         .into_iter()
         .map(|point| TrendPoint {
             day: (point.x / DAY_MS).round() as i64,
@@ -36,29 +63,45 @@ pub fn weighted_trend(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
 }
 
 pub fn weighted_trend_model_2(rows: &[Poll], half_life_days: f64) -> Vec<TrendPoint> {
-    let observations: Vec<PollObservation> = rows.iter()
-        .map(|row| PollObservation {
-            t: row.day as f64 * DAY_MS,
-            y: row.value,
-            n: Some(row.n),
-            institute: Some(row.institute.clone()),
-            moe: None,
-        })
-        .collect();
+    let observations = observations(rows);
     let house = estimate_house_effects(&observations, 14.0);
-    let debiased: Vec<PollObservation> = observations.iter()
+    let debiased: Vec<PollObservation> = observations
+        .iter()
         .map(|point| {
-            let adjustment = point.institute.as_deref()
+            let adjustment = point
+                .institute
+                .as_deref()
                 .and_then(|key| house.get(key))
                 .copied()
                 .unwrap_or(0.0);
-            PollObservation { y: point.y - adjustment, ..point.clone() }
+            PollObservation {
+                y: point.y - adjustment,
+                ..point.clone()
+            }
         })
         .collect();
     core_weighted_trend_v2(&debiased, half_life_days)
         .into_iter()
-        .map(|point| TrendPoint { day: (point.x / DAY_MS).round() as i64, value: point.y })
+        .map(|point| TrendPoint {
+            day: (point.x / DAY_MS).round() as i64,
+            value: point.y,
+        })
         .collect()
+}
+
+pub fn trend_for_model(rows: &[Poll], half_life_days: f64, model: u8) -> Vec<TrendPoint> {
+    match model {
+        1 => weighted_trend(rows, half_life_days),
+        2 => weighted_trend_model_2(rows, half_life_days),
+        3..=12 => average_trend_advanced(&observations(rows), half_life_days, model)
+            .into_iter()
+            .map(|point| TrendPoint {
+                day: (point.x / DAY_MS).round() as i64,
+                value: point.y,
+            })
+            .collect(),
+        _ => weighted_trend(rows, half_life_days),
+    }
 }
 
 pub fn viewbox(rows: &[Poll], trend: &[TrendPoint]) -> (f64, f64, f64, f64) {
@@ -109,6 +152,7 @@ mod tests {
             n,
             geo: "BR".into(),
             source_url: String::new(),
+            moe: None,
             candidate_key: "lula".into(),
             value,
             round: 1,

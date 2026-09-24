@@ -1,6 +1,9 @@
 use dioxus::prelude::*;
 use polling_core::{uncertainty_band, PollObservation};
-use crate::chart::{polyline_path, viewbox, weighted_trend, x_for, y_for, BOTTOM, HEIGHT, LEFT, RIGHT, TOP};
+use crate::chart::{
+    model_label, polyline_path, trend_for_model, viewbox, x_for, y_for,
+    MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
+};
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
 
 const STYLE: &str = include_str!("../assets/style.css");
@@ -50,11 +53,7 @@ pub fn App() -> Element {
                         geos.get(state.geo_index).cloned().unwrap_or_else(|| "BR".to_string())
                     };
                     let filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
-                    let trend = if state.model == 2 {
-                        crate::chart::weighted_trend_model_2(&filtered, 14.0)
-                    } else {
-                        weighted_trend(&filtered, 14.0)
-                    };
+                    let trend = trend_for_model(&filtered, 14.0, state.model);
                     let latest = filtered.last();
                     let round_label = if state.round == 1 { "1º turno" } else { "2º turno" };
                     rsx! {
@@ -84,15 +83,12 @@ pub fn App() -> Element {
                             }
                             div { class: "toolbar",
                                 strong { "Modelo" }
-                                button {
-                                    class: if state.model == 1 { "active" } else { "" },
-                                    onclick: move |_| view.write().model = 1,
-                                    "Canônica"
-                                }
-                                button {
-                                    class: if state.model == 2 { "active" } else { "" },
-                                    onclick: move |_| view.write().model = 2,
-                                    "Casa"
+                                for (model, label) in MODEL_OPTIONS.iter().copied() {
+                                    button {
+                                        class: if state.model == model { "active" } else { "" },
+                                        onclick: move |_| view.write().model = model,
+                                        "{label}"
+                                    }
                                 }
                             }
                             div { class: "toolbar",
@@ -123,8 +119,8 @@ pub fn App() -> Element {
                         }
 
                         section { class: "panel",
-                            h2 { "{state.candidate.label()} — {round_label}" }
-                            p { class: "muted", "Pontos são pesquisas individuais; a linha é a média ponderada canônica. Data = fim de campo." }
+                            h2 { "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
+                            p { class: "muted", "Pontos são pesquisas individuais; a linha usa o modelo selecionado. Data = fim de campo." }
                             div { class: "chart-wrap",
                                 {chart_svg(&filtered, &trend)}
                             }
@@ -194,7 +190,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
             y: row.value,
             n: Some(row.n),
             institute: Some(row.institute.clone()),
-            moe: None,
+            moe: row.moe,
         })
         .collect();
     let uncertainty = uncertainty_band(&uncertainty_rows, 14.0, 1.645);
