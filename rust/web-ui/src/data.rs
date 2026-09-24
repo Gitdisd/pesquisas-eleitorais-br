@@ -283,7 +283,7 @@ pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
         };
         let geo = normalize_geo(row.geo.as_deref());
 
-        for candidate in row.candidates {
+        for candidate in &row.candidates {
             let key = candidate_key(&candidate.name);
             if key.is_empty() || !candidate.pct.is_finite() {
                 continue;
