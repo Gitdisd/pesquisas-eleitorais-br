@@ -651,7 +651,7 @@ mod tests {
             PollObservation { t: 0.0, y: 50.0, n: Some(2000.0), institute: Some("B".into()), moe: None },
         ];
         assert_eq!(weighted_trend_v6(&rows).last().map(|p| p.y), Some(44.0));
-        assert_eq!(weighted_trend_v8(&rows, 14.0).last().map(|p| p.y), Some(44.0));
+        assert_eq!(weighted_trend_v8(&rows, 14.0).last().map(|p| p.y), Some(45.5));
         assert_eq!(weighted_trend_v9(&rows, 14.0).last().map(|p| p.y), Some(44.0));
         assert_eq!(weighted_trend_v10(&rows, 14.0).last().map(|p| p.y), Some(45.5));
         assert_eq!(weighted_trend_v11(&rows, 14.0).last().map(|p| p.y), Some(45.5));

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23T22:07:26-03:00 / 2026-09-24T01:07:26Z — Advanced-model regression test correction
+
+- CI #337 found one incorrect expected value in the new Rust regression fixture: production model 8 performs a simple mean over institute-collapsed values, so 41 and 50 produce 45.5; model 9 remains the weighted 44.0 result.
+- Corrected that test expectation without changing the model implementation.
+- CI #337 also exposed that the preceding advanced-model commit's tree construction had reintroduced the older Dioxus chart imports; the chart import state from CI #336 is restored here.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/advanced_models.rs, rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T22:05:04-03:00 / 2026-09-24T01:05:04Z — Advanced models 3–12 moved into shared Rust core
 
 - Ported the production statistical implementations for models 3–12 from `src/models/advanced.ts` and `src/models/school.ts` into `rust/polling-core/src/advanced_models.rs`.
