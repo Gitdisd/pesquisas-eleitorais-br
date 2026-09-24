@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23T21:57:04-03:00 / 2026-09-24T00:57:04Z — Migration gate correction: identity fixture and projection dates
+
+- CI #333 exposed a Rust identity-parity test fixture that asserted behavior not present in the production `src/data/identity.js`; the fixture now uses the same documented exclusion pattern as production.
+- Audited the Rust projection election-day constants against the production `src/projection.js` and the current TSE calendar. Corrected the Rust constants to the production `12:00:00Z` markers for 4 October 2026 and 25 October 2026.
+- The TSE calendar confirms the 2026 first-round date as 4 October and the eventual second-round date as 25 October; the migration preserves the existing application's UTC marker rather than changing its projection convention.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/identity.rs, rust/polling-core/src/projection.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23 13:31:09 -03:00 / 2026-09-23T16:31:09Z — Poll identity parity completed in Rust core
 
 - Added Rust parity for the JavaScript identity module's methodology-note protocol recovery, including exclusion of explicitly separate products/waves and rejection of ambiguous multiple protocols.

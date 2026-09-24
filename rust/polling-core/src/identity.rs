@@ -226,7 +226,7 @@ mod tests {
     #[test]
     fn protocol_can_be_recovered_from_methodology_note() {
         let row = IdentityFields {
-            methodology_note: Some("Registro BR-06902/2026; separado de produto BR-12345/2026.".into()),
+            methodology_note: Some("Registro BR-06902/2026; distinct from product BR-12345/2026.".into()),
             ..Default::default()
         };
         assert_eq!(tse_protocol_of(&row).as_deref(), Some("BR-06902/2026"));
