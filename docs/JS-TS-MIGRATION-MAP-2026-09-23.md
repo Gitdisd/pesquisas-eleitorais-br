@@ -1,6 +1,7 @@
 ## CI validation history
 
-- CI #346 is **in progress** for head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; it includes the new projection-v2 WASM parity gate and Dioxus model-2 surface. No pass/fail is claimed until the run completes.
+- CI #346: **failed** at Rust unit tests for head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; the new projection-v2 boundary derived `Serialize` for `ProjectionV2Result` without deriving it on shared `ProjectPoint`. Corrected on the next branch commit; later CI gates were not reached.
+- CI #346 failed at Rust unit tests on head `dd4d692eb49a11a8e0cade8ed17b962819c94e55` before WASM, browser or parity gates. The failure was a missing `Serialize` derive on shared `ProjectPoint`; the correction is recorded in the next commit. No legacy JS/TS module is certified removable.
 - CI #342: **failed** at the Rust/Dioxus web compile gate on the PR merge ref for head `032c7e2e1f389b1f9d744f0368d57c706131328e`; Rust/Python/backtest/parity checks passed, then the web compile failed because `gloo_timers` was still imported after dependency removal and `row.candidates` was moved before borrowing `row`. Corrected in `c3e5f8db75b872487f276df8b2cfee2bfd9315a9`; no production path changed.
 - CI #341: failed at the Rust/Dioxus compile gate on 381edb1e30db613f2bd7ae4e7839a8ba22ee4737 for three mechanical issues introduced by the published+extra/refresh slice: missing root re-exports for IdentityFields/tse_protocol_of, a Poll test initializer missing its required id, and gloo_timers::Interval being returned directly from Dioxus use_hook even though use_hook requires a Clone state. Corrected in the following commit; no production path was changed.
 

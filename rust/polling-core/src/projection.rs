@@ -1,3 +1,4 @@
+use serde::Serialize;
 use crate::{DAY_MS, SeriesPoint};
 
 #[allow(dead_code)]
@@ -5,7 +6,7 @@ pub const ELECTION_ROUND1_MS: f64 = 1_791_115_200_000.0;
 #[allow(dead_code)]
 pub const ELECTION_ROUND2_MS: f64 = 1_792_929_600_000.0;
 
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize)]
 pub struct ProjectPoint {
     pub x: f64,
     pub y: f64,

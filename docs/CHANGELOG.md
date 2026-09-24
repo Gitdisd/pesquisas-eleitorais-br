@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-24T15:09:57Z / 2026-09-24 12:09:57 -03:00 — CI #346 projection serialization correction
+
+- CI #346 failed at the Rust unit-test gate before WASM build/parity because `ProjectionV2Result` serializes vectors of the shared `ProjectPoint` type, while that type lacked `serde::Serialize`.
+- Added the required `Serialize` derive to `rust/polling-core/src/projection.rs`; no projection formula or production path changed.
+- Preserved the projection-v2 parity/UI work and did not delete any legacy browser module.
+- Files: `rust/polling-core/src/projection.rs`, `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`, `docs/CHANGELOG.md`.
+
+# Changelog
+
 ## 2026-09-24T15:08:02Z / 2026-09-24 12:08:02 -03:00 — Projection-v2 migration record synchronized
 
 - Recorded the projection-v2 WASM parity boundary and Dioxus model-2 SVG surface in the authoritative architecture/migration documentation.
