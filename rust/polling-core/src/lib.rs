@@ -186,6 +186,14 @@ pub fn weighted_mean(observations: JsValue, t: f64, half_life_days: f64) -> Resu
     Ok(if den > 0.0 { num / den } else { f64::NAN })
 }
 
+#[wasm_bindgen]
+pub fn advanced_trend(observations: JsValue, window_days: f64, model: u8) -> Result<JsValue, JsValue> {
+    let rows: Vec<PollObservation> = serde_wasm_bindgen::from_value(observations)
+        .map_err(|e| JsValue::from_str(&e.to_string()))?;
+    let result = average_trend_advanced(&rows, window_days, model);
+    serde_wasm_bindgen::to_value(&result).map_err(|e| JsValue::from_str(&e.to_string()))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

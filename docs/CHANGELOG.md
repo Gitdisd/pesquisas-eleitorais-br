@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-23T22:10:57-03:00 / 2026-09-24T01:10:57Z — Direct WASM parity gate for models 3–12
+
+- Exposed the migrated Rust advanced-model dispatcher through the WASM boundary and made `SeriesPoint` serializable for browser parity checks.
+- Extended `scripts/check-wasm-parity.mjs` to compare the production `averageTrendAdvanced` implementation against Rust/WASM for every model 3–12 on a deterministic fixture containing multiple institutes, sample sizes, MOEs and date gaps.
+- The existing canonical estimator parity check remains intact in the same gate.
+- This validates numerical output before advanced models are connected to the Dioxus UI; no production model selection, Vite path, JavaScript/TypeScript module, or Apache ECharts path was changed.
+- Files: rust/polling-core/src/aggregation.rs, rust/polling-core/src/lib.rs, scripts/check-wasm-parity.mjs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T22:07:26-03:00 / 2026-09-24T01:07:26Z — Advanced-model regression test correction
 
 - CI #337 found one incorrect expected value in the new Rust regression fixture: production model 8 performs a simple mean over institute-collapsed values, so 41 and 50 produce 45.5; model 9 remains the weighted 44.0 result.
