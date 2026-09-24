@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-24T14:58:15.489Z",
+  "ran_at": "2026-09-24T19:03:47.922Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 409,
+  "candidate_links": 412,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -170,7 +170,7 @@
         {
           "url": "https://www.quaest.com.br/",
           "status": null,
-          "error": "timeout"
+          "error": "fetch failed"
         }
       ],
       "redundancy_ok": true,
@@ -506,36 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/pr/parana/eleicoes/2026/noticia/2026/09/24/quaest-parana-presidente-24-setembro.ghtml",
+      "title": "Quaest no Paraná: Flávio, 40%; Lula, 26%; Cury, 5%; Caiado, 4%; Renan, 4%; e Zema, 2% | G1 Pular para o conteúdo Paraná ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-24",
+      "found_at": "2026-09-24T19:03:35.747Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-divulga-nova-pesquisa-eleitoral.ghtml",
       "title": "Datafolha divulga novas pesquisas eleitorais nesta quinta (24) | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-24T14:58:03.215Z"
+      "found_at": "2026-09-24T19:03:36.004Z"
     },
     {
-      "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-to-presidente-23-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial no TO | G1 Pular para o conteúdo Tocantins Eleições 2026 no Tocantins Quaes",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-23",
-      "found_at": "2026-09-24T14:58:03.531Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-3/",
-      "title": "PoderData divulga nova pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "PoderData",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-2/",
+      "title": "Os números da nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-24T14:58:03.569Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-3/",
-      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
-      "reason": "incomplete_extract:no_published_date,no_moe",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-09-24T14:58:03.583Z"
+      "found_at": "2026-09-24T19:03:36.025Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-presidente-setembro-2026/",
@@ -543,8 +535,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Alfa Inteligência",
       "published_date": null,
-      "found_at": "2026-09-24T14:58:03.598Z"
+      "found_at": "2026-09-24T19:03:36.044Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-3/",
+      "title": "PoderData divulga nova pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-09-24T19:03:36.054Z"
     }
   ],
-  "meta_last_check_at": "2026-09-24T14:58:15.491Z"
+  "meta_last_check_at": "2026-09-24T19:03:47.924Z"
 }

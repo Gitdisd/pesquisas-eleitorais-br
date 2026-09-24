@@ -1,7 +1,7 @@
 {
   "version": 1,
   "status": "attention",
-  "missing_count": 961,
+  "missing_count": 988,
   "items": [
     {
       "protocol": "BR-00049/2026",
@@ -444,6 +444,17 @@
       "raw_fingerprint": "09c1ceb3ace5678e3de09cf37ed6604eb9573559e376f9f5cc4f804cf0ea98d3"
     },
     {
+      "protocol": "BR-00509/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "6ce3299a802728f283b7692c524b2cb979c52b84c9e2fca054e21214cb95e6d0"
+    },
+    {
       "protocol": "BR-00510/2026",
       "institute": null,
       "registered_date": null,
@@ -497,6 +508,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "f83212ce2b03982c8a5aed387701729d5132fa80ab7b39cf7ebaa24592691a55"
+    },
+    {
+      "protocol": "BR-00531/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "e4fb7fe62a94f7c7573e682e4c4da5d2bf46d8febbc8e8ea68acee8b40ec7cea"
     },
     {
       "protocol": "BR-00535/2026",
@@ -895,6 +917,17 @@
       "raw_fingerprint": "2fb8b2d914141536e32e8cdde7eeb56c54664129e58c85b7b768e7b2cab4d008"
     },
     {
+      "protocol": "BR-00895/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "57166d3e3d4ca1c51a174935fa153d5161f222ff39645f4ce933bedec4df5c45"
+    },
+    {
       "protocol": "BR-00919/2026",
       "institute": null,
       "registered_date": null,
@@ -1258,6 +1291,17 @@
       "raw_fingerprint": "f065f31a813c6c2ccf8f4dd96f81cbc95121d85dc67186e6307896df51b2ea69"
     },
     {
+      "protocol": "BR-01280/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "a37a239e211d940f08c13bd18f33d6a8c25dc1330bf67841d0fca4826042efe2"
+    },
+    {
       "protocol": "BR-01315/2026",
       "institute": null,
       "registered_date": null,
@@ -1500,6 +1544,17 @@
       "raw_fingerprint": "e33f55dc5d84f6f8eaf691cd0818da58d32630612e84c03314336bcede0c240c"
     },
     {
+      "protocol": "BR-01574/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "dedb422df7548bcb81cee54bee3cc47462bbe6e05ae021d8cac92c7ebf20f39a"
+    },
+    {
       "protocol": "BR-01576/2026",
       "institute": null,
       "registered_date": null,
@@ -1509,6 +1564,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "799b6139237f3b91bc4704c08ce6d75f59814eb6e4160702f31ec44eecab76da"
+    },
+    {
+      "protocol": "BR-01604/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "83e027a8d04582e1280d153826f6cfe7ff122b478ab29214daadeb183dcb8ad3"
     },
     {
       "protocol": "BR-01620/2026",
@@ -1995,6 +2061,17 @@
       "raw_fingerprint": "92344ac48c501f4b60d59ba10c7427e1923642b41f8e8fffa22fd51dc1678036"
     },
     {
+      "protocol": "BR-02003/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "0752632679a216362c7f9a8048cb634ab34f42b631b3b6ae69e21510fc202b30"
+    },
+    {
       "protocol": "BR-02032/2026",
       "institute": null,
       "registered_date": null,
@@ -2070,6 +2147,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "ca3119cb76667a0c2312a6f3f977511fbd9a84468e999241f551944fd8422ee1"
+    },
+    {
+      "protocol": "BR-02106/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "3490cc392a8276b23f4186c150e5291aa1d86467626c04d19e0f7ae4d8c8b72b"
     },
     {
       "protocol": "BR-02109/2026",
@@ -2457,6 +2545,17 @@
       "raw_fingerprint": "446679e8ea7ec67e6a18f4e55932300f9aebfae9a6747ddee615c88ae0444441"
     },
     {
+      "protocol": "BR-02724/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "4612a54e26729ca47b0c20b87fa7d830cec6b5dff2f470683b6488323de36c3b"
+    },
+    {
       "protocol": "BR-02741/2026",
       "institute": null,
       "registered_date": null,
@@ -2708,6 +2807,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "00110944e10985131c1bf62f9579271087284ac7cea492300d3af80e218158f3"
+    },
+    {
+      "protocol": "BR-02990/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "e7999869d0ef29cb9403e79da395ec743761e54a68fc43cf9e8ea31596aaffb3"
     },
     {
       "protocol": "BR-02995/2026",
@@ -2972,6 +3082,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "25c0da43c08a17988e87f182ead3ef69b43041ffa6d118bcf7f1e076c22da4b1"
+    },
+    {
+      "protocol": "BR-03142/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "2bb052806055f01ecd33f925881f96677f2d92c87a8fbbce77c169afb3b846ad"
     },
     {
       "protocol": "BR-03145/2026",
@@ -3414,6 +3535,17 @@
       "raw_fingerprint": "bd009c9a6d693e5e2cea087aa8d526a6081f0555be91bc3b2fbdf6c8c0995cbd"
     },
     {
+      "protocol": "BR-03534/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "5579cc1410a5511e098ab9dbc12478beadd5497fc2dd7f34d32f9aafd40af1ba"
+    },
+    {
       "protocol": "BR-03536/2026",
       "institute": null,
       "registered_date": null,
@@ -3667,6 +3799,17 @@
       "raw_fingerprint": "57c08ac3776c06a32fd116317f42c5f88b2c9f2c7e2f2bfc1a36072f01acf6a5"
     },
     {
+      "protocol": "BR-03762/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "8a7a9e15a850e1ad217b0bcdf60308f12bee1c1ef10dbd17f2416b31e6588022"
+    },
+    {
       "protocol": "BR-03768/2026",
       "institute": null,
       "registered_date": null,
@@ -3896,6 +4039,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "8dc759625ae8f5388ccd297bbce328404256e5920ff4daf6bad65b429f161cb2"
+    },
+    {
+      "protocol": "BR-03875/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "17b840256d717dc79635de83c58bdb97e7c2ebdf9c86551b42e44d8306b3ff83"
     },
     {
       "protocol": "BR-03904/2026",
@@ -4602,6 +4756,17 @@
       "raw_fingerprint": "8bef4e5bfa175f4bf923a66b6a5e28d9f5ea0a3d8aa4263614aea96d9bf67f89"
     },
     {
+      "protocol": "BR-04482/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "ce7d1b3da12a51308249e2a4a332c22cd9c51d4dd1c732f239735a3385018f51"
+    },
+    {
       "protocol": "BR-04485/2026",
       "institute": null,
       "registered_date": null,
@@ -4644,6 +4809,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "787ca3f2865ab25735c2492f23df9fea5aa2646d0cca176d58fde26f2bd0936a"
+    },
+    {
+      "protocol": "BR-04527/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "4bcd9819c9048c360065c0469656d4f44faf634a04a8c51724b8f59612007974"
     },
     {
       "protocol": "BR-04535/2026",
@@ -5251,6 +5427,17 @@
       "raw_fingerprint": "d1fbd6a1e6874142d9841a1eb36bc9c1544b7d324b27bf9269d845175a1512c9"
     },
     {
+      "protocol": "BR-05155/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "6f7480a305d092ad5d6119084fd9d6dfa9f0485877f5ef0576fbdb965de709c9"
+    },
+    {
       "protocol": "BR-05169/2026",
       "institute": null,
       "registered_date": null,
@@ -5601,6 +5788,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "1ad3e2896f93b1f61b3e3d5aaee1df1661114d198a8c414a0b587613e6c8634d"
+    },
+    {
+      "protocol": "BR-05410/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "98ce5d9aa259d6f6073558c8b4bbcad733341c40d23c15189be3ba79bf0dc25c"
     },
     {
       "protocol": "BR-05423/2026",
@@ -6087,6 +6285,17 @@
       "raw_fingerprint": "f72ad8e86ee641d229ffd792ef139832b75d0df3590b134953fcbef38a55b46b"
     },
     {
+      "protocol": "BR-05839/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "1c3455239b3e8884037da8144e2fa2f8c0d8d20310c90666d7070e7f955bfd69"
+    },
+    {
       "protocol": "BR-05852/2026",
       "institute": null,
       "registered_date": null,
@@ -6118,6 +6327,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "cdb988a02d720b71949aba55869275d6415be5b59ae9c2f538c70a50ce5a75f6"
+    },
+    {
+      "protocol": "BR-05869/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "02727b41558319bd0cad626254397646bdf24aa3a74c6f3390e43f2ddddd3cd8"
     },
     {
       "protocol": "BR-05880/2026",
@@ -7869,6 +8089,17 @@
       "raw_fingerprint": "2dea3447a788f429a063440e90c261c86eee8576c300ccbc38a805cd1b93b8ca"
     },
     {
+      "protocol": "BR-07472/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "9eb06fb57555ecd1c593c46c3ccb111a6dcb961a5f6c17055e2b0c81c65df89e"
+    },
+    {
       "protocol": "BR-07479/2026",
       "institute": null,
       "registered_date": null,
@@ -8573,6 +8804,17 @@
       "raw_fingerprint": "ec924c61475fcd001a4134d772ebca2ea21e9e78466168468d2a9e5c42f19eca"
     },
     {
+      "protocol": "BR-08168/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "ad657de7558f10de24f6898710d871aefbffdf824ed84d1b2d64505dd13a8af2"
+    },
+    {
       "protocol": "BR-08181/2026",
       "institute": null,
       "registered_date": null,
@@ -8659,6 +8901,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "2f543b244fae1f7c3034e87f1ca4105be5877df826754c2b0bd35367016751d3"
+    },
+    {
+      "protocol": "BR-08289/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "179df7737358de250a1bbccca82fbc0ed41e14da2ae2bf387b2fec219a0acb2b"
     },
     {
       "protocol": "BR-08290/2026",
@@ -8837,6 +9090,17 @@
       "raw_fingerprint": "c24ecbf463405463fe1637b309e23a0595f25f9d036774ec42b6c4972ceb1067"
     },
     {
+      "protocol": "BR-08467/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "7fe83018d657754afe33320223e55e2b3d03ec552b4b1a0e732cfe120637aea6"
+    },
+    {
       "protocol": "BR-08489/2026",
       "institute": null,
       "registered_date": null,
@@ -8923,6 +9187,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "f888f8ddaf5d9007593e216a078817afef1e865303a080162f0cbbea51eb5a8c"
+    },
+    {
+      "protocol": "BR-08546/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "b3659b82053c61c9546f15940299730ef15aa2e3eda7e8b21a56f1e53298c555"
     },
     {
       "protocol": "BR-08562/2026",
@@ -10399,6 +10674,17 @@
       "raw_fingerprint": "0fe46cf4896be867b9dd74521e497274760202d9981b9ad92d7e4e3cb07c2e38"
     },
     {
+      "protocol": "BR-09891/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "9bfdb70eb2084d81a6b3040b9c53a39a3fc523af1491423c2e6e42cdce0cd222"
+    },
+    {
       "protocol": "BR-09895/2026",
       "institute": null,
       "registered_date": null,
@@ -10507,6 +10793,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "4261c4f4429a1ba2ee54f2539dce45c7388b85461236600952cab55bec7b8766"
+    },
+    {
+      "protocol": "BR-09952/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "b3832015fae5a9a9cc6253aa7562875254764d15d02c15cff30e5a870386d6a4"
     },
     {
       "protocol": "BR-09960/2026",
