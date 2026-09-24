@@ -66,7 +66,6 @@ pub fn weighted_trend_v1(points: &[PollObservation], window_days: f64) -> Vec<Se
 
 /// Canonical daily weighted trend corresponding to production weightedTrendV2.
 /// Adds the existing institute/day flood divisor before applying canonical poll weighting.
-#[allow(dead_code)]
 pub fn weighted_trend_v2(points: &[PollObservation], window_days: f64) -> Vec<SeriesPoint> {
     if points.is_empty() { return Vec::new(); }
     let mut sorted: Vec<&PollObservation> = points.iter().collect();

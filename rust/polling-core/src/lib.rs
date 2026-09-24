@@ -9,12 +9,14 @@ pub const DAY_MS: f64 = 86_400_000.0;
 mod aggregation;
 mod house_effects;
 mod projection;
+mod projection_v2;
 mod candidates;
 mod identity;
 
-pub use aggregation::{weighted_trend_v1, SeriesPoint};
+pub use aggregation::{weighted_trend_v1, weighted_trend_v2, SeriesPoint};
 pub use house_effects::estimate_house_effects;
-pub use projection::{project_trend, ProjectPoint, ProjectionResult};
+pub use projection::{project_trend, ProjectPoint, ProjectionResult, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS};
+pub use projection_v2::{holdout_gate, process_sd_for, project_trend_v2, HoldoutGateResult, ProjectionV2Result};
 pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
 pub use identity::{
     canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23T21:59:15-03:00 / 2026-09-24T00:59:15Z — Projection-v2 core migrated with holdout gate
+
+- Ported the production projection-v2 process-noise selection, seven-day holdout gate, house-effect correction and final projection orchestration into the shared Rust core.
+- Preserved an important production detail: the debiased observations passed to weightedTrendV2 omit institute identity, so no second institute/day flood divisor is applied after house correction.
+- Added deterministic tests for process-noise thresholds, holdout-vs-persistence gating and model-2 result shape.
+- Audited the election-date constants against the production projection module and the current TSE calendar before this migration slice; the Rust values now use the same UTC markers as production.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched; the JavaScript projection-v2 module remains protected until its caller/UI and deployment gates are migrated.
+- Files: rust/polling-core/src/projection_v2.rs, rust/polling-core/src/lib.rs, rust/polling-core/src/aggregation.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T21:57:04-03:00 / 2026-09-24T00:57:04Z — Migration gate correction: identity fixture and projection dates
 
 - CI #333 exposed a Rust identity-parity test fixture that asserted behavior not present in the production `src/data/identity.js`; the fixture now uses the same documented exclusion pattern as production.

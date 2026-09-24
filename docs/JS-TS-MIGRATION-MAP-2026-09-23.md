@@ -15,9 +15,9 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/main.js` | boot, data store, cards/table, controls, refresh | Dioxus app/state | not migrated |
 | `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | first slice exists |
 | `src/aggregate.js` | TS aggregate compatibility re-export | Rust aggregate | protected |
-| `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | weightedTrendV1/weightedTrendV2/uncertainty moved to shared Rust core; model dispatch remains |
+| `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | weightedTrendV1/weightedTrendV2/uncertainty/model-2 primitives moved to shared Rust core; model dispatch remains |
 | `src/projection.js` | projection UI/math | Rust projection + Dioxus | base projection math migrated to Rust; UI/copy integration remains |
-| `src/projection-v2.js` | projection-v2 | Rust projection | not migrated |
+| `src/projection-v2.js` | projection-v2 | Rust projection + Dioxus | shared Rust process-noise selection, holdout gate and projection-v2 core migrated; production caller/UI remains |
 | `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
 | `src/data/api.ts` | JSON loading | Rust data client | first slice exists |
 | `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | protocol-note recovery and identity description migrated; production JS caller remains |

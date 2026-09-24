@@ -40,7 +40,7 @@ At migration start, production was Vite + hand-authored JavaScript/TypeScript + 
 
 This migration pass creates a parallel Rust/Dioxus application under rust/web-ui. It is **not yet the production site**.
 
-The first slice currently provides:
+The current parallel migration slice provides:
 
 - Rust/Dioxus application shell.
 - Published poll JSON loading.
@@ -53,15 +53,15 @@ The first slice currently provides:
 - Native SVG point titles for source/date/value inspection.
 - Accessible chart role and label.
 - Inspection table.
+- Shared Rust base projection and projection-v2 holdout-gate computation, retained as non-production until UI and parity gates pass.
 
 Not yet migrated in this slice:
 
 - background refresh/check timers;
 - URL/share-state synchronization;
 - institute filtering controls;
-- projection mode and projection-v2;
-- uncertainty ribbon;
-- advanced models 2–12;
+- Dioxus projection controls/copy integration; the shared Rust base projection and projection-v2 holdout-gate core are now migrated;
+- advanced models 3–12; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
 - custom crosshair, pan, pinch, wheel zoom and range slider;
 - full methodology/diagnostic panels;
