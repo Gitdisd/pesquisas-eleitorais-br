@@ -141,7 +141,7 @@ pub fn App() -> Element {
                             h2 { "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
                             p { class: "muted", "Pontos são pesquisas individuais; a linha usa o modelo selecionado. Data = fim de campo." }
                             div { class: "chart-wrap",
-                                {chart_svg(&filtered, &trend, projection.as_ref(), state.hover_day)}
+                                {chart_svg(&filtered, &trend, projection.as_ref(), state.hover_day, view)}
                             }
                             if state.model == 2 {
                                 p { class: "muted projection-status", "{projection_status_text(projection.as_ref())}" }
@@ -203,7 +203,7 @@ pub fn App() -> Element {
     }
 }
 
-fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>) -> Element {
+fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, mut view: Signal<ViewState>) -> Element {
     let (min_day, max_day, low, high) = viewbox(rows, trend, projection);
     let path = polyline_path(trend, min_day, max_day, low, high);
     let uncertainty_rows: Vec<PollObservation> = rows.iter()
