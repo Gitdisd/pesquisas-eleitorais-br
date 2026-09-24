@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-24T15:08:02Z / 2026-09-24 12:08:02 -03:00 — Projection-v2 migration record synchronized
+
+- Recorded the projection-v2 WASM parity boundary and Dioxus model-2 SVG surface in the authoritative architecture/migration documentation.
+- CI #346 is running against head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; validation status is intentionally recorded as in progress rather than assumed successful.
+- No legacy browser module was deleted and production remains on the existing path.
+- Files: `docs/ARCHITECTURE-MIGRATION.md`, `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`, `docs/CHANGELOG.md`.
+
+# Changelog
+
 ## 2026-09-24T15:07:43Z / 2026-09-24 12:07:43 -03:00 — Dioxus model-2 projection-v2 surface
 
 - Wired the parallel Rust/Dioxus model-2 chart to the shared Rust projection-v2 core.

@@ -53,15 +53,15 @@ The current parallel migration slice provides:
 - Native SVG point titles for source/date/value inspection.
 - Accessible chart role and label.
 - Inspection table.
-- Shared Rust base projection and projection-v2 holdout-gate computation, retained as non-production until UI and parity gates pass.
-- Shared Rust advanced-model core for models 3–12, with direct WASM↔production parity; the parallel Dioxus UI now exposes models 1–12 and preserves poll MOE inputs needed by models 3, 4 and 7. The parallel UI remains non-production until browser/deployment gates pass.
+- Shared Rust base projection and projection-v2 core, including the production holdout gate, with a direct WASM↔production parity gate now wired.
+- Shared Rust advanced-model core for models 3–12, with direct WASM↔production parity; the parallel Dioxus UI exposes models 1–12 and preserves poll MOE inputs needed by models 3, 4 and 7. Model 2 now also renders the migrated Rust projection-v2 line/band and holdout status. The parallel UI remains non-production until browser/deployment gates pass.
 
 Not yet migrated in this slice:
 
 - background refresh/check timers;
 - URL/share-state synchronization;
 - institute filtering controls;
-- Dioxus projection controls/copy integration; the shared Rust base projection and projection-v2 holdout-gate core are now migrated;
+- Full Dioxus projection controls/copy integration; the model-2 projection surface is now wired, while the legacy production projection caller remains protected;
 - advanced models 3–12 are now in the shared Rust core with deterministic regression coverage; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
 - custom crosshair, pan, pinch, wheel zoom and range slider;

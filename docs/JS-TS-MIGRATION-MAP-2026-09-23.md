@@ -1,5 +1,6 @@
 ## CI validation history
 
+- CI #346 is **in progress** for head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; it includes the new projection-v2 WASM parity gate and Dioxus model-2 surface. No pass/fail is claimed until the run completes.
 - CI #342: **failed** at the Rust/Dioxus web compile gate on the PR merge ref for head `032c7e2e1f389b1f9d744f0368d57c706131328e`; Rust/Python/backtest/parity checks passed, then the web compile failed because `gloo_timers` was still imported after dependency removal and `row.candidates` was moved before borrowing `row`. Corrected in `c3e5f8db75b872487f276df8b2cfee2bfd9315a9`; no production path changed.
 - CI #341: failed at the Rust/Dioxus compile gate on 381edb1e30db613f2bd7ae4e7839a8ba22ee4737 for three mechanical issues introduced by the published+extra/refresh slice: missing root re-exports for IdentityFields/tse_protocol_of, a Poll test initializer missing its required id, and gloo_timers::Interval being returned directly from Dioxus use_hook even though use_hook requires a Clone state. Corrected in the following commit; no production path was changed.
 
@@ -18,11 +19,11 @@ This is a migration map, not deletion authorization. A current browser module re
 |---|---|---|---|
 | `index.html` | production shell/bootstrap | `rust/web-ui/index.html` + Dioxus | parallel replacement |
 | `src/main.js` | boot, data store, cards/table, controls, refresh | Dioxus app/state | parallel Rust loader/refresh covers published+extra data and 60s refresh; cards/table/legacy DOM state remains |
-| `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | first slice exists |
+| `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | Rust/Dioxus custom chart now includes the model-2 projection-v2 overlay; production ECharts caller remains |
 | `src/aggregate.js` | TS aggregate compatibility re-export | Rust aggregate | protected |
 | `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | weightedTrendV1/weightedTrendV2/uncertainty/model-2 primitives moved to shared Rust core; model dispatch remains |
 | `src/projection.js` | projection UI/math | Rust projection + Dioxus | base projection math migrated to Rust; UI/copy integration remains |
-| `src/projection-v2.js` | projection-v2 | Rust projection + Dioxus | shared Rust process-noise selection, holdout gate and projection-v2 core migrated; production caller/UI remains |
+| `src/projection-v2.js` | projection-v2 | Rust projection + Dioxus | Rust process-noise selection, holdout gate and projection-v2 core exposed through WASM; Dioxus model-2 surface consumes the Rust core; direct parity is in CI #346; production caller remains |
 | `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
 | `src/data/api.ts` | JSON loading | Rust data client | parallel loader fetches published + extra bundles with cache-busting refresh nonce; extra remains soft-failing |
 | `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | protocol-note recovery and identity description migrated; production JS caller remains |
