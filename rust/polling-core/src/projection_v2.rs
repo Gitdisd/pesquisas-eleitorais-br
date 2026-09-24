@@ -2,6 +2,7 @@ use crate::{
     estimate_house_effects, project_trend, weighted_trend_v2, PollObservation, ProjectPoint,
     ProjectionResult, SeriesPoint, DAY_MS,
 };
+use serde::Serialize;
 use std::collections::BTreeMap;
 
 const CAMPAIGN_MS: f64 = 1_786_881_600_000.0;
@@ -12,7 +13,8 @@ const HOLDOUT_DAYS: f64 = 7.0;
 const HOLDOUT_BAND_FLOOR: f64 = 2.4;
 const MODEL_MAX_ABS_SLOPE: f64 = 0.2;
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct HoldoutGateResult {
     pub pass: bool,
     pub reason: Option<String>,
@@ -20,7 +22,8 @@ pub struct HoldoutGateResult {
     pub rmse_persist: Option<f64>,
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ProjectionV2Result {
     pub ok: bool,
     pub reason: Option<String>,

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-24T15:09:44Z / 2026-09-24 12:09:44 -03:00 — Projection-v2 WASM boundary + parity gate
+
+- Added a typed Rust/WASM boundary for the already-migrated Rust projection-v2 core.
+- Extended the existing parity script to compare the legacy `projectTrendV2` result with Rust line/bands, holdout metrics, slope, RMSE and horizon on a deterministic fixture.
+- No production UI or deployment path changed in this commit; the legacy JavaScript projection remains the reference until the new parity gate passes.
+- Progressive research before implementation: verified the current `serde-wasm-bindgen` 0.6.5 native Serde↔JavaScript conversion pattern.
+- Files: `rust/polling-core/src/projection_v2.rs`, `rust/polling-core/src/lib.rs`, `scripts/check-wasm-parity.mjs`.
+
+# Changelog
+
 ## 2026-09-24 12:00:59 -03:00 / 2026-09-24T15:00:59Z — CI #342 refresh-gate correction
 
 - Recorded CI #342 as a failed validation against the PR merge ref; Rust tests, Python tests, rolling backtests, parity and source checks passed before the Rust/Dioxus web compile gate stopped the job.

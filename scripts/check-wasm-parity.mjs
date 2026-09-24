@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs/promises'
 import { weightedEstimate } from '../src/stats/estimator.js'
 import { averageTrendAdvanced } from '../src/models/advanced.ts'
+import { projectTrendV2 } from '../src/projection-v2.js'
 
 const wasm = await import('../public/wasm/polling-core/polling_core.js')
 const bytes = await fs.readFile(new URL('../public/wasm/polling-core/polling_core_bg.wasm', import.meta.url))
@@ -48,7 +49,51 @@ for (const model of Array.from({ length: 10 }, (_, index) => index + 3)) {
   advancedResults.push({ model, points: jsTrend.length })
 }
 
+const projectionBase = Date.parse('2026-09-01T00:00:00Z')
+const projectionPoints = Array.from({ length: 12 }, (_, day) => ({
+  t: projectionBase + day * DAY_MS,
+  y: 40 + 0.8 * day,
+  n: 2000,
+  institute: 'ParityLab',
+  moe: null,
+}))
+const projectionOptions = {
+  fitDays: 14,
+  horizonDays: 14,
+  electionDayMs: Date.parse('2026-10-04T12:00:00Z'),
+}
+const jsProjection = projectTrendV2(projectionPoints, projectionOptions)
+const rustProjection = wasm.project_trend_v2_wasm({
+  observations: projectionPoints,
+  fit_days: projectionOptions.fitDays,
+  horizon_days: projectionOptions.horizonDays,
+  election_day_ms: projectionOptions.electionDayMs,
+})
+
+function compareProjectionPoints(label, rustPoints, jsPoints) {
+  assert.equal(rustPoints.length, jsPoints.length, `${label}: point count differs`)
+  for (let i = 0; i < jsPoints.length; i += 1) {
+    assert.equal(rustPoints[i].x, jsPoints[i].x, `${label}: x differs at index ${i}`)
+    assert.ok(Math.abs(rustPoints[i].y - jsPoints[i].y) < 1e-12, `${label}: y differs at index ${i}`)
+  }
+}
+
+assert.equal(rustProjection.ok, jsProjection.ok)
+assert.equal(rustProjection.reason ?? null, jsProjection.reason ?? null)
+assert.equal(rustProjection.lastObserved ?? null, jsProjection.lastObserved ?? null)
+assert.equal(rustProjection.horizonUsed, jsProjection.horizonUsed)
+assert.equal(rustProjection.model, jsProjection.model)
+assert.ok(Math.abs(rustProjection.slope - jsProjection.slope) < 1e-12)
+assert.ok(Math.abs(rustProjection.rmse - jsProjection.rmse) < 1e-12)
+assert.equal(rustProjection.holdout.pass, jsProjection.holdout.pass)
+assert.equal(rustProjection.holdout.reason ?? null, jsProjection.holdout.reason ?? null)
+assert.ok(Math.abs(rustProjection.holdout.rmseModel - jsProjection.holdout.rmseModel) < 1e-12)
+assert.ok(Math.abs(rustProjection.holdout.rmsePersist - jsProjection.holdout.rmsePersist) < 1e-12)
+compareProjectionPoints('projection line', rustProjection.line, jsProjection.line)
+compareProjectionPoints('projection lower band', rustProjection.bandLow, jsProjection.bandLow)
+compareProjectionPoints('projection upper band', rustProjection.bandHigh, jsProjection.bandHigh)
 console.log(JSON.stringify({
   canonicalEstimator: 'pass',
   advancedModels: advancedResults,
+  projectionV2: 'pass',
 }))

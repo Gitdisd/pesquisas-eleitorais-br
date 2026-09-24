@@ -195,6 +195,27 @@ pub fn advanced_trend(observations: JsValue, window_days: f64, model: u8) -> Res
     serde_wasm_bindgen::to_value(&result).map_err(|e| JsValue::from_str(&e.to_string()))
 }
 
+#[derive(Debug, Deserialize)]
+struct ProjectionV2WasmInput {
+    observations: Vec<PollObservation>,
+    fit_days: f64,
+    horizon_days: u32,
+    election_day_ms: Option<f64>,
+}
+
+#[wasm_bindgen]
+pub fn project_trend_v2_wasm(input: JsValue) -> Result<JsValue, JsValue> {
+    let input: ProjectionV2WasmInput = serde_wasm_bindgen::from_value(input)
+        .map_err(|e| JsValue::from_str(&e.to_string()))?;
+    let result = project_trend_v2(
+        &input.observations,
+        input.fit_days,
+        input.horizon_days,
+        input.election_day_ms,
+    );
+    serde_wasm_bindgen::to_value(&result).map_err(|e| JsValue::from_str(&e.to_string()))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
