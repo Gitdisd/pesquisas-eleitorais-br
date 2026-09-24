@@ -6,6 +6,7 @@ use crate::chart::{
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
+use polling_core::ProjectionV2Result;
 
 const STYLE: &str = include_str!("../assets/style.css");
 
@@ -65,6 +66,11 @@ pub fn App() -> Element {
                     };
                     let filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
                     let trend = trend_for_model(&filtered, 14.0, state.model);
+                    let projection = if state.model == 2 {
+                        Some(projection_v2_for_round(&filtered, state.round))
+                    } else {
+                        None
+                    };
                     let latest = filtered.last();
                     let round_label = if state.round == 1 { "1º turno" } else { "2º turno" };
                     rsx! {
@@ -133,7 +139,10 @@ pub fn App() -> Element {
                             h2 { "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
                             p { class: "muted", "Pontos são pesquisas individuais; a linha usa o modelo selecionado. Data = fim de campo." }
                             div { class: "chart-wrap",
-                                {chart_svg(&filtered, &trend)}
+                                {chart_svg(&filtered, &trend, projection.as_ref())}
+                            }
+                            if state.model == 2 {
+                                p { class: "muted projection-status", "{projection_status_text(projection.as_ref())}" }
                             }
                             if let Some(last) = latest {
                                 p { class: "muted", "Última pesquisa exibida: {format_date(&last.fieldwork_end)} · {last.institute} · {format_pct(last.value)}" }
@@ -192,8 +201,8 @@ pub fn App() -> Element {
     }
 }
 
-fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
-    let (min_day, max_day, low, high) = viewbox(rows, trend);
+fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>) -> Element {
+    let (min_day, max_day, low, high) = viewbox(rows, trend, projection);
     let path = polyline_path(trend, min_day, max_day, low, high);
     let uncertainty_rows: Vec<PollObservation> = rows.iter()
         .map(|row| PollObservation {
@@ -216,6 +225,38 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
     let point_coords: Vec<(&Poll, f64, f64)> = rows.iter()
         .map(|poll| (poll, x_for(poll.day, min_day, max_day), y_for(poll.value, low, high)))
         .collect();
+    let projection_active = matches!(projection, Some(proj) if proj.ok && proj.line.len() > 1);
+    let projection_band_points = if projection_active {
+        let proj = projection.expect("projection is present when active");
+        let mut points: Vec<String> = proj.band_low.iter()
+            .map(|point| format!("{:.2},{:.2}", x_for((point.x / 86_400_000.0).round() as i64, min_day, max_day), y_for(point.y, low, high)))
+            .collect();
+        points.extend(proj.band_high.iter().rev()
+            .map(|point| format!("{:.2},{:.2}", x_for((point.x / 86_400_000.0).round() as i64, min_day, max_day), y_for(point.y, low, high))));
+        points.join(" ")
+    } else {
+        String::new()
+    };
+    let projection_path = if projection_active {
+        let proj = projection.expect("projection is present when active");
+        polyline_path(
+            &proj.line.iter().map(|point| crate::chart::TrendPoint {
+                day: (point.x / 86_400_000.0).round() as i64,
+                value: point.y,
+            }).collect::<Vec<_>>(),
+            min_day,
+            max_day,
+            low,
+            high,
+        )
+    } else {
+        String::new()
+    };
+    let projection_divider_x = projection
+        .filter(|proj| proj.ok)
+        .and_then(|proj| proj.last_observed)
+        .map(|x| x_for((x / 86_400_000.0).round() as i64, min_day, max_day))
+        .unwrap_or(LEFT);
 
     let y_ticks: Vec<(f64, f64)> = (0..=5)
         .map(|i| {
@@ -278,6 +319,22 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
                 points: "{band_points}"
             }
 
+            if projection_active {
+                line {
+                    class: "projection-divider",
+                    x1: "{projection_divider_x:.2}", x2: "{projection_divider_x:.2}",
+                    y1: "{TOP}", y2: "{HEIGHT - BOTTOM}"
+                }
+                polygon {
+                    class: "projection-band",
+                    points: "{projection_band_points}"
+                }
+                polyline {
+                    class: "projection-line",
+                    points: "{projection_path}"
+                }
+            }
+
             polyline {
                 class: "series-line",
                 points: "{path}",
@@ -294,6 +351,32 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint]) -> Element {
                 title { "{poll.institute} · {format_date(&poll.fieldwork_end)} · {format_pct(poll.value)}" }
             }
         }
+    }
+}
+
+fn projection_status_text(projection: Option<&ProjectionV2Result>) -> String {
+    match projection {
+        Some(proj) if proj.ok => {
+            let steps = (proj.horizon_used.min(10) as usize).min(proj.line.len().saturating_sub(1));
+            if steps == 0 {
+                return "Projeção v2 disponível, sem horizonte futuro utilizável.".to_string();
+            }
+            let delta = proj.line[steps].y - proj.line[0].y;
+            let delta_text = format!("{delta:+.1}").replace('.', ",");
+            match proj.holdout.as_ref() {
+                Some(gate) => format!(
+                    "Projeção v2: {delta_text} pp/{steps}d · holdout RMSE modelo {:.2} vs persistência {:.2}.",
+                    gate.rmse_model.unwrap_or(f64::NAN),
+                    gate.rmse_persist.unwrap_or(f64::NAN),
+                ),
+                None => format!("Projeção v2: {delta_text} pp/{steps}d."),
+            }
+        }
+        Some(proj) => format!(
+            "Projeção v2 indisponível: {}.",
+            proj.reason.as_deref().unwrap_or("motivo não informado"),
+        ),
+        None => "Projeção v2 indisponível: sem dados.".to_string(),
     }
 }
 

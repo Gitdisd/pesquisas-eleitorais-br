@@ -127,6 +127,31 @@ p { margin: .35rem 0; }
   opacity: .12;
 }
 
+.projection-band {
+  fill: var(--accent);
+  opacity: .16;
+}
+
+.projection-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 7 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.projection-divider {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: .7;
+  vector-effect: non-scaling-stroke;
+}
+
+.projection-status {
+  margin-top: .6rem;
+}
+
 .series-line {
   fill: none;
   stroke: var(--series);

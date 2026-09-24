@@ -1,7 +1,8 @@
 use crate::data::Poll;
 use polling_core::{
-    average_trend_advanced, estimate_house_effects, weighted_trend_v1,
-    weighted_trend_v2 as core_weighted_trend_v2, PollObservation,
+    average_trend_advanced, estimate_house_effects, project_trend_v2, weighted_trend_v1,
+    weighted_trend_v2 as core_weighted_trend_v2, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS,
+    PollObservation, ProjectionV2Result,
 };
 pub const WIDTH: f64 = 1100.0;
 pub const HEIGHT: f64 = 470.0;
@@ -104,15 +105,33 @@ pub fn trend_for_model(rows: &[Poll], half_life_days: f64, model: u8) -> Vec<Tre
     }
 }
 
-pub fn viewbox(rows: &[Poll], trend: &[TrendPoint]) -> (f64, f64, f64, f64) {
+pub fn projection_v2_for_round(rows: &[Poll], round: u8) -> ProjectionV2Result {
+    let election_day_ms = if round == 2 {
+        Some(ELECTION_ROUND2_MS)
+    } else {
+        Some(ELECTION_ROUND1_MS)
+    };
+    project_trend_v2(&observations(rows), 14.0, 14, election_day_ms)
+}
+
+pub fn viewbox(rows: &[Poll], trend: &[TrendPoint], projection: Option<&ProjectionV2Result>) -> (f64, f64, f64, f64) {
     if rows.is_empty() { return (0.0, 1.0, 0.0, 100.0); }
     let min_day = rows.first().unwrap().day as f64;
-    let max_day = rows.last().unwrap().day as f64;
+    let mut max_day = rows.last().unwrap().day as f64;
     let mut min_y = rows.iter().map(|p| p.value).fold(f64::INFINITY, f64::min);
     let mut max_y = rows.iter().map(|p| p.value).fold(f64::NEG_INFINITY, f64::max);
     for point in trend {
         min_y = min_y.min(point.value);
         max_y = max_y.max(point.value);
+    }
+    if let Some(proj) = projection.filter(|value| value.ok) {
+        if let Some(last) = proj.line.last() {
+            max_day = max_day.max(last.x / DAY_MS);
+        }
+        for point in proj.band_low.iter().chain(proj.band_high.iter()) {
+            min_y = min_y.min(point.y);
+            max_y = max_y.max(point.y);
+        }
     }
     let span = (max_y - min_y).max(5.0);
     let pad = (span * 0.12).max(2.0);
@@ -158,6 +177,19 @@ mod tests {
             round: 1,
             day,
         }
+    }
+
+    #[test]
+    fn projection_v2_uses_the_rust_core_and_honors_election_horizon() {
+        let rows: Vec<Poll> = (0..12)
+            .map(|day| poll(day, 40.0 + 0.8 * day as f64, 2000.0, "ParityLab"))
+            .collect();
+        let result = projection_v2_for_round(&rows, 1);
+        assert_eq!(result.model, 2);
+        assert!(result.ok);
+        assert_eq!(result.horizon_used, 14);
+        assert!(result.line.len() > 1);
+        assert_eq!(result.last_observed, result.line.first().map(|point| point.x));
     }
 
     #[test]

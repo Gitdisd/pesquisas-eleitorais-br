@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-24T15:07:43Z / 2026-09-24 12:07:43 -03:00 — Dioxus model-2 projection-v2 surface
+
+- Wired the parallel Rust/Dioxus model-2 chart to the shared Rust projection-v2 core.
+- Added a future projection band, dashed model line, observed/projection divider and holdout status while keeping the observed series and aggregate uncertainty rendering intact.
+- Added Rust chart regression coverage for model-2 projection wiring and the election-horizon behavior.
+- The legacy ECharts production caller remains protected; this is a parallel UI implementation only.
+- Progressive research: verified current Dioxus 0.7 inline SVG support before extending the custom chart surface.
+- Files: `rust/web-ui/src/chart.rs`, `rust/web-ui/src/app.rs`, `rust/web-ui/assets/style.css`.
+
+# Changelog
+
 ## 2026-09-24T15:09:44Z / 2026-09-24 12:09:44 -03:00 — Projection-v2 WASM boundary + parity gate
 
 - Added a typed Rust/WASM boundary for the already-migrated Rust projection-v2 core.
