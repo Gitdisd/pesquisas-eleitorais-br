@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-24T09:55:40.641Z",
+  "ran_at": "2026-09-24T14:58:15.489Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 420,
+  "candidate_links": 409,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 8,
+  "fetch_errors": 9,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 2,
-      "failures": 0,
+      "successes": 1,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": 200,
-          "error": null
+          "status": null,
+          "error": "timeout"
         }
       ],
       "redundancy_ok": true,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-24T09:55:23.643Z"
+      "found_at": "2026-09-24T14:58:03.215Z"
     },
     {
       "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-to-presidente-23-setembro.ghtml",
@@ -519,7 +519,15 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-24T09:55:23.989Z"
+      "found_at": "2026-09-24T14:58:03.531Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-setembro-2026-3/",
+      "title": "PoderData divulga nova pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleiç",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-09-24T14:58:03.569Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-3/",
@@ -527,24 +535,16 @@
       "reason": "incomplete_extract:no_published_date,no_moe",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-09-24T09:55:24.041Z"
+      "found_at": "2026-09-24T14:58:03.583Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
-      "title": "Veja os números da nova pesquisa Quaest para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-presidente-setembro-2026/",
+      "title": "Os números da pesquisa Alfa Inteligência para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições ",
       "reason": "incomplete_extract:no_published_date",
-      "institute": "Quaest",
+      "institute": "Alfa Inteligência",
       "published_date": null,
-      "found_at": "2026-09-24T09:55:24.060Z"
-    },
-    {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/23/quaest-em-sp-tarcsio-tem-44-pontos-percentuais-e-haddad-marca-27-no-primeiro-turno.ghtml",
-      "title": "Quaest: Em SP, Tarcísio tem 44% e Haddad marca 27% no primeiro turno | Eleições 2026 | Valor Econômico Carregando... Ace",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-23",
-      "found_at": "2026-09-24T09:55:24.845Z"
+      "found_at": "2026-09-24T14:58:03.598Z"
     }
   ],
-  "meta_last_check_at": "2026-09-24T09:55:40.642Z"
+  "meta_last_check_at": "2026-09-24T14:58:15.491Z"
 }
