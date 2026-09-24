@@ -291,6 +291,7 @@ pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
             let identity = identity_fields(&row);
             let id = canonical_poll_key(&identity);
             out.push(Poll {
+                id,
                 institute: row.institute.clone(),
                 fieldwork_end: row.fieldwork_end.clone(),
                 published_date: row.published_date.clone(),

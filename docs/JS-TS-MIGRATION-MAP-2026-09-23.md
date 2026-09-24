@@ -1,3 +1,7 @@
+## CI validation history
+
+- CI #341: failed at the Rust/Dioxus compile gate on 381edb1e30db613f2bd7ae4e7839a8ba22ee4737 for three mechanical issues introduced by the published+extra/refresh slice: missing root re-exports for IdentityFields/tse_protocol_of, a Poll test initializer missing its required id, and gloo_timers::Interval being returned directly from Dioxus use_hook even though use_hook requires a Clone state. Corrected in the following commit; no production path was changed.
+
 # Browser JS/TS migration map — 2026-09-23
 
 ## Audit timestamp

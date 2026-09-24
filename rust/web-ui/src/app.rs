@@ -31,9 +31,9 @@ pub fn App() -> Element {
     let mut refresh_tick = use_signal(|| 0_u64);
     let _refresh_interval = use_hook(|| {
         let mut tick = refresh_tick;
-        Interval::new(60_000, move || {
+        std::rc::Rc::new(Interval::new(60_000, move || {
             tick += 1;
-        })
+        }))
     });
     let polls = use_resource(move || {
         let refresh_nonce = refresh_tick();

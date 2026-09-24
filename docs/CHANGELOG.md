@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-23T22:28:14-03:00 / 2026-09-24T01:28:14Z — Dioxus refresh compile-gate correction
+
+- CI #341 exposed three compile-only continuity issues in the published+extra/refresh slice.
+- Re-exported IdentityFields and tse_protocol_of from the shared polling-core root so the Rust loader can consume the migrated identity API.
+- Restored the required id field in the affected Poll initializer.
+- Retained the non-cloneable gloo-timers::Interval inside a cloneable Rc when storing it with Dioxus use_hook, matching the framework hook contract without changing the 60-second refresh behavior.
+- No statistical formula, data merge rule, chart geometry, production Vite/JavaScript/TypeScript path or Apache ECharts path changed.
+- Files: rust/polling-core/src/lib.rs, rust/web-ui/src/data.rs, rust/web-ui/src/app.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
 ## 2026-09-23T22:23:17-03:00 / 2026-09-24T01:23:17Z — Rust published+extra merge and 60s refresh
 
 - Ported the production raw-data merge semantics into the parallel Rust loader: canonical TSE identity first, unique fallback matching only, candidate de-duplication, verified/source/methodology merge, geography normalization and earliest valid publication metadata.

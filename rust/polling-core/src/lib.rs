@@ -23,6 +23,7 @@ pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
 pub use identity::{
     canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,
     identity_description, normalize_geo, normalize_identity_text, normalize_institute, normalize_protocol,
+    IdentityFields, tse_protocol_of,
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
