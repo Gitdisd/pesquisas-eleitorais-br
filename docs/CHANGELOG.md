@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-24 12:00:59 -03:00 / 2026-09-24T15:00:59Z — CI #342 refresh-gate correction
+
+- Recorded CI #342 as a failed validation against the PR merge ref; Rust tests, Python tests, rolling backtests, parity and source checks passed before the Rust/Dioxus web compile gate stopped the job.
+- CI #342 reported two compile errors introduced by the preceding refresh correction: `gloo_timers::callback::Interval` remained imported after its dependency was removed, and the `row.candidates` loop moved the vector before `identity_fields(&row)` borrowed the containing row.
+- Restored the existing `gloo-timers 0.4.0` dependency and changed the candidate loop to borrow the slice, preserving the 60-second refresh behavior and data transformation rules.
+- No production Vite/JavaScript/TypeScript path, statistical formula, chart geometry, deployment path or Apache ECharts path changed.
+- Files: `rust/web-ui/Cargo.toml`, `rust/web-ui/src/data.rs`.
+
 ## 2026-09-23T22:28:14-03:00 / 2026-09-24T01:28:14Z — Dioxus refresh compile-gate correction
 
 - CI #341 exposed three compile-only continuity issues in the published+extra/refresh slice.

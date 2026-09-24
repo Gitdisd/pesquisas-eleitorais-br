@@ -1,5 +1,6 @@
 ## CI validation history
 
+- CI #342: **failed** at the Rust/Dioxus web compile gate on the PR merge ref for head `032c7e2e1f389b1f9d744f0368d57c706131328e`; Rust/Python/backtest/parity checks passed, then the web compile failed because `gloo_timers` was still imported after dependency removal and `row.candidates` was moved before borrowing `row`. Corrected in `c3e5f8db75b872487f276df8b2cfee2bfd9315a9`; no production path changed.
 - CI #341: failed at the Rust/Dioxus compile gate on 381edb1e30db613f2bd7ae4e7839a8ba22ee4737 for three mechanical issues introduced by the published+extra/refresh slice: missing root re-exports for IdentityFields/tse_protocol_of, a Poll test initializer missing its required id, and gloo_timers::Interval being returned directly from Dioxus use_hook even though use_hook requires a Clone state. Corrected in the following commit; no production path was changed.
 
 # Browser JS/TS migration map — 2026-09-23
@@ -88,7 +89,7 @@ Latest validation sequence:
 - CI #337: **failed** in Rust core tests on `advanced_models::tests::school_models_preserve_institute_collapse_semantics`: the model-8 fixture expectation was incorrect (model 8 averages institute-collapsed values equally, yielding 45.5 for 41 and 50). The implementation passed the other advanced-model tests; the fixture is corrected before further migration work.
 - No existing JS/TS production module is certified removable.
 - Canonical `weightedTrendV1` now has a shared Rust implementation and the Rust/Dioxus chart delegates to it.
-- The latest compile failure is limited to migration-schema dead-code warnings and the Dioxus component naming lint; no runtime/data-path failure was reached. The old JS/TS implementation remains protected until numerical parity and production cutover gates pass.
+- CI #342 is the latest completed validation recorded here for the pre-fix merge ref. Its two Rust/Dioxus compile errors are corrected on branch head `c3e5f8db75b872487f276df8b2cfee2bfd9315a9`; no validation run for that new head was available at documentation time. The old JS/TS implementation remains protected until numerical parity and production cutover gates pass.
 - No production cutover or live-site behavior change has occurred.
 
 The validation record is intentionally kept chronological so failures and corrections remain auditable rather than being rewritten away.
