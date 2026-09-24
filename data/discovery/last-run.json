@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-24T04:37:43.736Z",
+  "ran_at": "2026-09-24T09:55:40.641Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 426,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 60,
-  "skipped_old": 0,
+  "inbox_new": 58,
+  "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-24T04:37:30.587Z"
+      "found_at": "2026-09-24T09:55:23.643Z"
     },
     {
       "url": "https://g1.globo.com/to/tocantins/eleicoes/2026/noticia/2026/09/23/quaest-to-presidente-23-setembro.ghtml",
@@ -519,32 +519,32 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-24T04:37:30.886Z"
+      "found_at": "2026-09-24T09:55:23.989Z"
     },
     {
-      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/23/quaest-sp-presidente-23-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Quaes",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-3/",
+      "title": "AtlasIntel divulga pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inten",
+      "reason": "incomplete_extract:no_published_date,no_moe",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-24T09:55:24.041Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-4/",
+      "title": "Veja os números da nova pesquisa Quaest para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-09-24T09:55:24.060Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/23/quaest-em-sp-tarcsio-tem-44-pontos-percentuais-e-haddad-marca-27-no-primeiro-turno.ghtml",
+      "title": "Quaest: Em SP, Tarcísio tem 44% e Haddad marca 27% no primeiro turno | Eleições 2026 | Valor Econômico Carregando... Ace",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-23",
-      "found_at": "2026-09-24T04:37:31.067Z"
-    },
-    {
-      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-no-rj-cenarios-de-2o-turno-23-setembro.ghtml",
-      "title": "Quaest no RJ: Paes mantém liderança em todos os cenários de 2º turno | G1 Pular para o conteúdo Rio de Janeiro Eleições ",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-23",
-      "found_at": "2026-09-24T04:37:31.247Z"
-    },
-    {
-      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/23/quaest-rj-presidente-23-09.ghtml",
-      "title": "Quaest no RJ: Flávio, 37%; Lula, 30%; Cury, 4%; Caiado, 3%; Renan, 2% | G1 Pular para o conteúdo Rio de Janeiro Eleições",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-23",
-      "found_at": "2026-09-24T04:37:31.423Z"
+      "found_at": "2026-09-24T09:55:24.845Z"
     }
   ],
-  "meta_last_check_at": "2026-09-24T04:37:43.738Z"
+  "meta_last_check_at": "2026-09-24T09:55:40.642Z"
 }
