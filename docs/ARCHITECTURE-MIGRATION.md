@@ -54,6 +54,7 @@ The current parallel migration slice provides:
 - Accessible chart role and label.
 - Inspection table.
 - Shared Rust base projection and projection-v2 holdout-gate computation, retained as non-production until UI and parity gates pass.
+- Shared Rust advanced-model core for models 3–12, retained as non-production until numerical parity and UI gates pass.
 
 Not yet migrated in this slice:
 
@@ -61,7 +62,7 @@ Not yet migrated in this slice:
 - URL/share-state synchronization;
 - institute filtering controls;
 - Dioxus projection controls/copy integration; the shared Rust base projection and projection-v2 holdout-gate core are now migrated;
-- advanced models 3–12; model 2 house-effect correction is already wired into the Rust UI;
+- advanced models 3–12 are now in the shared Rust core with deterministic regression coverage; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
 - custom crosshair, pan, pinch, wheel zoom and range slider;
 - full methodology/diagnostic panels;

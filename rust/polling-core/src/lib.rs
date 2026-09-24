@@ -10,6 +10,7 @@ mod aggregation;
 mod house_effects;
 mod projection;
 mod projection_v2;
+mod advanced_models;
 mod candidates;
 mod identity;
 
@@ -17,6 +18,7 @@ pub use aggregation::{weighted_trend_v1, weighted_trend_v2, SeriesPoint};
 pub use house_effects::estimate_house_effects;
 pub use projection::{project_trend, ProjectPoint, ProjectionResult, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS};
 pub use projection_v2::{holdout_gate, process_sd_for, project_trend_v2, HoldoutGateResult, ProjectionV2Result};
+pub use advanced_models::{average_trend_advanced, dl_tau2, school_center_trend, weighted_trend_v3, weighted_trend_v4, weighted_trend_v5, weighted_trend_v6, weighted_trend_v7, weighted_trend_v8, weighted_trend_v9, weighted_trend_v10, weighted_trend_v11, weighted_trend_v12, SchoolKind};
 pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
 pub use identity::{
     canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,

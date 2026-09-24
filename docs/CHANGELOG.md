@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23T22:05:04-03:00 / 2026-09-24T01:05:04Z — Advanced models 3–12 moved into shared Rust core
+
+- Ported the production statistical implementations for models 3–12 from `src/models/advanced.ts` and `src/models/school.ts` into `rust/polling-core/src/advanced_models.rs`.
+- Preserved model-specific behavior: model 3 DerSimonian–Laird random-effects variance, model 4 house-effect-corrected forward/backward smoother, model 5 punch/recency weighting, model 6 institute de-duplication, model 7 local-linear tricube regression, and school-center reducers for models 8–12.
+- Added deterministic tests for poll standard-error semantics, random-effects variance capping, constant-series preservation, institute-collapse behavior and local-linear endpoint recovery.
+- The existing advanced-model rolling backtest remains the research reference; no model has been selected, promoted or substituted in production by this migration slice.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/advanced_models.rs, rust/polling-core/src/lib.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T22:01:46-03:00 / 2026-09-24T01:01:46Z — Dioxus chart import continuity correction
 
 - CI #335 reached the Rust/Dioxus WebAssembly compile stage and found that rust/web-ui/src/chart.rs was missing the Poll type import while still importing unused poll_weight.
