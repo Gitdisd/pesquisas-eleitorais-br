@@ -12,16 +12,16 @@ This is a migration map, not deletion authorization. A current browser module re
 | Path | Responsibility | Rust/Dioxus destination | Status |
 |---|---|---|---|
 | `index.html` | production shell/bootstrap | `rust/web-ui/index.html` + Dioxus | parallel replacement |
-| `src/main.js` | boot, data store, cards/table, controls, refresh | Dioxus app/state | not migrated |
+| `src/main.js` | boot, data store, cards/table, controls, refresh | Dioxus app/state | parallel Rust loader/refresh covers published+extra data and 60s refresh; cards/table/legacy DOM state remains |
 | `src/chart.js` | chart rendering, points, aggregate, uncertainty, navigation | custom Rust/SVG | first slice exists |
 | `src/aggregate.js` | TS aggregate compatibility re-export | Rust aggregate | protected |
 | `src/aggregate.ts` | weighted trends, uncertainty, model dispatch | Rust statistics | weightedTrendV1/weightedTrendV2/uncertainty/model-2 primitives moved to shared Rust core; model dispatch remains |
 | `src/projection.js` | projection UI/math | Rust projection + Dioxus | base projection math migrated to Rust; UI/copy integration remains |
 | `src/projection-v2.js` | projection-v2 | Rust projection + Dioxus | shared Rust process-noise selection, holdout gate and projection-v2 core migrated; production caller/UI remains |
 | `src/candidates.js` | candidate registry/aliases/scenario parsing | Rust canonical data layer | partial |
-| `src/data/api.ts` | JSON loading | Rust data client | first slice exists |
+| `src/data/api.ts` | JSON loading | Rust data client | parallel loader fetches published + extra bundles with cache-busting refresh nonce; extra remains soft-failing |
 | `src/data/identity.js` | canonical identity/TSE/geo keys | Rust identity | protocol-note recovery and identity description migrated; production JS caller remains |
-| `src/data/normalize.ts` | raw→normalized/merge | Rust normalization | partial |
+| `src/data/normalize.ts` | raw→normalized/merge | Rust normalization | parallel loader ports canonical/fallback merge, candidate de-duplication, metadata merge, and candidate/round normalization; broader parity remains |
 | `src/data/types.ts` | TypeScript contracts | Rust structs/contracts | Rust parallel `Poll` contract now preserves parsed MOE; broader normalization/merge parity remains |
 | `src/models/advanced.ts` | models 3–7 | Rust statistical models | Rust implementations 3–7 migrated to shared core; direct WASM↔production parity harness passes; Dioxus dispatcher now exposes models 3–7; production dispatcher remains |
 | `src/models/school.ts` | models 8–12 | Rust statistical models | Rust school-center implementations 8–12 migrated to shared core; direct WASM↔production parity harness passes for 8–12; Dioxus dispatcher now exposes models 8–12; production dispatcher remains |

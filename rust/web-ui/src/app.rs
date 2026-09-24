@@ -1,4 +1,5 @@
 use dioxus::prelude::*;
+use gloo_timers::callback::Interval;
 use polling_core::{uncertainty_band, PollObservation};
 use crate::chart::{
     model_label, polyline_path, trend_for_model, viewbox, x_for, y_for,
@@ -27,7 +28,17 @@ pub fn App() -> Element {
         model: 1,
     });
 
-    let polls = use_resource(|| async { load_polls().await });
+    let mut refresh_tick = use_signal(|| 0_u64);
+    let _refresh_interval = use_hook(|| {
+        let mut tick = refresh_tick;
+        Interval::new(60_000, move || {
+            tick += 1;
+        })
+    });
+    let polls = use_resource(move || {
+        let refresh_nonce = refresh_tick();
+        async move { load_polls(refresh_nonce).await }
+    });
 
     rsx! {
         style { "{STYLE}" }

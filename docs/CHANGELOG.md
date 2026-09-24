@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-23T22:23:17-03:00 / 2026-09-24T01:23:17Z — Rust published+extra merge and 60s refresh
+
+- Ported the production raw-data merge semantics into the parallel Rust loader: canonical TSE identity first, unique fallback matching only, candidate de-duplication, verified/source/methodology merge, geography normalization and earliest valid publication metadata.
+- The Rust loader now fetches both `public/data/polls.json` and `public/data/polls-extra.json`; the extra bundle remains soft-failing like production and both requests receive a refresh nonce.
+- Added a 60-second Dioxus refresh interval backed by `gloo-timers` and `use_resource`. Refreshing changes the data request nonce but does not rewrite candidate, round, range, geography or model signals.
+- Added deterministic tests for candidate de-duplication and canonical identity of a unique supplement.
+- Progressive research before implementation: verified the current Dioxus 0.7 resource/signal behavior and current `gloo-timers` 0.4 timer API.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/web-ui/Cargo.toml, rust/web-ui/src/data.rs, rust/web-ui/src/app.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
 ## 2026-09-23T22:19:21-03:00 / 2026-09-24T01:19:21Z — Dioxus model dispatcher 1–12 + MOE preservation
 
 - Connected the parallel Rust/Dioxus chart to the shared Rust dispatcher for models 1–12 using the existing short labels: Exp, Casa, Meta, Kalman, Rápido, Dia, Local, Média, Peso, Mediana, Moda and Corta.

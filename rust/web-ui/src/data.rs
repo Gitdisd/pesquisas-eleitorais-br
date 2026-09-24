@@ -1,11 +1,14 @@
 use gloo_net::http::Request;
 use serde::Deserialize;
+use std::collections::{BTreeMap, BTreeSet};
 
 pub use polling_core::{
-    candidate_key, is_first_round, is_second_round, normalize_geo, Candidate,
+    candidate_key, canonical_poll_key, fallback_poll_key, is_first_round, is_second_round,
+    normalize_geo, normalize_identity_text, tse_protocol_of, Candidate, IdentityFields,
 };
 
 const DATA_URL: &str = "data/polls.json";
+const EXTRA_DATA_URL: &str = "data/polls-extra.json";
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct CandidateResult {
@@ -37,6 +40,164 @@ pub struct RawPoll {
 enum PollPayload {
     Rows(Vec<RawPoll>),
     Wrapped { polls: Vec<RawPoll> },
+}
+
+fn raw_rows(payload: PollPayload) -> Vec<RawPoll> {
+    match payload {
+        PollPayload::Rows(rows) => rows,
+        PollPayload::Wrapped { polls } => polls,
+    }
+}
+
+fn identity_fields(row: &RawPoll) -> IdentityFields {
+    IdentityFields {
+        institute: row.institute.clone(),
+        fieldwork_start: row.fieldwork_start.clone(),
+        fieldwork_end: Some(row.fieldwork_end.clone()),
+        published_date: row.published_date.clone(),
+        scenario: row.scenario.clone(),
+        geo: row.geo.clone(),
+        tse_registration: row.tse_registration.clone(),
+        tse_protocol: row.tse_protocol.clone(),
+        methodology_note: row.methodology_note.clone(),
+        ..IdentityFields::default()
+    }
+}
+
+fn valid_iso_date(value: Option<&str>) -> Option<String> {
+    let value = value?;
+    if parse_day(value).is_some() {
+        Some(value[..10].to_string())
+    } else {
+        None
+    }
+}
+
+fn earliest_date(a: Option<&str>, b: Option<&str>) -> Option<String> {
+    [valid_iso_date(a), valid_iso_date(b)]
+        .into_iter()
+        .flatten()
+        .min()
+}
+
+fn merge_candidates(base: &[CandidateResult], extra: &[CandidateResult]) -> Vec<CandidateResult> {
+    let mut seen = BTreeSet::<String>::new();
+    let mut merged = Vec::new();
+
+    for candidate in base.iter().chain(extra.iter()) {
+        if candidate.name.trim().is_empty() || !candidate.pct.is_finite() {
+            continue;
+        }
+        let key = normalize_identity_text(&candidate.name);
+        if seen.insert(key) {
+            merged.push(candidate.clone());
+        }
+    }
+
+    merged
+}
+
+fn merge_raw_poll(current: &RawPoll, incoming: &RawPoll) -> RawPoll {
+    let mut merged = current.clone();
+    merged.candidates = merge_candidates(&current.candidates, &incoming.candidates);
+    merged.verified = Some(current.verified == Some(true) || incoming.verified == Some(true));
+
+    if let Some(published) =
+        earliest_date(current.published_date.as_deref(), incoming.published_date.as_deref())
+    {
+        merged.published_date = Some(published);
+    }
+
+    merged.source_url = if !current.source_url.is_empty() {
+        current.source_url.clone()
+    } else {
+        incoming.source_url.clone()
+    };
+
+    let methodology = [current.methodology_note.as_deref(), incoming.methodology_note.as_deref()]
+        .into_iter()
+        .flatten()
+        .filter(|value| !value.is_empty())
+        .map(ToString::to_string)
+        .fold(Vec::<String>::new(), |mut values, value| {
+            if !values.contains(&value) {
+                values.push(value);
+            }
+            values
+        })
+        .join(" | ");
+    merged.methodology_note = (!methodology.is_empty()).then_some(methodology);
+
+    if current.geo.is_some() || incoming.geo.is_some() {
+        merged.geo = Some(normalize_geo(
+            current.geo.as_deref().or(incoming.geo.as_deref()),
+        ));
+    }
+
+    let protocol = tse_protocol_of(&identity_fields(&merged));
+    if protocol.is_some() {
+        merged.tse_registration = protocol;
+    } else if merged.tse_registration.is_none() {
+        merged.tse_registration = incoming.tse_registration.clone();
+    }
+
+    merged
+}
+
+fn merge_raw_polls(base: Vec<RawPoll>, extra: Vec<RawPoll>) -> Vec<RawPoll> {
+    let mut map = BTreeMap::<String, RawPoll>::new();
+    let mut fallback_index = BTreeMap::<String, Vec<String>>::new();
+
+    fn remember(index: &mut BTreeMap<String, Vec<String>>, fallback: String, key: String) {
+        let values = index.entry(fallback).or_default();
+        if !values.contains(&key) {
+            values.push(key);
+        }
+    }
+
+    for row in base.into_iter().filter(|row| {
+        !row.institute.is_empty() && !row.fieldwork_end.is_empty() && !row.scenario.is_empty()
+    }) {
+        let fields = identity_fields(&row);
+        let key = canonical_poll_key(&fields);
+        remember(&mut fallback_index, fallback_poll_key(&fields), key.clone());
+        map.insert(key, row);
+    }
+
+    for row in extra.into_iter().filter(|row| {
+        !row.institute.is_empty() && !row.fieldwork_end.is_empty() && !row.scenario.is_empty()
+    }) {
+        let fields = identity_fields(&row);
+        let key = canonical_poll_key(&fields);
+        let fallback = fallback_poll_key(&fields);
+        let matching_key = if map.contains_key(&key) {
+            Some(key.clone())
+        } else {
+            fallback_index
+                .get(&fallback)
+                .filter(|values| values.len() == 1)
+                .and_then(|values| values.first().cloned())
+        };
+
+        let Some(current_key) = matching_key else {
+            remember(&mut fallback_index, fallback, key.clone());
+            map.insert(key, row);
+            continue;
+        };
+
+        let current = map.remove(&current_key).expect("matching poll key");
+        let merged = merge_raw_poll(&current, &row);
+        let merged_fields = identity_fields(&merged);
+        let final_key = canonical_poll_key(&merged_fields);
+        remember(
+            &mut fallback_index,
+            fallback_poll_key(&merged_fields),
+            final_key.clone(),
+        );
+        map.insert(final_key, merged);
+    }
+
+    map.into_values().collect()
 }
 
 #[derive(Clone, Debug)]
@@ -84,8 +245,11 @@ fn parse_moe_value(value: &Option<serde_json::Value>) -> Option<f64> {
     }
 }
 
-pub async fn load_polls() -> Result<Vec<Poll>, String> {
-    let payload = Request::get(DATA_URL)
+pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
+    let data_url = format!("{DATA_URL}?v={refresh_nonce}");
+    let extra_url = format!("{EXTRA_DATA_URL}?v={refresh_nonce}");
+
+    let payload = Request::get(&data_url)
         .send()
         .await
         .map_err(|err| format!("Falha ao buscar pesquisas: {err}"))?
@@ -93,13 +257,19 @@ pub async fn load_polls() -> Result<Vec<Poll>, String> {
         .await
         .map_err(|err| format!("JSON inválido: {err}"))?;
 
-    let rows = match payload {
-        PollPayload::Rows(rows) => rows,
-        PollPayload::Wrapped { polls } => polls,
+    let extra = match Request::get(&extra_url).send().await {
+        Ok(response) => response
+            .json::<PollPayload>()
+            .await
+            .map(raw_rows)
+            .unwrap_or_default(),
+        Err(_) => Vec::new(),
     };
 
+    let rows = merge_raw_polls(raw_rows(payload), extra);
+
     let mut out = Vec::new();
-    for (row_index, row) in rows.into_iter().enumerate() {
+    for row in rows.into_iter() {
         let day = match parse_day(&row.fieldwork_end) {
             Some(day) => day,
             None => continue,
@@ -118,8 +288,9 @@ pub async fn load_polls() -> Result<Vec<Poll>, String> {
             if key.is_empty() || !candidate.pct.is_finite() {
                 continue;
             }
+            let identity = identity_fields(&row);
+            let id = canonical_poll_key(&identity);
             out.push(Poll {
-                id: format!("{row_index}:{geo}:{}:{}:{key}", row.fieldwork_end, row.institute),
                 institute: row.institute.clone(),
                 fieldwork_end: row.fieldwork_end.clone(),
                 published_date: row.published_date.clone(),
@@ -217,6 +388,67 @@ mod tests {
         assert_eq!(parse_moe_value(&Some(serde_json::json!("margem 1.8 p.p."))), Some(1.8));
         assert_eq!(parse_moe_value(&Some(serde_json::json!("sem informação"))), None);
         assert_eq!(parse_moe_value(&None), None);
+    }
+
+    #[test]
+    fn merge_promotes_unique_extra_and_deduplicates_candidates() {
+        let base = RawPoll {
+            institute: "Nexus/BTG".into(),
+            fieldwork_start: Some("2026-09-04".into()),
+            fieldwork_end: "2026-09-07".into(),
+            published_date: Some("2026-09-08".into()),
+            scenario: "estimulada 1º turno".into(),
+            candidates: vec![CandidateResult { name: "Lula".into(), pct: 39.0 }],
+            n: Some(2002.0),
+            margin_of_error: Some(serde_json::json!("±2,0 pp")),
+            source_url: "base".into(),
+            methodology_note: Some("TSE BR-06790/2026.".into()),
+            verified: Some(true),
+            tse_registration: Some("BR-06790/2026".into()),
+            tse_protocol: None,
+            geo: Some("BR".into()),
+        };
+        let extra = RawPoll {
+            candidates: vec![
+                CandidateResult { name: "Lula".into(), pct: 39.0 },
+                CandidateResult { name: "Flávio Bolsonaro".into(), pct: 35.0 },
+            ],
+            source_url: "extra".into(),
+            ..base.clone()
+        };
+        let merged = merge_raw_polls(vec![base], vec![extra]);
+        assert_eq!(merged.len(), 1);
+        assert_eq!(merged[0].candidates.len(), 2);
+        assert_eq!(merged[0].source_url, "base");
+    }
+
+    #[test]
+    fn merge_accepts_a_unique_verified_extra_with_canonical_identity() {
+        let extra = RawPoll {
+            institute: "Indexa".into(),
+            fieldwork_start: Some("2026-09-10".into()),
+            fieldwork_end: "2026-09-13".into(),
+            published_date: Some("2026-09-15".into()),
+            scenario: "2º turno Lula x Flávio Bolsonaro".into(),
+            candidates: vec![
+                CandidateResult { name: "Lula".into(), pct: 43.0 },
+                CandidateResult { name: "Flávio Bolsonaro".into(), pct: 42.0 },
+            ],
+            n: Some(1000.0),
+            margin_of_error: None,
+            source_url: "extra".into(),
+            methodology_note: Some("TSE BR-03482/2026.".into()),
+            verified: Some(true),
+            tse_registration: Some("BR-03482/2026".into()),
+            tse_protocol: None,
+            geo: Some("BR".into()),
+        };
+        let merged = merge_raw_polls(Vec::new(), vec![extra]);
+        assert_eq!(merged.len(), 1);
+        assert_eq!(
+            canonical_poll_key(&identity_fields(&merged[0])),
+            "tse|BR-03482/2026|2º turno lula x flavio bolsonaro|BR"
+        );
     }
 
     #[test]
