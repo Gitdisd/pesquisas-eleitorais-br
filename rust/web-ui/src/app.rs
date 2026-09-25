@@ -693,3 +693,30 @@ fn format_day_axis(day: f64) -> String {
     let m = mp + if mp < 10 { 3 } else { -9 };
     format!("{d:02}/{m:02}")
 }
+
+
+#[cfg(test)]
+mod navigation_tests {
+    use super::*;
+
+    #[test]
+    fn navigation_window_zooms_around_the_base_center() {
+        let (min_day, max_day) = navigation_window(0.0, 100.0, 2.0, 0.0);
+        assert!((min_day - 25.0).abs() < 1e-9);
+        assert!((max_day - 75.0).abs() < 1e-9);
+    }
+
+    #[test]
+    fn navigation_pan_is_clamped_to_the_visible_base_range() {
+        let pan = pan_by_pixels(0.0, 100.0, 2.0, 0.0, 10_000.0);
+        assert!((pan + 25.0).abs() < 1e-9);
+    }
+
+    #[test]
+    fn wheel_zoom_preserves_cursor_anchor() {
+        let x = LEFT + (1100.0 - LEFT - RIGHT) / 2.0;
+        let (zoom, pan) = zoom_around(0.0, 100.0, 1.0, 0.0, x, -700.0);
+        assert!(zoom > 1.0);
+        assert!(pan.abs() < 1e-9);
+    }
+}
