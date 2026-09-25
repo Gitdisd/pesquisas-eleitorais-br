@@ -287,7 +287,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
             class: "chart",
             view_box: "0 0 1100 470",
             onmousemove: move |event| {
-                let x = event.element_coordinates().x;
+                let x = event.data().element_coordinates().x;
                 let plot_width = 1100.0 - LEFT - RIGHT;
                 let clamped = x.clamp(LEFT, LEFT + plot_width);
                 let day = (min_day + ((clamped - LEFT) / plot_width) * (max_day - min_day)).round() as i64;
