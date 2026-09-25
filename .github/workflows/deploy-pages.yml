@@ -102,7 +102,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf ../../dioxus-pages
-          dx bundle --web --release --out-dir ../../dioxus-pages
+          dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-pages
           test -f ../../dioxus-pages/public/index.html
           test -d ../../dioxus-pages/public/wasm
       - name: Assemble Dioxus Pages artifact

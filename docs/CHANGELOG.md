@@ -1,3 +1,9 @@
+## 2026-09-25 04:12:00 -03:00 / 2026-09-25T07:12:00Z — Harden Dioxus release bundle and native SVG hover smoke
+
+- Dioxus v0.7 documents `--debug-symbols` for release bundles; CI, browser smoke and Pages deployment now pass `--debug-symbols false` explicitly, because the prior config-only setting still allowed the bundled Binaryen `wasm-opt` path to abort on DWARF metadata. citeturn766812search1turn524014search0
+- Native SVG hover smoke now verifies that the crosshair `<line>` exists and has matching X coordinates instead of requiring Playwright to classify a zero-width SVG line as CSS-visible. Tooltip visibility remains asserted.
+- The application interaction behavior is unchanged.
+
 ## 2026-09-25 04:05:30 -03:00 / 2026-09-25T07:05:30Z — Trigger fresh post-fix validation
 
 - Branch head is `d7d783322178fd054e26fc30f21cb1ec0c88a3a1`; this documentation-only commit triggers new CI and browser smoke runs against the corrected bundle/smoke-server configuration.

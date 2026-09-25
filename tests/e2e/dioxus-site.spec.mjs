@@ -26,8 +26,15 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
     const box = await chart.boundingBox()
     if (!box) throw new Error('chart has no layout box')
     await chart.hover({ position: { x: box.width / 2, y: Math.min(120, box.height / 2) } })
-    await expect(page.locator('.hover-crosshair')).toBeVisible()
-    await expect(page.locator('.hover-tooltip')).toBeVisible()
+    const crosshair = page.locator('.hover-crosshair')
+    await expect(crosshair).toHaveCount(1)
+    const crosshairX1 = await crosshair.getAttribute('x1')
+    const crosshairX2 = await crosshair.getAttribute('x2')
+    expect(crosshairX1).toBeTruthy()
+    expect(crosshairX1).toBe(crosshairX2)
+    const tooltip = page.locator('.hover-tooltip')
+    await expect(tooltip).toHaveCount(1)
+    await expect(tooltip).toBeVisible()
   })
 
   test('supports wheel zoom without a chart library', async ({ page }) => {

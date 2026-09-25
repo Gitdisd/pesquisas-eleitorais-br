@@ -89,7 +89,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf ../../dioxus-smoke-pages ../../.dioxus-smoke-server
-          dx bundle --web --release --out-dir ../../dioxus-smoke-pages
+          dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-smoke-pages
           DX_PUBLIC="$(find ../../dioxus-smoke-pages -type d -name public -print -quit)"
           test -n "$DX_PUBLIC"
           mkdir -p ../../.dioxus-smoke-server/pesquisas-eleitorais-br

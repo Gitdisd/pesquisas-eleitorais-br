@@ -1,3 +1,9 @@
+## 2026-09-25 04:12:00 -03:00 / 2026-09-25T07:12:00Z — Harden Dioxus release bundle and native SVG hover smoke
+
+- Dioxus v0.7 documents `--debug-symbols` for release bundles; CI, browser smoke and Pages deployment now pass `--debug-symbols false` explicitly, because the prior config-only setting still allowed the bundled Binaryen `wasm-opt` path to abort on DWARF metadata. citeturn766812search1turn524014search0
+- Native SVG hover smoke now verifies that the crosshair `<line>` exists and has matching X coordinates instead of requiring Playwright to classify a zero-width SVG line as CSS-visible. Tooltip visibility remains asserted.
+- The application interaction behavior is unchanged.
+
 ## 2026-09-25 04:02:00 -03:00 / 2026-09-25T07:02:00Z — Dioxus wasm-opt and smoke-server correction
 
 - CI #376 failed at `wasm-opt` with `compile unit size was incorrect`; release wasm optimization now explicitly disables retained debug symbols in `rust/web-ui/Dioxus.toml`.
