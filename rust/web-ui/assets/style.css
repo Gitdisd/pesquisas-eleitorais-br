@@ -98,6 +98,7 @@ p { margin: .35rem 0; }
 }
 
 .chart-wrap {
+  /* The SVG itself owns navigation; this container only provides narrow-screen overflow. */
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
