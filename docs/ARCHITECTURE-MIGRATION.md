@@ -1,5 +1,13 @@
 # Architecture migration: Rust + Dioxus + custom SVG + Python
 
+## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus production-bundle gate
+
+- Native SVG hover, bounded pan, wheel zoom and two-pointer pinch zoom are implemented in the replacement UI.
+- CI/browser validation now bundles the Rust/Dioxus web app with Dioxus CLI 0.7.10.
+- GitHub Pages will publish that Dioxus bundle with repaired public/data mirrors; the legacy Vite build remains validation-only during the transition.
+- No legacy browser module has been deleted or certified removable. Production cutover is pending successful current gates.
+
+
 This document is the authoritative migration record. Historical implementation details are preserved below instead of being rewritten.
 
 ## Final target architecture
@@ -64,7 +72,7 @@ Not yet migrated in this slice:
 - Full Dioxus projection controls/copy integration; the model-2 projection surface is now wired, while the legacy production projection caller remains protected;
 - advanced models 3–12 are now in the shared Rust core with deterministic regression coverage; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
-- custom crosshair, pan, pinch, wheel zoom and range slider;
+- custom range slider;
 - full methodology/diagnostic panels;
 - complete accessibility and mobile regression suite.
 
@@ -121,7 +129,7 @@ The statistical research results already completed are not silently changed by t
 
 ## Current migration status
 
-**Phase A — parallel Rust/Dioxus replacement: ACTIVE**
+**Phase A — Rust/Dioxus replacement: cutover gate configured; awaiting successful CI/browser deployment validation**
 
 Branch: migration-rust-ui-2026-09-23
 
