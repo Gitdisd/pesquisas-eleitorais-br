@@ -1,3 +1,10 @@
+## 2026-09-25 02:41:00 -03:00 / 2026-09-25T05:41:00Z — Browser gate isolation correction
+
+- Browser smoke #39 exposed a test-discovery collision: the legacy Playwright configuration was matching the new Dioxus spec, causing those tests to run against the Vite preview server.
+- Narrowed the legacy configuration to `site.spec.mjs`; the Dioxus suite remains in its dedicated configuration and job.
+- The legacy five-test suite completed successfully before the collision failures; no application or statistical behavior changed.
+- The next browser run must validate both suites independently before merge.
+
 ## 2026-09-25 02:37:31 -03:00 / 2026-09-25T05:37:31Z — CI #364 compile corrections
 
 - CI #364 reached the Rust/Dioxus web compile gate and identified two concrete mechanical errors in the new navigation slice: an unused mutable refresh signal binding and an Option<tuple>/tuple mismatch in the pinch helper call.
