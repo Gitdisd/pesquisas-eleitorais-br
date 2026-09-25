@@ -1,3 +1,9 @@
+## 2026-09-25 03:32:00 -03:00 / 2026-09-25T06:32:00Z — Pinned Dioxus CLI binary in CI/deploy
+
+- Dioxus 0.7 documentation recommends prebuilt CLI binaries and notes that source installation can take up to 10 minutes; the migration workflows now install the exact v0.7.10 Linux x86_64 release asset by URL plus SHA-256 verification.
+- Updated CI, browser smoke and Pages deployment workflows without changing application code or statistical behavior.
+- This change is intended to remove the repeated source-build bottleneck from migration validation while keeping the CLI version deterministic.
+
 ## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — CI #370 ownership correction
 
 - CI #370 reached Rust tests, Python tests, real-data backtest, canonical estimator equivalence, advanced backtest and fieldwork-overlap audit successfully.

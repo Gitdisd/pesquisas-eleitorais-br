@@ -80,8 +80,19 @@ jobs:
         run: rustup target add wasm32-unknown-unknown
       - name: Check Rust/Dioxus web UI
         run: cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
-      - name: Install Dioxus CLI
-        run: cargo install --locked dioxus-cli --version 0.7.10
+      - name: Install pinned Dioxus CLI binary
+        run: |
+          set -euo pipefail
+          DX_DIR="$HOME/.local/bin"
+          TMP_DIR="$(mktemp -d)"
+          mkdir -p "$DX_DIR"
+          curl -fsSL "https://github.com/DioxusLabs/dioxus/releases/download/v0.7.10/dx-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/dx.tar.gz"
+          echo "4363e4ed2a3f1eb7f4d38d2d59aed59ce43271c44c16b425e92c89a64761fbe7  $TMP_DIR/dx.tar.gz" | sha256sum -c -
+          tar -xzf "$TMP_DIR/dx.tar.gz" -C "$TMP_DIR"
+          test -f "$TMP_DIR/dx"
+          install -m 0755 "$TMP_DIR/dx" "$DX_DIR/dx"
+          echo "$DX_DIR" >> "$GITHUB_PATH"
+          "$DX_DIR/dx" --version
       - name: Bundle Rust/Dioxus web UI
         working-directory: rust/web-ui
         run: |
