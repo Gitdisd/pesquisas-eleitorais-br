@@ -1,3 +1,10 @@
+## 2026-09-25 02:37:31 -03:00 / 2026-09-25T05:37:31Z — CI #364 compile corrections
+
+- CI #364 reached the Rust/Dioxus web compile gate and identified two concrete mechanical errors in the new navigation slice: an unused mutable refresh signal binding and an Option<tuple>/tuple mismatch in the pinch helper call.
+- Corrected both without changing the statistical formulas, chart geometry, data contract or production data.
+- The failed CI result is retained as the validation record; the corrected branch requires a new clean CI/browser run before merge.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
 ## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus bundle cutover gate configured
 
 - Added native SVG navigation regression coverage: bounded wheel zoom, pointer pan and two-pointer pinch math.
