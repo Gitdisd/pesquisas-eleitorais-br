@@ -26,6 +26,8 @@ jobs:
         with:
           python-version: "3.12"
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Install Dioxus CLI
+        run: cargo install --locked dioxus-cli --version 0.7.10
       - uses: jetli/wasm-pack-action@v0.4.0
         with:
           version: v0.13.1
@@ -82,8 +84,29 @@ jobs:
           set -euo pipefail
           npm run build:rust
           npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
-      - name: Build production site
+      - name: Build legacy compatibility site
         run: npm run build
+      - name: Build Rust/Dioxus production site
+        working-directory: rust/web-ui
+        run: |
+          set -euo pipefail
+          rm -rf ../../dioxus-pages
+          dx bundle --web --release --out-dir ../../dioxus-pages
+          test -f ../../dioxus-pages/public/index.html
+          test -d ../../dioxus-pages/public/wasm
+      - name: Assemble Dioxus Pages artifact
+        run: |
+          set -euo pipefail
+          DX_PUBLIC="$(find dioxus-pages -type d -name public -print -quit)"
+          test -n "$DX_PUBLIC"
+          rm -rf dist
+          mkdir -p dist
+          cp -a "$DX_PUBLIC"/. dist/
+          mkdir -p dist/data
+          cp -a public/data/. dist/data/
+          test -f dist/index.html
+          test -f dist/data/polls.json
+          cp dist/index.html dist/404.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
