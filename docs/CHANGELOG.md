@@ -1,3 +1,7 @@
+## 2026-09-25 04:05:30 -03:00 / 2026-09-25T07:05:30Z — Trigger fresh post-fix validation
+
+- Branch head is `d7d783322178fd054e26fc30f21cb1ec0c88a3a1`; this documentation-only commit triggers new CI and browser smoke runs against the corrected bundle/smoke-server configuration.
+
 ## 2026-09-25 04:02:00 -03:00 / 2026-09-25T07:02:00Z — Dioxus wasm-opt and smoke-server correction
 
 - CI #376 failed at `wasm-opt` with `compile unit size was incorrect`; release wasm optimization now explicitly disables retained debug symbols in `rust/web-ui/Dioxus.toml`.
