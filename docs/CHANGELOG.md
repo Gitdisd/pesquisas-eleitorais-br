@@ -1,3 +1,9 @@
+## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
+
+- CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
+- Dioxus 0.7 release web assets are registered under `public/assets`; the validation now checks that directory and verifies that at least one `.wasm` file exists there. The Pages workflow received the same correction.
+- Native Dioxus and legacy Chromium browser smoke both passed on the preceding exact head. This commit contains no application/statistical changes.
+
 ## 2026-09-25 04:13:30 -03:00 / 2026-09-25T07:13:30Z — Trigger validation for SVG smoke/bundle fixes
 
 - Current migration head before this trigger: `c8e0dab1f46015e47cc2c0e0f5d59f3e6c6c8617`.

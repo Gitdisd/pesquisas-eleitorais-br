@@ -104,7 +104,8 @@ jobs:
           rm -rf ../../dioxus-pages
           dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-pages
           test -f ../../dioxus-pages/public/index.html
-          test -d ../../dioxus-pages/public/wasm
+          test -d ../../dioxus-pages/public/assets
+          test -n "$(find ../../dioxus-pages/public/assets -type f -name '*.wasm' -print -quit)"
       - name: Assemble Dioxus Pages artifact
         run: |
           set -euo pipefail

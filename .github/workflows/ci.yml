@@ -100,7 +100,8 @@ jobs:
           rm -rf ../../dioxus-ci
           dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-ci
           test -f ../../dioxus-ci/public/index.html
-          test -d ../../dioxus-ci/public/wasm
+          test -d ../../dioxus-ci/public/assets
+          test -n "$(find ../../dioxus-ci/public/assets -type f -name '*.wasm' -print -quit)"
 
       - name: Build Rust/WASM package
         run: npm run build:rust

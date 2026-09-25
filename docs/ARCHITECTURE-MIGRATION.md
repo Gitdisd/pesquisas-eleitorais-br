@@ -1,3 +1,9 @@
+## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
+
+- CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
+- Dioxus 0.7 release web assets are registered under `public/assets`; the validation now checks that directory and verifies that at least one `.wasm` file exists there. The Pages workflow received the same correction.
+- Native Dioxus and legacy Chromium browser smoke both passed on the preceding exact head. This commit contains no application/statistical changes.
+
 ## 2026-09-25 04:12:00 -03:00 / 2026-09-25T07:12:00Z — Harden Dioxus release bundle and native SVG hover smoke
 
 - Dioxus v0.7 documents `--debug-symbols` for release bundles; CI, browser smoke and Pages deployment now pass `--debug-symbols false` explicitly, because the prior config-only setting still allowed the bundled Binaryen `wasm-opt` path to abort on DWARF metadata. citeturn766812search1turn524014search0
