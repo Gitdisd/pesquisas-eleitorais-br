@@ -1,3 +1,9 @@
+## 2026-09-25 03:25:00 -03:00 / 2026-09-25T06:25:00Z — MethodologySection migrated to Rust/Dioxus
+
+- `src/methodology.js` responsibility is now covered by `rust/web-ui/src/methodology.rs`; the legacy module remains protected pending execution-graph and deployed verification.
+- Methodology text and CSS structure were ported without changing the documented model descriptions or formulas.
+- This is the Step 6 methodology slice; regional data/panel migration remains separate.
+
 ## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — CI #370 ownership correction
 
 - CI #370 reached Rust tests, Python tests, real-data backtest, canonical estimator equivalence, advanced backtest and fieldwork-overlap audit successfully.
@@ -60,7 +66,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/ui-refresh.js` | dashboard refresh layer | Dioxus components | not migrated |
 | `src/ui-next.js` | share URLs and CSV/JSON export | Rust/Dioxus export layer | not migrated |
 | `src/ui-upgrades.js` | UI enhancement hooks | Dioxus components | not migrated |
-| `src/methodology.js` | methodology/diagnostic UI | Dioxus components | not migrated |
+| `src/methodology.js` | methodology/diagnostic UI | `rust/web-ui/src/methodology.rs` | migrated in parallel; legacy protected |
 | `src/echarts-runtime.js` | ECharts runtime loading | removed from final architecture | protected until last caller disappears |
 | `src/e2e-hooks.js` | browser smoke hooks | Dioxus/browser test instrumentation | not migrated |
 | `vite.config.js` | Vite production build | Dioxus/static build | protected until cutover |

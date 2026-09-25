@@ -1,3 +1,9 @@
+## 2026-09-25 03:25:00 -03:00 / 2026-09-25T06:25:00Z — Methodology component migrated
+
+- The static methodology surface is now a Rust/Dioxus component in `rust/web-ui/src/methodology.rs`, with the legacy JavaScript module retained only as a protected migration reference.
+- The component uses Dioxus props/state architecture only where needed; this slice is static and introduces no statistical behavior changes.
+- Regional panel/data migration remains the next separate surface.
+
 ## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — Rust/Dioxus ownership correction
 
 - CI #370 confirmed the statistical and data-validation gates through overlap audit, then stopped at Rust/Dioxus compilation because the top-level `App` signal binding must be mutable for existing control handlers. The fix is isolated to state binding; chart math, projection math and interaction logic are unchanged.
@@ -79,7 +85,7 @@ Not yet migrated in this slice:
 - advanced models 3–12 are now in the shared Rust core with deterministic regression coverage; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
 - custom range slider;
-- full methodology/diagnostic panels;
+- regional/methodology/diagnostic surfaces; methodology text is now rendered by Rust/Dioxus while the regional and diagnostic surfaces remain separate;
 - complete accessibility and mobile regression suite.
 
 These are tracked migration work, not deleted functionality.

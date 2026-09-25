@@ -1,3 +1,9 @@
+## 2026-09-25 03:25:00 -03:00 / 2026-09-25T06:25:00Z — Migração/refatoração da metodologia para Rust/Dioxus
+
+- A seção de metodologia agora é renderizada pelo componente Rust `MethodologySection`, mantendo o texto, a organização e os exemplos da implementação legada.
+- Os estilos da seção foram portados para o CSS independente do front Rust/Dioxus.
+- `src/methodology.js` e `src/methodology.css` continuam protegidos para remoção futura somente após auditoria de execução e verificação do site publicado.
+
 ## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — Correção de ownership no app Rust/Dioxus
 
 - CI #370 **falhou** no gate `Check Rust/Dioxus web UI`: `view` precisava permanecer mutável dentro de `App` porque os controles usam `view.write()`. A correção restaura `let mut view`; o helper `chart_svg` mantém sua assinatura necessária para os handlers de interação. O mesmo run passou Rust, Python, backtests, equivalência do estimador e auditorias até o gate de compilação. O browser smoke do Chromium legado passou; o smoke Dioxus continuou em andamento. O commit de documentação foi construído a partir do head corrigido e a referência da branch foi avançada para `c266f5430195f2f814644d03024eccef97567558` antes da nova validação.
