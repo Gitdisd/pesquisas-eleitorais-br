@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-25T18:31:03.691Z",
+  "ran_at": "2026-09-25T22:15:54.879Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 418,
+  "candidate_links": 427,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 57,
-  "skipped_old": 1,
+  "skipped_old": 2,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -506,45 +506,45 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/ro/rondonia/eleicoes/2026/noticia/2026/09/24/quaest-rondonia-presidente-24-de-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial em Rondônia | G1 Pular para o conteúdo Rondônia Eleições 2026 em Rondônia Q",
+      "url": "https://g1.globo.com/al/alagoas/eleicoes/2026/noticia/2026/09/25/quaest-al-presidente-de-25-de-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial em AL | G1 Pular para o conteúdo G1 Alagoas Eleições 2026 em Alagoas Quaest",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
-      "published_date": "2026-09-24",
-      "found_at": "2026-09-25T18:30:50.449Z"
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-25T22:15:39.110Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-numero-da-urna-presidente.ghtml",
-      "title": "Datafolha: 23% dos eleitores não sabem o número de urna do candidato | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/25/datafolha-pe-presidente-25-setembro.ghtml",
+      "title": "Datafolha: veja como está a disputa presidencial em PE | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-09-24",
-      "found_at": "2026-09-25T18:30:50.726Z"
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-25T22:15:39.431Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
-      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/25/datafolha-sp-presidente-25-setembro.ghtml",
+      "title": "Datafolha: veja como está a disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo D",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-25T18:30:50.747Z"
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-25T22:15:39.615Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-2/",
-      "title": "Os números da nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Palver",
-      "published_date": null,
-      "found_at": "2026-09-25T18:30:50.760Z"
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/25/datafolha-df-presidente-25-setembro.ghtml",
+      "title": "Datafolha: veja como está a disputa presidencial no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no Dist",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-25T22:15:39.834Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-presidente-setembro-2026/",
-      "title": "Os números da pesquisa Alfa Inteligência para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Alfa Inteligência",
-      "published_date": null,
-      "found_at": "2026-09-25T18:30:50.774Z"
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/25/datafolha-mg-presidente-25-setembro.ghtml",
+      "title": "Datafolha: veja números da disputa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Ger",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-25T22:15:40.024Z"
     }
   ],
-  "meta_last_check_at": "2026-09-25T18:31:03.692Z"
+  "meta_last_check_at": "2026-09-25T22:15:54.880Z"
 }
