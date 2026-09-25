@@ -6,6 +6,7 @@ use crate::chart::{
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
+use crate::methodology::MethodologySection;
 use polling_core::ProjectionV2Result;
 
 const STYLE: &str = include_str!("../assets/style.css");
@@ -218,6 +219,7 @@ pub fn App() -> Element {
                     }
                 }
             }
+            MethodologySection {}
         }
     }
 }
