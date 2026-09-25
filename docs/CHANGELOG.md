@@ -1,6 +1,6 @@
 ## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — Correção de ownership no app Rust/Dioxus
 
-- CI #370 **falhou** no gate `Check Rust/Dioxus web UI`: `view` precisava permanecer mutável dentro de `App` porque os controles usam `view.write()`. A correção restaura `let mut view`; o helper `chart_svg` mantém sua assinatura necessária para os handlers de interação. O mesmo run passou Rust, Python, backtests, equivalência do estimador e auditorias até o gate de compilação. O browser smoke do Chromium legado passou; o smoke Dioxus continuou em andamento.
+- CI #370 **falhou** no gate `Check Rust/Dioxus web UI`: `view` precisava permanecer mutável dentro de `App` porque os controles usam `view.write()`. A correção restaura `let mut view`; o helper `chart_svg` mantém sua assinatura necessária para os handlers de interação. O mesmo run passou Rust, Python, backtests, equivalência do estimador e auditorias até o gate de compilação. O browser smoke do Chromium legado passou; o smoke Dioxus continuou em andamento. O commit de documentação foi construído a partir do head corrigido e a referência da branch foi avançada para `c266f5430195f2f814644d03024eccef97567558` antes da nova validação.
 
 ## 2026-09-25 02:21:00 -03:00 / 2026-09-25T05:21:00Z — Correção do gate Rust/Dioxus: CI #351 falhou somente no compilador web porque `App` mantinha a ligação `view` como mutável sem necessidade; a correção remove o `mut` sem alterar estado, renderização ou matemática. A promoção para `main` continua bloqueada até os gates completos passarem.
 
