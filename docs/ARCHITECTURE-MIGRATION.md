@@ -1,3 +1,9 @@
+## 2026-09-25 04:02:00 -03:00 / 2026-09-25T07:02:00Z — Dioxus wasm-opt and smoke-server correction
+
+- CI #376 failed at `wasm-opt` with `compile unit size was incorrect`; release wasm optimization now explicitly disables retained debug symbols in `rust/web-ui/Dioxus.toml`.
+- Browser smoke #49 failed because the Playwright config is located under `tests/e2e/`; the Python server now uses the correct repo-root-relative artifact path and verifies `index.html` before the test starts.
+- These are validation/infrastructure fixes only; application logic and poll/statistical calculations are unchanged.
+
 ## 2026-09-25 03:32:00 -03:00 / 2026-09-25T06:32:00Z — Pinned Dioxus CLI binary in CI/deploy
 
 - Dioxus 0.7 documentation recommends prebuilt CLI binaries and notes that source installation can take up to 10 minutes; the migration workflows now install the exact v0.7.10 Linux x86_64 release asset by URL plus SHA-256 verification.

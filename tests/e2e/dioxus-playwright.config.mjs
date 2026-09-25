@@ -17,7 +17,7 @@ export default defineConfig({
     { name: 'mobile-chromium', use: { ...devices['Pixel 5'] } },
   ],
   webServer: {
-    command: 'python -m http.server 4173 --directory .dioxus-smoke-server',
+    command: 'python -m http.server 4173 --directory ../../.dioxus-smoke-server',
     url: 'http://127.0.0.1:4173/pesquisas-eleitorais-br/',
     reuseExistingServer: false,
     timeout: 120_000,

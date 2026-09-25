@@ -97,6 +97,7 @@ jobs:
           mkdir -p ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data
           cp -a ../../public/data/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data/
           cp ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html ../../.dioxus-smoke-server/pesquisas-eleitorais-br/404.html
+          test -f ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html
       - name: Install Chromium
         run: npx --yes playwright@1.63.0 install --with-deps chromium
       - name: Install Playwright test runner

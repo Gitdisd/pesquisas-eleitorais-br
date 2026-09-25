@@ -9,3 +9,7 @@ base_path = "pesquisas-eleitorais-br"
 [web.watcher]
 watch_path = ["src", "assets"]
 reload_html = true
+
+[web.wasm_opt]
+debug = false
+level = "z"
