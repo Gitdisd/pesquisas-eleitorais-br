@@ -43,7 +43,7 @@ pub fn App() -> Element {
         pinch_last: None,
     });
 
-    let mut refresh_tick = use_signal(|| 0_u64);
+    let refresh_tick = use_signal(|| 0_u64);
     let _refresh_interval = use_hook(|| {
         let mut tick = refresh_tick;
         std::rc::Rc::new(Interval::new(60_000, move || {
@@ -370,7 +370,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
                 update_pointer(&mut state.pointer_b, id, x, y);
 
                 if let (Some(a), Some(b)) = (state.pointer_a, state.pointer_b) {
-                    let (distance, midpoint_x) = pinch_geometry(a, b).unwrap_or((0.0, (a.1 + b.1) / 2.0));
+                    let (distance, midpoint_x) = pinch_geometry(Some(a), Some(b)).unwrap_or((0.0, (a.1 + b.1) / 2.0));
                     if distance > 1.0 {
                         if let Some((last_distance, last_midpoint_x)) = state.pinch_last {
                             let old_zoom = state.zoom;
