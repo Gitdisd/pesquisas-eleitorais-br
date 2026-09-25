@@ -1,3 +1,10 @@
+## 2026-09-25 04:55:30 -03:00 / 2026-09-25T07:55:30Z — Methodology surface migration
+
+- Added `rust/web-ui/src/methodology.rs` and mounted `MethodologySection` in the Rust/Dioxus application.
+- Preserved the methodology text, model descriptions, examples and formulas; added an explicit `aria-labelledby` relationship to the section heading.
+- Ported the associated styling into the Rust/Dioxus stylesheet.
+- Legacy `src/methodology.js` and `src/methodology.css` remain protected and are not deleted by this slice.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
@@ -103,7 +110,7 @@ Not yet migrated in this slice:
 - advanced models 3–12 are now in the shared Rust core with deterministic regression coverage; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
 - custom range slider;
-- full methodology/diagnostic panels;
+- regional/methodology/diagnostic surfaces; methodology text is now rendered by Rust/Dioxus while the regional and diagnostic surfaces remain separate;
 - complete accessibility and mobile regression suite.
 
 These are tracked migration work, not deleted functionality.
