@@ -1,3 +1,10 @@
+## 2026-09-25 04:55:30 -03:00 / 2026-09-25T07:55:30Z — Methodology surface migration
+
+- Added `rust/web-ui/src/methodology.rs` and mounted `MethodologySection` in the Rust/Dioxus application.
+- Preserved the methodology text, model descriptions, examples and formulas; added an explicit `aria-labelledby` relationship to the section heading.
+- Ported the associated styling into the Rust/Dioxus stylesheet.
+- Legacy `src/methodology.js` and `src/methodology.css` remain protected and are not deleted by this slice.
+
 ## 2026-09-25 04:32:30 -03:00 / 2026-09-25T07:32:30Z — Trigger final pre-cutover validation
 
 - Migration head before trigger: `2c89712afe8feea3f9adf908968d5ba190956d96`.
