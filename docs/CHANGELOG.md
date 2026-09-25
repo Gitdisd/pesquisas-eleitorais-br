@@ -1,3 +1,13 @@
+## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus bundle cutover gate configured
+
+- Added native SVG navigation regression coverage: bounded wheel zoom, pointer pan and two-pointer pinch math.
+- Added a dedicated desktop/mobile Dioxus Playwright smoke suite; the legacy ECharts browser suite remains unchanged for reference validation.
+- Changed the GitHub Pages workflow so the deploy artifact is built from rust/web-ui with Dioxus CLI 0.7.10, while the legacy Vite build remains a compatibility check only.
+- Added a pinned Dioxus bundle gate to CI and removed the temporary compiler-diagnostic workflow used while resolving the Dioxus compile failures.
+- Progressive research verified the current Dioxus 0.7.10 pointer, wheel and GitHub Pages APIs before these changes.
+- Production has not been cut over yet; the branch must clear current CI and browser gates before PR #40 is merged.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/assets/style.css, .github/workflows/ci.yml, .github/workflows/browser-smoke.yml, .github/workflows/deploy-pages.yml, tests/e2e/dioxus-playwright.config.mjs, tests/e2e/dioxus-site.spec.mjs.
+
 # Changelog
 
 ## 2026-09-24T13:36:00-03:00 / 2026-09-24T16:36:00Z — Dioxus custom SVG hover inspection
