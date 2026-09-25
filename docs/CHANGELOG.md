@@ -1,3 +1,5 @@
+## 2026-09-25 02:21:00 -03:00 / 2026-09-25T05:21:00Z — Correção do gate Rust/Dioxus: CI #351 falhou somente no compilador web porque `App` mantinha a ligação `view` como mutável sem necessidade; a correção remove o `mut` sem alterar estado, renderização ou matemática. A promoção para `main` continua bloqueada até os gates completos passarem.
+
 ## 2026-09-25 02:41:00 -03:00 / 2026-09-25T05:41:00Z — Browser gate isolation correction
 
 - Browser smoke #39 exposed a test-discovery collision: the legacy Playwright configuration was matching the new Dioxus spec, causing those tests to run against the Vite preview server.
