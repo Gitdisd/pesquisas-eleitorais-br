@@ -1,3 +1,7 @@
+## 2026-09-25 03:34:30 -03:00 / 2026-09-25T06:34:30Z — Validation trigger for pinned Dioxus binary
+
+- Migration branch advanced to `b4697445aa56a24f168d7bb2b4b338e6334c0855`; this documentation commit intentionally triggers fresh CI/browser runs so the new install path is validated on the exact head.
+
 ## 2026-09-25 03:32:00 -03:00 / 2026-09-25T06:32:00Z — Pinned Dioxus CLI binary in CI/deploy
 
 - Dioxus 0.7 documentation recommends prebuilt CLI binaries and notes that source installation can take up to 10 minutes; the migration workflows now install the exact v0.7.10 Linux x86_64 release asset by URL plus SHA-256 verification.
