@@ -108,8 +108,9 @@ p { margin: .35rem 0; }
   width: 100%;
   height: auto;
   display: block;
-  touch-action: pan-y;
+  touch-action: none;
   user-select: none;
+  cursor: crosshair;
 }
 
 .grid-line {
@@ -150,6 +151,39 @@ p { margin: .35rem 0; }
 
 .projection-status {
   margin-top: .6rem;
+}
+
+.hover-crosshair {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: .8;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+
+.hover-tooltip {
+  fill: var(--surface-2);
+  stroke: var(--border);
+  opacity: .97;
+  pointer-events: none;
+}
+
+.hover-tooltip-text {
+  fill: var(--text);
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.chart-navigation {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-top: .6rem;
+}
+
+.chart-navigation button {
+  min-height: 34px;
 }
 
 .series-line {
