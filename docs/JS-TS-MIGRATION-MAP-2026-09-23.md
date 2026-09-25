@@ -1,3 +1,10 @@
+## 2026-09-25 04:55:30 -03:00 / 2026-09-25T07:55:30Z — Methodology surface migration
+
+- Added `rust/web-ui/src/methodology.rs` and mounted `MethodologySection` in the Rust/Dioxus application.
+- Preserved the methodology text, model descriptions, examples and formulas; added an explicit `aria-labelledby` relationship to the section heading.
+- Ported the associated styling into the Rust/Dioxus stylesheet.
+- Legacy `src/methodology.js` and `src/methodology.css` remain protected and are not deleted by this slice.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
@@ -84,7 +91,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/ui-refresh.js` | dashboard refresh layer | Dioxus components | not migrated |
 | `src/ui-next.js` | share URLs and CSV/JSON export | Rust/Dioxus export layer | not migrated |
 | `src/ui-upgrades.js` | UI enhancement hooks | Dioxus components | not migrated |
-| `src/methodology.js` | methodology/diagnostic UI | Dioxus components | not migrated |
+| `src/methodology.js` | methodology/diagnostic UI | `rust/web-ui/src/methodology.rs` | migrated in parallel; legacy protected |
 | `src/echarts-runtime.js` | ECharts runtime loading | removed from final architecture | protected until last caller disappears |
 | `src/e2e-hooks.js` | browser smoke hooks | Dioxus/browser test instrumentation | not migrated |
 | `vite.config.js` | Vite production build | Dioxus/static build | protected until cutover |
