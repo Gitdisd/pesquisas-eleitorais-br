@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-25T13:40:39.856Z",
+  "ran_at": "2026-09-25T18:31:03.691Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 414,
+  "candidate_links": 418,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 57,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-25T13:40:24.354Z"
+      "found_at": "2026-09-25T18:30:50.449Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-numero-da-urna-presidente.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-25T13:40:24.654Z"
+      "found_at": "2026-09-25T18:30:50.726Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-25T13:40:24.736Z"
+      "found_at": "2026-09-25T18:30:50.747Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-2/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-25T13:40:24.783Z"
+      "found_at": "2026-09-25T18:30:50.760Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-presidente-setembro-2026/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Alfa Inteligência",
       "published_date": null,
-      "found_at": "2026-09-25T13:40:24.882Z"
+      "found_at": "2026-09-25T18:30:50.774Z"
     }
   ],
-  "meta_last_check_at": "2026-09-25T13:40:39.858Z"
+  "meta_last_check_at": "2026-09-25T18:31:03.692Z"
 }
