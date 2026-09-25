@@ -99,14 +99,16 @@ p { margin: .35rem 0; }
 
 .chart-wrap {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-radius: 10px;
   background: #0d1117;
 }
 
 .chart {
-  width: 100%;
-  height: auto;
+  width: 1100px;
+  max-width: none;
+  height: 470px;
   display: block;
   touch-action: none;
   user-select: none;
@@ -248,6 +250,6 @@ td.num, th.num { text-align: right; }
 @media (max-width: 700px) {
   .app { padding: .75rem; }
   header { flex-direction: column; }
-  .chart { min-height: 300px; }
+  .chart { min-height: 0; }
   th, td { padding: .45rem .35rem; }
 }
