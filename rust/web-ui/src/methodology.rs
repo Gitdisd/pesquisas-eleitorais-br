@@ -6,7 +6,8 @@ pub fn MethodologySection() -> Element {
         section {
             class: "panel metodologia",
             id: "metodologia",
-            h2 { "Como este site funciona (explicação simples)" }
+            aria_labelledby: "metodologia-titulo",
+            h2 { id: "metodologia-titulo", "Como este site funciona (explicação simples)" }
             p {
                 class: "meto-lead",
                 "Pense em vários amigos medindo a altura da mesma árvore. Cada um usa uma fita diferente. A gente não escolhe o amigo mais alto de voz. A gente junta as medidas."

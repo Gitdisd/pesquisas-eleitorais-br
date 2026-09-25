@@ -1,3 +1,8 @@
+## 2026-09-25 04:46:00 -03:00 / 2026-09-25T07:46:00Z — Methodology accessibility refactor
+
+- Added an explicit `aria-labelledby` relationship between the migrated methodology section and its heading in the Rust/Dioxus component.
+- This keeps the methodology migration behavior unchanged while improving semantic identification for assistive technology and triggering the browser path-filtered validation.
+
 ## 2026-09-25 04:39:00 -03:00 / 2026-09-25T07:39:00Z — Trigger methodology rebased validation
 
 - PR #41 is rebased onto production `main` merge `5d4283f59d7e27ceafbcdbfac552b12a195bac4c`; its diff now contains only the methodology component surface and its documentation/style wiring.
