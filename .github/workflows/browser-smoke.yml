@@ -11,6 +11,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - "tests/e2e/**"
+      - "rust/web-ui/**"
       - ".github/workflows/browser-smoke.yml"
   push:
     branches: [main]
@@ -21,6 +22,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - "tests/e2e/**"
+      - "rust/web-ui/**"
       - ".github/workflows/browser-smoke.yml"
   workflow_dispatch:
 
@@ -55,5 +57,52 @@ jobs:
       - run: npx --yes playwright@1.63.0 install --with-deps chromium
       - run: npm install --no-save --package-lock=false @playwright/test@1.63.0
       - run: npx playwright test --config=tests/e2e/playwright.config.mjs
+
+  dioxus:
+    name: dioxus-chromium
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - run: rustup target add wasm32-unknown-unknown
+      - name: Install pinned Dioxus CLI binary
+        run: |
+          set -euo pipefail
+          DX_DIR="$HOME/.local/bin"
+          TMP_DIR="$(mktemp -d)"
+          mkdir -p "$DX_DIR"
+          curl -fsSL "https://github.com/DioxusLabs/dioxus/releases/download/v0.7.10/dx-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/dx.tar.gz"
+          echo "4363e4ed2a3f1eb7f4d38d2d59aed59ce43271c44c16b425e92c89a64761fbe7  $TMP_DIR/dx.tar.gz" | sha256sum -c -
+          tar -xzf "$TMP_DIR/dx.tar.gz" -C "$TMP_DIR"
+          test -f "$TMP_DIR/dx"
+          install -m 0755 "$TMP_DIR/dx" "$DX_DIR/dx"
+          echo "$DX_DIR" >> "$GITHUB_PATH"
+          "$DX_DIR/dx" --version
+      - run: npm ci
+      - name: Build Rust/Dioxus test site
+        working-directory: rust/web-ui
+        run: |
+          set -euo pipefail
+          rm -rf ../../dioxus-smoke-pages ../../.dioxus-smoke-server
+          dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-smoke-pages
+          DX_PUBLIC="$(find ../../dioxus-smoke-pages -type d -name public -print -quit)"
+          test -n "$DX_PUBLIC"
+          mkdir -p ../../.dioxus-smoke-server/pesquisas-eleitorais-br
+          cp -a "$DX_PUBLIC"/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/
+          mkdir -p ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data
+          cp -a ../../public/data/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data/
+          cp ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html ../../.dioxus-smoke-server/pesquisas-eleitorais-br/404.html
+          test -f ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html
+      - name: Install Chromium
+        run: npx --yes playwright@1.63.0 install --with-deps chromium
+      - name: Install Playwright test runner
+        run: npm install --no-save --package-lock=false @playwright/test@1.63.0
+      - name: Run Dioxus browser smoke
+        run: npx playwright test --config=tests/e2e/dioxus-playwright.config.mjs
 
 # Trigger current browser regression revision

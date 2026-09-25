@@ -5,6 +5,8 @@ Repo: gitdisd/pesquisas-eleitorais-br · branch `main` · Pages via workflow `de
 
 ## Front
 
+O front listado em `src/` é a implementação de produção intermediária. A migração final está sendo construída em paralelo em `rust/web-ui/`; não remover módulos antigos até que a substituição passe os gates documentados em `docs/UI-MIGRATION-2026-09-23.md`.
+
 | Arquivo | Função |
 |---|---|
 | `src/main.js` | Boot, national data store, cards, table, controls, automatic refresh |
@@ -20,6 +22,7 @@ Repo: gitdisd/pesquisas-eleitorais-br · branch `main` · Pages via workflow `de
 | `public/data/polls.json` | Published canonical national base |
 | `public/data/polls-extra.json` | Manual/supplemental values |
 | `public/data/meta.json` | Publication clocks, count, hash and successful-pipeline timestamp |
+| `rust/web-ui/` | Replacement Rust/Dioxus web application under migration; not yet deployed |
 
 The browser uses `window.__pebr` as the shared national snapshot. UI modules do not independently refetch the national JSON.
 
@@ -69,7 +72,7 @@ After a successful refresh that changes data, `refresh-polls.yml` commits the re
 - Sample-size influence is capped at N=4,000 before square-root weighting.
 - Aggregate uncertainty is an estimated 90% range, not a survey MOE or election forecast.
 - Multi-geo regional views do not display a blended mean.
-- Existing TradingView-style pan/zoom/pinch/resize behavior must survive data refresh; ECharts is updated in place rather than destroying/recreating it.
+- Existing TradingView-style pan/zoom/pinch/resize behavior must survive the migration; the current implementation uses ECharts only as an intermediate reference.
 - Share URLs preserve round/range/window/model/institute filters.
 - JSON/CSV exports reflect the current filtered view.
 
@@ -81,7 +84,11 @@ After a successful refresh that changes data, `refresh-polls.yml` commits the re
 
 ## Runtime architecture
 
-The public site is a static Vite application. There is no conventional long-running server backend; the effective backend/data-processing layer is GitHub Actions plus the Node/Python/Rust/WASM pipeline. The browser consumes published JSON and the generated WASM package.
+**Current production:** static Vite application with hand-authored JavaScript/TypeScript and ECharts.
+
+**Migration target:** static Rust/Dioxus web application compiled to WebAssembly, with custom SVG charting and the same published JSON/data pipeline. There is no conventional long-running server backend; the effective backend/data-processing layer remains GitHub Actions plus the Node/Python/Rust pipeline during migration.
+
+The Dioxus replacement is intentionally not deployed yet. The existing production path remains the live reference until browser, numerical parity, accessibility, build and Pages gates pass.
 
 ## Backward-compatibility / maintenance
 

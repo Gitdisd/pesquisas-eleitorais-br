@@ -4,6 +4,27 @@ use serde::{Deserialize, Serialize};
 pub const N_REF: f64 = 2000.0;
 pub const MIN_SAMPLE: f64 = 100.0;
 pub const MAX_SAMPLE: f64 = 4000.0;
+pub const DAY_MS: f64 = 86_400_000.0;
+
+mod aggregation;
+mod house_effects;
+mod projection;
+mod projection_v2;
+mod advanced_models;
+mod candidates;
+mod identity;
+
+pub use aggregation::{weighted_trend_v1, weighted_trend_v2, SeriesPoint};
+pub use house_effects::estimate_house_effects;
+pub use projection::{project_trend, ProjectPoint, ProjectionResult, ELECTION_ROUND1_MS, ELECTION_ROUND2_MS};
+pub use projection_v2::{holdout_gate, process_sd_for, project_trend_v2, HoldoutGateResult, ProjectionV2Result};
+pub use advanced_models::{average_trend_advanced, dl_tau2, school_center_trend, weighted_trend_v3, weighted_trend_v4, weighted_trend_v5, weighted_trend_v6, weighted_trend_v7, weighted_trend_v8, weighted_trend_v9, weighted_trend_v10, weighted_trend_v11, weighted_trend_v12, SchoolKind};
+pub use candidates::{candidate_key, is_first_round, is_second_round, Candidate};
+pub use identity::{
+    canonical_poll_key, coverage_dates, fallback_poll_key, identity_match_keys,
+    identity_description, normalize_geo, normalize_identity_text, normalize_institute, normalize_protocol,
+    IdentityFields, tse_protocol_of,
+};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PollObservation {
@@ -48,6 +69,84 @@ pub fn poll_weight(point: &PollObservation, t: f64, half_life_days: f64, flood_c
     PollWeight { total: sample * recency / flood, sample, recency, flood }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct UncertaintyPoint {
+    pub x: f64,
+    pub low: f64,
+    pub high: f64,
+    pub se: f64,
+}
+
+/// Estimated 90% aggregate uncertainty band matching the production formula.
+/// This is not a survey margin of error and does not assert calibrated coverage.
+pub fn uncertainty_band(points: &[PollObservation], window_days: f64, z: f64) -> Vec<UncertaintyPoint> {
+    if points.is_empty() {
+        return Vec::new();
+    }
+    let mut sorted: Vec<&PollObservation> = points
+        .iter()
+        .filter(|p| p.t.is_finite() && p.y.is_finite())
+        .collect();
+    sorted.sort_by(|a, b| a.t.total_cmp(&b.t));
+    if sorted.is_empty() {
+        return Vec::new();
+    }
+
+    let requested = if window_days.is_finite() && window_days != 0.0 { window_days } else { 14.0 };
+    let half = requested.max(1.0);
+    let reach = half * 2.5;
+    let min_band = 0.75_f64;
+    let t_min = sorted[0].t;
+    let t_max = sorted[sorted.len() - 1].t;
+    let mut out = Vec::new();
+    let mut t = t_min;
+
+    while t <= t_max {
+        let mut bag: Vec<(f64, f64, Option<f64>)> = Vec::new();
+        let mut nearest = f64::INFINITY;
+        for point in &sorted {
+            let days = (t - point.t).abs() / DAY_MS;
+            if days < nearest { nearest = days; }
+            if days > reach { continue; }
+            let weight = poll_weight(point, t, half, 1.0).total;
+            let se = match point.moe {
+                Some(moe) if moe.is_finite() && moe > 0.0 => Some((moe / 1.96).max(0.4)),
+                _ => None,
+            };
+            bag.push((point.y, weight, se));
+        }
+        if nearest > half || bag.is_empty() {
+            t += DAY_MS;
+            continue;
+        }
+        let den: f64 = bag.iter().map(|(_, w, _)| *w).sum();
+        if !(den > 0.0) {
+            t += DAY_MS;
+            continue;
+        }
+        let mu = bag.iter().map(|(y, w, _)| w * y).sum::<f64>() / den;
+        let sum_w2 = bag.iter().map(|(_, w, _)| w * w).sum::<f64>();
+        let n_eff = (den * den) / sum_w2.max(1e-9);
+        let between_var = bag.iter().map(|(y, w, _)| w * (y - mu).powi(2)).sum::<f64>() / den;
+        let measurement_var = bag.iter()
+            .map(|(_, w, se)| w * w * se.unwrap_or(0.0).powi(2))
+            .sum::<f64>() / (den * den).max(1e-9);
+        let se_value = min_band.max((between_var / n_eff + measurement_var).max(0.0).sqrt());
+        let band = min_band.max(z * se_value);
+        let center = (mu * 100.0).round() / 100.0;
+        let low = (center - band).max(0.0).min(100.0);
+        let high = (center + band).max(0.0).min(100.0);
+        out.push(UncertaintyPoint {
+            x: t,
+            low: (low * 100.0).round() / 100.0,
+            high: (high * 100.0).round() / 100.0,
+            se: (se_value * 1000.0).round() / 1000.0,
+        });
+        t += DAY_MS;
+    }
+    out
+}
+
 #[wasm_bindgen]
 pub fn weighted_estimate(observations: JsValue, date: f64, candidate: String, half_life_days: f64) -> Result<JsValue, JsValue> {
     let rows: Vec<PollObservation> = serde_wasm_bindgen::from_value(observations)
@@ -86,6 +185,35 @@ pub fn weighted_mean(observations: JsValue, t: f64, half_life_days: f64) -> Resu
         den += w;
     }
     Ok(if den > 0.0 { num / den } else { f64::NAN })
+}
+
+#[wasm_bindgen]
+pub fn advanced_trend(observations: JsValue, window_days: f64, model: u8) -> Result<JsValue, JsValue> {
+    let rows: Vec<PollObservation> = serde_wasm_bindgen::from_value(observations)
+        .map_err(|e| JsValue::from_str(&e.to_string()))?;
+    let result = average_trend_advanced(&rows, window_days, model);
+    serde_wasm_bindgen::to_value(&result).map_err(|e| JsValue::from_str(&e.to_string()))
+}
+
+#[derive(Debug, Deserialize)]
+struct ProjectionV2WasmInput {
+    observations: Vec<PollObservation>,
+    fit_days: f64,
+    horizon_days: u32,
+    election_day_ms: Option<f64>,
+}
+
+#[wasm_bindgen]
+pub fn project_trend_v2_wasm(input: JsValue) -> Result<JsValue, JsValue> {
+    let input: ProjectionV2WasmInput = serde_wasm_bindgen::from_value(input)
+        .map_err(|e| JsValue::from_str(&e.to_string()))?;
+    let result = project_trend_v2(
+        &input.observations,
+        input.fit_days,
+        input.horizon_days,
+        input.election_day_ms,
+    );
+    serde_wasm_bindgen::to_value(&result).map_err(|e| JsValue::from_str(&e.to_string()))
 }
 
 #[cfg(test)]

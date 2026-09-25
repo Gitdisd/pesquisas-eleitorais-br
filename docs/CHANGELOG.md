@@ -1,4 +1,412 @@
+## 2026-09-25 04:32:30 -03:00 / 2026-09-25T07:32:30Z — Trigger final pre-cutover validation
+
+- Migration head before trigger: `2c89712afe8feea3f9adf908968d5ba190956d96`.
+- Contents-API commit intentionally triggers fresh PR Actions for the corrected Dioxus bundle-artifact assertions. No application/statistical behavior changes.
+
+## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
+
+- CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
+- Dioxus 0.7 release web assets are registered under `public/assets`; the validation now checks that directory and verifies that at least one `.wasm` file exists there. The Pages workflow received the same correction.
+- Native Dioxus and legacy Chromium browser smoke both passed on the preceding exact head. This commit contains no application/statistical changes.
+
+## 2026-09-25 04:13:30 -03:00 / 2026-09-25T07:13:30Z — Trigger validation for SVG smoke/bundle fixes
+
+- Current migration head before this trigger: `c8e0dab1f46015e47cc2c0e0f5d59f3e6c6c8617`.
+- This commit intentionally triggers pull-request Actions through the repository Contents API; no application behavior changes beyond the preceding bundle/smoke fixes.
+
+## 2026-09-25 04:12:00 -03:00 / 2026-09-25T07:12:00Z — Harden Dioxus release bundle and native SVG hover smoke
+
+- Dioxus v0.7 documents `--debug-symbols` for release bundles; CI, browser smoke and Pages deployment now pass `--debug-symbols false` explicitly, because the prior config-only setting still allowed the bundled Binaryen `wasm-opt` path to abort on DWARF metadata. citeturn766812search1turn524014search0
+- Native SVG hover smoke now verifies that the crosshair `<line>` exists and has matching X coordinates instead of requiring Playwright to classify a zero-width SVG line as CSS-visible. Tooltip visibility remains asserted.
+- The application interaction behavior is unchanged.
+
+## 2026-09-25 04:05:30 -03:00 / 2026-09-25T07:05:30Z — Trigger fresh post-fix validation
+
+- Branch head is `d7d783322178fd054e26fc30f21cb1ec0c88a3a1`; this documentation-only commit triggers new CI and browser smoke runs against the corrected bundle/smoke-server configuration.
+
+## 2026-09-25 04:02:00 -03:00 / 2026-09-25T07:02:00Z — Dioxus wasm-opt and smoke-server correction
+
+- CI #376 failed at `wasm-opt` with `compile unit size was incorrect`; release wasm optimization now explicitly disables retained debug symbols in `rust/web-ui/Dioxus.toml`.
+- Browser smoke #49 failed because the Playwright config is located under `tests/e2e/`; the Python server now uses the correct repo-root-relative artifact path and verifies `index.html` before the test starts.
+- These are validation/infrastructure fixes only; application logic and poll/statistical calculations are unchanged.
+
+## 2026-09-25 03:34:30 -03:00 / 2026-09-25T06:34:30Z — Validation trigger for pinned Dioxus binary
+
+- Migration branch advanced to `b4697445aa56a24f168d7bb2b4b338e6334c0855`; this documentation commit intentionally triggers fresh CI/browser runs so the new install path is validated on the exact head.
+
+## 2026-09-25 03:32:00 -03:00 / 2026-09-25T06:32:00Z — Pinned Dioxus CLI binary in CI/deploy
+
+- Dioxus 0.7 documentation recommends prebuilt CLI binaries and notes that source installation can take up to 10 minutes; the migration workflows now install the exact v0.7.10 Linux x86_64 release asset by URL plus SHA-256 verification.
+- Updated CI, browser smoke and Pages deployment workflows without changing application code or statistical behavior.
+- This change is intended to remove the repeated source-build bottleneck from migration validation while keeping the CLI version deterministic.
+
+## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — Correção de ownership no app Rust/Dioxus
+
+- CI #370 **falhou** no gate `Check Rust/Dioxus web UI`: `view` precisava permanecer mutável dentro de `App` porque os controles usam `view.write()`. A correção restaura `let mut view`; o helper `chart_svg` mantém sua assinatura necessária para os handlers de interação. O mesmo run passou Rust, Python, backtests, equivalência do estimador e auditorias até o gate de compilação. O browser smoke do Chromium legado passou; o smoke Dioxus continuou em andamento. O commit de documentação foi construído a partir do head corrigido e a referência da branch foi avançada para `c266f5430195f2f814644d03024eccef97567558` antes da nova validação.
+
+## 2026-09-25 02:21:00 -03:00 / 2026-09-25T05:21:00Z — Correção do gate Rust/Dioxus: CI #351 falhou somente no compilador web porque `App` mantinha a ligação `view` como mutável sem necessidade; a correção remove o `mut` sem alterar estado, renderização ou matemática. A promoção para `main` continua bloqueada até os gates completos passarem.
+
+## 2026-09-25 02:41:00 -03:00 / 2026-09-25T05:41:00Z — Browser gate isolation correction
+
+- Browser smoke #39 exposed a test-discovery collision: the legacy Playwright configuration was matching the new Dioxus spec, causing those tests to run against the Vite preview server.
+- Narrowed the legacy configuration to `site.spec.mjs`; the Dioxus suite remains in its dedicated configuration and job.
+- The legacy five-test suite completed successfully before the collision failures; no application or statistical behavior changed.
+- The next browser run must validate both suites independently before merge.
+
+## 2026-09-25 02:37:31 -03:00 / 2026-09-25T05:37:31Z — CI #364 compile corrections
+
+- CI #364 reached the Rust/Dioxus web compile gate and identified two concrete mechanical errors in the new navigation slice: an unused mutable refresh signal binding and an Option<tuple>/tuple mismatch in the pinch helper call.
+- Corrected both without changing the statistical formulas, chart geometry, data contract or production data.
+- The failed CI result is retained as the validation record; the corrected branch requires a new clean CI/browser run before merge.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
+## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus bundle cutover gate configured
+
+- Added native SVG navigation regression coverage: bounded wheel zoom, pointer pan and two-pointer pinch math.
+- Added a dedicated desktop/mobile Dioxus Playwright smoke suite; the legacy ECharts browser suite remains unchanged for reference validation.
+- Changed the GitHub Pages workflow so the deploy artifact is built from rust/web-ui with Dioxus CLI 0.7.10, while the legacy Vite build remains a compatibility check only.
+- Added a pinned Dioxus bundle gate to CI and removed the temporary compiler-diagnostic workflow used while resolving the Dioxus compile failures.
+- Progressive research verified the current Dioxus 0.7.10 pointer, wheel and GitHub Pages APIs before these changes.
+- Production has not been cut over yet; the branch must clear current CI and browser gates before PR #40 is merged.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/assets/style.css, .github/workflows/ci.yml, .github/workflows/browser-smoke.yml, .github/workflows/deploy-pages.yml, tests/e2e/dioxus-playwright.config.mjs, tests/e2e/dioxus-site.spec.mjs.
+
 # Changelog
+
+## 2026-09-24T13:36:00-03:00 / 2026-09-24T16:36:00Z — Dioxus custom SVG hover inspection
+
+- Added chart hover state and a native Dioxus SVG crosshair using element-relative mouse coordinates.
+- Added a nearest-poll inspection tooltip showing fieldwork date, value and institute without adding a chart library.
+- Kept zoom, pan, pinch and range-navigation behavior separate for the next interaction slice.
+- Progressive research: verified Dioxus 0.7 mouse event and element-coordinate APIs before implementation.
+- Files: `rust/web-ui/src/app.rs`, `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`.
+
+# Changelog
+
+## 2026-09-24T13:34:00-03:00 / 2026-09-24T16:34:00Z — CI #348 web-UI import correction
+
+- CI #348 passed all statistical/data/WASM setup gates but failed at the Rust/Dioxus UI compile gate because `projection_v2_for_round` was not imported into `app.rs`.
+- Added the missing module import only; no behavior or production path changed.
+- Progressive research confirmed Dioxus 0.7 event-handler APIs and element-relative mouse coordinates for the next interaction slice.
+
+# Changelog
+
+## 2026-09-24T15:09:57Z / 2026-09-24 12:09:57 -03:00 — CI #346 projection serialization correction
+
+- CI #346 failed at the Rust unit-test gate before WASM build/parity because `ProjectionV2Result` serializes vectors of the shared `ProjectPoint` type, while that type lacked `serde::Serialize`.
+- Added the required `Serialize` derive to `rust/polling-core/src/projection.rs`; no projection formula or production path changed.
+- Preserved the projection-v2 parity/UI work and did not delete any legacy browser module.
+- Files: `rust/polling-core/src/projection.rs`, `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`, `docs/CHANGELOG.md`.
+
+# Changelog
+
+## 2026-09-24T15:08:02Z / 2026-09-24 12:08:02 -03:00 — Projection-v2 migration record synchronized
+
+- Recorded the projection-v2 WASM parity boundary and Dioxus model-2 SVG surface in the authoritative architecture/migration documentation.
+- CI #346 is running against head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; validation status is intentionally recorded as in progress rather than assumed successful.
+- No legacy browser module was deleted and production remains on the existing path.
+- Files: `docs/ARCHITECTURE-MIGRATION.md`, `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`, `docs/CHANGELOG.md`.
+
+# Changelog
+
+## 2026-09-24T15:07:43Z / 2026-09-24 12:07:43 -03:00 — Dioxus model-2 projection-v2 surface
+
+- Wired the parallel Rust/Dioxus model-2 chart to the shared Rust projection-v2 core.
+- Added a future projection band, dashed model line, observed/projection divider and holdout status while keeping the observed series and aggregate uncertainty rendering intact.
+- Added Rust chart regression coverage for model-2 projection wiring and the election-horizon behavior.
+- The legacy ECharts production caller remains protected; this is a parallel UI implementation only.
+- Progressive research: verified current Dioxus 0.7 inline SVG support before extending the custom chart surface.
+- Files: `rust/web-ui/src/chart.rs`, `rust/web-ui/src/app.rs`, `rust/web-ui/assets/style.css`.
+
+# Changelog
+
+## 2026-09-24T15:09:44Z / 2026-09-24 12:09:44 -03:00 — Projection-v2 WASM boundary + parity gate
+
+- Added a typed Rust/WASM boundary for the already-migrated Rust projection-v2 core.
+- Extended the existing parity script to compare the legacy `projectTrendV2` result with Rust line/bands, holdout metrics, slope, RMSE and horizon on a deterministic fixture.
+- No production UI or deployment path changed in this commit; the legacy JavaScript projection remains the reference until the new parity gate passes.
+- Progressive research before implementation: verified the current `serde-wasm-bindgen` 0.6.5 native Serde↔JavaScript conversion pattern.
+- Files: `rust/polling-core/src/projection_v2.rs`, `rust/polling-core/src/lib.rs`, `scripts/check-wasm-parity.mjs`.
+
+# Changelog
+
+## 2026-09-24 12:00:59 -03:00 / 2026-09-24T15:00:59Z — CI #342 refresh-gate correction
+
+- Recorded CI #342 as a failed validation against the PR merge ref; Rust tests, Python tests, rolling backtests, parity and source checks passed before the Rust/Dioxus web compile gate stopped the job.
+- CI #342 reported two compile errors introduced by the preceding refresh correction: `gloo_timers::callback::Interval` remained imported after its dependency was removed, and the `row.candidates` loop moved the vector before `identity_fields(&row)` borrowed the containing row.
+- Restored the existing `gloo-timers 0.4.0` dependency and changed the candidate loop to borrow the slice, preserving the 60-second refresh behavior and data transformation rules.
+- No production Vite/JavaScript/TypeScript path, statistical formula, chart geometry, deployment path or Apache ECharts path changed.
+- Files: `rust/web-ui/Cargo.toml`, `rust/web-ui/src/data.rs`.
+
+## 2026-09-23T22:28:14-03:00 / 2026-09-24T01:28:14Z — Dioxus refresh compile-gate correction
+
+- CI #341 exposed three compile-only continuity issues in the published+extra/refresh slice.
+- Re-exported IdentityFields and tse_protocol_of from the shared polling-core root so the Rust loader can consume the migrated identity API.
+- Restored the required id field in the affected Poll initializer.
+- Retained the non-cloneable gloo-timers::Interval inside a cloneable Rc when storing it with Dioxus use_hook, matching the framework hook contract without changing the 60-second refresh behavior.
+- No statistical formula, data merge rule, chart geometry, production Vite/JavaScript/TypeScript path or Apache ECharts path changed.
+- Files: rust/polling-core/src/lib.rs, rust/web-ui/src/data.rs, rust/web-ui/src/app.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23T22:23:17-03:00 / 2026-09-24T01:23:17Z — Rust published+extra merge and 60s refresh
+
+- Ported the production raw-data merge semantics into the parallel Rust loader: canonical TSE identity first, unique fallback matching only, candidate de-duplication, verified/source/methodology merge, geography normalization and earliest valid publication metadata.
+- The Rust loader now fetches both `public/data/polls.json` and `public/data/polls-extra.json`; the extra bundle remains soft-failing like production and both requests receive a refresh nonce.
+- Added a 60-second Dioxus refresh interval backed by `gloo-timers` and `use_resource`. Refreshing changes the data request nonce but does not rewrite candidate, round, range, geography or model signals.
+- Added deterministic tests for candidate de-duplication and canonical identity of a unique supplement.
+- Progressive research before implementation: verified the current Dioxus 0.7 resource/signal behavior and current `gloo-timers` 0.4 timer API.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/web-ui/Cargo.toml, rust/web-ui/src/data.rs, rust/web-ui/src/app.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T22:19:21-03:00 / 2026-09-24T01:19:21Z — Dioxus model dispatcher 1–12 + MOE preservation
+
+- Connected the parallel Rust/Dioxus chart to the shared Rust dispatcher for models 1–12 using the existing short labels: Exp, Casa, Meta, Kalman, Rápido, Dia, Local, Média, Peso, Mediana, Moda and Corta.
+- Preserved parsed poll margin-of-error values in the Rust `Poll` contract and forwarded them into `PollObservation`; this prevents models 3, 4 and 7 from silently losing production MOE inputs.
+- The integration follows the direct WASM↔production parity gate from CI #339; models 3–12 passed numerical parity before the Dioxus selector was expanded.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched. The migration UI remains non-production.
+- Files: rust/web-ui/src/data.rs, rust/web-ui/src/chart.rs, rust/web-ui/src/app.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T22:10:57-03:00 / 2026-09-24T01:10:57Z — Direct WASM parity gate for models 3–12
+
+- Exposed the migrated Rust advanced-model dispatcher through the WASM boundary and made `SeriesPoint` serializable for browser parity checks.
+- Extended `scripts/check-wasm-parity.mjs` to compare the production `averageTrendAdvanced` implementation against Rust/WASM for every model 3–12 on a deterministic fixture containing multiple institutes, sample sizes, MOEs and date gaps.
+- The existing canonical estimator parity check remains intact in the same gate.
+- This validates numerical output before advanced models are connected to the Dioxus UI; no production model selection, Vite path, JavaScript/TypeScript module, or Apache ECharts path was changed.
+- Files: rust/polling-core/src/aggregation.rs, rust/polling-core/src/lib.rs, scripts/check-wasm-parity.mjs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T22:07:26-03:00 / 2026-09-24T01:07:26Z — Advanced-model regression test correction
+
+- CI #337 found one incorrect expected value in the new Rust regression fixture: production model 8 performs a simple mean over institute-collapsed values, so 41 and 50 produce 45.5; model 9 remains the weighted 44.0 result.
+- Corrected that test expectation without changing the model implementation.
+- CI #337 also exposed that the preceding advanced-model commit's tree construction had reintroduced the older Dioxus chart imports; the chart import state from CI #336 is restored here.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/advanced_models.rs, rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T22:05:04-03:00 / 2026-09-24T01:05:04Z — Advanced models 3–12 moved into shared Rust core
+
+- Ported the production statistical implementations for models 3–12 from `src/models/advanced.ts` and `src/models/school.ts` into `rust/polling-core/src/advanced_models.rs`.
+- Preserved model-specific behavior: model 3 DerSimonian–Laird random-effects variance, model 4 house-effect-corrected forward/backward smoother, model 5 punch/recency weighting, model 6 institute de-duplication, model 7 local-linear tricube regression, and school-center reducers for models 8–12.
+- Added deterministic tests for poll standard-error semantics, random-effects variance capping, constant-series preservation, institute-collapse behavior and local-linear endpoint recovery.
+- The existing advanced-model rolling backtest remains the research reference; no model has been selected, promoted or substituted in production by this migration slice.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/advanced_models.rs, rust/polling-core/src/lib.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T22:01:46-03:00 / 2026-09-24T01:01:46Z — Dioxus chart import continuity correction
+
+- CI #335 reached the Rust/Dioxus WebAssembly compile stage and found that rust/web-ui/src/chart.rs was missing the Poll type import while still importing unused poll_weight.
+- Restored the required crate::data::Poll import and removed only the unused compatibility import.
+- No chart geometry, statistical formula, production path or published data changed.
+- The projection-v2 migration remains non-production and the old JS/TS/ECharts path remains protected.
+- Files: rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T21:59:15-03:00 / 2026-09-24T00:59:15Z — Projection-v2 core migrated with holdout gate
+
+- Ported the production projection-v2 process-noise selection, seven-day holdout gate, house-effect correction and final projection orchestration into the shared Rust core.
+- Preserved an important production detail: the debiased observations passed to weightedTrendV2 omit institute identity, so no second institute/day flood divisor is applied after house correction.
+- Added deterministic tests for process-noise thresholds, holdout-vs-persistence gating and model-2 result shape.
+- Audited the election-date constants against the production projection module and the current TSE calendar before this migration slice; the Rust values now use the same UTC markers as production.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched; the JavaScript projection-v2 module remains protected until its caller/UI and deployment gates are migrated.
+- Files: rust/polling-core/src/projection_v2.rs, rust/polling-core/src/lib.rs, rust/polling-core/src/aggregation.rs, docs/ARCHITECTURE-MIGRATION.md, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23T21:57:04-03:00 / 2026-09-24T00:57:04Z — Migration gate correction: identity fixture and projection dates
+
+- CI #333 exposed a Rust identity-parity test fixture that asserted behavior not present in the production `src/data/identity.js`; the fixture now uses the same documented exclusion pattern as production.
+- Audited the Rust projection election-day constants against the production `src/projection.js` and the current TSE calendar. Corrected the Rust constants to the production `12:00:00Z` markers for 4 October 2026 and 25 October 2026.
+- The TSE calendar confirms the 2026 first-round date as 4 October and the eventual second-round date as 25 October; the migration preserves the existing application's UTC marker rather than changing its projection convention.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/identity.rs, rust/polling-core/src/projection.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+## 2026-09-23 13:31:09 -03:00 / 2026-09-23T16:31:09Z — Poll identity parity completed in Rust core
+
+- Added Rust parity for the JavaScript identity module's methodology-note protocol recovery, including exclusion of explicitly separate products/waves and rejection of ambiguous multiple protocols.
+- Added the canonical identity-description formatter used to explain protocol-based versus fallback identity.
+- Added regression tests for note extraction, ambiguity handling and fallback description shape.
+- Added the `regex` dependency only to the Rust polling core for this parity slice.
+- The JavaScript identity module remains protected until its downstream production callers are migrated and deletion certification passes.
+- Files: rust/polling-core/Cargo.toml, rust/polling-core/src/identity.rs, rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:29:31 -03:00 / 2026-09-23T16:29:31Z — Rust UI model-2 import correction
+
+- CI #330 identified two concrete import issues in the model-2 integration: `Poll` was missing from `chart.rs`, while the obsolete `poll_weight` import remained.
+- Restored the `Poll` type import, added the model-2 wrapper when absent from the current head, and removed the stale import.
+- No statistical formula or production path was changed.
+- Updated the migration map and changelog for the observed CI failure.
+- Files: rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:27:51 -03:00 / 2026-09-23T16:27:51Z — Rust UI model-2 integration
+
+- Connected the new Rust/Dioxus UI to the migrated institute house-effect estimator and `weightedTrendV2` implementation.
+- Added a model selector with the existing model-1 canonical path and model-2 house-effect-corrected path.
+- Preserved the production model-2 sequence: estimate house effects, debias observations, then apply weightedTrendV2.
+- Updated the migration map to record that the migrated Rust functions now have an active replacement UI caller.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:26:31 -03:00 / 2026-09-23T16:26:31Z — Explicit staging lints for pending Rust migration APIs
+
+- CI #328 correctly stopped on three migration-stage `dead_code` lints: the newly ported `weighted_trend_v2` has no Rust UI caller yet, and the base projection election-date constants are not yet consumed by the replacement UI.
+- Marked only those specific pending APIs with `#[allow(dead_code)]`; no repository-wide warning suppression was added.
+- Recorded the failure in the migration map so the validation history remains chronological.
+- Production remains unchanged.
+- Files: rust/polling-core/src/aggregation.rs, rust/polling-core/src/projection.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:25:11 -03:00 / 2026-09-23T16:25:11Z — Rust UI consumes migrated uncertainty band
+
+- Wired the Rust/Dioxus SVG chart to the shared Rust uncertainty-band primitive and renders the resulting bounds as an SVG polygon.
+- Preserved the current semantics: estimated aggregate uncertainty, not a survey margin of error and not calibrated coverage.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Updated the migration map and changelog together with the code change.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/assets/style.css, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:24:01 -03:00 / 2026-09-23T16:24:01Z — Rust uncertainty export correction
+
+- CI #325 identified an export wiring error introduced during the uncertainty migration: `uncertainty_band` and `UncertaintyPoint` were implemented in the shared core root but incorrectly reexported from `aggregation`.
+- Corrected only the public export path; the uncertainty implementation itself is unchanged.
+- Recorded CI #325's concrete failure in the migration map before the next validation.
+- Files: rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:23:00 -03:00 / 2026-09-23T16:23:00Z — WeightedTrendV2 escape correction before validation
+
+- Static inspection of the newly added Rust flood-index implementation found the separator encoded as a literal `\\u{0000}` rather than Rust's intended null-character escape.
+- Corrected the key separator before the CI gate so the Rust implementation matches the production key structure.
+- No production code path was changed or removed.
+- Updated the migration map to record this pre-validation correction.
+- Files: rust/polling-core/src/aggregation.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:22:09 -03:00 / 2026-09-23T16:22:09Z — WeightedTrendV2 moved into shared Rust core
+
+- Added the Rust equivalent of the production `weightedTrendV2`, including the same institute/day flood index, 2.5 × half-life reach, canonical poll weighting, nearest-point gate and two-decimal rounding.
+- Added a regression test proving the institute flood divisor changes relative institute influence while preserving the canonical weighting contract.
+- Updated the migration map; the JS model dispatcher remains protected until model-2 integration and numerical parity are completed.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/aggregation.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:21:20 -03:00 / 2026-09-23T16:21:20Z — Base projection math moved into shared Rust core
+
+- Added the Rust implementation of the existing base projection model: fit-window clamp, minimum-point gate, election-day horizon cap, bounded slope, damped extrapolation, RMSE calculation and expanding uncertainty band.
+- Preserved the existing production defaults and formulas; this is a computational replacement only, not a production model switch.
+- Added Rust tests for empty-series behavior, slope capping, current-point preservation and horizon length.
+- Updated the migration map. The JavaScript projection module remains protected because UI/copy integration and production cutover are still pending.
+- Files: rust/polling-core/src/projection.rs, rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:20:34 -03:00 / 2026-09-23T16:20:34Z — House-effect estimator moved into shared Rust core
+
+- Added the Rust equivalent of the existing institute house-effect estimator, preserving peer-window filtering, sample-size weighting, exclusion of same-institute peers, shrinkage and the ±0.05 dead-zone.
+- Added deterministic unit tests for missing-institute handling and the symmetric two-institute case.
+- The old JavaScript implementation remains active as a protected compatibility caller; no production cutover or deletion is authorized by this slice.
+- Updated the migration map and recorded this change in the changelog.
+- Files: rust/polling-core/src/house_effects.rs, rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 13:19:44 -03:00 / 2026-09-23T16:19:44Z — Aggregate uncertainty band moved into shared Rust core
+
+- Moved the existing production uncertainty-band formula into `rust/polling-core`, including sample/recency weights, 2.5 × half-life reach, measurement-SE fallback, between-poll variance, effective sample size, minimum band floor and two-decimal bounds.
+- Kept the result explicitly as an estimated aggregate uncertainty range; no calibrated-coverage claim or production interval-width change was introduced.
+- Updated the migration map to record uncertainty as migrated while model dispatch remains pending.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was removed or switched.
+- Files: rust/polling-core/src/lib.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 02:14:22 -03:00 / 2026-09-23T05:14:22Z — Shared Rust aggregation wrapper correction
+
+- CI #321 identified a structural refactor error in `rust/web-ui/src/chart.rs`: the old local `weighted_trend` implementation remained alongside the new shared-core wrapper, while required imports were dropped.
+- Removed the duplicate implementation and restored the explicit `poll_weight` import used only by the remaining tests.
+- Updated the migration map to preserve the CI failure chronology.
+- No production Vite/JavaScript/TypeScript/Apache ECharts path was changed or removed.
+- Files: rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 02:09:31 -03:00 / 2026-09-23T05:09:31Z — Dioxus warning-as-error cleanup
+
+- CI #319 reached the Rust/Dioxus WebAssembly crate and failed on three warnings promoted to errors by the repository `-D warnings` policy: unused migration-schema fields in `RawPoll`/`Poll` and the public `App` component's non-snake-case name.
+- Marked the intentionally forward-compatible migration data structs as allowed dead code until their pending UI fields are migrated, and explicitly allowed the Dioxus `App` component naming convention.
+- No runtime logic, statistical formula, production Vite/JavaScript/TypeScript/Apache ECharts path, or published data was changed.
+- Updated the migration map with the verified CI #319 failure state.
+- Files: rust/web-ui/src/data.rs, rust/web-ui/src/app.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 02:08:10 -03:00 / 2026-09-23T05:08:10Z — Canonical weighted trend moved into shared Rust core
+
+- Moved the production-equivalent `weightedTrendV1` daily aggregation primitive into `rust/polling-core`.
+- Preserved sample-size weighting, exponential recency weighting, 2.5 × half-life reach, nearest-observation gating and two-decimal rounding.
+- Changed the migration chart wrapper to adapt `Poll` rows into the shared Rust observation contract instead of reimplementing the aggregation loop locally.
+- Added a Rust regression fixture matching the existing migration fixture value; this is a replacement slice, not production cutover or JS/TS deletion authorization.
+- Updated the migration map to mark `src/aggregate.ts` as partially migrated.
+- Production remains unchanged; no Vite/JavaScript/TypeScript/Apache ECharts production path was removed or switched.
+- Files: rust/polling-core/src/aggregation.rs, rust/polling-core/src/lib.rs, rust/web-ui/src/chart.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 02:06:19 -03:00 / 2026-09-23T05:06:19Z — Dioxus point-coordinate precomputation correction
+
+- The prior CI #317 correction still evaluated chart-point coordinates inside the RSX loop expression.
+- Restored precomputation before `rsx!` and changed the SVG point loop to consume prepared tuples, satisfying the parser constraint without changing chart math.
+- Production remains unchanged; no Vite/JavaScript/TypeScript/Apache ECharts production path was removed or switched.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
+## 2026-09-23 02:05:19 -03:00 / 2026-09-23T05:05:19Z — Dioxus SVG point-loop compile correction
+
+- CI #317 failed the Dioxus WebAssembly compile gate on two concrete issues: an out-of-scope temporary and a `let` binding inside an RSX loop.
+- Removed the unused temporary, restored the chart geometry constants required by the SVG markup, and moved point coordinate calculation into the loop expression without a nested `let` binding.
+- Production remains unchanged; no Vite/JavaScript/TypeScript/Apache ECharts production path was removed or switched.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
+## 2026-09-23 01:58:12 -03:00 / 2026-09-23T04:58:12Z — Dioxus point-coordinate correction
+
+- CI #316 found the remaining RSX restriction: chart-point `let` bindings were still being performed inside the RSX loop.
+- Moved point coordinate calculation entirely outside RSX and reduced the chart import set to the symbols actually used.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
+## 2026-09-23 01:54:39 -03:00 / 2026-09-23T04:54:39Z — Migration validation record synchronized
+
+- Updated the browser migration map with the actual CI sequence through the current branch head `a03989e5188bb50774a6b3dd9e19fdadf8827666`.
+- Recorded that CI #315 is the current validation run; prior failures remain documented rather than overwritten.
+- Production remains unchanged and no JS/TS/ECharts removal has been certified.
+- Files: docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 01:53:46 -03:00 / 2026-09-23T04:53:46Z — Rust core test-attribute correction
+
+- Removed the duplicated `#[test]` attribute identified by CI #314 in the shared Rust core.
+- No application behavior or production JS/TS/ECharts path was changed.
+- Files: rust/polling-core/src/lib.rs, docs/CHANGELOG.md.
+
+## 2026-09-23 01:52:17 -03:00 / 2026-09-23T04:52:17Z — Dioxus RSX axis precomputation
+
+- Moved chart-axis arithmetic out of Dioxus RSX `for` blocks after CI #312 showed that inline arithmetic bindings are rejected by the RSX parser.
+- The SVG markup now iterates over precomputed Rust tick tuples, keeping the UI macro declarative while preserving the same chart coordinates and labels.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
+## 2026-09-23 01:47:23 -03:00 / 2026-09-23T04:47:23Z — Rust canonical data-contract slice
+
+- Moved candidate keys/aliases and round recognition into the shared Rust statistical core; the Dioxus loader now imports these primitives instead of carrying its own duplicate implementation.
+- Added the first shared Rust poll-identity contract for institute normalization, TSE protocol parsing, canonical/fallback keys, geography and coverage dates.
+- Kept identity migration explicitly partial: methodology-note protocol recovery still requires parity validation against the production JavaScript implementation before the old identity module can be retired.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/polling-core/src/lib.rs, rust/polling-core/src/candidates.rs, rust/polling-core/src/identity.rs, rust/web-ui/src/data.rs, docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 01:48:40 -03:00 / 2026-09-23T04:48:40Z — Dioxus RSX loop correction
+
+- Replaced unsupported `as f64` conversions inside Dioxus RSX loops with typed `u32` counters and `f64::from`.
+- This addresses the remaining compile error reported by CI #310.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, docs/CHANGELOG.md.
+
+## 2026-09-23 01:46:06 -03:00 / 2026-09-23T04:46:06Z — Browser JS/TS migration inventory
+
+- Mapped every currently tracked browser-side JavaScript/TypeScript module to its current responsibility, Rust/Dioxus destination and migration status.
+- Recorded deletion protection rules requiring execution-graph evidence and validated replacement behavior before any old module is removed.
+- Separated browser migration from Node-based acquisition/refresh/audit scripts, which remain protected under their own future migration decision.
+- Recorded the migration sequence from data contracts through production cutover and deletion certification.
+- Files: docs/JS-TS-MIGRATION-MAP-2026-09-23.md, docs/CHANGELOG.md.
+
+## 2026-09-23 01:44:52 -03:00 / 2026-09-23T04:44:52Z — Rust/Dioxus compile-gate correction
+
+- Fixed the first Rust/Dioxus scaffold compile errors revealed by CI #307: RSX nested-string parsing, numeric conversions inside RSX loops, the poll-row identifier format string, and an unused date-conversion variable.
+- No production Vite/JavaScript/TypeScript/ECharts path was changed or removed.
+- Files: rust/web-ui/src/app.rs, rust/web-ui/src/data.rs, docs/CHANGELOG.md.
+- Validation target: rerun the Rust/Dioxus WebAssembly compile gate before advancing the migration.
+
+## 2026-09-23 01:40:52 -03:00 / 2026-09-23T04:40:52Z — Rust UI canonicalization correction
+
+- Corrected the new Rust/SVG trend scaffold to use the same 2.5 × half-life reach rule as the canonical production weighting path.
+- Kept the initial Rust/Dioxus slice non-production; no live Vite/JS/TS/ECharts behavior was changed.
+- Files: rust/web-ui/src/chart.rs, rust/web-ui/src/app.rs.
+
+## 2026-09-23 01:35:01 -03:00 / 2026-09-23T04:35:01Z — Rust/Dioxus migration started
+
+- Reclassified the earlier Python + Rust/WASM + Apache ECharts implementation as an intermediate architecture; it is no longer the final UI target.
+- Adopted Rust + Dioxus 0.7.10 for the application/UI layer and custom Rust/SVG for chart rendering.
+- Added the first parallel Rust web application under rust/web-ui without removing or altering the production Vite/JS/TS/ECharts path.
+- The new slice loads the published poll dataset, normalizes candidate/round/geography fields, uses the shared Rust poll-weight primitive, renders a custom SVG trend, and exposes an inspection table.
+- Added an explicit no-authored-JS/TS target rule, deletion gates, and timestamp/change-log requirements in docs/UI-MIGRATION-2026-09-23.md and docs/ARCHITECTURE-MIGRATION.md.
+- Added CI validation for the Dioxus web crate; production deployment is intentionally unchanged until browser/parity/deployment gates pass.
+- Decision basis: Dioxus supports Rust/WASM web applications, DOM/SVG rendering, browser event handlers, and documented GitHub Pages static deployment.
 
 ## 2026-09-22 — Repository cleanup certification
 
