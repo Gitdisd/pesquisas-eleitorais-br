@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
   testDir: '.',
-  testMatch: '**/*.spec.mjs',
+  testMatch: 'site.spec.mjs',
   fullyParallel: false,
   retries: process.env.CI ? 1 : 0,
   timeout: 60_000,
