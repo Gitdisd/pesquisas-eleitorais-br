@@ -1,3 +1,8 @@
+## 2026-09-25 04:32:30 -03:00 / 2026-09-25T07:32:30Z — Trigger final pre-cutover validation
+
+- Migration head before trigger: `2c89712afe8feea3f9adf908968d5ba190956d96`.
+- Contents-API commit intentionally triggers fresh PR Actions for the corrected Dioxus bundle-artifact assertions. No application/statistical behavior changes.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
