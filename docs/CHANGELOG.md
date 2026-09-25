@@ -1,3 +1,8 @@
+## 2026-09-25 04:39:00 -03:00 / 2026-09-25T07:39:00Z — Trigger methodology rebased validation
+
+- PR #41 is rebased onto production `main` merge `5d4283f59d7e27ceafbcdbfac552b12a195bac4c`; its diff now contains only the methodology component surface and its documentation/style wiring.
+- This docs-only trigger intentionally starts fresh CI/browser validation for the rebased methodology slice. No application/statistical behavior change in this trigger.
+
 ## 2026-09-25 03:25:00 -03:00 / 2026-09-25T06:25:00Z — Migração/refatoração da metodologia para Rust/Dioxus
 
 - A seção de metodologia agora é renderizada pelo componente Rust `MethodologySection`, mantendo o texto, a organização e os exemplos da implementação legada.
