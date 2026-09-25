@@ -321,7 +321,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
                 event.prevent_default();
                 let data = event.data();
                 let x = data.element_coordinates().x.clamp(LEFT, LEFT + (1100.0 - LEFT - RIGHT));
-                let delta_y = wheel_delta_y(data.delta());
+                let delta_y = data.delta().strip_units().y;
                 if delta_y.abs() < 0.01 {
                     return;
                 }
@@ -616,14 +616,6 @@ fn pinch_geometry(
     };
     let distance = ((a.1 - b.1).powi(2) + (a.2 - b.2).powi(2)).sqrt();
     Some((distance, (a.1 + b.1) / 2.0))
-}
-
-fn wheel_delta_y(delta: dioxus::events::WheelDelta) -> f64 {
-    match delta {
-        dioxus::events::WheelDelta::Pixels(value) => value.y,
-        dioxus::events::WheelDelta::Lines(value) => value.y * 16.0,
-        dioxus::events::WheelDelta::Pages(value) => value.y * 600.0,
-    }
 }
 
 fn update_pointer(slot: &mut Option<(i32, f64, f64)>, id: i32, x: f64, y: f64) {
