@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-25T07:41:17.791Z",
+  "ran_at": "2026-09-25T13:40:39.856Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 419,
+  "candidate_links": 414,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-25T07:41:00.305Z"
+      "found_at": "2026-09-25T13:40:24.354Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-numero-da-urna-presidente.ghtml",
@@ -519,15 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-25T07:41:00.613Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
-      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-25T07:41:00.815Z"
+      "found_at": "2026-09-25T13:40:24.654Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
@@ -535,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-25T07:41:00.875Z"
+      "found_at": "2026-09-25T13:40:24.736Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-2/",
@@ -543,8 +535,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-25T07:41:00.898Z"
+      "found_at": "2026-09-25T13:40:24.783Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/alfa-inteligencia-presidente-setembro-2026/",
+      "title": "Os números da pesquisa Alfa Inteligência para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Alfa Inteligência",
+      "published_date": null,
+      "found_at": "2026-09-25T13:40:24.882Z"
     }
   ],
-  "meta_last_check_at": "2026-09-25T07:41:17.792Z"
+  "meta_last_check_at": "2026-09-25T13:40:39.858Z"
 }
