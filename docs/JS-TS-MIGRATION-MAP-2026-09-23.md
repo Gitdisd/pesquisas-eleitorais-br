@@ -1,3 +1,10 @@
+## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — CI #370 ownership correction
+
+- CI #370 reached Rust tests, Python tests, real-data backtest, canonical estimator equivalence, advanced backtest and fieldwork-overlap audit successfully.
+- The run then failed at the Rust/Dioxus web compile because `App` had made its `view` signal immutable while existing button handlers still require `view.write()`; restored on branch commit `b1980b6bd1943f061a37d9b42fe1ec35236ecb20`.
+- Browser smoke `run #43` passed the legacy Chromium job while the Dioxus Chromium job was still compiling the pinned Dioxus CLI at documentation time.
+- No production cutover or JS/TS deletion is authorized by this failed run.
+
 ## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Native SVG navigation + Dioxus production bundle
 
 - Step 5 now covers hover inspection, bounded pan, wheel zoom, two-pointer pinch zoom and recenter navigation in the parallel UI.

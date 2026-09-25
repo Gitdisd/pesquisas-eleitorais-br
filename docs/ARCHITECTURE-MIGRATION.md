@@ -1,3 +1,9 @@
+## 2026-09-25 03:06:26 -03:00 / 2026-09-25T06:06:26Z — Rust/Dioxus ownership correction
+
+- CI #370 confirmed the statistical and data-validation gates through overlap audit, then stopped at Rust/Dioxus compilation because the top-level `App` signal binding must be mutable for existing control handlers. The fix is isolated to state binding; chart math, projection math and interaction logic are unchanged.
+- Chromium legacy browser smoke passed; Dioxus browser smoke remained in progress at this timestamp.
+- Production cutover remains blocked until a single current SHA passes the full CI and Dioxus browser gates.
+
 # Architecture migration: Rust + Dioxus + custom SVG + Python
 
 ## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus production-bundle gate
