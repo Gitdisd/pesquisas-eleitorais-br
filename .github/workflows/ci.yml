@@ -80,6 +80,17 @@ jobs:
         run: rustup target add wasm32-unknown-unknown
       - name: Check Rust/Dioxus web UI
         run: cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
+      - name: Install Dioxus CLI
+        run: cargo install --locked dioxus-cli --version 0.7.10
+      - name: Bundle Rust/Dioxus web UI
+        working-directory: rust/web-ui
+        run: |
+          set -euo pipefail
+          rm -rf ../../dioxus-ci
+          dx bundle --web --release --out-dir ../../dioxus-ci
+          test -f ../../dioxus-ci/public/index.html
+          test -d ../../dioxus-ci/public/wasm
+
       - name: Build Rust/WASM package
         run: npm run build:rust
       - name: WASM/JS parity
