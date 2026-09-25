@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-25T01:26:14.521Z",
+  "ran_at": "2026-09-25T06:33:59.083Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 427,
+  "candidate_links": 425,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 60,
-  "skipped_old": 0,
+  "inbox_new": 58,
+  "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-25T01:25:49.299Z"
+      "found_at": "2026-09-25T06:33:43.853Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-numero-da-urna-presidente.ghtml",
@@ -519,23 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-25T01:25:49.670Z"
-    },
-    {
-      "url": "https://g1.globo.com/go/goias/eleicoes/2026/noticia/2026/09/24/quaest-em-go-presidente-24-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial em GO | G1 Pular para o conteúdo Goiás Eleições 2026 em Goiás Quaest em GO:",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-24",
-      "found_at": "2026-09-25T01:25:50.064Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-presidente-segundo-turno-24-setembro.ghtml",
-      "title": "Datafolha, 2º turno: Lula, 47%; Flávio Bolsonaro, 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Datafolha",
-      "published_date": "2026-09-24",
-      "found_at": "2026-09-25T01:25:50.348Z"
+      "found_at": "2026-09-25T06:33:44.191Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
@@ -543,8 +527,24 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-25T01:25:50.569Z"
+      "found_at": "2026-09-25T06:33:44.367Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
+      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-25T06:33:44.389Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-2/",
+      "title": "Os números da nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Palver",
+      "published_date": null,
+      "found_at": "2026-09-25T06:33:44.402Z"
     }
   ],
-  "meta_last_check_at": "2026-09-25T01:26:14.522Z"
+  "meta_last_check_at": "2026-09-25T06:33:59.085Z"
 }
