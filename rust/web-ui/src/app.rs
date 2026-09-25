@@ -18,6 +18,12 @@ struct ViewState {
     geo_index: usize,
     model: u8,
     hover_day: Option<i64>,
+    zoom: f64,
+    pan_days: f64,
+    pan_start: Option<(i32, f64, f64)>,
+    pointer_a: Option<(i32, f64, f64)>,
+    pointer_b: Option<(i32, f64, f64)>,
+    pinch_last: Option<(f64, f64)>,
 }
 
 #[allow(non_snake_case)]
@@ -29,6 +35,12 @@ pub fn App() -> Element {
         geo_index: 0,
         model: 1,
         hover_day: None,
+        zoom: 1.0,
+        pan_days: 0.0,
+        pan_start: None,
+        pointer_a: None,
+        pointer_b: None,
+        pinch_last: None,
     });
 
     let mut refresh_tick = use_signal(|| 0_u64);
@@ -81,12 +93,12 @@ pub fn App() -> Element {
                                 strong { "Turno" }
                                 button {
                                     class: if state.round == 1 { "active" } else { "" },
-                                    onclick: move |_| view.write().round = 1,
+                                    onclick: move |_| { let mut state = view.write(); state.round = 1; reset_navigation(&mut state); },
                                     "1º turno"
                                 }
                                 button {
                                     class: if state.round == 2 { "active" } else { "" },
-                                    onclick: move |_| view.write().round = 2,
+                                    onclick: move |_| { let mut state = view.write(); state.round = 2; reset_navigation(&mut state); },
                                     "2º turno"
                                 }
                             }
@@ -95,7 +107,7 @@ pub fn App() -> Element {
                                 for (label, days) in [(("14d", Some(14_i64))), (("30d", Some(30_i64))), (("90d", Some(90_i64))), (("Tudo", None))] {
                                     button {
                                         class: if state.range_days == days { "active" } else { "" },
-                                        onclick: move |_| view.write().range_days = days,
+                                        onclick: move |_| { let mut state = view.write(); state.range_days = days; reset_navigation(&mut state); },
                                         "{label}"
                                     }
                                 }
@@ -105,7 +117,7 @@ pub fn App() -> Element {
                                 for (model, label) in MODEL_OPTIONS.iter().copied() {
                                     button {
                                         class: if state.model == model { "active" } else { "" },
-                                        onclick: move |_| view.write().model = model,
+                                        onclick: move |_| { let mut state = view.write(); state.model = model; reset_navigation(&mut state); },
                                         "{label}"
                                     }
                                 }
@@ -114,13 +126,13 @@ pub fn App() -> Element {
                                 strong { "Geografia" }
                                 button {
                                     class: if state.geo_index == all_index { "active" } else { "" },
-                                    onclick: move |_| view.write().geo_index = all_index,
+                                    onclick: move |_| { let mut state = view.write(); state.geo_index = all_index; reset_navigation(&mut state); },
                                     "Todas"
                                 }
                                 for (index, geo) in geos.iter().enumerate() {
                                     button {
                                         class: if state.geo_index == index { "active" } else { "" },
-                                        onclick: move |_| view.write().geo_index = index,
+                                        onclick: move |_| { let mut state = view.write(); state.geo_index = index; reset_navigation(&mut state); },
                                         "{geo}"
                                     }
                                 }
@@ -130,7 +142,7 @@ pub fn App() -> Element {
                                 for candidate in Candidate::all().iter().copied() {
                                     button {
                                         class: if state.candidate == candidate { "active" } else { "" },
-                                        onclick: move |_| view.write().candidate = candidate,
+                                        onclick: move |_| { let mut state = view.write(); state.candidate = candidate; reset_navigation(&mut state); },
                                         "{candidate.label()}"
                                     }
                                 }
@@ -142,6 +154,13 @@ pub fn App() -> Element {
                             p { class: "muted", "Pontos são pesquisas individuais; a linha usa o modelo selecionado. Data = fim de campo." }
                             div { class: "chart-wrap",
                                 {chart_svg(&filtered, &trend, projection.as_ref(), state.hover_day, view)}
+                            }
+                            div { class: "chart-navigation",
+                                button {
+                                    onclick: move |_| reset_navigation(&mut view.write()),
+                                    "Recentrar"
+                                }
+                                span { class: "muted", "Zoom {state.zoom:.1}×" }
                             }
                             if state.model == 2 {
                                 p { class: "muted projection-status", "{projection_status_text(projection.as_ref())}" }
@@ -204,7 +223,9 @@ pub fn App() -> Element {
 }
 
 fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, mut view: Signal<ViewState>) -> Element {
-    let (min_day, max_day, low, high) = viewbox(rows, trend, projection);
+    let current_view = view();
+    let (base_min_day, base_max_day, low, high) = viewbox(rows, trend, projection);
+    let (min_day, max_day) = navigation_window(base_min_day, base_max_day, current_view.zoom, current_view.pan_days);
     let path = polyline_path(trend, min_day, max_day, low, high);
     let uncertainty_rows: Vec<PollObservation> = rows.iter()
         .map(|row| PollObservation {
@@ -295,6 +316,103 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
             },
             onmouseleave: move |_| {
                 view.write().hover_day = None;
+            },
+            onwheel: move |event| {
+                event.prevent_default();
+                let data = event.data();
+                let x = data.element_coordinates().x.clamp(LEFT, LEFT + (1100.0 - LEFT - RIGHT));
+                let delta_y = wheel_delta_y(data.delta());
+                if delta_y.abs() < 0.01 {
+                    return;
+                }
+                let mut state = view.write();
+                let (zoom, pan_days) = zoom_around(
+                    base_min_day,
+                    base_max_day,
+                    state.zoom,
+                    state.pan_days,
+                    x,
+                    delta_y,
+                );
+                state.zoom = zoom;
+                state.pan_days = pan_days;
+                state.hover_day = Some(day_from_x(x, min_day, max_day).round() as i64);
+            },
+            onpointerdown: move |event| {
+                event.prevent_default();
+                let data = event.data();
+                let id = data.pointer_id();
+                let x = data.element_coordinates().x;
+                let y = data.element_coordinates().y;
+                let mut state = view.write();
+
+                if state.pointer_a.map(|point| point.0) == Some(id) || state.pointer_b.map(|point| point.0) == Some(id) {
+                    return;
+                }
+
+                if state.pointer_a.is_none() {
+                    state.pointer_a = Some((id, x, y));
+                    state.pan_start = Some((id, x, state.pan_days));
+                } else if state.pointer_b.is_none() {
+                    state.pointer_b = Some((id, x, y));
+                    state.pinch_last = pinch_geometry(state.pointer_a, state.pointer_b);
+                }
+            },
+            onpointermove: move |event| {
+                event.prevent_default();
+                let data = event.data();
+                let id = data.pointer_id();
+                let x = data.element_coordinates().x;
+                let y = data.element_coordinates().y;
+                let mut state = view.write();
+
+                update_pointer(&mut state.pointer_a, id, x, y);
+                update_pointer(&mut state.pointer_b, id, x, y);
+
+                if let (Some(a), Some(b)) = (state.pointer_a, state.pointer_b) {
+                    let (distance, midpoint_x) = pinch_geometry(a, b).unwrap_or((0.0, (a.1 + b.1) / 2.0));
+                    if distance > 1.0 {
+                        if let Some((last_distance, last_midpoint_x)) = state.pinch_last {
+                            let old_zoom = state.zoom;
+                            let (old_min, old_max) = navigation_window(
+                                base_min_day,
+                                base_max_day,
+                                old_zoom,
+                                state.pan_days,
+                            );
+                            let anchor_day = day_from_x(last_midpoint_x, old_min, old_max);
+                            let ratio = (distance / last_distance).clamp(0.85, 1.18);
+                            let new_zoom = (old_zoom * ratio).clamp(1.0, MAX_ZOOM);
+                            state.pan_days = pan_to_anchor(
+                                base_min_day,
+                                base_max_day,
+                                new_zoom,
+                                anchor_day,
+                                midpoint_x,
+                            );
+                            state.zoom = new_zoom;
+                        }
+                        state.pinch_last = Some((distance, midpoint_x));
+                    }
+                } else if let Some((start_id, start_x, start_pan)) = state.pan_start {
+                    if start_id == id {
+                        state.pan_days = pan_by_pixels(
+                            base_min_day,
+                            base_max_day,
+                            state.zoom,
+                            start_pan,
+                            x - start_x,
+                        );
+                    }
+                }
+            },
+            onpointerup: move |event| {
+                event.prevent_default();
+                release_pointer(&mut view.write(), event.data().pointer_id());
+            },
+            onpointercancel: move |event| {
+                event.prevent_default();
+                release_pointer(&mut view.write(), event.data().pointer_id());
             },
             role: "img",
             "aria-label": "Gráfico customizado de pesquisas eleitorais",
@@ -397,6 +515,140 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
             }
         }
     }
+}
+
+const MAX_ZOOM: f64 = 12.0;
+
+fn reset_navigation(state: &mut ViewState) {
+    state.zoom = 1.0;
+    state.pan_days = 0.0;
+    state.hover_day = None;
+    state.pan_start = None;
+    state.pointer_a = None;
+    state.pointer_b = None;
+    state.pinch_last = None;
+}
+
+fn navigation_window(base_min_day: f64, base_max_day: f64, zoom: f64, pan_days: f64) -> (f64, f64) {
+    let base_span = (base_max_day - base_min_day).max(1.0);
+    let zoom = if zoom.is_finite() { zoom.clamp(1.0, MAX_ZOOM) } else { 1.0 };
+    let span = (base_span / zoom).max(1.0);
+    let max_pan = ((base_span - span) / 2.0).max(0.0);
+    let pan = if pan_days.is_finite() {
+        pan_days.clamp(-max_pan, max_pan)
+    } else {
+        0.0
+    };
+    let center = (base_min_day + base_max_day) / 2.0 + pan;
+    (
+        center - span / 2.0,
+        center + span / 2.0,
+    )
+}
+
+fn day_from_x(x: f64, min_day: f64, max_day: f64) -> f64 {
+    let plot_width = (1100.0 - LEFT - RIGHT).max(1.0);
+    let frac = ((x - LEFT) / plot_width).clamp(0.0, 1.0);
+    min_day + frac * (max_day - min_day)
+}
+
+fn pan_to_anchor(
+    base_min_day: f64,
+    base_max_day: f64,
+    zoom: f64,
+    anchor_day: f64,
+    anchor_x: f64,
+) -> f64 {
+    let base_span = (base_max_day - base_min_day).max(1.0);
+    let zoom = zoom.clamp(1.0, MAX_ZOOM);
+    let span = (base_span / zoom).max(1.0);
+    let frac = ((anchor_x - LEFT) / (1100.0 - LEFT - RIGHT).max(1.0)).clamp(0.0, 1.0);
+    let target_min = anchor_day - frac * span;
+    let target_center = target_min + span / 2.0;
+    let base_center = (base_min_day + base_max_day) / 2.0;
+    let max_pan = ((base_span - span) / 2.0).max(0.0);
+    (target_center - base_center).clamp(-max_pan, max_pan)
+}
+
+fn pan_by_pixels(
+    base_min_day: f64,
+    base_max_day: f64,
+    zoom: f64,
+    start_pan: f64,
+    delta_x: f64,
+) -> f64 {
+    let (min_day, max_day) = navigation_window(base_min_day, base_max_day, zoom, start_pan);
+    let span = max_day - min_day;
+    let pan = start_pan - delta_x / (1100.0 - LEFT - RIGHT).max(1.0) * span;
+    let base_span = (base_max_day - base_min_day).max(1.0);
+    let visible_span = span.max(1.0);
+    let max_pan = ((base_span - visible_span) / 2.0).max(0.0);
+    pan.clamp(-max_pan, max_pan)
+}
+
+fn zoom_around(
+    base_min_day: f64,
+    base_max_day: f64,
+    current_zoom: f64,
+    current_pan: f64,
+    cursor_x: f64,
+    delta_y: f64,
+) -> (f64, f64) {
+    let (min_day, max_day) = navigation_window(base_min_day, base_max_day, current_zoom, current_pan);
+    let anchor_day = day_from_x(cursor_x, min_day, max_day);
+    let factor = (-delta_y * 0.0015).exp();
+    let new_zoom = (current_zoom * factor).clamp(1.0, MAX_ZOOM);
+    if (new_zoom - current_zoom).abs() < 1e-9 {
+        return (current_zoom, current_pan);
+    }
+    (
+        new_zoom,
+        pan_to_anchor(base_min_day, base_max_day, new_zoom, anchor_day, cursor_x),
+    )
+}
+
+fn pinch_geometry(
+    a: Option<(i32, f64, f64)>,
+    b: Option<(i32, f64, f64)>,
+) -> Option<(f64, f64)> {
+    let (Some(a), Some(b)) = (a, b) else {
+        return None;
+    };
+    let distance = ((a.1 - b.1).powi(2) + (a.2 - b.2).powi(2)).sqrt();
+    Some((distance, (a.1 + b.1) / 2.0))
+}
+
+fn wheel_delta_y(delta: dioxus::events::WheelDelta) -> f64 {
+    match delta {
+        dioxus::events::WheelDelta::Pixels(value) => value.y,
+        dioxus::events::WheelDelta::Lines(value) => value.y * 16.0,
+        dioxus::events::WheelDelta::Pages(value) => value.y * 600.0,
+    }
+}
+
+fn update_pointer(slot: &mut Option<(i32, f64, f64)>, id: i32, x: f64, y: f64) {
+    if let Some(point) = slot.as_mut() {
+        if point.0 == id {
+            point.1 = x;
+            point.2 = y;
+        }
+    }
+}
+
+fn release_pointer(state: &mut ViewState, id: i32) {
+    if state.pointer_a.map(|point| point.0) == Some(id) {
+        state.pointer_a = None;
+    }
+    if state.pointer_b.map(|point| point.0) == Some(id) {
+        state.pointer_b = None;
+    }
+
+    state.pinch_last = None;
+    state.pan_start = match (state.pointer_a, state.pointer_b) {
+        (Some(point), _) => Some((point.0, point.1, state.pan_days)),
+        (None, Some(point)) => Some((point.0, point.1, state.pan_days)),
+        (None, None) => None,
+    };
 }
 
 fn projection_status_text(projection: Option<&ProjectionV2Result>) -> String {
