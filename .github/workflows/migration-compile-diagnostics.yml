@@ -28,6 +28,15 @@ jobs:
           cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown 2>&1 | tee /tmp/web-ui-cargo-check.log
           rc=\${PIPESTATUS[0]}
           exit "\${rc}"
+      - name: Upload compiler diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-ui-cargo-check-${{ github.sha }}
+          path: /tmp/web-ui-cargo-check.log
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Commit compiler diagnostics
         if: always()
         shell: bash
