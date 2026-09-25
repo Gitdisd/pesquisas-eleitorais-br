@@ -1,3 +1,8 @@
+## 2026-09-25 04:13:30 -03:00 / 2026-09-25T07:13:30Z — Trigger validation for SVG smoke/bundle fixes
+
+- Current migration head before this trigger: `c8e0dab1f46015e47cc2c0e0f5d59f3e6c6c8617`.
+- This commit intentionally triggers pull-request Actions through the repository Contents API; no application behavior changes beyond the preceding bundle/smoke fixes.
+
 ## 2026-09-25 04:12:00 -03:00 / 2026-09-25T07:12:00Z — Harden Dioxus release bundle and native SVG hover smoke
 
 - Dioxus v0.7 documents `--debug-symbols` for release bundles; CI, browser smoke and Pages deployment now pass `--debug-symbols false` explicitly, because the prior config-only setting still allowed the bundled Binaryen `wasm-opt` path to abort on DWARF metadata. citeturn766812search1turn524014search0
