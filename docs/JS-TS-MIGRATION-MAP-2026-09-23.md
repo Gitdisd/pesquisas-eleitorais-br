@@ -1,3 +1,12 @@
+## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Native SVG navigation + Dioxus production bundle
+
+- Step 5 now covers hover inspection, bounded pan, wheel zoom, two-pointer pinch zoom and recenter navigation in the parallel UI.
+- Added dedicated Dioxus desktop/mobile browser smoke coverage and a pinned Dioxus 0.7.10 bundle check.
+- GitHub Pages deployment now publishes the Rust/Dioxus bundle plus the repaired data mirrors; the legacy Vite build is validation-only.
+- Temporary compiler diagnostics were removed after the compile-gate investigation.
+- Production cutover remains gated on the latest CI/browser results; no legacy JS/TS/ECharts file is certified removable.
+- Progressive research verified Dioxus 0.7.10 pointer and wheel APIs and the documented Pages base-path/public artifact flow.
+
 - Next interaction slice researched and scoped: Dioxus 0.7 native mouse events provide element-relative coordinates suitable for a custom SVG crosshair; zoom/pan remains a separate follow-on slice.\n- CI #348: **failed** at the Rust/Dioxus web UI gate on merge ref `da07af8d8a57dd69989447d7b4b6e40c177e2a1d`; the projection-v2 helper existed in `chart.rs` but its import was omitted from `app.rs`. Fixed in the next branch commit.\n## CI validation history
 
 - CI #346: **failed** at Rust unit tests for head `dd4d692eb49a11a8e0cade8ed17b962819c94e55`; the new projection-v2 boundary derived `Serialize` for `ProjectionV2Result` without deriving it on shared `ProjectPoint`. Corrected on the next branch commit; later CI gates were not reached.
@@ -66,16 +75,16 @@ The Rust/Dioxus slice has independent styling in `rust/web-ui/assets/style.css`.
 2. Canonical aggregation/uncertainty.
 3. Projection and models.
 4. Dioxus state/layout/data refresh.
-5. Custom SVG crosshair, pan, pinch, wheel zoom and range navigation.
+5. Custom SVG crosshair, bounded pan, pinch zoom, wheel zoom and range navigation — implemented in the parallel UI and covered by browser smoke.
 6. Regional/methodology/diagnostic surfaces.
 7. Share/export/theme/accessibility/performance parity.
-8. Production build and Pages cutover.
+8. Production build and Pages cutover — Dioxus artifact path configured; pending successful pre-merge CI/browser gates.
 9. Repository-wide browser JS/TS execution-graph certification.
 10. Remove Vite/ECharts/legacy browser modules only after deployed replacement verification.
 
 ## Current status
 
-Production is unchanged. Apache ECharts is not part of the target architecture. PR #40 contains the parallel Rust/Dioxus replacement.
+Production remains on the legacy path until PR #40 clears all cutover gates. Apache ECharts is not part of the target architecture. PR #40 now contains the production Dioxus bundle path, but legacy modules remain protected.
 
 Latest validation sequence:
 - CI #307: Rust/Dioxus compile failed on initial RSX syntax.
