@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-24T22:17:51.853Z",
+  "ran_at": "2026-09-25T01:26:14.521Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 423,
+  "candidate_links": 427,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 59,
+  "inbox_new": 60,
   "skipped_old": 0,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         }
       ],
       "redundancy_ok": true,
@@ -506,12 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/ba/bahia/eleicoes/2026/noticia/2026/09/24/quaest-bahia-presidente-24-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial na BA | G1 Pular para o conteúdo Bahia Eleições 2026 na Bahia Quaest na BA:",
+      "url": "https://g1.globo.com/ro/rondonia/eleicoes/2026/noticia/2026/09/24/quaest-rondonia-presidente-24-de-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial em Rondônia | G1 Pular para o conteúdo Rondônia Eleições 2026 em Rondônia Q",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-24T22:17:25.179Z"
+      "found_at": "2026-09-25T01:25:49.299Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-numero-da-urna-presidente.ghtml",
+      "title": "Datafolha: 23% dos eleitores não sabem o número de urna do candidato | G1 Pular para o conteúdo Eleições 2026 Pesquisa e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-24",
+      "found_at": "2026-09-25T01:25:49.670Z"
+    },
+    {
+      "url": "https://g1.globo.com/go/goias/eleicoes/2026/noticia/2026/09/24/quaest-em-go-presidente-24-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial em GO | G1 Pular para o conteúdo Goiás Eleições 2026 em Goiás Quaest em GO:",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-24",
+      "found_at": "2026-09-25T01:25:50.064Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-presidente-segundo-turno-24-setembro.ghtml",
@@ -519,32 +535,16 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-09-24",
-      "found_at": "2026-09-24T22:17:25.557Z"
+      "found_at": "2026-09-25T01:25:50.348Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/24/datafolha-presidente-24-setembro.ghtml",
-      "title": "Datafolha, 1º turno: Lula, 40%; Flávio Bolsonaro, 36%; Cury, 5%; Caiado, 4%; Renan, 3%; Zema, 1% | G1 Pular para o conte",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-24",
-      "found_at": "2026-09-24T22:17:25.782Z"
-    },
-    {
-      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/24/datafolha-no-rj-2o-turno-24-setembro.ghtml",
-      "title": "Datafolha no RJ: no 2º turno, Paes tem 54%, e Ruas, 38% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio d",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-24",
-      "found_at": "2026-09-24T22:17:26.012Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
-      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-24T22:17:26.654Z"
+      "found_at": "2026-09-25T01:25:50.569Z"
     }
   ],
-  "meta_last_check_at": "2026-09-24T22:17:51.855Z"
+  "meta_last_check_at": "2026-09-25T01:26:14.522Z"
 }
