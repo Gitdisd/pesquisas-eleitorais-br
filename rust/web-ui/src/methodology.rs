@@ -1,0 +1,184 @@
+use dioxus::prelude::*;
+
+#[component]
+pub fn MethodologySection() -> Element {
+    rsx! {
+        section {
+            class: "panel metodologia",
+            id: "metodologia",
+            aria_labelledby: "metodologia-titulo",
+            h2 { id: "metodologia-titulo", "Como este site funciona (explicação simples)" }
+            p {
+                class: "meto-lead",
+                "Pense em vários amigos medindo a altura da mesma árvore. Cada um usa uma fita diferente. A gente não escolhe o amigo mais alto de voz. A gente junta as medidas."
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "Regras de inclusão e datas" }
+                ul {
+                    li { strong { "Data de campo" }, " = quando as entrevistas foram realizadas e é a data usada no eixo do gráfico." }
+                    li { strong { "Data de publicação" }, " = quando uma fonte divulgou o levantamento. Ela permanece visível e pode ter mais de uma data de cobertura, mas não cria uma nova pesquisa." }
+                    li { strong { "Registro TSE" }, " = quando identificado, ajuda a reconhecer a mesma pesquisa mesmo que outra fonte a publique depois." }
+                    li { strong { "Gráfico nacional" }, " = somente pesquisas verificadas de intenção de voto presidencial no Brasil. Pesquisas estaduais ficam no painel regional." }
+                    li { strong { "Faixa de incerteza" }, " = estimativa do agregado. Não é a margem de erro de uma pesquisa e não é probabilidade de vitória." }
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "O desenho" }
+                ul {
+                    li { strong { "Bolinha" }, " = uma pesquisa. É só aquela escola, naquele dia." }
+                    li { strong { "Linha cheia" }, " = o resumo de várias bolinhas. É o número do site." }
+                    li { strong { "Linha tracejada" }, " = “se continuar assim”. Não é o resultado da eleição." }
+                    li { strong { "Linhas extras (overlays)" }, " = réguas em cima do resumo. Elas não mudam o número dos cartões." }
+                }
+                p {
+                    class: "ex",
+                    "Exemplo: Datafolha diz 39 e Atlas diz 43 no mesmo fim de semana. As duas bolinhas aparecem. A linha fica no meio, um pouco mais perto de quem ouviu mais gente."
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "Por que não olhamos só uma pesquisa" }
+                ul {
+                    li { "Um amigo sempre mede um pouco alto. Outro sempre mede um pouco baixo." }
+                    li { "Quem ouviu mais pessoas (N grande) pesa mais, mas não manda sozinho." }
+                    li { "Medida velha vale menos que medida nova." }
+                    li { "Se o mesmo amigo manda três recados na mesma semana, cada recado vale menos — senão ele grita mais alto só porque falou três vezes." }
+                }
+                p {
+                    class: "ex",
+                    "Exemplo: Atlas ouve 5.000 pessoas. Datafolha ouve 2.000. Atlas pesa mais, mas Datafolha, Quaest e Nexus ainda puxam a linha. Uma casa não “ganha” o gráfico."
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "Os modos da linha (Modelos 1 a 5)" }
+                p { "É a mesma turma de bolinhas. Muda só o jeito de fazer a média. Um modo de cada vez." }
+                div {
+                    class: "meto-models",
+                    article {
+                        h4 { "off" }
+                        p { "Bolinha + linha antiga. Sem “se continuar assim”." }
+                    }
+                    article {
+                        h4 { "1 — padrão" }
+                        p { "Receita antiga do site. Pesquisa grande e nova pesa mais. Não corrige o hábito da casa." }
+                        p { class: "ex", "Exemplo: 39 ontem e 35 há 20 dias. O 39 puxa mais a linha." }
+                    }
+                    article {
+                        h4 { "2 — casa justa" }
+                        p { "Se uma casa sempre fica 2 pontos acima das outras, a gente tira esses 2 antes de misturar." }
+                        p { class: "ex", "Exemplo: casa A sempre 2 pontos acima de B, C e D. No modo 2 a linha trata A como se fosse “menos 2”." }
+                    }
+                    article {
+                        h4 { "3 — quando brigam" }
+                        p { "Olha a margem de erro e o quanto as casas discordam. Se discordam muito, ninguém manda sozinho." }
+                        p { class: "ex", "Exemplo: uma diz 34 e outra 40. O modo 3 não finge que são a mesma foto. A linha fica no meio e não corre para o 40." }
+                    }
+                    article {
+                        h4 { "4 — filme, não foto" }
+                        p { "A disputa anda um pouquinho por dia. Cada pesquisa nova empurra o filme, não apaga o capítulo anterior." }
+                        p { class: "ex", "Exemplo: três semanas de 38 e uma pesquisa de 43. O filme sobe, mas não pula para 43 no mesmo dia." }
+                    }
+                    article {
+                        h4 { "5 — nervoso" }
+                        p { "Olha quase só o que acabou de sair. Bom para ver o susto. Ruim para um número calmo." }
+                        p { class: "ex", "Exemplo: sai um 43 hoje. O modo 5 sobe rápido. O modo 1 sobe devagar." }
+                    }
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "Réguas (overlays / indicadores)" }
+                p { "São adesivos no desenho. Ligar ou desligar não muda os cartões." }
+                ul {
+                    li { strong { "SMA 7" }, " — média dos últimos 7 dias da linha. Como a nota da semana." }
+                    li { strong { "SMA 21" }, " — média de 21 dias. Como a nota do mês. Mais lisa." }
+                    li { strong { "EMA 9 / 21" }, " — parecida com a SMA, mas o dia de ontem pesa mais que o de três semanas." }
+                    li { strong { "HMA" }, " — régua rápida. Vira cedo quando a linha vira." }
+                    li { strong { "VWMA" }, " — dias com pesquisa grande (muito N) puxam mais a régua." }
+                    li { strong { "KAMA" }, " — anda rápido quando o número está mudando de verdade; anda devagar quando só treme." }
+                    li { strong { "Bollinger (BB)" }, " — um corredor em volta da linha. Corredor largo = as casas não combinam. Estreito = quase o mesmo número." }
+                }
+                p {
+                    class: "ex",
+                    "Exemplo: a linha sobe de 36 para 39. SMA 21 quase não se mexe. EMA 9 e HMA sobem junto. BB fica mais largo se uma casa ficou em 34 e outra em 43."
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "Escalas e botões do gráfico" }
+                ul {
+                    li { strong { "Eixo de baixo (X)" }, " = calendário. Esquerda é passado. Direita é agora." }
+                    li { strong { "Eixo de lado (Y)" }, " = porcentagem de voto. 40 quer dizer 40 em cada 100 pessoas naquela pesquisa." }
+                    li { strong { "30d / 90d / tudo" }, " = quanto calendário cabe na tela. Não apaga pesquisa; só aproxima o zoom." }
+                    li { strong { "Janela 7d / 14d / 30d" }, " = até que distância uma bolinha ainda puxa a linha de hoje. Janela curta = memória curta." }
+                    li { strong { "Resetar eixos" }, " = volta o zoom. ", strong { "Resetar Y" }, " = só o eixo da porcentagem." }
+                    li { strong { "Roda do mouse / pinça / Shift+arrastar" }, " = zoom. Como aproximar um mapa." }
+                    li { strong { "1º turno / 2º turno" }, " = duas perguntas diferentes. Não misturamos as bolinhas." }
+                }
+                p {
+                    class: "ex",
+                    "Exemplo: no 1º turno Lula pode ter 39 e Flávio 35. No 2º a mesma pesquisa pode ser 46 a 44. São contas separadas. Trocar o chip de turno é trocar de caderno."
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "Ferramentas da página" }
+                ul {
+                    li { strong { "Cartões em cima" }, " = o número da linha hoje e a diferença contra 30 dias atrás. “+1,20 pp vs 30d” = subiu um pouco no mês." }
+                    li { strong { "Chips de instituto" }, " = ligar/desligar uma casa. Útil para ver se uma casa sozinha puxa o desenho. Com todas ligadas o site está no modo justo." }
+                    li { strong { "Tema / bandeira" }, " = só cor da página. Zero efeito no número." }
+                    li { strong { "Verificar agora" }, " = pede de novo o arquivo que já está no ar. Não sai caçando pesquisa nova na hora." }
+                    li { strong { "Tabela" }, " = lista crua: quem mediu, quantas pessoas, margem, link." }
+                }
+                p {
+                    class: "ex",
+                    "Exemplo: desliga Atlas e a linha desce um pouco. Liga de novo e ela volta. Isso mostra o peso daquela casa — por isso o modo justo deixa todas ligadas."
+                }
+            }
+
+            section {
+                class: "meto-sec",
+                h3 { "O que o site não faz" }
+                ul {
+                    li { "Não diz “vai ganhar”. Diz “as pesquisas de agora, juntas, estão aqui”." }
+                    li { "Não inventa pesquisa. Sem número publicado, não tem bolinha." }
+                    li { "Não usa pesquisa de um só estado no desenho nacional." }
+                    li { "Não transforma 1º turno em 2º turno por mágica." }
+                }
+            }
+
+            details {
+                class: "meto-more",
+                summary { "Contas diretas (para quem quiser o detalhe)" }
+                ul {
+                    li { "Modelo 1: ", code { "peso = √(N/2000) × exp(−dias/janela)" }, ". N vazio = 800; N entre 100 e 8000." }
+                    li { "Modelo 2: meia-vida ", code { "2^(−dias/janela)" }, ", vezes ", code { "1/k" }, " se a mesma casa repetiu, menos o vício da casa (house) encolhido ", code { "n/(n+4)" }, "." }
+                    li { "Modelo 3: ", code { "peso = recência / (σ² + τ²) / k" }, ". σ = margem/1,96. τ² = briga extra entre casas." }
+                    li { "Modelo 4: Kalman + smoother. A disputa é um estado que anda ~0,16 ponto por raiz de dia." }
+                    li { "Modelo 5: meia-vida = janela/5, com impulso ", code { "1 + 2e^(−dias/1,8)" }, " nas pesquisas novas." }
+                }
+                p {
+                    "Texto longo: ",
+                    a {
+                        href: "https://github.com/Gitdisd/pesquisas-eleitorais-br/blob/main/docs/MODELS.md",
+                        target: "_blank",
+                        rel: "noopener",
+                        "docs/MODELS.md"
+                    }
+                }
+            }
+
+            p { class: "meto-foot", "Site estático, sem fins partidários." }
+        }
+    }
+}
