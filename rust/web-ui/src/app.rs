@@ -28,7 +28,7 @@ struct ViewState {
 
 #[allow(non_snake_case)]
 pub fn App() -> Element {
-    let mut view = use_signal(|| ViewState {
+    let view = use_signal(|| ViewState {
         candidate: Candidate::Lula,
         round: 1,
         range_days: Some(30),
