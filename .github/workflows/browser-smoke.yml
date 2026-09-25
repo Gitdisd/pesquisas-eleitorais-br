@@ -11,6 +11,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - "tests/e2e/**"
+      - "rust/web-ui/**"
       - ".github/workflows/browser-smoke.yml"
   push:
     branches: [main]
@@ -21,6 +22,7 @@ on:
       - "package.json"
       - "package-lock.json"
       - "tests/e2e/**"
+      - "rust/web-ui/**"
       - ".github/workflows/browser-smoke.yml"
   workflow_dispatch:
 
@@ -55,5 +57,40 @@ jobs:
       - run: npx --yes playwright@1.63.0 install --with-deps chromium
       - run: npm install --no-save --package-lock=false @playwright/test@1.63.0
       - run: npx playwright test --config=tests/e2e/playwright.config.mjs
+
+  dioxus:
+    name: dioxus-chromium
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - run: rustup target add wasm32-unknown-unknown
+      - name: Install Dioxus CLI
+        run: cargo install --locked dioxus-cli --version 0.7.10
+      - run: npm ci
+      - name: Build Rust/Dioxus test site
+        working-directory: rust/web-ui
+        run: |
+          set -euo pipefail
+          rm -rf ../../dioxus-smoke-pages ../../.dioxus-smoke-server
+          dx bundle --web --release --out-dir ../../dioxus-smoke-pages
+          DX_PUBLIC="$(find ../../dioxus-smoke-pages -type d -name public -print -quit)"
+          test -n "$DX_PUBLIC"
+          mkdir -p ../../.dioxus-smoke-server/pesquisas-eleitorais-br
+          cp -a "$DX_PUBLIC"/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/
+          mkdir -p ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data
+          cp -a ../../public/data/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data/
+          cp ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html ../../.dioxus-smoke-server/pesquisas-eleitorais-br/404.html
+      - name: Install Chromium
+        run: npx --yes playwright@1.63.0 install --with-deps chromium
+      - name: Install Playwright test runner
+        run: npm install --no-save --package-lock=false @playwright/test@1.63.0
+      - name: Run Dioxus browser smoke
+        run: npx playwright test --config=tests/e2e/dioxus-playwright.config.mjs
 
 # Trigger current browser regression revision
