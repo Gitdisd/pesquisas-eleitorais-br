@@ -214,6 +214,19 @@ func esc(s string) string { return html.EscapeString(s) }
 func fmtPct(v float64, ok bool) string { if !ok || math.IsNaN(v) { return "—" }; return fmt.Sprintf("%.2f%%",v) }
 func formatDate(s string) string { if len(s)>=10 { return s[8:10]+"/"+s[5:7]+"/"+s[:4] }; return s }
 func tr(en bool, pt, enText string) string { if en { return enText }; return pt }
+func freshnessNotice(en bool) string {
+	latest := firstNonEmpty(meta.LatestPublicationDate, meta.LatestFieldworkEnd)
+	if len(latest) < 10 { return "" }
+	latestTime, err := time.Parse("2006-01-02", latest[:10])
+	if err != nil { return "" }
+	days := int(time.Since(latestTime).Hours() / 24)
+	if days < 0 { days = 0 }
+	label := tr(en, "Última publicação verificada", "Latest verified publication")
+	if days >= 3 {
+		return fmt.Sprintf("<p role='status'><b>%s:</b> %s · %s</p>", label, esc(formatDate(latest)), esc(tr(en, fmt.Sprintf("A base verificada está %d dias atrás; novas pesquisas podem estar aguardando verificação.", days), fmt.Sprintf("The verified dataset is %d days behind; newer polls may still be awaiting verification.", days))))
+	}
+	return fmt.Sprintf("<p><b>%s:</b> %s</p>", label, esc(formatDate(latest)))
+}
 func checkedAttr(on bool) string { if on { return " checked" }; return "" }
 func themeColors(theme string) (string,string,string,string) {
 	switch theme {
@@ -262,6 +275,7 @@ func renderPage() string {
 	b.WriteString(fmt.Sprintf("<p><b>%s:</b> %s · <b>%s:</b> %d · <b>%s:</b> %s</p>",
 		tr(en,"Atualizado","Updated"),esc(firstNonEmpty(meta.LastUpdated,meta.LatestPublicationDate)),
 		tr(en,"Registros","Records"),len(polls),tr(en,"Último campo","Latest fieldwork"),esc(firstNonEmpty(meta.LatestFieldworkEnd,"—"))))
+	b.WriteString(freshnessNotice(en))
 	b.WriteString("<nav><a href='#overview'>Visão geral</a> · <a href='#chartPanel'>Gráfico</a> · <a href='#cards'>Resumo</a> · <a href='#pollsPanel'>Pesquisas</a> · <a href='#allSourcesPanel'>Regional</a> · <a href='#methodology'>Metodologia</a></nav>")
 	b.WriteString("<fieldset><legend>Interface</legend><button data-action='lang' data-value='pt-BR'>Português</button> <button data-action='lang' data-value='en'>English</button> <label>Tema <select id='theme'>")
 	themes:=[]struct{ID,Label string}{{"light","Claro / Light"},{"dark","Escuro / Dark"},{"crt-amber","CRT âmbar"},{"crt-green","CRT verde"},{"pt","PT"},{"pl","PL"},{"missao","Missão"},{"psd","PSD"},{"novo","Novo"},{"avante","Avante"}}
