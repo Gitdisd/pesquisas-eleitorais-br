@@ -1,3 +1,10 @@
+## 2026-09-25 / Rust + Dioxus frontend completed
+
+- The browser application has been migrated from the Vite/hand-authored JS/TS frontend to Rust + Dioxus 0.7.10 with a custom SVG chart.
+- Apache ECharts is no longer a frontend dependency.
+- The remaining JavaScript/TypeScript is limited to offline data/research/reference tooling and parity scripts; it is not shipped as the browser application.
+- GitHub Pages publishes the Dioxus bundle directly and copies the canonical public data mirrors into the static artifact.
+
 # Pesquisas Eleitorais BR 2026
 
 Agregador estático de pesquisas **nacionais** para presidente.
