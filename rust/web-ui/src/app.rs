@@ -67,7 +67,7 @@ pub fn App() -> Element {
     let mut ui = use_signal(UiState::restored);
 
     use_effect({
-        let ui = ui;
+        let mut ui = ui;
         move || {
             let language = ui().language;
             apply_document_chrome(language);
@@ -280,7 +280,7 @@ pub fn App() -> Element {
                         } else {
                             t(ui_state.language, "second-round")
                         };
-                        let trend = trend_for_model(&filtered, state.avg_window_days as f64, state.model);
+                        let _trend = trend_for_model(&filtered, state.avg_window_days as f64, state.model);
                         let projection = if state.model == 2 {
                             Some(projection_v2_for_round(&filtered, state.round))
                         } else {
@@ -288,7 +288,7 @@ pub fn App() -> Element {
                         };
                         let latest = filtered.last();
                         let table_query = ui_state.table_query.trim().to_lowercase();
-                        let mut table_source: Vec<Poll> = all.iter()
+                        let table_source: Vec<Poll> = all.iter()
                             .filter(|poll| poll.round == state.round)
                             .filter(|poll| selected_geo == "ALL" || poll.geo == selected_geo)
                             .filter(|poll| selected_institutes.is_empty() || selected_institutes.iter().any(|name| name == &poll.institute))
@@ -319,6 +319,8 @@ pub fn App() -> Element {
                             }));
                         }
                         let table_count = table_polls.len();
+                        let selected_geo_for_share = selected_geo.clone();
+                        let selected_geo_for_json = selected_geo.clone();
                         let table_count_label = format!("{} {}", table_count, t(ui_state.language, "rows"));
                         let nav_dashboard = format!("⌂ {}", t(ui_state.language, "dashboard"));
                         let nav_chart = format!("⌁ {}", t(ui_state.language, "chart"));
@@ -630,7 +632,7 @@ pub fn App() -> Element {
                                                 state.model,
                                                 state.projection,
                                                 state.candidate.key(),
-                                                &selected_geo,
+                                                &selected_geo_for_share,
                                                 &share_institutes,
                                             );
                                             let message = match url {
@@ -663,7 +665,7 @@ pub fn App() -> Element {
                                                 state.avg_window_days,
                                                 state.model,
                                                 state.candidate.key(),
-                                                &selected_geo,
+                                                &selected_geo_for_json,
                                             );
                                             ui.write().status = Some(if ok {
                                                 t(ui_state.language, "exported-json").to_string()
