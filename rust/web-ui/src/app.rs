@@ -16,7 +16,9 @@ use crate::overlays::{compute_overlay, OVERLAYS};
 use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
-    persist_language, persist_overlays, persist_theme, reload_page, scroll_to_id, t, Language, Theme, UiState,
+    initial_avg_window_days, initial_model, initial_range_days, initial_round,
+    persist_language, persist_model, persist_overlays, persist_theme, reload_page, scroll_to_id,
+    t, Language, Theme, UiState,
 };
 
 const STYLE: &str = include_str!("../assets/style.css");
@@ -47,11 +49,11 @@ struct ViewState {
 pub fn App() -> Element {
     let mut view = use_signal(|| ViewState {
         candidate: Candidate::Lula,
-        round: 1,
-        range_days: Some(30),
-        avg_window_days: 14,
+        round: initial_round(),
+        range_days: initial_range_days(),
+        avg_window_days: initial_avg_window_days(),
         geo_index: 0,
-        model: 1,
+        model: initial_model(),
         hover_day: None,
         zoom: 1.0,
         pan_days: 0.0,
@@ -136,7 +138,7 @@ pub fn App() -> Element {
                                 }
                                 div { class: "control-group",
                                     span { class: "control-label", "{t(ui_state.language, "themes")}" }
-                                    for theme in [Theme::Light, Theme::Dark] {
+                                    for theme in [Theme::Light, Theme::Dark, Theme::CrtAmber, Theme::CrtGreen] {
                                         button {
                                             class: if ui_state.theme == theme { "active" } else { "" },
                                             "aria-pressed": "{ui_state.theme == theme}",
@@ -188,6 +190,7 @@ pub fn App() -> Element {
                         a { href: "#chartPanel", "Gráfico" }
                         a { href: "#cards", "Resumo" }
                         a { href: "#pollsPanel", "{t(ui_state.language, "polls")}" }
+                        a { href: "#allSourcesPanel", "Fontes" }
                         a { href: "#methodology", "Metodologia" }
                     }
                 }
