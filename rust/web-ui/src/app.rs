@@ -1238,7 +1238,11 @@ fn multi_chart_svg(
                                     polygon { class: "uncertainty-band", points: "{band_points}", style: "fill: {color};" }
                                 }
                                 if !trend_path.is_empty() {
-                                    polyline { class: "series-line", points: "{trend_path}", style: "--series: {color};" }
+                                    polyline {
+                                        class: "series-line",
+                                        points: "{trend_path}",
+                                        style: "--series: {color}; stroke-dasharray: {candidate_stroke_dash(surface.candidate)}; stroke-width: {if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 }};"
+                                    }
                                 }
                                 for poll in surface.rows.iter() {
                                     circle {
@@ -1789,6 +1793,23 @@ fn format_meta_stamp(value: &str) -> String {
         value.replace('T', " ").chars().take(16).collect()
     } else {
         value.to_string()
+    }
+}
+
+fn candidate_stroke_dash(candidate: Candidate) -> &'static str {
+    match candidate {
+        Candidate::Lula | Candidate::Flavio => "",
+        Candidate::Cury => "8 4",
+        Candidate::Renan => "2 3",
+        Candidate::Caiado => "10 4 2 4",
+        Candidate::Zema => "16 6",
+        Candidate::Samara => "4 4",
+        Candidate::Hertz => "3 3",
+        Candidate::Edmilson => "5 3",
+        Candidate::Rui => "7 3",
+        Candidate::Clariana => "2 2",
+        Candidate::Grassi => "1 3",
+        Candidate::BrancoNulo => "2 2",
     }
 }
 
