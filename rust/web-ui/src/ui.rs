@@ -474,6 +474,15 @@ pub fn initial_avg_window_days() -> i64 {
     14
 }
 
+pub fn initial_projection() -> bool {
+    #[cfg(target_arch = "wasm32")]
+    if let Some(value) = query_value("projection") {
+        return matches!(value.as_str(), "1" | "true" | "on");
+    }
+    false
+}
+
+
 pub fn initial_model() -> u8 {
     #[cfg(target_arch = "wasm32")]
     {
