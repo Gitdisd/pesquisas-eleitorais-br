@@ -1,3 +1,11 @@
+## 2026-09-25 — Final Rust/Dioxus frontend migration cleanup
+
+- Removed the legacy Vite browser entrypoint, browser UI JS/CSS modules, legacy Chromium smoke configuration, Vite package, and Apache ECharts dependency.
+- GitHub Pages now publishes the Rust/Dioxus static artifact directly with canonical data mirrors and a hard artifact-content gate.
+- Browser regression coverage is now Dioxus-only.
+- Remaining JS/TS is restricted to offline data/research/statistical-reference/parity tooling.
+- Final frontend migration boundary is recorded in `docs/ARCHITECTURE-MIGRATION.md` and `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`.
+
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — Actual Rust/Dioxus dashboard feature migration started
 
 - Created branch migration/rust-ui-features-2026-09-25 from restored production main@b88f3badb00a5fa91fe84087df5db2d7f58784db.
