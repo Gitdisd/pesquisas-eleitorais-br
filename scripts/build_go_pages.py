@@ -16,6 +16,7 @@ def run(*args, env=None):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "data").mkdir(parents=True, exist_ok=True)
     DATA.mkdir(parents=True, exist_ok=True)
 
     for name in ("polls.json", "meta.json"):
@@ -59,7 +60,7 @@ def main():
         if not source.exists():
             source = ROOT / "data" / name
         if source.exists():
-            shutil.copy2(source, OUT / name)
+            shutil.copy2(source, OUT / "data" / name)
 
     print(f"Go Pages bundle: {OUT}")
 
