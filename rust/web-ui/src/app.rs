@@ -67,7 +67,7 @@ pub fn App() -> Element {
     let mut ui = use_signal(UiState::restored);
 
     use_effect({
-        let mut ui = ui;
+        let ui = ui;
         move || {
             let language = ui().language;
             apply_document_chrome(language);
@@ -102,7 +102,7 @@ pub fn App() -> Element {
     });
 
     use_effect({
-        let ui = ui;
+        let mut ui = ui;
         move || {
             if matches!(polls.read().as_ref(), Some(Ok(_))) {
                 ui.write().status = None;
@@ -313,7 +313,6 @@ pub fn App() -> Element {
                             .map(|name| (name.clone(), ui_state.institute_selected(name)))
                             .collect::<Vec<_>>();
                         let all_institutes_shared = std::rc::Rc::new(all_institutes.clone());
-                        let share_geo = selected_geo.clone();
                         let json_geo = selected_geo.clone();
 
                         rsx! {
