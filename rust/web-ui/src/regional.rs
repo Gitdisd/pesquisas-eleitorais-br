@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use std::collections::BTreeMap;
 
 use crate::data::Poll;
-use crate::ui::Language;
+use crate::ui::{scroll_to_id, Language};
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum RegionalRound {
@@ -84,7 +84,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                         onclick: move |_| {
                             let mut current = selected_geos();
                             if current.is_empty() {
-                                current = all_geos.iter().filter(|value| value != &geo_name).cloned().collect();
+                                current = all_geos.iter().filter(|value| *value != geo_name).cloned().collect();
                             } else if current.iter().any(|value| value == &geo_name) {
                                 if current.len() > 1 {
                                     current.retain(|value| value != &geo_name);
