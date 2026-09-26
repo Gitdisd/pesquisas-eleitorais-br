@@ -1,3 +1,5 @@
+#![cfg_attr(target_arch = "wasm32", allow(dead_code))]
+
 use gloo_net::http::Request;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
