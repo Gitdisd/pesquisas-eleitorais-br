@@ -97,7 +97,7 @@ jobs:
           npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
       - name: Build legacy compatibility site
         run: npm run build
-      - name: Build Rust/Dioxus production bundle
+      - name: Build Rust/Dioxus migration validation bundle
         working-directory: rust/web-ui
         run: |
           set -euo pipefail
@@ -119,26 +119,37 @@ jobs:
           test -f "$DX_PUBLIC/data/meta.json"
           test -f "$DX_PUBLIC/data/polls-extra.json"
           test -f "$DX_PUBLIC/data/polls-regional.json"
-      - name: Verify legacy compatibility artifact
+      - name: Verify legacy production artifact
         run: |
           set -euo pipefail
+          ruby scripts/automation/production_artifact_audit.rb dist
           test -f dist/index.html
           test -d dist/assets
-          test -n "$(find dist/assets -type f -name '*.js' -print -quit)"
           test -f dist/data/polls.json
           test -f dist/data/meta.json
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: dioxus-pages/public
+          path: dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify deployed legacy production site with Ruby
+        run: ruby scripts/automation/production_deployment_verify.rb "${{ needs.deploy.outputs.page_url }}"

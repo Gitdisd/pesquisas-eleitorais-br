@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use std::collections::BTreeMap;
 
 use crate::data::Poll;
-use crate::ui::Language;
+use crate::ui::{scroll_to_id, Language};
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum RegionalRound {
@@ -28,6 +28,11 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
     let selected = selected_geos();
     let all_selected = selected.is_empty() || geos.iter().all(|geo| selected.iter().any(|item| item == geo));
     let round_value = if matches!(round(), RegionalRound::First) { 1 } else { 2 };
+    let geo_controls = geos.iter().map(|geo| {
+        let active = selected.is_empty() || selected.iter().any(|value| value == geo);
+        let label = if geo == "BR" { "Nacional".to_string() } else { geo.clone() };
+        (geo.clone(), geos.clone(), active, label)
+    }).collect::<Vec<_>>();
 
     let filtered: Vec<Poll> = polls.iter()
         .filter(|poll| poll.round == round_value)
@@ -72,17 +77,14 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                     onclick: move |_| selected_geos.set(Vec::new()),
                     if matches!(language, Language::En) { "All geographies" } else { "Todas as geografias" }
                 }
-                for geo in geos.iter() {
-                    let geo_name = geo.clone();
-                    let all_geos = geos.clone();
-                    let active = selected.is_empty() || selected.iter().any(|value| value == &geo_name);
+                for (geo_name, all_geos, active, label) in geo_controls.iter().cloned() {
                     button {
                         class: if active { "chip on" } else { "chip" },
                         "aria-pressed": "{active}",
                         onclick: move |_| {
                             let mut current = selected_geos();
                             if current.is_empty() {
-                                current = all_geos.iter().filter(|value| *value != &geo_name).cloned().collect();
+                                current = all_geos.iter().filter(|value| **value != geo_name).cloned().collect();
                             } else if current.iter().any(|value| value == &geo_name) {
                                 if current.len() > 1 {
                                     current.retain(|value| value != &geo_name);
@@ -93,7 +95,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                             }
                             selected_geos.set(current);
                         },
-                        "{if geo == "BR" { "Nacional" } else { geo }}"
+                        "{label}"
                     }
                 }
             }
@@ -210,11 +212,25 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
     let x = |day: i64| LEFT + ((day as f64 - min_day) / (max_day - min_day)) * (WIDTH - LEFT - RIGHT);
     let y = |value: f64| TOP + (1.0 - (value - low) / (high - low).max(1.0)) * (HEIGHT - TOP - BOTTOM);
 
+    let grid_ticks = (0..=5).map(|i| {
+        let frac = i as f64 / 5.0;
+        let value = high - frac * (high - low);
+        (value, y(value))
+    }).collect::<Vec<_>>();
+
     let candidates = if rows.iter().any(|poll| poll.round == 2) {
         display_candidates(2)
     } else {
         display_candidates(1)
     };
+    let series = candidates.iter().copied().map(|candidate| {
+        let candidate_rows = rows.iter().filter(|poll| poll.candidate_key == candidate.key()).cloned().collect::<Vec<_>>();
+        let trend = crate::chart::trend_for_model(&candidate_rows, 14.0, 1);
+        let color = regional_candidate_color(candidate);
+        let path = trend.iter().map(|point| format!("{:.2},{:.2}", x(point.day), y(point.value))).collect::<Vec<_>>().join(" ");
+        let point_coords = candidate_rows.iter().take(200).map(|poll| (x(poll.day), y(poll.value))).collect::<Vec<_>>();
+        (candidate, color, path, point_coords)
+    }).collect::<Vec<_>>();
 
     rsx! {
         div { class: "chart-box",
@@ -231,30 +247,21 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
                 height: "{HEIGHT}",
                 rect { x: "0", y: "0", width: "{WIDTH}", height: "{HEIGHT}", fill: "var(--chart-bg, #0d1117)" }
 
-                for i in 0..=5 {
-                    let frac = i as f64 / 5.0;
-                    let value = high - frac * (high - low);
-                    let yy = y(value);
+                for (value, yy) in grid_ticks.iter().copied() {
                     line { class: "grid-line", x1: "{LEFT}", x2: "{WIDTH-RIGHT}", y1: "{yy:.2}", y2: "{yy:.2}" }
                     text { class: "axis-label", x: "8", y: "{yy+4.0:.2}", "{value:.0}%" }
                 }
-                for candidate in candidates.iter().copied() {
-                    let candidate_rows = rows.iter().filter(|poll| poll.candidate_key == candidate.key()).cloned().collect::<Vec<_>>();
-                    let trend = crate::chart::trend_for_model(&candidate_rows, 14.0, 1);
-                    let color = regional_candidate_color(candidate);
-                    let path = trend.iter().map(|point| format!("{:.2},{:.2}", x(point.day), y(point.value))).collect::<Vec<_>>().join(" ");
-                    rsx! {
-                        if !path.is_empty() {
-                            polyline { class: "series-line", points: "{path}", style: "--series: {color};" }
-                        }
-                        for poll in candidate_rows.iter().take(200) {
-                            circle {
-                                class: "poll-point",
-                                cx: "{x(poll.day):.2}",
-                                cy: "{y(poll.value):.2}",
-                                r: "3.2",
-                                style: "fill: var(--surface); stroke: {color};",
-                            }
+                for (_candidate, color, path, point_coords) in series.iter() {
+                    if !path.is_empty() {
+                        polyline { class: "series-line", points: "{path}", style: "--series: {color};" }
+                    }
+                    for (px, py) in point_coords.iter().copied() {
+                        circle {
+                            class: "poll-point",
+                            cx: "{px:.2}",
+                            cy: "{py:.2}",
+                            r: "3.2",
+                            style: "fill: var(--surface); stroke: {color};",
                         }
                     }
                 }

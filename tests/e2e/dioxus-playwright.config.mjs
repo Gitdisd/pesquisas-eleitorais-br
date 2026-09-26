@@ -4,8 +4,8 @@ export default defineConfig({
   testDir: '.',
   testMatch: 'dioxus-site.spec.mjs',
   fullyParallel: false,
-  retries: process.env.CI ? 1 : 0,
-  timeout: 60_000,
+  retries: 0,
+  timeout: 30_000,
   reporter: 'line',
   use: {
     baseURL: 'http://127.0.0.1:4173/pesquisas-eleitorais-br/',
@@ -20,6 +20,6 @@ export default defineConfig({
     command: 'python -m http.server 4173 --directory ../../.dioxus-smoke-server',
     url: 'http://127.0.0.1:4173/pesquisas-eleitorais-br/',
     reuseExistingServer: false,
-    timeout: 120_000,
+    timeout: 60_000,
   },
 })

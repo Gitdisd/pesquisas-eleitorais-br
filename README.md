@@ -39,8 +39,9 @@ npm test
 cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
 ```
 
-- Front atual (fase intermediária): Vite + JavaScript/TypeScript + ECharts
-- Front de destino: Rust + Dioxus 0.7.10 + SVG customizado, em `rust/web-ui/`
+- Production frontend: the existing Vite + JavaScript/TypeScript application remains the published site until individual Rust/Dioxus feature replacements pass parity and deployed verification.
+- Migration frontend: Rust + Dioxus 0.7.10 + custom SVG in `rust/web-ui/`; its bundle is validated in CI but is not the whole-site Pages artifact yet.
+- Ruby automation: `scripts/automation/production_artifact_audit.rb` validates the legacy production artifact, while `scripts/automation/production_deployment_verify.rb` checks the deployed site after Pages publication.
 - Refresh: `.github/workflows/refresh-polls.yml` a cada hora no minuto 10 (`10 * * * *`) + **Run workflow**
 - Deploy: `.github/workflows/deploy-pages.yml`; o refresh dispara esse workflow explicitamente depois de publicar um commit de dados
 - Discover lê `data/sources.json`, busca sinais/páginas e **estagia** descobertas verificadas em `data/discovery/discovered-polls.json`; não grava diretamente em `data/polls.json`

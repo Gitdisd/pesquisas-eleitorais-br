@@ -1,3 +1,5 @@
+#![cfg_attr(target_arch = "wasm32", allow(dead_code))]
+
 use dioxus::prelude::*;
 use gloo_timers::callback::Interval;
 use polling_core::{
@@ -8,7 +10,7 @@ use std::collections::BTreeSet;
 
 use crate::chart::{
     model_label, polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
-    MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
+    BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
 use crate::methodology::Methodology;
@@ -17,7 +19,7 @@ use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
     initial_avg_window_days, initial_model, initial_projection, initial_range_days, initial_round,
-    persist_language, persist_model, persist_overlays, persist_theme, scroll_to_id,
+    persist_language, persist_overlays, persist_theme, scroll_to_id,
     t, Language, Theme, UiState,
 };
 
@@ -102,7 +104,7 @@ pub fn App() -> Element {
     });
 
     use_effect({
-        let ui = ui;
+        let mut ui = ui;
         move || {
             if matches!(polls.read().as_ref(), Some(Ok(_))) {
                 ui.write().status = None;
@@ -117,6 +119,7 @@ pub fn App() -> Element {
     let meta_updated = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_updated.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
     let meta_latest = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.latest_publication_date.as_deref()).map(format_meta_date).unwrap_or_else(|| "—".to_string());
     let meta_check = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_check_at.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
+
 
     rsx! {
         div {
@@ -246,6 +249,23 @@ pub fn App() -> Element {
                         let mut all_institutes: Vec<String> = all.iter().map(|poll| poll.institute.clone()).collect();
                         all_institutes.sort();
                         all_institutes.dedup();
+                        let focus_candidates = if state.round == 2 {
+                            vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
+                        } else {
+                            Candidate::all().to_vec()
+                        };
+                        let overlay_controls = OVERLAYS.iter().copied()
+                            .map(|overlay| (overlay, ui_state.overlays.iter().any(|key| key == overlay.id)))
+                            .collect::<Vec<_>>();
+                        let institute_controls = all_institutes.iter()
+                            .map(|name| {
+                                (
+                                    name.clone(),
+                                    all_institutes.clone(),
+                                    ui_state.institute_selected(name),
+                                )
+                            })
+                            .collect::<Vec<_>>();
 
                         let selected_institutes: Vec<String> = ui_state.institutes.iter()
                             .filter(|name| all_institutes.iter().any(|item| item == *name))
@@ -255,12 +275,14 @@ pub fn App() -> Element {
                             filtered.retain(|poll| selected_institutes.iter().any(|name| name == &poll.institute));
                         }
 
+                        let focus_label = format!("↗ {}", t(ui_state.language, "focus"));
+                        let fullscreen_label = format!("⛶ {}", t(ui_state.language, "fullscreen"));
                         let round_label = if state.round == 1 {
                             t(ui_state.language, "first-round")
                         } else {
                             t(ui_state.language, "second-round")
                         };
-                        let trend = trend_for_model(&filtered, state.avg_window_days as f64, state.model);
+                        let _trend = trend_for_model(&filtered, state.avg_window_days as f64, state.model);
                         let projection = if state.model == 2 {
                             Some(projection_v2_for_round(&filtered, state.round))
                         } else {
@@ -268,7 +290,7 @@ pub fn App() -> Element {
                         };
                         let latest = filtered.last();
                         let table_query = ui_state.table_query.trim().to_lowercase();
-                        let mut table_source: Vec<Poll> = all.iter()
+                        let table_source: Vec<Poll> = all.iter()
                             .filter(|poll| poll.round == state.round)
                             .filter(|poll| selected_geo == "ALL" || poll.geo == selected_geo)
                             .filter(|poll| selected_institutes.is_empty() || selected_institutes.iter().any(|name| name == &poll.institute))
@@ -299,6 +321,13 @@ pub fn App() -> Element {
                             }));
                         }
                         let table_count = table_polls.len();
+                        let selected_geo_for_share = selected_geo.clone();
+                        let selected_geo_for_json = selected_geo.clone();
+                        let table_count_label = format!("{} {}", table_count, t(ui_state.language, "rows"));
+                        let nav_dashboard = format!("⌂ {}", t(ui_state.language, "dashboard"));
+                        let nav_chart = format!("⌁ {}", t(ui_state.language, "chart"));
+                        let nav_summary = format!("▦ {}", t(ui_state.language, "summary"));
+                        let nav_polls = format!("≡ {}", t(ui_state.language, "polls"));
                         let export_rows = table_polls.iter()
                             .flat_map(|poll| poll.rows.iter().cloned())
                             .collect::<Vec<_>>();
@@ -362,7 +391,7 @@ pub fn App() -> Element {
                                         button {
                                             class: "ui-btn",
                                             onclick: move |_| scroll_to_id("chartPanel"),
-                                            "↗ {t(ui_state.language, "focus")}"
+                                            "{focus_label}"
                                         }
                                         button {
                                             class: "ui-btn",
@@ -371,7 +400,7 @@ pub fn App() -> Element {
                                                     ui.write().status = Some(t(ui_state.language, "full-screen-unavailable").to_string());
                                                 }
                                             },
-                                            "⛶ {t(ui_state.language, "fullscreen")}"
+                                            "{fullscreen_label}"
                                         }
                                     }
                                 }
@@ -494,37 +523,26 @@ pub fn App() -> Element {
 
                                 div { class: "candidate-focus",
                                     span { class: "candidate-focus-label", "Linhas do gráfico" }
-                                    {
-                                        let focus_candidates: Vec<Candidate> = if state.round == 2 {
-                                            vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
-                                        } else {
-                                            Candidate::all().to_vec()
-                                        };
-                                        rsx! {
-                                            for candidate in focus_candidates {
-                                                let hidden = ui_state.hidden_candidates.iter().any(|key| key == candidate.key());
-                                                button {
-                                                    class: if hidden { "candidate-focus-btn" } else { "candidate-focus-btn on" },
-                                                    "aria-pressed": "{!hidden}",
-                                                    onclick: move |_| {
-                                                        let mut next = ui.write();
-                                                        if next.hidden_candidates.iter().any(|key| key == candidate.key()) {
-                                                            next.hidden_candidates.retain(|key| key != candidate.key());
-                                                        } else {
-                                                            next.hidden_candidates.push(candidate.key().to_string());
-                                                        }
-                                                    },
-                                                    "{candidate.label()}"
+                                    for candidate in focus_candidates.iter().copied() {
+                                        button {
+                                            class: if ui_state.hidden_candidates.iter().any(|key| key == candidate.key()) { "candidate-focus-btn" } else { "candidate-focus-btn on" },
+                                            "aria-pressed": "{!ui_state.hidden_candidates.iter().any(|key| key == candidate.key())}",
+                                            onclick: move |_| {
+                                                let mut next = ui.write();
+                                                if next.hidden_candidates.iter().any(|key| key == candidate.key()) {
+                                                    next.hidden_candidates.retain(|key| key != candidate.key());
+                                                } else {
+                                                    next.hidden_candidates.push(candidate.key().to_string());
                                                 }
-                                            }
+                                            },
+                                            "{candidate.label()}"
                                         }
                                     }
                                 }
 
                                 div { class: "overlay-row",
                                     span { class: "ctrl", "Overlays" }
-                                    for overlay in OVERLAYS.iter().copied() {
-                                        let enabled = ui_state.overlays.iter().any(|key| key == overlay.id);
+                                    for (overlay, enabled) in overlay_controls.iter().copied() {
                                         button {
                                             class: if enabled { "chip on" } else { "chip" },
                                             "aria-pressed": "{enabled}",
@@ -553,17 +571,14 @@ pub fn App() -> Element {
                                             onclick: move |_| ui.write().institutes.clear(),
                                             {format!("{} ({})", t(ui_state.language, "select-all"), all_institutes.len())}
                                         }
-                                        for institute in all_institutes.iter() {
-                                            let name = institute.clone();
-                                            let all_names = all_institutes.clone();
-                                            let active = ui_state.institute_selected(&name);
+                                        for (name, all_names, active) in institute_controls.iter().cloned() {
                                             button {
                                                 class: if active { "chip on" } else { "chip" },
                                                 "aria-pressed": "{active}",
                                                 onclick: move |_| {
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
-                                                        state.institutes = all_names.iter().filter(|item| *item != &name).cloned().collect();
+                                                        state.institutes = all_names.iter().filter(|item| **item != name).cloned().collect();
                                                     } else if state.institutes.iter().any(|item| item == &name) {
                                                         if state.institutes.len() > 1 {
                                                             state.institutes.retain(|item| item != &name);
@@ -619,7 +634,7 @@ pub fn App() -> Element {
                                                 state.model,
                                                 state.projection,
                                                 state.candidate.key(),
-                                                &selected_geo,
+                                                &selected_geo_for_share,
                                                 &share_institutes,
                                             );
                                             let message = match url {
@@ -652,7 +667,7 @@ pub fn App() -> Element {
                                                 state.avg_window_days,
                                                 state.model,
                                                 state.candidate.key(),
-                                                &selected_geo,
+                                                &selected_geo_for_json,
                                             );
                                             ui.write().status = Some(if ok {
                                                 t(ui_state.language, "exported-json").to_string()
@@ -777,7 +792,7 @@ pub fn App() -> Element {
                                 div { class: "table-toolbar",
                                     div {
                                         h2 { {t(ui_state.language, "table")} }
-                                        p { class: "muted", "{table_count} {t(ui_state.language, "rows")}" }
+                                        p { class: "muted", "{table_count_label}" }
                                     }
                                     input {
                                         r#type: "search",
@@ -854,10 +869,10 @@ pub fn App() -> Element {
                             }
 
                                                         nav { class: "mobile-nav", "aria-label": "Navegação rápida",
-                                a { href: "#overview", "⌂ {t(ui_state.language, "dashboard")}" }
-                                a { href: "#chartPanel", "⌁ {t(ui_state.language, "chart")}" }
-                                a { href: "#cards", "▦ {t(ui_state.language, "summary")}" }
-                                a { href: "#pollsPanel", "≡ {t(ui_state.language, "polls")}" }
+                                a { href: "#overview", "{nav_dashboard}" }
+                                a { href: "#chartPanel", "{nav_chart}" }
+                                a { href: "#cards", "{nav_summary}" }
+                                a { href: "#pollsPanel", "{nav_polls}" }
                                 a { href: "#allSourcesPanel", {format!("◎ {}", t(ui_state.language, "all-sources"))} }
                             }
                             Methodology { language: ui_state.language }
@@ -1095,7 +1110,7 @@ fn multi_chart_svg(
     let width = crate::chart::WIDTH - LEFT - RIGHT;
     let y_for_value = |value: f64| -> f64 { TOP + (1.0 - (value - y_low) / (y_high - y_low).max(1.0)) * (HEIGHT - TOP - BOTTOM) };
     let x_for_day = |day: i64| -> f64 { LEFT + ((day as f64 - min_day) / (max_day - min_day).max(1.0)).clamp(0.0, 1.0) * width };
-    let day_for_x = |x: f64| -> i64 {
+    let day_for_x = move |x: f64| -> i64 {
         (min_day + ((x - LEFT) / width.max(1.0)).clamp(0.0, 1.0) * (max_day - min_day)).round() as i64
     };
 
@@ -1110,6 +1125,7 @@ fn multi_chart_svg(
         (LEFT + frac * width, format_day_axis(day))
     }).collect::<Vec<_>>();
 
+    let hover_line_x = hover_day.map(|day| x_for_day(day));
     let hover_rows: Vec<(&MultiSeries, &Poll)> = if let Some(day) = hover_day {
         surfaces.iter()
             .filter(|surface| !hidden_candidates.iter().any(|key| key == surface.candidate.key()))
@@ -1229,10 +1245,7 @@ fn multi_chart_svg(
                     if !hidden_candidates.iter().any(|key| key == surface.candidate.key()) {
                         {
                             let color = candidate_color(surface.candidate);
-                            let poll_points = surface.rows.iter()
-                                .map(|poll| format!("{:.2},{:.2}", x_for_day(poll.day), y_for_value(poll.value)))
-                                .collect::<Vec<_>>().join(" ");
-                            let trend_path = surface.trend.iter()
+                                                        let trend_path = surface.trend.iter()
                                 .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
                                 .collect::<Vec<_>>().join(" ");
                             let band_points = {
@@ -1241,11 +1254,29 @@ fn multi_chart_svg(
                                 pts.join(" ")
                             };
                             let projection_points = surface.projection.as_ref().map(|p| p.line.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>().join(" ")).unwrap_or_default();
+                            let stroke_dash = candidate_stroke_dash(surface.candidate);
+                            let stroke_width = if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 };
                             let projection_band = surface.projection.as_ref().map(|p| {
                                 let mut pts = p.band_low.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
                                 pts.extend(p.band_high.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
                                 pts.join(" ")
                             }).unwrap_or_default();
+                            let overlay_paths = surface.overlays.iter().map(|overlay| {
+                                let mid = overlay.mid.iter()
+                                    .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                                    .collect::<Vec<_>>().join(" ");
+                                let band = if overlay.high.is_empty() {
+                                    String::new()
+                                } else {
+                                    let mut pts = overlay.high.iter()
+                                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                                        .collect::<Vec<_>>();
+                                    pts.extend(overlay.low.iter().rev()
+                                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
+                                    pts.join(" ")
+                                };
+                                (mid, band)
+                            }).collect::<Vec<_>>();
 
                             rsx! {
                                 if !band_points.is_empty() {
@@ -1255,7 +1286,7 @@ fn multi_chart_svg(
                                     polyline {
                                         class: "series-line",
                                         points: "{trend_path}",
-                                        style: "--series: {color}; stroke-dasharray: {candidate_stroke_dash(surface.candidate)}; stroke-width: {if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 }};"
+                                        style: "--series: {color}; stroke-dasharray: {stroke_dash}; stroke-width: {stroke_width};"
                                     }
                                 }
                                 for poll in surface.rows.iter() {
@@ -1267,7 +1298,7 @@ fn multi_chart_svg(
                                         style: "fill: var(--surface); stroke: {color};",
                                     }
                                 }
-                                if let Some(projection) = surface.projection.as_ref() {
+                                if surface.projection.is_some() {
                                     if !projection_band.is_empty() {
                                         polygon { class: "projection-band", points: "{projection_band}", style: "fill: {color};" }
                                     }
@@ -1275,23 +1306,16 @@ fn multi_chart_svg(
                                         polyline { class: "projection-line", points: "{projection_points}", style: "stroke: {color};" }
                                     }
                                 }
-                                for overlay in surface.overlays.iter() {
-                                    {
-                                        let overlay_path = overlay.mid.iter()
-                                            .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
-                                            .collect::<Vec<_>>().join(" ");
-                                        if !overlay_path.is_empty() {
-                                            polyline {
-                                                class: "overlay-line",
-                                                points: "{overlay_path}",
-                                                style: "--series: {color};"
-                                            }
+                                for (overlay_path, overlay_band_points) in overlay_paths.iter() {
+                                    if !overlay_path.is_empty() {
+                                        polyline {
+                                            class: "overlay-line",
+                                            points: "{overlay_path}",
+                                            style: "--series: {color};"
                                         }
-                                        if !overlay.high.is_empty() {
-                                            let mut pts = overlay.high.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
-                                            pts.extend(overlay.low.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
-                                            polygon { class: "overlay-band", points: "{pts.join(" ")}", style: "fill: {color};" }
-                                        }
+                                    }
+                                    if !overlay_band_points.is_empty() {
+                                        polygon { class: "overlay-band", points: "{overlay_band_points}", style: "fill: {color};" }
                                     }
                                 }
                             }
@@ -1299,8 +1323,7 @@ fn multi_chart_svg(
                     }
                 }
 
-                if let Some(day) = hover_day {
-                    let x = x_for_day(day);
+                if let Some(x) = hover_line_x {
                     line { class: "hover-crosshair", x1: "{x:.2}", x2: "{x:.2}", y1: "{TOP}", y2: "{HEIGHT - BOTTOM}" }
                 }
             }
