@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
     "typecheck": "npx --yes -p typescript@5.9.3 tsc --noEmit -p tsconfig.json",
     "update-polls": "node scripts/update-polls.mjs",
     "discover-polls": "node scripts/discover-polls.mjs",
@@ -16,11 +13,5 @@
     "test:python": "python -m pytest python/tests -q",
     "test:rust": "cargo test --manifest-path rust/polling-core/Cargo.toml",
     "backtest:advanced": "npx --yes tsx@4.23.15 scripts/run_advanced_backtest.mjs data/polls.json --output advanced-backtest-report.json"
-  },
-  "devDependencies": {
-    "vite": "^6.3.5"
-  },
-  "dependencies": {
-    "echarts": "^6.0.0"
   }
 }
