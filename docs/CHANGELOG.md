@@ -1,3 +1,10 @@
+## 2026-09-26 00:25 -03:00 / 2026-09-26T03:25Z — Complete Ruby artifact and deployment verification
+
+- Added `scripts/automation/artifact_audit.rb` to verify the staged Pages artifact contains the required application shell, data mirrors, assets, and WASM payload, and does not reintroduce the legacy browser entrypoint or Apache ECharts.
+- Added `scripts/automation/deployment_verify.rb` to verify the deployed Pages URL, published poll dataset, metadata record count, and Rust/Dioxus runtime markers with bounded retry for Pages propagation.
+- Extended `.github/workflows/deploy-pages.yml` with a dedicated post-deployment verification job and exposes the deployed Pages URL from the deploy job.
+- No application runtime, poll data, statistical formulas, candidate mappings, or chart calculations changed.
+
 ## 2026-09-26 00:10 -03:00 / 2026-09-26T03:10Z — Enforce Ruby migration gate across validation workflows
 
 - Added the Ruby migration gate to CI and Dioxus Browser Smoke, so migration-structure regressions are caught before compilation/browser execution.
