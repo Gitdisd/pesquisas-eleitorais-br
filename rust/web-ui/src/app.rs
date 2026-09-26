@@ -537,18 +537,94 @@ pub fn App() -> Element {
                                 }
                             }
 
-                            section { class: "cards", id: "cards",
-                                div { class: "card",
-                                    div { class: "muted", "Pesquisas no recorte" }
-                                    div { class: "card-value", "{filtered.len()}" }
-                                }
-                                div { class: "card",
-                                    div { class: "muted", "{t(ui_state.language, "series")}" }
-                                    div { class: "card-value", "{state.candidate.label()}" }
-                                }
-                                div { class: "card",
-                                    div { class: "muted", "{t(ui_state.language, "geography")}" }
-                                    div { class: "card-value", "{selected_geo}" }
+                            section { class: "cards candidate-cards", id: "cards",
+                                {
+                                    let card_candidates: Vec<Candidate> = if state.round == 2 {
+                                        vec![Candidate::Lula, Candidate::Flavio]
+                                    } else {
+                                        Candidate::all().to_vec()
+                                    };
+                                    let card_source: Vec<Poll> = all.iter()
+                                        .filter(|poll| poll.round == state.round)
+                                        .filter(|poll| selected_geo == "ALL" || poll.geo == selected_geo)
+                                        .filter(|poll| ui_state.institute_selected(&poll.institute))
+                                        .cloned()
+                                        .collect();
+                                    rsx! {
+                                        for candidate in card_candidates {
+                                            {
+                                                let key = candidate.key();
+                                                let rows: Vec<Poll> = card_source.iter()
+                                                    .filter(|poll| poll.candidate_key == key)
+                                                    .cloned()
+                                                    .collect();
+                                                let trend = trend_for_model(&rows, state.avg_window_days as f64, state.model);
+                                                let now_day = rows.iter().map(|poll| poll.day).max();
+                                                let current = now_day.and_then(|day| nearest_trend_value(&trend, day));
+                                                let prior = now_day.and_then(|day| nearest_trend_value(&trend, day - 30));
+                                                let delta = match (current, prior) {
+                                                    (Some(current), Some(prior)) => current - prior,
+                                                    _ => 0.0,
+                                                };
+                                                let delta_text = if current.is_some() && prior.is_some() {
+                                                    format_delta(delta, ui_state.language)
+                                                } else {
+                                                    "—".to_string()
+                                                };
+                                                let delta_class = if delta.abs() < 0.005 {
+                                                    "flat"
+                                                } else if delta > 0.0 {
+                                                    "up"
+                                                } else {
+                                                    "down"
+                                                };
+                                                let spark_points = trend.iter().rev().take(8).collect::<Vec<_>>();
+                                                let spark_points = spark_points.into_iter().rev().collect::<Vec<_>>();
+                                                let (min_v, max_v) = spark_points.iter().fold(
+                                                    (f64::INFINITY, f64::NEG_INFINITY),
+                                                    |(min_v, max_v), point| (min_v.min(point.value), max_v.max(point.value)),
+                                                );
+                                                let span = (max_v - min_v).max(1.0);
+                                                let spark = spark_points.iter().enumerate()
+                                                    .map(|(index, point)| {
+                                                        let x = if spark_points.len() <= 1 {
+                                                            0.0
+                                                        } else {
+                                                            index as f64 / (spark_points.len() - 1) as f64 * 100.0
+                                                        };
+                                                        let y = 26.0 - ((point.value - min_v) / span) * 20.0;
+                                                        format!("{x:.1},{y:.1}")
+                                                    })
+                                                    .collect::<Vec<_>>()
+                                                    .join(" ");
+                                                rsx! {
+                                                    article {
+                                                        class: "card candidate-card",
+                                                        style: "border-top-color: {candidate_color(candidate)};",
+                                                        div { class: "card-topline",
+                                                            div { class: "name", "{candidate.label()}" }
+                                                            span { class: "card-caption", "média {state.avg_window_days}d" }
+                                                        }
+                                                        div { class: "val", "{format_optional_pct(current)}" }
+                                                        div { class: "delta {delta_class}", "{delta_text}" }
+                                                        if spark_points.len() >= 2 {
+                                                            svg {
+                                                                class: "card-spark",
+                                                                view_box: "0 0 100 28",
+                                                                preserve_aspect_ratio: "none",
+                                                                role: "img",
+                                                                "aria-label": "Tendência recente de {candidate.label()}",
+                                                                polyline {
+                                                                    points: "{spark}",
+                                                                    style: "--series: {candidate_color(candidate)};",
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
 
@@ -1107,6 +1183,51 @@ fn projection_status_text(projection: Option<&ProjectionV2Result>, language: Lan
         } else {
             "Projeção v2 indisponível: sem dados.".to_string()
         },
+    }
+}
+
+fn candidate_color(candidate: Candidate) -> &'static str {
+    match candidate {
+        Candidate::Lula => "#c62828",
+        Candidate::Flavio => "#009c3b",
+        Candidate::Cury => "#b45309",
+        Candidate::Renan => "#6d28d9",
+        Candidate::Caiado => "#4d7c0f",
+        Candidate::Zema => "#ea580c",
+        Candidate::Samara => "#0284c7",
+        Candidate::Hertz => "#475569",
+        Candidate::Edmilson => "#9f1239",
+        Candidate::Rui => "#0f766e",
+        Candidate::Clariana => "#7c3aed",
+        Candidate::Grassi => "#57534e",
+        Candidate::BrancoNulo => "#94a3b8",
+    }
+}
+
+fn nearest_trend_value(trend: &[crate::chart::TrendPoint], day: i64) -> Option<f64> {
+    trend.iter()
+        .min_by_key(|point| (point.day - day).abs())
+        .map(|point| point.value)
+}
+
+fn format_optional_pct(value: Option<f64>) -> String {
+    value.map(format_pct).unwrap_or_else(|| "—".to_string())
+}
+
+fn format_delta(value: f64, language: Language) -> String {
+    let rounded = (value * 100.0).round() / 100.0;
+    if rounded.abs() < 0.005 {
+        return if matches!(language, Language::En) {
+            "0.00 pp vs 30d".to_string()
+        } else {
+            "0,00 pp vs 30d".to_string()
+        };
+    }
+    let decimal = format!("{rounded:+.2}").replace('.', if matches!(language, Language::En) { "." } else { "," });
+    if matches!(language, Language::En) {
+        format!("{decimal} pp vs 30d")
+    } else {
+        format!("{decimal} pp vs 30d")
     }
 }
 
