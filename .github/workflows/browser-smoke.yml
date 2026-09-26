@@ -21,6 +21,7 @@ on:
       - "package-lock.json"
       - "tests/e2e/**"
       - "rust/web-ui/**"
+      - "scripts/automation/**"
       - ".github/workflows/browser-smoke.yml"
   workflow_dispatch:
 
