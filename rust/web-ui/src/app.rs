@@ -23,12 +23,12 @@ use crate::ui::{
 
 const STYLE: &str = include_str!("../assets/style.css");
 
-#[derive(Clone, Copy, PartialEq)]
 #[derive(Clone)]
 struct TablePoll {
     rows: Vec<Poll>,
 }
 
+#[derive(Clone, Copy, PartialEq)]
 struct ViewState {
     candidate: Candidate,
     round: u8,
