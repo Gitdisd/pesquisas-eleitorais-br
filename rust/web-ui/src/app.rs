@@ -965,6 +965,12 @@ fn multi_chart_svg(
                 avg_window_days as f64,
                 14,
                 if round == 2 { Some(ELECTION_ROUND2_MS) } else { Some(ELECTION_ROUND1_MS) },
+                4,
+                0.25,
+                10.0,
+                1.645,
+                2.0,
+                0.12,
             ))
         } else if model == 2 {
             to_project_surface_v2(&projection_v2_for_round(&rows, round))
