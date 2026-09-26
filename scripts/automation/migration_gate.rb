@@ -52,6 +52,33 @@ legacy_browser_paths.each do |path|
   fail_gate("legacy browser entry remains: #{path}") if ROOT.join(path).exist?
 end
 
+allowed_source_modules = %w[
+  src/aggregate.js
+  src/aggregate.ts
+  src/candidates.js
+  src/data/identity.js
+  src/data/normalize.ts
+  src/data/types.ts
+  src/models/advanced.ts
+  src/models/school.ts
+  src/projection-v2.js
+  src/projection.js
+  src/stats/contract.js
+  src/stats/estimator.js
+  src/stats/house-effects.js
+].sort
+
+source_modules = Dir[ROOT.join("src/**/*.{js,ts}")].map { |path| Pathname.new(path).relative_path_from(ROOT).to_s }.sort
+unexpected_source_modules = source_modules - allowed_source_modules
+missing_allowed_modules = allowed_source_modules - source_modules
+fail_gate("unexpected authored src JS/TS module(s): #{unexpected_source_modules.join(", ")}") unless unexpected_source_modules.empty?
+fail_gate("expected offline/reference module(s) missing: #{missing_allowed_modules.join(", ")}") unless missing_allowed_modules.empty?
+
+source_modules.each do |path|
+  content = ROOT.join(path).read
+  fail_gate("remaining src JS/TS looks browser-bound: #{path}") if content.match?(/(?:window\.|document\.|addEventListener\(|import\.meta\.env|querySelector\()/)
+end
+
 %w[
   src/aggregate.js
   src/aggregate.ts
