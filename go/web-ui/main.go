@@ -225,7 +225,7 @@ func freshnessNotice(en bool) string {
 	if days >= 3 {
 		return fmt.Sprintf("<p role='status'><b>%s:</b> %s · %s</p>", label, esc(formatDate(latest)), esc(tr(en, fmt.Sprintf("A base verificada está %d dias atrás; novas pesquisas podem estar aguardando verificação.", days), fmt.Sprintf("The verified dataset is %d days behind; newer polls may still be awaiting verification.", days))))
 	}
-	return fmt.Sprintf("<p><span id='refreshCountdown' style='float:right;color:"+muted+"'>verificação automática a cada 60 min</span><b>%s:</b> %s</p>", label, esc(formatDate(latest)))
+	return fmt.Sprintf("<p><b>%s:</b> %s</p>", label, esc(formatDate(latest)))
 }
 func checkedAttr(on bool) string { if on { return " checked" }; return "" }
 func themeColors(theme string) (string,string,string,string) {
