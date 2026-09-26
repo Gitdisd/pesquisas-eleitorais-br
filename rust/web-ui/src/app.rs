@@ -319,6 +319,7 @@ pub fn App() -> Element {
                             }));
                         }
                         let table_count = table_polls.len();
+                        let table_count_label = format!("{} {}", table_count, t(ui_state.language, "rows"));
                         let export_rows = table_polls.iter()
                             .flat_map(|poll| poll.rows.iter().cloned())
                             .collect::<Vec<_>>();
@@ -783,7 +784,7 @@ pub fn App() -> Element {
                                 div { class: "table-toolbar",
                                     div {
                                         h2 { {t(ui_state.language, "table")} }
-                                        p { class: "muted", "{table_count} {t(ui_state.language, "rows")}" }
+                                        p { class: "muted", "{table_count_label}" }
                                     }
                                     input {
                                         r#type: "search",
@@ -1255,6 +1256,22 @@ fn multi_chart_svg(
                                 pts.extend(p.band_high.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
                                 pts.join(" ")
                             }).unwrap_or_default();
+                            let overlay_paths = surface.overlays.iter().map(|overlay| {
+                                let mid = overlay.mid.iter()
+                                    .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                                    .collect::<Vec<_>>().join(" ");
+                                let band = if overlay.high.is_empty() {
+                                    String::new()
+                                } else {
+                                    let mut pts = overlay.high.iter()
+                                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                                        .collect::<Vec<_>>();
+                                    pts.extend(overlay.low.iter().rev()
+                                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
+                                    pts.join(" ")
+                                };
+                                (mid, band)
+                            }).collect::<Vec<_>>();
 
                             rsx! {
                                 if !band_points.is_empty() {
@@ -1284,24 +1301,16 @@ fn multi_chart_svg(
                                         polyline { class: "projection-line", points: "{projection_points}", style: "stroke: {color};" }
                                     }
                                 }
-                                for overlay in surface.overlays.iter() {
-                                    {
-                                        let overlay_path = overlay.mid.iter()
-                                            .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
-                                            .collect::<Vec<_>>().join(" ");
-                                        if !overlay_path.is_empty() {
-                                            polyline {
-                                                class: "overlay-line",
-                                                points: "{overlay_path}",
-                                                style: "--series: {color};"
-                                            }
+                                for (overlay_path, overlay_band_points) in overlay_paths.iter() {
+                                    if !overlay_path.is_empty() {
+                                        polyline {
+                                            class: "overlay-line",
+                                            points: "{overlay_path}",
+                                            style: "--series: {color};"
                                         }
-                                        if !overlay.high.is_empty() {
-                                            let mut pts = overlay.high.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
-                                            pts.extend(overlay.low.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
-                                            let overlay_band_points = pts.join(" ");
-                                            polygon { class: "overlay-band", points: "{overlay_band_points}", style: "fill: {color};" }
-                                        }
+                                    }
+                                    if !overlay_band_points.is_empty() {
+                                        polygon { class: "overlay-band", points: "{overlay_band_points}", style: "fill: {color};" }
                                     }
                                 }
                             }
