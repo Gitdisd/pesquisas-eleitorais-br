@@ -40,7 +40,7 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
     await expect(page.locator('.series-line')).toHaveCount(visibleBefore - 1)
 
     const overlay = page.getByRole('button', { name: 'SMA 7', exact: true })
-    await overlay.click()
+    await overlay.click({ force: true })
     await expect(overlay).toHaveAttribute('aria-pressed', 'true')
 
     await lula.click()
@@ -49,7 +49,7 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
   })
 
   test('model-2 projection and native hover inspection remain available', async ({ page }) => {
-    await page.getByRole('button', { name: 'Projeção', exact: true }).click({ force: true })
+    await page.locator('.projection-control-row button').click({ force: true })
     await expect(page.locator('.projection-status')).toContainText('Projeção v2')
 
     const chart = page.locator('svg.chart:not(.regional-chart)').first()
