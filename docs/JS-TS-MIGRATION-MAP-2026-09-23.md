@@ -1,4 +1,11 @@
-## 2026-09-25 — Browser JS/TS migration implementation — validation pending
+## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Current execution-graph certification status
+
+- Removed obsolete browser helpers: `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js`.
+- Verified their former browser callers were removed with the final Rust/Dioxus cutover surface; the Ruby migration gate now fails on unexpected `src/*.js`/`*.ts` modules or browser-bound APIs.
+- Retained `src/aggregate.js`, `src/aggregate.ts`, `src/candidates.js`, `src/data/identity.js`, `src/data/normalize.ts`, `src/data/types.ts`, `src/models/advanced.ts`, `src/models/school.ts`, `src/projection.js`, `src/projection-v2.js`, `src/stats/contract.js`, `src/stats/estimator.js`, and `src/stats/house-effects.js` because current offline acquisition/reference/parity workflows still consume them.
+- Remaining deletion/cutover gates are hosted Dioxus compilation, desktop/mobile browser smoke, current-head numerical parity, staged Pages artifact verification, deployed verification, and final merge/cutover.
+
+## Historical implementation snapshot — 2026-09-25
 
 | Legacy browser responsibility | Final Rust/Dioxus location | Status |
 |---|---|---|

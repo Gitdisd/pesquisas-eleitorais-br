@@ -1,3 +1,9 @@
+## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Superseding final-migration cleanup note
+
+The 2026-09-22 cleanup certification predates the final Rust/Dioxus browser cutover preparation. Its historical retention note for `src/ui-upgrades.js` is superseded: `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js` have now been removed after execution-graph review.
+
+The final-migration boundary is now enforced by `scripts/automation/migration_gate.rb`, which whitelists the current offline/reference JS/TS surface and rejects unexpected browser-bound modules. No production cutover is implied by these deletions; current-head CI, Dioxus smoke, artifact and deployed verification remain required.
+
 # Repository cleanup certification — 2026-09-22
 
 ## Scope

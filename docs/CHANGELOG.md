@@ -1,3 +1,12 @@
+## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Final execution-graph cleanup and Ruby certification
+
+- Removed obsolete browser-only helpers `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js` after checking current script/test execution paths.
+- Retained the remaining `src/*.js`/`*.ts` files that are still consumed by offline acquisition, statistical reference, data-quality, or parity workflows.
+- Hardened `scripts/automation/migration_gate.rb` with an explicit allowed offline/reference module set and a browser-API scan, preventing accidental reintroduction of authored browser JS/TS.
+- Synchronized the migration architecture, JS/TS migration map, and cleanup certification with the final implementation boundary.
+- No poll data, candidate mappings, statistical formulas, chart calculations, or production deployment state changed.
+- Current cutover remains gated on hosted Dioxus compilation, browser smoke, numerical parity, staged artifact verification, deployed verification, and final merge/cutover.
+
 ## 2026-09-26 00:25 -03:00 / 2026-09-26T03:25Z — Complete Ruby artifact and deployment verification
 
 - Added `scripts/automation/artifact_audit.rb` to verify the staged Pages artifact contains the required application shell, data mirrors, assets, and WASM payload, and does not reintroduce the legacy browser entrypoint or Apache ECharts.

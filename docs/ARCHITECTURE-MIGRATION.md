@@ -1,3 +1,11 @@
+## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Current migration status: implementation complete, validation gates outstanding
+
+The Rust/Dioxus replacement now contains the migrated dashboard shell, state, controls, custom SVG chart, overlays, regional panel, methodology surface, data loader/normalization, exports, share state, refresh timers, desktop/mobile smoke suite, and Rust/WASM model dispatch required by the final browser architecture.
+
+The old browser-only helpers `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js` were removed after the current branch execution graph showed no remaining caller. The remaining `src/*.js`/ `*.ts` files are restricted to offline acquisition, data quality, statistical reference, and parity tooling; `scripts/automation/migration_gate.rb` certifies that boundary.
+
+The final cutover is **not yet authorized**. The outstanding evidence gates are: current-host CI/Dioxus WASM compilation, desktop+mobile Dioxus browser smoke, numerical parity on the current head, successful staged Pages artifact audit, successful deployment verification, and then the merge/cutover decision. Until those pass on the same current revision, `main` remains the production reference.
+
 ## 2026-09-25 — Rust/Dioxus browser cutover implementation — validation pending
 
 - The visible browser application is now implemented by `rust/web-ui` using Rust + Dioxus 0.7.10 and native/custom SVG rendering.
@@ -96,7 +104,7 @@ A replacement progresses only after the preceding gate passes:
 
 The current production application remains the reference implementation until the relevant gate is passed.
 
-## Current migration state — 2026-09-23
+## Historical migration snapshot — 2026-09-23
 
 At migration start, production was Vite + hand-authored JavaScript/TypeScript + Apache ECharts. Seven JavaScript entrypoints were loaded by the historical HTML shell, and package.json still depended on ECharts.
 
@@ -181,9 +189,9 @@ That architecture is now frozen as an intermediate state and will be removed onl
 
 The statistical research results already completed are not silently changed by the renderer migration. Existing production constants, canonical weighting behavior, projection behavior, and interval semantics remain reference behavior until any numerical replacement passes the parity/research gates.
 
-## Current migration status
+## Historical migration status at the end of the 2026-09-23 snapshot
 
-**Phase A — Rust/Dioxus replacement: cutover gate configured; awaiting successful CI/browser deployment validation**
+**Phase A — Rust/Dioxus replacement: parallel implementation only**
 
 Branch: migration-rust-ui-2026-09-23
 
