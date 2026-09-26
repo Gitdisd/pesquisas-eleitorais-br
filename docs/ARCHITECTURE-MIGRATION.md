@@ -1,3 +1,9 @@
+## 2026-09-26T15:49:42Z / 2026-09-26 12:49:42 -03:00 — Go/WASM parity gates green; production still protected
+
+The current Go/WebAssembly browser rewrite passes the hosted CI and Chromium smoke gates on revision b1238e88029c6cf435531a3c5f126a292b7ebd3a. The Pages artifact builds with the four published data files and passes the Ruby artifact audit.
+
+This is a validated migration candidate, not a production cutover. The live site remains on main until the replacement is intentionally promoted. The Rust/Dioxus source is still retained for migration history and fallback until cutover is completed.
+
 ## 2026-09-26T15:39:14Z / 2026-09-26 12:39:14 -03:00 — Go/WASM feature-parity rewrite in progress
 
 The browser replacement is being rebuilt in Go/WebAssembly. The Go implementation now carries the dashboard feature surface rather than only the initial filter/table shell: models 1–12, multi-institute filtering, overlays, uncertainty, projections, cards, regional panel, methodology, URL/local persistence, point inspection, exports, sharing, zoom/reset and fullscreen.

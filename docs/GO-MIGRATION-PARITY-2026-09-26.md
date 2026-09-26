@@ -1,3 +1,5 @@
+## 2026-09-26T15:49:42Z / 2026-09-26 12:49:42 -03:00 — hosted Go/WASM validation green
+
 # Go/WASM UI parity pass — 2026-09-26
 
 ## Change timestamp
@@ -29,5 +31,14 @@ This pass rebuilds the browser-facing dashboard in Go/WebAssembly instead of con
 - Go's generated wasm_exec.js remains a required runtime artifact for the browser target.
 - The old Rust/Dioxus implementation remains in the repository until the new implementation has production parity evidence.
 
-## Remaining gates
-The replacement still needs the hosted CI/browser checks on this exact revision. Only after those pass should production Pages be cut over.
+## Hosted validation — green on current revision
+
+- Current revision: b1238e88029c6cf435531a3c5f126a292b7ebd3a
+- CI run 36253163703: success.
+- Browser smoke run 36253163710: success.
+- Go/WASM compilation: success.
+- Ruby artifact audit: success.
+- Python tests, rolling backtest and overlap audit: success.
+- Chromium smoke: success.
+
+Production has not been cut over. The existing live Pages site remains the production reference until the new artifact is deliberately promoted.

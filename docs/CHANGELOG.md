@@ -1,3 +1,9 @@
+## 2026-09-26 12:49:42 -03:00 / 2026-09-26T15:49:42Z — Go/WASM parity gates green
+
+- Hosted CI and Chromium browser smoke pass on b1238e88029c6cf435531a3c5f126a292b7ebd3a.
+- Go/WASM build and Ruby Pages artifact audit pass with the published data bundle.
+- Production Pages remains protected on main; no live cutover was made.
+
 ## 2026-09-26 12:53 -03:00 / 2026-09-26T15:53:00Z — Go/WASM browser-smoke correction
 
 - Corrected the Chromium smoke selector for the projection checkbox to target its actual Go-rendered control.
