@@ -1,3 +1,9 @@
+## 2026-09-26 00:02 -03:00 / 2026-09-26T03:02:00Z — Add Ruby artifact audit to browser smoke
+
+- Browser Smoke now audits the same staged Dioxus site directory that Playwright serves, including the complete published data mirror and WASM payload.
+- This closes the pre-merge artifact-content gap without adding a second browser build.
+- No application, poll data, statistical, or chart behavior changed.
+
 ## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Final execution-graph cleanup and Ruby certification
 
 - Removed obsolete browser-only helpers `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js` after checking current script/test execution paths.
