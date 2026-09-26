@@ -19,6 +19,7 @@ pub struct TrendPoint {
 }
 
 pub const MODEL_OPTIONS: &[(u8, &str)] = &[
+    (0, "off"),
     (1, "Exp"),
     (2, "Casa"),
     (3, "Meta"),
