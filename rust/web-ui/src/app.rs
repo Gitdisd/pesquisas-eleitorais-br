@@ -16,6 +16,11 @@ use crate::ui::{
 const STYLE: &str = include_str!("../assets/style.css");
 
 #[derive(Clone, Copy, PartialEq)]
+#[derive(Clone)]
+struct TablePoll {
+    rows: Vec<Poll>,
+}
+
 struct ViewState {
     candidate: Candidate,
     round: u8,
@@ -202,17 +207,46 @@ pub fn App() -> Element {
                         };
                         let latest = filtered.last();
                         let table_query = ui_state.table_query.trim().to_lowercase();
-                        let table_rows: Vec<Poll> = filtered.iter().rev()
-                            .filter(|poll| {
-                                table_query.is_empty()
-                                    || poll.institute.to_lowercase().contains(&table_query)
-                                    || poll.scenario.to_lowercase().contains(&table_query)
-                                    || poll.geo.to_lowercase().contains(&table_query)
-                                    || poll.fieldwork_end.to_lowercase().contains(&table_query)
-                            })
+                        let mut table_source: Vec<Poll> = all.iter()
+                            .filter(|poll| poll.round == state.round)
+                            .filter(|poll| selected_geo == "ALL" || poll.geo == selected_geo)
+                            .filter(|poll| ui_state.institute_selected(&poll.institute))
                             .cloned()
                             .collect();
-                        let export_rows = table_rows.clone();
+                        if let Some(days) = state.range_days {
+                            if let Some(max_day) = table_source.iter().map(|poll| poll.day).max() {
+                                let min_day = max_day - days;
+                                table_source.retain(|poll| poll.day >= min_day);
+                            }
+                        }
+                        let mut grouped = std::collections::BTreeMap::<String, Vec<Poll>>::new();
+                        for poll in table_source {
+                            grouped.entry(poll.id.clone()).or_default().push(poll);
+                        }
+                        let mut table_polls: Vec<TablePoll> = grouped.into_values()
+                            .map(|mut rows| {
+                                rows.sort_by(|a, b| a.candidate_key.cmp(&b.candidate_key));
+                                TablePoll { rows }
+                            })
+                            .collect();
+                        table_polls.sort_by(|a, b| {
+                            let ad = a.rows.first().map(|row| row.day).unwrap_or(i64::MIN);
+                            let bd = b.rows.first().map(|row| row.day).unwrap_or(i64::MIN);
+                            bd.cmp(&ad)
+                        });
+                        if !table_query.is_empty() {
+                            table_polls.retain(|poll| poll.rows.iter().any(|row| {
+                                row.institute.to_lowercase().contains(&table_query)
+                                    || row.scenario.to_lowercase().contains(&table_query)
+                                    || row.geo.to_lowercase().contains(&table_query)
+                                    || row.fieldwork_end.to_lowercase().contains(&table_query)
+                                    || row.candidate_key.to_lowercase().contains(&table_query)
+                            }));
+                        }
+                        let table_count = table_polls.len();
+                        let export_rows = table_polls.iter()
+                            .flat_map(|poll| poll.rows.iter().cloned())
+                            .collect::<Vec<_>>();
                         let json_rows = filtered.clone();
                         let share_institutes = ui_state.institutes.clone();
                         let latest_all = all.iter().max_by_key(|poll| poll.day);
@@ -522,13 +556,13 @@ pub fn App() -> Element {
                                 div { class: "table-toolbar",
                                     div {
                                         h2 { "{t(ui_state.language, "table")}" }
-                                        p { class: "muted", "{table_rows.len()} {t(ui_state.language, "rows")}" }
+                                        p { class: "muted", "{table_count} {t(ui_state.language, "rows")}" }
                                     }
                                     input {
                                         r#type: "search",
                                         value: "{ui_state.table_query}",
                                         placeholder: "{t(ui_state.language, "search-table")}",
-                                        aria_label: t(ui_state.language, "search-table"),
+                                        "aria-label": t(ui_state.language, "search-table"),
                                         oninput: move |event| ui.write().table_query = event.value(),
                                     }
                                 }
@@ -540,18 +574,47 @@ pub fn App() -> Element {
                                             th { "Instituto" }
                                             th { "Geo" }
                                             th { "Cenário" }
-                                            th { class: "num", "Valor" }
+                                            for candidate in Candidate::all().iter().copied() {
+                                                if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
+                                                } else {
+                                                    th { class: "num", "{candidate.label()}" }
+                                                }
+                                            }
                                             th { class: "num", "N" }
+                                            th { "Margem" }
+                                            th { "Fonte" }
                                         }}
                                         tbody {
-                                            for poll in table_rows.iter() {
-                                                tr {
-                                                    td { "{format_date(&poll.fieldwork_end)}" }
-                                                    td { "{poll.institute}" }
-                                                    td { "{poll.geo}" }
-                                                    td { "{poll.scenario}" }
-                                                    td { class: "num", "{format_pct(poll.value)}" }
-                                                    td { class: "num", "{poll.n:.0}" }
+                                            for table_poll in table_polls.iter() {
+                                                if let Some(first) = table_poll.rows.first() {
+                                                    tr {
+                                                        td { "{format_date(&first.fieldwork_end)}" }
+                                                        td { "{first.institute}" }
+                                                        td { "{first.geo}" }
+                                                        td { "{first.scenario}" }
+                                                        for candidate in Candidate::all().iter().copied() {
+                                                            if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
+                                                            } else {
+                                                                td { class: "num",
+                                                                    {
+                                                                        table_poll.rows.iter()
+                                                                            .find(|row| row.candidate_key == candidate.key())
+                                                                            .map(|row| format_pct(row.value))
+                                                                            .unwrap_or_else(|| "—".to_string())
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        td { class: "num", "{first.n:.0}" }
+                                                        td { class: "num", "{first.moe.map(|v| format!("±{v:.2}")).unwrap_or_else(|| "—".into())}" }
+                                                        td {
+                                                            if !first.source_url.is_empty() {
+                                                                a { href: "{first.source_url}", target: "_blank", rel: "noopener noreferrer", "ver" }
+                                                            } else {
+                                                                "—"
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -1045,6 +1108,25 @@ fn projection_status_text(projection: Option<&ProjectionV2Result>, language: Lan
             "Projeção v2 indisponível: sem dados.".to_string()
         },
     }
+}
+
+fn group_polls_by_id(rows: &[Poll]) -> Vec<TablePoll> {
+    let mut grouped = std::collections::BTreeMap::<String, Vec<Poll>>::new();
+    for row in rows {
+        grouped.entry(row.id.clone()).or_default().push(row.clone());
+    }
+    let mut out: Vec<TablePoll> = grouped.into_values()
+        .map(|mut rows| {
+            rows.sort_by(|a, b| a.candidate_key.cmp(&b.candidate_key));
+            TablePoll { rows }
+        })
+        .collect();
+    out.sort_by(|a, b| {
+        let ad = a.rows.first().map(|row| row.day).unwrap_or(i64::MIN);
+        let bd = b.rows.first().map(|row| row.day).unwrap_or(i64::MIN);
+        bd.cmp(&ad)
+    });
+    out
 }
 
 fn unique_poll_count(rows: &[Poll], round: Option<u8>) -> usize {
