@@ -17,7 +17,7 @@ use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
     initial_avg_window_days, initial_model, initial_range_days, initial_round,
-    persist_language, persist_model, persist_overlays, persist_theme, reload_page, scroll_to_id,
+    persist_language, persist_model, persist_overlays, persist_theme, scroll_to_id,
     t, Language, Theme, UiState,
 };
 
@@ -1047,6 +1047,7 @@ fn multi_chart_svg(
 
     let hover_rows: Vec<(&MultiSeries, &Poll)> = if let Some(day) = hover_day {
         surfaces.iter()
+            .filter(|surface| !hidden_candidates.iter().any(|key| key == surface.candidate.key()))
             .filter_map(|surface| {
                 let poll = surface.rows.iter().min_by_key(|poll| (poll.day - day).abs())?;
                 Some((surface, poll))
