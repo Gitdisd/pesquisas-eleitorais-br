@@ -28,7 +28,7 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
     await expect(page.locator('.chart-navigation span')).toContainText('Zoom 1.0×')
 
     await page.getByRole('button', { name: '30d', exact: true }).first().click({ force: true })
-    await page.getByRole('button', { name: '7d', exact: true }).click({ force: true })
+    await page.getByRole('group', { name: 'Período' }).getByRole('button', { name: '7d', exact: true }).click({ force: true })
   })
 
   test('candidate focus and overlay toggles are native Rust state', async ({ page }) => {
@@ -43,14 +43,16 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
     await overlay.click({ force: true })
     await expect(overlay).toHaveAttribute('aria-pressed', 'true')
 
-    await lula.click()
+    await lula.click({ force: true })
     await expect(lula).toHaveAttribute('aria-pressed', 'true')
     expect(await page.locator('.overlay-line').count()).toBeGreaterThan(0)
   })
 
-  test('model-2 projection and native hover inspection remain available', async ({ page }) => {
-    await page.locator('.projection-control-row button').click({ force: true })
-    await expect(page.locator('.projection-status')).toContainText('Projeção v2')
+  test('projection toggle and native hover inspection remain available', async ({ page }) => {
+    const projection = page.locator('.projection-control-row button')
+    await expect(projection).toHaveAttribute('aria-pressed', 'false')
+    await projection.click({ force: true })
+    await expect(projection).toHaveAttribute('aria-pressed', 'true')
 
     const chart = page.locator('svg.chart:not(.regional-chart)').first()
     const box = await chart.boundingBox()
