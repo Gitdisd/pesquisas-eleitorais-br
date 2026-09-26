@@ -1,3 +1,10 @@
+## 2026-09-26 00:10 -03:00 / 2026-09-26T03:10Z — Enforce Ruby migration gate across validation workflows
+
+- Added the Ruby migration gate to CI and Dioxus Browser Smoke, so migration-structure regressions are caught before compilation/browser execution.
+- The Pages workflow already runs the same gate before production bundling.
+- Commits: `35f152e7eccbdb9561d9946a5aad2d0d51cfaa97` (CI), `3c05f0b09cb78e01d0fe681d5a44564796b17339` (Browser Smoke).
+- No production application, poll data, statistical formulas, candidate mappings, or chart calculations changed.
+
 ## 2026-09-26 00:00 -03:00 / 2026-09-26T03:00Z — Add Ruby migration automation gate
 
 - Added `scripts/automation/migration_gate.rb` as a dependency-free repository-level migration gate.
