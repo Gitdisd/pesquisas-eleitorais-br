@@ -539,6 +539,7 @@ pub fn App() -> Element {
                                         }
                                         for institute in all_institutes.iter() {
                                             let name = institute.clone();
+                                            let all_names = all_institutes.clone();
                                             let active = ui_state.institute_selected(&name);
                                             button {
                                                 class: if active { "chip on" } else { "chip" },
@@ -546,7 +547,7 @@ pub fn App() -> Element {
                                                 onclick: move |_| {
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
-                                                        state.institutes = all_institutes.iter().filter(|item| *item != &name).cloned().collect();
+                                                        state.institutes = all_names.iter().filter(|item| *item != &name).cloned().collect();
                                                     } else if state.institutes.iter().any(|item| item == &name) {
                                                         if state.institutes.len() > 1 {
                                                             state.institutes.retain(|item| item != &name);
@@ -1856,25 +1857,6 @@ fn format_delta(value: f64, language: Language) -> String {
     } else {
         format!("{decimal} pp vs 30d")
     }
-}
-
-fn group_polls_by_id(rows: &[Poll]) -> Vec<TablePoll> {
-    let mut grouped = std::collections::BTreeMap::<String, Vec<Poll>>::new();
-    for row in rows {
-        grouped.entry(row.id.clone()).or_default().push(row.clone());
-    }
-    let mut out: Vec<TablePoll> = grouped.into_values()
-        .map(|mut rows| {
-            rows.sort_by(|a, b| a.candidate_key.cmp(&b.candidate_key));
-            TablePoll { rows }
-        })
-        .collect();
-    out.sort_by(|a, b| {
-        let ad = a.rows.first().map(|row| row.day).unwrap_or(i64::MIN);
-        let bd = b.rows.first().map(|row| row.day).unwrap_or(i64::MIN);
-        bd.cmp(&ad)
-    });
-    out
 }
 
 fn unique_poll_count(rows: &[Poll], round: Option<u8>) -> usize {
