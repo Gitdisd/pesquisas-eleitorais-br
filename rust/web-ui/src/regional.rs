@@ -278,11 +278,10 @@ fn regional_candidate_color(candidate: crate::data::Candidate) -> &'static str {
 
 fn format_date(value: &str) -> String {
     let value = value.get(..10).unwrap_or(value);
-    let mut parts = value.split('-');
-    format!(
-        "{}/{}/{}",
-        parts.nth(2).unwrap_or("—"),
-        parts.next().unwrap_or("—"),
-        value.get(..4).unwrap_or("—"),
-    )
+    let parts = value.split('-').collect::<Vec<_>>();
+    if parts.len() == 3 {
+        format!("{}/{}/{}", parts[2], parts[1], parts[0])
+    } else {
+        value.to_string()
+    }
 }
