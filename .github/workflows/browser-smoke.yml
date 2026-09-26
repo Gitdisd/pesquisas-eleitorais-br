@@ -7,7 +7,6 @@ on:
     paths:
       - "src/**"
       - "public/**"
-      - "index.html"
       - "package.json"
       - "package-lock.json"
       - "tests/e2e/**"
@@ -31,33 +30,9 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  chromium:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: "22"
-          cache: npm
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-      - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - uses: jetli/wasm-pack-action@v0.4.0
-        with:
-          version: v0.13.1
-      - run: rustup target add wasm32-unknown-unknown
-      - run: npm ci
-      - run: npm run build:rust
-      - run: VITE_E2E=1 npm run build
-      - run: npx --yes playwright@1.63.0 install --with-deps chromium
-      - run: npm install --no-save --package-lock=false @playwright/test@1.63.0
-      - run: npx playwright test --config=tests/e2e/playwright.config.mjs
-
   dioxus:
     name: dioxus-chromium
     runs-on: ubuntu-latest
@@ -104,21 +79,6 @@ jobs:
           cp -a ../../public/data/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data/
           cp ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html ../../.dioxus-smoke-server/pesquisas-eleitorais-br/404.html
           test -f ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html
-      - name: Report Dioxus compiler diagnostics
-        if: failure() && hashFiles('rust/web-ui/dioxus-build.log') != ''
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs')
-            const log = fs.readFileSync('rust/web-ui/dioxus-build.log', 'utf8')
-            const body = 'Temporary Dioxus build diagnostics for commit ' + context.sha + '\n\n' + log.slice(-14000)
-            await github.rest.repos.createCommitComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              commit_sha: context.sha,
-              body,
-            })
-
       - name: Install Chromium
         run: npx --yes playwright@1.63.0 install --with-deps chromium
       - name: Install Playwright test runner
