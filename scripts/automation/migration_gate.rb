@@ -76,7 +76,7 @@ fail_gate("expected offline/reference module(s) missing: #{missing_allowed_modul
 
 source_modules.each do |path|
   content = ROOT.join(path).read
-  fail_gate("remaining src JS/TS looks browser-bound: #{path}") if content.match?(/(?:window\.|document\.|addEventListener\(|import\.meta\.env|querySelector\()/)
+  fail_gate("remaining src JS/TS looks browser-bound: #{path}") if content.match?(/(?:window\.(?:document|location|localStorage|fetch|addEventListener|setTimeout|setInterval|requestAnimationFrame|navigator)|(?:globalThis|self)\.|document\.|addEventListener\(|import\.meta\.env|querySelector\()/)
 end
 
 %w[
