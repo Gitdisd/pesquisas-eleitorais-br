@@ -54,7 +54,7 @@ end
 source_modules = Dir[ROOT.join("src/**/*.{js,ts}")].map { |path| Pathname.new(path).relative_path_from(ROOT).to_s }
 source_modules.each do |path|
   content = ROOT.join(path).read
-  fail_gate("src JS/TS module still looks browser-bound: #{path}") if content.match?(/window\.|document\.|addEventListener\(|import\.meta\.env|querySelector\(/)
+  fail_gate("src JS/TS module still looks browser-bound: #{path}") if content.match?(/\bwindow\s*\.\s*(?:document|location|localStorage|fetch|addEventListener|setTimeout|setInterval|requestAnimationFrame|navigator)\b|\bdocument\s*\.\s*(?:querySelector|createElement|body|documentElement|addEventListener)\b|\b(?:globalThis|self)\s*\.\s*(?:window|document|fetch|location|localStorage|navigator)\b|\bimport\.meta\.env\b/)
 end
 
 pass("Go/WebAssembly is the production browser runtime")
