@@ -588,3 +588,126 @@ td.num, th.num { text-align: right; }
 
   .metric-value { font-size: 1rem; }
 }
+
+
+.candidate-focus,
+.overlay-row {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.3rem;
+  margin:.4rem 0;
+}
+
+.candidate-focus-label {
+  width:100%;
+  color:var(--muted);
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.candidate-focus-btn {
+  min-height:32px;
+  padding:.3rem .55rem;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  font:inherit;
+  font-size:.72rem;
+  cursor:pointer;
+}
+
+.candidate-focus-btn.on {
+  background:var(--chip-on-bg);
+  border-color:var(--chip-on-border);
+  color:var(--chip-on-text);
+  font-weight:800;
+}
+
+.overlay-row .ctrl {
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:800;
+  margin-right:.2rem;
+}
+
+.overlay-line {
+  fill:none;
+  stroke:var(--series);
+  stroke-width:1.35;
+  stroke-dasharray:4 3;
+  opacity:.72;
+  vector-effect:non-scaling-stroke;
+}
+
+.overlay-band {
+  opacity:.06;
+  stroke:none;
+}
+
+.regional-panel {
+  border-top:3px solid var(--border);
+}
+
+.regional-chart {
+  height:420px;
+}
+
+.regional-chart-summary {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.6rem;
+  margin:.5rem 0;
+}
+
+.regional-table-title {
+  margin:.9rem 0 .5rem;
+}
+
+.chart-empty {
+  min-height:260px;
+  display:grid;
+  place-items:center;
+  border:1px dashed var(--border);
+  border-radius:10px;
+}
+
+.refresh-btn {
+  margin-left:auto;
+}
+
+html[data-theme^='crt-'] .app-shell {
+  letter-spacing:.01em;
+  text-shadow:var(--crt-glow);
+}
+
+html[data-theme^='crt-'] .app-shell::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:80;
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent 2px,var(--scan) 3px);
+  mix-blend-mode:multiply;
+}
+
+html[data-theme='crt-amber'] {
+  --scan:rgba(255,176,0,.07);
+}
+
+html[data-theme='crt-green'] {
+  --scan:rgba(61,255,122,.07);
+}
+
+@media(max-width:700px) {
+  .candidate-focus-btn { min-height:36px; }
+  .regional-chart { min-height:320px; height:360px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .app-shell { transition:none; }
+}
