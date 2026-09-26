@@ -1,3 +1,9 @@
+## 2026-09-26 00:06 -03:00 / 2026-09-26T03:06:00Z — Remove stale Vite development commands from README
+
+- Updated the development section to stop advertising the deleted `npm run dev` and `npm run build` commands.
+- Documented the current Rust core / Dioxus web-ui validation commands and the Dioxus Playwright smoke configuration.
+- No application, data, statistical, chart, or deployment behavior changed.
+
 ## 2026-09-26 00:05:26 -03:00 / 2026-09-26T03:05:26Z — Remove remaining legacy Vite workflow assumptions
 
 - Replaced the obsolete `npm run build` step in `deep-repair.yml` with Rust/Dioxus WASM-target validation.
