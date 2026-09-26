@@ -580,6 +580,7 @@ pub fn build_share_url(
     range_days: Option<i64>,
     avg_window_days: i64,
     model: u8,
+    projection: bool,
     candidate: &str,
     geo: &str,
     institutes: &[String],
@@ -599,6 +600,7 @@ pub fn build_share_url(
         );
         params.set("window", &avg_window_days.to_string());
         params.set("model", &model.to_string());
+        params.set("projection", if projection { "1" } else { "0" });
         params.set("candidate", candidate);
         params.set("geo", geo);
         if institutes.is_empty() {
@@ -611,7 +613,7 @@ pub fn build_share_url(
     }
     #[cfg(not(target_arch = "wasm32"))]
     {
-        let _ = (round, range_days, avg_window_days, model, candidate, geo, institutes);
+        let _ = (round, range_days, avg_window_days, model, projection, candidate, geo, institutes);
         None
     }
 }
