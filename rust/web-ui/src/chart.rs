@@ -171,6 +171,7 @@ mod tests {
             n,
             geo: "BR".into(),
             source_url: String::new(),
+            tse_registration: None,
             moe: None,
             candidate_key: "lula".into(),
             value,
