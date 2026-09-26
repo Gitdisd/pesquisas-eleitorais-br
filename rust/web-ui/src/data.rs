@@ -201,6 +201,34 @@ fn merge_raw_polls(base: Vec<RawPoll>, extra: Vec<RawPoll>) -> Vec<RawPoll> {
     map.into_values().collect()
 }
 
+
+#[derive(Clone, Debug, Deserialize, Default)]
+pub struct PollMeta {
+    pub schema_version: Option<u64>,
+    pub latest_publication_date: Option<String>,
+    pub latest_fieldwork_end: Option<String>,
+    pub last_successful_pipeline_at: Option<String>,
+    pub last_updated: Option<String>,
+    pub last_check_at: Option<String>,
+    pub check_interval_minutes: Option<u64>,
+    pub record_count: Option<u64>,
+    pub source: Option<String>,
+    pub content_hash: Option<String>,
+    pub pipeline_status: Option<String>,
+}
+
+pub async fn load_meta(refresh_nonce: u64) -> Option<PollMeta> {
+    let url = format!("data/meta.json?v={refresh_nonce}");
+    Request::get(&url)
+        .send()
+        .await
+        .ok()?
+        .json::<PollMeta>()
+        .await
+        .ok()
+}
+
+
 #[derive(Clone, Debug, Serialize)]
 pub struct Poll {
     pub id: String,
