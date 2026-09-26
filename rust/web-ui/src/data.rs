@@ -1,5 +1,5 @@
 use gloo_net::http::Request;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
 pub use polling_core::{
@@ -200,8 +200,7 @@ fn merge_raw_polls(base: Vec<RawPoll>, extra: Vec<RawPoll>) -> Vec<RawPoll> {
     map.into_values().collect()
 }
 
-#[derive(Clone, Debug)]
-#[allow(dead_code)]
+#[derive(Clone, Debug, Serialize)]
 pub struct Poll {
     pub id: String,
     pub institute: String,
