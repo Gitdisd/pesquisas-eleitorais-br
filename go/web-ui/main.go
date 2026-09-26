@@ -273,7 +273,8 @@ func renderPage() string {
 	b.WriteString(fmt.Sprintf("<div id='appFrame' style='font-family:system-ui,sans-serif;max-width:1480px;margin:auto;padding:18px;background:%s;color:%s;min-height:100vh;line-height:1.45'>",bg,fg))
 	b.WriteString("<header><h1>Pesquisas eleitorais — Presidência 2026</h1>")
 	b.WriteString("<p>"+tr(en,"Painel público de pesquisas, modelos e metodologia.","Public polling dashboard, models and methodology.")+"</p>")
-	b.WriteString(fmt.Sprintf("<p><b>%s:</b> %s · <b>%s:</b> %d · <b>%s:</b> %s</p>",
+	b.WriteString("<p><span id='refreshCountdown' style='float:right;color:"+muted+"'>verificação automática a cada 60 min</span>");
+	b.WriteString(fmt.Sprintf("<b>%s:</b> %s · <b>%s:</b> %d · <b>%s:</b> %s</p>",
 		tr(en,"Atualizado","Updated"),esc(firstNonEmpty(meta.LastUpdated,meta.LatestPublicationDate)),
 		tr(en,"Registros","Records"),len(polls),tr(en,"Último campo","Latest fieldwork"),esc(firstNonEmpty(meta.LatestFieldworkEnd,"—"))))
 	b.WriteString(freshnessNotice(en))
