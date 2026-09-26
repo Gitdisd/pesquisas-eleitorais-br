@@ -200,7 +200,7 @@ pub fn App() -> Element {
                                     rel: "noopener noreferrer",
                                     "aria-label": if ui_state.language == Language::En { "Follow @Monkeeuphoria on X" } else { "Seguir @Monkeeuphoria no X" },
                                     img { class: "x-pfp", src: "https://unavatar.io/x/Monkeeuphoria", alt: "" }
-                                    span { "@Monkeeuphoria · {t(ui_state.language, "follow")}" }
+                                    span { {format!("@Monkeeuphoria · {}", t(ui_state.language, "follow"))} }
                                 }
                                 button {
                                     class: "ui-btn refresh-btn",
