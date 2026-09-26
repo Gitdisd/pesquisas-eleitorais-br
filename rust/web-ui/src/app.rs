@@ -67,7 +67,7 @@ pub fn App() -> Element {
     let mut ui = use_signal(UiState::restored);
 
     use_effect({
-        let ui = ui;
+        let mut ui = ui;
         move || {
             let language = ui().language;
             apply_document_chrome(language);
@@ -260,7 +260,6 @@ pub fn App() -> Element {
                         } else {
                             t(ui_state.language, "second-round")
                         };
-                        let trend = trend_for_model(&filtered, state.avg_window_days as f64, state.model);
                         let projection = if state.model == 2 {
                             Some(projection_v2_for_round(&filtered, state.round))
                         } else {
@@ -268,7 +267,7 @@ pub fn App() -> Element {
                         };
                         let latest = filtered.last();
                         let table_query = ui_state.table_query.trim().to_lowercase();
-                        let mut table_source: Vec<Poll> = all.iter()
+                        let table_source: Vec<Poll> = all.iter()
                             .filter(|poll| poll.round == state.round)
                             .filter(|poll| selected_geo == "ALL" || poll.geo == selected_geo)
                             .filter(|poll| selected_institutes.is_empty() || selected_institutes.iter().any(|name| name == &poll.institute))
@@ -313,6 +312,9 @@ pub fn App() -> Element {
                         let institute_options = all_institutes.iter()
                             .map(|name| (name.clone(), ui_state.institute_selected(name)))
                             .collect::<Vec<_>>();
+                        let all_institutes_shared = std::rc::Rc::new(all_institutes.clone());
+                        let share_geo = selected_geo.clone();
+                        let json_geo = selected_geo.clone();
 
                         rsx! {
                             section { class: "dashboard-overview", id: "overview",
@@ -559,7 +561,7 @@ pub fn App() -> Element {
                                                 class: if active { "chip on" } else { "chip" },
                                                 "aria-pressed": "{active}",
                                                 onclick: move |_| {
-                                                    let all_names = all_institutes.clone();
+                                                    let all_names = all_institutes_shared.clone();
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
                                                         state.institutes = all_names.iter().filter(|item| *item != &name).cloned().collect();
@@ -651,7 +653,7 @@ pub fn App() -> Element {
                                                 state.avg_window_days,
                                                 state.model,
                                                 state.candidate.key(),
-                                                &selected_geo,
+                                                &json_geo,
                                             );
                                             ui.write().status = Some(if ok {
                                                 t(ui_state.language, "exported-json").to_string()
@@ -1125,7 +1127,7 @@ fn multi_chart_svg(
     let width = crate::chart::WIDTH - LEFT - RIGHT;
     let y_for_value = |value: f64| -> f64 { TOP + (1.0 - (value - y_low) / (y_high - y_low).max(1.0)) * (HEIGHT - TOP - BOTTOM) };
     let x_for_day = |day: i64| -> f64 { LEFT + ((day as f64 - min_day) / (max_day - min_day).max(1.0)).clamp(0.0, 1.0) * width };
-    let day_for_x = |x: f64| -> i64 {
+    let day_for_x = move |x: f64| -> i64 {
         (min_day + ((x - LEFT) / width.max(1.0)).clamp(0.0, 1.0) * (max_day - min_day)).round() as i64
     };
 
@@ -1380,8 +1382,8 @@ fn multi_chart_svg(
                 if let Some(day) = hover_day {
                     line {
                         class: "hover-crosshair",
-                        x1: {format!("{:.2}", x_for_day(day))},
-                        x2: {format!("{:.2}", x_for_day(day))},
+                        x1: format!("{:.2}", x_for_day(day)),
+                        x2: format!("{:.2}", x_for_day(day)),
                         y1: "{TOP}",
                         y2: "{HEIGHT - BOTTOM}"
                     }
