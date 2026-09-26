@@ -76,10 +76,9 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                     button {
                         class: if selected.is_empty() || selected.iter().any(|value| value == &geo) { "chip on" } else { "chip" },
                         "aria-pressed": "{selected.is_empty() || selected.iter().any(|value| value == &geo)}",
-                        onclick: {
+                        onclick: move |_| {
                             let geo_name = geo.clone();
                             let all_geos = all_geos.clone();
-                            move |_| {
                                 let mut current = selected_geos();
                                 if current.is_empty() {
                                     current = all_geos.iter().filter(|value| *value != &geo_name).cloned().collect();
@@ -92,9 +91,8 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                                     current.sort();
                                 }
                                 selected_geos.set(current);
-                            }
                         },
-                        {if geo == "BR" { "Nacional" } else { geo }}
+                        {if geo == "BR" { "Nacional" } else { geo.as_str() }}
                     }
                 }
             }
