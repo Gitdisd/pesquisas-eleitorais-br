@@ -7,7 +7,7 @@ use polling_core::{
 use std::collections::BTreeSet;
 
 use crate::chart::{
-    model_label, polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
+    polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
     BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
@@ -117,23 +117,7 @@ pub fn App() -> Element {
     let meta_updated = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_updated.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
     let meta_latest = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.latest_publication_date.as_deref()).map(format_meta_date).unwrap_or_else(|| "—".to_string());
     let meta_check = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_check_at.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
-    let focus_candidates = if ui_state.round == 2 {
-        vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
-    } else {
-        Candidate::all().to_vec()
-    };
-    let overlay_controls = OVERLAYS.iter().copied()
-        .map(|overlay| (overlay, ui_state.overlays.iter().any(|key| key == overlay.id)))
-        .collect::<Vec<_>>();
-    let institute_controls = all_institutes.iter()
-        .map(|name| {
-            (
-                name.clone(),
-                all_institutes.clone(),
-                ui_state.institute_selected(name),
-            )
-        })
-        .collect::<Vec<_>>();
+
 
     rsx! {
         div {
@@ -263,6 +247,23 @@ pub fn App() -> Element {
                         let mut all_institutes: Vec<String> = all.iter().map(|poll| poll.institute.clone()).collect();
                         all_institutes.sort();
                         all_institutes.dedup();
+                        let focus_candidates = if state.round == 2 {
+                            vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
+                        } else {
+                            Candidate::all().to_vec()
+                        };
+                        let overlay_controls = OVERLAYS.iter().copied()
+                            .map(|overlay| (overlay, ui_state.overlays.iter().any(|key| key == overlay.id)))
+                            .collect::<Vec<_>>();
+                        let institute_controls = all_institutes.iter()
+                            .map(|name| {
+                                (
+                                    name.clone(),
+                                    all_institutes.clone(),
+                                    ui_state.institute_selected(name),
+                                )
+                            })
+                            .collect::<Vec<_>>();
 
                         let selected_institutes: Vec<String> = ui_state.institutes.iter()
                             .filter(|name| all_institutes.iter().any(|item| item == *name))
@@ -272,6 +273,7 @@ pub fn App() -> Element {
                             filtered.retain(|poll| selected_institutes.iter().any(|name| name == &poll.institute));
                         }
 
+                        let focus_label = format!("↗ {}", t(ui_state.language, "focus"));
                         let round_label = if state.round == 1 {
                             t(ui_state.language, "first-round")
                         } else {
@@ -379,7 +381,7 @@ pub fn App() -> Element {
                                         button {
                                             class: "ui-btn",
                                             onclick: move |_| scroll_to_id("chartPanel"),
-                                            "{format!(\"↗ {}\", t(ui_state.language, \"focus\"))}"
+                                            "{focus_label}"
                                         }
                                         button {
                                             class: "ui-btn",
@@ -1113,6 +1115,7 @@ fn multi_chart_svg(
         (LEFT + frac * width, format_day_axis(day))
     }).collect::<Vec<_>>();
 
+    let hover_line_x = hover_day.map(|day| x_for_day(day));
     let hover_rows: Vec<(&MultiSeries, &Poll)> = if let Some(day) = hover_day {
         surfaces.iter()
             .filter(|surface| !hidden_candidates.iter().any(|key| key == surface.candidate.key()))
@@ -1244,6 +1247,8 @@ fn multi_chart_svg(
                                 pts.join(" ")
                             };
                             let projection_points = surface.projection.as_ref().map(|p| p.line.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>().join(" ")).unwrap_or_default();
+                            let stroke_dash = candidate_stroke_dash(surface.candidate);
+                            let stroke_width = if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 };
                             let projection_band = surface.projection.as_ref().map(|p| {
                                 let mut pts = p.band_low.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
                                 pts.extend(p.band_high.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
@@ -1258,7 +1263,7 @@ fn multi_chart_svg(
                                     polyline {
                                         class: "series-line",
                                         points: "{trend_path}",
-                                        style: "--series: {color}; stroke-dasharray: {candidate_stroke_dash(surface.candidate)}; stroke-width: {if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 }};"
+                                        style: "--series: {color}; stroke-dasharray: {stroke_dash}; stroke-width: {stroke_width};"
                                     }
                                 }
                                 for poll in surface.rows.iter() {
@@ -1302,7 +1307,7 @@ fn multi_chart_svg(
                     }
                 }
 
-                if let Some(x) = hover_x {
+                if let Some(x) = hover_line_x {
                     line { class: "hover-crosshair", x1: "{x:.2}", x2: "{x:.2}", y1: "{TOP}", y2: "{HEIGHT - BOTTOM}" }
                 }
             }
