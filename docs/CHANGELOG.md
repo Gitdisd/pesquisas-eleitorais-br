@@ -1,4 +1,11 @@
 
+## 2026-09-26 14:10 BRT — National polling reconciliation
+- Reconciled six newly published national presidential registrations: BR-04739/2026, BR-01739/2026, BR-04202/2026, BR-05268/2026, BR-09587/2026 and BR-00304/2026.
+- Added verified first/second-round scenarios to `data/polls.json` and `public/data/polls.json`, increasing the canonical national set from 240 to 252 records.
+- Updated metadata to latest publication 24/09/2026 and latest fieldwork 23/09/2026.
+- Removed the six reconciled registrations from the public pending-evidence queue.
+- Only figures supported by the retrieved publication/reporting evidence were entered; unreported candidate values were not inferred.
+
 ## 2026-09-26 13:58 BRT — Cutover validation and data-freshness guard
 - Fixed the Go/Chromium smoke test to match the migrated institute-filter checkbox controls instead of the obsolete `#institute` select.
 - Added a visible verified-data freshness status to the Go/WASM dashboard; when the latest verified publication is three or more days old, the UI explicitly warns that newer polls may still be awaiting verification.
