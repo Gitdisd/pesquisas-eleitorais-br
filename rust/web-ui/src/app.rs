@@ -16,7 +16,7 @@ use crate::overlays::{compute_overlay, OVERLAYS};
 use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
-    initial_avg_window_days, initial_model, initial_range_days, initial_round,
+    initial_avg_window_days, initial_model, initial_projection, initial_range_days, initial_round,
     persist_language, persist_model, persist_overlays, persist_theme, scroll_to_id,
     t, Language, Theme, UiState,
 };
@@ -36,6 +36,7 @@ struct ViewState {
     avg_window_days: i64,
     geo_index: usize,
     model: u8,
+    projection: bool,
     hover_day: Option<i64>,
     zoom: f64,
     pan_days: f64,
@@ -54,6 +55,7 @@ pub fn App() -> Element {
         avg_window_days: initial_avg_window_days(),
         geo_index: usize::MAX,
         model: initial_model(),
+        projection: initial_projection(),
         hover_day: None,
         zoom: 1.0,
         pan_days: 0.0,
@@ -426,6 +428,20 @@ pub fn App() -> Element {
                                     }
                                 }
 
+                                div { class: "projection-control-row",
+                                    span { class: "ctrl", "Projeção" }
+                                    button {
+                                        class: if state.projection { "chip on" } else { "chip" },
+                                        "aria-pressed": "{state.projection}",
+                                        onclick: move |_| {
+                                            let mut next = view.write();
+                                            next.projection = !next.projection;
+                                            reset_navigation(&mut next);
+                                        },
+                                        if state.projection { "Ligada" } else { "Desligada" }
+                                    }
+                                }
+
                                 div { class: "controls controls-secondary",
                                     div { class: "window-row",
                                         span { class: "ctrl", "{t(ui_state.language, "averaging-window")}" }
@@ -570,6 +586,7 @@ pub fn App() -> Element {
                                     state.range_days,
                                     &ui_state.institutes,
                                     state.model,
+                                    state.projection,
                                     state.avg_window_days as f64,
                                     &ui_state.hidden_candidates,
                                     &ui_state.overlays,
@@ -600,6 +617,7 @@ pub fn App() -> Element {
                                                 state.range_days,
                                                 state.avg_window_days,
                                                 state.model,
+                                                state.projection,
                                                 state.candidate.key(),
                                                 &selected_geo,
                                                 &share_institutes,
@@ -935,6 +953,7 @@ fn multi_chart_svg(
     range_days: Option<i64>,
     institutes: &[String],
     model: u8,
+    projection_enabled: bool,
     avg_window_days: f64,
     hidden_candidates: &[String],
     overlay_ids: &[String],
@@ -985,7 +1004,7 @@ fn multi_chart_svg(
             high = high.max(point.high);
         }
 
-        let projection = if model == 1 {
+        let projection = if projection_enabled && model == 1 {
             let points: Vec<crate::chart::TrendPoint> = trend.iter().map(|point| point.clone()).collect();
             to_project_surface_v1(project_trend(
                 &points.iter().map(|point| polling_core::SeriesPoint { x: point.day as f64 * 86_400_000.0, y: point.value }).collect::<Vec<_>>(),
@@ -999,7 +1018,7 @@ fn multi_chart_svg(
                 2.0,
                 0.12,
             ))
-        } else if model == 2 {
+        } else if projection_enabled && model == 2 {
             to_project_surface_v2(&projection_v2_for_round_with_fit(&rows, round, avg_window_days))
         } else {
             None
