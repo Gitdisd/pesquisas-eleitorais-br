@@ -1,3 +1,12 @@
+## 2026-09-26 00:05:26 -03:00 / 2026-09-26T03:05:26Z — Remove remaining legacy Vite workflow assumptions
+
+- Replaced the obsolete `npm run build` step in `deep-repair.yml` with Rust/Dioxus WASM-target validation.
+- Removed the obsolete Vite build from `pipeline-smoke.yml`; the pipeline smoke now finishes with the existing Node data-contract tests.
+- Removed the obsolete Vite build from `refresh-polls.yml`; refresh already performs Rust core tests, Rust/WASM build and parity, and then explicitly dispatches Pages deployment.
+- Removed the obsolete Vite build from `repair-now.yml` and added an explicit Pages deployment dispatch after a repaired-data push.
+- Browser Smoke now triggers for changes under `scripts/automation/**`.
+- No poll data, statistical formulas, candidate mappings, chart calculations, or production state changed.
+
 ## 2026-09-26 00:04 -03:00 / 2026-09-26T03:04:00Z — Correct Ruby browser-bound detector
 
 - The migration gate no longer treats ordinary local-variable calls such as `window.filter(...)` in the offline projection algorithm as browser APIs.
