@@ -1,3 +1,11 @@
+## 2026-09-25 — Rust/Dioxus browser migration completed
+
+- The visible browser application is now implemented by `rust/web-ui` using Rust + Dioxus 0.7.10 and native/custom SVG rendering.
+- The legacy Vite browser runtime and Apache ECharts dependency have been removed from the application tree.
+- The Pages workflow publishes only the verified Dioxus static artifact and explicitly carries `polls.json`, `meta.json`, `polls-extra.json` and `polls-regional.json` when present.
+- Remaining JS/TS files are offline research, data-pipeline, statistical-reference or parity tooling; they are not browser application modules.
+- The prior Pages incident is retained below as historical context; the deployment architecture is no longer the legacy Vite path.
+
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — Dashboard feature slice migrated to Rust/Dioxus
 
 - Began the actual UI language migration instead of creating another compatibility wrapper.
