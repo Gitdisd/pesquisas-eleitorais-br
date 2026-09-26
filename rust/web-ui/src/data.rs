@@ -205,6 +205,7 @@ fn merge_raw_polls(base: Vec<RawPoll>, extra: Vec<RawPoll>) -> Vec<RawPoll> {
 pub struct Poll {
     pub id: String,
     pub institute: String,
+    pub fieldwork_start: Option<String>,
     pub fieldwork_end: String,
     pub published_date: Option<String>,
     pub scenario: String,
@@ -212,6 +213,7 @@ pub struct Poll {
     pub geo: String,
     pub source_url: String,
     pub tse_registration: Option<String>,
+    pub verified: bool,
     pub moe: Option<f64>,
     pub candidate_key: String,
     pub value: f64,
@@ -294,6 +296,7 @@ pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
             out.push(Poll {
                 id,
                 institute: row.institute.clone(),
+                fieldwork_start: row.fieldwork_start.clone(),
                 fieldwork_end: row.fieldwork_end.clone(),
                 published_date: row.published_date.clone(),
                 scenario: row.scenario.clone(),
@@ -301,6 +304,7 @@ pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
                 geo: geo.clone(),
                 source_url: row.source_url.clone(),
                 tse_registration: row.tse_registration.clone().or(row.tse_protocol.clone()),
+                verified: row.verified.unwrap_or(false),
                 moe: parse_moe_value(&row.margin_of_error),
                 candidate_key: key,
                 value: candidate.pct,
@@ -358,6 +362,7 @@ pub async fn load_regional_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String
             out.push(Poll {
                 id,
                 institute: row.institute.clone(),
+                fieldwork_start: row.fieldwork_start.clone(),
                 fieldwork_end: row.fieldwork_end.clone(),
                 published_date: row.published_date.clone(),
                 scenario: row.scenario.clone(),
