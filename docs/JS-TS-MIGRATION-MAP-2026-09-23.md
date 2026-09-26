@@ -1,3 +1,20 @@
+## 2026-09-25 — Browser JS/TS migration completed
+
+| Legacy browser responsibility | Final Rust/Dioxus location | Status |
+|---|---|---|
+| Main application shell and controls | `rust/web-ui/src/app.rs` | migrated |
+| Language/theme/browser chrome | `rust/web-ui/src/ui.rs` | migrated |
+| Main chart/ECharts surface | `rust/web-ui/src/app.rs` + `rust/web-ui/src/chart.rs` | migrated to custom SVG |
+| Chart overlays | `rust/web-ui/src/overlays.rs` | migrated |
+| Regional sources panel | `rust/web-ui/src/regional.rs` | migrated |
+| Methodology surface | `rust/web-ui/src/methodology.rs` | migrated |
+| Data loading/normalization for browser | `rust/web-ui/src/data.rs` | migrated |
+| Browser smoke suite | `tests/e2e/dioxus-site.spec.mjs` | migrated |
+
+- Vite entrypoint/config, browser UI JS/CSS modules, and ECharts have been removed.
+- Node/TypeScript statistical/reference modules remain only where they are still inputs to offline parity/research checks; they are not browser entrypoints.
+- This document is now a completion record rather than deletion authorization.
+
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — First substantial UI feature slice moved to Rust/Dioxus
 
 | Legacy surface | Rust/Dioxus responsibility | Status |
