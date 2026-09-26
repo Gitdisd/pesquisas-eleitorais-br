@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Rust/Dioxus migration browser smoke', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('./', { waitUntil: 'domcontentloaded' })
-    await page.waitForSelector('svg.chart', { state: 'visible' })
+    await page.goto('./', { waitUntil: 'domcontentloaded', timeout: 15_000 })
+    await page.waitForSelector('svg.chart', { state: 'visible', timeout: 15_000 })
   })
 
   test('renders the migrated native dashboard and poll data', async ({ page }) => {
