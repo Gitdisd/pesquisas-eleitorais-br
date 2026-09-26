@@ -782,6 +782,450 @@ pub fn App() -> Element {
 }
 
 
+
+struct MultiSeries {
+    candidate: Candidate,
+    rows: Vec<Poll>,
+    trend: Vec<crate::chart::TrendPoint>,
+    uncertainty: Vec<polling_core::UncertaintyPoint>,
+    projection: Option<ProjectSurface>,
+    overlays: Vec<crate::overlays::OverlayResult>,
+}
+
+struct ProjectSurface {
+    line: Vec<crate::chart::TrendPoint>,
+    band_low: Vec<crate::chart::TrendPoint>,
+    band_high: Vec<crate::chart::TrendPoint>,
+}
+
+fn poll_filter_for_chart(
+    all: &[Poll],
+    candidate: Candidate,
+    round: u8,
+    geo: &str,
+    range_days: Option<i64>,
+    institutes: &[String],
+) -> Vec<Poll> {
+    let mut rows: Vec<Poll> = all.iter()
+        .filter(|poll| poll.round == round && poll.candidate_key == candidate.key())
+        .filter(|poll| geo == "ALL" || poll.geo == geo)
+        .filter(|poll| institutes.is_empty() || institutes.iter().any(|name| name == &poll.institute))
+        .cloned()
+        .collect();
+    if let Some(days) = range_days {
+        if let Some(max_day) = rows.iter().map(|poll| poll.day).max() {
+            let min_day = max_day - days;
+            rows.retain(|poll| poll.day >= min_day);
+        }
+    }
+    rows.sort_by_key(|poll| poll.day);
+    rows
+}
+
+fn to_project_surface_v1(result: polling_core::ProjectionResult) -> Option<ProjectSurface> {
+    if !result.ok || result.line.len() < 2 {
+        return None;
+    }
+    Some(ProjectSurface {
+        line: result.line.into_iter().map(|point| crate::chart::TrendPoint {
+            day: (point.x / 86_400_000.0).round() as i64,
+            value: point.y,
+        }).collect(),
+        band_low: result.band_low.into_iter().map(|point| crate::chart::TrendPoint {
+            day: (point.x / 86_400_000.0).round() as i64,
+            value: point.y,
+        }).collect(),
+        band_high: result.band_high.into_iter().map(|point| crate::chart::TrendPoint {
+            day: (point.x / 86_400_000.0).round() as i64,
+            value: point.y,
+        }).collect(),
+    })
+}
+
+fn to_project_surface_v2(result: &ProjectionV2Result) -> Option<ProjectSurface> {
+    if !result.ok || result.line.len() < 2 {
+        return None;
+    }
+    Some(ProjectSurface {
+        line: result.line.iter().map(|point| crate::chart::TrendPoint {
+            day: (point.x / 86_400_000.0).round() as i64,
+            value: point.y,
+        }).collect(),
+        band_low: result.band_low.iter().map(|point| crate::chart::TrendPoint {
+            day: (point.x / 86_400_000.0).round() as i64,
+            value: point.y,
+        }).collect(),
+        band_high: result.band_high.iter().map(|point| crate::chart::TrendPoint {
+            day: (point.x / 86_400_000.0).round() as i64,
+            value: point.y,
+        }).collect(),
+    })
+}
+
+fn multi_chart_svg(
+    all: &[Poll],
+    round: u8,
+    geo: &str,
+    range_days: Option<i64>,
+    institutes: &[String],
+    model: u8,
+    avg_window_days: f64,
+    hidden_candidates: &[String],
+    overlay_ids: &[String],
+    hover_day: Option<i64>,
+    mut view: Signal<ViewState>,
+) -> Element {
+    let keys: Vec<Candidate> = if round == 2 {
+        vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
+    } else {
+        Candidate::all().to_vec()
+    };
+
+    let mut surfaces = Vec::new();
+    let mut observed_min = i64::MAX;
+    let mut observed_max = i64::MIN;
+    let mut low = 0.0_f64;
+    let mut high = 0.0_f64;
+
+    for candidate in keys.iter().copied() {
+        let rows = poll_filter_for_chart(all, candidate, round, geo, range_days, institutes);
+        if let Some(day) = rows.first().map(|poll| poll.day) {
+            observed_min = observed_min.min(day);
+        }
+        if let Some(day) = rows.last().map(|poll| poll.day) {
+            observed_max = observed_max.max(day);
+        }
+        let trend = trend_for_model(&rows, avg_window_days, model);
+        for poll in &rows {
+            low = low.min(poll.value);
+            high = high.max(poll.value);
+        }
+        for point in &trend {
+            low = low.min(point.value);
+            high = high.max(point.value);
+        }
+
+        let uncertainty_rows: Vec<PollObservation> = rows.iter().map(|row| PollObservation {
+            t: row.day as f64 * 86_400_000.0,
+            y: row.value,
+            n: Some(row.n),
+            institute: Some(row.institute.clone()),
+            moe: row.moe,
+        }).collect();
+
+        let uncertainty = uncertainty_band(&uncertainty_rows, avg_window_days, 1.645);
+        for point in &uncertainty {
+            low = low.min(point.low);
+            high = high.max(point.high);
+        }
+
+        let projection = if model == 1 {
+            let points: Vec<crate::chart::TrendPoint> = trend.iter().map(|point| point.clone()).collect();
+            to_project_surface_v1(project_trend(
+                &points.iter().map(|point| polling_core::SeriesPoint { x: point.day as f64 * 86_400_000.0, y: point.value }).collect::<Vec<_>>(),
+                avg_window_days as f64,
+                14,
+                if round == 2 { Some(ELECTION_ROUND2_MS) } else { Some(ELECTION_ROUND1_MS) },
+            ))
+        } else if model == 2 {
+            to_project_surface_v2(&projection_v2_for_round(&rows, round))
+        } else {
+            None
+        };
+
+        if let Some(proj) = projection.as_ref() {
+            if let Some(point) = proj.line.last() {
+                observed_max = observed_max.max(point.day);
+                low = low.min(point.value);
+                high = high.max(point.value);
+            }
+            for point in proj.band_low.iter().chain(proj.band_high.iter()) {
+                low = low.min(point.value);
+                high = high.max(point.value);
+            }
+        }
+
+        let overlays = overlay_ids.iter()
+            .filter_map(|id| {
+                let result = compute_overlay(id, &trend, &rows);
+                if result.mid.is_empty() && result.high.is_empty() {
+                    None
+                } else {
+                    Some(result)
+                }
+            })
+            .collect();
+
+        surfaces.push(MultiSeries {
+            candidate,
+            rows,
+            trend,
+            uncertainty,
+            projection,
+            overlays,
+        });
+    }
+
+    if observed_min == i64::MAX || observed_max == i64::MIN {
+        return rsx! { div { class: "chart-empty muted", "Sem dados para o gráfico." } };
+    }
+
+    let base_min_day = observed_min as f64;
+    let base_max_day = observed_max as f64;
+    let projection_extra = if model > 0 { 15.0 } else { 1.5 };
+    let mut chart_max_day = base_max_day + projection_extra;
+    if let Some(days) = range_days {
+        let min = base_max_day - days as f64;
+        chart_max_day = base_max_day + projection_extra;
+        let base_min_candidate = base_min_day.max(min);
+        // Keep the range aligned to the requested observation window.
+        let _ = base_min_candidate;
+    }
+    let range_min_day = match range_days {
+        Some(days) => base_max_day.max(base_min_day) - days as f64,
+        None => base_min_day,
+    }.max(base_min_day);
+
+    let mut y_low = low.max(0.0);
+    let mut y_high = high.max(50.0);
+    let span = (y_high - y_low).max(if round == 2 { 8.0 } else { 20.0 });
+    let pad = (span * 0.08).max(2.0);
+    y_low = (y_low - pad).max(0.0);
+    y_high = (y_high + pad).min(100.0).max(y_low + 5.0);
+
+    let current = view();
+    let (min_day, max_day) = navigation_window(
+        range_min_day,
+        chart_max_day,
+        current.zoom,
+        current.pan_days,
+    );
+
+    let width = crate::chart::WIDTH - LEFT - RIGHT;
+    let y_for_value = |value: f64| -> f64 { TOP + (1.0 - (value - y_low) / (y_high - y_low).max(1.0)) * (HEIGHT - TOP - BOTTOM) };
+    let x_for_day = |day: i64| -> f64 { LEFT + ((day as f64 - min_day) / (max_day - min_day).max(1.0)).clamp(0.0, 1.0) * width };
+    let day_for_x = |x: f64| -> i64 {
+        (min_day + ((x - LEFT) / width.max(1.0)).clamp(0.0, 1.0) * (max_day - min_day)).round() as i64
+    };
+
+    let y_ticks = (0..=5).map(|i| {
+        let frac = i as f64 / 5.0;
+        let value = y_high - frac * (y_high - y_low);
+        (value, y_for_value(value))
+    }).collect::<Vec<_>>();
+    let x_ticks = (0..=6).map(|i| {
+        let frac = i as f64 / 6.0;
+        let day = min_day + frac * (max_day - min_day);
+        (LEFT + frac * width, format_day_axis(day))
+    }).collect::<Vec<_>>();
+
+    let hover_rows: Vec<(&MultiSeries, &Poll)> = if let Some(day) = hover_day {
+        surfaces.iter()
+            .filter_map(|surface| {
+                let poll = surface.rows.iter().min_by_key(|poll| (poll.day - day).abs())?;
+                Some((surface, poll))
+            })
+            .collect()
+    } else {
+        Vec::new()
+    };
+
+    rsx! {
+        div {
+            class: "multi-chart",
+            svg {
+                class: "chart",
+                view_box: "0 0 1100 470",
+                onmousemove: move |event| {
+                    let x = event.data().element_coordinates().x;
+                    let clamped = x.clamp(LEFT, LEFT + width);
+                    view.write().hover_day = Some(day_for_x(clamped));
+                },
+                onmouseleave: move |_| {
+                    view.write().hover_day = None;
+                },
+                onwheel: move |event| {
+                    event.prevent_default();
+                    let data = event.data();
+                    let x = data.element_coordinates().x.clamp(LEFT, LEFT + width);
+                    let delta_y = data.delta().strip_units().y;
+                    if delta_y.abs() < 0.01 { return; }
+                    let mut state = view.write();
+                    let (zoom, pan_days) = zoom_around(
+                        range_min_day,
+                        chart_max_day,
+                        state.zoom,
+                        state.pan_days,
+                        x,
+                        delta_y,
+                    );
+                    state.zoom = zoom;
+                    state.pan_days = pan_days;
+                    state.hover_day = Some(day_for_x(x));
+                },
+                onpointerdown: move |event| {
+                    event.prevent_default();
+                    let data = event.data();
+                    let id = data.pointer_id();
+                    let x = data.element_coordinates().x;
+                    let y = data.element_coordinates().y;
+                    let mut state = view.write();
+                    if state.pointer_a.map(|point| point.0) == Some(id) || state.pointer_b.map(|point| point.0) == Some(id) {
+                        return;
+                    }
+                    if state.pointer_a.is_none() {
+                        state.pointer_a = Some((id, x, y));
+                        state.pan_start = Some((id, x, state.pan_days));
+                    } else if state.pointer_b.is_none() {
+                        state.pointer_b = Some((id, x, y));
+                        state.pinch_last = pinch_geometry(state.pointer_a, state.pointer_b);
+                    }
+                },
+                onpointermove: move |event| {
+                    event.prevent_default();
+                    let data = event.data();
+                    let id = data.pointer_id();
+                    let x = data.element_coordinates().x;
+                    let y = data.element_coordinates().y;
+                    let mut state = view.write();
+                    update_pointer(&mut state.pointer_a, id, x, y);
+                    update_pointer(&mut state.pointer_b, id, x, y);
+                    if let (Some(a), Some(b)) = (state.pointer_a, state.pointer_b) {
+                        let (distance, midpoint_x) = pinch_geometry(Some(a), Some(b)).unwrap_or((0.0, (a.1 + b.1) / 2.0));
+                        if distance > 1.0 {
+                            if let Some((last_distance, last_midpoint_x)) = state.pinch_last {
+                                let old_zoom = state.zoom;
+                                let (old_min, old_max) = navigation_window(range_min_day, chart_max_day, old_zoom, state.pan_days);
+                                let anchor_day = day_from_x(last_midpoint_x, old_min, old_max);
+                                let ratio = (distance / last_distance).clamp(0.85, 1.18);
+                                let new_zoom = (old_zoom * ratio).clamp(1.0, MAX_ZOOM);
+                                state.pan_days = pan_to_anchor(range_min_day, chart_max_day, new_zoom, anchor_day, midpoint_x);
+                                state.zoom = new_zoom;
+                            }
+                            state.pinch_last = Some((distance, midpoint_x));
+                        }
+                    } else if let Some((start_id, start_x, start_pan)) = state.pan_start {
+                        if start_id == id {
+                            state.pan_days = pan_by_pixels(range_min_day, chart_max_day, state.zoom, start_pan, x - start_x);
+                        }
+                    }
+                },
+                onpointerup: move |event| {
+                    event.prevent_default();
+                    release_pointer(&mut view.write(), event.data().pointer_id());
+                },
+                onpointercancel: move |event| {
+                    event.prevent_default();
+                    release_pointer(&mut view.write(), event.data().pointer_id());
+                },
+                role: "img",
+                "aria-label": "Gráfico customizado de pesquisas eleitorais por candidato",
+                width: "1100",
+                height: "{HEIGHT}",
+                rect { x: "0", y: "0", width: "1100", height: "{HEIGHT}", fill: "var(--chart-bg, #0d1117)" }
+
+                for (value, y) in y_ticks.iter().copied() {
+                    line { class: "grid-line", x1: "{LEFT}", x2: "{1100.0 - RIGHT}", y1: "{y:.2}", y2: "{y:.2}" }
+                    text { class: "axis-label", x: "8", y: "{y + 4.0:.2}", "{value:.1}%" }
+                }
+                for (x, label) in x_ticks.iter() {
+                    line { class: "grid-line", x1: "{x:.2}", x2: "{x:.2}", y1: "{TOP}", y2: "{HEIGHT - BOTTOM}" }
+                    text { class: "axis-label", x: "{x - 17.0:.2}", y: "{HEIGHT - 17.0:.2}", "{label}" }
+                }
+
+                for surface in surfaces.iter() {
+                    if !hidden_candidates.iter().any(|key| key == surface.candidate.key()) {
+                        {
+                            let color = candidate_color(surface.candidate);
+                            let poll_points = surface.rows.iter()
+                                .map(|poll| format!("{:.2},{:.2}", x_for_day(poll.day), y_for_value(poll.value)))
+                                .collect::<Vec<_>>().join(" ");
+                            let trend_path = surface.trend.iter()
+                                .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                                .collect::<Vec<_>>().join(" ");
+                            let band_points = {
+                                let mut pts = surface.uncertainty.iter().map(|p| format!("{:.2},{:.2}", x_for_day((p.x/86_400_000.0).round() as i64), y_for_value(p.low))).collect::<Vec<_>>();
+                                pts.extend(surface.uncertainty.iter().rev().map(|p| format!("{:.2},{:.2}", x_for_day((p.x/86_400_000.0).round() as i64), y_for_value(p.high))));
+                                pts.join(" ")
+                            };
+                            let projection_points = surface.projection.as_ref().map(|p| p.line.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>().join(" ")).unwrap_or_default();
+                            let projection_band = surface.projection.as_ref().map(|p| {
+                                let mut pts = p.band_low.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
+                                pts.extend(p.band_high.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
+                                pts.join(" ")
+                            }).unwrap_or_default();
+
+                            rsx! {
+                                if !band_points.is_empty() {
+                                    polygon { class: "uncertainty-band", points: "{band_points}", style: "fill: {color};" }
+                                }
+                                if !trend_path.is_empty() {
+                                    polyline { class: "series-line", points: "{trend_path}", style: "--series: {color};" }
+                                }
+                                for poll in surface.rows.iter() {
+                                    circle {
+                                        class: "poll-point",
+                                        cx: "{x_for_day(poll.day):.2}",
+                                        cy: "{y_for_value(poll.value):.2}",
+                                        r: "4",
+                                        style: "fill: var(--surface); stroke: {color};",
+                                    }
+                                }
+                                if let Some(projection) = surface.projection.as_ref() {
+                                    if !projection_band.is_empty() {
+                                        polygon { class: "projection-band", points: "{projection_band}", style: "fill: {color};" }
+                                    }
+                                    if !projection_points.is_empty() {
+                                        polyline { class: "projection-line", points: "{projection_points}", style: "stroke: {color};" }
+                                    }
+                                }
+                                for overlay in surface.overlays.iter() {
+                                    {
+                                        let overlay_path = overlay.mid.iter()
+                                            .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                                            .collect::<Vec<_>>().join(" ");
+                                        if !overlay_path.is_empty() {
+                                            polyline {
+                                                class: "overlay-line",
+                                                points: "{overlay_path}",
+                                                style: "--series: {color};"
+                                            }
+                                        }
+                                        if !overlay.high.is_empty() {
+                                            let mut pts = overlay.high.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
+                                            pts.extend(overlay.low.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
+                                            polygon { class: "overlay-band", points: "{pts.join(" ")}", style: "fill: {color};" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if let Some(day) = hover_day {
+                    let x = x_for_day(day);
+                    line { class: "hover-crosshair", x1: "{x:.2}", x2: "{x:.2}", y1: "{TOP}", y2: "{HEIGHT - BOTTOM}" }
+                }
+            }
+
+            if !hover_rows.is_empty() {
+                div { class: "chart-hover",
+                    span { class: "ch-date", "{format_date_from_day(hover_day.unwrap_or(observed_max))}" }
+                    for (surface, poll) in hover_rows.iter().take(8) {
+                        span { class: "ch-row",
+                            i { style: "background: {candidate_color(surface.candidate)};" }
+                            "{surface.candidate.label()}: {format_pct(poll.value)} · {poll.institute}"
+                        }
+                    }
+                }
+            } else {
+                div { class: "chart-hover is-empty", "Toque um ponto — a leitura aparece aqui, não em cima do gráfico." }
+            }
+        }
+    }
+}
+
 fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, avg_window_days: f64, language: Language, mut view: Signal<ViewState>) -> Element {
     let current_view = view();
     let (base_min_day, base_max_day, low, high) = viewbox(rows, trend, projection);
