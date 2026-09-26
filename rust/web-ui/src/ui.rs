@@ -147,7 +147,7 @@ impl UiState {
     }
 }
 
-pub fn t(language: Language, key: &str) -> &'static str {
+pub fn t(language: Language, key: &'static str) -> &'static str {
     if matches!(language, Language::PtBr) {
         return match key {
             "dashboard" => "Painel de acompanhamento",
@@ -655,7 +655,8 @@ pub fn fullscreen(app_id: &str) -> bool {
     {
         let Some(document) = web_sys::window().and_then(|window| window.document()) else { return false; };
         if document.fullscreen_element().is_some() {
-            return document.exit_fullscreen().is_ok();
+            document.exit_fullscreen();
+            return true;
         }
         let Some(element) = document.get_element_by_id(app_id) else { return false; };
         element.request_fullscreen().is_ok()
