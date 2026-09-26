@@ -130,7 +130,7 @@ impl UiState {
         Self {
             language: Language::from_storage(),
             theme: Theme::from_storage(),
-            institutes: Vec::new(),
+            institutes: restored_institutes(),
             table_query: String::new(),
             hidden_candidates: Vec::new(),
             overlays: restored_overlays(),
@@ -366,6 +366,12 @@ pub fn persist_language(language: Language) {
     );
 }
 
+pub fn persist_model(model: u8) {
+    #[cfg(target_arch = "wasm32")]
+    write_storage("pebr-model", &model.to_string());
+}
+
+
 pub fn persist_theme(theme: Theme) {
     #[cfg(target_arch = "wasm32")]
     {
@@ -379,6 +385,89 @@ pub fn persist_theme(theme: Theme) {
         }
     }
 }
+
+#[cfg(target_arch = "wasm32")]
+fn query_value(key: &str) -> Option<String> {
+    let window = web_sys::window()?;
+    let search = window.location().search().ok()?;
+    let params = web_sys::UrlSearchParams::new_with_str(&search).ok()?;
+    params.get(key)
+}
+
+pub fn initial_round() -> u8 {
+    #[cfg(target_arch = "wasm32")]
+    {
+        if let Some(value) = query_value("round").and_then(|value| value.parse::<u8>().ok()) {
+            if value == 1 || value == 2 {
+                return value;
+            }
+        }
+    }
+    1
+}
+
+pub fn initial_range_days() -> Option<i64> {
+    #[cfg(target_arch = "wasm32")]
+    {
+        if let Some(value) = query_value("range") {
+            if value == "all" {
+                return None;
+            }
+            if let Ok(days) = value.parse::<i64>() {
+                if days > 0 {
+                    return Some(days);
+                }
+            }
+        }
+    }
+    Some(30)
+}
+
+pub fn initial_avg_window_days() -> i64 {
+    #[cfg(target_arch = "wasm32")]
+    {
+        if let Some(value) = query_value("window") {
+            if value.eq_ignore_ascii_case("ytd") {
+                return 365;
+            }
+            if let Ok(days) = value.parse::<i64>() {
+                if days > 0 {
+                    return days;
+                }
+            }
+        }
+    }
+    14
+}
+
+pub fn initial_model() -> u8 {
+    #[cfg(target_arch = "wasm32")]
+    {
+        if let Some(value) = query_value("model").and_then(|value| value.parse::<u8>().ok()) {
+            if (1..=12).contains(&value) {
+                return value;
+            }
+        }
+        if let Some(value) = read_storage("pebr-model").and_then(|value| value.parse::<u8>().ok()) {
+            if (1..=12).contains(&value) {
+                return value;
+            }
+        }
+    }
+    1
+}
+
+fn restored_institutes() -> Vec<String> {
+    #[cfg(target_arch = "wasm32")]
+    if let Some(value) = query_value("institutes") {
+        let items = value.split(',').map(str::trim).filter(|v| !v.is_empty()).map(ToString::to_string).collect::<Vec<_>>();
+        if !items.is_empty() {
+            return items;
+        }
+    }
+    Vec::new()
+}
+
 
 fn restored_overlays() -> Vec<String> {
     #[cfg(target_arch = "wasm32")]
