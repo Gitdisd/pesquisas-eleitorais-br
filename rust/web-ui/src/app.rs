@@ -274,6 +274,7 @@ pub fn App() -> Element {
                         }
 
                         let focus_label = format!("↗ {}", t(ui_state.language, "focus"));
+                        let fullscreen_label = format!("⛶ {}", t(ui_state.language, "fullscreen"));
                         let round_label = if state.round == 1 {
                             t(ui_state.language, "first-round")
                         } else {
@@ -390,7 +391,7 @@ pub fn App() -> Element {
                                                     ui.write().status = Some(t(ui_state.language, "full-screen-unavailable").to_string());
                                                 }
                                             },
-                                            "⛶ {t(ui_state.language, "fullscreen")}"
+                                            "{fullscreen_label}"
                                         }
                                     }
                                 }
@@ -1298,7 +1299,8 @@ fn multi_chart_svg(
                                         if !overlay.high.is_empty() {
                                             let mut pts = overlay.high.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
                                             pts.extend(overlay.low.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
-                                            polygon { class: "overlay-band", points: "{pts.join(" ")}", style: "fill: {color};" }
+                                            let overlay_band_points = pts.join(" ");
+                                            polygon { class: "overlay-band", points: "{overlay_band_points}", style: "fill: {color};" }
                                         }
                                     }
                                 }
