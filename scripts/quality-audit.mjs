@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs'
 import crypto from 'node:crypto'
-import { canonicalPollKey, normalizeProtocol } from '../src/data/identity.js'
+import { canonicalPollKey, normalizeInstitute, normalizeProtocol } from '../src/data/identity.js'
 
 const INSTITUTE_URL_HINTS = [
   { re: /datafolha/i, name: 'Datafolha' },
@@ -78,7 +78,7 @@ for (const [i, p] of polls.entries()) {
   if (/btg.*nexus|nexus.*btg/.test(url) && p.institute !== 'Nexus/BTG') {
     errors.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
   }
-  if (/poderdata|poder-data/.test(url) && p.institute !== 'PoderData') {
+  if (/poderdata|poder-data/.test(url) && normalizeInstitute(p.institute) !== 'poderdata') {
     errors.push({ type: 'institute_source_mismatch', poll: i, institute: p.institute, source_url: p.source_url })
   }
 }
