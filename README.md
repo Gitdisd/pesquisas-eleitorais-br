@@ -1,9 +1,9 @@
 ## 2026-09-25 / Rust + Dioxus frontend completed
 
-- The browser application has been migrated from the Vite/hand-authored JS/TS frontend to Rust + Dioxus 0.7.10 with a custom SVG chart.
+- The Rust/Dioxus frontend cutover implementation is prepared on this migration branch, using Rust + Dioxus 0.7.10 with a custom SVG chart.
 - Apache ECharts is no longer a frontend dependency.
 - The remaining JavaScript/TypeScript is limited to offline data/research/reference tooling and parity scripts; it is not shipped as the browser application.
-- GitHub Pages publishes the Dioxus bundle directly and copies the canonical public data mirrors into the static artifact.
+- GitHub Pages cutover remains gated on successful Dioxus build, browser smoke, artifact-content verification, and deployed parity checks.
 
 # Pesquisas Eleitorais BR 2026
 
@@ -46,7 +46,7 @@ npm test
 cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
 ```
 
-- Front atual (fase intermediária): Vite + JavaScript/TypeScript + ECharts
+- Production main remains on the restored legacy frontend until the final Rust/Dioxus validation gates pass.
 - Front de destino: Rust + Dioxus 0.7.10 + SVG customizado, em `rust/web-ui/`
 - Refresh: `.github/workflows/refresh-polls.yml` a cada hora no minuto 10 (`10 * * * *`) + **Run workflow**
 - Deploy: `.github/workflows/deploy-pages.yml`; o refresh dispara esse workflow explicitamente depois de publicar um commit de dados
