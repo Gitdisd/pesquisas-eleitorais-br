@@ -11,6 +11,13 @@ enum RegionalRound {
 }
 
 #[derive(Clone)]
+struct RegionalGeoOption {
+    geo: String,
+    selected: bool,
+    all_geos: Vec<String>,
+}
+
+#[derive(Clone)]
 struct RegionalTablePoll {
     rows: Vec<Poll>,
 }
@@ -26,8 +33,15 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
         values
     };
     let selected = selected_geos();
-    let all_geos = geos.clone();
     let all_selected = selected.is_empty() || geos.iter().all(|geo| selected.iter().any(|item| item == geo));
+    let geo_options: Vec<RegionalGeoOption> = geos.iter()
+        .cloned()
+        .map(|geo| RegionalGeoOption {
+            selected: selected.is_empty() || selected.iter().any(|item| item == &geo),
+            geo,
+            all_geos: geos.clone(),
+        })
+        .collect();
     let round_value = if matches!(round(), RegionalRound::First) { 1 } else { 2 };
 
     let filtered: Vec<Poll> = polls.iter()
@@ -73,13 +87,14 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                     onclick: move |_| selected_geos.set(Vec::new()),
                     if matches!(language, Language::En) { "All geographies" } else { "Todas as geografias" }
                 }
-                for geo in geos.iter().cloned() {
+                for option in geo_options.iter() {
                     button {
-                        class: if selected.is_empty() || selected.iter().any(|value| value == &geo) { "chip on" } else { "chip" },
-                        "aria-pressed": "{selected.is_empty() || selected.iter().any(|value| value == &geo)}",
-                        onclick: move |_| {
-                            let geo_name = geo.clone();
-                            let all_geos = all_geos.clone();
+                        class: if option.selected { "chip on" } else { "chip" },
+                        "aria-pressed": "{option.selected}",
+                        onclick: {
+                            let geo_name = option.geo.clone();
+                            let all_geos = option.all_geos.clone();
+                            move |_| {
                                 let mut current = selected_geos();
                                 if current.is_empty() {
                                     current = all_geos.iter().filter(|value| *value != &geo_name).cloned().collect();
@@ -92,8 +107,9 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                                     current.sort();
                                 }
                                 selected_geos.set(current);
+                            }
                         },
-                        {if geo == "BR" { "Nacional" } else { geo.as_str() }}
+                        {if option.geo == "BR" { "Nacional" } else { option.geo.as_str() }}
                     }
                 }
             }
