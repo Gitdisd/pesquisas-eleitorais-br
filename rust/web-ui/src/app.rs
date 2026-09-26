@@ -7,7 +7,7 @@ use polling_core::{
 use std::collections::BTreeSet;
 
 use crate::chart::{
-    model_label, polyline_path, projection_v2_for_round, trend_for_model, viewbox, x_for, y_for,
+    model_label, polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
@@ -260,12 +260,6 @@ pub fn App() -> Element {
                             .filter(|poll| ui_state.institute_selected(&poll.institute))
                             .cloned()
                             .collect();
-                        if let Some(days) = state.range_days {
-                            if let Some(max_day) = table_source.iter().map(|poll| poll.day).max() {
-                                let min_day = max_day - days;
-                                table_source.retain(|poll| poll.day >= min_day);
-                            }
-                        }
                         let mut grouped = std::collections::BTreeMap::<String, Vec<Poll>>::new();
                         for poll in table_source {
                             grouped.entry(poll.id.clone()).or_default().push(poll);
@@ -397,6 +391,25 @@ pub fn App() -> Element {
                                             class: if state.range_days.is_none() { "active" } else { "" },
                                             onclick: move |_| { let mut state = view.write(); state.range_days = None; reset_navigation(&mut state); },
                                             "{t(ui_state.language, "all-period")}"
+                                        }
+                                    }
+                                    div { class: "seg geo-seg", role: "group", "aria-label": t(ui_state.language, "geography"),
+                                        {
+                                            let geos = available_geos(all);
+                                            rsx! {
+                                                button {
+                                                    class: if state.geo_index == usize::MAX { "active" } else { "" },
+                                                    onclick: move |_| { let mut next = view.write(); next.geo_index = usize::MAX; reset_navigation(&mut next); },
+                                                    "{t(ui_state.language, "all")}"
+                                                }
+                                                for (index, geo) in geos.iter().enumerate() {
+                                                    button {
+                                                        class: if state.geo_index == index { "active" } else { "" },
+                                                        onclick: move |_| { let mut next = view.write(); next.geo_index = index; reset_navigation(&mut next); },
+                                                        "{geo}"
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -856,7 +869,6 @@ fn poll_filter_for_chart(
     candidate: Candidate,
     round: u8,
     geo: &str,
-    range_days: Option<i64>,
     institutes: &[String],
 ) -> Vec<Poll> {
     let mut rows: Vec<Poll> = all.iter()
@@ -865,12 +877,6 @@ fn poll_filter_for_chart(
         .filter(|poll| institutes.is_empty() || institutes.iter().any(|name| name == &poll.institute))
         .cloned()
         .collect();
-    if let Some(days) = range_days {
-        if let Some(max_day) = rows.iter().map(|poll| poll.day).max() {
-            let min_day = max_day - days;
-            rows.retain(|poll| poll.day >= min_day);
-        }
-    }
     rows.sort_by_key(|poll| poll.day);
     rows
 }
@@ -941,7 +947,7 @@ fn multi_chart_svg(
     let mut high = 0.0_f64;
 
     for candidate in keys.iter().copied() {
-        let rows = poll_filter_for_chart(all, candidate, round, geo, range_days, institutes);
+        let rows = poll_filter_for_chart(all, candidate, round, geo, institutes);
         if let Some(day) = rows.first().map(|poll| poll.day) {
             observed_min = observed_min.min(day);
         }
@@ -987,7 +993,7 @@ fn multi_chart_svg(
                 0.12,
             ))
         } else if model == 2 {
-            to_project_surface_v2(&projection_v2_for_round(&rows, round))
+            to_project_surface_v2(&projection_v2_for_round_with_fit(&rows, round, avg_window_days))
         } else {
             None
         };
