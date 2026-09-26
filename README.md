@@ -35,16 +35,17 @@ Toda mudança de comportamento leva uma linha no changelog **no mesmo commit**.
 
 ```
 npm install
-npm run dev
-npm run build
 npm run discover-polls
 npm run update-polls
 npm run poll-pipeline
 npm test
 
-# Rust/Dioxus web-ui migration slice
+# Rust core / Dioxus web-ui
+cargo test --manifest-path rust/polling-core/Cargo.toml
 cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
 ```
+
+The legacy Vite `npm run dev` / `npm run build` commands are intentionally gone from the final browser architecture. Local browser smoke uses the Dioxus bundle and the Playwright configuration under `tests/e2e/`.
 
 - Production main remains on the restored legacy frontend until the final Rust/Dioxus validation gates pass.
 - Front de destino: Rust + Dioxus 0.7.10 + SVG customizado, em `rust/web-ui/`
