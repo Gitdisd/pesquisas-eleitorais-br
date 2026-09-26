@@ -74,6 +74,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                 }
                 for geo in geos.iter() {
                     let geo_name = geo.clone();
+                    let all_geos = geos.clone();
                     let active = selected.is_empty() || selected.iter().any(|value| value == &geo_name);
                     button {
                         class: if active { "chip on" } else { "chip" },
@@ -81,7 +82,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                         onclick: move |_| {
                             let mut current = selected_geos();
                             if current.is_empty() {
-                                current = geos.iter().filter(|value| *value != &geo_name).cloned().collect();
+                                current = all_geos.iter().filter(|value| *value != &geo_name).cloned().collect();
                             } else if current.iter().any(|value| value == &geo_name) {
                                 if current.len() > 1 {
                                     current.retain(|value| value != &geo_name);
