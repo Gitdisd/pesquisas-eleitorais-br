@@ -2,11 +2,11 @@
 """Build the static GitHub Pages frontend without Node, Vite, TypeScript, or Dioxus."""
 
 from pathlib import Path
+import os
 import shutil
 import subprocess
-import sys
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 APP = ROOT / "go" / "web-ui"
 OUT = ROOT / "go-pages"
 DATA = APP / "data"
@@ -22,7 +22,7 @@ def main():
         shutil.copy2(ROOT / "data" / name, DATA / name)
 
     run("go", "fmt", "./...")
-    env = dict(__import__("os").environ)
+    env = os.environ.copy()
     env.update({"GOOS": "js", "GOARCH": "wasm"})
     run("go", "build", "-trimpath", "-ldflags=-s -w", "-o", str(OUT / "main.wasm"), env=env)
 
@@ -32,7 +32,7 @@ def main():
         raise SystemExit(f"Go WebAssembly runtime not found: {wasm_exec}")
     shutil.copy2(wasm_exec, OUT / "wasm_exec.js")
 
-    (OUT / "index.html").write_text("""<!doctype html>
+    index = """<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -50,10 +50,17 @@ def main():
   </script>
 </body>
 </html>
-""", encoding="utf-8")
+"""
+    (OUT / "index.html").write_text(index, encoding="utf-8")
+    shutil.copy2(OUT / "index.html", OUT / "404.html")
 
-    shutil.copy2(ROOT / "data" / "polls.json", OUT / "polls.json")
-    shutil.copy2(ROOT / "data" / "meta.json", OUT / "meta.json")
+    for name in ("polls.json", "meta.json", "polls-extra.json", "polls-regional.json"):
+        source = ROOT / "public" / "data" / name
+        if not source.exists():
+            source = ROOT / "data" / name
+        if source.exists():
+            shutil.copy2(source, OUT / name)
+
     print(f"Go Pages bundle: {OUT}")
 
 if __name__ == "__main__":
