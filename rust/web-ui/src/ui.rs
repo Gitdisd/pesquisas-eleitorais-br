@@ -1,3 +1,5 @@
+#![cfg_attr(target_arch = "wasm32", allow(dead_code))]
+
 use crate::data::Poll;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
