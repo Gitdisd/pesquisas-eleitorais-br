@@ -1,3 +1,11 @@
+## 2026-09-26 00:11 -03:00 / 2026-09-26T03:11:00Z — Restore incremental production Pages boundary
+
+- Confirmed that `main` still contains the full legacy production application while the Pages workflow was publishing the separate Rust/Dioxus migration artifact as the whole site.
+- Changed `.github/workflows/deploy-pages.yml` to keep building the Rust/Dioxus bundle as migration validation but publish the verified legacy `dist` artifact to GitHub Pages.
+- Added Ruby-only `scripts/automation/production_artifact_audit.rb` and `scripts/automation/production_deployment_verify.rb` so the publication boundary is checked before and after deployment.
+- Preserved the Rust/Dioxus compilation, WASM, parity and bundle validation work; no poll data, statistical formulas, or legacy browser source was deleted.
+- Production cutover remains feature-by-feature: a Rust/Dioxus surface is not published as the whole site until its replacement has feature-level parity and deployed verification.
+
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — Actual Rust/Dioxus dashboard feature migration started
 
 - Created branch migration/rust-ui-features-2026-09-25 from restored production main@b88f3badb00a5fa91fe84087df5db2d7f58784db.
