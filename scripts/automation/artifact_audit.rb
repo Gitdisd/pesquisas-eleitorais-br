@@ -27,9 +27,9 @@ fail "polls.json is not an array" unless polls.is_a?(Array)
 fail "meta.record_count does not match polls.json" unless meta["record_count"].to_i == polls.length
 
 index = root.join("index.html").read
-fail "artifact references Dioxus" if index.match?(/dioxus|dx-|rsx/i)
-fail "artifact references Apache ECharts" if index.match?(/echarts/i)
-fail "artifact references legacy browser entrypoint" if index.match?(/src/main.js|vite/i)
+fail "artifact references Dioxus" if index.downcase.include?("dioxus") || index.include?("dx-") || index.include?("rsx")
+fail "artifact references Apache ECharts" if index.downcase.include?("echarts")
+fail "artifact references legacy browser entrypoint" if index.include?("src/main.js") || index.downcase.include?("vite")
 
 wasm_size = root.join("main.wasm").size
 fail "WASM payload is empty" unless wasm_size.positive?
