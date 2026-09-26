@@ -610,7 +610,7 @@ pub fn build_share_url(
 pub fn copy_text(text: &str) -> bool {
     #[cfg(target_arch = "wasm32")]
     {
-        if let Some(clipboard) = web_sys::window().and_then(|window| window.navigator().clipboard()) {
+        if let Some(clipboard) = web_sys::window().and_then(|window| window.navigator().clipboard().ok()) {
             return clipboard.write_text(text).is_ok();
         }
     }
