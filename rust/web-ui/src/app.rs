@@ -7,7 +7,7 @@ use polling_core::{
 use std::collections::BTreeSet;
 
 use crate::chart::{
-    polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
+    model_label, polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
     BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
@@ -574,7 +574,7 @@ pub fn App() -> Element {
                                                 onclick: move |_| {
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
-                                                        state.institutes = all_names.iter().filter(|item| item != &name).cloned().collect();
+                                                        state.institutes = all_names.iter().filter(|item| **item != name).cloned().collect();
                                                     } else if state.institutes.iter().any(|item| item == &name) {
                                                         if state.institutes.len() > 1 {
                                                             state.institutes.retain(|item| item != &name);
