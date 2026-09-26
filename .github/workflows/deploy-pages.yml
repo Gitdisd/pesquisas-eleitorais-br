@@ -97,7 +97,7 @@ jobs:
           npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
       - name: Build legacy compatibility site
         run: npm run build
-      - name: Build Rust/Dioxus production site
+      - name: Build Rust/Dioxus migration validation bundle
         working-directory: rust/web-ui
         run: |
           set -euo pipefail
@@ -106,18 +106,14 @@ jobs:
           test -f ../../dioxus-pages/public/index.html
           test -d ../../dioxus-pages/public/assets
           test -n "$(find ../../dioxus-pages/public/assets -type f -name '*.wasm' -print -quit)"
-      - name: Assemble Dioxus Pages artifact
+      - name: Verify legacy Pages artifact
         run: |
           set -euo pipefail
-          DX_PUBLIC="$(find dioxus-pages -type d -name public -print -quit)"
-          test -n "$DX_PUBLIC"
-          rm -rf dist
-          mkdir -p dist
-          cp -a "$DX_PUBLIC"/. dist/
-          mkdir -p dist/data
-          cp -a public/data/. dist/data/
           test -f dist/index.html
+          test -d dist/assets
+          test -n "$(find dist/assets -type f -name '*.js' -print -quit)"
           test -f dist/data/polls.json
+          test -f dist/data/meta.json
           cp dist/index.html dist/404.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
