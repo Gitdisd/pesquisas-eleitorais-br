@@ -734,7 +734,7 @@ pub fn csv_export(rows: &[Poll]) -> bool {
         lines.push(row.join(";"));
     }
 
-    let csv = format!("\ufeff{}", lines.join("\n"));
+    let csv = format!("\u{feff}{}", lines.join("\n"));
     download_text(
         &format!("pesquisas-eleitorais-{}.csv", date_stamp()),
         "text/csv;charset=utf-8",
