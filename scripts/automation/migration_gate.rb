@@ -31,7 +31,7 @@ required_file("public/data/meta.json")
 required_file("docs/CHANGELOG.md")
 
 cargo = required_file("rust/web-ui/Cargo.toml").read
-fail_gate("Dioxus 0.7.10 is not declared") unless cargo.include?('dioxus = "0.7.10"')
+fail_gate("Dioxus 0.7.10 is not declared") unless cargo.match?(/dioxus\s*=\s*\{[^\n]*version\s*=\s*"0\.7\.10"/)
 
 workflow = required_file(".github/workflows/deploy-pages.yml").read
 fail_gate("Pages workflow does not build the Dioxus bundle") unless workflow.include?("dx bundle --web --release")
