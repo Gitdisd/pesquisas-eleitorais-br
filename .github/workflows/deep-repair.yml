@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Add wasm32 target
+        run: rustup target add wasm32-unknown-unknown
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
@@ -28,7 +32,7 @@ jobs:
         run: node scripts/quality-gate.mjs
       - name: Typecheck
         run: npm run typecheck
-      - name: Build production site
-        run: npm run build
+      - name: Validate Rust/Dioxus web UI
+        run: cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
       - name: Identity and data-contract tests
         run: npm test
