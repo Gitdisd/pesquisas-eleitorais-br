@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-26T01:29:01.859Z",
+  "ran_at": "2026-09-26T07:34:31.137Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 420,
+  "candidate_links": 426,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 8,
+  "fetch_errors": 7,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -469,8 +469,8 @@
     {
       "source_id": "reuters-br-politics",
       "attempts": 2,
-      "successes": 0,
-      "failures": 2,
+      "successes": 1,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://www.bbc.com/portuguese/topics/c404v14pdw4t",
@@ -479,12 +479,12 @@
         },
         {
           "url": "https://www.reuters.com/world/americas/",
-          "status": 401,
+          "status": 200,
           "error": null
         }
       ],
-      "redundancy_ok": false,
-      "fully_failed": true
+      "redundancy_ok": true,
+      "fully_failed": false
     },
     {
       "source_id": "poder360-feed",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T01:28:49.591Z"
+      "found_at": "2026-09-26T07:34:08.748Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T01:28:49.841Z"
+      "found_at": "2026-09-26T07:34:09.080Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T01:28:49.997Z"
+      "found_at": "2026-09-26T07:34:09.299Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/25/datafolha-presidente-estados-25-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T01:28:50.172Z"
+      "found_at": "2026-09-26T07:34:09.480Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-09-26T01:28:50.194Z"
+      "found_at": "2026-09-26T07:34:09.534Z"
     }
   ],
-  "meta_last_check_at": "2026-09-26T01:29:01.861Z"
+  "meta_last_check_at": "2026-09-26T07:34:31.138Z"
 }
