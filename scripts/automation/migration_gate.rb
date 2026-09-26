@@ -36,7 +36,7 @@ fail_gate("Pages workflow does not build the Go frontend") unless workflow.inclu
 fail_gate("Pages workflow does not publish main.wasm") unless workflow.include?("pages-artifact/main.wasm")
 
 go = required_file("go/web-ui/main.go").read
-fail_gate("Go frontend imports a JS/TypeScript source file") if go.match?(/\.js|\.ts/)
+fail_gate("Go frontend has an authored JS/TypeScript import") if go.match?(/^\s*(?:import|require).*\.(?:js|ts)\b/i)
 fail_gate("Go frontend does not embed canonical poll data") unless go.include?("polls.json")
 
 legacy_browser_paths = %w[
