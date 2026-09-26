@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use std::collections::BTreeMap;
 
 use crate::data::Poll;
-use crate::ui::{scroll_to_id, Language};
+use crate::ui::Language;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum RegionalRound {
