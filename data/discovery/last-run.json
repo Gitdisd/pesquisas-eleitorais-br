@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-26T07:34:31.137Z",
+  "ran_at": "2026-09-26T13:00:50.341Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 426,
+  "candidate_links": 417,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 55,
   "skipped_old": 1,
-  "fetch_errors": 7,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -469,8 +469,8 @@
     {
       "source_id": "reuters-br-politics",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 0,
+      "failures": 2,
       "statuses": [
         {
           "url": "https://www.bbc.com/portuguese/topics/c404v14pdw4t",
@@ -479,12 +479,12 @@
         },
         {
           "url": "https://www.reuters.com/world/americas/",
-          "status": 200,
+          "status": 401,
           "error": null
         }
       ],
-      "redundancy_ok": true,
-      "fully_failed": false
+      "redundancy_ok": false,
+      "fully_failed": true
     },
     {
       "source_id": "poder360-feed",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T07:34:08.748Z"
+      "found_at": "2026-09-26T13:00:37.305Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T07:34:09.080Z"
+      "found_at": "2026-09-26T13:00:37.565Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T07:34:09.299Z"
+      "found_at": "2026-09-26T13:00:37.858Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/25/datafolha-presidente-estados-25-setembro.ghtml",
@@ -535,16 +535,16 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T07:34:09.480Z"
+      "found_at": "2026-09-26T13:00:38.020Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
-      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-09-26T07:34:09.534Z"
+      "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/09/25/quaest-rn-presidente-25-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial no RN | G1 Pular para o conteúdo Rio Grande do Norte Eleições 2026 no Rio G",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-26T13:00:38.183Z"
     }
   ],
-  "meta_last_check_at": "2026-09-26T07:34:31.138Z"
+  "meta_last_check_at": "2026-09-26T13:00:50.343Z"
 }
