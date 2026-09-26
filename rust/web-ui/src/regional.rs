@@ -26,6 +26,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
         values
     };
     let selected = selected_geos();
+    let all_geos = geos.clone();
     let all_selected = selected.is_empty() || geos.iter().all(|geo| selected.iter().any(|item| item == geo));
     let round_value = if matches!(round(), RegionalRound::First) { 1 } else { 2 };
 
