@@ -792,3 +792,69 @@ html[data-theme='crt-green'] {
   color:var(--accent);
 }
 
+
+.mobile-nav {
+  display:none;
+}
+
+.table-wrap table.polls {
+  border-collapse:separate;
+  border-spacing:0;
+  min-width:720px;
+}
+
+.table-wrap table.polls th:first-child,
+.table-wrap table.polls td:first-child {
+  position:sticky;
+  left:0;
+  z-index:2;
+  background:var(--surface);
+}
+
+.table-wrap table.polls thead th {
+  position:sticky;
+  top:0;
+  z-index:3;
+  background:var(--surface);
+}
+
+@media(max-width:600px) {
+  .mobile-nav {
+    position:fixed;
+    left:.65rem;
+    right:.65rem;
+    bottom:.6rem;
+    z-index:40;
+    display:flex;
+    justify-content:space-around;
+    gap:.25rem;
+    padding:.35rem;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:color-mix(in srgb,var(--surface) 86%,transparent);
+    backdrop-filter:blur(16px);
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+  }
+
+  .mobile-nav a {
+    flex:1;
+    min-width:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:.4rem .2rem;
+    border-radius:10px;
+    color:var(--muted);
+    text-decoration:none;
+    font-size:.62rem;
+    text-align:center;
+    font-weight:700;
+  }
+
+  .mobile-nav a:focus-visible,
+  .mobile-nav a:active {
+    background:var(--chip-bg);
+    color:var(--text);
+    outline:none;
+  }
+}
