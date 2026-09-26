@@ -1,3 +1,14 @@
+# CHANGELOG
+
+## 2026-09-26 — Go/WASM production parity correction
+- Restored the chart's default full-history view so the published poll points are visible instead of silently limiting the first view to 30 days.
+- Increased poll-point prominence, tightened the chart's useful Y-axis ceiling, and strengthened the national chart panel presentation.
+- Restored native Go/WASM wheel zoom and added a visible automatic-refresh countdown.
+- Promoted the national + state source panel ahead of the large national results table so the state/UF chart is immediately discoverable.
+- Replaced the blank WebAssembly startup with an immediate static loading shell and streaming WASM startup with a fallback.
+- Added smoke coverage for visible poll points, the regional chart, and wheel interaction.
+- No Focus/Focar control, ECharts, Vite, authored JS/TS application module, or chart library was reintroduced.
+
 
 ## 2026-09-26 14:18 BRT — Pre-cutover deployment smoke gate
 - Added the desktop/mobile Chromium smoke suite directly to the Pages deployment build, after the Go/WASM site is built and before the Pages artifact is uploaded.
