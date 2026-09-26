@@ -94,6 +94,13 @@ end
 package = JSON.parse(required_file("package.json").read)
 fail_gate("package.json still exposes a browser dev server") if package.fetch("scripts", {}).values.any? { |v| v.match?(/vite\s/) }
 
+workflow_files = Dir[ROOT.join(".github/workflows/*.{yml,yaml}")]
+workflow_legacy_hits = workflow_files.filter_map do |path|
+  content = Pathname.new(path).read
+  Pathname.new(path).relative_path_from(ROOT).to_s if content.match?(/npm run build(?!:)|\bvite\b|\becharts?\b/i)
+end
+fail_gate("workflow still references legacy browser build/tooling: #{workflow_legacy_hits.join(", ")}") unless workflow_legacy_hits.empty?
+
 changelog = required_file("docs/CHANGELOG.md").read
 fail_gate("migration validation status is not documented") unless changelog.include?("validation pending") || changelog.include?("Dioxus")
 
