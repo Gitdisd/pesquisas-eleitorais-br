@@ -102,7 +102,7 @@ pub fn App() -> Element {
     });
 
     use_effect({
-        let ui = ui;
+        let mut ui = ui;
         move || {
             if matches!(polls.read().as_ref(), Some(Ok(_))) {
                 ui.write().status = None;
