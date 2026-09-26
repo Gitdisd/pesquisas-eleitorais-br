@@ -165,6 +165,7 @@ mod tests {
         Poll {
             id: format!("{day}:{institute}:{value}"),
             institute: institute.into(),
+            fieldwork_start: None,
             fieldwork_end: "2026-09-21".into(),
             published_date: None,
             scenario: "1º turno".into(),
@@ -172,6 +173,7 @@ mod tests {
             geo: "BR".into(),
             source_url: String::new(),
             tse_registration: None,
+            verified: true,
             moe: None,
             candidate_key: "lula".into(),
             value,
