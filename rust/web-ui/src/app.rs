@@ -87,6 +87,13 @@ pub fn App() -> Element {
         let refresh_nonce = refresh_tick();
         async move { load_regional_polls(refresh_nonce).await }
     });
+    let clock_tick = use_signal(|| 0_u64);
+    let _clock = use_hook(|| {
+        let mut tick = clock_tick;
+        std::rc::Rc::new(Interval::new(1_000, move || {
+            tick += 1;
+        }))
+    });
     let meta = use_resource(move || {
         let refresh_nonce = refresh_tick();
         async move { load_meta(refresh_nonce).await }
@@ -103,6 +110,7 @@ pub fn App() -> Element {
 
     let ui_state = ui();
     let shell_style = ui_state.theme_style();
+    let _now_tick = clock_tick();
     let meta_state = meta.read();
     let meta_updated = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_updated.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
     let meta_latest = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.latest_publication_date.as_deref()).map(format_meta_date).unwrap_or_else(|| "—".to_string());
@@ -233,13 +241,17 @@ pub fn App() -> Element {
                         };
 
                         let mut filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
-                        if !ui_state.institutes.is_empty() {
-                            filtered.retain(|poll| ui_state.institutes.iter().any(|name| name == &poll.institute));
-                        }
-
                         let mut all_institutes: Vec<String> = all.iter().map(|poll| poll.institute.clone()).collect();
                         all_institutes.sort();
                         all_institutes.dedup();
+
+                        let selected_institutes: Vec<String> = ui_state.institutes.iter()
+                            .filter(|name| all_institutes.iter().any(|item| item == *name))
+                            .cloned()
+                            .collect();
+                        if !selected_institutes.is_empty() {
+                            filtered.retain(|poll| selected_institutes.iter().any(|name| name == &poll.institute));
+                        }
 
                         let round_label = if state.round == 1 {
                             t(ui_state.language, "first-round")
@@ -257,7 +269,7 @@ pub fn App() -> Element {
                         let mut table_source: Vec<Poll> = all.iter()
                             .filter(|poll| poll.round == state.round)
                             .filter(|poll| selected_geo == "ALL" || poll.geo == selected_geo)
-                            .filter(|poll| ui_state.institute_selected(&poll.institute))
+                            .filter(|poll| selected_institutes.is_empty() || selected_institutes.iter().any(|name| name == &poll.institute))
                             .cloned()
                             .collect();
                         let mut grouped = std::collections::BTreeMap::<String, Vec<Poll>>::new();
@@ -289,7 +301,7 @@ pub fn App() -> Element {
                             .flat_map(|poll| poll.rows.iter().cloned())
                             .collect::<Vec<_>>();
                         let json_rows = filtered.clone();
-                        let share_institutes = ui_state.institutes.clone();
+                        let share_institutes = selected_institutes.clone();
                         let latest_all = all.iter().max_by_key(|poll| poll.day);
                         let overview_poll_count = unique_poll_count(all, None);
                         let overview_institutes = all_institutes.len();
@@ -343,7 +355,7 @@ pub fn App() -> Element {
 
                             section { class: "panel chart-panel", id: "chartPanel",
                                 div { class: "chart-head-row",
-                                    h2 { class: "chart-title", "Evolução da intenção de voto" }
+                                    h2 { class: "chart-title", if ui_state.language == Language::En { "Voting intention over time" } else { "Evolução da intenção de voto" } }
                                     div { class: "chart-actions",
                                         button {
                                             class: "ui-btn",
