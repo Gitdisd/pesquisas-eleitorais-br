@@ -124,7 +124,7 @@ pub fn App() -> Element {
                                     }
                                     button {
                                         class: if ui_state.language == Language::En { "active" } else { "" },
-                                        aria_pressed: "{ui_state.language == Language::En}",
+                                        "aria-pressed": "{ui_state.language == Language::En}",
                                         onclick: move |_| {
                                             let language = Language::En;
                                             ui.write().language = language;
@@ -139,7 +139,7 @@ pub fn App() -> Element {
                                     for theme in [Theme::Light, Theme::Dark] {
                                         button {
                                             class: if ui_state.theme == theme { "active" } else { "" },
-                                            aria_pressed: "{ui_state.theme == theme}",
+                                            "aria-pressed": "{ui_state.theme == theme}",
                                             onclick: move |_| {
                                                 ui.write().theme = theme;
                                                 persist_theme(theme);
@@ -150,7 +150,7 @@ pub fn App() -> Element {
                                     for theme in [Theme::Pt, Theme::Pl, Theme::Missao, Theme::Psd, Theme::Novo, Theme::Avante] {
                                         button {
                                             class: if ui_state.theme == theme { "active party-theme" } else { "party-theme" },
-                                            aria_pressed: "{ui_state.theme == theme}",
+                                            "aria-pressed": "{ui_state.theme == theme}",
                                             onclick: move |_| {
                                                 ui.write().theme = theme;
                                                 persist_theme(theme);
@@ -183,7 +183,7 @@ pub fn App() -> Element {
                             }
                         }
                     }
-                    nav { class: "dashboard-nav", aria_label: "Navegação rápida",
+                    nav { class: "dashboard-nav", "aria-label": "Navegação rápida",
                         a { href: "#overview", "{t(ui_state.language, "overview")}" }
                         a { href: "#chartPanel", "Gráfico" }
                         a { href: "#cards", "Resumo" }
@@ -344,7 +344,7 @@ pub fn App() -> Element {
                                 }
 
                                 div { class: "controls controls-primary",
-                                    div { class: "seg", role: "group", aria_label: t(ui_state.language, "round"),
+                                    div { class: "seg", role: "group", "aria-label": t(ui_state.language, "round"),
                                         button {
                                             class: if state.round == 1 { "active" } else { "" },
                                             onclick: move |_| { let mut state = view.write(); state.round = 1; reset_navigation(&mut state); },
@@ -356,7 +356,7 @@ pub fn App() -> Element {
                                             "{t(ui_state.language, "second-round")}"
                                         }
                                     }
-                                    div { class: "seg range-seg", role: "group", aria_label: t(ui_state.language, "period"),
+                                    div { class: "seg range-seg", role: "group", "aria-label": t(ui_state.language, "period"),
                                         for (label, days) in [
                                             ("1d", Some(1_i64)), ("3d", Some(3_i64)), ("7d", Some(7_i64)),
                                             ("14d", Some(14_i64)), ("21d", Some(21_i64)), ("30d", Some(30_i64)),
@@ -492,7 +492,7 @@ pub fn App() -> Element {
                                             let active = ui_state.institute_selected(&name);
                                             button {
                                                 class: if active { "chip on" } else { "chip" },
-                                                aria_pressed: "{active}",
+                                                "aria-pressed": "{active}",
                                                 onclick: move |_| {
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
