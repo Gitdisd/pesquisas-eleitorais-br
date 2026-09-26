@@ -1,3 +1,10 @@
+## 2026-09-25 21:00:38 -03:00 / 2026-09-26T00:00:38Z — Restore incremental production publication
+
+- PR #43 restored GitHub Pages publication of the existing full Vite production artifact.
+- The Rust/Dioxus bundle remains a migration-validation artifact and is not the whole production frontend.
+- The corrected Pages run #413 / `36203197668` successfully built, verified and deployed the legacy artifact.
+- Production migration must proceed feature-by-feature with parity and deployed verification before each replacement.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
@@ -30,11 +37,11 @@
 
 # Architecture migration: Rust + Dioxus + custom SVG + Python
 
-## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus production-bundle gate
+## 2026-09-25 02:34:02 -03:00 / 2026-09-25T05:34:02Z — Dioxus production-bundle gate (superseded publication plan)
 
 - Native SVG hover, bounded pan, wheel zoom and two-pointer pinch zoom are implemented in the replacement UI.
 - CI/browser validation now bundles the Rust/Dioxus web app with Dioxus CLI 0.7.10.
-- GitHub Pages will publish that Dioxus bundle with repaired public/data mirrors; the legacy Vite build remains validation-only during the transition.
+- GitHub Pages was temporarily configured to publish that Dioxus bundle with repaired public/data mirrors. This was superseded on 2026-09-25 after the incomplete migration shell was found to reduce production; the current Pages artifact is the full legacy Vite site while feature-by-feature parity is established.
 - No legacy browser module has been deleted or certified removable. Production cutover is pending successful current gates.
 
 

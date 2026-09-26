@@ -1,3 +1,11 @@
+## 2026-09-25 21:00:38 -03:00 / 2026-09-26T00:00:38Z — Restore full legacy production Pages publication
+
+- Production incident confirmed: the Pages workflow had been replacing the complete Vite `dist` artifact with the incomplete Rust/Dioxus migration shell.
+- PR #43 corrected the publication architecture without deleting legacy source: the full legacy Vite build remains the Pages artifact, while the Rust/Dioxus bundle is built as migration validation only.
+- Merge commit: `6df2f34e6eefdfba04016977d74de60de124be17`.
+- Pages run #413 / `36203197668`: build and deploy both succeeded. The build verified the legacy artifact contains `dist/index.html`, built JavaScript assets, `data/polls.json` and `data/meta.json`.
+- Incremental rule restored: a Rust/Dioxus feature may replace only its corresponding production surface after feature-level parity and deployed verification; the incomplete Dioxus shell must never be published as the whole site.
+
 ## 2026-09-25 04:32:30 -03:00 / 2026-09-25T07:32:30Z — Trigger final pre-cutover validation
 
 - Migration head before trigger: `2c89712afe8feea3f9adf908968d5ba190956d96`.

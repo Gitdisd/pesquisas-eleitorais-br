@@ -1,3 +1,11 @@
+## 2026-09-25 21:00:38 -03:00 / 2026-09-26T00:00:38Z — Production integration architecture correction
+
+- GitHub Pages production publication is restored to the full legacy Vite `dist` artifact.
+- Rust/Dioxus remains parallel migration infrastructure; it is not the whole production frontend.
+- PR #43 / merge `6df2f34e6eefdfba04016977d74de60de124be17`; Pages run #413 / `36203197668` passed build, legacy-artifact verification and deploy.
+- Feature cutover rule: replace one production surface at a time only after that surface passes its parity and deployed verification gates.
+- Legacy JS/TS remains protected until its responsibility has been replaced and the deployed replacement is verified.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
@@ -109,13 +117,13 @@ The Rust/Dioxus slice has independent styling in `rust/web-ui/assets/style.css`.
 5. Custom SVG crosshair, bounded pan, pinch zoom, wheel zoom and range navigation — implemented in the parallel UI and covered by browser smoke.
 6. Regional/methodology/diagnostic surfaces.
 7. Share/export/theme/accessibility/performance parity.
-8. Production build and Pages cutover — Dioxus artifact path configured; pending successful pre-merge CI/browser gates.
+8. Production integration — keep the full legacy Vite artifact live and replace one surface at a time after parity + deployed verification.
 9. Repository-wide browser JS/TS execution-graph certification.
 10. Remove Vite/ECharts/legacy browser modules only after deployed replacement verification.
 
 ## Current status
 
-Production remains on the legacy path until PR #40 clears all cutover gates. Apache ECharts is not part of the target architecture. PR #40 now contains the production Dioxus bundle path, but legacy modules remain protected.
+Production is on the restored full legacy Vite path. Apache ECharts remains outside the target architecture, but legacy browser modules remain protected until their individual responsibilities are replaced, validated and deployed. The Rust/Dioxus bundle is parallel migration infrastructure rather than a whole-site replacement.
 
 Latest validation sequence:
 - CI #307: Rust/Dioxus compile failed on initial RSX syntax.
