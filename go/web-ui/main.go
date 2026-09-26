@@ -101,7 +101,7 @@ func main() {
 func defaultState() state {
 	return state{
 		Round: 1, Candidate: "ALL", Geo: "ALL", Institutes: map[string]bool{},
-		RangeDays: 30, WindowDays: 14, Model: 1, Language: "pt-BR", Theme: "dark",
+		RangeDays: 0, WindowDays: 7, Model: 1, Language: "pt-BR", Theme: "dark",
 		Hidden: map[string]bool{}, Overlays: map[string]bool{}, Zoom: 1,
 		RegionalRound: 1, RegionalGeos: map[string]bool{},
 	}
@@ -287,12 +287,12 @@ func renderPage() string {
 	for _,m:=range metrics { b.WriteString("<article style='background:"+surface+";padding:12px;border:1px solid "+muted+";border-radius:8px'>"+m+"</article>") }
 	b.WriteString("</div></section>")
 
-	b.WriteString("<section id='chartPanel'><h2>"+tr(en,"Evolução da intenção de voto","Voting intention over time")+"</h2>")
+	b.WriteString("<section id='chartPanel' style='background:"+surface+";border:1px solid "+muted+";border-radius:14px;padding:16px;margin:14px 0;box-shadow:0 8px 24px rgba(0,0,0,.18)'><h2>"+tr(en,"Evolução da intenção de voto","Voting intention over time")+"</h2>")
 	b.WriteString("<fieldset><legend>Controles</legend>")
 	b.WriteString(selectControl("round","Turno",[]string{"1","2"},[]string{"1º turno","2º turno"},strconv.Itoa(view.Round)))
 	gVals:=append([]string{"ALL"},geos...); gLabs:=append([]string{tr(en,"Todas","All")},geos...); b.WriteString(selectControl("geo","Geografia",gVals,gLabs,view.Geo))
 	cVals:=append([]string{"ALL"},allCandidateKeys(view.Round)...); cLabs:=append([]string{tr(en,"Todos","All")},allCandidateKeys(view.Round)...); b.WriteString(selectControl("candidate","Candidato",cVals,cLabs,view.Candidate))
-	b.WriteString(selectControl("range","Período",[]string{"1","3","7","14","21","30","90","0"},[]string{"1d","3d","7d","14d","21d","30d","90d","tudo"},strconv.Itoa(view.RangeDays)))
+	b.WriteString(selectControl("range","Período",[]string{"0","7","14","30","90"},[]string{"tudo","7d","14d","30d","90d"},strconv.Itoa(view.RangeDays)))
 	b.WriteString(selectControl("window","Janela",[]string{"7","14","30","90","365"},[]string{"7d","14d","30d","90d","YTD"},strconv.Itoa(view.WindowDays)))
 	b.WriteString(selectControl("model","Modelo",modelValueList(),modelLabelList(),strconv.Itoa(view.Model)))
 	b.WriteString(fmt.Sprintf("<label>Janela custom <input id='windowCustom' type='number' min='1' value='%d'></label>",view.WindowDays))
@@ -312,7 +312,7 @@ func renderPage() string {
 	if view.SelectedPoll!="" { b.WriteString(renderSelectedPoll(view.SelectedPoll,en)) }
 	b.WriteString("</section>")
 	b.WriteString(renderCards())
-	b.WriteString(fmt.Sprintf("<section id='pollsPanel'><h2>%s</h2><input id='tableQuery' value='%s' placeholder='%s'> <span>%d registros filtrados</span>",tr(en,"Resultados das pesquisas","Poll results"),esc(view.TableQuery),tr(en,"instituto, cenário, campo, TSE…","pollster, scenario, fieldwork, TSE…"),len(rows)))
+	b.WriteString(fmt.Sprintf("<section id='pollsPanel' style='background:"+surface+";border:1px solid "+muted+";border-radius:14px;padding:16px;margin:14px 0;box-shadow:0 8px 24px rgba(0,0,0,.18)'><h2>%s</h2><input id='tableQuery' value='%s' placeholder='%s'> <span>%d registros filtrados</span>",tr(en,"Resultados das pesquisas","Poll results"),esc(view.TableQuery),tr(en,"instituto, cenário, campo, TSE…","pollster, scenario, fieldwork, TSE…"),len(rows)))
 	b.WriteString(renderTable(rows,view.Round,surface,en)+"</section>")
 	if len(regionalPolls)>0 { b.WriteString(renderRegional(surface,en)) }
 	b.WriteString(renderMethodology(en))
@@ -362,19 +362,19 @@ func chartSVG() string {
 	if view.RangeDays>0 {minD=maxI64(minD,maxD-int64(view.RangeDays)*dayMS)}
 	maxX:=maxD+dayMS; if view.Projection {maxX+=14*dayMS}
 	c:=(float64(minD)+float64(maxX))/2; span:=math.Max(7,(float64(maxX)-float64(minD))/math.Max(1,view.Zoom)); minD=int64(c-span/2); maxX=int64(c+span/2)
-	width,height,left,right,top,bottom:=1200.0,460.0,70.0,35.0,25.0,55.0
-	yLow,yHigh:=0.0,math.Min(100,math.Max(50,maxY*1.1))
+	width,height,left,right,top,bottom:=1200.0,500.0,70.0,35.0,35.0,60.0
+	yLow,yHigh:=0.0,math.Min(100,math.Max(50,math.Ceil(maxY+3)))
 	xf:=func(t int64)float64{return left+(float64(t)-float64(minD))/math.Max(1,float64(maxX-minD))*(width-left-right)}
 	yf:=func(v float64)float64{return top+(1-(v-yLow)/math.Max(1,yHigh-yLow))*(height-top-bottom)}
 	var b strings.Builder
-	b.WriteString(fmt.Sprintf("<svg id='chart' viewBox='0 0 %.0f %.0f' width='100%%' height='460' role='img' aria-label='Tendência de intenção de voto'>",width,height))
+	b.WriteString(fmt.Sprintf("<svg id='chart' viewBox='0 0 %.0f %.0f' width='100%%' height='500' role='img' aria-label='Tendência de intenção de voto'>",width,height))
 	b.WriteString(fmt.Sprintf("<rect x='0' y='0' width='%.0f' height='%.0f' fill='none' stroke='#777'/>",width,height))
 	for i:=0;i<=5;i++{v:=yHigh-float64(i)/5*(yHigh-yLow);y:=yf(v);b.WriteString(fmt.Sprintf("<line x1='%f' x2='%f' y1='%f' y2='%f' stroke='#ddd'/><text x='8' y='%f' font-size='12'>%.0f%%</text>",left,width-right,y,y,y+4,v))}
 	for _,s:=range series {
 		col:=candidateColor(s.key); if col=="" {col="#444"}
 		if len(s.band)>1 {low,high:=[]string{},[]string{};for _,p:=range s.band{if p.X>=minD&&p.X<=maxX{low=append(low,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Low)));high=append(high,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.High)))}};if len(low)>1{pts:=append(low,reverseStrings(high)...);b.WriteString(fmt.Sprintf("<polygon points='%s' fill='%s' opacity='.10' stroke='none'/>",strings.Join(pts," "),col))}}
-		if len(s.trend)>1 {pts:=[]string{};for _,p:=range s.trend{if p.X>=minD&&p.X<=maxX{pts=append(pts,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Y)))}};if len(pts)>1{b.WriteString(fmt.Sprintf("<polyline fill='none' stroke='%s' stroke-width='3' points='%s'/>",col,strings.Join(pts," ")))}}
-		for _,p:=range s.raw{if p.T<minD||p.T>maxX{continue};b.WriteString(fmt.Sprintf("<circle data-poll-id='%s' cx='%.1f' cy='%.1f' r='4' fill='#fff' stroke='%s'><title>%s · %.2f%% · %s</title></circle>",esc(p.PollID),xf(p.T),yf(p.Y),col,esc(s.key),p.Y,esc(p.Institute)))}
+		if len(s.trend)>1 {pts:=[]string{};for _,p:=range s.trend{if p.X>=minD&&p.X<=maxX{pts=append(pts,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Y)))}};if len(pts)>1{b.WriteString(fmt.Sprintf("<polyline fill='none' stroke='%s' stroke-width='3.5' points='%s'/>",col,strings.Join(pts," ")))}}
+		for _,p:=range s.raw{if p.T<minD||p.T>maxX{continue};b.WriteString(fmt.Sprintf("<circle data-poll-id='%s' cx='%.1f' cy='%.1f' r='5' fill='%s' stroke='%s'><title>%s · %.2f%% · %s</title></circle>",esc(p.PollID),xf(p.T),yf(p.Y),col,col,esc(s.key),p.Y,esc(p.Institute)))}
 		if len(s.pl)>1 && len(s.ph)==len(s.pl){low,high:=[]string{},[]string{};for i,p:=range s.pl{if p.X>=minD&&p.X<=maxX{low=append(low,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Y)));high=append(high,fmt.Sprintf("%.1f,%.1f",xf(s.ph[i].X),yf(s.ph[i].Y)))}};if len(low)>1{pts:=append(low,reverseStrings(high)...);b.WriteString(fmt.Sprintf("<polygon points='%s' fill='%s' opacity='.08' stroke='none'/>",strings.Join(pts," "),col))}}
 		if len(s.proj)>1{pts:=[]string{};for _,p:=range s.proj{pts=append(pts,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Y)))};b.WriteString(fmt.Sprintf("<polyline fill='none' stroke='%s' stroke-width='2' stroke-dasharray='8 6' points='%s'/>",col,strings.Join(pts," ")))}
 		for _,o:=range s.overlays{pts:=[]string{};for _,p:=range o.Mid{if p.X>=minD&&p.X<=maxX{pts=append(pts,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Y)))}};if len(pts)>1{b.WriteString(fmt.Sprintf("<polyline fill='none' stroke='#333' stroke-width='1.5' opacity='.7' points='%s'/>",strings.Join(pts," "))) };if len(o.Low)>1&&len(o.High)==len(o.Low){low,high:=[]string{},[]string{};for i,p:=range o.Low{if p.X>=minD&&p.X<=maxX{low=append(low,fmt.Sprintf("%.1f,%.1f",xf(p.X),yf(p.Y)));high=append(high,fmt.Sprintf("%.1f,%.1f",xf(o.High[i].X),yf(o.High[i].Y)))}};if len(low)>1{pts:=append(low,reverseStrings(high)...);b.WriteString(fmt.Sprintf("<polygon points='%s' fill='#333' opacity='.06' stroke='none'/>",strings.Join(pts," ")))}}}
@@ -386,7 +386,7 @@ func maxI64(a,b int64)int64{if a>b{return a};return b}
 func reverseStrings(v []string)[]string{out:=append([]string(nil),v...);for i,j:=0,len(out)-1;i<j;i,j=i+1,j-1{out[i],out[j]=out[j],out[i]};return out}
 
 func renderCards() string {
-	var b strings.Builder; b.WriteString("<section id='cards'><h2>Resumo</h2><div style='display:flex;flex-wrap:wrap;gap:10px'>")
+	var b strings.Builder; b.WriteString("<section id='cards' style='margin:14px 0'><h2>Resumo</h2><div style='display:flex;flex-wrap:wrap;gap:10px'>")
 	for _,k:=range allCandidateKeys(view.Round){pts:=trendForCandidate(polls,k,view.Round,view.Geo,view.Institutes);tr:=averageTrend(pts,float64(view.WindowDays),view.Model);cur,ok:=trendAt(tr,latestT(pts));prior,ok2:=trendAt(tr,latestT(pts)-30*dayMS);delta:="—";if ok&&ok2{d:=cur-prior;sign:="";if d>0{sign="+"};delta=fmt.Sprintf("%s%.2f pp vs 30d",sign,d)}
 		spark:=""; if len(tr)>1{last:=tr;if len(last)>8{last=last[len(last)-8:]};minV,maxV:=last[0].Y,last[0].Y;for _,p:=range last{minV=math.Min(minV,p.Y);maxV=math.Max(maxV,p.Y)};span:=math.Max(1,maxV-minV);pts:=[]string{};for i,p:=range last{x:=float64(i)/float64(len(last)-1)*100;y:=28-(p.Y-minV)/span*22;pts=append(pts,fmt.Sprintf("%.1f,%.1f",x,y))};spark="<svg viewBox='0 0 100 30' width='160' height='38'><polyline fill='none' stroke='"+candidateColor(k)+"' stroke-width='1.7' points='"+strings.Join(pts," ")+"'/></svg>"}
 		b.WriteString("<article style='flex:1;min-width:190px;border:1px solid #aaa;border-top:4px solid "+candidateColor(k)+";padding:10px;border-radius:8px'><b>"+esc(k)+"</b><br><strong style='font-size:1.4em'>"+fmtPct(cur,ok)+"</strong><br><small>"+esc(delta)+" · média "+strconv.Itoa(view.WindowDays)+"d</small><br>"+spark+"</article>")
