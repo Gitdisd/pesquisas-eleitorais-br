@@ -48,8 +48,13 @@ def main():
   try {
     const go=new Go();
     const response=await fetch("main.wasm");
-    const bytes=await response.arrayBuffer();
-    const result=await WebAssembly.instantiate(bytes,go.importObject);
+    let result;
+    try {
+      result=await WebAssembly.instantiateStreaming(response,go.importObject);
+    } catch (_) {
+      const bytes=await (await fetch("main.wasm")).arrayBuffer();
+      result=await WebAssembly.instantiate(bytes,go.importObject);
+    }
     go.run(result.instance);
   } catch (err) {
     document.getElementById("app").innerHTML="<main style='max-width:700px;margin:12vh auto;padding:24px'><h1>Não foi possível iniciar o painel</h1><p>Atualize a página e tente novamente.</p></main>";
