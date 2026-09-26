@@ -1873,6 +1873,20 @@ fn format_pct(value: f64) -> String {
     format!("{:.2}%", value)
 }
 
+fn format_date_from_day(day: i64) -> String {
+    let z = day + 719468;
+    let era = if z >= 0 { z } else { z - 146096 } / 146097;
+    let doe = z - era * 146097;
+    let yoe = (doe - doe / 1460 + doe / 36524 - doe / 146096) / 365;
+    let y = yoe + era * 400;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let d = doy - (153 * mp + 2) / 5 + 1;
+    let m = mp + if mp < 10 { 3 } else { -9 };
+    let year = y + i64::from(m <= 2);
+    format!("{d:02}/{m:02}/{year:04}")
+}
+
 fn format_date(value: &str) -> String {
     let s = value.get(..10).unwrap_or(value);
     let mut parts = s.split('-');
