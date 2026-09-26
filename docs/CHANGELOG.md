@@ -1,3 +1,9 @@
+## 2026-09-26 14:04 -03:00 / 2026-09-26T17:04:00Z — Go/WASM pre-cutover browser gate
+
+- Expanded the Go Chromium smoke from a single desktop path to desktop + mobile viewports.
+- Added interaction coverage for round/candidate/model/projection state, table search, institute filtering, overlays, hidden candidate lines, CSV/JSON export and share-link action.
+- Kept the Focus/Focar absence assertion explicit.
+
 ## 2026-09-26 13:56 -03:00 / 2026-09-26T16:56:00Z — Go Pages deployment verifier
 
 - Updated post-deployment verification to require the Go/WASM runtime files and both supplemental data files.
