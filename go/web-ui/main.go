@@ -20,7 +20,7 @@ type Poll struct {
 	Scenario        string     `json:"scenario"`
 	Candidates      []Candidate `json:"candidates"`
 	N               int        `json:"n"`
-	MarginOfError   string     `json:"margin_of_error"`
+	MarginOfError   string      `json:"margin_of_error"`
 	SourceURL       string     `json:"source_url"`
 	MethodologyNote string     `json:"methodology_note"`
 	Verified        bool       `json:"verified"`
