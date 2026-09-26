@@ -132,11 +132,11 @@ pub fn App() -> Element {
                         div {
                             class: "header-copy",
                             div { class: "brandline",
-                                span { class: "kicker", "{t(ui_state.language, "dashboard")}" }
+                                span { class: "kicker", {t(ui_state.language, "dashboard")} }
                                 span { class: "live-pill", "● {t(ui_state.language, "public-data")}" }
                             }
                             h1 { "Pesquisas eleitorais — Presidência 2026" }
-                            p { "{t(ui_state.language, "source-note")}" }
+                            p { {t(ui_state.language, "source-note")} }
                             div { class: "meta-strip",
                                 span { "Atualizado: {meta_updated}" }
                                 span { "Última publicação: {meta_latest}" }
@@ -144,7 +144,7 @@ pub fn App() -> Element {
                             }
                             div { class: "site-controls",
                                 div { class: "control-group",
-                                    span { class: "control-label", "{t(ui_state.language, "language")}" }
+                                    span { class: "control-label", {t(ui_state.language, "language")} }
                                     button {
                                         class: if ui_state.language == Language::PtBr { "active" } else { "" },
                                         "aria-pressed": "{ui_state.language == Language::PtBr}",
@@ -169,7 +169,7 @@ pub fn App() -> Element {
                                     }
                                 }
                                 div { class: "control-group",
-                                    span { class: "control-label", "{t(ui_state.language, "themes")}" }
+                                    span { class: "control-label", {t(ui_state.language, "themes")} }
                                     for theme in [Theme::Light, Theme::Dark, Theme::CrtAmber, Theme::CrtGreen] {
                                         button {
                                             class: if ui_state.theme == theme { "active" } else { "" },
@@ -218,10 +218,10 @@ pub fn App() -> Element {
                         }
                     }
                     nav { class: "dashboard-nav", "aria-label": "Navegação rápida",
-                        a { href: "#overview", "{t(ui_state.language, "overview")}" }
+                        a { href: "#overview", {t(ui_state.language, "overview")} }
                         a { href: "#chartPanel", "Gráfico" }
                         a { href: "#cards", "Resumo" }
-                        a { href: "#pollsPanel", "{t(ui_state.language, "polls")}" }
+                        a { href: "#pollsPanel", {t(ui_state.language, "polls")} }
                         a { href: "#allSourcesPanel", "Fontes" }
                         a { href: "#methodology", "Metodologia" }
                     }
@@ -230,7 +230,7 @@ pub fn App() -> Element {
 
             div { class: "app",
                 match polls.read().as_ref() {
-                    None => rsx! { section { class: "panel status", "{t(ui_state.language, "loading")}" } },
+                    None => rsx! { section { class: "panel status", {t(ui_state.language, "loading")} } },
                     Some(Err(error)) => rsx! { section { class: "panel status", "{error}" } },
                     Some(Ok(all)) => {
                         let state = view();
@@ -315,42 +315,42 @@ pub fn App() -> Element {
                             section { class: "dashboard-overview", id: "overview",
                                 div { class: "overview-hero",
                                     div {
-                                        h2 { "{t(ui_state.language, "overview")}" }
-                                        p { "{t(ui_state.language, "overview-copy")}" }
+                                        h2 { {t(ui_state.language, "overview")} }
+                                        p { {t(ui_state.language, "overview-copy")} }
                                     }
                                     div { class: "overview-actions",
                                         button {
                                             class: "ui-btn",
                                             onclick: move |_| scroll_to_id("chartPanel"),
-                                            "{t(ui_state.language, "open-chart")}"
+                                            {t(ui_state.language, "open-chart")}
                                         }
                                         button {
                                             class: "ui-btn",
                                             onclick: move |_| scroll_to_id("pollsPanel"),
-                                            "{t(ui_state.language, "view-polls")}"
+                                            {t(ui_state.language, "view-polls")}
                                         }
                                     }
                                 }
                                 div { class: "metrics-grid",
                                     div { class: "metric",
-                                        span { class: "metric-label", "{t(ui_state.language, "published-polls")}" }
+                                        span { class: "metric-label", {t(ui_state.language, "published-polls")} }
                                         span { class: "metric-value", "{overview_poll_count}" }
-                                        span { class: "metric-sub", "{t(ui_state.language, "national-base")}" }
+                                        span { class: "metric-sub", {t(ui_state.language, "national-base")} }
                                     }
                                     div { class: "metric",
-                                        span { class: "metric-label", "{t(ui_state.language, "pollsters")}" }
+                                        span { class: "metric-label", {t(ui_state.language, "pollsters")} }
                                         span { class: "metric-value", "{overview_institutes}" }
-                                        span { class: "metric-sub", "{t(ui_state.language, "loaded-data")}" }
+                                        span { class: "metric-sub", {t(ui_state.language, "loaded-data")} }
                                     }
                                     div { class: "metric",
-                                        span { class: "metric-label", "{t(ui_state.language, "latest-fieldwork")}" }
+                                        span { class: "metric-label", {t(ui_state.language, "latest-fieldwork")} }
                                         span { class: "metric-value", "{latest_label}" }
                                         span { class: "metric-sub", "{t(ui_state.language, "fieldwork-end" )}" }
                                     }
                                     div { class: "metric",
-                                        span { class: "metric-label", "{t(ui_state.language, "round-coverage")}" }
+                                        span { class: "metric-label", {t(ui_state.language, "round-coverage")} }
                                         span { class: "metric-value", "{round1_count} · {round2_count}" }
-                                        span { class: "metric-sub", "{t(ui_state.language, "first-round")} · {t(ui_state.language, "second-round")}" }
+                                        span { class: "metric-sub", {format!("{} · {}", t(ui_state.language, "first-round"), t(ui_state.language, "second-round"))} }
                                     }
                                 }
                             }
@@ -381,12 +381,12 @@ pub fn App() -> Element {
                                         button {
                                             class: if state.round == 1 { "active" } else { "" },
                                             onclick: move |_| { let mut state = view.write(); state.round = 1; reset_navigation(&mut state); },
-                                            "{t(ui_state.language, "first-round")}"
+                                            {t(ui_state.language, "first-round")}
                                         }
                                         button {
                                             class: if state.round == 2 { "active" } else { "" },
                                             onclick: move |_| { let mut state = view.write(); state.round = 2; reset_navigation(&mut state); },
-                                            "{t(ui_state.language, "second-round")}"
+                                            {t(ui_state.language, "second-round")}
                                         }
                                     }
                                     div { class: "seg range-seg", role: "group", "aria-label": t(ui_state.language, "period"),
@@ -404,7 +404,7 @@ pub fn App() -> Element {
                                         button {
                                             class: if state.range_days.is_none() { "active" } else { "" },
                                             onclick: move |_| { let mut state = view.write(); state.range_days = None; reset_navigation(&mut state); },
-                                            "{t(ui_state.language, "all-period")}"
+                                            {t(ui_state.language, "all-period")}
                                         }
                                     }
                                     div { class: "seg geo-seg", role: "group", "aria-label": t(ui_state.language, "geography"),
@@ -414,7 +414,7 @@ pub fn App() -> Element {
                                                 button {
                                                     class: if state.geo_index == usize::MAX { "active" } else { "" },
                                                     onclick: move |_| { let mut next = view.write(); next.geo_index = usize::MAX; reset_navigation(&mut next); },
-                                                    "{t(ui_state.language, "all")}"
+                                                    {t(ui_state.language, "all")}
                                                 }
                                                 for (index, geo) in geos.iter().enumerate() {
                                                     button {
@@ -444,7 +444,7 @@ pub fn App() -> Element {
 
                                 div { class: "controls controls-secondary",
                                     div { class: "window-row",
-                                        span { class: "ctrl", "{t(ui_state.language, "averaging-window")}" }
+                                        span { class: "ctrl", {t(ui_state.language, "averaging-window")} }
                                         div { class: "window-presets",
                                             for days in [7_i64, 14_i64, 30_i64, 90_i64] {
                                                 button {
@@ -468,7 +468,7 @@ pub fn App() -> Element {
                                             }
                                         }
                                         label { class: "ctrl",
-                                            "{t(ui_state.language, "custom")}"
+                                            {t(ui_state.language, "custom")}
                                             input {
                                                 r#type: "number",
                                                 min: "1",
@@ -544,14 +544,14 @@ pub fn App() -> Element {
 
                                 div { class: "filter-drawer",
                                     div { class: "filter-header",
-                                        strong { "{t(ui_state.language, "filters")}" }
-                                        span { class: "muted", "{t(ui_state.language, "filter-help")}" }
+                                        strong { {t(ui_state.language, "filters")} }
+                                        span { class: "muted", {t(ui_state.language, "filter-help")} }
                                     }
                                     div { class: "filters",
                                         button {
                                             class: if ui_state.institutes.is_empty() { "chip on" } else { "chip" },
                                             onclick: move |_| ui.write().institutes.clear(),
-                                            "{t(ui_state.language, "select-all")} ({all_institutes.len()})"
+                                            {format!("{} ({})", t(ui_state.language, "select-all"), all_institutes.len())}
                                         }
                                         for institute in all_institutes.iter() {
                                             let name = institute.clone();
@@ -597,7 +597,7 @@ pub fn App() -> Element {
                                 div { class: "chart-navigation",
                                     button {
                                         onclick: move |_| reset_navigation(&mut view.write()),
-                                        "{t(ui_state.language, "reset-view")}"
+                                        {t(ui_state.language, "reset-view")}
                                     }
                                     span { class: "muted", "Zoom {state.zoom:.1}×" }
                                 }
@@ -605,7 +605,7 @@ pub fn App() -> Element {
                                     p { class: "action-status", role: "status", "{status}" }
                                 }
                                 p { class: "quick-note",
-                                    strong { "{t(ui_state.language, "guide")}:" }
+                                    strong { {format!("{}:", t(ui_state.language, "guide"))} }
                                     " {t(ui_state.language, "guide-copy")}"
                                 }
                                 div { class: "quick-tools",
@@ -628,7 +628,7 @@ pub fn App() -> Element {
                                             };
                                             ui.write().status = Some(message.to_string());
                                         },
-                                        "{t(ui_state.language, "share")}"
+                                        {t(ui_state.language, "share")}
                                     }
                                     button {
                                         class: "ui-btn",
@@ -640,7 +640,7 @@ pub fn App() -> Element {
                                                 t(ui_state.language, "sharing-unavailable").to_string()
                                             });
                                         },
-                                        "{t(ui_state.language, "export-csv")}"
+                                        {t(ui_state.language, "export-csv")}
                                     }
                                     button {
                                         class: "ui-btn",
@@ -660,25 +660,25 @@ pub fn App() -> Element {
                                                 t(ui_state.language, "sharing-unavailable").to_string()
                                             });
                                         },
-                                        "{t(ui_state.language, "export-json")}"
+                                        {t(ui_state.language, "export-json")}
                                     }
                                     button {
                                         class: "ui-btn",
                                         onclick: move |_| scroll_to_id("chartPanel"),
-                                        "{t(ui_state.language, "focus")}"
+                                        {t(ui_state.language, "focus")}
                                     }
                                 }
 
                                 h2 { class: "chart-subtitle", "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
-                                p { class: "muted", "{t(ui_state.language, "source-note")}" }
+                                p { class: "muted", {t(ui_state.language, "source-note")} }
 
                                 if state.model == 2 {
                                     p { class: "muted projection-status", "{projection_status_text(projection.as_ref(), ui_state.language)}" }
                                 }
                                 if let Some(last) = latest {
-                                    p { class: "muted", "{t(ui_state.language, "latest-shown")}: {format_date(&last.fieldwork_end)} · {last.institute} · {format_pct(last.value)}" }
+                                    p { class: "muted", {format!("{}: {} · {} · {}", t(ui_state.language, "latest-shown"), format_date(&last.fieldwork_end), last.institute, format_pct(last.value))} }
                                 } else {
-                                    p { class: "muted", "{t(ui_state.language, "no-observations")}" }
+                                    p { class: "muted", {t(ui_state.language, "no-observations")} }
                                 }
                             }
 
@@ -776,26 +776,26 @@ pub fn App() -> Element {
                             section { class: "panel", id: "pollsPanel",
                                 div { class: "table-toolbar",
                                     div {
-                                        h2 { "{t(ui_state.language, "table")}" }
+                                        h2 { {t(ui_state.language, "table")} }
                                         p { class: "muted", "{table_count} {t(ui_state.language, "rows")}" }
                                     }
                                     input {
                                         r#type: "search",
                                         value: "{ui_state.table_query}",
-                                        placeholder: "{t(ui_state.language, "search-table")}",
+                                        placeholder: {t(ui_state.language, "search-table")},
                                         "aria-label": t(ui_state.language, "search-table"),
                                         oninput: move |event| ui.write().table_query = event.value(),
                                     }
                                 }
-                                p { class: "muted", "{t(ui_state.language, "table-sample")}" }
+                                p { class: "muted", {t(ui_state.language, "table-sample")} }
                                 div { class: "table-wrap",
                                     table {
                                         thead { tr {
-                                            th { "{t(ui_state.language, "fieldwork")}" }
-                                            th { "{t(ui_state.language, "publication")}" }
-                                            th { "{t(ui_state.language, "institute")}" }
-                                            th { "{t(ui_state.language, "geo")}" }
-                                            th { "{t(ui_state.language, "scenario")}" }
+                                            th { {t(ui_state.language, "fieldwork")} }
+                                            th { {t(ui_state.language, "publication")} }
+                                            th { {t(ui_state.language, "institute")} }
+                                            th { {t(ui_state.language, "geo")} }
+                                            th { {t(ui_state.language, "scenario")} }
                                             th { "TSE" }
                                             for candidate in display_candidates(state.round) {
                                                 th { class: "num", "{candidate.label()}" }
@@ -814,7 +814,7 @@ pub fn App() -> Element {
                                                                 format!("{}–{}", format_date(fieldwork), format_date(&first.fieldwork_end))
                                                             }
                                                         }
-                                                        td { "{first.published_date.as_deref().map(format_date).unwrap_or_else(|| "—".to_string())}" }
+                                                        td { {first.published_date.as_deref().map(format_date).unwrap_or_else(|| "—".to_string())} }
                                                         td { "{first.institute}" }
                                                         td { "{first.geo}" }
                                                         td { "{first.scenario}" }
@@ -830,7 +830,7 @@ pub fn App() -> Element {
                                                             }
                                                         }
                                                         td { class: "num", "{first.n:.0}" }
-                                                        td { class: "num", "{first.moe.map(|v| format!("±{v:.2}")).unwrap_or_else(|| "—".into())}" }
+                                                        td { class: "num", {first.moe.map(|v| format!("±{v:.2}")).unwrap_or_else(|| "—".into())} }
                                                         td {
                                                             if !first.source_url.is_empty() {
                                                                 a { href: "{first.source_url}", target: "_blank", rel: "noopener noreferrer", "ver" }
@@ -862,7 +862,7 @@ pub fn App() -> Element {
                             }
                             Methodology { language: ui_state.language }
                             footer {
-                                p { "{t(ui_state.language, "static-footer")}" }
+                                p { {t(ui_state.language, "static-footer")} }
                             }
                         }
                     }
