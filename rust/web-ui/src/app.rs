@@ -362,7 +362,7 @@ pub fn App() -> Element {
                                         button {
                                             class: "ui-btn",
                                             onclick: move |_| scroll_to_id("chartPanel"),
-                                            "↗ {t(ui_state.language, "focus")}"
+                                            "{format!(\"↗ {}\", t(ui_state.language, \"focus\"))}"
                                         }
                                         button {
                                             class: "ui-btn",
@@ -1299,8 +1299,7 @@ fn multi_chart_svg(
                     }
                 }
 
-                if let Some(day) = hover_day {
-                    let x = x_for_day(day);
+                if let Some(x) = hover_x {
                     line { class: "hover-crosshair", x1: "{x:.2}", x2: "{x:.2}", y1: "{TOP}", y2: "{HEIGHT - BOTTOM}" }
                 }
             }
