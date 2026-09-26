@@ -231,7 +231,6 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
     } else {
         display_candidates(1)
     };
-    let all_geos = geos.clone();
     let series = candidates.iter().copied().map(|candidate| {
         let candidate_rows = rows.iter()
             .filter(|poll| poll.candidate_key == candidate.key())
@@ -269,13 +268,13 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
                         class: "grid-line",
                         x1: "{LEFT}",
                         x2: "{WIDTH-RIGHT}",
-                        y1: {format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)))},
-                        y2: {format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)))}
+                        y1: format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low))),
+                        y2: format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)))
                     }
                     text {
                         class: "axis-label",
                         x: "8",
-                        y: {format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)) + 4.0)},
+                        y: format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)) + 4.0),
                         {format!("{:.0}%", high - (i as f64 / 5.0) * (high - low))}
                     }
                 }
@@ -286,8 +285,8 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
                     for poll in series.rows.iter().take(200) {
                         circle {
                             class: "poll-point",
-                            cx: {format!("{:.2}", x(poll.day))},
-                            cy: {format!("{:.2}", y(poll.value))},
+                            cx: format!("{:.2}", x(poll.day)),
+                            cy: format!("{:.2}", y(poll.value)),
                             r: "3.2",
                             style: "fill: var(--surface); stroke: {series.color};",
                         }
