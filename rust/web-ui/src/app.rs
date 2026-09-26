@@ -8,7 +8,7 @@ use std::collections::BTreeSet;
 
 use crate::chart::{
     model_label, polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
-    MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
+    BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
 use crate::methodology::Methodology;
@@ -17,7 +17,7 @@ use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
     initial_avg_window_days, initial_model, initial_projection, initial_range_days, initial_round,
-    persist_language, persist_model, persist_overlays, persist_theme, scroll_to_id,
+    persist_language, persist_overlays, persist_theme, scroll_to_id,
     t, Language, Theme, UiState,
 };
 
@@ -117,6 +117,23 @@ pub fn App() -> Element {
     let meta_updated = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_updated.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
     let meta_latest = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.latest_publication_date.as_deref()).map(format_meta_date).unwrap_or_else(|| "—".to_string());
     let meta_check = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_check_at.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
+    let focus_candidates = if ui_state.round == 2 {
+        vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
+    } else {
+        Candidate::all().to_vec()
+    };
+    let overlay_controls = OVERLAYS.iter().copied()
+        .map(|overlay| (overlay, ui_state.overlays.iter().any(|key| key == overlay.id)))
+        .collect::<Vec<_>>();
+    let institute_controls = all_institutes.iter()
+        .map(|name| {
+            (
+                name.clone(),
+                all_institutes.clone(),
+                ui_state.institute_selected(name),
+            )
+        })
+        .collect::<Vec<_>>();
 
     rsx! {
         div {
@@ -494,37 +511,26 @@ pub fn App() -> Element {
 
                                 div { class: "candidate-focus",
                                     span { class: "candidate-focus-label", "Linhas do gráfico" }
-                                    {
-                                        let focus_candidates: Vec<Candidate> = if state.round == 2 {
-                                            vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
-                                        } else {
-                                            Candidate::all().to_vec()
-                                        };
-                                        rsx! {
-                                            for candidate in focus_candidates {
-                                                let hidden = ui_state.hidden_candidates.iter().any(|key| key == candidate.key());
-                                                button {
-                                                    class: if hidden { "candidate-focus-btn" } else { "candidate-focus-btn on" },
-                                                    "aria-pressed": "{!hidden}",
-                                                    onclick: move |_| {
-                                                        let mut next = ui.write();
-                                                        if next.hidden_candidates.iter().any(|key| key == candidate.key()) {
-                                                            next.hidden_candidates.retain(|key| key != candidate.key());
-                                                        } else {
-                                                            next.hidden_candidates.push(candidate.key().to_string());
-                                                        }
-                                                    },
-                                                    "{candidate.label()}"
+                                    for candidate in focus_candidates.iter().copied() {
+                                        button {
+                                            class: if ui_state.hidden_candidates.iter().any(|key| key == candidate.key()) { "candidate-focus-btn" } else { "candidate-focus-btn on" },
+                                            "aria-pressed": "{!ui_state.hidden_candidates.iter().any(|key| key == candidate.key())}",
+                                            onclick: move |_| {
+                                                let mut next = ui.write();
+                                                if next.hidden_candidates.iter().any(|key| key == candidate.key()) {
+                                                    next.hidden_candidates.retain(|key| key != candidate.key());
+                                                } else {
+                                                    next.hidden_candidates.push(candidate.key().to_string());
                                                 }
-                                            }
+                                            },
+                                            "{candidate.label()}"
                                         }
                                     }
                                 }
 
                                 div { class: "overlay-row",
                                     span { class: "ctrl", "Overlays" }
-                                    for overlay in OVERLAYS.iter().copied() {
-                                        let enabled = ui_state.overlays.iter().any(|key| key == overlay.id);
+                                    for (overlay, enabled) in overlay_controls.iter().copied() {
                                         button {
                                             class: if enabled { "chip on" } else { "chip" },
                                             "aria-pressed": "{enabled}",
@@ -553,17 +559,14 @@ pub fn App() -> Element {
                                             onclick: move |_| ui.write().institutes.clear(),
                                             {format!("{} ({})", t(ui_state.language, "select-all"), all_institutes.len())}
                                         }
-                                        for institute in all_institutes.iter() {
-                                            let name = institute.clone();
-                                            let all_names = all_institutes.clone();
-                                            let active = ui_state.institute_selected(&name);
+                                        for (name, all_names, active) in institute_controls.iter().cloned() {
                                             button {
                                                 class: if active { "chip on" } else { "chip" },
                                                 "aria-pressed": "{active}",
                                                 onclick: move |_| {
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
-                                                        state.institutes = all_names.iter().filter(|item| *item != &name).cloned().collect();
+                                                        state.institutes = all_names.iter().filter(|item| item != &name).cloned().collect();
                                                     } else if state.institutes.iter().any(|item| item == &name) {
                                                         if state.institutes.len() > 1 {
                                                             state.institutes.retain(|item| item != &name);
