@@ -37,6 +37,8 @@ pub enum Theme {
     Psd,
     Novo,
     Avante,
+    CrtAmber,
+    CrtGreen,
 }
 
 impl Theme {
@@ -52,6 +54,8 @@ impl Theme {
                     "party-psd" => Self::Psd,
                     "party-novo" => Self::Novo,
                     "party-avante" => Self::Avante,
+                    "crt-amber" => Self::CrtAmber,
+                    "crt-green" => Self::CrtGreen,
                     _ => Self::Light,
                 };
             }
@@ -69,6 +73,8 @@ impl Theme {
             Self::Psd => "party-psd",
             Self::Novo => "party-novo",
             Self::Avante => "party-avante",
+            Self::CrtAmber => "crt-amber",
+            Self::CrtGreen => "crt-green",
         }
     }
 
@@ -88,6 +94,14 @@ impl Theme {
             Self::Psd => "PSD",
             Self::Novo => "Novo",
             Self::Avante => "Avante",
+            Self::CrtAmber => match language {
+                Language::PtBr => "CRT âmbar",
+                Language::En => "CRT amber",
+            },
+            Self::CrtGreen => match language {
+                Language::PtBr => "CRT verde",
+                Language::En => "CRT green",
+            },
         }
     }
 
@@ -106,6 +120,8 @@ pub struct UiState {
     /// Empty means "all institutes"; otherwise this is the explicit selected set.
     pub institutes: Vec<String>,
     pub table_query: String,
+    pub hidden_candidates: Vec<String>,
+    pub overlays: Vec<String>,
     pub status: Option<String>,
 }
 
@@ -116,6 +132,8 @@ impl UiState {
             theme: Theme::from_storage(),
             institutes: Vec::new(),
             table_query: String::new(),
+            hidden_candidates: Vec::new(),
+            overlays: restored_overlays(),
             status: None,
         }
     }
@@ -299,13 +317,23 @@ pub fn theme_style(theme: Theme) -> String {
             "#083034", "#2eabb1", "#e8ffff", "#062022", "#2eabb1", "#062022",
             "linear-gradient(180deg,#2eabb1 0%,#0a3034 72%)", "#e8ffff", "none",
         ),
+        Theme::CrtAmber => (
+            "#140e04", "#1c1406", "#ffb000", "#c48420", "#8a5a10", "#ffd36a",
+            "#221806", "#3a2808", "#ffb000", "#ffe7a8", "#ffb000", "#140e04",
+            "#1c1406", "#8a5a10", "0 0 8px rgba(255,176,0,.35)",
+        ),
+        Theme::CrtGreen => (
+            "#031208", "#06180c", "#3dff7a", "#1fa34d", "#0d5c2a", "#9affb8",
+            "#04160a", "#083016", "#3dff7a", "#c8ffd8", "#3dff7a", "#031208",
+            "#06180c", "#0d5c2a", "0 0 8px rgba(61,255,122,.32)",
+        ),
     };
 
     format!(
         "--bg:{};--surface:{};--text:{};--muted:{};--border:{};--accent:{};\
          --chip-bg:{};--chip-on-bg:{};--chip-on-border:{};--chip-on-text:{};\
          --seg-active-bg:{};--seg-active-fg:{};--header-bg:{};--header-border:{};\
-         --radius:{};--shadow:{};color:var(--text);",
+         --radius:{};--shadow:{};--crt-glow:var(--shadow);--scan:transparent;color:var(--text);",
         base.0, base.1, base.2, base.3, base.4, base.5,
         base.6, base.7, base.8, base.9, base.10, base.11, base.12, base.13,
         if theme.is_party() { "6px" } else { "12px" }, base.14,
@@ -352,6 +380,26 @@ pub fn persist_theme(theme: Theme) {
     }
 }
 
+fn restored_overlays() -> Vec<String> {
+    #[cfg(target_arch = "wasm32")]
+    if let Some(raw) = read_storage("pebr-overlays") {
+        if let Ok(values) = serde_json::from_str::<std::collections::BTreeMap<String, bool>>(&raw) {
+            return values.into_iter().filter_map(|(key, enabled)| enabled.then_some(key)).collect();
+        }
+    }
+    Vec::new()
+}
+
+pub fn persist_overlays(overlays: &[String]) {
+    #[cfg(target_arch = "wasm32")]
+    {
+        let values = overlays.iter().map(|key| (key.clone(), true)).collect::<std::collections::BTreeMap<_, _>>();
+        if let Ok(raw) = serde_json::to_string(&values) {
+            write_storage("pebr-overlays", &raw);
+        }
+    }
+}
+
 pub fn apply_document_chrome(language: Language) {
     #[cfg(target_arch = "wasm32")]
     {
@@ -372,6 +420,15 @@ pub fn apply_document_chrome(language: Language) {
                     },
                 );
             }
+        }
+    }
+}
+
+pub fn reload_page() {
+    #[cfg(target_arch = "wasm32")]
+    {
+        if let Some(window) = web_sys::window() {
+            let _ = window.location().reload();
         }
     }
 }
