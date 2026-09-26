@@ -1,3 +1,11 @@
+## 2026-09-26 00:00 -03:00 / 2026-09-26T03:00Z — Add Ruby migration automation gate
+
+- Added `scripts/automation/migration_gate.rb` as a dependency-free repository-level migration gate.
+- The Ruby gate checks required Rust/Dioxus files, Dioxus 0.7.10 declaration, Pages artifact safeguards, required production data mirrors, removal of legacy browser entrypoints, and separation of retained offline/reference tooling.
+- Added the gate as the first build step in `.github/workflows/deploy-pages.yml` so structural migration regressions fail before the expensive Rust/Dioxus build.
+- Ruby is used only for automation/validation; no production browser/runtime code or statistical implementation was moved to Ruby.
+- No poll data, candidate mappings, statistical formulas, or chart calculations were changed.
+
 ## 2026-09-25 23:26 -03:00 / 2026-09-26T02:26Z — Correct Dioxus compile-gate errors from Browser Smoke #137 / CI #467
 
 - Corrected the concrete Rust/Dioxus errors reported by the hosted compile gate on migration head `c8faecfea9e537cfcb3c6d96e76bd7703b193a83`.
