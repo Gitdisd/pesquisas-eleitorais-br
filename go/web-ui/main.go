@@ -314,9 +314,9 @@ func renderPage() string {
 	if view.SelectedPoll!="" { b.WriteString(renderSelectedPoll(view.SelectedPoll,en)) }
 	b.WriteString("</section>")
 	b.WriteString(renderCards())
+	if len(regionalPolls)>0 { b.WriteString(renderRegional(surface,en)) }
 	b.WriteString(fmt.Sprintf("<section id='pollsPanel' style='background:"+surface+";border:1px solid "+muted+";border-radius:14px;padding:16px;margin:14px 0;box-shadow:0 8px 24px rgba(0,0,0,.18)'><h2>%s</h2><input id='tableQuery' value='%s' placeholder='%s'> <span>%d registros filtrados</span>",tr(en,"Resultados das pesquisas","Poll results"),esc(view.TableQuery),tr(en,"instituto, cenário, campo, TSE…","pollster, scenario, fieldwork, TSE…"),len(rows)))
 	b.WriteString(renderTable(rows,view.Round,surface,en)+"</section>")
-	if len(regionalPolls)>0 { b.WriteString(renderRegional(surface,en)) }
 	b.WriteString(renderMethodology(en))
 	b.WriteString("<footer><hr><p>Site estático · GitHub Pages · dados e métodos documentados no repositório.</p></footer></div>")
 	return b.String()
