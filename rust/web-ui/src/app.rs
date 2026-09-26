@@ -747,10 +747,10 @@ pub fn App() -> Element {
                                 div { class: "table-wrap",
                                     table {
                                         thead { tr {
-                                            th { "Fim de campo" }
-                                            th { "Instituto" }
-                                            th { "Geo" }
-                                            th { "Cenário" }
+                                            th { "{t(ui_state.language, "fieldwork")}" }
+                                            th { "{t(ui_state.language, "institute")}" }
+                                            th { "{t(ui_state.language, "geo")}" }
+                                            th { "{t(ui_state.language, "scenario")}" }
                                             th { "TSE" }
                                             for candidate in Candidate::all().iter().copied() {
                                                 if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
@@ -808,7 +808,14 @@ pub fn App() -> Element {
                                 Some(Err(_)) | Some(Ok(_)) | None => rsx! {},
                             }
 
-                                                        Methodology { language: ui_state.language }
+                                                        nav { class: "mobile-nav", "aria-label": "Navegação rápida",
+                                a { href: "#overview", "⌂ {t(ui_state.language, "dashboard")}" }
+                                a { href: "#chartPanel", "⌁ {t(ui_state.language, "chart")}" }
+                                a { href: "#cards", "▦ {t(ui_state.language, "summary")}" }
+                                a { href: "#pollsPanel", "≡ {t(ui_state.language, "polls")}" }
+                                a { href: "#allSourcesPanel", "◎ {t(ui_state.language, "all-sources")}" }
+                            }
+                            Methodology { language: ui_state.language }
                             footer {
                                 p { "{t(ui_state.language, "static-footer")}" }
                             }
