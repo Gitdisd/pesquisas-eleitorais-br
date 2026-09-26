@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Rust/Dioxus migration browser smoke', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('./', { waitUntil: 'networkidle' })
+    await page.goto('./', { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('svg.chart', { state: 'visible' })
   })
 
