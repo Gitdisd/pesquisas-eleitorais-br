@@ -10,9 +10,10 @@ use crate::chart::{
     model_label, polyline_path, projection_v2_for_round, trend_for_model, viewbox, x_for, y_for,
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
-use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
+use crate::data::{available_geos, filter_polls, load_polls, load_regional_polls, Candidate, Poll};
 use crate::methodology::Methodology;
 use crate::overlays::{compute_overlay, OVERLAYS};
+use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
     persist_language, persist_overlays, persist_theme, reload_page, scroll_to_id, t, Language, Theme, UiState,
@@ -79,6 +80,10 @@ pub fn App() -> Element {
     let polls = use_resource(move || {
         let refresh_nonce = refresh_tick();
         async move { load_polls(refresh_nonce).await }
+    });
+    let regional_polls = use_resource(move || {
+        let refresh_nonce = refresh_tick();
+        async move { load_regional_polls(refresh_nonce).await }
     });
 
     let ui_state = ui();
@@ -769,7 +774,14 @@ pub fn App() -> Element {
                                 }
                             }
 
-                            Methodology { language: ui_state.language }
+                            match regional_polls.read().as_ref() {
+                                Some(Ok(rows)) if !rows.is_empty() => rsx! {
+                                    RegionalPanel { polls: rows.clone(), language: ui_state.language }
+                                },
+                                Some(Err(_)) | Some(Ok(_)) | None => rsx! {},
+                            }
+
+                                                        Methodology { language: ui_state.language }
                             footer {
                                 p { "{t(ui_state.language, "static-footer")}" }
                             }
