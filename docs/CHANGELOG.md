@@ -1,3 +1,15 @@
+## 2026-09-26 05:37 -03:00 / 2026-09-26T08:37:20Z — Pivot browser migration from Rust/Dioxus to Go/WebAssembly
+
+- Replaced the production-browser migration target with a Go 1.27 WebAssembly frontend after the Rust/Dioxus path repeatedly became the critical deployment/validation failure point.
+- GitHub Pages deployment now follows GitHub's static-artifact model directly: Python orchestrates the Go build, Ruby audits the artifact, and Pages receives only the generated static bundle.
+- Added `go/web-ui` with a dependency-free Go browser implementation using the canonical poll/meta JSON contracts, native HTML controls, tables, and SVG chart rendering.
+- Added `scripts/build_go_pages.py` to stage canonical data, compile Go/WASM, copy the matching Go WebAssembly runtime, and generate the Pages shell.
+- Replaced Dioxus browser smoke with a Python Playwright smoke test and removed Rust/Dioxus/Node/Vite requirements from CI and Pages deployment.
+- Updated Ruby migration and artifact gates to certify the Go/WebAssembly architecture.
+- Existing Rust source is retained as historical/core material until a separate deletion certification proves it is no longer needed; no broad repository deletion is being performed in this pivot.
+- Apache ECharts remains excluded.
+- Validation status: repository changes are implemented; hosted CI/browser/deployment evidence for the new head is still pending.
+
 ## 2026-09-26 00:06 -03:00 / 2026-09-26T03:06:00Z — Remove stale Vite development commands from README
 
 - Updated the development section to stop advertising the deleted `npm run dev` and `npm run build` commands.
