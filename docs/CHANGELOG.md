@@ -1,3 +1,10 @@
+## 2026-09-26 12:51:49 -03:00 / 2026-09-26T15:51:49Z — final browser-parity behavior pass
+
+- Restored the dark default used by the prior production UI.
+- The candidate selector now controls the chart series instead of only the table.
+- Added a one-hour automatic page refresh cadence to match the prior public refresh interval while keeping the new browser implementation dependency-free.
+- Production remains protected until deliberate cutover.
+
 ## 2026-09-26 12:49:42 -03:00 / 2026-09-26T15:49:42Z — Go/WASM parity gates green
 
 - Hosted CI and Chromium browser smoke pass on b1238e88029c6cf435531a3c5f126a292b7ebd3a.

@@ -10,6 +10,7 @@ import (
 )
 
 var callbacks []js.Func
+var autoRefreshCallback js.Func
 
 func doc() js.Value { return js.Global().Get("document") }
 func win() js.Value { return js.Global() }
@@ -75,3 +76,12 @@ func loadJSONMap(key string) map[string]bool {
 	out:=map[string]bool{}; raw:=localGet(key); if raw==""{return out}; _=json.Unmarshal([]byte(raw),&out); return out
 }
 func scrollTo(id string) { if el:=doc().Call("getElementById",id);el.Truthy(){el.Call("scrollIntoView")} }
+
+func startAutoRefresh() {
+	if autoRefreshCallback.Truthy() { return }
+	autoRefreshCallback = js.FuncOf(func(this js.Value, args []js.Value) any {
+		win().Get("location").Call("reload")
+		return nil
+	})
+	win().Call("setInterval", autoRefreshCallback, int64(60*60*1000))
+}

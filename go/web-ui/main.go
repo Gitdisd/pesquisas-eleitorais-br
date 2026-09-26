@@ -94,13 +94,14 @@ func main() {
 	root = doc().Call("getElementById", "app")
 	setLanguageDoc(view.Language)
 	render()
+	startAutoRefresh()
 	select {}
 }
 
 func defaultState() state {
 	return state{
-		Round: 1, Candidate: "Lula", Geo: "ALL", Institutes: map[string]bool{},
-		RangeDays: 30, WindowDays: 14, Model: 1, Language: "pt-BR", Theme: "light",
+		Round: 1, Candidate: "ALL", Geo: "ALL", Institutes: map[string]bool{},
+		RangeDays: 30, WindowDays: 14, Model: 1, Language: "pt-BR", Theme: "dark",
 		Hidden: map[string]bool{}, Overlays: map[string]bool{}, Zoom: 1,
 		RegionalRound: 1, RegionalGeos: map[string]bool{},
 	}
@@ -326,7 +327,9 @@ func modelLabelList() []string { out:=[]string{}; for _,m:=range modelOptions(){
 func chartSVG() string {
 	type sData struct{ key string; raw []TrendPoint; trend []SeriesPoint; band []UncertaintyPoint; proj,pl,ph []SeriesPoint; overlays []OverlayResult }
 	series:=[]sData{}; minD:=int64(1<<62); maxD:=int64(-1<<62); maxY:=25.0
-	for _,k:=range allCandidateKeys(view.Round) {
+	chartKeys:=allCandidateKeys(view.Round)
+	if view.Candidate!="ALL" { chartKeys=[]string{view.Candidate} }
+	for _,k:=range chartKeys {
 		if view.Hidden[k] {continue}
 		raw:=trendForCandidate(polls,k,view.Round,view.Geo,view.Institutes); if len(raw)==0 {continue}
 		tr:=averageTrend(raw,float64(view.WindowDays),view.Model); bd:=uncertaintyBand(raw,float64(view.WindowDays),1.645)
