@@ -17,115 +17,56 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
+
       - name: Run Ruby migration gate
         run: ruby scripts/automation/migration_gate.rb
-      - uses: actions/setup-node@v5
-        with:
-          node-version: "22"
-          cache: npm
+
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
-      - uses: actions-rust-lang/setup-rust-toolchain@v1
-      - name: Install pinned Dioxus CLI binary
-        run: |
-          set -euo pipefail
-          DX_DIR="$HOME/.local/bin"
-          TMP_DIR="$(mktemp -d)"
-          mkdir -p "$DX_DIR"
-          curl -fsSL "https://github.com/DioxusLabs/dioxus/releases/download/v0.7.10/dx-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/dx.tar.gz"
-          echo "4363e4ed2a3f1eb7f4d38d2d59aed59ce43271c44c16b425e92c89a64761fbe7  $TMP_DIR/dx.tar.gz" | sha256sum -c -
-          tar -xzf "$TMP_DIR/dx.tar.gz" -C "$TMP_DIR"
-          test -f "$TMP_DIR/dx"
-          install -m 0755 "$TMP_DIR/dx" "$DX_DIR/dx"
-          echo "$DX_DIR" >> "$GITHUB_PATH"
-          "$DX_DIR/dx" --version
-      - uses: jetli/wasm-pack-action@v0.4.0
+          python-version: "3.13"
+
+      - uses: actions/setup-go@v6
         with:
-          version: v0.13.1
-      - run: rustup target add wasm32-unknown-unknown
-      - run: npm ci
-      - name: Install Python test package
+          go-version: "1.27.1"
+          cache-dependency-path: go/web-ui/go.mod
+
+      - name: Install Python application/test package
         run: python -m pip install -e "./python[test]"
-      - name: Install PDF text + OCR tools
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-por unzip
-      - name: Repair data for deployment
-        run: |
-          set -euo pipefail
-          node scripts/apply-corrections.mjs
-          node scripts/repair-known-missing-candidates.mjs
-          node scripts/expand-discovery-candidates.mjs
-          node scripts/recover-poll-documents.mjs || true
-          node scripts/strip-ineligible-candidates.mjs
-          node scripts/merge-poll-supplements.mjs
-          node scripts/data-completeness-audit.mjs
-          node scripts/quality-audit.mjs
-      - name: Synchronize repaired data mirrors and metadata
+
+      - name: Run Python data/statistics tests
+        run: python -m pytest python/tests -q
+
+      - name: Build Go/WebAssembly Pages site
+        run: python scripts/build_go_pages.py
+
+      - name: Stage Pages artifact
         run: |
           set -euo pipefail
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs'
-          import crypto from 'node:crypto'
-          const polls = JSON.parse(fs.readFileSync('data/polls.json', 'utf8'))
-          const canonical = JSON.stringify(polls)
-          const meta = JSON.parse(fs.readFileSync('data/meta.json', 'utf8'))
-          meta.record_count = polls.length
-          meta.content_hash = crypto.createHash('sha256').update(canonical).digest('hex')
-          fs.mkdirSync('public/data', { recursive: true })
-          fs.writeFileSync('data/meta.json', `${JSON.stringify(meta, null, 2)}\n`)
-          fs.copyFileSync('data/polls.json', 'public/data/polls.json')
-          fs.copyFileSync('data/meta.json', 'public/data/meta.json')
-          NODE
-      - name: Validate repaired deployment dataset
-        run: node scripts/quality-gate.mjs
-      - name: Validate application and statistical engines
-        run: |
-          set -euo pipefail
-          npm run typecheck
-          npm test
-          python -m pytest python/tests -q
-          cargo test --manifest-path rust/polling-core/Cargo.toml
-          python python/scripts/run_backtest.py data/polls.json --output backtest-report.json
-          npm run backtest:advanced
-          python python/scripts/run_overlap_audit.py data/polls.json --output overlap-report.json
-          npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
-      - name: Build and verify Rust/WASM
-        run: |
-          set -euo pipefail
-          npm run build:rust
-          npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
-      - name: Build Rust/Dioxus production bundle
-        working-directory: rust/web-ui
-        run: |
-          set -euo pipefail
-          rm -rf ../../dioxus-pages
-          dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-pages
-          DX_PUBLIC="$(find ../../dioxus-pages -type d -name public -print -quit)"
-          test -n "$DX_PUBLIC"
-          mkdir -p "$DX_PUBLIC/data"
-          cp ../../public/data/polls.json "$DX_PUBLIC/data/polls.json"
-          cp ../../public/data/meta.json "$DX_PUBLIC/data/meta.json"
-          if [ -f ../../public/data/polls-extra.json ]; then cp ../../public/data/polls-extra.json "$DX_PUBLIC/data/polls-extra.json"; fi
-          if [ -f ../../public/data/polls-regional.json ]; then cp ../../public/data/polls-regional.json "$DX_PUBLIC/data/polls-regional.json"; fi
-          cp "$DX_PUBLIC/index.html" "$DX_PUBLIC/404.html"
-          test -f "$DX_PUBLIC/index.html"
-          test -f "$DX_PUBLIC/404.html"
-          test -d "$DX_PUBLIC/assets"
-          test -n "$(find "$DX_PUBLIC/assets" -type f -name '*.wasm' -print -quit)"
-          test -f "$DX_PUBLIC/data/polls.json"
-          test -f "$DX_PUBLIC/data/meta.json"
-          test -f "$DX_PUBLIC/data/polls-extra.json"
-          test -f "$DX_PUBLIC/data/polls-regional.json"
+          rm -rf pages-artifact
+          mkdir -p pages-artifact/data
+          cp go-pages/index.html pages-artifact/index.html
+          cp go-pages/404.html pages-artifact/404.html
+          cp go-pages/main.wasm pages-artifact/main.wasm
+          cp go-pages/wasm_exec.js pages-artifact/wasm_exec.js
+          cp go-pages/polls.json pages-artifact/data/polls.json
+          cp go-pages/meta.json pages-artifact/data/meta.json
+          cp go-pages/polls-extra.json pages-artifact/data/polls-extra.json
+          cp go-pages/polls-regional.json pages-artifact/data/polls-regional.json
+          test -f pages-artifact/index.html
+          test -f pages-artifact/404.html
+          test -f pages-artifact/main.wasm
+          test -f pages-artifact/wasm_exec.js
+
       - name: Audit staged Pages artifact with Ruby
-        run: ruby scripts/automation/artifact_audit.rb dioxus-pages/public
+        run: ruby scripts/automation/artifact_audit.rb pages-artifact
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: dioxus-pages/public
+          path: pages-artifact
 
   deploy:
     needs: build
@@ -143,6 +84,6 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Verify deployed Pages artifact with Ruby
+      - uses: actions/checkout@v6
+      - name: Verify deployed Pages site with Ruby
         run: ruby scripts/automation/deployment_verify.rb "${{ needs.deploy.outputs.page_url }}"
