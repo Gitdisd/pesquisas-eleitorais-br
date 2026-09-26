@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use std::collections::BTreeMap;
 
 use crate::data::Poll;
-use crate::ui::Language;
+use crate::ui::{scroll_to_id, Language};
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 enum RegionalRound {
@@ -72,28 +72,29 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                     onclick: move |_| selected_geos.set(Vec::new()),
                     if matches!(language, Language::En) { "All geographies" } else { "Todas as geografias" }
                 }
-                for geo in geos.iter() {
-                    let geo_name = geo.clone();
-                    let all_geos = geos.clone();
-                    let active = selected.is_empty() || selected.iter().any(|value| value == &geo_name);
+                for geo in geos.iter().cloned() {
                     button {
-                        class: if active { "chip on" } else { "chip" },
-                        "aria-pressed": "{active}",
-                        onclick: move |_| {
-                            let mut current = selected_geos();
-                            if current.is_empty() {
-                                current = all_geos.iter().filter(|value| *value != &geo_name).cloned().collect();
-                            } else if current.iter().any(|value| value == &geo_name) {
-                                if current.len() > 1 {
-                                    current.retain(|value| value != &geo_name);
+                        class: if selected.is_empty() || selected.iter().any(|value| value == &geo) { "chip on" } else { "chip" },
+                        "aria-pressed": "{selected.is_empty() || selected.iter().any(|value| value == &geo)}",
+                        onclick: {
+                            let geo_name = geo.clone();
+                            let all_geos = all_geos.clone();
+                            move |_| {
+                                let mut current = selected_geos();
+                                if current.is_empty() {
+                                    current = all_geos.iter().filter(|value| *value != &geo_name).cloned().collect();
+                                } else if current.iter().any(|value| value == &geo_name) {
+                                    if current.len() > 1 {
+                                        current.retain(|value| value != &geo_name);
+                                    }
+                                } else {
+                                    current.push(geo_name.clone());
+                                    current.sort();
                                 }
-                            } else {
-                                current.push(geo_name.clone());
-                                current.sort();
+                                selected_geos.set(current);
                             }
-                            selected_geos.set(current);
                         },
-                        "{if geo == "BR" { "Nacional" } else { geo }}"
+                        {if geo == "BR" { "Nacional" } else { geo }}
                     }
                 }
             }
@@ -215,6 +216,23 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
     } else {
         display_candidates(1)
     };
+    let all_geos = geos.clone();
+    let series = candidates.iter().copied().map(|candidate| {
+        let candidate_rows = rows.iter()
+            .filter(|poll| poll.candidate_key == candidate.key())
+            .cloned()
+            .collect::<Vec<_>>();
+        let trend = crate::chart::trend_for_model(&candidate_rows, 14.0, 1);
+        let path = trend.iter()
+            .map(|point| format!("{:.2},{:.2}", x(point.day), y(point.value)))
+            .collect::<Vec<_>>()
+            .join(" ");
+        RegionalSeries {
+            rows: candidate_rows,
+            path,
+            color: regional_candidate_color(candidate),
+        }
+    }).collect::<Vec<_>>();
 
     rsx! {
         div { class: "chart-box",
@@ -232,35 +250,43 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
                 rect { x: "0", y: "0", width: "{WIDTH}", height: "{HEIGHT}", fill: "var(--chart-bg, #0d1117)" }
 
                 for i in 0..=5 {
-                    let frac = i as f64 / 5.0;
-                    let value = high - frac * (high - low);
-                    let yy = y(value);
-                    line { class: "grid-line", x1: "{LEFT}", x2: "{WIDTH-RIGHT}", y1: "{yy:.2}", y2: "{yy:.2}" }
-                    text { class: "axis-label", x: "8", y: "{yy+4.0:.2}", "{value:.0}%" }
+                    line {
+                        class: "grid-line",
+                        x1: "{LEFT}",
+                        x2: "{WIDTH-RIGHT}",
+                        y1: {format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)))},
+                        y2: {format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)))}
+                    }
+                    text {
+                        class: "axis-label",
+                        x: "8",
+                        y: {format!("{:.2}", y(high - (i as f64 / 5.0) * (high - low)) + 4.0)},
+                        {format!("{:.0}%", high - (i as f64 / 5.0) * (high - low))}
+                    }
                 }
-                for candidate in candidates.iter().copied() {
-                    let candidate_rows = rows.iter().filter(|poll| poll.candidate_key == candidate.key()).cloned().collect::<Vec<_>>();
-                    let trend = crate::chart::trend_for_model(&candidate_rows, 14.0, 1);
-                    let color = regional_candidate_color(candidate);
-                    let path = trend.iter().map(|point| format!("{:.2},{:.2}", x(point.day), y(point.value))).collect::<Vec<_>>().join(" ");
-                    rsx! {
-                        if !path.is_empty() {
-                            polyline { class: "series-line", points: "{path}", style: "--series: {color};" }
-                        }
-                        for poll in candidate_rows.iter().take(200) {
-                            circle {
-                                class: "poll-point",
-                                cx: "{x(poll.day):.2}",
-                                cy: "{y(poll.value):.2}",
-                                r: "3.2",
-                                style: "fill: var(--surface); stroke: {color};",
-                            }
+                for series in series.iter() {
+                    if !series.path.is_empty() {
+                        polyline { class: "series-line", points: "{series.path}", style: "--series: {series.color};" }
+                    }
+                    for poll in series.rows.iter().take(200) {
+                        circle {
+                            class: "poll-point",
+                            cx: {format!("{:.2}", x(poll.day))},
+                            cy: {format!("{:.2}", y(poll.value))},
+                            r: "3.2",
+                            style: "fill: var(--surface); stroke: {series.color};",
                         }
                     }
                 }
             }
         }
     }
+}
+
+struct RegionalSeries {
+    rows: Vec<Poll>,
+    path: String,
+    color: &'static str,
 }
 
 fn regional_candidate_color(candidate: crate::data::Candidate) -> &'static str {
