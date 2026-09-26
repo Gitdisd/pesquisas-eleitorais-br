@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T11:27:16.976Z",
+  "updated_at": "2026-09-26T20:10:30.919Z",
   "items": [
     {
       "poll_key": "fallback|atlasintel|2026-09-11|2026-09-16|2º turno lula x flavio bolsonaro|BR",
@@ -2773,6 +2773,138 @@
       "scenario": "estimulada 1º turno",
       "published_date": "2026-09-17",
       "recorded_at": "2026-09-23T11:27:16.973Z"
+    },
+    {
+      "poll_key": "tse|BR-00304/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml",
+      "institute": "Datafolha",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-22",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-00304/2026|estimulada 1º turno|BR",
+      "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml",
+      "institute": "Datafolha",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-22",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-01739/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://011news.com.br/poderdata-aya-mostra-empate-no-1o-e-no-2o-turno-entre-lula-e-flavio/",
+      "institute": "PoderData/Aya",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-20",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-01739/2026|estimulada 1º turno|BR",
+      "url": "https://www.poder360.com.br/poderdata/em-votos-validos-lula-tem-43-contra-42-de-flavio-no-1o-turno/",
+      "institute": "PoderData/Aya",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-20",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-04202/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://realtimebigdata.com.br/pesquisas/",
+      "institute": "Real Time Big Data",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-19",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-04202/2026|estimulada 1º turno|BR",
+      "url": "https://realtimebigdata.com.br/pesquisas/",
+      "institute": "Real Time Big Data",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-19",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-04739/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://noticias.uol.com.br/eleicoes/2026/09/23/lula-na-pesquisa-para-presidente-veja-numeros-recentes-para-1-e-2-turnos.ghtm",
+      "institute": "AtlasIntel/Bloomberg",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-17",
+      "fieldwork_end": "2026-09-22",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-23",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-04739/2026|estimulada 1º turno|BR",
+      "url": "https://noticias.uol.com.br/eleicoes/2026/09/23/lula-na-pesquisa-para-presidente-veja-numeros-recentes-para-1-e-2-turnos.ghtm",
+      "institute": "AtlasIntel/Bloomberg",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-17",
+      "fieldwork_end": "2026-09-22",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-23",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-05268/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-404-e-lula-384-no-1o-turno-diz-futura/",
+      "institute": "Futura/100% Cidades",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-19",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-05268/2026|estimulada 1º turno|BR",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-404-e-lula-384-no-1o-turno-diz-futura/",
+      "institute": "Futura/100% Cidades",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-19",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-09587/2026|2º turno lula x flavio bolsonaro|BR",
+      "url": "https://www.bol.uol.com.br/noticias/2026/09/24/palver-lula-e-flavio-empatam-no-1-e-no-2-turno.ghtm",
+      "institute": "Palver",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-20",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "2º turno Lula x Flávio Bolsonaro",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
+    },
+    {
+      "poll_key": "tse|BR-09587/2026|estimulada 1º turno|BR",
+      "url": "https://www.bol.uol.com.br/noticias/2026/09/24/palver-lula-e-flavio-empatam-no-1-e-no-2-turno.ghtm",
+      "institute": "Palver",
+      "geo": "BR",
+      "fieldwork_start": "2026-09-20",
+      "fieldwork_end": "2026-09-23",
+      "scenario": "estimulada 1º turno",
+      "published_date": "2026-09-24",
+      "recorded_at": "2026-09-26T20:10:30.916Z"
     }
   ]
 }

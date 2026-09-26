@@ -1,10 +1,10 @@
 {
   "version": 4,
-  "generated_at": "2026-09-26T19:47:28.644Z",
+  "generated_at": "2026-09-26T20:10:30.914Z",
   "identity_key": "tse_protocol|scenario|geo; fallback institute|fieldwork_start|fieldwork_end|scenario|geo",
-  "base_polls": 240,
+  "base_polls": 252,
   "supplemental_rows": 36,
-  "merged_polls": 240,
+  "merged_polls": 252,
   "added_polls": 0,
   "staged_only_polls": 0,
   "supplemented_polls": 0,
@@ -12,6 +12,6 @@
   "replaced_glued_residuals": 0,
   "excluded_candidate_values": 0,
   "changed": true,
-  "content_sha256": "2338ce9b4d683fd9dd7fa5f5063fa587fa2e261037e8be973e7092a5b0976d28",
+  "content_sha256": "2c633cd84572a8a5193af2730c717150b68880dc0afb8eb25bbaa60d51ae73c1",
   "additions": []
 }

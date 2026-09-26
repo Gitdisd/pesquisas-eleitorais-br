@@ -1,7 +1,39 @@
 [
   {
-    "institute": "PoderData/Aya",
-    "fieldwork_start": "2026-09-20",
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-22",
+    "fieldwork_end": "2026-09-23",
+    "published_date": "2026-09-24",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 45
+      }
+    ],
+    "n": 2002,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml",
+    "methodology_note": "Face-to-face interviews; 2,002 electors; 22–23 Sep 2026; 95% confidence; TSE BR-00304/2026.",
+    "verified": true,
+    "tse_registration": "BR-00304/2026",
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-24"
+    ],
+    "witness_urls": [
+      "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml"
+    ]
+  },
+  {
+    "institute": "Datafolha",
+    "fieldwork_start": "2026-09-22",
     "fieldwork_end": "2026-09-23",
     "published_date": "2026-09-24",
     "scenario": "estimulada 1º turno",
@@ -9,17 +41,22 @@
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 41
+        "pct": 40
       },
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 39
+        "pct": 36
       },
       {
         "name": "Augusto Cury",
         "party_optional": "Avante",
-        "pct": 6
+        "pct": 5
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 4
       },
       {
         "name": "Renan Santos",
@@ -27,111 +64,32 @@
         "pct": 3
       },
       {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 2
-      }
-    ],
-    "n": 3000,
-    "margin_of_error": "±1.8 pp",
-    "source_url": "https://www.poder360.com.br/poderdata/em-votos-validos-lula-tem-43-contra-42-de-flavio-no-1o-turno/",
-    "methodology_note": "Telephone interviews; 3,000 electors in 723 municipalities across all 27 states; 20–23 Sep 2026; 95% confidence; TSE BR-01739/2026.",
-    "verified": true,
-    "tse_registration": "BR-01739/2026",
-    "geo": "BR",
-    "coverage_dates": [
-      "2026-09-24"
-    ],
-    "witness_urls": [
-      "https://www.poder360.com.br/poderdata/em-votos-validos-lula-tem-43-contra-42-de-flavio-no-1o-turno/"
-    ]
-  },
-  {
-    "institute": "PoderData/Aya",
-    "fieldwork_start": "2026-09-20",
-    "fieldwork_end": "2026-09-23",
-    "published_date": "2026-09-24",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 46
-      },
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 45
-      }
-    ],
-    "n": 3000,
-    "margin_of_error": "±1.8 pp",
-    "source_url": "https://011news.com.br/poderdata-aya-mostra-empate-no-1o-e-no-2o-turno-entre-lula-e-flavio/",
-    "methodology_note": "Telephone interviews; 3,000 electors in 723 municipalities across all 27 states; 20–23 Sep 2026; 95% confidence; TSE BR-01739/2026.",
-    "verified": true,
-    "tse_registration": "BR-01739/2026",
-    "geo": "BR",
-    "coverage_dates": [
-      "2026-09-24"
-    ],
-    "witness_urls": [
-      "https://011news.com.br/poderdata-aya-mostra-empate-no-1o-e-no-2o-turno-entre-lula-e-flavio/"
-    ]
-  },
-  {
-    "institute": "Real Time Big Data",
-    "fieldwork_start": "2026-09-19",
-    "fieldwork_end": "2026-09-23",
-    "published_date": "2026-09-24",
-    "scenario": "estimulada 1º turno",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 41
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 37
-      },
-      {
-        "name": "Augusto Cury",
-        "party_optional": "Avante",
-        "pct": 6
-      },
-      {
-        "name": "Renan Santos",
-        "party_optional": "Missão",
-        "pct": 6
-      },
-      {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 2
-      },
-      {
         "name": "Romeu Zema",
         "party_optional": "Novo",
         "pct": 1
+      },
+      {
+        "name": "Samara Martins",
+        "party_optional": "UP",
+        "pct": 1
       }
     ],
-    "n": 2000,
+    "n": 2002,
     "margin_of_error": "±2 pp",
-    "source_url": "https://realtimebigdata.com.br/pesquisas/",
-    "methodology_note": "Telephone interviews; 2,000 electors; 19–23 Sep 2026; 95% confidence; TSE BR-04202/2026.",
+    "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml",
+    "methodology_note": "Face-to-face interviews; 2,002 electors; 22–23 Sep 2026; 95% confidence; TSE BR-00304/2026.",
     "verified": true,
-    "tse_registration": "BR-04202/2026",
+    "tse_registration": "BR-00304/2026",
     "geo": "BR",
     "coverage_dates": [
       "2026-09-24"
     ],
     "witness_urls": [
-      "https://realtimebigdata.com.br/pesquisas/"
+      "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml"
     ]
   },
   {
-    "institute": "Real Time Big Data",
+    "institute": "Futura/100% Cidades",
     "fieldwork_start": "2026-09-19",
     "fieldwork_end": "2026-09-23",
     "published_date": "2026-09-24",
@@ -140,26 +98,26 @@
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 45
+        "pct": 49.4
       },
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 44
+        "pct": 43.7
       }
     ],
     "n": 2000,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://realtimebigdata.com.br/pesquisas/",
-    "methodology_note": "Telephone interviews; 2,000 electors; 19–23 Sep 2026; 95% confidence; TSE BR-04202/2026.",
+    "margin_of_error": "±2.2 pp",
+    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-404-e-lula-384-no-1o-turno-diz-futura/",
+    "methodology_note": "Telephone interviews; 2,000 electors nationwide; 19–23 Sep 2026; 95% confidence; TSE BR-05268/2026.",
     "verified": true,
-    "tse_registration": "BR-04202/2026",
+    "tse_registration": "BR-05268/2026",
     "geo": "BR",
     "coverage_dates": [
       "2026-09-24"
     ],
     "witness_urls": [
-      "https://realtimebigdata.com.br/pesquisas/"
+      "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-404-e-lula-384-no-1o-turno-diz-futura/"
     ]
   },
   {
@@ -195,8 +153,8 @@
     ]
   },
   {
-    "institute": "Futura/100% Cidades",
-    "fieldwork_start": "2026-09-19",
+    "institute": "Palver",
+    "fieldwork_start": "2026-09-20",
     "fieldwork_end": "2026-09-23",
     "published_date": "2026-09-24",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
@@ -204,26 +162,36 @@
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 49.4
+        "pct": 48
       },
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 43.7
+        "pct": 45
+      },
+      {
+        "name": "branco/nulo/não vai votar",
+        "party_optional": null,
+        "pct": 6
+      },
+      {
+        "name": "indecisos",
+        "party_optional": null,
+        "pct": 1
       }
     ],
-    "n": 2000,
-    "margin_of_error": "±2.2 pp",
-    "source_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-404-e-lula-384-no-1o-turno-diz-futura/",
-    "methodology_note": "Telephone interviews; 2,000 electors nationwide; 19–23 Sep 2026; 95% confidence; TSE BR-05268/2026.",
+    "n": 5000,
+    "margin_of_error": "±2.5 pp",
+    "source_url": "https://www.bol.uol.com.br/noticias/2026/09/24/palver-lula-e-flavio-empatam-no-1-e-no-2-turno.ghtm",
+    "methodology_note": "Online questionnaire; 5,000 electors; 20–23 Sep 2026; 95% confidence; TSE BR-09587/2026.",
     "verified": true,
-    "tse_registration": "BR-05268/2026",
+    "tse_registration": "BR-09587/2026",
     "geo": "BR",
     "coverage_dates": [
       "2026-09-24"
     ],
     "witness_urls": [
-      "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-404-e-lula-384-no-1o-turno-diz-futura/"
+      "https://www.bol.uol.com.br/noticias/2026/09/24/palver-lula-e-flavio-empatam-no-1-e-no-2-turno.ghtm"
     ]
   },
   {
@@ -289,7 +257,7 @@
     ]
   },
   {
-    "institute": "Palver",
+    "institute": "PoderData/Aya",
     "fieldwork_start": "2026-09-20",
     "fieldwork_end": "2026-09-23",
     "published_date": "2026-09-24",
@@ -298,41 +266,31 @@
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 48
+        "pct": 46
       },
       {
         "name": "Lula",
         "party_optional": "PT",
         "pct": 45
-      },
-      {
-        "name": "branco/nulo/não vai votar",
-        "party_optional": null,
-        "pct": 6
-      },
-      {
-        "name": "indecisos",
-        "party_optional": null,
-        "pct": 1
       }
     ],
-    "n": 5000,
-    "margin_of_error": "±2.5 pp",
-    "source_url": "https://www.bol.uol.com.br/noticias/2026/09/24/palver-lula-e-flavio-empatam-no-1-e-no-2-turno.ghtm",
-    "methodology_note": "Online questionnaire; 5,000 electors; 20–23 Sep 2026; 95% confidence; TSE BR-09587/2026.",
+    "n": 3000,
+    "margin_of_error": "±1.8 pp",
+    "source_url": "https://011news.com.br/poderdata-aya-mostra-empate-no-1o-e-no-2o-turno-entre-lula-e-flavio/",
+    "methodology_note": "Telephone interviews; 3,000 electors in 723 municipalities across all 27 states; 20–23 Sep 2026; 95% confidence; TSE BR-01739/2026.",
     "verified": true,
-    "tse_registration": "BR-09587/2026",
+    "tse_registration": "BR-01739/2026",
     "geo": "BR",
     "coverage_dates": [
       "2026-09-24"
     ],
     "witness_urls": [
-      "https://www.bol.uol.com.br/noticias/2026/09/24/palver-lula-e-flavio-empatam-no-1-e-no-2-turno.ghtm"
+      "https://011news.com.br/poderdata-aya-mostra-empate-no-1o-e-no-2o-turno-entre-lula-e-flavio/"
     ]
   },
   {
-    "institute": "Datafolha",
-    "fieldwork_start": "2026-09-22",
+    "institute": "PoderData/Aya",
+    "fieldwork_start": "2026-09-20",
     "fieldwork_end": "2026-09-23",
     "published_date": "2026-09-24",
     "scenario": "estimulada 1º turno",
@@ -340,22 +298,17 @@
       {
         "name": "Lula",
         "party_optional": "PT",
-        "pct": 40
+        "pct": 41
       },
       {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
-        "pct": 36
+        "pct": 39
       },
       {
         "name": "Augusto Cury",
         "party_optional": "Avante",
-        "pct": 5
-      },
-      {
-        "name": "Ronaldo Caiado",
-        "party_optional": "PSD",
-        "pct": 4
+        "pct": 6
       },
       {
         "name": "Renan Santos",
@@ -363,60 +316,144 @@
         "pct": 3
       },
       {
-        "name": "Romeu Zema",
-        "party_optional": "Novo",
-        "pct": 1
-      },
-      {
-        "name": "Samara Martins",
-        "party_optional": "UP",
-        "pct": 1
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
       }
     ],
-    "n": 2002,
-    "margin_of_error": "±2 pp",
-    "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml",
-    "methodology_note": "Face-to-face interviews; 2,002 electors; 22–23 Sep 2026; 95% confidence; TSE BR-00304/2026.",
+    "n": 3000,
+    "margin_of_error": "±1.8 pp",
+    "source_url": "https://www.poder360.com.br/poderdata/em-votos-validos-lula-tem-43-contra-42-de-flavio-no-1o-turno/",
+    "methodology_note": "Telephone interviews; 3,000 electors in 723 municipalities across all 27 states; 20–23 Sep 2026; 95% confidence; TSE BR-01739/2026.",
     "verified": true,
-    "tse_registration": "BR-00304/2026",
+    "tse_registration": "BR-01739/2026",
     "geo": "BR",
     "coverage_dates": [
       "2026-09-24"
     ],
     "witness_urls": [
-      "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml"
+      "https://www.poder360.com.br/poderdata/em-votos-validos-lula-tem-43-contra-42-de-flavio-no-1o-turno/"
     ]
   },
   {
-    "institute": "Datafolha",
-    "fieldwork_start": "2026-09-22",
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-09-19",
     "fieldwork_end": "2026-09-23",
     "published_date": "2026-09-24",
     "scenario": "2º turno Lula x Flávio Bolsonaro",
     "candidates": [
       {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 47
-      },
-      {
         "name": "Flávio Bolsonaro",
         "party_optional": "PL",
         "pct": 45
+      },
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 44
       }
     ],
-    "n": 2002,
+    "n": 2000,
     "margin_of_error": "±2 pp",
-    "source_url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml",
-    "methodology_note": "Face-to-face interviews; 2,002 electors; 22–23 Sep 2026; 95% confidence; TSE BR-00304/2026.",
+    "source_url": "https://realtimebigdata.com.br/pesquisas/",
+    "methodology_note": "Telephone interviews; 2,000 electors; 19–23 Sep 2026; 95% confidence; TSE BR-04202/2026.",
     "verified": true,
-    "tse_registration": "BR-00304/2026",
+    "tse_registration": "BR-04202/2026",
     "geo": "BR",
     "coverage_dates": [
       "2026-09-24"
     ],
     "witness_urls": [
-      "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-40-e-flavio-bolsonaro-36-em-1o-turno-rivais-empatam-em-2o-turno.shtml"
+      "https://realtimebigdata.com.br/pesquisas/"
+    ]
+  },
+  {
+    "institute": "Real Time Big Data",
+    "fieldwork_start": "2026-09-19",
+    "fieldwork_end": "2026-09-23",
+    "published_date": "2026-09-24",
+    "scenario": "estimulada 1º turno",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 41
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 37
+      },
+      {
+        "name": "Augusto Cury",
+        "party_optional": "Avante",
+        "pct": 6
+      },
+      {
+        "name": "Renan Santos",
+        "party_optional": "Missão",
+        "pct": 6
+      },
+      {
+        "name": "Ronaldo Caiado",
+        "party_optional": "PSD",
+        "pct": 2
+      },
+      {
+        "name": "Romeu Zema",
+        "party_optional": "Novo",
+        "pct": 1
+      }
+    ],
+    "n": 2000,
+    "margin_of_error": "±2 pp",
+    "source_url": "https://realtimebigdata.com.br/pesquisas/",
+    "methodology_note": "Telephone interviews; 2,000 electors; 19–23 Sep 2026; 95% confidence; TSE BR-04202/2026.",
+    "verified": true,
+    "tse_registration": "BR-04202/2026",
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-24"
+    ],
+    "witness_urls": [
+      "https://realtimebigdata.com.br/pesquisas/"
+    ]
+  },
+  {
+    "institute": "AtlasIntel/Bloomberg",
+    "fieldwork_start": "2026-09-17",
+    "fieldwork_end": "2026-09-22",
+    "published_date": "2026-09-23",
+    "scenario": "2º turno Lula x Flávio Bolsonaro",
+    "candidates": [
+      {
+        "name": "Lula",
+        "party_optional": "PT",
+        "pct": 47.7
+      },
+      {
+        "name": "Flávio Bolsonaro",
+        "party_optional": "PL",
+        "pct": 47.4
+      },
+      {
+        "name": "branco/nulo/não sabe",
+        "party_optional": null,
+        "pct": 4.9
+      }
+    ],
+    "n": 5015,
+    "margin_of_error": "±1 pp",
+    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/23/lula-na-pesquisa-para-presidente-veja-numeros-recentes-para-1-e-2-turnos.ghtm",
+    "methodology_note": "Recrutamento digital aleatório; 5.015 eleitores; 17–22 Sep 2026; 95% confidence; TSE BR-04739/2026.",
+    "verified": true,
+    "tse_registration": "BR-04739/2026",
+    "geo": "BR",
+    "coverage_dates": [
+      "2026-09-23"
+    ],
+    "witness_urls": [
+      "https://noticias.uol.com.br/eleicoes/2026/09/23/lula-na-pesquisa-para-presidente-veja-numeros-recentes-para-1-e-2-turnos.ghtm"
     ]
   },
   {
@@ -475,43 +512,6 @@
         "name": "não sabe",
         "party_optional": null,
         "pct": 0.5
-      }
-    ],
-    "n": 5015,
-    "margin_of_error": "±1 pp",
-    "source_url": "https://noticias.uol.com.br/eleicoes/2026/09/23/lula-na-pesquisa-para-presidente-veja-numeros-recentes-para-1-e-2-turnos.ghtm",
-    "methodology_note": "Recrutamento digital aleatório; 5.015 eleitores; 17–22 Sep 2026; 95% confidence; TSE BR-04739/2026.",
-    "verified": true,
-    "tse_registration": "BR-04739/2026",
-    "geo": "BR",
-    "coverage_dates": [
-      "2026-09-23"
-    ],
-    "witness_urls": [
-      "https://noticias.uol.com.br/eleicoes/2026/09/23/lula-na-pesquisa-para-presidente-veja-numeros-recentes-para-1-e-2-turnos.ghtm"
-    ]
-  },
-  {
-    "institute": "AtlasIntel/Bloomberg",
-    "fieldwork_start": "2026-09-17",
-    "fieldwork_end": "2026-09-22",
-    "published_date": "2026-09-23",
-    "scenario": "2º turno Lula x Flávio Bolsonaro",
-    "candidates": [
-      {
-        "name": "Lula",
-        "party_optional": "PT",
-        "pct": 47.7
-      },
-      {
-        "name": "Flávio Bolsonaro",
-        "party_optional": "PL",
-        "pct": 47.4
-      },
-      {
-        "name": "branco/nulo/não sabe",
-        "party_optional": null,
-        "pct": 4.9
       }
     ],
     "n": 5015,
