@@ -611,7 +611,8 @@ pub fn copy_text(text: &str) -> bool {
     #[cfg(target_arch = "wasm32")]
     {
         if let Some(clipboard) = web_sys::window().map(|window| window.navigator().clipboard()) {
-            return clipboard.write_text(text).is_ok();
+            let _ = clipboard.write_text(text);
+            return true;
         }
     }
     false
