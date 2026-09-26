@@ -370,6 +370,7 @@ pub async fn load_regional_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String
                 geo: geo.clone(),
                 source_url: row.source_url.clone(),
                 tse_registration: row.tse_registration.clone().or(row.tse_protocol.clone()),
+                verified: row.verified.unwrap_or(false),
                 moe: parse_moe_value(&row.margin_of_error),
                 candidate_key: key,
                 value: candidate.pct,
