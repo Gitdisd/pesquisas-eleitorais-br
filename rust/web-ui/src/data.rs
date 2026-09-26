@@ -229,7 +229,7 @@ pub async fn load_meta(refresh_nonce: u64) -> Option<PollMeta> {
 }
 
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
 pub struct Poll {
     pub id: String,
     pub institute: String,
