@@ -320,6 +320,10 @@ pub fn App() -> Element {
                         }
                         let table_count = table_polls.len();
                         let table_count_label = format!("{} {}", table_count, t(ui_state.language, "rows"));
+                        let nav_dashboard = format!("⌂ {}", t(ui_state.language, "dashboard"));
+                        let nav_chart = format!("⌁ {}", t(ui_state.language, "chart"));
+                        let nav_summary = format!("▦ {}", t(ui_state.language, "summary"));
+                        let nav_polls = format!("≡ {}", t(ui_state.language, "polls"));
                         let export_rows = table_polls.iter()
                             .flat_map(|poll| poll.rows.iter().cloned())
                             .collect::<Vec<_>>();
@@ -861,10 +865,10 @@ pub fn App() -> Element {
                             }
 
                                                         nav { class: "mobile-nav", "aria-label": "Navegação rápida",
-                                a { href: "#overview", "⌂ {t(ui_state.language, "dashboard")}" }
-                                a { href: "#chartPanel", "⌁ {t(ui_state.language, "chart")}" }
-                                a { href: "#cards", "▦ {t(ui_state.language, "summary")}" }
-                                a { href: "#pollsPanel", "≡ {t(ui_state.language, "polls")}" }
+                                a { href: "#overview", "{nav_dashboard}" }
+                                a { href: "#chartPanel", "{nav_chart}" }
+                                a { href: "#cards", "{nav_summary}" }
+                                a { href: "#pollsPanel", "{nav_polls}" }
                                 a { href: "#allSourcesPanel", {format!("◎ {}", t(ui_state.language, "all-sources"))} }
                             }
                             Methodology { language: ui_state.language }
@@ -1102,7 +1106,7 @@ fn multi_chart_svg(
     let width = crate::chart::WIDTH - LEFT - RIGHT;
     let y_for_value = |value: f64| -> f64 { TOP + (1.0 - (value - y_low) / (y_high - y_low).max(1.0)) * (HEIGHT - TOP - BOTTOM) };
     let x_for_day = |day: i64| -> f64 { LEFT + ((day as f64 - min_day) / (max_day - min_day).max(1.0)).clamp(0.0, 1.0) * width };
-    let day_for_x = |x: f64| -> i64 {
+    let day_for_x = move |x: f64| -> i64 {
         (min_day + ((x - LEFT) / width.max(1.0)).clamp(0.0, 1.0) * (max_day - min_day)).round() as i64
     };
 
@@ -1237,10 +1241,7 @@ fn multi_chart_svg(
                     if !hidden_candidates.iter().any(|key| key == surface.candidate.key()) {
                         {
                             let color = candidate_color(surface.candidate);
-                            let poll_points = surface.rows.iter()
-                                .map(|poll| format!("{:.2},{:.2}", x_for_day(poll.day), y_for_value(poll.value)))
-                                .collect::<Vec<_>>().join(" ");
-                            let trend_path = surface.trend.iter()
+                                                        let trend_path = surface.trend.iter()
                                 .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
                                 .collect::<Vec<_>>().join(" ");
                             let band_points = {
@@ -1293,7 +1294,7 @@ fn multi_chart_svg(
                                         style: "fill: var(--surface); stroke: {color};",
                                     }
                                 }
-                                if let Some(projection) = surface.projection.as_ref() {
+                                if surface.projection.is_some() {
                                     if !projection_band.is_empty() {
                                         polygon { class: "projection-band", points: "{projection_band}", style: "fill: {color};" }
                                     }
