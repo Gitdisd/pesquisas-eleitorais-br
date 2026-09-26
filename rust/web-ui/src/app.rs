@@ -133,7 +133,7 @@ pub fn App() -> Element {
                             class: "header-copy",
                             div { class: "brandline",
                                 span { class: "kicker", {t(ui_state.language, "dashboard")} }
-                                span { class: "live-pill", "● {t(ui_state.language, "public-data")}" }
+                                span { class: "live-pill", {format!("● {}", t(ui_state.language, "public-data"))} }
                             }
                             h1 { "Pesquisas eleitorais — Presidência 2026" }
                             p { {t(ui_state.language, "source-note")} }
@@ -345,7 +345,7 @@ pub fn App() -> Element {
                                     div { class: "metric",
                                         span { class: "metric-label", {t(ui_state.language, "latest-fieldwork")} }
                                         span { class: "metric-value", "{latest_label}" }
-                                        span { class: "metric-sub", "{t(ui_state.language, "fieldwork-end" )}" }
+                                        span { class: "metric-sub", {t(ui_state.language, "fieldwork-end")} }
                                     }
                                     div { class: "metric",
                                         span { class: "metric-label", {t(ui_state.language, "round-coverage")} }
@@ -606,7 +606,7 @@ pub fn App() -> Element {
                                 }
                                 p { class: "quick-note",
                                     strong { {format!("{}:", t(ui_state.language, "guide"))} }
-                                    " {t(ui_state.language, "guide-copy")}"
+                                    {format!(" {}", t(ui_state.language, "guide-copy"))}
                                 }
                                 div { class: "quick-tools",
                                     button {
@@ -858,7 +858,7 @@ pub fn App() -> Element {
                                 a { href: "#chartPanel", "⌁ {t(ui_state.language, "chart")}" }
                                 a { href: "#cards", "▦ {t(ui_state.language, "summary")}" }
                                 a { href: "#pollsPanel", "≡ {t(ui_state.language, "polls")}" }
-                                a { href: "#allSourcesPanel", "◎ {t(ui_state.language, "all-sources")}" }
+                                a { href: "#allSourcesPanel", {format!("◎ {}", t(ui_state.language, "all-sources"))} }
                             }
                             Methodology { language: ui_state.language }
                             footer {
@@ -1322,7 +1322,7 @@ fn multi_chart_svg(
     }
 }
 
-fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, avg_window_days: f64, language: Language, mut view: Signal<ViewState>) -> Element {
+fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, avg_window_days: f64, _language: Language, mut view: Signal<ViewState>) -> Element {
     let current_view = view();
     let (base_min_day, base_max_day, low, high) = viewbox(rows, trend, projection);
     let (min_day, max_day) = navigation_window(base_min_day, base_max_day, current_view.zoom, current_view.pan_days);
