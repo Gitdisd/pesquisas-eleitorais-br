@@ -1,3 +1,5 @@
+#![cfg_attr(target_arch = "wasm32", allow(dead_code))]
+
 use dioxus::prelude::*;
 use gloo_timers::callback::Interval;
 use polling_core::{
@@ -67,7 +69,7 @@ pub fn App() -> Element {
     let mut ui = use_signal(UiState::restored);
 
     use_effect({
-        let mut ui = ui;
+        let ui = ui;
         move || {
             let language = ui().language;
             apply_document_chrome(language);
