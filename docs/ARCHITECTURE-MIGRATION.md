@@ -1,3 +1,11 @@
+## 2026-09-26T15:39:14Z / 2026-09-26 12:39:14 -03:00 — Go/WASM feature-parity rewrite in progress
+
+The browser replacement is being rebuilt in Go/WebAssembly. The Go implementation now carries the dashboard feature surface rather than only the initial filter/table shell: models 1–12, multi-institute filtering, overlays, uncertainty, projections, cards, regional panel, methodology, URL/local persistence, point inspection, exports, sharing, zoom/reset and fullscreen.
+
+The "Focus/Focar" navigation convenience is intentionally omitted because it was a recurring migration failure point and is not part of the numerical/data functionality.
+
+Production remains protected. The old Rust/Dioxus tree stays retained until the new revision passes hosted CI/browser validation and the deployed Pages cutover is explicitly verified.
+
 ## 2026-09-26 05:37 -03:00 / 2026-09-26T08:37:20Z — Current architecture pivot: Go/WebAssembly browser frontend
 
 This entry supersedes the Rust/Dioxus production-browser target above. The Rust/Dioxus attempt is retained as historical migration evidence rather than continuing to repair it as the deployment-critical frontend.

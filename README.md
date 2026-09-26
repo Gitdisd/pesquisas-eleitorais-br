@@ -1,4 +1,10 @@
-## 2026-09-25 / Rust + Dioxus frontend completed
+## 2026-09-26 / Go + WebAssembly browser rewrite
+
+- The browser migration is being rebuilt in Go 1.27 WebAssembly with native HTML/SVG, Python orchestration and Ruby validation.
+- No Apache ECharts, Vite, or authored application JavaScript/TypeScript is used in the new browser path.
+- The Go implementation is being brought to feature parity before production Pages cutover; the existing production site remains protected during this work.
+- The recurring Focus/Focar navigation convenience is intentionally omitted from the rewritten browser UI.
+
 
 - The Rust/Dioxus frontend cutover implementation is prepared on this migration branch, using Rust + Dioxus 0.7.10 with a custom SVG chart.
 - Apache ECharts is no longer a frontend dependency.

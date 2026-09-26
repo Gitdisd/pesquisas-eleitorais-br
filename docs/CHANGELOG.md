@@ -1,3 +1,11 @@
+## 2026-09-26 12:39:14 -03:00 / 2026-09-26T15:39:14Z — Go/WASM dashboard parity rewrite
+
+- Rewrote the browser dashboard around Go/WebAssembly rather than the incomplete Rust/Dioxus shell.
+- Restored the feature surface needed for parity: models 1–12, multi-institute filtering, overlays, uncertainty, projections, candidate cards, national/regional tables and charts, methodology, URL/local state, point inspection, exports, sharing, zoom/reset and fullscreen.
+- Added a dedicated parity record at docs/GO-MIGRATION-PARITY-2026-09-26.md.
+- Intentionally omitted the recurring Focus/Focar navigation convenience.
+- Kept the existing live production path protected; this is not a production deployment.
+
 ## 2026-09-26 05:49 -03:00 / 2026-09-26T08:49:00Z — Go migration validation completed
 
 - GitHub Actions CI passed on commit `10373f53379b5dd84d909e3e25b2403af35f0f92`.
