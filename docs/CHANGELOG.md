@@ -1,4 +1,8 @@
 
+## 2026-09-26 14:18 BRT — Pre-cutover deployment smoke gate
+- Added the desktop/mobile Chromium smoke suite directly to the Pages deployment build, after the Go/WASM site is built and before the Pages artifact is uploaded.
+- The deployment path now requires artifact audit plus browser interaction coverage before publication, followed by the existing deployed-site Ruby verification after publication.
+
 ## 2026-09-26 14:10 BRT — National polling reconciliation
 - Reconciled six newly published national presidential registrations: BR-04739/2026, BR-01739/2026, BR-04202/2026, BR-05268/2026, BR-09587/2026 and BR-00304/2026.
 - Added verified first/second-round scenarios to `data/polls.json` and `public/data/polls.json`, increasing the canonical national set from 240 to 252 records.
