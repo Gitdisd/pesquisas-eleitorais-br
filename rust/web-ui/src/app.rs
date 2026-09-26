@@ -818,7 +818,7 @@ pub fn App() -> Element {
                                                         td { "{first.institute}" }
                                                         td { "{first.geo}" }
                                                         td { "{first.scenario}" }
-                                                        td { "{first.tse_registration.as_deref().unwrap_or("—")}" }
+                                                        td { {first.tse_registration.as_deref().unwrap_or("—")} }
                                                         for candidate in display_candidates(state.round) {
                                                             td { class: "num",
                                                                 {
