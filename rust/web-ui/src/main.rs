@@ -8,3 +8,4 @@ mod methodology;
 fn main() {
     dioxus::launch(app::App);
 }
+mod regional;
