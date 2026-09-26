@@ -8,7 +8,7 @@ use std::collections::BTreeSet;
 
 use crate::chart::{
     model_label, polyline_path, projection_v2_for_round, projection_v2_for_round_with_fit, trend_for_model, viewbox, x_for, y_for,
-    MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
+    BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
 use crate::methodology::Methodology;
@@ -17,7 +17,7 @@ use crate::regional::RegionalPanel;
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
     initial_avg_window_days, initial_model, initial_projection, initial_range_days, initial_round,
-    persist_language, persist_model, persist_overlays, persist_theme, scroll_to_id,
+    persist_language, persist_overlays, persist_theme, scroll_to_id,
     t, Language, Theme, UiState,
 };
 
@@ -362,7 +362,7 @@ pub fn App() -> Element {
                                         button {
                                             class: "ui-btn",
                                             onclick: move |_| scroll_to_id("chartPanel"),
-                                            "↗ {t(ui_state.language, "focus")}"
+                                            {format!("↗ {}", t(ui_state.language, "focus"))}
                                         }
                                         button {
                                             class: "ui-btn",
@@ -371,7 +371,7 @@ pub fn App() -> Element {
                                                     ui.write().status = Some(t(ui_state.language, "full-screen-unavailable").to_string());
                                                 }
                                             },
-                                            "⛶ {t(ui_state.language, "fullscreen")}"
+                                            {format!("⛶ {}", t(ui_state.language, "fullscreen"))}
                                         }
                                     }
                                 }
@@ -777,7 +777,7 @@ pub fn App() -> Element {
                                 div { class: "table-toolbar",
                                     div {
                                         h2 { {t(ui_state.language, "table")} }
-                                        p { class: "muted", "{table_count} {t(ui_state.language, "rows")}" }
+                                        p { class: "muted", {format!("{} {}", table_count, t(ui_state.language, "rows"))} }
                                     }
                                     input {
                                         r#type: "search",
@@ -1290,7 +1290,7 @@ fn multi_chart_svg(
                                         if !overlay.high.is_empty() {
                                             let mut pts = overlay.high.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
                                             pts.extend(overlay.low.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
-                                            polygon { class: "overlay-band", points: "{pts.join(" ")}", style: "fill: {color};" }
+                                            polygon { class: "overlay-band", points: {pts.join(" ")}, style: "fill: {color};" }
                                         }
                                     }
                                 }
@@ -1300,8 +1300,13 @@ fn multi_chart_svg(
                 }
 
                 if let Some(day) = hover_day {
-                    let x = x_for_day(day);
-                    line { class: "hover-crosshair", x1: "{x:.2}", x2: "{x:.2}", y1: "{TOP}", y2: "{HEIGHT - BOTTOM}" }
+                    line {
+                        class: "hover-crosshair",
+                        x1: {format!("{:.2}", x_for_day(day))},
+                        x2: {format!("{:.2}", x_for_day(day))},
+                        y1: "{TOP}",
+                        y2: "{HEIGHT - BOTTOM}"
+                    }
                 }
             }
 
