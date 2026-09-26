@@ -43,7 +43,7 @@ impl Theme {
     pub fn from_storage() -> Self {
         #[cfg(target_arch = "wasm32")]
         {
-            if let Some(value) = read_storage("pebr-theme") {
+            if let Some(value) = read_storage("pebr-theme").or_else(|| read_storage("pebr-party-theme")) {
                 return match value.as_str() {
                     "dark" => Self::Dark,
                     "party-pt" => Self::Pt,
@@ -340,7 +340,16 @@ pub fn persist_language(language: Language) {
 
 pub fn persist_theme(theme: Theme) {
     #[cfg(target_arch = "wasm32")]
-    write_storage("pebr-theme", theme.storage_key());
+    {
+        write_storage("pebr-theme", theme.storage_key());
+        if theme.is_party() {
+            write_storage("pebr-party-theme", theme.storage_key());
+        } else {
+            let _ = web_sys::window()
+                .and_then(|window| window.local_storage().ok().flatten())
+                .and_then(|storage| storage.remove_item("pebr-party-theme").ok());
+        }
+    }
 }
 
 pub fn apply_document_chrome(language: Language) {
