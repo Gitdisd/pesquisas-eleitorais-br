@@ -1,4 +1,4 @@
-## 2026-09-25 — Rust/Dioxus browser migration completed
+## 2026-09-25 — Rust/Dioxus browser cutover implementation — validation pending
 
 - The visible browser application is now implemented by `rust/web-ui` using Rust + Dioxus 0.7.10 and native/custom SVG rendering.
 - The legacy Vite browser runtime and Apache ECharts dependency have been removed from the application tree.
