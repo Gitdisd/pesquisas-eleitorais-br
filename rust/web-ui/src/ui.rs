@@ -677,23 +677,51 @@ fn date_stamp() -> String {
 }
 
 pub fn csv_export(rows: &[Poll]) -> bool {
-    let mut lines = vec![[
-        "Fim de campo", "Instituto", "Geo", "Cenário", "TSE", "Candidato", "Valor", "N", "Margem", "Fonte"
-    ].join(";")];
+    let mut grouped = std::collections::BTreeMap::<String, Vec<&Poll>>::new();
     for row in rows {
-        lines.push([
-            csv_cell(&row.fieldwork_end),
-            csv_cell(&row.institute),
-            csv_cell(&row.geo),
-            csv_cell(&row.scenario),
-            csv_cell(row.tse_registration.as_deref().unwrap_or("")),
-            csv_cell(&row.candidate_key),
-            csv_cell(&format!("{:.2}", row.value).replace('.', ",")),
-            csv_cell(&format!("{:.0}", row.n)),
-            csv_cell(&row.moe.map(|v| format!("±{v:.2}")).unwrap_or_else(|| "—".into())),
-            csv_cell(&row.source_url),
-        ].join(";"));
+        grouped.entry(row.id.clone()).or_default().push(row);
     }
+
+    let candidates = polling_core::Candidate::all();
+    let mut header = vec![
+        "Fim de campo".to_string(),
+        "Publicação".to_string(),
+        "Instituto".to_string(),
+        "Geo".to_string(),
+        "Cenário".to_string(),
+        "TSE".to_string(),
+        "N".to_string(),
+        "Margem".to_string(),
+    ];
+    for candidate in candidates.iter().copied() {
+        header.push(candidate.label().to_string());
+    }
+    header.push("Fonte".to_string());
+
+    let mut lines = vec![header.iter().map(|value| csv_cell(value)).collect::<Vec<_>>().join(";")];
+    for group in grouped.values() {
+        let Some(first) = group.first() else { continue; };
+        let mut row = vec![
+            csv_cell(&first.fieldwork_start.clone().unwrap_or_else(|| first.fieldwork_end.clone())),
+            csv_cell(first.published_date.as_deref().unwrap_or("")),
+            csv_cell(&first.institute),
+            csv_cell(&first.geo),
+            csv_cell(&first.scenario),
+            csv_cell(first.tse_registration.as_deref().unwrap_or("")),
+            csv_cell(&format!("{:.0}", first.n)),
+            csv_cell(&first.moe.map(|v| format!("±{v:.2}")).unwrap_or_else(|| "—".into())),
+        ];
+        for candidate in candidates.iter().copied() {
+            let value = group.iter()
+                .find(|poll| poll.candidate_key == candidate.key())
+                .map(|poll| format!("{:.2}", poll.value).replace('.', ","))
+                .unwrap_or_else(|| "—".into());
+            row.push(csv_cell(&value));
+        }
+        row.push(csv_cell(&first.source_url));
+        lines.push(row.join(";"));
+    }
+
     let csv = format!("\ufeff{}", lines.join("\n"));
     download_text(
         &format!("pesquisas-eleitorais-{}.csv", date_stamp()),
@@ -701,6 +729,7 @@ pub fn csv_export(rows: &[Poll]) -> bool {
         &csv,
     )
 }
+
 
 pub fn json_export(
     rows: &[Poll],
@@ -711,6 +740,37 @@ pub fn json_export(
     candidate: &str,
     geo: &str,
 ) -> bool {
+    let mut grouped = std::collections::BTreeMap::<String, Vec<&Poll>>::new();
+    for row in rows {
+        grouped.entry(row.id.clone()).or_default().push(row);
+    }
+
+    let polls = grouped.values().filter_map(|group| {
+        let first = group.first()?;
+        let candidates = group.iter()
+            .map(|poll| serde_json::json!({
+                "candidate": poll.candidate_key,
+                "value": poll.value,
+            }))
+            .collect::<Vec<_>>();
+
+        Some(serde_json::json!({
+            "id": first.id,
+            "fieldwork_start": first.fieldwork_start,
+            "fieldwork_end": first.fieldwork_end,
+            "published_date": first.published_date,
+            "institute": first.institute,
+            "geo": first.geo,
+            "scenario": first.scenario,
+            "tse_registration": first.tse_registration,
+            "verified": first.verified,
+            "n": first.n,
+            "margin_of_error": first.moe,
+            "source_url": first.source_url,
+            "candidates": candidates,
+        }))
+    }).collect::<Vec<_>>();
+
     let payload = serde_json::json!({
         "schema_version": 2,
         "exported_at": date_stamp(),
@@ -723,9 +783,10 @@ pub fn json_export(
             "candidate": candidate,
             "geo": geo
         },
-        "record_count": rows.len(),
-        "polls": rows,
+        "record_count": polls.len(),
+        "polls": polls,
     });
+
     let Ok(text) = serde_json::to_string_pretty(&payload) else { return false; };
     download_text(
         &format!("pesquisas-eleitorais-{}.json", date_stamp()),
