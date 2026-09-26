@@ -52,7 +52,7 @@ pub fn App() -> Element {
         round: initial_round(),
         range_days: initial_range_days(),
         avg_window_days: initial_avg_window_days(),
-        geo_index: 0,
+        geo_index: usize::MAX,
         model: initial_model(),
         hover_day: None,
         zoom: 1.0,
@@ -226,7 +226,7 @@ pub fn App() -> Element {
                         let state = view();
                         let geos = available_geos(all);
                         let all_index = geos.len();
-                        let selected_geo = if state.geo_index == all_index {
+                        let selected_geo = if state.geo_index == all_index || state.geo_index == usize::MAX {
                             "ALL".to_string()
                         } else {
                             geos.get(state.geo_index).cloned().unwrap_or_else(|| "BR".to_string())
