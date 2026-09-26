@@ -3,12 +3,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"net/url"
 	"strconv"
 	"strings"
 	"syscall/js"
 	"time"
-	"math"
 )
 
 var callbacks []js.Func
@@ -97,4 +97,14 @@ func startAutoRefresh() {
 		el.Set("textContent",fmt.Sprintf("próxima verificação em %02d:%02d",mins,secs)); return nil
 	})
 	win().Call("setInterval",refreshTickCallback,int64(1000))
+}
+
+
+func bindChartGestures() {
+	bindRoot("wheel",func(ev js.Value){
+		el:=targetElement(ev); if !el.Truthy(){return}; chart:=el.Call("closest","#chart"); if !chart.Truthy(){return}
+		ev.Call("preventDefault")
+		if ev.Get("deltaY").Float()<0 { view.Zoom=math.Min(5,view.Zoom*1.12) } else { view.Zoom=math.Max(1,view.Zoom/1.12) }
+		render()
+	})
 }
