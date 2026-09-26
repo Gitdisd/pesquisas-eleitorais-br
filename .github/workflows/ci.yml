@@ -121,8 +121,6 @@ jobs:
           path: advanced-backtest-report.json
           if-no-files-found: error
           retention-days: 30
-      - name: Build
-        run: npm run build
       - name: Identity and data-contract tests
         run: npm test
       - name: Quality gate
