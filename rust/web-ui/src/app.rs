@@ -748,6 +748,7 @@ pub fn App() -> Element {
                                     table {
                                         thead { tr {
                                             th { "{t(ui_state.language, "fieldwork")}" }
+                                            th { "{t(ui_state.language, "publication")}" }
                                             th { "{t(ui_state.language, "institute")}" }
                                             th { "{t(ui_state.language, "geo")}" }
                                             th { "{t(ui_state.language, "scenario")}" }
@@ -766,7 +767,13 @@ pub fn App() -> Element {
                                             for table_poll in table_polls.iter() {
                                                 if let Some(first) = table_poll.rows.first() {
                                                     tr {
-                                                        td { "{format_date(&first.fieldwork_end)}" }
+                                                        td {
+                                                            {
+                                                                let fieldwork = first.fieldwork_start.as_deref().unwrap_or(&first.fieldwork_end);
+                                                                format!("{}–{}", format_date(fieldwork), format_date(&first.fieldwork_end))
+                                                            }
+                                                        }
+                                                        td { "{first.published_date.as_deref().map(format_date).unwrap_or_else(|| "—".to_string())}" }
                                                         td { "{first.institute}" }
                                                         td { "{first.geo}" }
                                                         td { "{first.scenario}" }
