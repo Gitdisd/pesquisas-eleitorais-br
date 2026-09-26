@@ -10,7 +10,7 @@ use crate::chart::{
     model_label, polyline_path, projection_v2_for_round, trend_for_model, viewbox, x_for, y_for,
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
-use crate::data::{available_geos, filter_polls, load_polls, load_regional_polls, Candidate, Poll};
+use crate::data::{available_geos, filter_polls, load_meta, load_polls, load_regional_polls, Candidate, Poll};
 use crate::methodology::Methodology;
 use crate::overlays::{compute_overlay, OVERLAYS};
 use crate::regional::RegionalPanel;
@@ -87,6 +87,10 @@ pub fn App() -> Element {
         let refresh_nonce = refresh_tick();
         async move { load_regional_polls(refresh_nonce).await }
     });
+    let meta = use_resource(move || {
+        let refresh_nonce = refresh_tick();
+        async move { load_meta(refresh_nonce).await }
+    });
 
     use_effect({
         let ui = ui;
@@ -99,6 +103,10 @@ pub fn App() -> Element {
 
     let ui_state = ui();
     let shell_style = ui_state.theme_style();
+    let meta_state = meta.read();
+    let meta_updated = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_updated.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
+    let meta_latest = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.latest_publication_date.as_deref()).map(format_meta_date).unwrap_or_else(|| "—".to_string());
+    let meta_check = meta_state.as_ref().and_then(|value| value.as_ref()).and_then(|value| value.last_check_at.as_deref()).map(format_meta_stamp).unwrap_or_else(|| "—".to_string());
 
     rsx! {
         div {
@@ -119,6 +127,11 @@ pub fn App() -> Element {
                             }
                             h1 { "Pesquisas eleitorais — Presidência 2026" }
                             p { "{t(ui_state.language, "source-note")}" }
+                            div { class: "meta-strip",
+                                span { "Atualizado: {meta_updated}" }
+                                span { "Última publicação: {meta_latest}" }
+                                span { "Verificação: {meta_check}" }
+                            }
                             div { class: "site-controls",
                                 div { class: "control-group",
                                     span { class: "control-label", "{t(ui_state.language, "language")}" }
@@ -1726,6 +1739,18 @@ fn projection_status_text(projection: Option<&ProjectionV2Result>, language: Lan
         } else {
             "Projeção v2 indisponível: sem dados.".to_string()
         },
+    }
+}
+
+fn format_meta_date(value: &str) -> String {
+    format_date(value)
+}
+
+fn format_meta_stamp(value: &str) -> String {
+    if value.len() >= 16 {
+        value.replace('T', " ").chars().take(16).collect()
+    } else {
+        value.to_string()
     }
 }
 
