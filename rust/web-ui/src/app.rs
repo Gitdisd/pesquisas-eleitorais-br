@@ -98,7 +98,7 @@ pub fn App() -> Element {
                                     span { class: "control-label", "{t(ui_state.language, "language")}" }
                                     button {
                                         class: if ui_state.language == Language::PtBr { "active" } else { "" },
-                                        aria_pressed: "{ui_state.language == Language::PtBr}",
+                                        "aria-pressed": "{ui_state.language == Language::PtBr}",
                                         onclick: move |_| {
                                             let language = Language::PtBr;
                                             ui.write().language = language;
@@ -149,7 +149,7 @@ pub fn App() -> Element {
                                     href: "https://x.com/Monkeeuphoria",
                                     target: "_blank",
                                     rel: "noopener noreferrer",
-                                    aria_label: if ui_state.language == Language::En { "Follow @Monkeeuphoria on X" } else { "Seguir @Monkeeuphoria no X" },
+                                    "aria-label": if ui_state.language == Language::En { "Follow @Monkeeuphoria on X" } else { "Seguir @Monkeeuphoria no X" },
                                     img { class: "x-pfp", src: "https://unavatar.io/x/Monkeeuphoria", alt: "" }
                                     span { "@Monkeeuphoria · {t(ui_state.language, "follow")}" }
                                 }
@@ -304,13 +304,18 @@ pub fn App() -> Element {
                                         for (label, days) in [
                                             ("1d", Some(1_i64)), ("3d", Some(3_i64)), ("7d", Some(7_i64)),
                                             ("14d", Some(14_i64)), ("21d", Some(21_i64)), ("30d", Some(30_i64)),
-                                            ("90d", Some(90_i64)), ("Tudo", None)
+                                            ("90d", Some(90_i64)),
                                         ] {
                                             button {
                                                 class: if state.range_days == days { "active" } else { "" },
                                                 onclick: move |_| { let mut state = view.write(); state.range_days = days; reset_navigation(&mut state); },
-                                                "{if label == "Tudo" { t(ui_state.language, "all-period") } else { label }}"
+                                                "{label}"
                                             }
+                                        }
+                                        button {
+                                            class: if state.range_days.is_none() { "active" } else { "" },
+                                            onclick: move |_| { let mut state = view.write(); state.range_days = None; reset_navigation(&mut state); },
+                                            "{t(ui_state.language, "all-period")}"
                                         }
                                     }
                                 }
