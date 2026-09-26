@@ -1,3 +1,8 @@
+## 2026-09-26 12:53 -03:00 / 2026-09-26T15:53:00Z — Go/WASM browser-smoke correction
+
+- Corrected the Chromium smoke selector for the projection checkbox to target its actual Go-rendered control.
+- The Go Pages artifact itself already builds and passes the Ruby artifact audit on the current migration branch.
+
 ## 2026-09-26 12:49 -03:00 / 2026-09-26T15:49:00Z — Go/WASM hosted build corrections
 
 - Corrected the Go model/projection compile issues revealed by hosted CI.

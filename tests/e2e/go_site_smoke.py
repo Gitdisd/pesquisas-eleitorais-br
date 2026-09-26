@@ -32,7 +32,7 @@ def run():
             assert page.locator("table").count()>=1
             page.locator("[data-action='hidden']").first.click()
             page.locator("[data-action='overlay']").first.click()
-            page.locator("[data-action='projection']").check()
+            page.locator("#projection").check()
             page.get_by_text("CSV",exact=True).click()
             assert page.get_by_text("focar",exact=False).count()==0
             assert page.get_by_text("focus",exact=False).count()==0
