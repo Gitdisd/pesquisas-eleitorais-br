@@ -35,6 +35,10 @@ def main():
 </body></html>
 """
     (OUT/"index.html").write_text(index,encoding="utf-8"); shutil.copy2(OUT/"index.html",OUT/"404.html")
+    (OUT/"data").mkdir(parents=True,exist_ok=True)
+    for name in ("polls.json","meta.json","polls-extra.json","polls-regional.json"):
+        src=DATA/name
+        if src.exists(): shutil.copy2(src,OUT/"data"/name)
     print(f"Go Pages bundle: {OUT}")
 
 if __name__=="__main__": main()
