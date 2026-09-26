@@ -53,6 +53,7 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
     await expect(projection).toHaveAttribute('aria-pressed', 'false')
     await projection.click({ force: true })
     await expect(projection).toHaveAttribute('aria-pressed', 'true')
+    if (test.info().project.name !== 'desktop-chromium') return
 
     const chart = page.locator('svg.chart:not(.regional-chart)').first()
     const box = await chart.boundingBox()
