@@ -58,6 +58,14 @@ jobs:
           test -f pages-artifact/main.wasm
           test -f pages-artifact/wasm_exec.js
 
+      - name: Install Playwright browser test dependencies
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Run pre-cutover desktop/mobile browser smoke
+        run: python tests/e2e/go_site_smoke.py
+
       - name: Audit staged Pages artifact with Ruby
         run: ruby scripts/automation/artifact_audit.rb pages-artifact
 
