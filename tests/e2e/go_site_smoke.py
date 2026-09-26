@@ -30,7 +30,7 @@ def smoke(page, mobile=False):
     assert page.locator("#round").count() == 1
     assert page.locator("#candidate").count() == 1
     assert page.locator("#geo").count() == 1
-    assert page.locator("#institute").count() == 1
+    assert page.locator("[data-action='institute']").count() >= 1
     assert page.locator("#model").count() == 1
     assert page.locator("#projection").count() == 1
     assert page.locator("#tableQuery").count() == 1
