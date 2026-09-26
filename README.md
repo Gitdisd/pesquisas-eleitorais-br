@@ -48,6 +48,7 @@ cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unkno
 
 - Production main remains on the restored legacy frontend until the final Rust/Dioxus validation gates pass.
 - Front de destino: Rust + Dioxus 0.7.10 + SVG customizado, em `rust/web-ui/`
+- Automação de migração: `scripts/automation/migration_gate.rb` (Ruby stdlib only); valida a estrutura do repositório e os guardrails de publicação antes dos builds.
 - Refresh: `.github/workflows/refresh-polls.yml` a cada hora no minuto 10 (`10 * * * *`) + **Run workflow**
 - Deploy: `.github/workflows/deploy-pages.yml`; o refresh dispara esse workflow explicitamente depois de publicar um commit de dados
 - Discover lê `data/sources.json`, busca sinais/páginas e **estagia** descobertas verificadas em `data/discovery/discovered-polls.json`; não grava diretamente em `data/polls.json`
