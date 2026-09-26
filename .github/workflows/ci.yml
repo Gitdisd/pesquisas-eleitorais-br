@@ -75,4 +75,4 @@ jobs:
 
       - name: Go WebAssembly compile check
         working-directory: go/web-ui
-        run: GOOS=js GOARCH=wasm go build -trimpath -ldflags=-s -w -o /tmp/pesquisas-web.wasm .
+        run: GOOS=js GOARCH=wasm go build -trimpath -ldflags="-s -w" -o /tmp/pesquisas-web.wasm .
