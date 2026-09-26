@@ -136,3 +136,11 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify deployed Pages artifact with Ruby
+        run: ruby scripts/automation/deployment_verify.rb "${{ needs.deploy.outputs.page_url }}"
