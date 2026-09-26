@@ -644,7 +644,7 @@ fn date_stamp() -> String {
 
 pub fn csv_export(rows: &[Poll]) -> bool {
     let mut lines = vec![[
-        "Fim de campo", "Instituto", "Geo", "Cenário", "Candidato", "Valor", "N", "Margem", "Fonte"
+        "Fim de campo", "Instituto", "Geo", "Cenário", "TSE", "Candidato", "Valor", "N", "Margem", "Fonte"
     ].join(";")];
     for row in rows {
         lines.push([
@@ -652,6 +652,7 @@ pub fn csv_export(rows: &[Poll]) -> bool {
             csv_cell(&row.institute),
             csv_cell(&row.geo),
             csv_cell(&row.scenario),
+            csv_cell(row.tse_registration.as_deref().unwrap_or("")),
             csv_cell(&row.candidate_key),
             csv_cell(&format!("{:.2}", row.value).replace('.', ",")),
             csv_cell(&format!("{:.0}", row.n)),
