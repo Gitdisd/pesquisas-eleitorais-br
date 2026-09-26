@@ -30,7 +30,8 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
     let round_value = if matches!(round(), RegionalRound::First) { 1 } else { 2 };
     let geo_controls = geos.iter().map(|geo| {
         let active = selected.is_empty() || selected.iter().any(|value| value == geo);
-        (geo.clone(), geos.clone(), active)
+        let label = if geo == "BR" { "Nacional".to_string() } else { geo.clone() };
+        (geo.clone(), geos.clone(), active, label)
     }).collect::<Vec<_>>();
 
     let filtered: Vec<Poll> = polls.iter()
@@ -76,7 +77,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                     onclick: move |_| selected_geos.set(Vec::new()),
                     if matches!(language, Language::En) { "All geographies" } else { "Todas as geografias" }
                 }
-                for (geo_name, all_geos, active) in geo_controls.iter().cloned() {
+                for (geo_name, all_geos, active, label) in geo_controls.iter().cloned() {
                     button {
                         class: if active { "chip on" } else { "chip" },
                         "aria-pressed": "{active}",
@@ -94,7 +95,7 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                             }
                             selected_geos.set(current);
                         },
-                        "{if geo_name == "BR" { "Nacional" } else { geo_name }}"
+                        "{label}"
                     }
                 }
             }
@@ -250,7 +251,7 @@ fn regional_chart(rows: &[Poll], language: Language) -> Element {
                     line { class: "grid-line", x1: "{LEFT}", x2: "{WIDTH-RIGHT}", y1: "{yy:.2}", y2: "{yy:.2}" }
                     text { class: "axis-label", x: "8", y: "{yy+4.0:.2}", "{value:.0}%" }
                 }
-                for (candidate, color, path, point_coords) in series.iter() {
+                for (_candidate, color, path, point_coords) in series.iter() {
                     if !path.is_empty() {
                         polyline { class: "series-line", points: "{path}", style: "--series: {color};" }
                     }
