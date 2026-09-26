@@ -97,16 +97,29 @@ jobs:
           npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
       - name: Build legacy compatibility site
         run: npm run build
-      - name: Build Rust/Dioxus migration validation bundle
+      - name: Build Rust/Dioxus production bundle
         working-directory: rust/web-ui
         run: |
           set -euo pipefail
           rm -rf ../../dioxus-pages
           dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-pages
-          test -f ../../dioxus-pages/public/index.html
-          test -d ../../dioxus-pages/public/assets
-          test -n "$(find ../../dioxus-pages/public/assets -type f -name '*.wasm' -print -quit)"
-      - name: Verify legacy Pages artifact
+          DX_PUBLIC="$(find ../../dioxus-pages -type d -name public -print -quit)"
+          test -n "$DX_PUBLIC"
+          mkdir -p "$DX_PUBLIC/data"
+          cp ../../public/data/polls.json "$DX_PUBLIC/data/polls.json"
+          cp ../../public/data/meta.json "$DX_PUBLIC/data/meta.json"
+          if [ -f ../../public/data/polls-extra.json ]; then cp ../../public/data/polls-extra.json "$DX_PUBLIC/data/polls-extra.json"; fi
+          if [ -f ../../public/data/polls-regional.json ]; then cp ../../public/data/polls-regional.json "$DX_PUBLIC/data/polls-regional.json"; fi
+          cp "$DX_PUBLIC/index.html" "$DX_PUBLIC/404.html"
+          test -f "$DX_PUBLIC/index.html"
+          test -f "$DX_PUBLIC/404.html"
+          test -d "$DX_PUBLIC/assets"
+          test -n "$(find "$DX_PUBLIC/assets" -type f -name '*.wasm' -print -quit)"
+          test -f "$DX_PUBLIC/data/polls.json"
+          test -f "$DX_PUBLIC/data/meta.json"
+          test -f "$DX_PUBLIC/data/polls-extra.json"
+          test -f "$DX_PUBLIC/data/polls-regional.json"
+      - name: Verify legacy compatibility artifact
         run: |
           set -euo pipefail
           test -f dist/index.html
@@ -114,12 +127,11 @@ jobs:
           test -n "$(find dist/assets -type f -name '*.js' -print -quit)"
           test -f dist/data/polls.json
           test -f dist/data/meta.json
-          cp dist/index.html dist/404.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: dioxus-pages/public
 
   deploy:
     needs: build

@@ -1,3 +1,12 @@
+## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — Dashboard feature slice migrated to Rust/Dioxus
+
+- Began the actual UI language migration instead of creating another compatibility wrapper.
+- Ported the dashboard control/state surface into Rust/Dioxus: Portuguese/English language state, persistent light/dark and party themes, quick navigation/overview, round/range controls, averaging-window controls, pollster filtering, table search, share URL, CSV/JSON export, focus/fullscreen actions and user status feedback.
+- Preserved the existing Rust custom-SVG chart and wired its uncertainty window to the migrated averaging-window state.
+- Added browser-only web-sys/js-sys bindings for storage, document metadata, URL state, clipboard, download and fullscreen behavior.
+- Kept legacy production modules and the Vite Pages artifact untouched. This branch is the next feature-parity implementation slice; no production cutover is implied by the code changes alone.
+- Legacy party-theme preference is read as a compatibility fallback while the Rust UI persists the current theme state.
+
 ## 2026-09-25 21:00:38 -03:00 / 2026-09-26T00:00:38Z — Restore incremental production publication
 
 - PR #43 restored GitHub Pages publication of the existing full Vite production artifact.

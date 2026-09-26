@@ -1,3 +1,18 @@
+## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — First substantial UI feature slice moved to Rust/Dioxus
+
+| Legacy surface | Rust/Dioxus responsibility | Status |
+|---|---|---|
+| src/site-controls.js | rust/web-ui/src/ui.rs + Dioxus header controls | language state, document metadata and X follow behavior ported in parallel |
+| src/theme-layout.js + src/party-themes.css | rust/web-ui/src/ui.rs + inline theme variables | light/dark + PT/PL/Missão/PSD/Novo/Avante themes ported; legacy preference compatibility retained |
+| src/ui-refresh.js | rust/web-ui/src/app.rs + Rust UI styles | overview, quick navigation, focus/fullscreen, pollster filters and table search ported |
+| src/ui-next.js | rust/web-ui/src/ui.rs + Dioxus actions | share URL, CSV/JSON export, focus and status feedback ported |
+| src/main.js averaging controls | rust/web-ui/src/app.rs | 7/14/30/90d, YTD-style and custom averaging window state now drives trend and uncertainty calculations |
+
+- Branch: migration/rust-ui-features-2026-09-25.
+- Production remains on the restored full Vite artifact.
+- No legacy JS/TS/CSS file is deleted by this slice.
+- Validation is intentionally grouped at the PR level rather than blocking progress on each individual UI helper.
+
 ## 2026-09-25 21:00:38 -03:00 / 2026-09-26T00:00:38Z — Production integration architecture correction
 
 - GitHub Pages production publication is restored to the full legacy Vite `dist` artifact.

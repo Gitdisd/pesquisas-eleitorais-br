@@ -106,12 +106,16 @@ pub fn trend_for_model(rows: &[Poll], half_life_days: f64, model: u8) -> Vec<Tre
 }
 
 pub fn projection_v2_for_round(rows: &[Poll], round: u8) -> ProjectionV2Result {
+    projection_v2_for_round_with_fit(rows, round, 14.0)
+}
+
+pub fn projection_v2_for_round_with_fit(rows: &[Poll], round: u8, fit_days: f64) -> ProjectionV2Result {
     let election_day_ms = if round == 2 {
         Some(ELECTION_ROUND2_MS)
     } else {
         Some(ELECTION_ROUND1_MS)
     };
-    project_trend_v2(&observations(rows), 14.0, 14, election_day_ms)
+    project_trend_v2(&observations(rows), fit_days.max(1.0), 14, election_day_ms)
 }
 
 pub fn viewbox(rows: &[Poll], trend: &[TrendPoint], projection: Option<&ProjectionV2Result>) -> (f64, f64, f64, f64) {
@@ -165,12 +169,15 @@ mod tests {
         Poll {
             id: format!("{day}:{institute}:{value}"),
             institute: institute.into(),
+            fieldwork_start: None,
             fieldwork_end: "2026-09-21".into(),
             published_date: None,
             scenario: "1º turno".into(),
             n,
             geo: "BR".into(),
             source_url: String::new(),
+            tse_registration: None,
+            verified: true,
             moe: None,
             candidate_key: "lula".into(),
             value,

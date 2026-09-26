@@ -1,3 +1,13 @@
+## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — Actual Rust/Dioxus dashboard feature migration started
+
+- Created branch migration/rust-ui-features-2026-09-25 from restored production main@b88f3badb00a5fa91fe84087df5db2d7f58784db.
+- Added rust/web-ui/src/ui.rs as the migrated Rust UI utility/state layer.
+- Ported a substantial feature slice from the legacy browser stack: language switching, persistent themes, dashboard overview/navigation, averaging-window controls, institute filters, table search, share URL, CSV/JSON export, focus/fullscreen and status feedback.
+- Extended the Rust/Dioxus application and standalone styling to consume those responsibilities while retaining the existing custom SVG chart and Rust statistics path.
+- Added WASM-only browser bindings through web-sys and js-sys; made normalized Poll records serializable for export.
+- Updated the migration documentation to track the feature-level replacement boundary. Production deployment remains unchanged until the slice passes grouped CI/browser parity gates.
+- Legacy implementations remain protected for comparison and rollback.
+
 ## 2026-09-25 21:00:38 -03:00 / 2026-09-26T00:00:38Z — Restore full legacy production Pages publication
 
 - Production incident confirmed: the Pages workflow had been replacing the complete Vite `dist` artifact with the incomplete Rust/Dioxus migration shell.

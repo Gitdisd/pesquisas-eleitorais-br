@@ -1,5 +1,5 @@
 use gloo_net::http::Request;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
 pub use polling_core::{
@@ -9,6 +9,7 @@ pub use polling_core::{
 
 const DATA_URL: &str = "data/polls.json";
 const EXTRA_DATA_URL: &str = "data/polls-extra.json";
+const REGIONAL_DATA_URL: &str = "data/polls-regional.json";
 
 #[derive(Clone, Debug, Deserialize)]
 pub struct CandidateResult {
@@ -200,17 +201,19 @@ fn merge_raw_polls(base: Vec<RawPoll>, extra: Vec<RawPoll>) -> Vec<RawPoll> {
     map.into_values().collect()
 }
 
-#[derive(Clone, Debug)]
-#[allow(dead_code)]
+#[derive(Clone, Debug, Serialize)]
 pub struct Poll {
     pub id: String,
     pub institute: String,
+    pub fieldwork_start: Option<String>,
     pub fieldwork_end: String,
     pub published_date: Option<String>,
     pub scenario: String,
     pub n: f64,
     pub geo: String,
     pub source_url: String,
+    pub tse_registration: Option<String>,
+    pub verified: bool,
     pub moe: Option<f64>,
     pub candidate_key: String,
     pub value: f64,
@@ -293,12 +296,15 @@ pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
             out.push(Poll {
                 id,
                 institute: row.institute.clone(),
+                fieldwork_start: row.fieldwork_start.clone(),
                 fieldwork_end: row.fieldwork_end.clone(),
                 published_date: row.published_date.clone(),
                 scenario: row.scenario.clone(),
                 n: row.n.unwrap_or(800.0),
                 geo: geo.clone(),
                 source_url: row.source_url.clone(),
+                tse_registration: row.tse_registration.clone().or(row.tse_protocol.clone()),
+                verified: row.verified.unwrap_or(false),
                 moe: parse_moe_value(&row.margin_of_error),
                 candidate_key: key,
                 value: candidate.pct,
@@ -316,6 +322,73 @@ pub async fn load_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
     });
     Ok(out)
 }
+
+
+pub async fn load_regional_polls(refresh_nonce: u64) -> Result<Vec<Poll>, String> {
+    let url = format!("{REGIONAL_DATA_URL}?v={refresh_nonce}");
+    let response = Request::get(&url)
+        .send()
+        .await
+        .map_err(|err| format!("Falha ao buscar pesquisas regionais: {err}"))?;
+    if !response.ok() {
+        return Err(format!("Pesquisas regionais HTTP {}", response.status()));
+    }
+    let payload = response
+        .json::<PollPayload>()
+        .await
+        .map_err(|err| format!("JSON regional inválido: {err}"))?;
+
+    let mut out = Vec::new();
+    for row in raw_rows(payload) {
+        let day = match parse_day(&row.fieldwork_end) {
+            Some(day) => day,
+            None => continue,
+        };
+        let round = if is_second_round(&row.scenario) {
+            2
+        } else if is_first_round(&row.scenario) {
+            1
+        } else {
+            continue;
+        };
+        let geo = normalize_geo(row.geo.as_deref());
+
+        for candidate in &row.candidates {
+            let key = candidate_key(&candidate.name);
+            if key.is_empty() || !candidate.pct.is_finite() {
+                continue;
+            }
+            let id = canonical_poll_key(&identity_fields(&row));
+            out.push(Poll {
+                id,
+                institute: row.institute.clone(),
+                fieldwork_start: row.fieldwork_start.clone(),
+                fieldwork_end: row.fieldwork_end.clone(),
+                published_date: row.published_date.clone(),
+                scenario: row.scenario.clone(),
+                n: row.n.unwrap_or(800.0),
+                geo: geo.clone(),
+                source_url: row.source_url.clone(),
+                tse_registration: row.tse_registration.clone().or(row.tse_protocol.clone()),
+                verified: row.verified.unwrap_or(false),
+                moe: parse_moe_value(&row.margin_of_error),
+                candidate_key: key,
+                value: candidate.pct,
+                round,
+                day,
+            });
+        }
+    }
+
+    out.sort_by(|a, b| {
+        a.day
+            .cmp(&b.day)
+            .then_with(|| a.institute.cmp(&b.institute))
+            .then_with(|| a.candidate_key.cmp(&b.candidate_key))
+    });
+    Ok(out)
+}
+
 
 pub fn filter_polls(
     polls: &[Poll],
