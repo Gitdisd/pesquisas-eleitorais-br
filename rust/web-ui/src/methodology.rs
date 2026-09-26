@@ -1,149 +1,123 @@
 use dioxus::prelude::*;
 
-pub fn Methodology(language: crate::ui::Language) -> Element {
-    let en = matches!(language, crate::ui::Language::En);
+use crate::chart::MODEL_OPTIONS;
+use crate::ui::Language;
+
+fn text(en: bool, pt: &'static str, english: &'static str) -> &'static str {
+    if en { english } else { pt }
+}
+
+#[component]
+pub fn Methodology(language: Language) -> Element {
+    let en = matches!(language, Language::En);
+
     rsx! {
         section { class: "panel metodologia", id: "methodology",
-            h2 { if en { "How this site works" } else { "Como este site funciona (explicação simples)" } }
+            h2 { {text(en, "Como este site funciona (explicação simples)", "How this site works")} }
             p { class: "meto-lead",
-                if en {
+                {text(
+                    en,
+                    "Pense em vários amigos medindo a altura da mesma árvore. Cada um usa uma fita diferente. A gente junta as medidas.",
                     "Think of several friends measuring the same tree. Each uses a different tape. We combine the measurements instead of choosing one voice."
-                } else {
-                    "Pense em vários amigos medindo a altura da mesma árvore. Cada um usa uma fita diferente. A gente junta as medidas."
-                }
+                )}
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "Inclusion rules and dates" } else { "Regras de inclusão e datas" } }
-                ul {
-                    li { strong { if en { "Fieldwork date" } else { "Data de campo" } } " — "
-                        if en { "when interviews were conducted and the date used on the chart axis." }
-                        else { "quando as entrevistas foram realizadas e é a data usada no eixo do gráfico." }
-                    }
-                    li { strong { if en { "Publication date" } else { "Data de publicação" } } " — "
-                        if en { "when the source released the poll. It remains visible and does not create a second poll." }
-                        else { "quando uma fonte divulgou o levantamento. Ela permanece visível e não cria uma nova pesquisa." }
-                    }
-                    li { strong { if en { "TSE registration" } else { "Registro TSE" } } " — "
-                        if en { "when identified, it helps recognize the same poll when published by another source." }
-                        else { "quando identificado, ajuda a reconhecer a mesma pesquisa mesmo que outra fonte a publique depois." }
-                    }
-                    li { strong { if en { "National chart" } else { "Gráfico nacional" } } " — "
-                        if en { "only verified presidential voting-intention polls in Brazil. State polls stay in the regional panel." }
-                        else { "somente pesquisas verificadas de intenção de voto presidencial no Brasil. Pesquisas estaduais ficam no painel regional." }
-                    }
-                    li { strong { if en { "Uncertainty band" } else { "Faixa de incerteza" } } " — "
-                        if en { "an estimate around the aggregate. It is not a poll margin of error or a win probability." }
-                        else { "uma estimativa ao redor do agregado. Não é a margem de erro de uma pesquisa e não é probabilidade de vitória." }
-                }
+            h3 { {text(en, "Regras de inclusão e datas", "Inclusion rules and dates")} }
+            ul {
+                li { strong { {text(en, "Data de campo", "Fieldwork date")} } " — " {text(en, "quando as entrevistas foram realizadas e é a data usada no eixo do gráfico.", "when interviews were conducted and the date used on the chart axis.")} }
+                li { strong { {text(en, "Data de publicação", "Publication date")} } " — " {text(en, "quando uma fonte divulgou o levantamento. Ela permanece visível e não cria uma nova pesquisa.", "when the source released the poll. It remains visible and does not create a second poll.")} }
+                li { strong { "TSE" } " — " {text(en, "quando identificado, ajuda a reconhecer a mesma pesquisa mesmo que outra fonte a publique depois.", "when identified, it helps recognize the same poll when published by another source.")} }
+                li { strong { {text(en, "Gráfico nacional", "National chart")} } " — " {text(en, "somente pesquisas presidenciais nacionais verificadas. Pesquisas estaduais ficam no painel regional.", "only verified national presidential polls. State polls stay in the regional panel.")} }
+                li { strong { {text(en, "Faixa de incerteza", "Uncertainty band")} } " — " {text(en, "uma estimativa ao redor do agregado. Não é margem de erro de uma pesquisa nem probabilidade de vitória.", "an estimate around the aggregate. It is not a poll margin of error or a win probability.")} }
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "What the drawing means" } else { "O desenho" } }
-                ul {
-                    li { strong { "●" } " — " if en { "one poll, from one pollster, at that time." } else { "uma pesquisa, daquela casa, naquele período." } }
-                    li { strong { if en { "Solid line" } else { "Linha cheia" } } " — " if en { "the aggregate of the points." } else { "o resumo das bolinhas." } }
-                    li { strong { if en { "Dashed line" } else { "Linha tracejada" } } " — " if en { "a limited model extrapolation, not an election result." } else { "uma extrapolação limitada do modelo, não o resultado da eleição." } }
-                    li { strong { if en { "Overlays" } else { "Linhas extras (overlays)" } } " — " if en { "visual reference lines that do not change card values." } else { "réguas visuais que não mudam os valores dos cartões." } }
-                }
+            h3 { {text(en, "O que o desenho significa", "What the drawing means")} }
+            ul {
+                li { strong { "●" } " — " {text(en, "uma pesquisa individual.", "one individual poll.")} }
+                li { strong { {text(en, "Linha cheia", "Solid line")} } " — " {text(en, "o agregado dos pontos.", "the aggregate of the points.")} }
+                li { strong { {text(en, "Linha tracejada", "Dashed line")} } " — " {text(en, "uma extrapolação limitada do modelo, não um resultado eleitoral.", "a limited model extrapolation, not an election result.")} }
+                li { strong { {text(en, "Overlays", "Overlays")} } " — " {text(en, "linhas visuais que não alteram os valores dos cartões.", "visual lines that do not change card values.")} }
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "Why combine polls" } else { "Por que não olhamos só uma pesquisa" } }
-                ul {
-                    li { if en { "Pollsters can systematically read somewhat high or low." } else { "Um instituto pode medir um pouco alto. Outro pode medir um pouco baixo." } }
-                    li { if en { "Larger samples get more weight, but do not decide alone." } else { "Quem ouviu mais pessoas pesa mais, mas não manda sozinho." } }
-                    li { if en { "Older measurements count less than newer ones." } else { "Medida velha vale menos que medida nova." } }
-                    li { if en { "Repeated polls from the same pollster are down-weighted so repetition alone does not dominate." } else { "Pesquisas repetidas da mesma casa recebem menos peso para que repetir não domine o desenho." } }
-                }
+            h3 { {text(en, "Por que não olhamos só uma pesquisa", "Why combine polls")} }
+            ul {
+                li { {text(en, "Um instituto pode medir um pouco alto; outro, um pouco baixo.", "Pollsters can systematically read somewhat high or low.")} }
+                li { {text(en, "Amostras maiores pesam mais, mas não decidem sozinhas.", "Larger samples get more weight, but do not decide alone.")} }
+                li { {text(en, "Pesquisas mais antigas pesam menos que as novas.", "Older measurements count less than newer ones.")} }
+                li { {text(en, "Repetição da mesma casa recebe redução de peso.", "Repeated polls from the same pollster are down-weighted.")} }
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "Line models" } else { "Os modos da linha" } }
-                p { if en { "The same poll points can be summarized in different ways. One mode is active at a time." } else { "É a mesma turma de bolinhas. Muda só o jeito de fazer a média. Um modo de cada vez." } }
-                div { class: "meto-models",
-                    for (id, title, body) in model_copy(en) {
-                        article {
-                            h4 { "{title}" }
-                            p { "{id}" }
-                            p { "{body}" }
-                        }
+            h3 { {text(en, "Os modos da linha", "Line models")} }
+            p { {text(en, "A mesma turma de bolinhas pode ser resumida de formas diferentes. Um modo fica ativo por vez.", "The same poll points can be summarized in different ways. One mode is active at a time.")} }
+            div { class: "meto-models",
+                for (id, title) in MODEL_OPTIONS.iter().copied() {
+                    article {
+                        h4 { "{id}" }
+                        p { "{title}" }
+                        p { {model_description(id, title, en)} }
                     }
                 }
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "Visual overlays" } else { "Réguas (overlays / indicadores)" } }
-                p { if en { "They are visual guides over the selected trend. Turning them on or off does not change the headline cards." } else { "São réguas visuais sobre a tendência selecionada. Ligar ou desligar não muda os cartões." } }
-                ul {
-                    for (label, body) in overlay_copy(en) {
-                        li { strong { "{label}" } " — {body}" }
-                    }
+            h3 { {text(en, "Réguas visuais", "Visual overlays")} }
+            ul {
+                for (label, description) in overlay_copy(en) {
+                    li { strong { "{label}" } " — " "{description}" }
                 }
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "Chart controls" } else { "Escalas e botões do gráfico" } }
-                ul {
-                    li { strong { "X" } " — " if en { "calendar: left is older, right is newer." } else { "calendário: esquerda é passado, direita é mais nova." } }
-                    li { strong { "Y" } " — " if en { "vote share percentage." } else { "porcentagem de intenção de voto." } }
-                    li { strong { "1d / 3d / 7d / 14d / 21d / 30d / 90d / all" } " — " if en { "how much calendar is shown; it does not delete polls." } else { "quanto calendário aparece; não apaga pesquisas." } }
-                    li { strong { "7d / 14d / 30d / 90d / YTD / custom" } " — " if en { "how far back the selected trend reaches." } else { "até que distância a janela da tendência alcança." } }
-                    li { strong { "Wheel / pinch / drag" } " — " if en { "native SVG navigation." } else { "navegação nativa do SVG." } }
-                }
+            h3 { {text(en, "Controles do gráfico", "Chart controls")} }
+            ul {
+                li { strong { "X" } " — " {text(en, "calendário: esquerda é mais antiga; direita, mais nova.", "calendar: left is older; right is newer.")} }
+                li { strong { "Y" } " — " {text(en, "porcentagem de intenção de voto.", "vote-share percentage.")} }
+                li { strong { "1d / 3d / 7d / 14d / 21d / 30d / 90d / tudo" } " — " {text(en, "quanto calendário aparece sem apagar pesquisas.", "how much calendar is shown without deleting polls.")} }
+                li { strong { "7d / 14d / 30d / 90d / YTD / custom" } " — " {text(en, "até que distância a tendência alcança.", "how far back the trend reaches.")} }
+                li { strong { "Roda / pinça / arrastar" } " — " {text(en, "navegação nativa do SVG.", "native SVG navigation.")} }
             }
 
-            section { class: "meto-sec",
-                h3 { if en { "Page tools" } else { "Ferramentas da página" } }
-                ul {
-                    li { strong { if en { "Candidate cards" } else { "Cartões" } } " — " if en { "current selected-model estimate and 30-day difference." } else { "estimativa do modelo selecionado e diferença contra 30 dias." } }
-                    li { strong { if en { "Pollster filters" } else { "Filtros de instituto" } } " — " if en { "include or exclude a pollster from the main chart and table." } else { "ligar ou desligar uma casa do gráfico e da tabela." } }
-                    li { strong { if en { "Theme" } else { "Tema" } } " — " if en { "visual only; it has no numerical effect." } else { "somente visual; não afeta os números." } }
-                    li { strong { if en { "Refresh" } else { "Atualizar" } } " — " if en { "reloads the published data already served by Pages." } else { "recarrega os dados publicados que já estão no ar." } }
-                    li { strong { if en { "Table" } else { "Tabela" } } " — " if en { "lists raw poll metadata, sample, margin and source." } else { "lista metadados, amostra, margem e fonte da pesquisa." } }
-                }
+            h3 { {text(en, "Ferramentas da página", "Page tools")} }
+            ul {
+                li { strong { {text(en, "Cartões", "Candidate cards")} } " — " {text(en, "estimativa do modelo e diferença contra 30 dias.", "selected-model estimate and 30-day difference.")} }
+                li { strong { {text(en, "Filtros", "Pollster filters")} } " — " {text(en, "incluem ou excluem institutos do gráfico e tabela.", "include or exclude pollsters from chart and table.")} }
+                li { strong { {text(en, "Tema", "Theme")} } " — " {text(en, "somente visual; não afeta os números.", "visual only; it has no numerical effect.")} }
+                li { strong { {text(en, "Atualizar", "Refresh")} } " — " {text(en, "recarrega os dados publicados.", "reloads the published data.")} }
+                li { strong { {text(en, "Tabela", "Table")} } " — " {text(en, "lista metadados, amostra, margem, TSE e fonte.", "lists metadata, sample, margin, TSE and source.")} }
             }
 
             details { class: "meto-more",
-                summary { if en { "Direct formulas" } else { "Contas diretas (para quem quiser o detalhe)" } }
+                summary { {text(en, "Contas diretas (para quem quiser o detalhe)", "Direct formulas")} }
                 ul {
                     li { "Model 1: " code { "weight = √(N/2000) × exp(−days/window)" } }
-                    li { "Model 2: " code { "2^(−days/window), repeated-house down-weighting, house effect correction" } }
-                    li { "Models 3–12 use the shared Rust advanced-model dispatcher and the same production parity fixtures." }
+                    li { "Model 2: " code { "2^(−days/window), repeated-house down-weighting, house-effect correction" } }
+                    li { {text(en, "Models 3–12 use the shared Rust advanced-model dispatcher and parity fixtures.", "Os modelos 3–12 usam o dispatcher avançado Rust compartilhado e fixtures de paridade.")} }
                 }
                 p {
-                    if en { "Long-form documentation: " }
-                    else { "Texto longo: " }
+                    {text(en, "Long-form documentation: ", "Texto longo: ")}
                     a { href: "https://github.com/Gitdisd/pesquisas-eleitorais-br/blob/main/docs/MODELS.md", target: "_blank", rel: "noopener noreferrer", "docs/MODELS.md" }
                 }
             }
 
-            p { class: "meto-foot",
-                if en { "Static, non-partisan site." } else { "Site estático, sem fins partidários." }
-            }
+            p { class: "meto-foot", {text(en, "Site estático, sem fins partidários.", "Static, non-partisan site.")} }
         }
     }
 }
 
-fn model_copy(en: bool) -> Vec<(&'static str, &'static str, &'static str)> {
-    if en {
-        vec![
-            ("0", "off", "Individual points without model extrapolation."),
-            ("1", "standard", "Large and recent polls weigh more using the canonical production rule."),
-            ("2", "house-adjusted", "Adds pollster house-effect adjustment and repeated-house down-weighting."),
-            ("3", "Meta", "Accounts for sampling uncertainty and disagreement between pollsters."),
-            ("4", "Kalman", "Treats latent intent as a state updated by incoming polls."),
-            ("5", "Fast", "Uses a shorter memory and stronger emphasis on recent measurements."),
-        ]
-    } else {
-        vec![
-            ("0", "off", "Bolinha + linha sem extrapolação."),
-            ("1", "padrão", "Pesquisa grande e nova pesa mais pela regra canônica de produção."),
-            ("2", "casa justa", "Inclui ajuste de efeito de casa e redução de repetição do mesmo instituto."),
-            ("3", "Meta", "Considera incerteza amostral e discordância entre institutos."),
-            ("4", "Kalman", "Trata a intenção latente como um estado atualizado por novas pesquisas."),
-            ("5", "Rápido", "Usa memória curta e mais ênfase nas medições recentes."),
-        ]
+fn model_description(id: u8, _title: &str, en: bool) -> &'static str {
+    match id {
+        0 => text(en, "Bolinha + linha sem extrapolação.", "Individual points without extrapolation."),
+        1 => text(en, "Regra canônica: pesquisa grande e nova pesa mais.", "Canonical rule: larger and newer polls weigh more."),
+        2 => text(en, "Inclui efeito de casa e redução de repetição.", "Adds house effect and repeated-house down-weighting."),
+        3 => text(en, "Considera incerteza e discordância entre institutos.", "Accounts for uncertainty and pollster disagreement."),
+        4 => text(en, "Estado latente atualizado por novas pesquisas.", "Latent state updated by incoming polls."),
+        5 => text(en, "Memória curta com ênfase nos pontos recentes.", "Short memory with stronger recent-point emphasis."),
+        6 => text(en, "Atualização diária da tendência.", "Daily trend update."),
+        7 => text(en, "Ajuste local por instituto.", "Pollster-local adjustment."),
+        8 => text(en, "Média aritmética.", "Arithmetic mean."),
+        9 => text(en, "Média ponderada pela raiz da amostra.", "Sample-root weighted mean."),
+        10 => text(en, "Mediana da distribuição.", "Distribution median."),
+        11 => text(en, "Moda em faixas.", "Binned mode."),
+        12 => text(en, "Média aparada.", "Trimmed mean."),
+        _ => "",
     }
 }
 
@@ -152,21 +126,23 @@ fn overlay_copy(en: bool) -> Vec<(&'static str, &'static str)> {
         vec![
             ("SMA 7", "simple 7-point moving average."),
             ("SMA 21", "simple 21-point moving average."),
-            ("EMA 9 / 21", "exponential moving averages that emphasize newer points."),
+            ("EMA 9", "9-point exponential moving average."),
+            ("EMA 21", "21-point exponential moving average."),
             ("HMA 16", "faster weighted moving average."),
-            ("VWMA 14", "volume/sample-size weighted moving average."),
-            ("KAMA 10", "adaptive moving average that reacts to efficiency in the series."),
-            ("Bollinger 20", "a midline with a ±2 standard-deviation visual corridor."),
+            ("VWMA 14", "sample-size weighted moving average."),
+            ("KAMA 10", "adaptive moving average."),
+            ("Bollinger 20", "midline with a ±2 standard-deviation corridor."),
         ]
     } else {
         vec![
             ("SMA 7", "média móvel simples de 7 pontos."),
             ("SMA 21", "média móvel simples de 21 pontos."),
-            ("EMA 9 / 21", "médias exponenciais que dão mais peso aos pontos novos."),
+            ("EMA 9", "média móvel exponencial de 9 pontos."),
+            ("EMA 21", "média móvel exponencial de 21 pontos."),
             ("HMA 16", "média móvel ponderada mais rápida."),
             ("VWMA 14", "média móvel ponderada pelo tamanho da amostra."),
-            ("KAMA 10", "média adaptativa que reage à eficiência da série."),
-            ("Bollinger 20", "linha central com corredor visual de ±2 desvios-padrão."),
+            ("KAMA 10", "média móvel adaptativa."),
+            ("Bollinger 20", "linha central com corredor de ±2 desvios-padrão."),
         ]
     }
 }
