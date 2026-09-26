@@ -49,10 +49,10 @@ jobs:
           cp go-pages/404.html pages-artifact/404.html
           cp go-pages/main.wasm pages-artifact/main.wasm
           cp go-pages/wasm_exec.js pages-artifact/wasm_exec.js
-          cp go-pages/polls.json pages-artifact/data/polls.json
-          cp go-pages/meta.json pages-artifact/data/meta.json
-          cp go-pages/polls-extra.json pages-artifact/data/polls-extra.json
-          cp go-pages/polls-regional.json pages-artifact/data/polls-regional.json
+          cp go-pages/data/polls.json pages-artifact/data/polls.json
+          cp go-pages/data/meta.json pages-artifact/data/meta.json
+          cp go-pages/data/polls-extra.json pages-artifact/data/polls-extra.json
+          cp go-pages/data/polls-regional.json pages-artifact/data/polls-regional.json
           test -f pages-artifact/index.html
           test -f pages-artifact/404.html
           test -f pages-artifact/main.wasm
