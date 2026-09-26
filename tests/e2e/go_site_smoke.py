@@ -25,6 +25,9 @@ def smoke(page, mobile=False):
     page.wait_for_selector("h1")
     assert "Pesquisas eleitorais" in page.locator("h1").inner_text()
     assert page.locator("#chart").count() == 1
+    assert page.locator("#chart circle[data-poll-id]").count() >= 20
+    assert page.locator("#allSourcesPanel").count() == 1
+    assert page.locator("#regionalChart").count() == 1
     assert page.locator("svg").count() >= 1
     assert page.locator("table").count() >= 1
     assert page.locator("#round").count() == 1
@@ -34,6 +37,10 @@ def smoke(page, mobile=False):
     assert page.locator("#model").count() == 1
     assert page.locator("#projection").count() == 1
     assert page.locator("#tableQuery").count() == 1
+
+    page.mouse.wheel(0, -600)
+    page.wait_for_timeout(100)
+    assert page.locator("#chart").count() == 1
 
     page.select_option("#round", "2")
     page.select_option("#candidate", "Lula")
