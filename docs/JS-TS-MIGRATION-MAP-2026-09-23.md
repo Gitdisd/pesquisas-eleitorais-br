@@ -1,4 +1,4 @@
-## 2026-09-25 — Browser JS/TS migration completed
+## 2026-09-25 — Browser JS/TS migration implementation — validation pending
 
 | Legacy browser responsibility | Final Rust/Dioxus location | Status |
 |---|---|---|
@@ -13,7 +13,7 @@
 
 - Vite entrypoint/config, browser UI JS/CSS modules, and ECharts have been removed.
 - Node/TypeScript statistical/reference modules remain only where they are still inputs to offline parity/research checks; they are not browser entrypoints.
-- This document is now a completion record rather than deletion authorization.
+- This document records the intended final boundary; it is not deletion/cutover authorization until compilation, browser smoke, numerical parity, artifact, and deployed verification all pass.
 
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — First substantial UI feature slice moved to Rust/Dioxus
 
