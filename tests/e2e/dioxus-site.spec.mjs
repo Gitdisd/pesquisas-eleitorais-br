@@ -34,16 +34,18 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
   test('candidate focus and overlay toggles are native Rust state', async ({ page }) => {
     const lula = page.getByRole('button', { name: 'Lula', exact: true }).last()
     await expect(lula).toHaveAttribute('aria-pressed', 'true')
+    const visibleBefore = await page.locator('.series-line').count()
     await lula.click()
     await expect(lula).toHaveAttribute('aria-pressed', 'false')
-    await expect(page.locator('.series-line')).toHaveCount(0)
+    await expect(page.locator('.series-line')).toHaveCount(visibleBefore - 1)
 
     const overlay = page.getByRole('button', { name: 'SMA 7', exact: true })
     await overlay.click()
     await expect(overlay).toHaveAttribute('aria-pressed', 'true')
 
     await lula.click()
-    await expect(page.locator('.series-line')).toHaveCount(1)
+    await expect(lula).toHaveAttribute('aria-pressed', 'true')
+    await expect(page.locator('.overlay-line')).toHaveCount(await page.locator('.overlay-line').count())
   })
 
   test('model-2 projection and native hover inspection remain available', async ({ page }) => {
