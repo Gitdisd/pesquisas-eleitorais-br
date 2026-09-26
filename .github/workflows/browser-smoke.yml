@@ -5,7 +5,6 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - "src/**"
       - "public/**"
       - "package.json"
       - "package-lock.json"
@@ -17,7 +16,6 @@ on:
     paths:
       - "src/**"
       - "public/**"
-      - "index.html"
       - "package.json"
       - "package-lock.json"
       - "tests/e2e/**"
@@ -79,21 +77,6 @@ jobs:
           cp -a ../../public/data/. ../../.dioxus-smoke-server/pesquisas-eleitorais-br/data/
           cp ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html ../../.dioxus-smoke-server/pesquisas-eleitorais-br/404.html
           test -f ../../.dioxus-smoke-server/pesquisas-eleitorais-br/index.html
-      - name: Report Dioxus compiler diagnostics
-        if: failure() && hashFiles('rust/web-ui/dioxus-build.log') != ''
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs')
-            const log = fs.readFileSync('rust/web-ui/dioxus-build.log', 'utf8')
-            const body = 'Temporary Dioxus compiler diagnostics for PR #45, commit ' + context.sha + '\n\n' + log.slice(-16000)
-            await github.rest.repos.createCommitComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              commit_sha: context.sha,
-              body,
-            })
-
       - name: Install Chromium
         run: npx --yes playwright@1.63.0 install --with-deps chromium
       - name: Install Playwright test runner
@@ -101,4 +84,3 @@ jobs:
       - name: Run Dioxus browser smoke
         run: npx playwright test --config=tests/e2e/dioxus-playwright.config.mjs
 
-# Trigger current browser regression revision
