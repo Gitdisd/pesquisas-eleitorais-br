@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-26T13:00:50.341Z",
+  "ran_at": "2026-09-26T17:06:18.506Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 417,
+  "candidate_links": 418,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 55,
+  "inbox_new": 56,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T13:00:37.305Z"
+      "found_at": "2026-09-26T17:06:04.479Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T13:00:37.565Z"
+      "found_at": "2026-09-26T17:06:04.729Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T13:00:37.858Z"
+      "found_at": "2026-09-26T17:06:04.884Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/25/datafolha-presidente-estados-25-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T13:00:38.020Z"
+      "found_at": "2026-09-26T17:06:05.038Z"
     },
     {
       "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/09/25/quaest-rn-presidente-25-setembro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-26T13:00:38.183Z"
+      "found_at": "2026-09-26T17:06:05.192Z"
     }
   ],
-  "meta_last_check_at": "2026-09-26T13:00:50.343Z"
+  "meta_last_check_at": "2026-09-26T17:06:18.508Z"
 }
