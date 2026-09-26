@@ -13,19 +13,19 @@ import (
 )
 
 type Poll struct {
-	Institute       string     `json:"institute"`
-	FieldworkStart  string     `json:"fieldwork_start"`
-	FieldworkEnd    string     `json:"fieldwork_end"`
-	PublishedDate   string     `json:"published_date"`
-	Scenario        string     `json:"scenario"`
+	Institute       string      `json:"institute"`
+	FieldworkStart  string      `json:"fieldwork_start"`
+	FieldworkEnd    string      `json:"fieldwork_end"`
+	PublishedDate   string      `json:"published_date"`
+	Scenario        string      `json:"scenario"`
 	Candidates      []Candidate `json:"candidates"`
-	N               int        `json:"n"`
+	N               int         `json:"n"`
 	MarginOfError   string      `json:"margin_of_error"`
-	SourceURL       string     `json:"source_url"`
-	MethodologyNote string     `json:"methodology_note"`
-	Verified        bool       `json:"verified"`
-	TSERegistration string     `json:"tse_registration"`
-	Geo             string     `json:"geo"`
+	SourceURL       string      `json:"source_url"`
+	MethodologyNote string      `json:"methodology_note"`
+	Verified        bool        `json:"verified"`
+	TSERegistration string      `json:"tse_registration"`
+	Geo             string      `json:"geo"`
 }
 
 type Candidate struct {
