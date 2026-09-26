@@ -1,6 +1,9 @@
 use dioxus::prelude::*;
 use gloo_timers::callback::Interval;
-use polling_core::{uncertainty_band, PollObservation, ProjectionV2Result};
+use polling_core::{
+    project_trend, uncertainty_band, PollObservation, ProjectionV2Result,
+    ELECTION_ROUND1_MS, ELECTION_ROUND2_MS,
+};
 use std::collections::BTreeSet;
 
 use crate::chart::{
@@ -8,9 +11,11 @@ use crate::chart::{
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
+use crate::methodology::Methodology;
+use crate::overlays::{compute_overlay, OVERLAYS};
 use crate::ui::{
     apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
-    persist_language, persist_theme, scroll_to_id, t, Language, Theme, UiState,
+    persist_language, persist_overlays, persist_theme, reload_page, scroll_to_id, t, Language, Theme, UiState,
 };
 
 const STYLE: &str = include_str!("../assets/style.css");
@@ -64,7 +69,7 @@ pub fn App() -> Element {
         }
     });
 
-    let refresh_tick = use_signal(|| 0_u64);
+    let mut refresh_tick = use_signal(|| 0_u64);
     let _refresh_interval = use_hook(|| {
         let mut tick = refresh_tick;
         std::rc::Rc::new(Interval::new(60_000, move || {
@@ -157,6 +162,18 @@ pub fn App() -> Element {
                                     "aria-label": if ui_state.language == Language::En { "Follow @Monkeeuphoria on X" } else { "Seguir @Monkeeuphoria no X" },
                                     img { class: "x-pfp", src: "https://unavatar.io/x/Monkeeuphoria", alt: "" }
                                     span { "@Monkeeuphoria · {t(ui_state.language, "follow")}" }
+                                }
+                                button {
+                                    class: "ui-btn refresh-btn",
+                                    onclick: move |_| {
+                                        refresh_tick += 1;
+                                        ui.write().status = Some(if ui_state.language == Language::En {
+                                            "Refreshing published data…".to_string()
+                                        } else {
+                                            "Atualizando dados publicados…".to_string()
+                                        });
+                                    },
+                                    if ui_state.language == Language::En { "↻ Refresh" } else { "↻ Atualizar" }
                                 }
                             }
                         }
@@ -404,6 +421,56 @@ pub fn App() -> Element {
                                     }
                                 }
 
+                                div { class: "candidate-focus",
+                                    span { class: "candidate-focus-label", "Linhas do gráfico" }
+                                    {
+                                        let focus_candidates: Vec<Candidate> = if state.round == 2 {
+                                            vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
+                                        } else {
+                                            Candidate::all().to_vec()
+                                        };
+                                        rsx! {
+                                            for candidate in focus_candidates {
+                                                let hidden = ui_state.hidden_candidates.iter().any(|key| key == candidate.key());
+                                                button {
+                                                    class: if hidden { "candidate-focus-btn" } else { "candidate-focus-btn on" },
+                                                    "aria-pressed": "{!hidden}",
+                                                    onclick: move |_| {
+                                                        let mut next = ui.write();
+                                                        if next.hidden_candidates.iter().any(|key| key == candidate.key()) {
+                                                            next.hidden_candidates.retain(|key| key != candidate.key());
+                                                        } else {
+                                                            next.hidden_candidates.push(candidate.key().to_string());
+                                                        }
+                                                    },
+                                                    "{candidate.label()}"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                div { class: "overlay-row",
+                                    span { class: "ctrl", "Overlays" }
+                                    for overlay in OVERLAYS.iter().copied() {
+                                        let enabled = ui_state.overlays.iter().any(|key| key == overlay.id);
+                                        button {
+                                            class: if enabled { "chip on" } else { "chip" },
+                                            "aria-pressed": "{enabled}",
+                                            onclick: move |_| {
+                                                let mut next = ui.write();
+                                                if next.overlays.iter().any(|key| key == overlay.id) {
+                                                    next.overlays.retain(|key| key != overlay.id);
+                                                } else {
+                                                    next.overlays.push(overlay.id.to_string());
+                                                }
+                                                persist_overlays(&next.overlays);
+                                            },
+                                            "{overlay.label}"
+                                        }
+                                    }
+                                }
+
                                 div { class: "filter-drawer",
                                     div { class: "filter-header",
                                         strong { "{t(ui_state.language, "filters")}" }
@@ -440,13 +507,17 @@ pub fn App() -> Element {
                                     }
                                 }
 
-                                div { class: "chart-box", {chart_svg(
-                                    &filtered,
-                                    &trend,
-                                    projection.as_ref(),
-                                    state.hover_day,
+                                div { class: "chart-box", {multi_chart_svg(
+                                    all,
+                                    state.round,
+                                    &selected_geo,
+                                    state.range_days,
+                                    &ui_state.institutes,
+                                    state.model,
                                     state.avg_window_days as f64,
-                                    ui_state.language,
+                                    &ui_state.hidden_candidates,
+                                    &ui_state.overlays,
+                                    state.hover_day,
                                     view,
                                 )} }
 
@@ -698,6 +769,7 @@ pub fn App() -> Element {
                                 }
                             }
 
+                            Methodology { language: ui_state.language }
                             footer {
                                 p { "{t(ui_state.language, "static-footer")}" }
                             }
