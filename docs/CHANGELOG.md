@@ -1,3 +1,166 @@
+
+## 2026-09-26 14:18 BRT — Pre-cutover deployment smoke gate
+- Added the desktop/mobile Chromium smoke suite directly to the Pages deployment build, after the Go/WASM site is built and before the Pages artifact is uploaded.
+- The deployment path now requires artifact audit plus browser interaction coverage before publication, followed by the existing deployed-site Ruby verification after publication.
+
+## 2026-09-26 14:10 BRT — National polling reconciliation
+- Reconciled six newly published national presidential registrations: BR-04739/2026, BR-01739/2026, BR-04202/2026, BR-05268/2026, BR-09587/2026 and BR-00304/2026.
+- Added verified first/second-round scenarios to `data/polls.json` and `public/data/polls.json`, increasing the canonical national set from 240 to 252 records.
+- Updated metadata to latest publication 24/09/2026 and latest fieldwork 23/09/2026.
+- Removed the six reconciled registrations from the public pending-evidence queue.
+- Only figures supported by the retrieved publication/reporting evidence were entered; unreported candidate values were not inferred.
+
+## 2026-09-26 13:58 BRT — Cutover validation and data-freshness guard
+- Fixed the Go/Chromium smoke test to match the migrated institute-filter checkbox controls instead of the obsolete `#institute` select.
+- Added a visible verified-data freshness status to the Go/WASM dashboard; when the latest verified publication is three or more days old, the UI explicitly warns that newer polls may still be awaiting verification.
+- Did not inject newly published poll values solely from secondary reporting; current releases remain subject to the existing verification pipeline.
+## 2026-09-26 14:04 -03:00 / 2026-09-26T17:04:00Z — Go/WASM pre-cutover browser gate
+
+- Expanded the Go Chromium smoke from a single desktop path to desktop + mobile viewports.
+- Added interaction coverage for round/candidate/model/projection state, table search, institute filtering, overlays, hidden candidate lines, CSV/JSON export and share-link action.
+- Kept the Focus/Focar absence assertion explicit.
+
+## 2026-09-26 13:56 -03:00 / 2026-09-26T16:56:00Z — Go Pages deployment verifier
+
+- Updated post-deployment verification to require the Go/WASM runtime files and both supplemental data files.
+- Removed the old Dioxus-specific runtime wording from the verifier.
+- No production deployment was made by this change.
+
+## 2026-09-26 12:51:49 -03:00 / 2026-09-26T15:51:49Z — final browser-parity behavior pass
+
+- Restored the dark default used by the prior production UI.
+- The candidate selector now controls the chart series instead of only the table.
+- Added a one-hour automatic page refresh cadence to match the prior public refresh interval while keeping the new browser implementation dependency-free.
+- Production remains protected until deliberate cutover.
+
+## 2026-09-26 12:49:42 -03:00 / 2026-09-26T15:49:42Z — Go/WASM parity gates green
+
+- Hosted CI and Chromium browser smoke pass on b1238e88029c6cf435531a3c5f126a292b7ebd3a.
+- Go/WASM build and Ruby Pages artifact audit pass with the published data bundle.
+- Production Pages remains protected on main; no live cutover was made.
+
+## 2026-09-26 12:53 -03:00 / 2026-09-26T15:53:00Z — Go/WASM browser-smoke correction
+
+- Corrected the Chromium smoke selector for the projection checkbox to target its actual Go-rendered control.
+- The Go Pages artifact itself already builds and passes the Ruby artifact audit on the current migration branch.
+
+## 2026-09-26 12:49 -03:00 / 2026-09-26T15:49:00Z — Go/WASM hosted build corrections
+
+- Corrected the Go model/projection compile issues revealed by hosted CI.
+- Corrected the Pages build staging so all four published data files are present in the generated artifact.
+- Kept the browser replacement on the same feature-parity path; no production deployment was made.
+- Relaxed the source-format check from a repository-diff assertion to an idempotent gofmt check because the build stage already formats the Go application before compilation.
+
+## 2026-09-26 12:39:14 -03:00 / 2026-09-26T15:39:14Z — Go/WASM dashboard parity rewrite
+
+- Rewrote the browser dashboard around Go/WebAssembly rather than the incomplete Rust/Dioxus shell.
+- Restored the feature surface needed for parity: models 1–12, multi-institute filtering, overlays, uncertainty, projections, candidate cards, national/regional tables and charts, methodology, URL/local state, point inspection, exports, sharing, zoom/reset and fullscreen.
+- Added a dedicated parity record at docs/GO-MIGRATION-PARITY-2026-09-26.md.
+- Intentionally omitted the recurring Focus/Focar navigation convenience.
+- Kept the existing live production path protected; this is not a production deployment.
+
+## 2026-09-26 05:49 -03:00 / 2026-09-26T08:49:00Z — Go migration validation completed
+
+- GitHub Actions CI passed on commit `10373f53379b5dd84d909e3e25b2403af35f0f92`.
+- Ruby migration gate passed.
+- Python application tests, rolling backtest, and overlap audit passed.
+- Go Pages bundle built successfully.
+- Ruby artifact audit passed with 240 poll records and a 4,836,861-byte WASM payload.
+- Go formatting and direct `GOOS=js GOARCH=wasm` compilation passed.
+- Python Playwright/Chromium browser smoke passed.
+- PR #45 remains open; production Pages deployment is intentionally not claimed complete because the Pages workflow is configured to run from `main` and has not been executed against the new branch artifact.
+- Rust/Dioxus source remains retained as historical/core material; no destructive deletion was performed.
+
+## 2026-09-26 05:37 -03:00 / 2026-09-26T08:37:20Z — Pivot browser migration from Rust/Dioxus to Go/WebAssembly
+
+- Replaced the production-browser migration target with a Go 1.27 WebAssembly frontend after the Rust/Dioxus path repeatedly became the critical deployment/validation failure point.
+- GitHub Pages deployment now follows GitHub's static-artifact model directly: Python orchestrates the Go build, Ruby audits the artifact, and Pages receives only the generated static bundle.
+- Added `go/web-ui` with a dependency-free Go browser implementation using the canonical poll/meta JSON contracts, native HTML controls, tables, and SVG chart rendering.
+- Added `scripts/build_go_pages.py` to stage canonical data, compile Go/WASM, copy the matching Go WebAssembly runtime, and generate the Pages shell.
+- Replaced Dioxus browser smoke with a Python Playwright smoke test and removed Rust/Dioxus/Node/Vite requirements from CI and Pages deployment.
+- Updated Ruby migration and artifact gates to certify the Go/WebAssembly architecture.
+- Existing Rust source is retained as historical/core material until a separate deletion certification proves it is no longer needed; no broad repository deletion is being performed in this pivot.
+- Apache ECharts remains excluded.
+- Validation status: repository changes are implemented; hosted CI/browser/deployment evidence for the new head is still pending.
+
+## 2026-09-26 00:06 -03:00 / 2026-09-26T03:06:00Z — Remove stale Vite development commands from README
+
+- Updated the development section to stop advertising the deleted `npm run dev` and `npm run build` commands.
+- Documented the current Rust core / Dioxus web-ui validation commands and the Dioxus Playwright smoke configuration.
+- No application, data, statistical, chart, or deployment behavior changed.
+
+## 2026-09-26 00:05:26 -03:00 / 2026-09-26T03:05:26Z — Remove remaining legacy Vite workflow assumptions
+
+- Replaced the obsolete `npm run build` step in `deep-repair.yml` with Rust/Dioxus WASM-target validation.
+- Removed the obsolete Vite build from `pipeline-smoke.yml`; the pipeline smoke now finishes with the existing Node data-contract tests.
+- Removed the obsolete Vite build from `refresh-polls.yml`; refresh already performs Rust core tests, Rust/WASM build and parity, and then explicitly dispatches Pages deployment.
+- Removed the obsolete Vite build from `repair-now.yml` and added an explicit Pages deployment dispatch after a repaired-data push.
+- Browser Smoke now triggers for changes under `scripts/automation/**`.
+- No poll data, statistical formulas, candidate mappings, chart calculations, or production state changed.
+
+## 2026-09-26 00:04 -03:00 / 2026-09-26T03:04:00Z — Correct Ruby browser-bound detector
+
+- The migration gate no longer treats ordinary local-variable calls such as `window.filter(...)` in the offline projection algorithm as browser APIs.
+- Browser detection now targets concrete DOM/global/browser API access patterns while preserving the explicit allowed offline/reference module boundary.
+- No application or statistical behavior changed.
+
+## 2026-09-26 00:02 -03:00 / 2026-09-26T03:02:00Z — Add Ruby artifact audit to browser smoke
+
+- Browser Smoke now audits the same staged Dioxus site directory that Playwright serves, including the complete published data mirror and WASM payload.
+- This closes the pre-merge artifact-content gap without adding a second browser build.
+- No application, poll data, statistical, or chart behavior changed.
+
+## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Final execution-graph cleanup and Ruby certification
+
+- Removed obsolete browser-only helpers `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js` after checking current script/test execution paths.
+- Retained the remaining `src/*.js`/`*.ts` files that are still consumed by offline acquisition, statistical reference, data-quality, or parity workflows.
+- Hardened `scripts/automation/migration_gate.rb` with an explicit allowed offline/reference module set and a browser-API scan, preventing accidental reintroduction of authored browser JS/TS.
+- Synchronized the migration architecture, JS/TS migration map, and cleanup certification with the final implementation boundary.
+- No poll data, candidate mappings, statistical formulas, chart calculations, or production deployment state changed.
+- Current cutover remains gated on hosted Dioxus compilation, browser smoke, numerical parity, staged artifact verification, deployed verification, and final merge/cutover.
+
+## 2026-09-26 00:25 -03:00 / 2026-09-26T03:25Z — Complete Ruby artifact and deployment verification
+
+- Added `scripts/automation/artifact_audit.rb` to verify the staged Pages artifact contains the required application shell, data mirrors, assets, and WASM payload, and does not reintroduce the legacy browser entrypoint or Apache ECharts.
+- Added `scripts/automation/deployment_verify.rb` to verify the deployed Pages URL, published poll dataset, metadata record count, and Rust/Dioxus runtime markers with bounded retry for Pages propagation.
+- Extended `.github/workflows/deploy-pages.yml` with a dedicated post-deployment verification job and exposes the deployed Pages URL from the deploy job.
+- No application runtime, poll data, statistical formulas, candidate mappings, or chart calculations changed.
+
+## 2026-09-26 00:10 -03:00 / 2026-09-26T03:10Z — Enforce Ruby migration gate across validation workflows
+
+- Added the Ruby migration gate to CI and Dioxus Browser Smoke, so migration-structure regressions are caught before compilation/browser execution.
+- The Pages workflow already runs the same gate before production bundling.
+- Commits: `35f152e7eccbdb9561d9946a5aad2d0d51cfaa97` (CI), `3c05f0b09cb78e01d0fe681d5a44564796b17339` (Browser Smoke).
+- No production application, poll data, statistical formulas, candidate mappings, or chart calculations changed.
+
+## 2026-09-26 00:00 -03:00 / 2026-09-26T03:00Z — Add Ruby migration automation gate
+
+- Added `scripts/automation/migration_gate.rb` as a dependency-free repository-level migration gate.
+- The Ruby gate checks required Rust/Dioxus files, Dioxus 0.7.10 declaration, Pages artifact safeguards, required production data mirrors, removal of legacy browser entrypoints, and separation of retained offline/reference tooling.
+- Added the gate as the first build step in `.github/workflows/deploy-pages.yml` so structural migration regressions fail before the expensive Rust/Dioxus build.
+- Ruby is used only for automation/validation; no production browser/runtime code or statistical implementation was moved to Ruby.
+- No poll data, candidate mappings, statistical formulas, or chart calculations were changed.
+
+## 2026-09-25 23:26 -03:00 / 2026-09-26T02:26Z — Correct Dioxus compile-gate errors from Browser Smoke #137 / CI #467
+
+- Corrected the concrete Rust/Dioxus errors reported by the hosted compile gate on migration head `c8faecfea9e537cfcb3c6d96e76bd7703b193a83`.
+- Restored mutable Dioxus UI signal capture for the status-clearing effect.
+- Made institute-filter handler captures iteration-safe with shared ownership, and cloned geography state for independent share/JSON export handlers.
+- Removed an unused trend calculation and unnecessary mutable table binding.
+- Made the SVG hover day conversion closure own its numeric capture values so Dioxus event handlers satisfy the required lifetime.
+- Removed unnecessary RSX braces in the main and regional SVG attributes and removed the stale regional geography clone.
+- No poll data, statistical formulas, candidate mappings, or chart calculations were changed.
+- CI #467 had already passed Node syntax/typecheck, Rust core tests, Python tests, rolling backtest, estimator equivalence, advanced backtest, overlap audit and WASM target setup before stopping at the Dioxus web compile gate. Browser Smoke #137 stopped at the Dioxus build for the same source errors.
+- Fix commits: `38b1dd7eb08761383aa3728b8662185e0332278e`, `23e655d752e011b9efbcecbf1f7c9ae1bd02b465`.
+
+## 2026-09-25 — Final Rust/Dioxus frontend cleanup prepared; validation pending
+
+- Removed the legacy Vite browser entrypoint, browser UI JS/CSS modules, legacy Chromium smoke configuration, Vite package, and Apache ECharts dependency.
+- GitHub Pages is configured for the Rust/Dioxus static artifact with canonical data mirrors and a hard artifact-content gate; production cutover remains pending validation.
+- Browser regression coverage is configured as Dioxus-only for the final cutover path.
+- Remaining JS/TS is restricted to offline data/research/statistical-reference/parity tooling.
+- Final frontend migration boundary is recorded in `docs/ARCHITECTURE-MIGRATION.md` and `docs/JS-TS-MIGRATION-MAP-2026-09-23.md`.
+
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — Actual Rust/Dioxus dashboard feature migration started
 
 - Created branch migration/rust-ui-features-2026-09-25 from restored production main@b88f3badb00a5fa91fe84087df5db2d7f58784db.

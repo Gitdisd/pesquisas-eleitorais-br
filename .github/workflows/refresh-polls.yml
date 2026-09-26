@@ -105,7 +105,6 @@ jobs:
           npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
           npm run build:rust
           npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
-          npm run build
       - name: Commit if changed
         shell: bash
         run: |

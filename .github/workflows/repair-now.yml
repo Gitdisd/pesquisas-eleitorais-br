@@ -73,9 +73,6 @@ jobs:
       - name: Validate data gate
         run: node scripts/quality-gate.mjs
 
-      - name: Build site
-        run: npm run build
-
       - name: Publish repaired data
         run: |
           set -e
@@ -88,3 +85,6 @@ jobs:
           fi
           git commit -m "chore(data): repair poll dataset and pipeline"
           git push
+          echo "Repair commit pushed; dispatching the Pages deployment explicitly."
+          GH_TOKEN="${{ github.token }}" gh workflow run deploy-pages.yml --ref main --repo "${{ github.repository }}"
+          echo "Pages deployment workflow dispatched."

@@ -1,3 +1,16 @@
+## 2026-09-26 / Go + WebAssembly browser rewrite
+
+- The browser migration is being rebuilt in Go 1.27 WebAssembly with native HTML/SVG, Python orchestration and Ruby validation.
+- No Apache ECharts, Vite, or authored application JavaScript/TypeScript is used in the new browser path.
+- The Go implementation is being brought to feature parity before production Pages cutover; the existing production site remains protected during this work.
+- The recurring Focus/Focar navigation convenience is intentionally omitted from the rewritten browser UI.
+
+
+- The Rust/Dioxus frontend cutover implementation is prepared on this migration branch, using Rust + Dioxus 0.7.10 with a custom SVG chart.
+- Apache ECharts is no longer a frontend dependency.
+- The remaining JavaScript/TypeScript is limited to offline data/research/reference tooling and parity scripts; it is not shipped as the browser application.
+- GitHub Pages cutover remains gated on successful Dioxus build, browser smoke, artifact-content verification, and deployed parity checks.
+
 # Pesquisas Eleitorais BR 2026
 
 Agregador estático de pesquisas **nacionais** para presidente.
@@ -28,19 +41,21 @@ Toda mudança de comportamento leva uma linha no changelog **no mesmo commit**.
 
 ```
 npm install
-npm run dev
-npm run build
 npm run discover-polls
 npm run update-polls
 npm run poll-pipeline
 npm test
 
-# Rust/Dioxus web-ui migration slice
+# Rust core / Dioxus web-ui
+cargo test --manifest-path rust/polling-core/Cargo.toml
 cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
 ```
 
-- Front atual (fase intermediária): Vite + JavaScript/TypeScript + ECharts
+The legacy Vite `npm run dev` / `npm run build` commands are intentionally gone from the final browser architecture. Local browser smoke uses the Dioxus bundle and the Playwright configuration under `tests/e2e/`.
+
+- Production main remains on the restored legacy frontend until the final Rust/Dioxus validation gates pass.
 - Front de destino: Rust + Dioxus 0.7.10 + SVG customizado, em `rust/web-ui/`
+- Automação de migração: `scripts/automation/migration_gate.rb` (Ruby stdlib only); valida a estrutura do repositório e os guardrails de publicação antes dos builds.
 - Refresh: `.github/workflows/refresh-polls.yml` a cada hora no minuto 10 (`10 * * * *`) + **Run workflow**
 - Deploy: `.github/workflows/deploy-pages.yml`; o refresh dispara esse workflow explicitamente depois de publicar um commit de dados
 - Discover lê `data/sources.json`, busca sinais/páginas e **estagia** descobertas verificadas em `data/discovery/discovered-polls.json`; não grava diretamente em `data/polls.json`

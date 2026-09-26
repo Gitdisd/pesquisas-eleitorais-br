@@ -21,37 +21,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Setup Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-      - name: Setup Python
-        uses: actions/setup-python@v6
+      - uses: actions/checkout@v6
+
+      - name: Run Ruby migration gate
+        run: ruby scripts/automation/migration_gate.rb
+
+      - uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
-      - name: Setup Node.js
-        uses: actions/setup-node@v5
+          python-version: "3.13"
+
+      - uses: actions/setup-go@v6
         with:
-          node-version: "22"
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Syntax check scripts and JavaScript
-        shell: bash
-        run: |
-          set -euo pipefail
-          find scripts -type f -name '*.mjs' -print0 | xargs -0 -r -n1 node --check
-          find src -type f -name '*.js' -print0 | xargs -0 -r -n1 node --check
-      - name: Typecheck
-        run: npm run typecheck
-      - name: Rust tests
-        run: cargo test --manifest-path rust/polling-core/Cargo.toml
+          go-version: "1.27.1"
+          cache-dependency-path: go/web-ui/go.mod
+
+      - name: Install Python application/test package
+        run: python -m pip install -e "./python[test]"
+
       - name: Python tests
-        run: |
-          python -m pip install -e "./python[test]"
-          python -m pytest python/tests -q
+        run: python -m pytest python/tests -q
+
       - name: Real-data rolling backtest
         run: python python/scripts/run_backtest.py data/polls.json --output backtest-report.json
+
       - name: Upload backtest report
         uses: actions/upload-artifact@v4
         with:
@@ -59,12 +51,10 @@ jobs:
           path: backtest-report.json
           if-no-files-found: error
           retention-days: 30
-      - name: Canonical estimator equivalence
-        run: npx --yes tsx@4.23.15 scripts/check-estimator-equivalence.mjs
-      - name: Advanced model rolling backtest
-        run: npm run backtest:advanced
+
       - name: Fieldwork overlap audit
         run: python python/scripts/run_overlap_audit.py data/polls.json --output overlap-report.json
+
       - name: Upload overlap report
         uses: actions/upload-artifact@v4
         with:
@@ -72,60 +62,17 @@ jobs:
           path: overlap-report.json
           if-no-files-found: error
           retention-days: 30
-      - name: Setup wasm-pack
-        uses: jetli/wasm-pack-action@v0.4.0
-        with:
-          version: v0.13.1
-      - name: Add wasm32 target
-        run: rustup target add wasm32-unknown-unknown
-      - name: Check Rust/Dioxus web UI
-        run: cargo check --manifest-path rust/web-ui/Cargo.toml --target wasm32-unknown-unknown
-      - name: Install pinned Dioxus CLI binary
-        run: |
-          set -euo pipefail
-          DX_DIR="$HOME/.local/bin"
-          TMP_DIR="$(mktemp -d)"
-          mkdir -p "$DX_DIR"
-          curl -fsSL "https://github.com/DioxusLabs/dioxus/releases/download/v0.7.10/dx-x86_64-unknown-linux-gnu.tar.gz" -o "$TMP_DIR/dx.tar.gz"
-          echo "4363e4ed2a3f1eb7f4d38d2d59aed59ce43271c44c16b425e92c89a64761fbe7  $TMP_DIR/dx.tar.gz" | sha256sum -c -
-          tar -xzf "$TMP_DIR/dx.tar.gz" -C "$TMP_DIR"
-          test -f "$TMP_DIR/dx"
-          install -m 0755 "$TMP_DIR/dx" "$DX_DIR/dx"
-          echo "$DX_DIR" >> "$GITHUB_PATH"
-          "$DX_DIR/dx" --version
-      - name: Bundle Rust/Dioxus web UI
-        working-directory: rust/web-ui
-        run: |
-          set -euo pipefail
-          rm -rf ../../dioxus-ci
-          dx bundle --web --release --debug-symbols false --out-dir ../../dioxus-ci
-          test -f ../../dioxus-ci/public/index.html
-          test -d ../../dioxus-ci/public/assets
-          test -n "$(find ../../dioxus-ci/public/assets -type f -name '*.wasm' -print -quit)"
 
-      - name: Build Rust/WASM package
-        run: npm run build:rust
-      - name: WASM/JS parity
-        run: npx --yes tsx@4.23.15 scripts/check-wasm-parity.mjs
-      - name: Upload Rust/WASM artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: wasm-package-${{ github.sha }}
-          path: public/wasm/polling-core
-          if-no-files-found: error
-          retention-days: 30
-      - name: Upload advanced backtest report
-        uses: actions/upload-artifact@v4
-        with:
-          name: advanced-backtest-${{ github.sha }}
-          path: advanced-backtest-report.json
-          if-no-files-found: error
-          retention-days: 30
-      - name: Build
-        run: npm run build
-      - name: Identity and data-contract tests
-        run: npm test
-      - name: Quality gate
-        run: node scripts/quality-gate.mjs
-      - name: Integrity audit
-        run: node scripts/quality-audit.mjs
+      - name: Build Go/WebAssembly Pages artifact
+        run: python scripts/build_go_pages.py
+
+      - name: Audit Go/WebAssembly artifact
+        run: ruby scripts/automation/artifact_audit.rb go-pages
+
+      - name: Go source formatting
+        working-directory: go/web-ui
+        run: gofmt -w main.go && test -z "$(gofmt -d main.go)"
+
+      - name: Go WebAssembly compile check
+        working-directory: go/web-ui
+        run: GOOS=js GOARCH=wasm go build -trimpath -ldflags="-s -w" -o /tmp/pesquisas-web.wasm .

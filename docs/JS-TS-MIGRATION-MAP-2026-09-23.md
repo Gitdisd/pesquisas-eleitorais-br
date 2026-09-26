@@ -1,3 +1,27 @@
+## 2026-09-26 00:00:37 -03:00 / 2026-09-26T03:00:37Z — Current execution-graph certification status
+
+- Removed obsolete browser helpers: `src/data/api.ts`, `src/stats/wasm-estimator.js`, and `src/ui-upgrades.js`.
+- Verified their former browser callers were removed with the final Rust/Dioxus cutover surface; the Ruby migration gate now fails on unexpected `src/*.js`/`*.ts` modules or browser-bound APIs.
+- Retained `src/aggregate.js`, `src/aggregate.ts`, `src/candidates.js`, `src/data/identity.js`, `src/data/normalize.ts`, `src/data/types.ts`, `src/models/advanced.ts`, `src/models/school.ts`, `src/projection.js`, `src/projection-v2.js`, `src/stats/contract.js`, `src/stats/estimator.js`, and `src/stats/house-effects.js` because current offline acquisition/reference/parity workflows still consume them.
+- Remaining deletion/cutover gates are hosted Dioxus compilation, desktop/mobile browser smoke, current-head numerical parity, staged Pages artifact verification, deployed verification, and final merge/cutover.
+
+## Historical implementation snapshot — 2026-09-25
+
+| Legacy browser responsibility | Final Rust/Dioxus location | Status |
+|---|---|---|
+| Main application shell and controls | `rust/web-ui/src/app.rs` | migrated |
+| Language/theme/browser chrome | `rust/web-ui/src/ui.rs` | migrated |
+| Main chart/ECharts surface | `rust/web-ui/src/app.rs` + `rust/web-ui/src/chart.rs` | migrated to custom SVG |
+| Chart overlays | `rust/web-ui/src/overlays.rs` | migrated |
+| Regional sources panel | `rust/web-ui/src/regional.rs` | migrated |
+| Methodology surface | `rust/web-ui/src/methodology.rs` | migrated |
+| Data loading/normalization for browser | `rust/web-ui/src/data.rs` | migrated |
+| Browser smoke suite | `tests/e2e/dioxus-site.spec.mjs` | migrated |
+
+- Vite entrypoint/config, browser UI JS/CSS modules, and ECharts have been removed.
+- Node/TypeScript statistical/reference modules remain only where they are still inputs to offline parity/research checks; they are not browser entrypoints.
+- This document records the intended final boundary; it is not deletion/cutover authorization until compilation, browser smoke, numerical parity, artifact, and deployed verification all pass.
+
 ## 2026-09-25 21:20 -03:00 / 2026-09-26T00:20Z — First substantial UI feature slice moved to Rust/Dioxus
 
 | Legacy surface | Rust/Dioxus responsibility | Status |
