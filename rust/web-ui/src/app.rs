@@ -310,6 +310,9 @@ pub fn App() -> Element {
                         let round1_count = unique_poll_count(all, Some(1));
                         let round2_count = unique_poll_count(all, Some(2));
                         let latest_label = latest_all.map(|poll| format_date(&poll.fieldwork_end)).unwrap_or_else(|| "—".into());
+                        let institute_options = all_institutes.iter()
+                            .map(|name| (name.clone(), ui_state.institute_selected(name)))
+                            .collect::<Vec<_>>();
 
                         rsx! {
                             section { class: "dashboard-overview", id: "overview",
@@ -502,10 +505,9 @@ pub fn App() -> Element {
                                         };
                                         rsx! {
                                             for candidate in focus_candidates {
-                                                let hidden = ui_state.hidden_candidates.iter().any(|key| key == candidate.key());
                                                 button {
-                                                    class: if hidden { "candidate-focus-btn" } else { "candidate-focus-btn on" },
-                                                    "aria-pressed": "{!hidden}",
+                                                    class: if ui_state.hidden_candidates.iter().any(|key| key == candidate.key()) { "candidate-focus-btn" } else { "candidate-focus-btn on" },
+                                                    "aria-pressed": "{!ui_state.hidden_candidates.iter().any(|key| key == candidate.key())}",
                                                     onclick: move |_| {
                                                         let mut next = ui.write();
                                                         if next.hidden_candidates.iter().any(|key| key == candidate.key()) {
@@ -524,10 +526,9 @@ pub fn App() -> Element {
                                 div { class: "overlay-row",
                                     span { class: "ctrl", "Overlays" }
                                     for overlay in OVERLAYS.iter().copied() {
-                                        let enabled = ui_state.overlays.iter().any(|key| key == overlay.id);
                                         button {
-                                            class: if enabled { "chip on" } else { "chip" },
-                                            "aria-pressed": "{enabled}",
+                                            class: if ui_state.overlays.iter().any(|key| key == overlay.id) { "chip on" } else { "chip" },
+                                            "aria-pressed": "{ui_state.overlays.iter().any(|key| key == overlay.id)}",
                                             onclick: move |_| {
                                                 let mut next = ui.write();
                                                 if next.overlays.iter().any(|key| key == overlay.id) {
@@ -553,14 +554,12 @@ pub fn App() -> Element {
                                             onclick: move |_| ui.write().institutes.clear(),
                                             {format!("{} ({})", t(ui_state.language, "select-all"), all_institutes.len())}
                                         }
-                                        for institute in all_institutes.iter() {
-                                            let name = institute.clone();
-                                            let all_names = all_institutes.clone();
-                                            let active = ui_state.institute_selected(&name);
+                                        for (name, active) in institute_options.iter().cloned() {
                                             button {
                                                 class: if active { "chip on" } else { "chip" },
                                                 "aria-pressed": "{active}",
                                                 onclick: move |_| {
+                                                    let all_names = all_institutes.clone();
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
                                                         state.institutes = all_names.iter().filter(|item| *item != &name).cloned().collect();
