@@ -37,4 +37,5 @@ jobs:
           node scripts/apply-corrections.mjs
           node scripts/quality-audit.mjs
       - run: npm run typecheck
-      - run: npm run build
+      - name: Run data-contract tests
+        run: npm test
