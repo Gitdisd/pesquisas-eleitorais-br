@@ -1,3 +1,8 @@
+
+## 2026-09-26 13:58 BRT — Cutover validation and data-freshness guard
+- Fixed the Go/Chromium smoke test to match the migrated institute-filter checkbox controls instead of the obsolete `#institute` select.
+- Added a visible verified-data freshness status to the Go/WASM dashboard; when the latest verified publication is three or more days old, the UI explicitly warns that newer polls may still be awaiting verification.
+- Did not inject newly published poll values solely from secondary reporting; current releases remain subject to the existing verification pipeline.
 ## 2026-09-26 14:04 -03:00 / 2026-09-26T17:04:00Z — Go/WASM pre-cutover browser gate
 
 - Expanded the Go Chromium smoke from a single desktop path to desktop + mobile viewports.
