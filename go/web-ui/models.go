@@ -9,6 +9,8 @@ import (
 )
 
 const dayMS int64 = 86400000
+const electionRound1MS int64 = 1791115200000
+const electionRound2MS int64 = 1792929600000
 const minSample = 100.0
 const maxSample = 4000.0
 const nRef = 2000.0
@@ -85,7 +87,7 @@ func tau2(items []struct{y,se,rw float64}) float64 {
 }
 func model3(points []TrendPoint,half float64) []SeriesPoint {
 	if len(points)==0{return nil};s:=append([]TrendPoint(nil),points...);sort.Slice(s,func(i,j int)bool{return s[i].T<s[j].T});h:=math.Max(1,half);out:=[]SeriesPoint{}
-	for t:=s[0].T;t<=s[len(s)-1].T;t+=dayMS{bag:=[]struct{y,se,rw float64}{};near:=1e9;for _,p:=range s{d:=math.Abs(float64(t-p.T))/float64(dayMS);if d<near{near=d};if d>h*2.5{continue};bag=append(bag,struct{y,se,rw float64}{p.Y,pollSE(),math.Pow(2,-d/h)})};if len(bag)==0||near>h{continue};tt:=tau2(bag);num,den:=0.,0.;for _,b:=range bag{w:=b.rw/(b.se*b.se+tt);num+=w*b.y;den+=w};if den>0{out=append(out,SeriesPoint{t,round2(num/den)})}}
+	for t:=s[0].T;t<=s[len(s)-1].T;t+=dayMS{bag:=[]struct{y,se,rw float64}{};near:=1e9;for _,p:=range s{d:=math.Abs(float64(t-p.T))/float64(dayMS);if d<near{near=d};if d>h*2.5{continue};bag=append(bag,struct{y,se,rw float64}{p.Y,pollSE(p),math.Pow(2,-d/h)})};if len(bag)==0||near>h{continue};tt:=tau2(bag);num,den:=0.,0.;for _,b:=range bag{w:=b.rw/(b.se*b.se+tt);num+=w*b.y;den+=w};if den>0{out=append(out,SeriesPoint{t,round2(num/den)})}}
 	return out
 }
 func model4(points []TrendPoint) []SeriesPoint {
@@ -134,7 +136,7 @@ func projectTrend(series []SeriesPoint,fitDays,horizon int,election int64,proces
 	return true,"",line,lo,hi,b,rmse,last.X
 }
 func projectionV2(raw []TrendPoint,fitDays,horizon int,election int64)(bool,string,[]SeriesPoint,[]SeriesPoint,[]SeriesPoint,int64,float64,float64,bool,string){
-	h:=houseEffects(raw);deb:=append([]TrendPoint(nil),raw...);for i:=range deb{deb[i].Y-=h[deb[i].Institute]};trend:=weightedV2(deb,float64(fitDays));if len(trend)<8{return false,"insufficient_points",nil,nil,nil,0,0,0,false,"short_series"};last:=trend[len(trend)-1].X;cut:=last-7*dayMS;train,test:=[]SeriesPoint{},[]SeriesPoint{};for _,p:=range trend{if p.X<=cut{train=append(train,p)}else{test=append(test,p)}};if len(train)<4||len(test)<2{return false,"thin_holdout",nil,nil,nil,last,0,0,false,"thin_holdout"};persist:=train[len(train)-1].Y;ok,reason,l,lo,hi,sl,rm:=projectTrend(train,fitDays,horizon,0,.18,2.4,.2);if !ok{return false,"proj_failed",nil,nil,nil,last,sl,rm,false,reason};seM,seP:=0.,0.;for _,p:=range test{pred:=l[len(l)-1].Y;best:=math.MaxFloat64;for _,q:=range l{d:=math.Abs(float64(q.X-p.X));if d<best{best=d;pred=q.Y}};seM+=(pred-p.Y)*(pred-p.Y);seP+=(persist-p.Y)*(persist-p.Y)};rmM:=math.Sqrt(seM/float64(len(test)));rmP:=math.Sqrt(seP/float64(len(test)));pass:=rmM+1e-6<rmP;if !pass{return false,"holdout_fail",nil,nil,nil,last,sl,rmM,false,"holdout_fail"};return true,"",l,lo,hi,last,sl,rmM,true,""
+	h:=houseEffects(raw);deb:=append([]TrendPoint(nil),raw...);for i:=range deb{deb[i].Y-=h[deb[i].Institute]};trend:=weightedV2(deb,float64(fitDays));if len(trend)<8{return false,"insufficient_points",nil,nil,nil,0,0,0,false,"short_series"};last:=trend[len(trend)-1].X;cut:=last-7*dayMS;train,test:=[]SeriesPoint{},[]SeriesPoint{};for _,p:=range trend{if p.X<=cut{train=append(train,p)}else{test=append(test,p)}};if len(train)<4||len(test)<2{return false,"thin_holdout",nil,nil,nil,last,0,0,false,"thin_holdout"};persist:=train[len(train)-1].Y;ok,reason,l,lo,hi,sl,rm,_:=projectTrend(train,fitDays,horizon,0,.18,2.4,.2);if !ok{return false,"proj_failed",nil,nil,nil,last,sl,rm,false,reason};seM,seP:=0.,0.;for _,p:=range test{pred:=l[len(l)-1].Y;best:=math.MaxFloat64;for _,q:=range l{d:=math.Abs(float64(q.X-p.X));if d<best{best=d;pred=q.Y}};seM+=(pred-p.Y)*(pred-p.Y);seP+=(persist-p.Y)*(persist-p.Y)};rmM:=math.Sqrt(seM/float64(len(test)));rmP:=math.Sqrt(seP/float64(len(test)));pass:=rmM+1e-6<rmP;if !pass{return false,"holdout_fail",nil,nil,nil,last,sl,rmM,false,"holdout_fail"};return true,"",l,lo,hi,last,sl,rmM,true,""
 }
 
 type OverlayOption struct{ID,Label string}
