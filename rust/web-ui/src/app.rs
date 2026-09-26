@@ -694,75 +694,84 @@ pub fn App() -> Element {
                                         .filter(|poll| ui_state.institute_selected(&poll.institute))
                                         .cloned()
                                         .collect();
+                                    let card_views: Vec<CandidateCard> = card_candidates.into_iter()
+                                        .map(|candidate| {
+                                            let key = candidate.key();
+                                            let rows: Vec<Poll> = card_source.iter()
+                                                .filter(|poll| poll.candidate_key == key)
+                                                .cloned()
+                                                .collect();
+                                            let trend = trend_for_model(&rows, state.avg_window_days as f64, state.model);
+                                            let now_day = rows.iter().map(|poll| poll.day).max();
+                                            let current = now_day.and_then(|day| nearest_trend_value(&trend, day));
+                                            let prior = now_day.and_then(|day| nearest_trend_value(&trend, day - 30));
+                                            let delta = match (current, prior) {
+                                                (Some(current), Some(prior)) => current - prior,
+                                                _ => 0.0,
+                                            };
+                                            let delta_text = if current.is_some() && prior.is_some() {
+                                                format_delta(delta, ui_state.language)
+                                            } else {
+                                                "—".to_string()
+                                            };
+                                            let delta_class = if delta.abs() < 0.005 {
+                                                "flat"
+                                            } else if delta > 0.0 {
+                                                "up"
+                                            } else {
+                                                "down"
+                                            };
+                                            let spark_points = trend.iter().rev().take(8).collect::<Vec<_>>();
+                                            let spark_points = spark_points.into_iter().rev().collect::<Vec<_>>();
+                                            let (min_v, max_v) = spark_points.iter().fold(
+                                                (f64::INFINITY, f64::NEG_INFINITY),
+                                                |(min_v, max_v), point| (min_v.min(point.value), max_v.max(point.value)),
+                                            );
+                                            let span = (max_v - min_v).max(1.0);
+                                            let spark = spark_points.iter().enumerate()
+                                                .map(|(index, point)| {
+                                                    let x = if spark_points.len() <= 1 {
+                                                        0.0
+                                                    } else {
+                                                        index as f64 / (spark_points.len() - 1) as f64 * 100.0
+                                                    };
+                                                    let y = 26.0 - ((point.value - min_v) / span) * 20.0;
+                                                    format!("{x:.1},{y:.1}")
+                                                })
+                                                .collect::<Vec<_>>()
+                                                .join(" ");
+                                            CandidateCard {
+                                                candidate,
+                                                current,
+                                                delta_text,
+                                                delta_class,
+                                                spark,
+                                                show_spark: spark_points.len() >= 2,
+                                                avg_window_days: state.avg_window_days,
+                                            }
+                                        })
+                                        .collect();
                                     rsx! {
-                                        for candidate in card_candidates {
-                                            {
-                                                let key = candidate.key();
-                                                let rows: Vec<Poll> = card_source.iter()
-                                                    .filter(|poll| poll.candidate_key == key)
-                                                    .cloned()
-                                                    .collect();
-                                                let trend = trend_for_model(&rows, state.avg_window_days as f64, state.model);
-                                                let now_day = rows.iter().map(|poll| poll.day).max();
-                                                let current = now_day.and_then(|day| nearest_trend_value(&trend, day));
-                                                let prior = now_day.and_then(|day| nearest_trend_value(&trend, day - 30));
-                                                let delta = match (current, prior) {
-                                                    (Some(current), Some(prior)) => current - prior,
-                                                    _ => 0.0,
-                                                };
-                                                let delta_text = if current.is_some() && prior.is_some() {
-                                                    format_delta(delta, ui_state.language)
-                                                } else {
-                                                    "—".to_string()
-                                                };
-                                                let delta_class = if delta.abs() < 0.005 {
-                                                    "flat"
-                                                } else if delta > 0.0 {
-                                                    "up"
-                                                } else {
-                                                    "down"
-                                                };
-                                                let spark_points = trend.iter().rev().take(8).collect::<Vec<_>>();
-                                                let spark_points = spark_points.into_iter().rev().collect::<Vec<_>>();
-                                                let (min_v, max_v) = spark_points.iter().fold(
-                                                    (f64::INFINITY, f64::NEG_INFINITY),
-                                                    |(min_v, max_v), point| (min_v.min(point.value), max_v.max(point.value)),
-                                                );
-                                                let span = (max_v - min_v).max(1.0);
-                                                let spark = spark_points.iter().enumerate()
-                                                    .map(|(index, point)| {
-                                                        let x = if spark_points.len() <= 1 {
-                                                            0.0
-                                                        } else {
-                                                            index as f64 / (spark_points.len() - 1) as f64 * 100.0
-                                                        };
-                                                        let y = 26.0 - ((point.value - min_v) / span) * 20.0;
-                                                        format!("{x:.1},{y:.1}")
-                                                    })
-                                                    .collect::<Vec<_>>()
-                                                    .join(" ");
-                                                rsx! {
-                                                    article {
-                                                        class: "card candidate-card",
-                                                        style: "border-top-color: {candidate_color(candidate)};",
-                                                        div { class: "card-topline",
-                                                            div { class: "name", "{candidate.label()}" }
-                                                            span { class: "card-caption", "média {state.avg_window_days}d" }
-                                                        }
-                                                        div { class: "val", "{format_optional_pct(current)}" }
-                                                        div { class: "delta {delta_class}", "{delta_text}" }
-                                                        if spark_points.len() >= 2 {
-                                                            svg {
-                                                                class: "card-spark",
-                                                                view_box: "0 0 100 28",
-                                                                preserve_aspect_ratio: "none",
-                                                                role: "img",
-                                                                "aria-label": "Tendência recente de {candidate.label()}",
-                                                                polyline {
-                                                                    points: "{spark}",
-                                                                    style: "--series: {candidate_color(candidate)};",
-                                                                }
-                                                            }
+                                        for card in card_views.iter() {
+                                            article {
+                                                class: "card candidate-card",
+                                                style: "border-top-color: {candidate_color(card.candidate)};",
+                                                div { class: "card-topline",
+                                                    div { class: "name", "{card.candidate.label()}" }
+                                                    span { class: "card-caption", "média {card.avg_window_days}d" }
+                                                }
+                                                div { class: "val", "{format_optional_pct(card.current)}" }
+                                                div { class: "delta {card.delta_class}", "{card.delta_text}" }
+                                                if card.show_spark {
+                                                    svg {
+                                                        class: "card-spark",
+                                                        view_box: "0 0 100 28",
+                                                        preserve_aspect_ratio: "none",
+                                                        role: "img",
+                                                        "aria-label": "Tendência recente de {card.candidate.label()}",
+                                                        polyline {
+                                                            points: "{card.spark}",
+                                                            style: "--series: {candidate_color(card.candidate)};",
                                                         }
                                                     }
                                                 }
@@ -807,12 +816,7 @@ pub fn App() -> Element {
                                             for table_poll in table_polls.iter() {
                                                 if let Some(first) = table_poll.rows.first() {
                                                     tr {
-                                                        td {
-                                                            {
-                                                                let fieldwork = first.fieldwork_start.as_deref().unwrap_or(&first.fieldwork_end);
-                                                                format!("{}–{}", format_date(fieldwork), format_date(&first.fieldwork_end))
-                                                            }
-                                                        }
+                                                        td { {format_fieldwork_range(first)} }
                                                         td { {first.published_date.as_deref().map(format_date).unwrap_or_else(|| "—".to_string())} }
                                                         td { "{first.institute}" }
                                                         td { "{first.geo}" }
@@ -880,6 +884,33 @@ struct MultiSeries {
     uncertainty: Vec<polling_core::UncertaintyPoint>,
     projection: Option<ProjectSurface>,
     overlays: Vec<crate::overlays::OverlayResult>,
+}
+
+struct CandidateCard {
+    candidate: Candidate,
+    current: Option<f64>,
+    delta_text: String,
+    delta_class: &'static str,
+    spark: String,
+    show_spark: bool,
+    avg_window_days: i64,
+}
+
+struct RenderOverlay {
+    mid_path: String,
+    band_points: String,
+}
+
+struct RenderSurface {
+    candidate: Candidate,
+    color: &'static str,
+    stroke_width: f64,
+    poll_points: Vec<(f64, f64)>,
+    trend_path: String,
+    band_points: String,
+    projection_points: String,
+    projection_band: String,
+    overlays: Vec<RenderOverlay>,
 }
 
 struct ProjectSurface {
@@ -1120,6 +1151,74 @@ fn multi_chart_svg(
     } else {
         Vec::new()
     };
+    
+    let render_surfaces: Vec<RenderSurface> = surfaces.iter()
+        .filter(|surface| !hidden_candidates.iter().any(|key| key == surface.candidate.key()))
+        .map(|surface| {
+            let color = candidate_color(surface.candidate);
+            let poll_points = surface.rows.iter()
+                .map(|poll| (x_for_day(poll.day), y_for_value(poll.value)))
+                .collect::<Vec<_>>();
+            let trend_path = surface.trend.iter()
+                .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                .collect::<Vec<_>>()
+                .join(" ");
+            let band_points = {
+                let mut pts = surface.uncertainty.iter()
+                    .map(|point| format!("{:.2},{:.2}", x_for_day((point.x / 86_400_000.0).round() as i64), y_for_value(point.low)))
+                    .collect::<Vec<_>>();
+                pts.extend(surface.uncertainty.iter().rev()
+                    .map(|point| format!("{:.2},{:.2}", x_for_day((point.x / 86_400_000.0).round() as i64), y_for_value(point.high))));
+                pts.join(" ")
+            };
+            let projection_points = surface.projection.as_ref()
+                .map(|projection| projection.line.iter()
+                    .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                    .collect::<Vec<_>>()
+                    .join(" "))
+                .unwrap_or_default();
+            let projection_band = surface.projection.as_ref()
+                .map(|projection| {
+                    let mut pts = projection.band_low.iter()
+                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                        .collect::<Vec<_>>();
+                    pts.extend(projection.band_high.iter().rev()
+                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
+                    pts.join(" ")
+                })
+                .unwrap_or_default();
+            let overlays = surface.overlays.iter()
+                .map(|overlay| {
+                    let mid_path = overlay.mid.iter()
+                        .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                        .collect::<Vec<_>>()
+                        .join(" ");
+                    let band_points = if overlay.high.is_empty() {
+                        String::new()
+                    } else {
+                        let mut pts = overlay.high.iter()
+                            .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
+                            .collect::<Vec<_>>();
+                        pts.extend(overlay.low.iter().rev()
+                            .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
+                        pts.join(" ")
+                    };
+                    RenderOverlay { mid_path, band_points }
+                })
+                .collect::<Vec<_>>();
+            RenderSurface {
+                candidate: surface.candidate,
+                color,
+                stroke_width: if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 },
+                poll_points,
+                trend_path,
+                band_points,
+                projection_points,
+                projection_band,
+                overlays,
+            }
+        })
+        .collect();
 
     rsx! {
         div {
@@ -1224,75 +1323,55 @@ fn multi_chart_svg(
                     text { class: "axis-label", x: "{x - 17.0:.2}", y: "{HEIGHT - 17.0:.2}", "{label}" }
                 }
 
-                for surface in surfaces.iter() {
-                    if !hidden_candidates.iter().any(|key| key == surface.candidate.key()) {
-                        {
-                            let color = candidate_color(surface.candidate);
-                            let poll_points = surface.rows.iter()
-                                .map(|poll| format!("{:.2},{:.2}", x_for_day(poll.day), y_for_value(poll.value)))
-                                .collect::<Vec<_>>().join(" ");
-                            let trend_path = surface.trend.iter()
-                                .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
-                                .collect::<Vec<_>>().join(" ");
-                            let band_points = {
-                                let mut pts = surface.uncertainty.iter().map(|p| format!("{:.2},{:.2}", x_for_day((p.x/86_400_000.0).round() as i64), y_for_value(p.low))).collect::<Vec<_>>();
-                                pts.extend(surface.uncertainty.iter().rev().map(|p| format!("{:.2},{:.2}", x_for_day((p.x/86_400_000.0).round() as i64), y_for_value(p.high))));
-                                pts.join(" ")
-                            };
-                            let projection_points = surface.projection.as_ref().map(|p| p.line.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>().join(" ")).unwrap_or_default();
-                            let projection_band = surface.projection.as_ref().map(|p| {
-                                let mut pts = p.band_low.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
-                                pts.extend(p.band_high.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
-                                pts.join(" ")
-                            }).unwrap_or_default();
-
-                            rsx! {
-                                if !band_points.is_empty() {
-                                    polygon { class: "uncertainty-band", points: "{band_points}", style: "fill: {color};" }
-                                }
-                                if !trend_path.is_empty() {
-                                    polyline {
-                                        class: "series-line",
-                                        points: "{trend_path}",
-                                        style: "--series: {color}; stroke-dasharray: {candidate_stroke_dash(surface.candidate)}; stroke-width: {if matches!(surface.candidate, Candidate::Lula | Candidate::Flavio) { 2.5 } else { 2.0 }};"
-                                    }
-                                }
-                                for poll in surface.rows.iter() {
-                                    circle {
-                                        class: "poll-point",
-                                        cx: "{x_for_day(poll.day):.2}",
-                                        cy: "{y_for_value(poll.value):.2}",
-                                        r: "4",
-                                        style: "fill: var(--surface); stroke: {color};",
-                                    }
-                                }
-                                if let Some(projection) = surface.projection.as_ref() {
-                                    if !projection_band.is_empty() {
-                                        polygon { class: "projection-band", points: "{projection_band}", style: "fill: {color};" }
-                                    }
-                                    if !projection_points.is_empty() {
-                                        polyline { class: "projection-line", points: "{projection_points}", style: "stroke: {color};" }
-                                    }
-                                }
-                                for overlay in surface.overlays.iter() {
-                                    {
-                                        let overlay_path = overlay.mid.iter()
-                                            .map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value)))
-                                            .collect::<Vec<_>>().join(" ");
-                                        if !overlay_path.is_empty() {
-                                            polyline {
-                                                class: "overlay-line",
-                                                points: "{overlay_path}",
-                                                style: "--series: {color};"
-                                            }
-                                        }
-                                        if !overlay.high.is_empty() {
-                                            let mut pts = overlay.high.iter().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))).collect::<Vec<_>>();
-                                            pts.extend(overlay.low.iter().rev().map(|point| format!("{:.2},{:.2}", x_for_day(point.day), y_for_value(point.value))));
-                                            polygon { class: "overlay-band", points: {pts.join(" ")}, style: "fill: {color};" }
-                                        }
-                                    }
-                                }
+                for surface in render_surfaces.iter() {
+                    polygon {
+                        class: "uncertainty-band",
+                        points: "{surface.band_points}",
+                        style: "fill: {surface.color};"
+                    }
+                    if !surface.trend_path.is_empty() {
+                        polyline {
+                            class: "series-line",
+                            points: "{surface.trend_path}",
+                            style: "--series: {surface.color}; stroke-dasharray: {candidate_stroke_dash(surface.candidate)}; stroke-width: {surface.stroke_width};"
+                        }
+                    }
+                    for (x, y) in surface.poll_points.iter().copied() {
+                        circle {
+                            class: "poll-point",
+                            cx: "{x:.2}",
+                            cy: "{y:.2}",
+                            r: "4",
+                            style: "fill: var(--surface); stroke: {surface.color};",
+                        }
+                    }
+                    if !surface.projection_band.is_empty() {
+                        polygon {
+                            class: "projection-band",
+                            points: "{surface.projection_band}",
+                            style: "fill: {surface.color};"
+                        }
+                    }
+                    if !surface.projection_points.is_empty() {
+                        polyline {
+                            class: "projection-line",
+                            points: "{surface.projection_points}",
+                            style: "stroke: {surface.color};"
+                        }
+                    }
+                    for overlay in surface.overlays.iter() {
+                        if !overlay.mid_path.is_empty() {
+                            polyline {
+                                class: "overlay-line",
+                                points: "{overlay.mid_path}",
+                                style: "--series: {surface.color};"
+                            }
+                        }
+                        if !overlay.band_points.is_empty() {
+                            polygon {
+                                class: "overlay-band",
+                                points: "{overlay.band_points}",
+                                style: "fill: {surface.color};"
                             }
                         }
                     }
@@ -1910,6 +1989,11 @@ fn format_date_from_day(day: i64) -> String {
     let m = mp + if mp < 10 { 3 } else { -9 };
     let year = y + i64::from(m <= 2);
     format!("{d:02}/{m:02}/{year:04}")
+}
+
+fn format_fieldwork_range(poll: &Poll) -> String {
+    let start = poll.fieldwork_start.as_deref().unwrap_or(&poll.fieldwork_end);
+    format!("{}–{}", format_date(start), format_date(&poll.fieldwork_end))
 }
 
 fn format_date(value: &str) -> String {
