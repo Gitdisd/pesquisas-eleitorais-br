@@ -45,7 +45,7 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
 
     await lula.click()
     await expect(lula).toHaveAttribute('aria-pressed', 'true')
-    await expect(page.locator('.overlay-line')).toHaveCount(await page.locator('.overlay-line').count())
+    expect(await page.locator('.overlay-line').count()).toBeGreaterThan(0)
   })
 
   test('model-2 projection and native hover inspection remain available', async ({ page }) => {
