@@ -854,10 +854,10 @@ pub fn App() -> Element {
                             }
 
                                                         nav { class: "mobile-nav", "aria-label": "Navegação rápida",
-                                a { href: "#overview", "⌂ {t(ui_state.language, "dashboard")}" }
-                                a { href: "#chartPanel", "⌁ {t(ui_state.language, "chart")}" }
-                                a { href: "#cards", "▦ {t(ui_state.language, "summary")}" }
-                                a { href: "#pollsPanel", "≡ {t(ui_state.language, "polls")}" }
+                                a { href: "#overview", {format!("⌂ {}", t(ui_state.language, "dashboard"))} }
+                                a { href: "#chartPanel", {format!("⌁ {}", t(ui_state.language, "chart"))} }
+                                a { href: "#cards", {format!("▦ {}", t(ui_state.language, "summary"))} }
+                                a { href: "#pollsPanel", {format!("≡ {}", t(ui_state.language, "polls"))} }
                                 a { href: "#allSourcesPanel", {format!("◎ {}", t(ui_state.language, "all-sources"))} }
                             }
                             Methodology { language: ui_state.language }
