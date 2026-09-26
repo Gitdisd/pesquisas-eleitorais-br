@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-09-25T22:15:54.879Z",
+  "ran_at": "2026-09-26T01:29:01.859Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 427,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 57,
-  "skipped_old": 2,
+  "inbox_new": 58,
+  "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -506,45 +506,45 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/al/alagoas/eleicoes/2026/noticia/2026/09/25/quaest-al-presidente-de-25-de-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial em AL | G1 Pular para o conteúdo G1 Alagoas Eleições 2026 em Alagoas Quaest",
+      "url": "https://g1.globo.com/ma/maranhao/eleicoes/2026/noticia/2026/09/25/quaest-ma-presidente-25-setembro.ghtml",
+      "title": "Quaest: veja números da disputa presidencial no MA | G1 Pular para o conteúdo Maranhão Eleições 2026 no Maranhão Quaest ",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-25T22:15:39.110Z"
+      "found_at": "2026-09-26T01:28:49.591Z"
     },
     {
-      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/09/25/datafolha-pe-presidente-25-setembro.ghtml",
-      "title": "Datafolha: veja como está a disputa presidencial em PE | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-25",
-      "found_at": "2026-09-25T22:15:39.431Z"
-    },
-    {
-      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/25/datafolha-sp-presidente-25-setembro.ghtml",
-      "title": "Datafolha: veja como está a disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo D",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-25",
-      "found_at": "2026-09-25T22:15:39.615Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/25/datafolha-df-presidente-25-setembro.ghtml",
-      "title": "Datafolha: veja como está a disputa presidencial no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no Dist",
+      "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
+      "title": "Quaest no AC: Veja os números da disputa presidencial | G1 Pular para o conteúdo Acre Eleições 2026 no Acre Quaest no AC",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
+      "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-25T22:15:39.834Z"
+      "found_at": "2026-09-26T01:28:49.841Z"
     },
     {
-      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/25/datafolha-mg-presidente-25-setembro.ghtml",
-      "title": "Datafolha: veja números da disputa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Ger",
+      "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
+      "title": "Quaest em Roraima: Flávio Bolsonaro, 59%; Lula, 20% | G1 Pular para o conteúdo Roraima Eleições 2026 em Roraima Quaest e",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-25",
+      "found_at": "2026-09-26T01:28:49.997Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/25/datafolha-presidente-estados-25-setembro.ghtml",
+      "title": "Datafolha: Flávio Bolsonaro lidera em SP, RJ e DF; Lula fica à frente em PE; e MG tem empate técnico | G1 Pular para o c",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-25T22:15:40.024Z"
+      "found_at": "2026-09-26T01:28:50.172Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-setembro-2026-4/",
+      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-09-26T01:28:50.194Z"
     }
   ],
-  "meta_last_check_at": "2026-09-25T22:15:54.880Z"
+  "meta_last_check_at": "2026-09-26T01:29:01.861Z"
 }
