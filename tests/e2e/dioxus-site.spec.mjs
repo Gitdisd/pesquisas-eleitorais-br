@@ -50,6 +50,7 @@ test.describe('Rust/Dioxus migration browser smoke', () => {
 
   test('model-2 projection and native hover inspection remain available', async ({ page }) => {
     await page.getByRole('button', { name: 'Casa', exact: true }).click()
+    await page.getByRole('button', { name: 'Desligada', exact: true }).click()
     await expect(page.locator('.projection-status')).toContainText('Projeção v2')
 
     const chart = page.locator('svg.chart').first()
