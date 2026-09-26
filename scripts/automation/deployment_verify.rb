@@ -36,6 +36,10 @@ last_error = nil
     index, index_uri = fetch_text(base, "")
     polls_text, polls_uri = fetch_text(base, "data/polls.json")
     meta_text, meta_uri = fetch_text(base, "data/meta.json")
+    _extra_text, _extra_uri = fetch_text(base, "data/polls-extra.json")
+    _regional_text, _regional_uri = fetch_text(base, "data/polls-regional.json")
+    _wasm_text, _wasm_uri = fetch_text(base, "main.wasm")
+    _runtime_text, _runtime_uri = fetch_text(base, "wasm_exec.js")
 
     polls = JSON.parse(polls_text)
     meta = JSON.parse(meta_text)
@@ -45,7 +49,7 @@ last_error = nil
     raise "record_count mismatch: #{meta["record_count"]} != #{polls.length}" unless meta["record_count"].to_i == polls.length
     raise "deployed page still references /src/main.js" if index.include?("/src/main.js")
     raise "deployed page still references Apache ECharts" if index.match?(/echarts/i)
-    raise "deployed page does not contain the Dioxus/WASM runtime marker" unless index.match?(/dioxus|wasm/i)
+    raise "deployed page does not contain the Go/WASM runtime marker" unless index.match?(/main\.wasm|wasm_exec\.js/i)
 
     puts "DEPLOYMENT VERIFY: PASS"
     puts "  index: #{index_uri}"

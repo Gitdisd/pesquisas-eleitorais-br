@@ -1,3 +1,9 @@
+## 2026-09-26 13:56 -03:00 / 2026-09-26T16:56:00Z — Go Pages deployment verifier
+
+- Updated post-deployment verification to require the Go/WASM runtime files and both supplemental data files.
+- Removed the old Dioxus-specific runtime wording from the verifier.
+- No production deployment was made by this change.
+
 ## 2026-09-26 12:51:49 -03:00 / 2026-09-26T15:51:49Z — final browser-parity behavior pass
 
 - Restored the dark default used by the prior production UI.
