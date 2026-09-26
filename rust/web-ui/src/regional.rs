@@ -125,6 +125,8 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                         th { if matches!(language, Language::En) { "Geo" } else { "Geo" } }
                         th { if matches!(language, Language::En) { "Published" } else { "Publicação" } }
                         th { class: "num", "N" }
+                        th { "Margem" }
+                        th { "TSE" }
                         for candidate in display_candidates(round_value) {
                             th { class: "num", "{candidate.label()}" }
                         }
@@ -138,6 +140,8 @@ pub fn RegionalPanel(polls: Vec<Poll>, language: Language) -> Element {
                                     td { "{first.geo}" }
                                     td { "{first.published_date.as_deref().map(format_date).unwrap_or_else(|| "—".to_string())}" }
                                     td { class: "num", "{first.n:.0}" }
+                                    td { class: "num", "{first.moe.map(|v| format!("±{v:.2}")).unwrap_or_else(|| "—".to_string())}" }
+                                    td { "{first.tse_registration.as_deref().unwrap_or("—")}" }
                                     for candidate in display_candidates(round_value) {
                                         td { class: "num",
                                             {row.rows.iter()
