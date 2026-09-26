@@ -556,11 +556,11 @@ pub fn App() -> Element {
                                             {format!("{} ({})", t(ui_state.language, "select-all"), all_institutes.len())}
                                         }
                                         for (name, active) in institute_options.iter().cloned() {
+                                            let all_names = all_institutes_shared.clone();
                                             button {
                                                 class: if active { "chip on" } else { "chip" },
                                                 "aria-pressed": "{active}",
                                                 onclick: move |_| {
-                                                    let all_names = all_institutes_shared.clone();
                                                     let mut state = ui.write();
                                                     if state.institutes.is_empty() {
                                                         state.institutes = all_names.iter().filter(|item| *item != &name).cloned().collect();
