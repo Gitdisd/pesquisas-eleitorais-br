@@ -257,6 +257,7 @@ func render() {
 	if !root.Truthy() { return }
 	root.Set("innerHTML", renderPage())
 	bindControls()
+	bindChartGestures()
 }
 func selectControl(id,label string, vals,labs []string, selected string) string {
 	var b strings.Builder
