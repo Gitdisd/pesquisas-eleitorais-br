@@ -779,11 +779,8 @@ pub fn App() -> Element {
                                             th { "{t(ui_state.language, "geo")}" }
                                             th { "{t(ui_state.language, "scenario")}" }
                                             th { "TSE" }
-                                            for candidate in Candidate::all().iter().copied() {
-                                                if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
-                                                } else {
-                                                    th { class: "num", "{candidate.label()}" }
-                                                }
+                                            for candidate in display_candidates(state.round) {
+                                                th { class: "num", "{candidate.label()}" }
                                             }
                                             th { class: "num", "N" }
                                             th { "Margem" }
@@ -804,16 +801,13 @@ pub fn App() -> Element {
                                                         td { "{first.geo}" }
                                                         td { "{first.scenario}" }
                                                         td { "{first.tse_registration.as_deref().unwrap_or("—")}" }
-                                                        for candidate in Candidate::all().iter().copied() {
-                                                            if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
-                                                            } else {
-                                                                td { class: "num",
-                                                                    {
-                                                                        table_poll.rows.iter()
-                                                                            .find(|row| row.candidate_key == candidate.key())
-                                                                            .map(|row| format_pct(row.value))
-                                                                            .unwrap_or_else(|| "—".to_string())
-                                                                    }
+                                                        for candidate in display_candidates(state.round) {
+                                                            td { class: "num",
+                                                                {
+                                                                    table_poll.rows.iter()
+                                                                        .find(|row| row.candidate_key == candidate.key())
+                                                                        .map(|row| format_pct(row.value))
+                                                                        .unwrap_or_else(|| "—".to_string())
                                                                 }
                                                             }
                                                         }
@@ -1794,6 +1788,14 @@ fn format_meta_stamp(value: &str) -> String {
         value.replace('T', " ").chars().take(16).collect()
     } else {
         value.to_string()
+    }
+}
+
+fn display_candidates(round: u8) -> Vec<Candidate> {
+    if round == 2 {
+        vec![Candidate::Lula, Candidate::Flavio, Candidate::BrancoNulo]
+    } else {
+        Candidate::all().to_vec()
     }
 }
 
