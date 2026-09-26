@@ -88,6 +88,15 @@ pub fn App() -> Element {
         async move { load_regional_polls(refresh_nonce).await }
     });
 
+    use_effect({
+        let ui = ui;
+        move || {
+            if matches!(polls.read().as_ref(), Some(Ok(_))) {
+                ui.write().status = None;
+            }
+        }
+    });
+
     let ui_state = ui();
     let shell_style = ui_state.theme_style();
 
@@ -729,6 +738,7 @@ pub fn App() -> Element {
                                             th { "Instituto" }
                                             th { "Geo" }
                                             th { "Cenário" }
+                                            th { "TSE" }
                                             for candidate in Candidate::all().iter().copied() {
                                                 if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
                                                 } else {
@@ -747,6 +757,7 @@ pub fn App() -> Element {
                                                         td { "{first.institute}" }
                                                         td { "{first.geo}" }
                                                         td { "{first.scenario}" }
+                                                        td { "{first.tse_registration.as_deref().unwrap_or("—")}" }
                                                         for candidate in Candidate::all().iter().copied() {
                                                             if state.round == 2 && candidate != Candidate::Lula && candidate != Candidate::Flavio {
                                                             } else {
