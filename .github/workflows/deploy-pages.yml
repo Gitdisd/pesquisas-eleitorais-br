@@ -119,6 +119,8 @@ jobs:
           test -f "$DX_PUBLIC/data/meta.json"
           test -f "$DX_PUBLIC/data/polls-extra.json"
           test -f "$DX_PUBLIC/data/polls-regional.json"
+      - name: Audit staged Pages artifact with Ruby
+        run: ruby scripts/automation/artifact_audit.rb dioxus-pages/public
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
