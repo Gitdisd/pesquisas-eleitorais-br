@@ -1,3 +1,9 @@
+## 2026-09-26 00:04 -03:00 / 2026-09-26T03:04:00Z — Correct Ruby browser-bound detector
+
+- The migration gate no longer treats ordinary local-variable calls such as `window.filter(...)` in the offline projection algorithm as browser APIs.
+- Browser detection now targets concrete DOM/global/browser API access patterns while preserving the explicit allowed offline/reference module boundary.
+- No application or statistical behavior changed.
+
 ## 2026-09-26 00:02 -03:00 / 2026-09-26T03:02:00Z — Add Ruby artifact audit to browser smoke
 
 - Browser Smoke now audits the same staged Dioxus site directory that Playwright serves, including the complete published data mirror and WASM payload.
