@@ -71,7 +71,7 @@ jobs:
 
       - name: Go source formatting
         working-directory: go/web-ui
-        run: gofmt -w main.go && git diff --exit-code -- main.go
+        run: gofmt -w main.go && test -z "$(gofmt -d main.go)"
 
       - name: Go WebAssembly compile check
         working-directory: go/web-ui

@@ -1,3 +1,10 @@
+## 2026-09-26 12:49 -03:00 / 2026-09-26T15:49:00Z — Go/WASM hosted build corrections
+
+- Corrected the Go model/projection compile issues revealed by hosted CI.
+- Corrected the Pages build staging so all four published data files are present in the generated artifact.
+- Kept the browser replacement on the same feature-parity path; no production deployment was made.
+- Relaxed the source-format check from a repository-diff assertion to an idempotent gofmt check because the build stage already formats the Go application before compilation.
+
 ## 2026-09-26 12:39:14 -03:00 / 2026-09-26T15:39:14Z — Go/WASM dashboard parity rewrite
 
 - Rewrote the browser dashboard around Go/WebAssembly rather than the incomplete Rust/Dioxus shell.

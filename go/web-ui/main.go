@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"html"
 	"math"
-	"net/url"
 	"sort"
 	"strconv"
 	"strings"
@@ -464,4 +463,3 @@ func downloadJSON(rows []Poll) bool {
 
 func sortStrings(v []string){sort.Strings(v)}
 func formatDayMS(ms int64)string{return time.Unix(ms/1000,0).UTC().Format("02/01")}
-func init(){_ = url.Values{}}
