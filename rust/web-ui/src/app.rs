@@ -1,12 +1,17 @@
 use dioxus::prelude::*;
 use gloo_timers::callback::Interval;
-use polling_core::{uncertainty_band, PollObservation};
+use polling_core::{uncertainty_band, PollObservation, ProjectionV2Result};
+use std::collections::BTreeSet;
+
 use crate::chart::{
     model_label, polyline_path, projection_v2_for_round, trend_for_model, viewbox, x_for, y_for,
     MODEL_OPTIONS, BOTTOM, HEIGHT, LEFT, RIGHT, TOP,
 };
 use crate::data::{available_geos, filter_polls, load_polls, Candidate, Poll};
-use polling_core::ProjectionV2Result;
+use crate::ui::{
+    apply_document_chrome, build_share_url, copy_text, csv_export, fullscreen, json_export,
+    persist_language, persist_theme, scroll_to_id, t, Language, Theme, UiState,
+};
 
 const STYLE: &str = include_str!("../assets/style.css");
 
@@ -15,6 +20,7 @@ struct ViewState {
     candidate: Candidate,
     round: u8,
     range_days: Option<i64>,
+    avg_window_days: i64,
     geo_index: usize,
     model: u8,
     hover_day: Option<i64>,
@@ -32,6 +38,7 @@ pub fn App() -> Element {
         candidate: Candidate::Lula,
         round: 1,
         range_days: Some(30),
+        avg_window_days: 14,
         geo_index: 0,
         model: 1,
         hover_day: None,
@@ -41,6 +48,15 @@ pub fn App() -> Element {
         pointer_a: None,
         pointer_b: None,
         pinch_last: None,
+    });
+    let mut ui = use_signal(UiState::restored);
+
+    use_effect({
+        let ui = ui;
+        move || {
+            let language = ui().language;
+            apply_document_chrome(language);
+        }
     });
 
     let refresh_tick = use_signal(|| 0_u64);
@@ -55,164 +71,491 @@ pub fn App() -> Element {
         async move { load_polls(refresh_nonce).await }
     });
 
+    let ui_state = ui();
+    let shell_style = ui_state.theme_style();
+
     rsx! {
-        style { "{STYLE}" }
-        div { class: "app",
+        div {
+            id: "appShell",
+            class: "app-shell",
+            style: "{shell_style}",
             header {
+                class: "app-header",
                 div {
-                    h1 { "Pesquisas Eleitorais BR — 2026" }
-                    p { class: "muted", "Interface de transição: aplicação Rust/Dioxus + gráfico SVG customizado." }
+                    class: "app",
+                    div {
+                        class: "header-top",
+                        div {
+                            class: "header-copy",
+                            div { class: "brandline",
+                                span { class: "kicker", "{t(ui_state.language, "dashboard")}" }
+                                span { class: "live-pill", "● {t(ui_state.language, "public-data")}" }
+                            }
+                            h1 { "Pesquisas eleitorais — Presidência 2026" }
+                            p { "{t(ui_state.language, "source-note")}" }
+                            div { class: "site-controls",
+                                div { class: "control-group",
+                                    span { class: "control-label", "{t(ui_state.language, "language")}" }
+                                    button {
+                                        class: if ui_state.language == Language::PtBr { "active" } else { "" },
+                                        aria_pressed: "{ui_state.language == Language::PtBr}",
+                                        onclick: move |_| {
+                                            let language = Language::PtBr;
+                                            ui.write().language = language;
+                                            persist_language(language);
+                                            apply_document_chrome(language);
+                                        },
+                                        "Português"
+                                    }
+                                    button {
+                                        class: if ui_state.language == Language::En { "active" } else { "" },
+                                        aria_pressed: "{ui_state.language == Language::En}",
+                                        onclick: move |_| {
+                                            let language = Language::En;
+                                            ui.write().language = language;
+                                            persist_language(language);
+                                            apply_document_chrome(language);
+                                        },
+                                        "English"
+                                    }
+                                }
+                                div { class: "control-group",
+                                    span { class: "control-label", "{t(ui_state.language, "themes")}" }
+                                    for theme in [Theme::Light, Theme::Dark] {
+                                        button {
+                                            class: if ui_state.theme == theme { "active" } else { "" },
+                                            aria_pressed: "{ui_state.theme == theme}",
+                                            onclick: move |_| {
+                                                ui.write().theme = theme;
+                                                persist_theme(theme);
+                                            },
+                                            "{theme.label(ui_state.language)}"
+                                        }
+                                    }
+                                    for theme in [Theme::Pt, Theme::Pl, Theme::Missao, Theme::Psd, Theme::Novo, Theme::Avante] {
+                                        button {
+                                            class: if ui_state.theme == theme { "active party-theme" } else { "party-theme" },
+                                            aria_pressed: "{ui_state.theme == theme}",
+                                            onclick: move |_| {
+                                                ui.write().theme = theme;
+                                                persist_theme(theme);
+                                            },
+                                            "{theme.label(ui_state.language)}"
+                                        }
+                                    }
+                                }
+                                a {
+                                    class: "x-follow",
+                                    href: "https://x.com/Monkeeuphoria",
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                    aria_label: if ui_state.language == Language::En { "Follow @Monkeeuphoria on X" } else { "Seguir @Monkeeuphoria no X" },
+                                    img { class: "x-pfp", src: "https://unavatar.io/x/Monkeeuphoria", alt: "" }
+                                    span { "@Monkeeuphoria · {t(ui_state.language, "follow")}" }
+                                }
+                            }
+                        }
+                    }
+                    nav { class: "dashboard-nav", aria_label: "Navegação rápida",
+                        a { href: "#overview", "{t(ui_state.language, "overview")}" }
+                        a { href: "#chartPanel", "Gráfico" }
+                        a { href: "#cards", "Resumo" }
+                        a { href: "#pollsPanel", "{t(ui_state.language, "polls")}" }
+                        a { href: "#methodology", "Metodologia" }
+                    }
                 }
-                div { class: "muted", "Sem biblioteca de gráficos" }
             }
 
-            match polls.read().as_ref() {
-                None => rsx! { section { class: "panel status", "Carregando pesquisas…" } },
-                Some(Err(error)) => rsx! { section { class: "panel status", "{error}" } },
-                Some(Ok(all)) => {
-                    let state = view();
-                    let geos = available_geos(all);
-                    let all_index = geos.len();
-                    let selected_geo = if state.geo_index == all_index {
-                        "ALL".to_string()
-                    } else {
-                        geos.get(state.geo_index).cloned().unwrap_or_else(|| "BR".to_string())
-                    };
-                    let filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
-                    let trend = trend_for_model(&filtered, 14.0, state.model);
-                    let projection = if state.model == 2 {
-                        Some(projection_v2_for_round(&filtered, state.round))
-                    } else {
-                        None
-                    };
-                    let latest = filtered.last();
-                    let round_label = if state.round == 1 { "1º turno" } else { "2º turno" };
-                    rsx! {
-                        section { class: "panel",
-                            div { class: "toolbar",
-                                strong { "Turno" }
-                                button {
-                                    class: if state.round == 1 { "active" } else { "" },
-                                    onclick: move |_| { let mut state = view.write(); state.round = 1; reset_navigation(&mut state); },
-                                    "1º turno"
-                                }
-                                button {
-                                    class: if state.round == 2 { "active" } else { "" },
-                                    onclick: move |_| { let mut state = view.write(); state.round = 2; reset_navigation(&mut state); },
-                                    "2º turno"
-                                }
-                            }
-                            div { class: "toolbar",
-                                strong { "Janela" }
-                                for (label, days) in [(("14d", Some(14_i64))), (("30d", Some(30_i64))), (("90d", Some(90_i64))), (("Tudo", None))] {
-                                    button {
-                                        class: if state.range_days == days { "active" } else { "" },
-                                        onclick: move |_| { let mut state = view.write(); state.range_days = days; reset_navigation(&mut state); },
-                                        "{label}"
-                                    }
-                                }
-                            }
-                            div { class: "toolbar",
-                                strong { "Modelo" }
-                                for (model, label) in MODEL_OPTIONS.iter().copied() {
-                                    button {
-                                        class: if state.model == model { "active" } else { "" },
-                                        onclick: move |_| { let mut state = view.write(); state.model = model; reset_navigation(&mut state); },
-                                        "{label}"
-                                    }
-                                }
-                            }
-                            div { class: "toolbar",
-                                strong { "Geografia" }
-                                button {
-                                    class: if state.geo_index == all_index { "active" } else { "" },
-                                    onclick: move |_| { let mut state = view.write(); state.geo_index = all_index; reset_navigation(&mut state); },
-                                    "Todas"
-                                }
-                                for (index, geo) in geos.iter().enumerate() {
-                                    button {
-                                        class: if state.geo_index == index { "active" } else { "" },
-                                        onclick: move |_| { let mut state = view.write(); state.geo_index = index; reset_navigation(&mut state); },
-                                        "{geo}"
-                                    }
-                                }
-                            }
-                            div { class: "chips",
-                                strong { "Série" }
-                                for candidate in Candidate::all().iter().copied() {
-                                    button {
-                                        class: if state.candidate == candidate { "active" } else { "" },
-                                        onclick: move |_| { let mut state = view.write(); state.candidate = candidate; reset_navigation(&mut state); },
-                                        "{candidate.label()}"
-                                    }
-                                }
-                            }
+            div { class: "app",
+                match polls.read().as_ref() {
+                    None => rsx! { section { class: "panel status", "{t(ui_state.language, "loading")}" } },
+                    Some(Err(error)) => rsx! { section { class: "panel status", "{error}" } },
+                    Some(Ok(all)) => {
+                        let state = view();
+                        let geos = available_geos(all);
+                        let all_index = geos.len();
+                        let selected_geo = if state.geo_index == all_index {
+                            "ALL".to_string()
+                        } else {
+                            geos.get(state.geo_index).cloned().unwrap_or_else(|| "BR".to_string())
+                        };
+
+                        let mut filtered = filter_polls(all, state.candidate, state.round, &selected_geo, state.range_days);
+                        if !ui_state.institutes.is_empty() {
+                            filtered.retain(|poll| ui_state.institutes.iter().any(|name| name == &poll.institute));
                         }
 
-                        section { class: "panel",
-                            h2 { "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
-                            p { class: "muted", "Pontos são pesquisas individuais; a linha usa o modelo selecionado. Data = fim de campo." }
-                            div { class: "chart-wrap",
-                                {chart_svg(&filtered, &trend, projection.as_ref(), state.hover_day, view)}
-                            }
-                            div { class: "chart-navigation",
-                                button {
-                                    onclick: move |_| reset_navigation(&mut view.write()),
-                                    "Recentrar"
+                        let mut all_institutes: Vec<String> = all.iter().map(|poll| poll.institute.clone()).collect();
+                        all_institutes.sort();
+                        all_institutes.dedup();
+
+                        let round_label = if state.round == 1 {
+                            t(ui_state.language, "first-round")
+                        } else {
+                            t(ui_state.language, "second-round")
+                        };
+                        let trend = trend_for_model(&filtered, state.avg_window_days as f64, state.model);
+                        let projection = if state.model == 2 {
+                            Some(projection_v2_for_round(&filtered, state.round))
+                        } else {
+                            None
+                        };
+                        let latest = filtered.last();
+                        let table_query = ui_state.table_query.trim().to_lowercase();
+                        let table_rows: Vec<Poll> = filtered.iter().rev()
+                            .filter(|poll| {
+                                table_query.is_empty()
+                                    || poll.institute.to_lowercase().contains(&table_query)
+                                    || poll.scenario.to_lowercase().contains(&table_query)
+                                    || poll.geo.to_lowercase().contains(&table_query)
+                                    || poll.fieldwork_end.to_lowercase().contains(&table_query)
+                            })
+                            .cloned()
+                            .collect();
+                        let export_rows = table_rows.clone();
+                        let json_rows = filtered.clone();
+                        let share_institutes = ui_state.institutes.clone();
+                        let latest_all = all.iter().max_by_key(|poll| poll.day);
+                        let overview_poll_count = unique_poll_count(all, None);
+                        let overview_institutes = all_institutes.len();
+                        let round1_count = unique_poll_count(all, Some(1));
+                        let round2_count = unique_poll_count(all, Some(2));
+                        let latest_label = latest_all.map(|poll| format_date(&poll.fieldwork_end)).unwrap_or_else(|| "—".into());
+
+                        rsx! {
+                            section { class: "dashboard-overview", id: "overview",
+                                div { class: "overview-hero",
+                                    div {
+                                        h2 { "{t(ui_state.language, "overview")}" }
+                                        p { "{t(ui_state.language, "overview-copy")}" }
+                                    }
+                                    div { class: "overview-actions",
+                                        button {
+                                            class: "ui-btn",
+                                            onclick: move |_| scroll_to_id("chartPanel"),
+                                            "{t(ui_state.language, "open-chart")}"
+                                        }
+                                        button {
+                                            class: "ui-btn",
+                                            onclick: move |_| scroll_to_id("pollsPanel"),
+                                            "{t(ui_state.language, "view-polls")}"
+                                        }
+                                    }
                                 }
-                                span { class: "muted", "Zoom {state.zoom:.1}×" }
+                                div { class: "metrics-grid",
+                                    div { class: "metric",
+                                        span { class: "metric-label", "{t(ui_state.language, "published-polls")}" }
+                                        span { class: "metric-value", "{overview_poll_count}" }
+                                        span { class: "metric-sub", "{t(ui_state.language, "national-base")}" }
+                                    }
+                                    div { class: "metric",
+                                        span { class: "metric-label", "{t(ui_state.language, "pollsters")}" }
+                                        span { class: "metric-value", "{overview_institutes}" }
+                                        span { class: "metric-sub", "{t(ui_state.language, "loaded-data")}" }
+                                    }
+                                    div { class: "metric",
+                                        span { class: "metric-label", "{t(ui_state.language, "latest-fieldwork")}" }
+                                        span { class: "metric-value", "{latest_label}" }
+                                        span { class: "metric-sub", "{t(ui_state.language, "fieldwork-end" )}" }
+                                    }
+                                    div { class: "metric",
+                                        span { class: "metric-label", "{t(ui_state.language, "round-coverage")}" }
+                                        span { class: "metric-value", "{round1_count} · {round2_count}" }
+                                        span { class: "metric-sub", "{t(ui_state.language, "first-round")} · {t(ui_state.language, "second-round")}" }
+                                    }
+                                }
                             }
-                            if state.model == 2 {
-                                p { class: "muted projection-status", "{projection_status_text(projection.as_ref())}" }
-                            }
-                            if let Some(last) = latest {
-                                p { class: "muted", "Última pesquisa exibida: {format_date(&last.fieldwork_end)} · {last.institute} · {format_pct(last.value)}" }
-                            } else {
-                                p { class: "muted", "Nenhuma observação disponível para este recorte." }
-                            }
-                        }
 
-                        section { class: "cards",
-                            div { class: "card",
-                                div { class: "muted", "Pesquisas no recorte" }
-                                div { class: "card-value", "{filtered.len()}" }
-                            }
-                            div { class: "card",
-                                div { class: "muted", "Série" }
-                                div { class: "card-value", "{state.candidate.label()}" }
-                            }
-                            div { class: "card",
-                                div { class: "muted", "Região" }
-                                div { class: "card-value", "{selected_geo}" }
-                            }
-                        }
+                            section { class: "panel chart-panel", id: "chartPanel",
+                                div { class: "chart-head-row",
+                                    h2 { class: "chart-title", "Evolução da intenção de voto" }
+                                    div { class: "chart-actions",
+                                        button {
+                                            class: "ui-btn",
+                                            onclick: move |_| scroll_to_id("chartPanel"),
+                                            "↗ {t(ui_state.language, "focus")}"
+                                        }
+                                        button {
+                                            class: "ui-btn",
+                                            onclick: move |_| {
+                                                if !fullscreen("appShell") {
+                                                    ui.write().status = Some(t(ui_state.language, "full-screen-unavailable").to_string());
+                                                }
+                                            },
+                                            "⛶ {t(ui_state.language, "fullscreen")}"
+                                        }
+                                    }
+                                }
 
-                        section { class: "panel",
-                            h2 { "Pesquisas exibidas" }
-                            p { class: "muted", "Amostra da tabela para inspeção do novo front-end." }
-                            div { class: "table-wrap",
-                                table {
-                                    thead { tr {
-                                        th { "Fim de campo" }
-                                        th { "Instituto" }
-                                        th { "Geo" }
-                                        th { "Cenário" }
-                                        th { class: "num", "Valor" }
-                                        th { class: "num", "N" }
-                                    }}
-                                    tbody {
-                                        for poll in filtered.iter().rev().take(25) {
-                                            tr {
-                                                td { "{format_date(&poll.fieldwork_end)}" }
-                                                td { "{poll.institute}" }
-                                                td { "{poll.geo}" }
-                                                td { "{poll.scenario}" }
-                                                td { class: "num", "{format_pct(poll.value)}" }
-                                                td { class: "num", "{poll.n:.0}" }
+                                div { class: "controls controls-primary",
+                                    div { class: "seg", role: "group", aria_label: t(ui_state.language, "round"),
+                                        button {
+                                            class: if state.round == 1 { "active" } else { "" },
+                                            onclick: move |_| { let mut state = view.write(); state.round = 1; reset_navigation(&mut state); },
+                                            "{t(ui_state.language, "first-round")}"
+                                        }
+                                        button {
+                                            class: if state.round == 2 { "active" } else { "" },
+                                            onclick: move |_| { let mut state = view.write(); state.round = 2; reset_navigation(&mut state); },
+                                            "{t(ui_state.language, "second-round")}"
+                                        }
+                                    }
+                                    div { class: "seg range-seg", role: "group", aria_label: t(ui_state.language, "period"),
+                                        for (label, days) in [
+                                            ("1d", Some(1_i64)), ("3d", Some(3_i64)), ("7d", Some(7_i64)),
+                                            ("14d", Some(14_i64)), ("21d", Some(21_i64)), ("30d", Some(30_i64)),
+                                            ("90d", Some(90_i64)), ("Tudo", None)
+                                        ] {
+                                            button {
+                                                class: if state.range_days == days { "active" } else { "" },
+                                                onclick: move |_| { let mut state = view.write(); state.range_days = days; reset_navigation(&mut state); },
+                                                "{if label == "Tudo" { t(ui_state.language, "all-period") } else { label }}"
                                             }
                                         }
                                     }
                                 }
+
+                                div { class: "controls controls-secondary",
+                                    div { class: "window-row",
+                                        span { class: "ctrl", "{t(ui_state.language, "averaging-window")}" }
+                                        div { class: "window-presets",
+                                            for days in [7_i64, 14_i64, 30_i64, 90_i64] {
+                                                button {
+                                                    class: if state.avg_window_days == days { "chip on" } else { "chip" },
+                                                    onclick: move |_| {
+                                                        let mut state = view.write();
+                                                        state.avg_window_days = days;
+                                                        reset_navigation(&mut state);
+                                                    },
+                                                    "{days}d"
+                                                }
+                                            }
+                                            button {
+                                                class: if state.avg_window_days == 365 { "chip on" } else { "chip" },
+                                                onclick: move |_| {
+                                                    let mut state = view.write();
+                                                    state.avg_window_days = 365;
+                                                    reset_navigation(&mut state);
+                                                },
+                                                "YTD"
+                                            }
+                                        }
+                                        label { class: "ctrl",
+                                            "{t(ui_state.language, "custom")}"
+                                            input {
+                                                r#type: "number",
+                                                min: "1",
+                                                step: "1",
+                                                value: "{state.avg_window_days}",
+                                                oninput: move |event| {
+                                                    if let Ok(days) = event.value().parse::<i64>() {
+                                                        let mut state = view.write();
+                                                        state.avg_window_days = days.max(1);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    div { class: "axis-btns",
+                                        button {
+                                            class: "chip btn-reset",
+                                            onclick: move |_| reset_navigation(&mut view.write()),
+                                            "Resetar eixos"
+                                        }
+                                    }
+                                }
+
+                                div { class: "filter-drawer",
+                                    div { class: "filter-header",
+                                        strong { "{t(ui_state.language, "filters")}" }
+                                        span { class: "muted", "{t(ui_state.language, "filter-help")}" }
+                                    }
+                                    div { class: "filters",
+                                        button {
+                                            class: if ui_state.institutes.is_empty() { "chip on" } else { "chip" },
+                                            onclick: move |_| ui.write().institutes.clear(),
+                                            "{t(ui_state.language, "select-all")} ({all_institutes.len()})"
+                                        }
+                                        for institute in all_institutes.iter() {
+                                            let name = institute.clone();
+                                            let active = ui_state.institute_selected(&name);
+                                            button {
+                                                class: if active { "chip on" } else { "chip" },
+                                                aria_pressed: "{active}",
+                                                onclick: move |_| {
+                                                    let mut state = ui.write();
+                                                    if state.institutes.is_empty() {
+                                                        state.institutes = all_institutes.iter().filter(|item| *item != &name).cloned().collect();
+                                                    } else if state.institutes.iter().any(|item| item == &name) {
+                                                        if state.institutes.len() > 1 {
+                                                            state.institutes.retain(|item| item != &name);
+                                                        }
+                                                    } else {
+                                                        state.institutes.push(name.clone());
+                                                        state.institutes.sort();
+                                                    }
+                                                },
+                                                "{name}"
+                                            }
+                                        }
+                                    }
+                                }
+
+                                div { class: "chart-box", {chart_svg(
+                                    &filtered,
+                                    &trend,
+                                    projection.as_ref(),
+                                    state.hover_day,
+                                    state.avg_window_days as f64,
+                                    ui_state.language,
+                                    view,
+                                )} }
+
+                                div { class: "chart-navigation",
+                                    button {
+                                        onclick: move |_| reset_navigation(&mut view.write()),
+                                        "{t(ui_state.language, "reset-view")}"
+                                    }
+                                    span { class: "muted", "Zoom {state.zoom:.1}×" }
+                                }
+                                if let Some(status) = ui_state.status.as_ref() {
+                                    p { class: "action-status", role: "status", "{status}" }
+                                }
+                                p { class: "quick-note",
+                                    strong { "{t(ui_state.language, "guide")}:" }
+                                    " {t(ui_state.language, "guide-copy")}"
+                                }
+                                div { class: "quick-tools",
+                                    button {
+                                        class: "ui-btn primary",
+                                        onclick: move |_| {
+                                            let url = build_share_url(
+                                                state.round,
+                                                state.range_days,
+                                                state.avg_window_days,
+                                                state.model,
+                                                state.candidate.key(),
+                                                &selected_geo,
+                                                &share_institutes,
+                                            );
+                                            let message = match url {
+                                                Some(url) if copy_text(&url) => t(ui_state.language, "copy-link"),
+                                                _ => t(ui_state.language, "sharing-unavailable"),
+                                            };
+                                            ui.write().status = Some(message.to_string());
+                                        },
+                                        "{t(ui_state.language, "share")}"
+                                    }
+                                    button {
+                                        class: "ui-btn",
+                                        onclick: move |_| {
+                                            let ok = csv_export(&export_rows);
+                                            ui.write().status = Some(if ok {
+                                                t(ui_state.language, "exported-csv").to_string()
+                                            } else {
+                                                t(ui_state.language, "sharing-unavailable").to_string()
+                                            });
+                                        },
+                                        "{t(ui_state.language, "export-csv")}"
+                                    }
+                                    button {
+                                        class: "ui-btn",
+                                        onclick: move |_| {
+                                            let ok = json_export(
+                                                &json_rows,
+                                                state.round,
+                                                state.range_days,
+                                                state.avg_window_days,
+                                                state.model,
+                                                state.candidate.key(),
+                                                &selected_geo,
+                                            );
+                                            ui.write().status = Some(if ok {
+                                                t(ui_state.language, "exported-json").to_string()
+                                            } else {
+                                                t(ui_state.language, "sharing-unavailable").to_string()
+                                            });
+                                        },
+                                        "{t(ui_state.language, "export-json")}"
+                                    }
+                                    button {
+                                        class: "ui-btn",
+                                        onclick: move |_| scroll_to_id("chartPanel"),
+                                        "{t(ui_state.language, "focus")}"
+                                    }
+                                }
+
+                                h2 { class: "chart-subtitle", "{state.candidate.label()} — {round_label} · {model_label(state.model)}" }
+                                p { class: "muted", "{t(ui_state.language, "source-note")}" }
+
+                                if state.model == 2 {
+                                    p { class: "muted projection-status", "{projection_status_text(projection.as_ref(), ui_state.language)}" }
+                                }
+                                if let Some(last) = latest {
+                                    p { class: "muted", "{t(ui_state.language, "latest-shown")}: {format_date(&last.fieldwork_end)} · {last.institute} · {format_pct(last.value)}" }
+                                } else {
+                                    p { class: "muted", "{t(ui_state.language, "no-observations")}" }
+                                }
+                            }
+
+                            section { class: "cards", id: "cards",
+                                div { class: "card",
+                                    div { class: "muted", "Pesquisas no recorte" }
+                                    div { class: "card-value", "{filtered.len()}" }
+                                }
+                                div { class: "card",
+                                    div { class: "muted", "{t(ui_state.language, "series")}" }
+                                    div { class: "card-value", "{state.candidate.label()}" }
+                                }
+                                div { class: "card",
+                                    div { class: "muted", "{t(ui_state.language, "geography")}" }
+                                    div { class: "card-value", "{selected_geo}" }
+                                }
+                            }
+
+                            section { class: "panel", id: "pollsPanel",
+                                div { class: "table-toolbar",
+                                    div {
+                                        h2 { "{t(ui_state.language, "table")}" }
+                                        p { class: "muted", "{table_rows.len()} {t(ui_state.language, "rows")}" }
+                                    }
+                                    input {
+                                        r#type: "search",
+                                        value: "{ui_state.table_query}",
+                                        placeholder: "{t(ui_state.language, "search-table")}",
+                                        aria_label: t(ui_state.language, "search-table"),
+                                        oninput: move |event| ui.write().table_query = event.value(),
+                                    }
+                                }
+                                p { class: "muted", "{t(ui_state.language, "table-sample")}" }
+                                div { class: "table-wrap",
+                                    table {
+                                        thead { tr {
+                                            th { "Fim de campo" }
+                                            th { "Instituto" }
+                                            th { "Geo" }
+                                            th { "Cenário" }
+                                            th { class: "num", "Valor" }
+                                            th { class: "num", "N" }
+                                        }}
+                                        tbody {
+                                            for poll in table_rows.iter() {
+                                                tr {
+                                                    td { "{format_date(&poll.fieldwork_end)}" }
+                                                    td { "{poll.institute}" }
+                                                    td { "{poll.geo}" }
+                                                    td { "{poll.scenario}" }
+                                                    td { class: "num", "{format_pct(poll.value)}" }
+                                                    td { class: "num", "{poll.n:.0}" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            footer {
+                                p { "{t(ui_state.language, "static-footer")}" }
                             }
                         }
                     }
@@ -222,7 +565,8 @@ pub fn App() -> Element {
     }
 }
 
-fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, mut view: Signal<ViewState>) -> Element {
+
+fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Option<&ProjectionV2Result>, hover_day: Option<i64>, avg_window_days: f64, language: Language, mut view: Signal<ViewState>) -> Element {
     let current_view = view();
     let (base_min_day, base_max_day, low, high) = viewbox(rows, trend, projection);
     let (min_day, max_day) = navigation_window(base_min_day, base_max_day, current_view.zoom, current_view.pan_days);
@@ -236,7 +580,7 @@ fn chart_svg(rows: &[Poll], trend: &[crate::chart::TrendPoint], projection: Opti
             moe: row.moe,
         })
         .collect();
-    let uncertainty = uncertainty_band(&uncertainty_rows, 14.0, 1.645);
+    let uncertainty = uncertainty_band(&uncertainty_rows, avg_window_days, 1.645);
     let band_points = {
         let mut points: Vec<String> = uncertainty.iter()
             .map(|point| format!("{:.2},{:.2}", x_for((point.x / 86_400_000.0).round() as i64, min_day, max_day), y_for(point.low, low, high)))
@@ -643,30 +987,69 @@ fn release_pointer(state: &mut ViewState, id: i32) {
     };
 }
 
-fn projection_status_text(projection: Option<&ProjectionV2Result>) -> String {
+fn projection_status_text(projection: Option<&ProjectionV2Result>, language: Language) -> String {
     match projection {
         Some(proj) if proj.ok => {
             let steps = (proj.horizon_used.min(10) as usize).min(proj.line.len().saturating_sub(1));
             if steps == 0 {
-                return "Projeção v2 disponível, sem horizonte futuro utilizável.".to_string();
+                return if matches!(language, Language::En) {
+                    "Projection v2 is available, but no usable future horizon was found.".to_string()
+                } else {
+                    "Projeção v2 disponível, sem horizonte futuro utilizável.".to_string()
+                };
             }
             let delta = proj.line[steps].y - proj.line[0].y;
             let delta_text = format!("{delta:+.1}").replace('.', ",");
             match proj.holdout.as_ref() {
-                Some(gate) => format!(
-                    "Projeção v2: {delta_text} pp/{steps}d · holdout RMSE modelo {:.2} vs persistência {:.2}.",
-                    gate.rmse_model.unwrap_or(f64::NAN),
-                    gate.rmse_persist.unwrap_or(f64::NAN),
-                ),
-                None => format!("Projeção v2: {delta_text} pp/{steps}d."),
+                Some(gate) => if matches!(language, Language::En) {
+                    format!(
+                        "Projection v2: {delta_text} pp/{steps}d · holdout RMSE model {:.2} vs persistence {:.2}.",
+                        gate.rmse_model.unwrap_or(f64::NAN),
+                        gate.rmse_persist.unwrap_or(f64::NAN),
+                    )
+                } else {
+                    format!(
+                        "Projeção v2: {delta_text} pp/{steps}d · holdout RMSE modelo {:.2} vs persistência {:.2}.",
+                        gate.rmse_model.unwrap_or(f64::NAN),
+                        gate.rmse_persist.unwrap_or(f64::NAN),
+                    )
+                },
+                None => if matches!(language, Language::En) {
+                    format!("Projection v2: {delta_text} pp/{steps}d.")
+                } else {
+                    format!("Projeção v2: {delta_text} pp/{steps}d.")
+                },
             }
         }
-        Some(proj) => format!(
-            "Projeção v2 indisponível: {}.",
-            proj.reason.as_deref().unwrap_or("motivo não informado"),
-        ),
-        None => "Projeção v2 indisponível: sem dados.".to_string(),
+        Some(proj) => {
+            if matches!(language, Language::En) {
+                format!(
+                    "Projection v2 unavailable: {}.",
+                    proj.reason.as_deref().unwrap_or("reason not provided"),
+                )
+            } else {
+                format!(
+                    "Projeção v2 indisponível: {}.",
+                    proj.reason.as_deref().unwrap_or("motivo não informado"),
+                )
+            }
+        }
+        None => if matches!(language, Language::En) {
+            "Projection v2 unavailable: no data.".to_string()
+        } else {
+            "Projeção v2 indisponível: sem dados.".to_string()
+        },
     }
+}
+
+fn unique_poll_count(rows: &[Poll], round: Option<u8>) -> usize {
+    let mut ids = BTreeSet::new();
+    for row in rows {
+        if round.map(|wanted| row.round == wanted).unwrap_or(true) {
+            ids.insert(row.id.clone());
+        }
+    }
+    ids.len()
 }
 
 fn format_pct(value: f64) -> String {
