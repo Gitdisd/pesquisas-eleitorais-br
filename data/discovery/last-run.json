@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-27T18:19:24.795Z",
+  "ran_at": "2026-09-27T22:03:41.593Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 428,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 56,
   "skipped_old": 1,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         }
       ],
       "redundancy_ok": true,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-27",
-      "found_at": "2026-09-27T18:18:51.857Z"
+      "found_at": "2026-09-27T22:03:06.837Z"
     },
     {
       "url": "https://g1.globo.com/pa/para/eleicoes/2026/noticia/2026/09/26/quaest-pa-presidente-26-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-26",
-      "found_at": "2026-09-27T18:18:52.200Z"
+      "found_at": "2026-09-27T22:03:07.208Z"
     },
     {
       "url": "https://g1.globo.com/ma/maranhao/eleicoes/2026/noticia/2026/09/25/quaest-ma-presidente-25-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T18:18:52.543Z"
+      "found_at": "2026-09-27T22:03:07.581Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T18:18:52.750Z"
+      "found_at": "2026-09-27T22:03:07.814Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T18:18:53.060Z"
+      "found_at": "2026-09-27T22:03:08.029Z"
     }
   ],
-  "meta_last_check_at": "2026-09-27T18:19:24.797Z"
+  "meta_last_check_at": "2026-09-27T22:03:41.597Z"
 }
