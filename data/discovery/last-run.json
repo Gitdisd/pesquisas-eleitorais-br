@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-27T08:03:22.657Z",
+  "ran_at": "2026-09-27T13:53:08.575Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 427,
+  "candidate_links": 419,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 57,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-26",
-      "found_at": "2026-09-27T08:02:51.850Z"
+      "found_at": "2026-09-27T13:52:51.013Z"
     },
     {
       "url": "https://g1.globo.com/ma/maranhao/eleicoes/2026/noticia/2026/09/25/quaest-ma-presidente-25-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T08:02:52.208Z"
+      "found_at": "2026-09-27T13:52:51.315Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T08:02:52.543Z"
+      "found_at": "2026-09-27T13:52:51.603Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T08:02:52.926Z"
+      "found_at": "2026-09-27T13:52:51.783Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/25/datafolha-presidente-estados-25-setembro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T08:02:53.121Z"
+      "found_at": "2026-09-27T13:52:51.958Z"
     }
   ],
-  "meta_last_check_at": "2026-09-27T08:03:22.658Z"
+  "meta_last_check_at": "2026-09-27T13:53:08.578Z"
 }
