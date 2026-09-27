@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-27T01:21:32.671Z",
+  "ran_at": "2026-09-27T08:03:22.657Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 428,
+  "candidate_links": 427,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-26",
-      "found_at": "2026-09-27T01:21:03.276Z"
+      "found_at": "2026-09-27T08:02:51.850Z"
     },
     {
       "url": "https://g1.globo.com/ma/maranhao/eleicoes/2026/noticia/2026/09/25/quaest-ma-presidente-25-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T01:21:03.646Z"
+      "found_at": "2026-09-27T08:02:52.208Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T01:21:03.878Z"
+      "found_at": "2026-09-27T08:02:52.543Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T01:21:04.081Z"
+      "found_at": "2026-09-27T08:02:52.926Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/25/datafolha-presidente-estados-25-setembro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T01:21:04.314Z"
+      "found_at": "2026-09-27T08:02:53.121Z"
     }
   ],
-  "meta_last_check_at": "2026-09-27T01:21:32.673Z"
+  "meta_last_check_at": "2026-09-27T08:03:22.658Z"
 }
