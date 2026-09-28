@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-09-28T15:21:19.745Z",
+  "generated_at": "2026-09-28T21:53:55.110Z",
   "queue": "national_president",
   "chart_visible": false,
   "items": [
@@ -137,6 +137,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-00198/2026",
+      "tse_registration": "BR-00198/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-00202/2026",
       "tse_registration": "BR-00202/2026",
       "institute": null,
@@ -209,6 +221,30 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-00261/2026",
+      "tse_registration": "BR-00261/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-00263/2026",
+      "tse_registration": "BR-00263/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-00280/2026",
       "tse_registration": "BR-00280/2026",
       "institute": null,
@@ -247,6 +283,18 @@
     {
       "poll_key": "tse:BR-00304/2026",
       "tse_registration": "BR-00304/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-00321/2026",
+      "tse_registration": "BR-00321/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -415,6 +463,18 @@
     {
       "poll_key": "tse:BR-00432/2026",
       "tse_registration": "BR-00432/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-00437/2026",
+      "tse_registration": "BR-00437/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -689,6 +749,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-00600/2026",
+      "tse_registration": "BR-00600/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-00609/2026",
       "tse_registration": "BR-00609/2026",
       "institute": null,
@@ -953,6 +1025,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-00759/2026",
+      "tse_registration": "BR-00759/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-00768/2026",
       "tse_registration": "BR-00768/2026",
       "institute": null,
@@ -1075,6 +1159,18 @@
     {
       "poll_key": "tse:BR-00879/2026",
       "tse_registration": "BR-00879/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-00886/2026",
+      "tse_registration": "BR-00886/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -1253,8 +1349,32 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-00999/2026",
+      "tse_registration": "BR-00999/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-01019/2026",
       "tse_registration": "BR-01019/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-01023/2026",
+      "tse_registration": "BR-01023/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -1291,6 +1411,18 @@
     {
       "poll_key": "tse:BR-01055/2026",
       "tse_registration": "BR-01055/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-01068/2026",
+      "tse_registration": "BR-01068/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -1447,18 +1579,6 @@
     {
       "poll_key": "tse:BR-01210/2026",
       "tse_registration": "BR-01210/2026",
-      "institute": null,
-      "fieldwork_start": null,
-      "fieldwork_end": null,
-      "planned_publication_date": null,
-      "status": "pending_evidence",
-      "verified": false,
-      "chart_visible": false,
-      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
-    },
-    {
-      "poll_key": "tse:BR-01217/2026",
-      "tse_registration": "BR-01217/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -1769,6 +1889,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-01487/2026",
+      "tse_registration": "BR-01487/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-01495/2026",
       "tse_registration": "BR-01495/2026",
       "institute": null,
@@ -1831,6 +1963,18 @@
     {
       "poll_key": "tse:BR-01531/2026",
       "tse_registration": "BR-01531/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-01546/2026",
+      "tse_registration": "BR-01546/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -2033,6 +2177,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-01708/2026",
+      "tse_registration": "BR-01708/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-01709/2026",
       "tse_registration": "BR-01709/2026",
       "institute": null,
@@ -2047,6 +2203,18 @@
     {
       "poll_key": "tse:BR-01715/2026",
       "tse_registration": "BR-01715/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-01717/2026",
+      "tse_registration": "BR-01717/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -2167,6 +2335,18 @@
     {
       "poll_key": "tse:BR-01799/2026",
       "tse_registration": "BR-01799/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-01814/2026",
+      "tse_registration": "BR-01814/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -2489,6 +2669,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-01993/2026",
+      "tse_registration": "BR-01993/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-02003/2026",
       "tse_registration": "BR-02003/2026",
       "institute": null,
@@ -2683,6 +2875,18 @@
     {
       "poll_key": "tse:BR-02167/2026",
       "tse_registration": "BR-02167/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-02197/2026",
+      "tse_registration": "BR-02197/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -2993,6 +3197,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-02431/2026",
+      "tse_registration": "BR-02431/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-02444/2026",
       "tse_registration": "BR-02444/2026",
       "institute": null,
@@ -3019,6 +3235,18 @@
     {
       "poll_key": "tse:BR-02448/2026",
       "tse_registration": "BR-02448/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-02454/2026",
+      "tse_registration": "BR-02454/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -3509,6 +3737,30 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-02950/2026",
+      "tse_registration": "BR-02950/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-02958/2026",
+      "tse_registration": "BR-02958/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-02981/2026",
       "tse_registration": "BR-02981/2026",
       "institute": null,
@@ -3725,6 +3977,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-03091/2026",
+      "tse_registration": "BR-03091/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-03093/2026",
       "tse_registration": "BR-03093/2026",
       "institute": null,
@@ -3893,6 +4157,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-03172/2026",
+      "tse_registration": "BR-03172/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-03174/2026",
       "tse_registration": "BR-03174/2026",
       "institute": null,
@@ -4051,6 +4327,18 @@
     {
       "poll_key": "tse:BR-03289/2026",
       "tse_registration": "BR-03289/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-03293/2026",
+      "tse_registration": "BR-03293/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -4241,6 +4529,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-03462/2026",
+      "tse_registration": "BR-03462/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-03463/2026",
       "tse_registration": "BR-03463/2026",
       "institute": null,
@@ -4315,6 +4615,18 @@
     {
       "poll_key": "tse:BR-03515/2026",
       "tse_registration": "BR-03515/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-03519/2026",
+      "tse_registration": "BR-03519/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -4939,6 +5251,18 @@
     {
       "poll_key": "tse:BR-03870/2026",
       "tse_registration": "BR-03870/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-03873/2026",
+      "tse_registration": "BR-03873/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -5609,6 +5933,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-04355/2026",
+      "tse_registration": "BR-04355/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-04367/2026",
       "tse_registration": "BR-04367/2026",
       "institute": null,
@@ -5839,6 +6175,18 @@
     {
       "poll_key": "tse:BR-04515/2026",
       "tse_registration": "BR-04515/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-04522/2026",
+      "tse_registration": "BR-04522/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -6161,6 +6509,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-04756/2026",
+      "tse_registration": "BR-04756/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-04761/2026",
       "tse_registration": "BR-04761/2026",
       "institute": null,
@@ -6341,6 +6701,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-04924/2026",
+      "tse_registration": "BR-04924/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-04938/2026",
       "tse_registration": "BR-04938/2026",
       "institute": null,
@@ -6355,6 +6727,18 @@
     {
       "poll_key": "tse:BR-04939/2026",
       "tse_registration": "BR-04939/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-04942/2026",
+      "tse_registration": "BR-04942/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -6655,6 +7039,18 @@
     {
       "poll_key": "tse:BR-05193/2026",
       "tse_registration": "BR-05193/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-05198/2026",
+      "tse_registration": "BR-05198/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -6991,6 +7387,18 @@
     {
       "poll_key": "tse:BR-05405/2026",
       "tse_registration": "BR-05405/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-05406/2026",
+      "tse_registration": "BR-05406/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -7421,6 +7829,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-05720/2026",
+      "tse_registration": "BR-05720/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-05733/2026",
       "tse_registration": "BR-05733/2026",
       "institute": null,
@@ -7615,6 +8035,30 @@
     {
       "poll_key": "tse:BR-05839/2026",
       "tse_registration": "BR-05839/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-05846/2026",
+      "tse_registration": "BR-05846/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-05847/2026",
+      "tse_registration": "BR-05847/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -8021,6 +8465,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-06091/2026",
+      "tse_registration": "BR-06091/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-06095/2026",
       "tse_registration": "BR-06095/2026",
       "institute": null,
@@ -8155,6 +8611,18 @@
     {
       "poll_key": "tse:BR-06243/2026",
       "tse_registration": "BR-06243/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-06245/2026",
+      "tse_registration": "BR-06245/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -8357,6 +8825,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-06423/2026",
+      "tse_registration": "BR-06423/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-06426/2026",
       "tse_registration": "BR-06426/2026",
       "institute": null,
@@ -8417,8 +8897,8 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
-      "poll_key": "tse:BR-06460/2026",
-      "tse_registration": "BR-06460/2026",
+      "poll_key": "tse:BR-06469/2026",
+      "tse_registration": "BR-06469/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -8753,6 +9233,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-06707/2026",
+      "tse_registration": "BR-06707/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-06708/2026",
       "tse_registration": "BR-06708/2026",
       "institute": null,
@@ -8993,6 +9485,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-06883/2026",
+      "tse_registration": "BR-06883/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-06904/2026",
       "tse_registration": "BR-06904/2026",
       "institute": null,
@@ -9019,6 +9523,18 @@
     {
       "poll_key": "tse:BR-06916/2026",
       "tse_registration": "BR-06916/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-06929/2026",
+      "tse_registration": "BR-06929/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -9127,6 +9643,18 @@
     {
       "poll_key": "tse:BR-07020/2026",
       "tse_registration": "BR-07020/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-07025/2026",
+      "tse_registration": "BR-07025/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -9259,6 +9787,18 @@
     {
       "poll_key": "tse:BR-07120/2026",
       "tse_registration": "BR-07120/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-07121/2026",
+      "tse_registration": "BR-07121/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -9857,18 +10397,6 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
-      "poll_key": "tse:BR-07631/2026",
-      "tse_registration": "BR-07631/2026",
-      "institute": null,
-      "fieldwork_start": null,
-      "fieldwork_end": null,
-      "planned_publication_date": null,
-      "status": "pending_evidence",
-      "verified": false,
-      "chart_visible": false,
-      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
-    },
-    {
       "poll_key": "tse:BR-07647/2026",
       "tse_registration": "BR-07647/2026",
       "institute": null,
@@ -10001,6 +10529,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-07727/2026",
+      "tse_registration": "BR-07727/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-07734/2026",
       "tse_registration": "BR-07734/2026",
       "institute": null,
@@ -10111,6 +10651,18 @@
     {
       "poll_key": "tse:BR-07824/2026",
       "tse_registration": "BR-07824/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-07828/2026",
+      "tse_registration": "BR-07828/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -10241,6 +10793,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-07898/2026",
+      "tse_registration": "BR-07898/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-07902/2026",
       "tse_registration": "BR-07902/2026",
       "institute": null,
@@ -10265,6 +10829,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-07919/2026",
+      "tse_registration": "BR-07919/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-07924/2026",
       "tse_registration": "BR-07924/2026",
       "institute": null,
@@ -10279,6 +10855,18 @@
     {
       "poll_key": "tse:BR-07932/2026",
       "tse_registration": "BR-07932/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-07933/2026",
+      "tse_registration": "BR-07933/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -10375,6 +10963,18 @@
     {
       "poll_key": "tse:BR-07989/2026",
       "tse_registration": "BR-07989/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-07994/2026",
+      "tse_registration": "BR-07994/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -10603,6 +11203,18 @@
     {
       "poll_key": "tse:BR-08151/2026",
       "tse_registration": "BR-08151/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-08164/2026",
+      "tse_registration": "BR-08164/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -10915,6 +11527,18 @@
     {
       "poll_key": "tse:BR-08403/2026",
       "tse_registration": "BR-08403/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-08423/2026",
+      "tse_registration": "BR-08423/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -11357,6 +11981,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-08744/2026",
+      "tse_registration": "BR-08744/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-08745/2026",
       "tse_registration": "BR-08745/2026",
       "institute": null,
@@ -11455,6 +12091,18 @@
     {
       "poll_key": "tse:BR-08776/2026",
       "tse_registration": "BR-08776/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-08779/2026",
+      "tse_registration": "BR-08779/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -11587,6 +12235,18 @@
     {
       "poll_key": "tse:BR-08847/2026",
       "tse_registration": "BR-08847/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-08860/2026",
+      "tse_registration": "BR-08860/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -11933,6 +12593,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-09126/2026",
+      "tse_registration": "BR-09126/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-09128/2026",
       "tse_registration": "BR-09128/2026",
       "institute": null,
@@ -12247,6 +12919,18 @@
     {
       "poll_key": "tse:BR-09381/2026",
       "tse_registration": "BR-09381/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-09385/2026",
+      "tse_registration": "BR-09385/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -12593,6 +13277,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-09600/2026",
+      "tse_registration": "BR-09600/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-09607/2026",
       "tse_registration": "BR-09607/2026",
       "institute": null,
@@ -12667,6 +13363,18 @@
     {
       "poll_key": "tse:BR-09661/2026",
       "tse_registration": "BR-09661/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-09668/2026",
+      "tse_registration": "BR-09668/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -12761,6 +13469,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-09756/2026",
+      "tse_registration": "BR-09756/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-09766/2026",
       "tse_registration": "BR-09766/2026",
       "institute": null,
@@ -12811,6 +13531,18 @@
     {
       "poll_key": "tse:BR-09803/2026",
       "tse_registration": "BR-09803/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-09812/2026",
+      "tse_registration": "BR-09812/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,

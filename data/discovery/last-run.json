@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-09-28T15:20:43.545Z",
+  "ran_at": "2026-09-28T21:53:20.057Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 413,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 59,
+  "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         }
       ],
       "redundancy_ok": true,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-28T15:20:30.557Z"
+      "found_at": "2026-09-28T21:53:02.664Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-1o-turno-28-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-28T15:20:30.870Z"
+      "found_at": "2026-09-28T21:53:02.977Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-2o-turno-28-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-28T15:20:31.169Z"
+      "found_at": "2026-09-28T21:53:03.164Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/27/fio-do-professor-felipe-nunes-analise-das-pesquisas-quaest.ghtml",
@@ -535,16 +535,16 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-27",
-      "found_at": "2026-09-28T15:20:31.387Z"
+      "found_at": "2026-09-28T21:53:03.367Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-5/",
-      "title": "Quaest divulga nova pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
-      "reason": "incomplete_extract:no_published_date",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-quaest/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-28T15:20:31.447Z"
+      "found_at": "2026-09-28T21:53:03.538Z"
     }
   ],
-  "meta_last_check_at": "2026-09-28T15:20:43.547Z"
+  "meta_last_check_at": "2026-09-28T21:53:20.059Z"
 }
