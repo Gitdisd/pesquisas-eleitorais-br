@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-28T06:43:47.104Z",
+  "ran_at": "2026-09-28T15:20:43.545Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 393,
+  "candidate_links": 411,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 56,
+  "inbox_new": 59,
   "skipped_old": 1,
   "fetch_errors": 9,
   "source_health": [
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 2,
-      "failures": 0,
+      "successes": 1,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": 200,
-          "error": null
+          "status": null,
+          "error": "fetch failed"
         }
       ],
       "redundancy_ok": true,
@@ -374,13 +374,13 @@
     {
       "source_id": "indexa-broadcast",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.broadcast.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         },
         {
           "url": "https://valor.globo.com/politica/eleicoes-2026/",
@@ -506,45 +506,45 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/fio-do-professor-felipe-nunes-quaest-28-setembro.ghtml",
+      "title": "Pesquisa Quaest presidente: Felipe Nunes analisa Lula e Flávio | G1 Pular para o conteúdo Eleições 2026 Apuração Fio do ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-28",
+      "found_at": "2026-09-28T15:20:30.557Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-1o-turno-28-setembro.ghtml",
+      "title": "Veja resultado da Quaest presidencial no 1º turno | G1 Pular para o conteúdo Eleições 2026 Apuração Quaest, 1º turno: Lu",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-28",
+      "found_at": "2026-09-28T15:20:30.870Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-2o-turno-28-setembro.ghtml",
+      "title": "Quaest aponta empate entre Lula e Flávio Bolsonaro no 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-28",
+      "found_at": "2026-09-28T15:20:31.169Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/27/fio-do-professor-felipe-nunes-analise-das-pesquisas-quaest.ghtml",
       "title": "O que mostram as pesquisas estaduais da Quaest para presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-27",
-      "found_at": "2026-09-28T06:43:30.706Z"
+      "found_at": "2026-09-28T15:20:31.387Z"
     },
     {
-      "url": "https://g1.globo.com/pa/para/eleicoes/2026/noticia/2026/09/26/quaest-pa-presidente-26-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial no Pará | G1 Pular para o conteúdo Pará Eleições 2026 no Pará Quaest no Par",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-5/",
+      "title": "Quaest divulga nova pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
+      "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
-      "published_date": "2026-09-26",
-      "found_at": "2026-09-28T06:43:30.956Z"
-    },
-    {
-      "url": "https://g1.globo.com/ma/maranhao/eleicoes/2026/noticia/2026/09/25/quaest-ma-presidente-25-setembro.ghtml",
-      "title": "Quaest: veja números da disputa presidencial no MA | G1 Pular para o conteúdo Maranhão Eleições 2026 no Maranhão Quaest ",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-25",
-      "found_at": "2026-09-28T06:43:31.214Z"
-    },
-    {
-      "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
-      "title": "Quaest no AC: Veja os números da disputa presidencial | G1 Pular para o conteúdo Acre Eleições 2026 no Acre Quaest no AC",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-25",
-      "found_at": "2026-09-28T06:43:31.404Z"
-    },
-    {
-      "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
-      "title": "Quaest em Roraima: Flávio Bolsonaro, 59%; Lula, 20% | G1 Pular para o conteúdo Roraima Eleições 2026 em Roraima Quaest e",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-25",
-      "found_at": "2026-09-28T06:43:31.583Z"
+      "published_date": null,
+      "found_at": "2026-09-28T15:20:31.447Z"
     }
   ],
-  "meta_last_check_at": "2026-09-28T06:43:47.105Z"
+  "meta_last_check_at": "2026-09-28T15:20:43.547Z"
 }
