@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-27T22:03:41.593Z",
+  "ran_at": "2026-09-28T00:36:49.140Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 428,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-27",
-      "found_at": "2026-09-27T22:03:06.837Z"
+      "found_at": "2026-09-28T00:36:14.384Z"
     },
     {
       "url": "https://g1.globo.com/pa/para/eleicoes/2026/noticia/2026/09/26/quaest-pa-presidente-26-setembro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-26",
-      "found_at": "2026-09-27T22:03:07.208Z"
+      "found_at": "2026-09-28T00:36:14.608Z"
     },
     {
       "url": "https://g1.globo.com/ma/maranhao/eleicoes/2026/noticia/2026/09/25/quaest-ma-presidente-25-setembro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T22:03:07.581Z"
+      "found_at": "2026-09-28T00:36:14.828Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/09/25/quaest-ac-presidente-25-setembro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T22:03:07.814Z"
+      "found_at": "2026-09-28T00:36:15.047Z"
     },
     {
       "url": "https://g1.globo.com/rr/roraima/eleicoes/2026/noticia/2026/09/25/quaest-roraima-presidente-25-de-setembro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-25",
-      "found_at": "2026-09-27T22:03:08.029Z"
+      "found_at": "2026-09-28T00:36:15.274Z"
     }
   ],
-  "meta_last_check_at": "2026-09-27T22:03:41.597Z"
+  "meta_last_check_at": "2026-09-28T00:36:49.142Z"
 }
