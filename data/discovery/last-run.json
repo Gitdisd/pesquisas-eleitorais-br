@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-29T15:43:15.395Z",
+  "ran_at": "2026-09-29T20:42:52.252Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 406,
+  "candidate_links": 395,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 55,
+  "inbox_new": 58,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -506,45 +506,45 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/fio-do-professor-felipe-nunes-quaest-28-setembro.ghtml",
-      "title": "Pesquisa Quaest presidente: Felipe Nunes analisa Lula e Flávio | G1 Pular para o conteúdo Eleições 2026 Apuração Fio do ",
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/29/quaest-df-presidente-29-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa para a Presidência no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no D",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
-      "published_date": "2026-09-28",
-      "found_at": "2026-09-29T15:42:58.100Z"
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-29T20:42:26.607Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-1o-turno-28-setembro.ghtml",
-      "title": "Veja resultado da Quaest presidencial no 1º turno | G1 Pular para o conteúdo Eleições 2026 Apuração Quaest, 1º turno: Lu",
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/29/quaest-mg-presidente-29-setembro.ghtml",
+      "title": "Quaest: veja números da pesquisa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerai",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
-      "published_date": "2026-09-28",
-      "found_at": "2026-09-29T15:42:58.357Z"
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-29T20:42:27.005Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-3/",
-      "title": "O que mostra a nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Palver",
-      "published_date": null,
-      "found_at": "2026-09-29T15:42:58.375Z"
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/29/quaest-rj-presidente-29-setembro.ghtml",
+      "title": "Pesquisa Quaest RJ: Flávio Bolsonaro tem 38% e Lula, 31% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-29T20:42:27.230Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-3/",
-      "title": "Os números da pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Confira ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-09-29T15:42:58.387Z"
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/29/quaest-sp-presidente-29-setembro.ghtml",
+      "title": "Quaest: veja como está a disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Quae",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-29T20:42:27.467Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-4/",
-      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confira o",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-09-29T15:42:58.397Z"
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/29/nova-pesquisa-datafolha-em-mg-indica-se-cleitinho-tem-chances-de-vencer-no-primeiro-turno.ghtml",
+      "title": "Nova pesquisa Datafolha em MG indica se Cleitinho tem chances de vencer no primeiro turno | Eleições 2026 | Valor Econôm",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-29T20:42:28.395Z"
     }
   ],
-  "meta_last_check_at": "2026-09-29T15:43:15.401Z"
+  "meta_last_check_at": "2026-09-29T20:42:52.253Z"
 }

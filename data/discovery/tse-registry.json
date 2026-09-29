@@ -2,7 +2,7 @@
   "version": 1,
   "source": "TSE Pesquisas Eleitorais 2026 open-data export",
   "source_file": "pesquisa_eleitoral_2026.csv",
-  "registry_sha256": "5cd75a1862986bcc4f8cd8a0f50f6beb32442d6627e8c97b00449926d28a67bd",
+  "registry_sha256": "f6c1d27835b09b70e0bdb45c69a7709dfbbd99eac92239f5efb1859a0a03efe7",
   "records": [
     {
       "protocol": "BR-00001/2026",
@@ -2071,17 +2071,6 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "0867970d1cd0fddb2a9810eb8921207715d4f012cdcc4a85d18b1b476cbbd275"
-    },
-    {
-      "protocol": "BR-01604/2026",
-      "institute": null,
-      "registered_date": null,
-      "planned_publication_date": null,
-      "fieldwork_start": null,
-      "fieldwork_end": null,
-      "sample_n": null,
-      "scope": "Nacional",
-      "raw_fingerprint": "83e027a8d04582e1280d153826f6cfe7ff122b478ab29214daadeb183dcb8ad3"
     },
     {
       "protocol": "BR-01620/2026",
@@ -13995,6 +13984,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "330361a554cd873e9665598313415dd54c567a91c8fb5e8f877718cfa4111470"
+    },
+    {
+      "protocol": "BR-09870/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "a5bf03fc3f41f32a9d639e8c217b7534aa76d1864c0521638581ed684572d68c"
     },
     {
       "protocol": "BR-09885/2026",

@@ -1,5 +1,5 @@
 {
-  "registry_sha256": "5cd75a1862986bcc4f8cd8a0f50f6beb32442d6627e8c97b00449926d28a67bd",
+  "registry_sha256": "f6c1d27835b09b70e0bdb45c69a7709dfbbd99eac92239f5efb1859a0a03efe7",
   "registry_count": 1295,
   "active_registration_count": 1295,
   "accounted_registration_count": 137,
@@ -180,7 +180,6 @@
     "BR-01574/2026",
     "BR-01576/2026",
     "BR-01598/2026",
-    "BR-01604/2026",
     "BR-01620/2026",
     "BR-01622/2026",
     "BR-01626/2026",
@@ -1147,6 +1146,7 @@
     "BR-09847/2026",
     "BR-09852/2026",
     "BR-09853/2026",
+    "BR-09870/2026",
     "BR-09885/2026",
     "BR-09888/2026",
     "BR-09891/2026",
