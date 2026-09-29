@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-09-29T08:22:09.120Z",
+  "ran_at": "2026-09-29T15:43:15.395Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 411,
+  "candidate_links": 406,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 55,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-29T08:21:52.865Z"
+      "found_at": "2026-09-29T15:42:58.100Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-1o-turno-28-setembro.ghtml",
@@ -519,32 +519,32 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-29T08:21:53.288Z"
+      "found_at": "2026-09-29T15:42:58.357Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-5/",
-      "title": "Quaest divulga nova pesquisa para presidente; veja os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-3/",
+      "title": "O que mostra a nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
       "reason": "incomplete_extract:no_published_date",
-      "institute": "Quaest",
+      "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-29T08:21:53.311Z"
+      "found_at": "2026-09-29T15:42:58.375Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-setembro-2026-3/",
-      "title": "Nexus/BTG divulga pesquisa para presidente; confira os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Ele",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-3/",
+      "title": "Os números da pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Confira ",
       "reason": "incomplete_extract:no_published_date",
-      "institute": "Nexus/BTG",
+      "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-09-29T08:21:53.325Z"
+      "found_at": "2026-09-29T15:42:58.387Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-2o-turno-28-setembro.ghtml",
-      "title": "Quaest aponta empate entre Lula e Flávio Bolsonaro no 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-28",
-      "found_at": "2026-09-29T08:21:53.605Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-4/",
+      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confira o",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-29T15:42:58.397Z"
     }
   ],
-  "meta_last_check_at": "2026-09-29T08:22:09.122Z"
+  "meta_last_check_at": "2026-09-29T15:43:15.401Z"
 }
