@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-29T01:50:14.619Z",
+  "ran_at": "2026-09-29T08:22:09.120Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 407,
+  "candidate_links": 411,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-29T01:50:00.485Z"
+      "found_at": "2026-09-29T08:21:52.865Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-1o-turno-28-setembro.ghtml",
@@ -519,23 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-28",
-      "found_at": "2026-09-29T01:50:00.777Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-2o-turno-28-setembro.ghtml",
-      "title": "Quaest aponta empate entre Lula e Flávio Bolsonaro no 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-28",
-      "found_at": "2026-09-29T01:50:01.028Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-quaest/",
-      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-09-29T01:50:01.167Z"
+      "found_at": "2026-09-29T08:21:53.288Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-setembro-2026-5/",
@@ -543,8 +527,24 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-09-29T01:50:01.188Z"
+      "found_at": "2026-09-29T08:21:53.311Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-setembro-2026-3/",
+      "title": "Nexus/BTG divulga pesquisa para presidente; confira os números Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Ele",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-09-29T08:21:53.325Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/28/quaest-presidente-2o-turno-28-setembro.ghtml",
+      "title": "Quaest aponta empate entre Lula e Flávio Bolsonaro no 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-28",
+      "found_at": "2026-09-29T08:21:53.605Z"
     }
   ],
-  "meta_last_check_at": "2026-09-29T01:50:14.621Z"
+  "meta_last_check_at": "2026-09-29T08:22:09.122Z"
 }
