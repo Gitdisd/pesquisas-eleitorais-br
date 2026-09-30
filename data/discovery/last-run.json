@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-30T00:21:31.489Z",
+  "ran_at": "2026-09-30T06:38:18.572Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 420,
+  "candidate_links": 418,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-30T00:21:07.094Z"
+      "found_at": "2026-09-30T06:37:59.453Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/29/quaest-df-presidente-29-setembro.ghtml",
@@ -519,32 +519,32 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-30T00:21:07.313Z"
+      "found_at": "2026-09-30T06:37:59.751Z"
     },
     {
-      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/29/quaest-sp-presidente-29-setembro.ghtml",
-      "title": "Quaest: veja como está a disputa presidencial em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paulo Quae",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-09-30T00:21:07.711Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-3/",
+      "title": "O que mostra a nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Palver",
+      "published_date": null,
+      "found_at": "2026-09-30T06:37:59.773Z"
     },
     {
-      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/29/quaest-mg-presidente-29-setembro.ghtml",
-      "title": "Quaest: veja números da pesquisa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerai",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-09-30T00:21:07.945Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-3/",
+      "title": "Os números da pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Confira ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-09-30T06:38:00.056Z"
     },
     {
-      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/29/quaest-rj-presidente-29-setembro.ghtml",
-      "title": "Pesquisa Quaest RJ: Flávio Bolsonaro tem 38% e Lula, 31% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio ",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-09-30T00:21:08.179Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-4/",
+      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confira o",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-09-30T06:38:00.369Z"
     }
   ],
-  "meta_last_check_at": "2026-09-30T00:21:31.491Z"
+  "meta_last_check_at": "2026-09-30T06:38:18.573Z"
 }
