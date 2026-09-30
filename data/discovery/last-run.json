@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-29T20:42:52.252Z",
+  "ran_at": "2026-09-30T00:21:31.489Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 395,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,28 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/29/quaest-presidente-estados-29-setembro.ghtml",
+      "title": "Quaest: como está a disputa presidencial nos estados | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest:",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-30T00:21:07.094Z"
+    },
+    {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/29/quaest-df-presidente-29-setembro.ghtml",
       "title": "Quaest: veja como está a disputa para a Presidência no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no D",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-29T20:42:26.607Z"
-    },
-    {
-      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/29/quaest-mg-presidente-29-setembro.ghtml",
-      "title": "Quaest: veja números da pesquisa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerai",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-09-29T20:42:27.005Z"
-    },
-    {
-      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/29/quaest-rj-presidente-29-setembro.ghtml",
-      "title": "Pesquisa Quaest RJ: Flávio Bolsonaro tem 38% e Lula, 31% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio ",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-09-29T20:42:27.230Z"
+      "found_at": "2026-09-30T00:21:07.313Z"
     },
     {
       "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/09/29/quaest-sp-presidente-29-setembro.ghtml",
@@ -535,16 +527,24 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-29T20:42:27.467Z"
+      "found_at": "2026-09-30T00:21:07.711Z"
     },
     {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/29/nova-pesquisa-datafolha-em-mg-indica-se-cleitinho-tem-chances-de-vencer-no-primeiro-turno.ghtml",
-      "title": "Nova pesquisa Datafolha em MG indica se Cleitinho tem chances de vencer no primeiro turno | Eleições 2026 | Valor Econôm",
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/09/29/quaest-mg-presidente-29-setembro.ghtml",
+      "title": "Quaest: veja números da pesquisa presidencial em MG | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerai",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
+      "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-29T20:42:28.395Z"
+      "found_at": "2026-09-30T00:21:07.945Z"
+    },
+    {
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/09/29/quaest-rj-presidente-29-setembro.ghtml",
+      "title": "Pesquisa Quaest RJ: Flávio Bolsonaro tem 38% e Lula, 31% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-09-29",
+      "found_at": "2026-09-30T00:21:08.179Z"
     }
   ],
-  "meta_last_check_at": "2026-09-29T20:42:52.253Z"
+  "meta_last_check_at": "2026-09-30T00:21:31.491Z"
 }
