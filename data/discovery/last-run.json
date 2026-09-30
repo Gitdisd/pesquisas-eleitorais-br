@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-09-30T06:38:18.572Z",
+  "ran_at": "2026-09-30T13:37:21.588Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 418,
+  "candidate_links": 421,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-30T06:37:59.453Z"
+      "found_at": "2026-09-30T13:37:09.144Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/29/quaest-df-presidente-29-setembro.ghtml",
@@ -519,7 +519,23 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-09-30T06:37:59.751Z"
+      "found_at": "2026-09-30T13:37:09.441Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026-2/",
+      "title": "O que mostra a pesquisa Indexa/Broadcast para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Indexa/Broadcast",
+      "published_date": null,
+      "found_at": "2026-09-30T13:37:09.464Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026-2/",
+      "title": "Meio/Ideia divulga números de pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-09-30T13:37:09.477Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-3/",
@@ -527,24 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-09-30T06:37:59.773Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-3/",
-      "title": "Os números da pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Confira ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-09-30T06:38:00.056Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-setembro-2026-4/",
-      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confira o",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-09-30T06:38:00.369Z"
+      "found_at": "2026-09-30T13:37:09.490Z"
     }
   ],
-  "meta_last_check_at": "2026-09-30T06:38:18.573Z"
+  "meta_last_check_at": "2026-09-30T13:37:21.590Z"
 }
