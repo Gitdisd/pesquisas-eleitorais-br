@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-01T02:03:13.995Z",
+  "ran_at": "2026-10-01T08:48:00.762Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 417,
+  "candidate_links": 418,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,15 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-09-29",
-      "found_at": "2026-10-01T02:03:00.397Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/30/pesquisas-presidente-primeiro-turno-quaest-datafolha.ghtml",
-      "title": "Quando saem as últimas pesquisas para presidente antes da votação? | G1 Pular para o conteúdo Eleições 2026 Apuração Qua",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-09-30",
-      "found_at": "2026-10-01T02:03:00.652Z"
+      "found_at": "2026-10-01T08:47:39.120Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026-2/",
@@ -527,7 +519,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-01T02:03:00.678Z"
+      "found_at": "2026-10-01T08:47:39.181Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026-2/",
@@ -535,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Ideia",
       "published_date": null,
-      "found_at": "2026-10-01T02:03:00.687Z"
+      "found_at": "2026-10-01T08:47:39.200Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-setembro-2026-3/",
@@ -543,8 +535,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Palver",
       "published_date": null,
-      "found_at": "2026-10-01T02:03:00.701Z"
+      "found_at": "2026-10-01T08:47:39.597Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-setembro-2026-3/",
+      "title": "Os números da pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Confira ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-10-01T08:47:39.918Z"
     }
   ],
-  "meta_last_check_at": "2026-10-01T02:03:13.997Z"
+  "meta_last_check_at": "2026-10-01T08:48:00.764Z"
 }
