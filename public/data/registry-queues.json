@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-01T08:48:05.601Z",
+  "generated_at": "2026-10-01T16:21:51.578Z",
   "scope": "TSE registry scan",
   "queues": {
     "national_president": {
@@ -1314,7 +1314,7 @@
     }
   },
   "source_rows": {
-    "lines": 67691,
+    "lines": 67650,
     "candidate_rows": 1293,
     "presidential_rows": 1293,
     "national_rows": 1293,
