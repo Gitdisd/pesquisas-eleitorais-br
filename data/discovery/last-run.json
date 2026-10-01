@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-01T16:21:49.123Z",
+  "ran_at": "2026-10-01T21:48:11.644Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 414,
+  "candidate_links": 427,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,20 +506,12 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/29/quaest-presidente-estados-29-setembro.ghtml",
-      "title": "Quaest: como está a disputa presidencial nos estados | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest:",
+      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/01/datafolha-no-rj-2o-turno-1-outubro.ghtml",
+      "title": "Datafolha RJ 2º turno: Paes tem 52% e Douglas Ruas, 38% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio d",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-10-01T16:21:33.793Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/09/30/pesquisas-presidente-primeiro-turno-quaest-datafolha.ghtml",
-      "title": "Quando saem as últimas pesquisas para presidente antes da votação? | G1 Pular para o conteúdo Eleições 2026 Apuração Qua",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-09-30",
-      "found_at": "2026-10-01T16:21:34.023Z"
+      "published_date": "2026-10-01",
+      "found_at": "2026-10-01T21:47:57.889Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026-2/",
@@ -527,7 +519,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-01T16:21:34.064Z"
+      "found_at": "2026-10-01T21:47:57.914Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026-2/",
@@ -535,16 +527,24 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Ideia",
       "published_date": null,
-      "found_at": "2026-10-01T16:21:34.083Z"
+      "found_at": "2026-10-01T21:47:57.926Z"
     },
     {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/09/29/quaest-df-presidente-29-setembro.ghtml",
-      "title": "Quaest: veja como está a disputa para a Presidência no DF | G1 Pular para o conteúdo Distrito Federal Eleições 2026 no D",
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/01/datafolha-em-mg-no-primeiro-turno-cleitinho-tem-40percent-patrus-16percent-e-kalil-11percent.ghtml",
+      "title": "Datafolha: Em MG, no primeiro turno, Cleitinho tem 40%, Patrus 16% e Kalil 11% | Eleições 2026 | Valor Econômico Carrega",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-09-29",
-      "found_at": "2026-10-01T16:21:34.329Z"
+      "institute": "Datafolha",
+      "published_date": "2026-10-01",
+      "found_at": "2026-10-01T21:47:58.240Z"
+    },
+    {
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/01/datafolha-no-rj-paes-tem-42percent-e-ruas-31percent-no-primeiro-turno.ghtml",
+      "title": "Datafolha: No RJ, Paes tem 42% e Ruas, 31% no primeiro turno | Eleições 2026 | Valor Econômico Carregando... Acesse sua ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-01",
+      "found_at": "2026-10-01T21:47:58.477Z"
     }
   ],
-  "meta_last_check_at": "2026-10-01T16:21:49.125Z"
+  "meta_last_check_at": "2026-10-01T21:48:11.646Z"
 }
