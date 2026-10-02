@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-02T15:47:07.741Z",
+  "ran_at": "2026-10-02T20:41:20.523Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 420,
+  "candidate_links": 419,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 57,
+  "inbox_new": 56,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -506,20 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/01/datafolha-presidente-segundo-turno-1-outubro.ghtml",
-      "title": "Datafolha, 2º turno: Lula, 48%; Flávio Bolsonaro, 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/02/datafolha-pe-presidente-3-de-outubro.ghtml",
+      "title": "Datafolha: veja como está a disputa presidencial em PE | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-10-01",
-      "found_at": "2026-10-02T15:46:52.035Z"
+      "published_date": "2026-10-02",
+      "found_at": "2026-10-02T20:40:51.255Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/01/datafolha-presidente-1-outubro.ghtml",
-      "title": "Pesquisa Datafolha: Lula tem 42% e Flávio Bolsonaro 38% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Data",
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/02/datafolha-df-presidente-2-outubro.ghtml",
+      "title": "Datafolha no DF: veja como está a disputa para a Presidência | G1 Pular para o conteúdo Distrito Federal Eleições 2026 n",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-02",
+      "found_at": "2026-10-02T20:40:51.448Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/02/datafolha-mg-presidente-2-outubro.ghtml",
+      "title": "Datafolha em MG: Lula, 42%; Flávio Bolsonaro, 36%; Zema, 4%; Caiado, 4% | G1 Pular para o conteúdo Minas Gerais Eleições",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-10-01",
-      "found_at": "2026-10-02T15:46:52.281Z"
+      "published_date": "2026-10-02",
+      "found_at": "2026-10-02T20:40:51.636Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
@@ -527,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-02T15:46:52.409Z"
+      "found_at": "2026-10-02T20:40:51.813Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-2/",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-02T15:46:52.432Z"
-    },
-    {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/01/datafolha-lula-tem-48percent-e-flavio-bolsonaro-45percentpercent-no-primeiro-turno.ghtml",
-      "title": "Datafolha: Lula tem 42% e Flávio, 38% no primeiro turno | Eleições 2026 | Valor Econômico Carregando... Acesse sua conta",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-01",
-      "found_at": "2026-10-02T15:46:52.738Z"
+      "found_at": "2026-10-02T20:40:51.872Z"
     }
   ],
-  "meta_last_check_at": "2026-10-02T15:47:07.742Z"
+  "meta_last_check_at": "2026-10-02T20:41:20.524Z"
 }
