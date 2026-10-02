@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-02T01:37:37.040Z",
+  "ran_at": "2026-10-02T08:25:27.022Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 423,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-01",
-      "found_at": "2026-10-02T01:37:17.530Z"
+      "found_at": "2026-10-02T08:25:09.846Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/01/datafolha-presidente-1-outubro.ghtml",
@@ -519,15 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-01",
-      "found_at": "2026-10-02T01:37:17.871Z"
-    },
-    {
-      "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/01/datafolha-no-rj-2o-turno-1-outubro.ghtml",
-      "title": "Datafolha RJ 2º turno: Paes tem 52% e Douglas Ruas, 38% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio d",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-01",
-      "found_at": "2026-10-02T01:37:18.063Z"
+      "found_at": "2026-10-02T08:25:10.081Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-2/",
@@ -535,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-02T01:37:18.177Z"
+      "found_at": "2026-10-02T08:25:10.105Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026-2/",
@@ -543,8 +535,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-02T01:37:18.431Z"
+      "found_at": "2026-10-02T08:25:10.331Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026-2/",
+      "title": "Meio/Ideia divulga números de pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "Ideia",
+      "published_date": null,
+      "found_at": "2026-10-02T08:25:10.775Z"
     }
   ],
-  "meta_last_check_at": "2026-10-02T01:37:37.041Z"
+  "meta_last_check_at": "2026-10-02T08:25:27.024Z"
 }
