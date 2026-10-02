@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-01T21:48:11.644Z",
+  "ran_at": "2026-10-02T01:37:37.040Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 427,
+  "candidate_links": 423,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,36 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/01/datafolha-presidente-segundo-turno-1-outubro.ghtml",
+      "title": "Datafolha, 2º turno: Lula, 48%; Flávio Bolsonaro, 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-01",
+      "found_at": "2026-10-02T01:37:17.530Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/01/datafolha-presidente-1-outubro.ghtml",
+      "title": "Pesquisa Datafolha: Lula tem 42% e Flávio Bolsonaro 38% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Data",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-01",
+      "found_at": "2026-10-02T01:37:17.871Z"
+    },
+    {
       "url": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2026/noticia/2026/10/01/datafolha-no-rj-2o-turno-1-outubro.ghtml",
       "title": "Datafolha RJ 2º turno: Paes tem 52% e Douglas Ruas, 38% | G1 Pular para o conteúdo Rio de Janeiro Eleições 2026 no Rio d",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-01",
-      "found_at": "2026-10-01T21:47:57.889Z"
+      "found_at": "2026-10-02T01:37:18.063Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-2/",
+      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-10-02T01:37:18.177Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-setembro-2026-2/",
@@ -519,32 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-01T21:47:57.914Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-setembro-2026-2/",
-      "title": "Meio/Ideia divulga números de pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "Ideia",
-      "published_date": null,
-      "found_at": "2026-10-01T21:47:57.926Z"
-    },
-    {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/01/datafolha-em-mg-no-primeiro-turno-cleitinho-tem-40percent-patrus-16percent-e-kalil-11percent.ghtml",
-      "title": "Datafolha: Em MG, no primeiro turno, Cleitinho tem 40%, Patrus 16% e Kalil 11% | Eleições 2026 | Valor Econômico Carrega",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-01",
-      "found_at": "2026-10-01T21:47:58.240Z"
-    },
-    {
-      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/01/datafolha-no-rj-paes-tem-42percent-e-ruas-31percent-no-primeiro-turno.ghtml",
-      "title": "Datafolha: No RJ, Paes tem 42% e Ruas, 31% no primeiro turno | Eleições 2026 | Valor Econômico Carregando... Acesse sua ",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-01",
-      "found_at": "2026-10-01T21:47:58.477Z"
+      "found_at": "2026-10-02T01:37:18.431Z"
     }
   ],
-  "meta_last_check_at": "2026-10-01T21:48:11.646Z"
+  "meta_last_check_at": "2026-10-02T01:37:37.041Z"
 }
