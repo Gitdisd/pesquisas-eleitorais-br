@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-02T20:41:20.523Z",
+  "ran_at": "2026-10-03T00:25:32.311Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 419,
+  "candidate_links": 425,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 56,
+  "inbox_new": 58,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -506,12 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/02/datafolha-presidente-mg-sp-rj-df-pe-2-outubro.ghtml",
+      "title": "Datafolha: Lula abre vantagem em MG e cresce em SP, onde empata com Flávio; senador lidera no Rio | G1 Pular para o cont",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-02",
+      "found_at": "2026-10-03T00:25:14.682Z"
+    },
+    {
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/02/datafolha-mg-presidente-2-outubro.ghtml",
+      "title": "Datafolha em MG: Lula, 42%; Flávio Bolsonaro, 36% | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerais ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-02",
+      "found_at": "2026-10-03T00:25:14.971Z"
+    },
+    {
       "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/02/datafolha-pe-presidente-3-de-outubro.ghtml",
       "title": "Datafolha: veja como está a disputa presidencial em PE | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-02T20:40:51.255Z"
+      "found_at": "2026-10-03T00:25:15.125Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/02/datafolha-df-presidente-2-outubro.ghtml",
@@ -519,23 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-02T20:40:51.448Z"
-    },
-    {
-      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/02/datafolha-mg-presidente-2-outubro.ghtml",
-      "title": "Datafolha em MG: Lula, 42%; Flávio Bolsonaro, 36%; Zema, 4%; Caiado, 4% | G1 Pular para o conteúdo Minas Gerais Eleições",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-02",
-      "found_at": "2026-10-02T20:40:51.636Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
-      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
-      "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-10-02T20:40:51.813Z"
+      "found_at": "2026-10-03T00:25:15.279Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-2/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-02T20:40:51.872Z"
+      "found_at": "2026-10-03T00:25:15.326Z"
     }
   ],
-  "meta_last_check_at": "2026-10-02T20:41:20.524Z"
+  "meta_last_check_at": "2026-10-03T00:25:32.312Z"
 }
