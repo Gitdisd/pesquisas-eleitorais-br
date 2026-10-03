@@ -1,65 +1,65 @@
 {
-  "ran_at": "2026-10-03T17:13:56.129Z",
+  "ran_at": "2026-10-03T21:09:17.775Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 375,
+  "candidate_links": 427,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 56,
+  "inbox_new": 59,
   "skipped_old": 1,
-  "fetch_errors": 16,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
       "attempts": 8,
-      "successes": 0,
-      "failures": 8,
+      "successes": 8,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         }
       ],
-      "redundancy_ok": false,
-      "fully_failed": true
+      "redundancy_ok": true,
+      "fully_failed": false
     },
     {
       "source_id": "cnn-brasil-eleicoes",
@@ -511,31 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T17:13:39.605Z"
-    },
-    {
-      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/02/datafolha-mg-presidente-2-outubro.ghtml",
-      "title": "Datafolha em MG: Lula, 42%; Flávio Bolsonaro, 36% | G1 Pular para o conteúdo Minas Gerais Eleições 2026 em Minas Gerais ",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-02",
-      "found_at": "2026-10-03T17:13:39.854Z"
-    },
-    {
-      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/02/datafolha-pe-presidente-3-de-outubro.ghtml",
-      "title": "Datafolha: veja como está a disputa presidencial em PE | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Pernambuco",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-02",
-      "found_at": "2026-10-03T17:13:40.024Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/02/datafolha-df-presidente-2-outubro.ghtml",
-      "title": "Datafolha no DF: veja como está a disputa para a Presidência | G1 Pular para o conteúdo Distrito Federal Eleições 2026 n",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-02",
-      "found_at": "2026-10-03T17:13:40.197Z"
+      "found_at": "2026-10-03T21:09:10.133Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
@@ -543,8 +519,32 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-03T17:13:40.367Z"
+      "found_at": "2026-10-03T21:09:10.256Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-outubro-2026-vespera-1-turno/",
+      "title": "O que mostra a nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "Palver",
+      "published_date": null,
+      "found_at": "2026-10-03T21:09:10.276Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026/",
+      "title": "Os números da pesquisa PoderData para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Pod",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-10-03T21:09:10.285Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-vespera-1-turno/",
+      "title": "O que mostra a nova pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-10-03T21:09:10.298Z"
     }
   ],
-  "meta_last_check_at": "2026-10-03T17:13:56.131Z"
+  "meta_last_check_at": "2026-10-03T21:09:17.776Z"
 }
