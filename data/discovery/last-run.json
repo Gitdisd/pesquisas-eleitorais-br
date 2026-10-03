@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-03T06:24:38.363Z",
+  "ran_at": "2026-10-03T12:28:57.591Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 423,
+  "candidate_links": 417,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T06:24:17.908Z"
+      "found_at": "2026-10-03T12:28:38.312Z"
     },
     {
       "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/02/datafolha-mg-presidente-2-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T06:24:18.185Z"
+      "found_at": "2026-10-03T12:28:38.602Z"
     },
     {
       "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/02/datafolha-pe-presidente-3-de-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T06:24:18.336Z"
+      "found_at": "2026-10-03T12:28:38.759Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/02/datafolha-df-presidente-2-outubro.ghtml",
@@ -535,16 +535,16 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T06:24:18.514Z"
+      "found_at": "2026-10-03T12:28:38.916Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/03/quaest-e-datafolha-ultimas-pesquisas-antes-do-1o-turno-saem-neste-sabado-3.ghtml",
-      "title": "Pesquisas eleitorais: Datafolha e Quaest saem na véspera do 1º turno | G1 Pular para o conteúdo Eleições 2026 Apuração Q",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-03",
-      "found_at": "2026-10-03T06:24:18.668Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-vespera-1-turno/",
+      "title": "O que mostra a nova pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O ",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-10-03T12:28:38.965Z"
     }
   ],
-  "meta_last_check_at": "2026-10-03T06:24:38.364Z"
+  "meta_last_check_at": "2026-10-03T12:28:57.593Z"
 }
