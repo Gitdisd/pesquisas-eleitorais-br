@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-10-03T21:09:17.775Z",
+  "ran_at": "2026-10-03T23:46:43.124Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 427,
+  "candidate_links": 434,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 59,
-  "skipped_old": 1,
+  "inbox_new": 60,
+  "skipped_old": 0,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -506,45 +506,45 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/02/datafolha-presidente-mg-sp-rj-df-pe-2-outubro.ghtml",
-      "title": "Datafolha: Lula abre vantagem em MG e cresce em SP, onde empata com Flávio; senador lidera no Rio | G1 Pular para o cont",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/datafolha-1o-turno-presidente-estados-sp-rj-df-pe-mg-df.ghtml",
+      "title": "Datafolha: como está a disputa presidencial em SP, MG, PE, DF e RJ | G1 Pular para o conteúdo Eleições 2026 Pesquisa ele",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-10-02",
-      "found_at": "2026-10-03T21:09:10.133Z"
+      "published_date": "2026-10-03",
+      "found_at": "2026-10-03T23:46:30.544Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-1-turno-datafolha/",
-      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Edit",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe,no_scenario",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/quaest-como-votam-os-eleitores-de-caiado-renan-e-cury-em-um-2o-turno-entre-lula-e-flavio-bolsonaro.ghtml",
+      "title": "Quaest: como votam os eleitores de Caiado, Renan e Cury em um 2º turno entre Lula e Flávio Bolsonaro | G1 Pular para o c",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-03",
+      "found_at": "2026-10-03T23:46:30.877Z"
+    },
+    {
+      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/03/datafolha-pernambuco-presidente-3-de-outubroghtml.ghtml",
+      "title": "Datafolha para presidente em PE: Lula tem 65% e Bolsonaro 26% | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Per",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-10-03T21:09:10.256Z"
+      "published_date": "2026-10-03",
+      "found_at": "2026-10-03T23:46:31.372Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-outubro-2026-vespera-1-turno/",
-      "title": "O que mostra a nova pesquisa Palver para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "Palver",
-      "published_date": null,
-      "found_at": "2026-10-03T21:09:10.276Z"
+      "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/10/03/datafolha-sp-presidente-3-outubro.ghtml",
+      "title": "Datafolha: veja como está a disputa para presidente em SP | G1 Pular para o conteúdo São Paulo Eleições 2026 em São Paul",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-03",
+      "found_at": "2026-10-03T23:46:31.807Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026/",
-      "title": "Os números da pesquisa PoderData para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Pod",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "PoderData",
-      "published_date": null,
-      "found_at": "2026-10-03T21:09:10.285Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-vespera-1-turno/",
-      "title": "O que mostra a nova pesquisa Gerp para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 O ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-10-03T21:09:10.298Z"
+      "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/03/datafolha-mg-presidente-3-outubro.ghtml",
+      "title": "Datafolha em MG, votos válidos: Lula, 44%; Flávio Bolsonaro, 44% | G1 Pular para o conteúdo Minas Gerais Eleições 2026 e",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-03",
+      "found_at": "2026-10-03T23:46:32.111Z"
     }
   ],
-  "meta_last_check_at": "2026-10-03T21:09:17.776Z"
+  "meta_last_check_at": "2026-10-03T23:46:43.126Z"
 }
