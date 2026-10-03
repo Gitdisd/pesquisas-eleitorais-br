@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-03T00:25:32.311Z",
+  "ran_at": "2026-10-03T06:24:38.363Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 425,
+  "candidate_links": 423,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T00:25:14.682Z"
+      "found_at": "2026-10-03T06:24:17.908Z"
     },
     {
       "url": "https://g1.globo.com/mg/minas-gerais/eleicoes/2026/noticia/2026/10/02/datafolha-mg-presidente-2-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T00:25:14.971Z"
+      "found_at": "2026-10-03T06:24:18.185Z"
     },
     {
       "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/02/datafolha-pe-presidente-3-de-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T00:25:15.125Z"
+      "found_at": "2026-10-03T06:24:18.336Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/02/datafolha-df-presidente-2-outubro.ghtml",
@@ -535,16 +535,16 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-02",
-      "found_at": "2026-10-03T00:25:15.279Z"
+      "found_at": "2026-10-03T06:24:18.514Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-2/",
-      "title": "Datafolha divulga nova pesquisa para presidente Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 2026 Data",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/03/quaest-e-datafolha-ultimas-pesquisas-antes-do-1o-turno-saem-neste-sabado-3.ghtml",
+      "title": "Pesquisas eleitorais: Datafolha e Quaest saem na véspera do 1º turno | G1 Pular para o conteúdo Eleições 2026 Apuração Q",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
-      "published_date": null,
-      "found_at": "2026-10-03T00:25:15.326Z"
+      "published_date": "2026-10-03",
+      "found_at": "2026-10-03T06:24:18.668Z"
     }
   ],
-  "meta_last_check_at": "2026-10-03T00:25:32.312Z"
+  "meta_last_check_at": "2026-10-03T06:24:38.364Z"
 }
