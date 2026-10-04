@@ -1,7 +1,7 @@
 {
   "version": 1,
   "status": "attention",
-  "missing_count": 1153,
+  "missing_count": 1155,
   "items": [
     {
       "protocol": "BR-00001/2026",
@@ -4457,6 +4457,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "db75625f361b85cfab7915419ddf7646189b7877abb073ecfcb9ac01c54e0168"
+    },
+    {
+      "protocol": "BR-03663/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "50859c325c273b0cb348b6c478ef3fa554fb1498db68bc625f0bf9fd9459a78a"
     },
     {
       "protocol": "BR-03688/2026",
@@ -12124,6 +12135,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "5ec705c52cbc9174c4265e289d757cd814b5653cb7f9536dc83b61a429b5c707"
+    },
+    {
+      "protocol": "BR-09623/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "7ffd2e5d136193e4e6bf2c63104ad888d60e9885fa185d1224e8ce362fa90c4b"
     },
     {
       "protocol": "BR-09624/2026",
