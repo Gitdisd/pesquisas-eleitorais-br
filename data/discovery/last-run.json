@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-05T15:56:01.286Z",
+  "ran_at": "2026-10-05T22:34:41.765Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 415,
+  "candidate_links": 433,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-05T15:55:36.743Z"
+      "found_at": "2026-10-05T22:34:22.847Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/datafolha-1o-turno-presidente-estados-sp-rj-df-pe-mg-df.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-05T15:55:37.107Z"
+      "found_at": "2026-10-05T22:34:23.179Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/quaest-como-votam-os-eleitores-de-caiado-renan-e-cury-em-um-2o-turno-entre-lula-e-flavio-bolsonaro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-05T15:55:37.311Z"
+      "found_at": "2026-10-05T22:34:23.342Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-05T15:55:37.752Z"
+      "found_at": "2026-10-05T22:34:23.363Z"
     },
     {
       "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/03/datafolha-pernambuco-presidente-3-de-outubroghtml.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-05T15:55:38.076Z"
+      "found_at": "2026-10-05T22:34:23.651Z"
     }
   ],
-  "meta_last_check_at": "2026-10-05T15:56:01.288Z"
+  "meta_last_check_at": "2026-10-05T22:34:41.770Z"
 }
