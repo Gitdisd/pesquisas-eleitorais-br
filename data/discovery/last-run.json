@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-06T02:56:13.175Z",
+  "ran_at": "2026-10-06T10:08:24.343Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 436,
+  "candidate_links": 428,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-06T02:55:36.862Z"
+      "found_at": "2026-10-06T10:08:00.552Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/datafolha-1o-turno-presidente-estados-sp-rj-df-pe-mg-df.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-06T02:55:37.227Z"
+      "found_at": "2026-10-06T10:08:01.094Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/quaest-como-votam-os-eleitores-de-caiado-renan-e-cury-em-um-2o-turno-entre-lula-e-flavio-bolsonaro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-06T02:55:37.455Z"
+      "found_at": "2026-10-06T10:08:01.463Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026/",
@@ -535,16 +535,16 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-06T02:55:38.087Z"
+      "found_at": "2026-10-06T10:08:01.514Z"
     },
     {
-      "url": "https://g1.globo.com/pe/pernambuco/eleicoes/2026/noticia/2026/10/03/datafolha-pernambuco-presidente-3-de-outubroghtml.ghtml",
-      "title": "Datafolha para presidente em PE: Lula tem 65% e Bolsonaro 26% | G1 Pular para o conteúdo Pernambuco Eleições 2026 em Per",
+      "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/05/nova-pesquisa-datafolha-para-presidente-no-segundo-turno-testa-se-eleitor-muda-voto-entre-lula-e-flavio.ghtml",
+      "title": "Nova pesquisa Datafolha para presidente no segundo turno testa se eleitor muda voto entre Lula e Flávio | Eleições 2026 ",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-10-03",
-      "found_at": "2026-10-06T02:55:38.560Z"
+      "published_date": "2026-10-05",
+      "found_at": "2026-10-06T10:08:02.273Z"
     }
   ],
-  "meta_last_check_at": "2026-10-06T02:56:13.180Z"
+  "meta_last_check_at": "2026-10-06T10:08:24.345Z"
 }
