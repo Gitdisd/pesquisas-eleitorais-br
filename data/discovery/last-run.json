@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-07T08:34:50.575Z",
+  "ran_at": "2026-10-07T16:22:30.359Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 424,
+  "candidate_links": 415,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-07T08:34:26.240Z"
+      "found_at": "2026-10-07T16:22:10.326Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/datafolha-1o-turno-presidente-estados-sp-rj-df-pe-mg-df.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-07T08:34:26.569Z"
+      "found_at": "2026-10-07T16:22:10.655Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/quaest-como-votam-os-eleitores-de-caiado-renan-e-cury-em-um-2o-turno-entre-lula-e-flavio-bolsonaro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-03",
-      "found_at": "2026-10-07T08:34:26.902Z"
+      "found_at": "2026-10-07T16:22:10.961Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-07T08:34:26.928Z"
+      "found_at": "2026-10-07T16:22:10.986Z"
     },
     {
       "url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/10/05/nova-pesquisa-datafolha-para-presidente-no-segundo-turno-testa-se-eleitor-muda-voto-entre-lula-e-flavio.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-05",
-      "found_at": "2026-10-07T08:34:27.597Z"
+      "found_at": "2026-10-07T16:22:11.619Z"
     }
   ],
-  "meta_last_check_at": "2026-10-07T08:34:50.581Z"
+  "meta_last_check_at": "2026-10-07T16:22:30.361Z"
 }

@@ -2,7 +2,7 @@
   "version": 1,
   "source": "TSE Pesquisas Eleitorais 2026 open-data export",
   "source_file": "pesquisa_eleitoral_2026.csv",
-  "registry_sha256": "945503ef561a1d1eab3c398ac1aa06d90f760f57c8cc9c74db7c64dceef5e60b",
+  "registry_sha256": "2a50e0f35e38b4fc2ecdef7c816a59450fb5699640a40aa6f7d1e8864264a2d8",
   "records": [
     {
       "protocol": "BR-00001/2026",
@@ -3688,6 +3688,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "561abe3550f165c01af01f33afb47ae770224d0396dcd11dbe16f1d87d2a2f05"
+    },
+    {
+      "protocol": "BR-02875/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "f89c8d11c95f7de3f2de1d8b6dc8628d7982b671411df393fd96fb717446a4f2"
     },
     {
       "protocol": "BR-02882/2026",
@@ -9608,6 +9619,17 @@
       "raw_fingerprint": "4f813de64e0a51d569caf3b118b5bb6bdb41faa442dcf1f7484191e219b837af"
     },
     {
+      "protocol": "BR-06799/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "4c6e7eb75a5ae42b0c7326b0a423c67aed5fe1a519afd8dcb317676d8e6b5b70"
+    },
+    {
       "protocol": "BR-06808/2026",
       "institute": null,
       "registered_date": null,
@@ -10178,6 +10200,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "2fda0846e597de597c708291659bf4d10dabebfefc3ce7ec00c73d3839249836"
+    },
+    {
+      "protocol": "BR-07193/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "84e3685870b273f9a25ca7029185174036bb17b032c120a07311be7e03413859"
     },
     {
       "protocol": "BR-07197/2026",
