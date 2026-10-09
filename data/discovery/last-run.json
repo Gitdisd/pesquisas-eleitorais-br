@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-09T08:55:55.240Z",
+  "ran_at": "2026-10-09T16:08:42.496Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 422,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 56,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-09T08:55:16.874Z"
+      "found_at": "2026-10-09T16:08:05.779Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-09T08:55:17.224Z"
+      "found_at": "2026-10-09T16:08:06.123Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-br-2-turno-datafolha/",
@@ -527,7 +527,15 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-09T08:55:17.425Z"
+      "found_at": "2026-10-09T16:08:06.314Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
+      "title": "AtlasIntel divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confira as",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-10-09T16:08:06.936Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-09T08:55:18.072Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno/",
-      "title": "PoderData divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "PoderData",
-      "published_date": null,
-      "found_at": "2026-10-09T08:55:18.784Z"
+      "found_at": "2026-10-09T16:08:07.570Z"
     }
   ],
-  "meta_last_check_at": "2026-10-09T08:55:55.241Z"
+  "meta_last_check_at": "2026-10-09T16:08:42.498Z"
 }
