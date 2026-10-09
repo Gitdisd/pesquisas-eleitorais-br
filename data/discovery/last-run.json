@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-09T02:03:14.761Z",
+  "ran_at": "2026-10-09T08:55:55.240Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 426,
+  "candidate_links": 422,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
+      "title": "Datafolha 2º turno: Flávio Bolsonaro tem 49% e Lula 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Data",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-09",
+      "found_at": "2026-10-09T08:55:16.874Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
       "title": "Datafolha 2º turno: Flávio Bolsonaro tem 49% e Lula, 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-09T02:02:52.955Z"
+      "found_at": "2026-10-09T08:55:17.224Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-br-2-turno-datafolha/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente | 2º turno Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-10-09T08:55:17.425Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -519,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-09T02:02:52.979Z"
+      "found_at": "2026-10-09T08:55:18.072Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno/",
@@ -527,24 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-09T02:02:52.998Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026/",
-      "title": "AtlasIntel divulga pesquisa para presidente da República Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições ",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "AtlasIntel",
-      "published_date": null,
-      "found_at": "2026-10-09T02:02:53.229Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/03/quaest-e-datafolha-vespera-do-1o-turno.ghtml",
-      "title": "Lula e Flávio Bolsonaro empatam em pesquisas antes do 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitor",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Quaest",
-      "published_date": "2026-10-03",
-      "found_at": "2026-10-09T02:02:53.580Z"
+      "found_at": "2026-10-09T08:55:18.784Z"
     }
   ],
-  "meta_last_check_at": "2026-10-09T02:03:14.763Z"
+  "meta_last_check_at": "2026-10-09T08:55:55.241Z"
 }
