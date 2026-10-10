@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-10T13:35:42.598Z",
+  "generated_at": "2026-10-10T18:31:19.755Z",
   "queue": "national_president",
   "chart_visible": false,
   "items": [
@@ -463,6 +463,18 @@
     {
       "poll_key": "tse:BR-00455/2026",
       "tse_registration": "BR-00455/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-00466/2026",
+      "tse_registration": "BR-00466/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -1471,6 +1483,18 @@
     {
       "poll_key": "tse:BR-01087/2026",
       "tse_registration": "BR-01087/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-01093/2026",
+      "tse_registration": "BR-01093/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -3607,18 +3631,6 @@
     {
       "poll_key": "tse:BR-02842/2026",
       "tse_registration": "BR-02842/2026",
-      "institute": null,
-      "fieldwork_start": null,
-      "fieldwork_end": null,
-      "planned_publication_date": null,
-      "status": "pending_evidence",
-      "verified": false,
-      "chart_visible": false,
-      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
-    },
-    {
-      "poll_key": "tse:BR-02875/2026",
-      "tse_registration": "BR-02875/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -6439,6 +6451,18 @@
     {
       "poll_key": "tse:BR-04623/2026",
       "tse_registration": "BR-04623/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-04629/2026",
+      "tse_registration": "BR-04629/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
@@ -11213,6 +11237,18 @@
       "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
     },
     {
+      "poll_key": "tse:BR-08028/2026",
+      "tse_registration": "BR-08028/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
       "poll_key": "tse:BR-08032/2026",
       "tse_registration": "BR-08032/2026",
       "institute": null,
@@ -12835,6 +12871,18 @@
     {
       "poll_key": "tse:BR-09171/2026",
       "tse_registration": "BR-09171/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-09182/2026",
+      "tse_registration": "BR-09182/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,
