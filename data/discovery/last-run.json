@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-10T18:30:35.002Z",
+  "ran_at": "2026-10-10T22:27:52.781Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 423,
+  "candidate_links": 422,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-10T18:29:57.489Z"
+      "found_at": "2026-10-10T22:27:24.219Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-10T18:29:57.668Z"
+      "found_at": "2026-10-10T22:27:24.554Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-10T18:29:57.873Z"
+      "found_at": "2026-10-10T22:27:24.746Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-10T18:29:58.496Z"
+      "found_at": "2026-10-10T22:27:24.912Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-10T18:29:59.090Z"
+      "found_at": "2026-10-10T22:27:25.014Z"
     }
   ],
-  "meta_last_check_at": "2026-10-10T18:30:35.004Z"
+  "meta_last_check_at": "2026-10-10T22:27:52.782Z"
 }
