@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-10-10T07:00:47.804Z",
+  "ran_at": "2026-10-10T13:35:06.887Z",
   "watermark": "2026-09-21",
   "sources": 22,
   "candidate_links": 425,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-10T07:00:20.531Z"
+      "found_at": "2026-10-10T13:34:40.853Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-10T07:00:20.835Z"
+      "found_at": "2026-10-10T13:34:41.139Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-10T07:00:21.135Z"
+      "found_at": "2026-10-10T13:34:41.342Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-10T07:00:21.218Z"
+      "found_at": "2026-10-10T13:34:41.363Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-10T07:00:21.263Z"
+      "found_at": "2026-10-10T13:34:41.373Z"
     }
   ],
-  "meta_last_check_at": "2026-10-10T07:00:47.809Z"
+  "meta_last_check_at": "2026-10-10T13:35:06.888Z"
 }
