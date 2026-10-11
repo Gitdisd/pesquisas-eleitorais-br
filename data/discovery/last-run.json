@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-10-11T15:36:17.745Z",
+  "ran_at": "2026-10-11T20:13:24.078Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 388,
+  "candidate_links": 424,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 54,
   "skipped_old": 1,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -374,13 +374,13 @@
     {
       "source_id": "indexa-broadcast",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.broadcast.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         },
         {
           "url": "https://valor.globo.com/politica/eleicoes-2026/",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-11T15:35:47.986Z"
+      "found_at": "2026-10-11T20:12:41.870Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-11T15:35:48.177Z"
+      "found_at": "2026-10-11T20:12:42.295Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-11T15:35:48.370Z"
+      "found_at": "2026-10-11T20:12:42.494Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-11T15:35:48.480Z"
+      "found_at": "2026-10-11T20:12:43.105Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-11T15:35:48.536Z"
+      "found_at": "2026-10-11T20:12:43.681Z"
     }
   ],
-  "meta_last_check_at": "2026-10-11T15:36:17.747Z"
+  "meta_last_check_at": "2026-10-11T20:13:24.080Z"
 }
