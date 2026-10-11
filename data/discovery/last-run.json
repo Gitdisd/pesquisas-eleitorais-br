@@ -1,65 +1,65 @@
 {
-  "ran_at": "2026-10-10T22:27:52.781Z",
+  "ran_at": "2026-10-11T01:50:42.706Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 422,
+  "candidate_links": 379,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 57,
   "skipped_old": 1,
-  "fetch_errors": 8,
+  "fetch_errors": 16,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
       "attempts": 8,
-      "successes": 8,
-      "failures": 0,
+      "successes": 0,
+      "failures": 8,
       "statuses": [
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         }
       ],
-      "redundancy_ok": true,
-      "fully_failed": false
+      "redundancy_ok": false,
+      "fully_failed": true
     },
     {
       "source_id": "cnn-brasil-eleicoes",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-10T22:27:24.219Z"
+      "found_at": "2026-10-11T01:50:13.362Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-10T22:27:24.554Z"
+      "found_at": "2026-10-11T01:50:13.731Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-10T22:27:24.746Z"
+      "found_at": "2026-10-11T01:50:13.921Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-10T22:27:24.912Z"
+      "found_at": "2026-10-11T01:50:13.983Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-10T22:27:25.014Z"
+      "found_at": "2026-10-11T01:50:14.004Z"
     }
   ],
-  "meta_last_check_at": "2026-10-10T22:27:52.782Z"
+  "meta_last_check_at": "2026-10-11T01:50:42.707Z"
 }
