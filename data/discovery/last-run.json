@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-12T00:28:56.913Z",
+  "ran_at": "2026-10-12T07:17:55.006Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 421,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 54,
+  "inbox_new": 53,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-12T00:28:27.484Z"
+      "found_at": "2026-10-12T07:17:28.095Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-12T00:28:27.833Z"
+      "found_at": "2026-10-12T07:17:28.407Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-08",
-      "found_at": "2026-10-12T00:28:28.036Z"
+      "found_at": "2026-10-12T07:17:28.590Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-12T00:28:28.099Z"
+      "found_at": "2026-10-12T07:17:28.676Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-12T00:28:28.122Z"
+      "found_at": "2026-10-12T07:17:28.702Z"
     }
   ],
-  "meta_last_check_at": "2026-10-12T00:28:56.915Z"
+  "meta_last_check_at": "2026-10-12T07:17:55.008Z"
 }
