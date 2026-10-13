@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-13T00:34:32.446Z",
+  "ran_at": "2026-10-13T07:39:56.621Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 418,
+  "candidate_links": 420,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/13/novas-pesquisas-eleitorais-presidenciais-2o-turno-quaest-e-datafolha.ghtml",
+      "title": "Quaest e Datafolha divulgam pesquisas eleitorais nesta semana | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-13",
+      "found_at": "2026-10-13T07:39:29.136Z"
+    },
+    {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/12/quaest-df-presidente-segundo-turno-12-outubro.ghtml",
       "title": "Quaest no DF: como está a disputa pela presidência no 2º turno | G1 Pular para o conteúdo Distrito Federal Eleições 2026",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-12",
-      "found_at": "2026-10-13T00:34:03.313Z"
+      "found_at": "2026-10-13T07:39:29.460Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/09/datafolha-df-presidente-segundo-turno-8-outubro.ghtml",
@@ -519,15 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-13T00:34:03.708Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
-      "title": "Datafolha 2º turno: Flávio Bolsonaro tem 49% e Lula 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Data",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-09",
-      "found_at": "2026-10-13T00:34:04.008Z"
+      "found_at": "2026-10-13T07:39:29.646Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-13T00:34:04.071Z"
+      "found_at": "2026-10-13T07:39:29.930Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-13T00:34:04.095Z"
+      "found_at": "2026-10-13T07:39:29.958Z"
     }
   ],
-  "meta_last_check_at": "2026-10-13T00:34:32.455Z"
+  "meta_last_check_at": "2026-10-13T07:39:56.623Z"
 }
