@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-12T17:47:39.287Z",
+  "ran_at": "2026-10-13T00:34:32.446Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 422,
+  "candidate_links": 418,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 54,
+  "inbox_new": 55,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/12/quaest-df-presidente-segundo-turno-12-outubro.ghtml",
+      "title": "Quaest no DF: como está a disputa pela presidência no 2º turno | G1 Pular para o conteúdo Distrito Federal Eleições 2026",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-12",
+      "found_at": "2026-10-13T00:34:03.313Z"
+    },
+    {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/09/datafolha-df-presidente-segundo-turno-8-outubro.ghtml",
       "title": "Datafolha: veja intenção de voto no DF para o 2º turno presidencial | G1 Pular para o conteúdo Distrito Federal Eleições",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-12T17:47:19.383Z"
+      "found_at": "2026-10-13T00:34:03.708Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/09/datafolha-presidente-8-outubro-recortes.ghtml",
@@ -519,15 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-12T17:47:19.647Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/08/datafolha-presidente-8-outubro.ghtml",
-      "title": "Datafolha 2º turno: Flávio Bolsonaro tem 49% e Lula, 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-08",
-      "found_at": "2026-10-12T17:47:19.883Z"
+      "found_at": "2026-10-13T00:34:04.008Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-12T17:47:19.906Z"
+      "found_at": "2026-10-13T00:34:04.071Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-12T17:47:19.918Z"
+      "found_at": "2026-10-13T00:34:04.095Z"
     }
   ],
-  "meta_last_check_at": "2026-10-12T17:47:39.288Z"
+  "meta_last_check_at": "2026-10-13T00:34:32.455Z"
 }
