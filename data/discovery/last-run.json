@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-13T07:39:56.621Z",
+  "ran_at": "2026-10-13T15:54:27.208Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 420,
+  "candidate_links": 430,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 55,
+  "inbox_new": 58,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-13T07:39:29.136Z"
+      "found_at": "2026-10-13T15:53:56.178Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/12/quaest-df-presidente-segundo-turno-12-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-12",
-      "found_at": "2026-10-13T07:39:29.460Z"
+      "found_at": "2026-10-13T15:53:56.476Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/09/datafolha-df-presidente-segundo-turno-8-outubro.ghtml",
@@ -527,24 +527,24 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-09",
-      "found_at": "2026-10-13T07:39:29.646Z"
+      "found_at": "2026-10-13T15:53:56.654Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno/",
-      "title": "AtlasIntel divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Confira as",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno/",
+      "title": "O que mostra a pesquisa Gerp para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções",
       "reason": "incomplete_extract:no_published_date",
-      "institute": "AtlasIntel",
+      "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-10-13T07:39:29.930Z"
+      "found_at": "2026-10-13T15:53:56.728Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno/",
-      "title": "Datafolha divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "Datafolha",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-2/",
+      "title": "PoderData/Aya: veja nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inte",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-13T07:39:29.958Z"
+      "found_at": "2026-10-13T15:53:56.754Z"
     }
   ],
-  "meta_last_check_at": "2026-10-13T07:39:56.623Z"
+  "meta_last_check_at": "2026-10-13T15:54:27.209Z"
 }
