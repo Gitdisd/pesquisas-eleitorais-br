@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-10-13T21:12:24.936Z",
+  "ran_at": "2026-10-14T01:10:15.358Z",
   "watermark": "2026-09-21",
   "sources": 22,
   "candidate_links": 422,
@@ -506,12 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/10/13/quaest-ac-presidente-segundo-turno-13-outubro.ghtml",
+      "title": "Quaest no AC, 2º turno: Flávio Bolsonaro, 60%; Lula, 28% | G1 Pular para o conteúdo Acre Eleições 2026 no Acre Quaest no",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-13",
+      "found_at": "2026-10-14T01:09:39.475Z"
+    },
+    {
+      "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/10/13/quaest-rn-presidente-segundo-turno-13-outubro.ghtml",
+      "title": "Quaest no RN, 2º turno: Lula, 59%; Flávio Bolsonaro, 33% | G1 Pular para o conteúdo Rio Grande do Norte Eleições 2026 no",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-13",
+      "found_at": "2026-10-14T01:09:39.816Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/13/novas-pesquisas-eleitorais-presidenciais-2o-turno-quaest-e-datafolha.ghtml",
       "title": "Quaest e Datafolha divulgam pesquisas eleitorais nesta semana | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-13T21:11:59.916Z"
+      "found_at": "2026-10-14T01:09:40.020Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/12/quaest-df-presidente-segundo-turno-12-outubro.ghtml",
@@ -519,15 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-12",
-      "found_at": "2026-10-13T21:12:00.291Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/09/datafolha-df-presidente-segundo-turno-8-outubro.ghtml",
-      "title": "Datafolha: veja intenção de voto no DF para o 2º turno presidencial | G1 Pular para o conteúdo Distrito Federal Eleições",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-09",
-      "found_at": "2026-10-13T21:12:00.479Z"
+      "found_at": "2026-10-14T01:09:40.240Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno/",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-10-13T21:12:00.589Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-2/",
-      "title": "PoderData/Aya: veja nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Inte",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "PoderData",
-      "published_date": null,
-      "found_at": "2026-10-13T21:12:00.620Z"
+      "found_at": "2026-10-14T01:09:40.863Z"
     }
   ],
-  "meta_last_check_at": "2026-10-13T21:12:24.941Z"
+  "meta_last_check_at": "2026-10-14T01:10:15.359Z"
 }
