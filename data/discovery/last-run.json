@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-14T01:10:15.358Z",
+  "ran_at": "2026-10-14T06:07:32.721Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 422,
+  "candidate_links": 428,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/primeira-pesquisa-quaest-do-2o-turno-sera-divulgada-nesta-quarta-feira-14.ghtml",
+      "title": "Primeira Quaest do 2º turno sai nesta quarta | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Primeira pesqui",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-14",
+      "found_at": "2026-10-14T06:07:05.763Z"
+    },
+    {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/10/13/quaest-ac-presidente-segundo-turno-13-outubro.ghtml",
       "title": "Quaest no AC, 2º turno: Flávio Bolsonaro, 60%; Lula, 28% | G1 Pular para o conteúdo Acre Eleições 2026 no Acre Quaest no",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-14T01:09:39.475Z"
+      "found_at": "2026-10-14T06:07:06.075Z"
     },
     {
       "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/10/13/quaest-rn-presidente-segundo-turno-13-outubro.ghtml",
@@ -519,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-14T01:09:39.816Z"
+      "found_at": "2026-10-14T06:07:06.276Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/13/novas-pesquisas-eleitorais-presidenciais-2o-turno-quaest-e-datafolha.ghtml",
@@ -527,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-14T01:09:40.020Z"
+      "found_at": "2026-10-14T06:07:06.461Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/12/quaest-df-presidente-segundo-turno-12-outubro.ghtml",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-12",
-      "found_at": "2026-10-14T01:09:40.240Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno/",
-      "title": "O que mostra a pesquisa Gerp para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-10-14T01:09:40.863Z"
+      "found_at": "2026-10-14T06:07:06.647Z"
     }
   ],
-  "meta_last_check_at": "2026-10-14T01:10:15.359Z"
+  "meta_last_check_at": "2026-10-14T06:07:32.723Z"
 }
