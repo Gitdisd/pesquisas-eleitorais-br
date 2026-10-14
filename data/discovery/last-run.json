@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-14T17:04:20.955Z",
+  "ran_at": "2026-10-14T20:37:52.112Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 421,
+  "candidate_links": 429,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-14T17:03:49.722Z"
+      "found_at": "2026-10-14T20:37:31.314Z"
     },
     {
       "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/10/13/quaest-ac-presidente-segundo-turno-13-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-14T17:03:50.043Z"
+      "found_at": "2026-10-14T20:37:31.586Z"
     },
     {
       "url": "https://g1.globo.com/rn/rio-grande-do-norte/eleicoes/2026/noticia/2026/10/13/quaest-rn-presidente-segundo-turno-13-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-14T17:03:54.054Z"
+      "found_at": "2026-10-14T20:37:31.861Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/13/novas-pesquisas-eleitorais-presidenciais-2o-turno-quaest-e-datafolha.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-13",
-      "found_at": "2026-10-14T17:03:54.216Z"
+      "found_at": "2026-10-14T20:37:32.058Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/12/quaest-df-presidente-segundo-turno-12-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-12",
-      "found_at": "2026-10-14T17:03:54.404Z"
+      "found_at": "2026-10-14T20:37:32.241Z"
     }
   ],
-  "meta_last_check_at": "2026-10-14T17:04:20.957Z"
+  "meta_last_check_at": "2026-10-14T20:37:52.113Z"
 }
