@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-14T23:54:21.233Z",
+  "ran_at": "2026-10-15T04:27:12.251Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 422,
+  "candidate_links": 429,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/quaest-presidente-14-outubro-recortes.ghtml",
+      "title": "Pesquisa Quaest 2º turno: Flávio Bolsonaro 46% e Lula 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Qu",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-15",
+      "found_at": "2026-10-15T04:26:56.969Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-43percent-dos-eleitores-que-se-abstiveram-no-primeiro-turno-declaram-voto-em-lula-no-segundo.ghtml",
-      "title": "Quaest: Lula tem maior percentual entre eleitores que se abstiveram | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
+      "title": "Quaest mostra transferência de votos do primeiro para o segundo turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-14T23:53:46.548Z"
+      "found_at": "2026-10-15T04:26:57.141Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/fio-do-professor-felipe-nunes-quaest-14-outubro.ghtml",
@@ -519,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-14T23:53:50.980Z"
+      "found_at": "2026-10-15T04:26:57.583Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-presidente-14-outubro.ghtml",
@@ -527,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-14T23:53:51.344Z"
+      "found_at": "2026-10-15T04:26:57.739Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/primeira-pesquisa-quaest-do-2o-turno-sera-divulgada-nesta-quarta-feira-14.ghtml",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-14T23:53:51.636Z"
-    },
-    {
-      "url": "https://g1.globo.com/ac/acre/eleicoes/2026/noticia/2026/10/13/quaest-ac-presidente-segundo-turno-13-outubro.ghtml",
-      "title": "Quaest no AC, 2º turno: Flávio Bolsonaro, 60%; Lula, 28% | G1 Pular para o conteúdo Acre Eleições 2026 no Acre Quaest no",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-10-13",
-      "found_at": "2026-10-14T23:53:51.846Z"
+      "found_at": "2026-10-15T04:26:57.889Z"
     }
   ],
-  "meta_last_check_at": "2026-10-14T23:54:21.237Z"
+  "meta_last_check_at": "2026-10-15T04:27:12.252Z"
 }
