@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-15T04:27:12.251Z",
+  "ran_at": "2026-10-15T09:49:21.137Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 429,
+  "candidate_links": 419,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-15T04:26:56.969Z"
+      "found_at": "2026-10-15T09:48:48.188Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-43percent-dos-eleitores-que-se-abstiveram-no-primeiro-turno-declaram-voto-em-lula-no-segundo.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-15T04:26:57.141Z"
+      "found_at": "2026-10-15T09:48:48.532Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/fio-do-professor-felipe-nunes-quaest-14-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-15T04:26:57.583Z"
+      "found_at": "2026-10-15T09:48:48.874Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-presidente-14-outubro.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-15T04:26:57.739Z"
+      "found_at": "2026-10-15T09:48:49.092Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/primeira-pesquisa-quaest-do-2o-turno-sera-divulgada-nesta-quarta-feira-14.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-15T04:26:57.889Z"
+      "found_at": "2026-10-15T09:48:49.293Z"
     }
   ],
-  "meta_last_check_at": "2026-10-15T04:27:12.252Z"
+  "meta_last_check_at": "2026-10-15T09:49:21.138Z"
 }
