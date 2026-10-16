@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-16T16:33:47.792Z",
+  "ran_at": "2026-10-16T19:55:57.303Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 419,
+  "candidate_links": 421,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-16T16:33:23.015Z"
+      "found_at": "2026-10-16T19:55:21.107Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-16T16:33:23.319Z"
+      "found_at": "2026-10-16T19:55:21.515Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/quaest-presidente-14-outubro-recortes.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-16T16:33:23.498Z"
+      "found_at": "2026-10-16T19:55:21.767Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-43percent-dos-eleitores-que-se-abstiveram-no-primeiro-turno-declaram-voto-em-lula-no-segundo.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-16T16:33:23.679Z"
+      "found_at": "2026-10-16T19:55:22.104Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/fio-do-professor-felipe-nunes-quaest-14-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-16T16:33:23.860Z"
+      "found_at": "2026-10-16T19:55:22.407Z"
     }
   ],
-  "meta_last_check_at": "2026-10-16T16:33:47.794Z"
+  "meta_last_check_at": "2026-10-16T19:55:57.305Z"
 }
