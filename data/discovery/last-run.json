@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-10-16T19:55:57.303Z",
+  "ran_at": "2026-10-16T22:47:18.859Z",
   "watermark": "2026-09-21",
   "sources": 22,
   "candidate_links": 421,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-16T19:55:21.107Z"
+      "found_at": "2026-10-16T22:46:48.275Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-16T19:55:21.515Z"
+      "found_at": "2026-10-16T22:46:48.666Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/quaest-presidente-14-outubro-recortes.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-16T19:55:21.767Z"
+      "found_at": "2026-10-16T22:46:48.902Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-43percent-dos-eleitores-que-se-abstiveram-no-primeiro-turno-declaram-voto-em-lula-no-segundo.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-16T19:55:22.104Z"
+      "found_at": "2026-10-16T22:46:49.160Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/fio-do-professor-felipe-nunes-quaest-14-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-16T19:55:22.407Z"
+      "found_at": "2026-10-16T22:46:49.445Z"
     }
   ],
-  "meta_last_check_at": "2026-10-16T19:55:57.305Z"
+  "meta_last_check_at": "2026-10-16T22:47:18.861Z"
 }
