@@ -1,65 +1,65 @@
 {
-  "ran_at": "2026-10-17T06:53:16.096Z",
+  "ran_at": "2026-10-17T11:34:51.238Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 425,
+  "candidate_links": 372,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 8,
+  "fetch_errors": 16,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
       "attempts": 8,
-      "successes": 8,
-      "failures": 0,
+      "successes": 0,
+      "failures": 8,
       "statuses": [
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         }
       ],
-      "redundancy_ok": true,
-      "fully_failed": false
+      "redundancy_ok": false,
+      "fully_failed": true
     },
     {
       "source_id": "cnn-brasil-eleicoes",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-17T06:52:40.440Z"
+      "found_at": "2026-10-17T11:34:33.204Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-17T06:52:40.780Z"
+      "found_at": "2026-10-17T11:34:33.454Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/quaest-presidente-14-outubro-recortes.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-17T06:52:41.119Z"
+      "found_at": "2026-10-17T11:34:33.612Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/14/quaest-43percent-dos-eleitores-que-se-abstiveram-no-primeiro-turno-declaram-voto-em-lula-no-segundo.ghtml",
@@ -535,16 +535,16 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-14",
-      "found_at": "2026-10-17T06:52:41.318Z"
+      "found_at": "2026-10-17T11:34:33.763Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/16/datafolha-e-quaest-2o-turno.ghtml",
-      "title": "Datafolha e Quaest: Flávio Bolsonaro e Lula têm empate técnico | G1 Pular para o conteúdo Eleições 2026 Apuração Datafol",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Datafolha",
-      "published_date": "2026-10-16",
-      "found_at": "2026-10-17T06:52:41.516Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-2/",
+      "title": "Os números da pesquisa Gerp para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-10-17T11:34:33.779Z"
     }
   ],
-  "meta_last_check_at": "2026-10-17T06:53:16.097Z"
+  "meta_last_check_at": "2026-10-17T11:34:51.240Z"
 }
