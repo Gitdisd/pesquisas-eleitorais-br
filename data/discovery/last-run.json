@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-18T13:57:56.362Z",
+  "ran_at": "2026-10-18T17:18:02.805Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 423,
+  "candidate_links": 424,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-18T13:57:30.743Z"
+      "found_at": "2026-10-18T17:17:28.456Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-18T13:57:31.057Z"
+      "found_at": "2026-10-18T17:17:28.796Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/quaest-presidente-14-outubro-recortes.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-18T13:57:31.367Z"
+      "found_at": "2026-10-18T17:17:28.993Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-2/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "GERP",
       "published_date": null,
-      "found_at": "2026-10-18T13:57:31.417Z"
+      "found_at": "2026-10-18T17:17:29.627Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-4/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-18T13:57:31.435Z"
+      "found_at": "2026-10-18T17:17:30.277Z"
     }
   ],
-  "meta_last_check_at": "2026-10-18T13:57:56.369Z"
+  "meta_last_check_at": "2026-10-18T17:18:02.807Z"
 }
