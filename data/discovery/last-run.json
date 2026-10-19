@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-10-19T19:16:48.437Z",
+  "ran_at": "2026-10-19T23:34:43.330Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 433,
+  "candidate_links": 421,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -269,8 +269,8 @@
     {
       "source_id": "ideia",
       "attempts": 3,
-      "successes": 2,
-      "failures": 1,
+      "successes": 3,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
@@ -284,8 +284,8 @@
         },
         {
           "url": "https://ideia.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         }
       ],
       "redundancy_ok": true,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-19T19:16:32.165Z"
+      "found_at": "2026-10-19T23:34:25.509Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-19T19:16:32.321Z"
+      "found_at": "2026-10-19T23:34:25.815Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-3/",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-19T19:16:32.355Z"
+      "found_at": "2026-10-19T23:34:25.834Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno-2/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-19T19:16:32.370Z"
+      "found_at": "2026-10-19T23:34:25.843Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-outubro-2026-segundo-turno-2/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Nexus/BTG",
       "published_date": null,
-      "found_at": "2026-10-19T19:16:32.384Z"
+      "found_at": "2026-10-19T23:34:25.859Z"
     }
   ],
-  "meta_last_check_at": "2026-10-19T19:16:48.449Z"
+  "meta_last_check_at": "2026-10-19T23:34:43.331Z"
 }
