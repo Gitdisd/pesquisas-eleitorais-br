@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-19T06:07:11.063Z",
+  "ran_at": "2026-10-19T12:58:56.918Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 430,
+  "candidate_links": 435,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-19T06:06:33.847Z"
+      "found_at": "2026-10-19T12:58:37.501Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,32 +519,32 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-19T06:06:34.228Z"
+      "found_at": "2026-10-19T12:58:37.776Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/quaest-presidente-14-outubro-recortes.ghtml",
-      "title": "Pesquisa Quaest 2º turno: Flávio Bolsonaro 46% e Lula 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Qu",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-10-15",
-      "found_at": "2026-10-19T06:06:34.444Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-2/",
-      "title": "Os números da pesquisa Gerp para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções ",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-10-19T06:06:35.021Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-4/",
-      "title": "PoderData divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-3/",
+      "title": "PoderData/Aya divulga nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral El",
       "reason": "incomplete_extract:no_published_date",
       "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-19T06:06:35.689Z"
+      "found_at": "2026-10-19T12:58:37.797Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno-2/",
+      "title": "O que mostra a pesquisa AtlasIntel para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Int",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "AtlasIntel",
+      "published_date": null,
+      "found_at": "2026-10-19T12:58:37.807Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-outubro-2026-segundo-turno-2/",
+      "title": "Nexus/BTG divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Nexus/BTG",
+      "published_date": null,
+      "found_at": "2026-10-19T12:58:37.817Z"
     }
   ],
-  "meta_last_check_at": "2026-10-19T06:07:11.068Z"
+  "meta_last_check_at": "2026-10-19T12:58:56.919Z"
 }
