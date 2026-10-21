@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "generated_at": "2026-10-21T07:29:47.901Z",
+  "generated_at": "2026-10-21T13:43:22.754Z",
   "scope": "TSE registry scan",
   "queues": {
     "national_president": {
       "status": "active",
-      "protocol_count": 1404,
+      "protocol_count": 1405,
       "protocols": [
         "BR-00001/2026",
         "BR-00049/2026",
@@ -909,6 +909,7 @@
         "BR-06510/2026",
         "BR-06511/2026",
         "BR-06520/2026",
+        "BR-06523/2026",
         "BR-06529/2026",
         "BR-06537/2026",
         "BR-06540/2026",
@@ -1425,10 +1426,10 @@
     }
   },
   "source_rows": {
-    "lines": 70884,
-    "candidate_rows": 1404,
-    "presidential_rows": 1404,
-    "national_rows": 1404,
+    "lines": 70886,
+    "candidate_rows": 1405,
+    "presidential_rows": 1405,
+    "national_rows": 1405,
     "state_president_rows": 0,
     "other_office_rows": 0
   }

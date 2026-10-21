@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-21T07:30:23.541Z",
+  "generated_at": "2026-10-21T13:44:17.493Z",
   "queue": "national_president",
   "chart_visible": false,
   "items": [
@@ -9895,6 +9895,18 @@
     {
       "poll_key": "tse:BR-06520/2026",
       "tse_registration": "BR-06520/2026",
+      "institute": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "planned_publication_date": null,
+      "status": "pending_evidence",
+      "verified": false,
+      "chart_visible": false,
+      "reason": "TSE registration exists but sufficiently coherent public percentage evidence has not yet been recovered."
+    },
+    {
+      "poll_key": "tse:BR-06523/2026",
+      "tse_registration": "BR-06523/2026",
       "institute": null,
       "fieldwork_start": null,
       "fieldwork_end": null,

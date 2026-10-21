@@ -1,7 +1,7 @@
 {
   "version": 1,
   "status": "attention",
-  "missing_count": 1267,
+  "missing_count": 1268,
   "items": [
     {
       "protocol": "BR-00001/2026",
@@ -9077,6 +9077,17 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "00c38c2a82219c55d1397232d49c85fe4a5cc865cf0212929a71d116cbf9d085"
+    },
+    {
+      "protocol": "BR-06523/2026",
+      "institute": null,
+      "registered_date": null,
+      "planned_publication_date": null,
+      "fieldwork_start": null,
+      "fieldwork_end": null,
+      "sample_n": null,
+      "scope": "Nacional",
+      "raw_fingerprint": "e8b3743bbb21c3c48610babc6a6a8b351776f43f6cd445efcbfbd713f310b6ef"
     },
     {
       "protocol": "BR-06537/2026",
