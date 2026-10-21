@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-20T22:16:49.194Z",
+  "ran_at": "2026-10-21T01:30:43.729Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 439,
+  "candidate_links": 436,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-20T22:16:21.251Z"
+      "found_at": "2026-10-21T01:30:08.415Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-20T22:16:21.577Z"
+      "found_at": "2026-10-21T01:30:08.755Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-3/",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-20T22:16:21.638Z"
+      "found_at": "2026-10-21T01:30:09.462Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno-2/",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-20T22:16:21.661Z"
+      "found_at": "2026-10-21T01:30:10.114Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-outubro-2026-segundo-turno-2/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Nexus/BTG",
       "published_date": null,
-      "found_at": "2026-10-20T22:16:21.684Z"
+      "found_at": "2026-10-21T01:30:10.791Z"
     }
   ],
-  "meta_last_check_at": "2026-10-20T22:16:49.196Z"
+  "meta_last_check_at": "2026-10-21T01:30:43.731Z"
 }
