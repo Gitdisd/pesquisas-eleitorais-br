@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-10-21T18:34:13.283Z",
+  "ran_at": "2026-10-21T22:17:44.636Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 433,
+  "candidate_links": 426,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 60,
-  "skipped_old": 0,
+  "inbox_new": 58,
+  "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/21/quaest-df-presidente-segundo-turno-21-outubro.ghtml",
+      "title": "Quaest no DF: como está a disputa pela presidência no 2º turno | G1 Pular para o conteúdo Distrito Federal Eleições 2026",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-21",
+      "found_at": "2026-10-21T22:17:27.536Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-principal-desafio-do-proximo-presidente.ghtml",
       "title": "Pesquisa Quaest: Economia é o maior desafio do próximo presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa elei",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-21T18:33:59.880Z"
+      "found_at": "2026-10-21T22:17:27.720Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/fio-do-professor-felipe-nunes-quaest-21-outubro.ghtml",
@@ -519,15 +527,15 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-21T18:34:00.138Z"
+      "found_at": "2026-10-21T22:17:27.912Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-presidente-21-outubro.ghtml",
-      "title": "Pesquisa Quaest 2º turno: Flávio Bolsonaro tem 45% e Lula 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Quaest",
-      "published_date": "2026-10-21",
-      "found_at": "2026-10-21T18:34:00.299Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-3/",
+      "title": "Gerp divulga nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-10-21T22:17:27.974Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/eleitores-indecisos-sobre-voto-para-presidente-dobram-em-uma-semana-aponta-quaest/",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-10-21T18:34:00.335Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-outubro-2026-segundo-turno-2/",
-      "title": "O que mostra a nova pesquisa Quaest para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral In",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-10-21T18:34:00.348Z"
+      "found_at": "2026-10-21T22:17:27.998Z"
     }
   ],
-  "meta_last_check_at": "2026-10-21T18:34:13.285Z"
+  "meta_last_check_at": "2026-10-21T22:17:44.638Z"
 }
