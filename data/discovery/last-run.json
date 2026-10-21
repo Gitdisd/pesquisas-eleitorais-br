@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-10-21T13:43:19.077Z",
+  "ran_at": "2026-10-21T18:34:13.283Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 427,
+  "candidate_links": 433,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
-  "skipped_old": 1,
+  "inbox_new": 60,
+  "skipped_old": 0,
   "fetch_errors": 8,
   "source_health": [
     {
@@ -506,12 +506,36 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-principal-desafio-do-proximo-presidente.ghtml",
+      "title": "Pesquisa Quaest: Economia é o maior desafio do próximo presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa elei",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-21",
+      "found_at": "2026-10-21T18:33:59.880Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/fio-do-professor-felipe-nunes-quaest-21-outubro.ghtml",
+      "title": "Fio do Professor Felipe Nunes: análise da pesquisa Quaest para presidente de 21 de outubro | G1 Pular para o conteúdo El",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-21",
+      "found_at": "2026-10-21T18:34:00.138Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-presidente-21-outubro.ghtml",
       "title": "Pesquisa Quaest 2º turno: Flávio Bolsonaro tem 45% e Lula 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-21T13:43:03.902Z"
+      "found_at": "2026-10-21T18:34:00.299Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/eleitores-indecisos-sobre-voto-para-presidente-dobram-em-uma-semana-aponta-quaest/",
+      "title": "Pesquisa Quaest: eleitores indecisos dobram em uma semana Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Flávio x",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Quaest",
+      "published_date": null,
+      "found_at": "2026-10-21T18:34:00.335Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/quaest-presidente-outubro-2026-segundo-turno-2/",
@@ -519,32 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-10-21T13:43:03.925Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/palver-presidente-outubro-2026-segundo-turno/",
-      "title": "Os números da pesquisa Palver para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Palver",
-      "published_date": null,
-      "found_at": "2026-10-21T13:43:03.935Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/meio-ideia-presidente-outubro-2026-segundo-turno/",
-      "title": "O que mostra a pesquisa Meio/Ideia para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Ele",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "Ideia",
-      "published_date": null,
-      "found_at": "2026-10-21T13:43:03.946Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-3/",
-      "title": "PoderData/Aya divulga nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral El",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "PoderData",
-      "published_date": null,
-      "found_at": "2026-10-21T13:43:04.197Z"
+      "found_at": "2026-10-21T18:34:00.348Z"
     }
   ],
-  "meta_last_check_at": "2026-10-21T13:43:19.079Z"
+  "meta_last_check_at": "2026-10-21T18:34:13.285Z"
 }
