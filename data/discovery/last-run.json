@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-21T01:30:43.729Z",
+  "ran_at": "2026-10-21T07:29:44.300Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 436,
+  "candidate_links": 437,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,15 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-15",
-      "found_at": "2026-10-21T01:30:08.415Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/15/datafolha-presidente-segundo-turno-15-outubro.ghtml",
-      "title": "Datafolha 2º turno: Flávio Bolsonaro tem 47% e Lula 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Data",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Datafolha",
-      "published_date": "2026-10-15",
-      "found_at": "2026-10-21T01:30:08.755Z"
+      "found_at": "2026-10-21T07:29:25.080Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-3/",
@@ -527,7 +519,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "PoderData",
       "published_date": null,
-      "found_at": "2026-10-21T01:30:09.462Z"
+      "found_at": "2026-10-21T07:29:25.114Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/atlasintel-presidente-outubro-2026-segundo-turno-2/",
@@ -535,7 +527,7 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "AtlasIntel",
       "published_date": null,
-      "found_at": "2026-10-21T01:30:10.114Z"
+      "found_at": "2026-10-21T07:29:25.130Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/nexus-btg-pactual-presidente-outubro-2026-segundo-turno-2/",
@@ -543,8 +535,16 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Nexus/BTG",
       "published_date": null,
-      "found_at": "2026-10-21T01:30:10.791Z"
+      "found_at": "2026-10-21T07:29:25.391Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-2/",
+      "title": "Os números da pesquisa Gerp para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Intenções ",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "GERP",
+      "published_date": null,
+      "found_at": "2026-10-21T07:29:25.408Z"
     }
   ],
-  "meta_last_check_at": "2026-10-21T01:30:43.731Z"
+  "meta_last_check_at": "2026-10-21T07:29:44.302Z"
 }
