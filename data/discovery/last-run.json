@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-22T13:44:27.640Z",
+  "ran_at": "2026-10-22T18:29:28.908Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 423,
+  "candidate_links": 436,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-22T13:44:06.505Z"
+      "found_at": "2026-10-22T18:29:07.076Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-presidente-21-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-22T13:44:06.822Z"
+      "found_at": "2026-10-22T18:29:07.370Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/21/quaest-df-presidente-segundo-turno-21-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-22T13:44:07.123Z"
+      "found_at": "2026-10-22T18:29:07.638Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-principal-desafio-do-proximo-presidente.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-22T13:44:07.423Z"
+      "found_at": "2026-10-22T18:29:07.966Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-outubro-2026-segundo-turno-2/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-22T13:44:07.546Z"
+      "found_at": "2026-10-22T18:29:08.025Z"
     }
   ],
-  "meta_last_check_at": "2026-10-22T13:44:27.641Z"
+  "meta_last_check_at": "2026-10-22T18:29:28.910Z"
 }
