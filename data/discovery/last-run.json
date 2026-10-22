@@ -1,65 +1,65 @@
 {
-  "ran_at": "2026-10-22T18:29:28.908Z",
+  "ran_at": "2026-10-22T22:17:09.842Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 436,
+  "candidate_links": 383,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 59,
   "skipped_old": 1,
-  "fetch_errors": 8,
+  "fetch_errors": 16,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
       "attempts": 8,
-      "successes": 8,
-      "failures": 0,
+      "successes": 0,
+      "failures": 8,
       "statuses": [
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 200,
+          "status": 503,
           "error": null
         }
       ],
-      "redundancy_ok": true,
-      "fully_failed": false
+      "redundancy_ok": false,
+      "fully_failed": true
     },
     {
       "source_id": "cnn-brasil-eleicoes",
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/datafolha-presidente-segundo-turno-22-outubro.ghtml",
+      "title": "Datafolha, 2º turno: Flávio Bolsonaro, 47%; Lula, 46% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-22",
+      "found_at": "2026-10-22T22:16:56.610Z"
+    },
+    {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/22/quaest-no-df-2o-turno-veja-intencao-de-voto-para-governador-por-sexo-raca-idade-religiao-e-renda.ghtml",
       "title": "Quaest no DF, 2º turno: veja intenção de voto para governador por sexo, raça, idade, religião e renda | G1 Pular para o ",
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-22T18:29:07.076Z"
+      "found_at": "2026-10-22T22:16:56.864Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-presidente-21-outubro-recortes.ghtml",
@@ -519,23 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-22T18:29:07.370Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/21/quaest-df-presidente-segundo-turno-21-outubro.ghtml",
-      "title": "Quaest no DF: como está a disputa pela presidência no 2º turno | G1 Pular para o conteúdo Distrito Federal Eleições 2026",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-10-21",
-      "found_at": "2026-10-22T18:29:07.638Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-principal-desafio-do-proximo-presidente.ghtml",
-      "title": "Pesquisa Quaest: Economia é o maior desafio do próximo presidente | G1 Pular para o conteúdo Eleições 2026 Pesquisa elei",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-10-21",
-      "found_at": "2026-10-22T18:29:07.966Z"
+      "found_at": "2026-10-22T22:16:57.115Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-outubro-2026-segundo-turno-2/",
@@ -543,8 +535,16 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-22T18:29:08.025Z"
+      "found_at": "2026-10-22T22:16:57.135Z"
+    },
+    {
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-5/",
+      "title": "PoderData/Aya divulga nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral In",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "PoderData",
+      "published_date": null,
+      "found_at": "2026-10-22T22:16:57.145Z"
     }
   ],
-  "meta_last_check_at": "2026-10-22T18:29:28.910Z"
+  "meta_last_check_at": "2026-10-22T22:17:09.843Z"
 }
