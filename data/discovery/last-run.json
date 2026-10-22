@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-21T22:17:44.636Z",
+  "ran_at": "2026-10-22T01:27:21.426Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 426,
+  "candidate_links": 424,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-21T22:17:27.536Z"
+      "found_at": "2026-10-22T01:27:07.421Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-principal-desafio-do-proximo-presidente.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-21T22:17:27.720Z"
+      "found_at": "2026-10-22T01:27:07.675Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/fio-do-professor-felipe-nunes-quaest-21-outubro.ghtml",
@@ -527,24 +527,24 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-21",
-      "found_at": "2026-10-21T22:17:27.912Z"
+      "found_at": "2026-10-22T01:27:07.930Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/gerp-presidente-outubro-2026-segundo-turno-3/",
-      "title": "Gerp divulga nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 20",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "GERP",
-      "published_date": null,
-      "found_at": "2026-10-21T22:17:27.974Z"
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/21/quaest-presidente-21-outubro.ghtml",
+      "title": "Pesquisa Quaest 2º turno: Flávio Bolsonaro tem 45% e Lula 44% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitora",
+      "reason": "incomplete_extract:no_fieldwork",
+      "institute": "Quaest",
+      "published_date": "2026-10-21",
+      "found_at": "2026-10-22T01:27:08.090Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/eleitores-indecisos-sobre-voto-para-presidente-dobram-em-uma-semana-aponta-quaest/",
-      "title": "Pesquisa Quaest: eleitores indecisos dobram em uma semana Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Flávio x",
-      "reason": "incomplete_extract:no_published_date",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/presidente-br-2-turno-quaest/",
+      "title": "Eleições 2026: Pesquisas de Intenção de Voto para Presidente | 2º turno Pular para o conteúdo Eleições 2026 Pesquisa ele",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-10-21T22:17:27.998Z"
+      "found_at": "2026-10-22T01:27:08.243Z"
     }
   ],
-  "meta_last_check_at": "2026-10-21T22:17:44.638Z"
+  "meta_last_check_at": "2026-10-22T01:27:21.427Z"
 }
