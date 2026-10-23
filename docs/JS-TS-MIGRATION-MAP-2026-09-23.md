@@ -1,3 +1,8 @@
+## 2026-09-25 20:48:03 -03:00 / 2026-09-25T23:48:03Z — Methodology cutover candidate rebased to current production
+
+- The methodology Rust/Dioxus component is applied on the current main@059a394b0334cff08fd8db2f1541e6d4e26d4224 base for fresh exact-head validation.
+- src/methodology.js remains protected; removal stays gated on execution-graph and deployed verification.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
@@ -84,7 +89,7 @@ This is a migration map, not deletion authorization. A current browser module re
 | `src/ui-refresh.js` | dashboard refresh layer | Dioxus components | not migrated |
 | `src/ui-next.js` | share URLs and CSV/JSON export | Rust/Dioxus export layer | not migrated |
 | `src/ui-upgrades.js` | UI enhancement hooks | Dioxus components | not migrated |
-| `src/methodology.js` | methodology/diagnostic UI | Dioxus components | not migrated |
+| `src/methodology.js` | methodology/diagnostic UI | `rust/web-ui/src/methodology.rs` | migrated in parallel; legacy protected |
 | `src/echarts-runtime.js` | ECharts runtime loading | removed from final architecture | protected until last caller disappears |
 | `src/e2e-hooks.js` | browser smoke hooks | Dioxus/browser test instrumentation | not migrated |
 | `vite.config.js` | Vite production build | Dioxus/static build | protected until cutover |

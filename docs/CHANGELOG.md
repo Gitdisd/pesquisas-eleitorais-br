@@ -1,3 +1,9 @@
+## 2026-09-25 20:48:03 -03:00 / 2026-09-25T23:48:03Z — Methodology Rust/Dioxus production-cutover candidate
+
+- Reapplies the validated methodology surface directly on the current production base main@059a394b0334cff08fd8db2f1541e6d4e26d4224.
+- Adds the Rust/Dioxus MethodologySection, its styles, module wiring and migration documentation without deleting the protected legacy methodology files.
+- This commit is an application-code change so the full CI and native Dioxus browser gates can validate the exact candidate head before production merge.
+
 ## 2026-09-25 04:32:30 -03:00 / 2026-09-25T07:32:30Z — Trigger final pre-cutover validation
 
 - Migration head before trigger: `2c89712afe8feea3f9adf908968d5ba190956d96`.

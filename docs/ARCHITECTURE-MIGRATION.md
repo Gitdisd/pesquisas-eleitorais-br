@@ -1,3 +1,8 @@
+## 2026-09-25 20:48:03 -03:00 / 2026-09-25T23:48:03Z — Methodology cutover candidate rebased to current production
+
+- The static methodology surface is applied in Rust/Dioxus on the current production base for fresh validation.
+- The legacy JavaScript/CSS methodology files remain protected and are not deleted in this slice.
+
 ## 2026-09-25 04:31:00 -03:00 / 2026-09-25T07:31:00Z — Correct release-bundle artifact assertion
 
 - CI #380 showed `dx bundle --web --release --debug-symbols false` successfully compiling and copying the web bundle, then failed because the repository workflow incorrectly required `dioxus-ci/public/wasm`.
@@ -103,7 +108,7 @@ Not yet migrated in this slice:
 - advanced models 3–12 are now in the shared Rust core with deterministic regression coverage; model 2 house-effect correction is already wired into the Rust UI;
 - regional/national dual-panel composition;
 - custom range slider;
-- full methodology/diagnostic panels;
+- regional/diagnostic surfaces; methodology text is now rendered by Rust/Dioxus while the regional and diagnostic surfaces remain separate;
 - complete accessibility and mobile regression suite.
 
 These are tracked migration work, not deleted functionality.
