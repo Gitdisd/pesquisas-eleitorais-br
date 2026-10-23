@@ -2,7 +2,7 @@
   "version": 1,
   "source": "TSE Pesquisas Eleitorais 2026 open-data export",
   "source_file": "pesquisa_eleitoral_2026.csv",
-  "registry_sha256": "4a7c16b2d87bee2e5841c578a2561cc92b7063cb099b5ee0f503942cf48e810c",
+  "registry_sha256": "700fed865d4a81b9f70b82decb6d7d75bddec46996faa2b19e1613447057d348",
   "records": [
     {
       "protocol": "BR-00001/2026",
@@ -9408,17 +9408,6 @@
       "sample_n": null,
       "scope": "Nacional",
       "raw_fingerprint": "5819e78924799b3d93d896756dc422dc511a5238b1212c116d918a24d1e74864"
-    },
-    {
-      "protocol": "BR-06173/2026",
-      "institute": null,
-      "registered_date": null,
-      "planned_publication_date": null,
-      "fieldwork_start": null,
-      "fieldwork_end": null,
-      "sample_n": null,
-      "scope": "Nacional",
-      "raw_fingerprint": "9be289e7d6d598701ce08a2712c643a91c8943449de2325db7bb5a82ab43dacc"
     },
     {
       "protocol": "BR-06187/2026",

@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-23T13:21:09.212Z",
+  "ran_at": "2026-10-23T18:22:17.479Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 418,
+  "candidate_links": 419,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-23T13:20:53.462Z"
+      "found_at": "2026-10-23T18:21:44.211Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T13:20:53.718Z"
+      "found_at": "2026-10-23T18:21:44.378Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/datafolha-presidente-segundo-turno-22-outubro.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T13:20:53.878Z"
+      "found_at": "2026-10-23T18:21:44.546Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/22/quaest-no-df-2o-turno-veja-intencao-de-voto-para-governador-por-sexo-raca-idade-religiao-e-renda.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T13:20:54.037Z"
+      "found_at": "2026-10-23T18:21:44.711Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-23T13:20:54.059Z"
+      "found_at": "2026-10-23T18:21:45.299Z"
     }
   ],
-  "meta_last_check_at": "2026-10-23T13:21:09.217Z"
+  "meta_last_check_at": "2026-10-23T18:22:17.481Z"
 }
