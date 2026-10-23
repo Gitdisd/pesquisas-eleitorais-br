@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-23T18:22:17.479Z",
+  "ran_at": "2026-10-23T22:03:06.769Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 419,
+  "candidate_links": 426,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/23/datafolha-df-presidente-segundo-turno-23-outubro.ghtml",
+      "title": "Datafolha: veja como está a disputa de 2º turno para presidente no DF | G1 Pular para o conteúdo Distrito Federal Eleiçõ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-23",
+      "found_at": "2026-10-23T22:02:41.325Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-presidente-segundo-turno-22-outubro-recortes.ghtml",
       "title": "Datafolha 2º turno: veja recortes do cenário de 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-23T18:21:44.211Z"
+      "found_at": "2026-10-23T22:02:41.693Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
@@ -519,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T18:21:44.378Z"
+      "found_at": "2026-10-23T22:02:41.892Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/datafolha-presidente-segundo-turno-22-outubro.ghtml",
@@ -527,15 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T18:21:44.546Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/22/quaest-no-df-2o-turno-veja-intencao-de-voto-para-governador-por-sexo-raca-idade-religiao-e-renda.ghtml",
-      "title": "Quaest no DF, 2º turno: veja intenção de voto para governador por sexo, raça, idade, religião e renda | G1 Pular para o ",
-      "reason": "incomplete_extract:no_fieldwork",
-      "institute": "Quaest",
-      "published_date": "2026-10-22",
-      "found_at": "2026-10-23T18:21:44.711Z"
+      "found_at": "2026-10-23T22:02:42.088Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-23T18:21:45.299Z"
+      "found_at": "2026-10-23T22:02:42.131Z"
     }
   ],
-  "meta_last_check_at": "2026-10-23T18:22:17.481Z"
+  "meta_last_check_at": "2026-10-23T22:03:06.772Z"
 }
