@@ -1,75 +1,75 @@
 {
-  "ran_at": "2026-10-22T22:17:09.842Z",
+  "ran_at": "2026-10-23T01:26:58.041Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 383,
+  "candidate_links": 412,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 59,
   "skipped_old": 1,
-  "fetch_errors": 16,
+  "fetch_errors": 9,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
       "attempts": 8,
-      "successes": 0,
-      "failures": 8,
+      "successes": 8,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+eleitoral+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+Aya+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Quaest+Lula+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Datafolha+presidente+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+AtlasIntel+2026+Fl%C3%A1vio&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+Nexus+BTG+2%C2%BA+turno+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=pesquisa+PoderData+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://news.google.com/rss/search?q=Datafolha+Lula+Fl%C3%A1vio+setembro+2026&hl=pt-BR&gl=BR&ceid=BR:pt-419",
-          "status": 503,
+          "status": 200,
           "error": null
         }
       ],
-      "redundancy_ok": false,
-      "fully_failed": true
+      "redundancy_ok": true,
+      "fully_failed": false
     },
     {
       "source_id": "cnn-brasil-eleicoes",
       "attempts": 3,
-      "successes": 3,
-      "failures": 0,
+      "successes": 2,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://www.cnnbrasil.com.br/eleicoes/",
-          "status": 200,
+          "status": 403,
           "error": null
         },
         {
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
+      "title": "Quaest: veja os temas que definiram escolha de presidente no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
+      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-22",
+      "found_at": "2026-10-23T01:26:36.332Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/datafolha-presidente-segundo-turno-22-outubro.ghtml",
       "title": "Datafolha, 2º turno: Flávio Bolsonaro, 47%; Lula, 46% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-22T22:16:56.610Z"
+      "found_at": "2026-10-23T01:26:36.651Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/22/quaest-no-df-2o-turno-veja-intencao-de-voto-para-governador-por-sexo-raca-idade-religiao-e-renda.ghtml",
@@ -519,15 +527,15 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-22T22:16:56.864Z"
+      "found_at": "2026-10-23T01:26:36.990Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-presidente-21-outubro-recortes.ghtml",
-      "title": "Quaest, 2º turno: veja intenção de voto por diferentes segmentos | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleit",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": "2026-10-22",
-      "found_at": "2026-10-22T22:16:57.115Z"
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
+      "title": "A nova pesquisa Datafolha para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 202",
+      "reason": "incomplete_extract:no_published_date",
+      "institute": "Datafolha",
+      "published_date": null,
+      "found_at": "2026-10-23T01:26:37.056Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-outubro-2026-segundo-turno-2/",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_published_date,no_fieldwork",
       "institute": "Indexa/Broadcast",
       "published_date": null,
-      "found_at": "2026-10-22T22:16:57.135Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/poderdata-presidente-outubro-2026-segundo-turno-5/",
-      "title": "PoderData/Aya divulga nova pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral In",
-      "reason": "incomplete_extract:no_published_date",
-      "institute": "PoderData",
-      "published_date": null,
-      "found_at": "2026-10-22T22:16:57.145Z"
+      "found_at": "2026-10-23T01:26:37.082Z"
     }
   ],
-  "meta_last_check_at": "2026-10-22T22:17:09.843Z"
+  "meta_last_check_at": "2026-10-23T01:26:58.042Z"
 }
