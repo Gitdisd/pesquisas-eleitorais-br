@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-10-23T01:26:58.041Z",
+  "ran_at": "2026-10-23T07:23:55.109Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 412,
+  "candidate_links": 429,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 59,
   "skipped_old": 1,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -64,12 +64,12 @@
     {
       "source_id": "cnn-brasil-eleicoes",
       "attempts": 3,
-      "successes": 2,
-      "failures": 1,
+      "successes": 3,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.cnnbrasil.com.br/eleicoes/",
-          "status": 403,
+          "status": 200,
           "error": null
         },
         {
@@ -506,12 +506,20 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-presidente-segundo-turno-22-outubro-recortes.ghtml",
+      "title": "Datafolha 2º turno: veja recortes do cenário de 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-23",
+      "found_at": "2026-10-23T07:23:29.929Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
       "title": "Quaest: veja os temas que definiram escolha de presidente no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T01:26:36.332Z"
+      "found_at": "2026-10-23T07:23:30.245Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/datafolha-presidente-segundo-turno-22-outubro.ghtml",
@@ -519,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T01:26:36.651Z"
+      "found_at": "2026-10-23T07:23:30.557Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/22/quaest-no-df-2o-turno-veja-intencao-de-voto-para-governador-por-sexo-raca-idade-religiao-e-renda.ghtml",
@@ -527,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T01:26:36.990Z"
+      "found_at": "2026-10-23T07:23:30.735Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
@@ -535,16 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-23T01:26:37.056Z"
-    },
-    {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/indexa-broadcast-presidente-outubro-2026-segundo-turno-2/",
-      "title": "Indexa/Broadcast divulga pesquisa para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Elei",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork",
-      "institute": "Indexa/Broadcast",
-      "published_date": null,
-      "found_at": "2026-10-23T01:26:37.082Z"
+      "found_at": "2026-10-23T07:23:30.799Z"
     }
   ],
-  "meta_last_check_at": "2026-10-23T01:26:58.042Z"
+  "meta_last_check_at": "2026-10-23T07:23:55.114Z"
 }
