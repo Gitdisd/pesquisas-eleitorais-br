@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-10-24T00:33:51.865Z",
+  "ran_at": "2026-10-24T05:43:31.459Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 390,
+  "candidate_links": 419,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 59,
   "skipped_old": 1,
-  "fetch_errors": 10,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -199,8 +199,8 @@
     {
       "source_id": "poderdata-poder360",
       "attempts": 4,
-      "successes": 3,
-      "failures": 1,
+      "successes": 4,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/poderdata/",
@@ -214,8 +214,8 @@
         },
         {
           "url": "https://www.poder360.com.br/feed/",
-          "status": null,
-          "error": "timeout"
+          "status": 200,
+          "error": null
         },
         {
           "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
@@ -489,17 +489,17 @@
     {
       "source_id": "poder360-feed",
       "attempts": 1,
-      "successes": 0,
-      "failures": 1,
+      "successes": 1,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/feed/",
-          "status": null,
-          "error": "timeout"
+          "status": 200,
+          "error": null
         }
       ],
-      "redundancy_ok": false,
-      "fully_failed": true
+      "redundancy_ok": true,
+      "fully_failed": false
     }
   ],
   "dry_run": false,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-24T00:33:37.138Z"
+      "found_at": "2026-10-24T05:43:15.573Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/23/datafolha-df-presidente-segundo-turno-23-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-24T00:33:37.417Z"
+      "found_at": "2026-10-24T05:43:15.719Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-presidente-segundo-turno-22-outubro-recortes.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-24T00:33:37.566Z"
+      "found_at": "2026-10-24T05:43:15.864Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-24T00:33:37.755Z"
+      "found_at": "2026-10-24T05:43:16.007Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-24T00:33:37.777Z"
+      "found_at": "2026-10-24T05:43:16.056Z"
     }
   ],
-  "meta_last_check_at": "2026-10-24T00:33:51.866Z"
+  "meta_last_check_at": "2026-10-24T05:43:31.460Z"
 }
