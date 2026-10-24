@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-10-23T22:03:06.769Z",
+  "ran_at": "2026-10-24T00:33:51.865Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 426,
+  "candidate_links": 390,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 59,
   "skipped_old": 1,
-  "fetch_errors": 8,
+  "fetch_errors": 10,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -199,8 +199,8 @@
     {
       "source_id": "poderdata-poder360",
       "attempts": 4,
-      "successes": 4,
-      "failures": 0,
+      "successes": 3,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/poderdata/",
@@ -214,8 +214,8 @@
         },
         {
           "url": "https://www.poder360.com.br/feed/",
-          "status": 200,
-          "error": null
+          "status": null,
+          "error": "timeout"
         },
         {
           "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
@@ -489,29 +489,37 @@
     {
       "source_id": "poder360-feed",
       "attempts": 1,
-      "successes": 1,
-      "failures": 0,
+      "successes": 0,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/feed/",
-          "status": 200,
-          "error": null
+          "status": null,
+          "error": "timeout"
         }
       ],
-      "redundancy_ok": true,
-      "fully_failed": false
+      "redundancy_ok": false,
+      "fully_failed": true
     }
   ],
   "dry_run": false,
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-violencia-presidente.ghtml",
+      "title": "Datafolha: Combater a violência é prioridade para 25% dos eleitores | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-23",
+      "found_at": "2026-10-24T00:33:37.138Z"
+    },
+    {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/23/datafolha-df-presidente-segundo-turno-23-outubro.ghtml",
       "title": "Datafolha: veja como está a disputa de 2º turno para presidente no DF | G1 Pular para o conteúdo Distrito Federal Eleiçõ",
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-23T22:02:41.325Z"
+      "found_at": "2026-10-24T00:33:37.417Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-presidente-segundo-turno-22-outubro-recortes.ghtml",
@@ -519,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-23T22:02:41.693Z"
+      "found_at": "2026-10-24T00:33:37.566Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
@@ -527,15 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-23T22:02:41.892Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/datafolha-presidente-segundo-turno-22-outubro.ghtml",
-      "title": "Datafolha, 2º turno: Flávio Bolsonaro, 47%; Lula, 46% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafo",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-22",
-      "found_at": "2026-10-23T22:02:42.088Z"
+      "found_at": "2026-10-24T00:33:37.755Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-23T22:02:42.131Z"
+      "found_at": "2026-10-24T00:33:37.777Z"
     }
   ],
-  "meta_last_check_at": "2026-10-23T22:03:06.772Z"
+  "meta_last_check_at": "2026-10-24T00:33:51.866Z"
 }
