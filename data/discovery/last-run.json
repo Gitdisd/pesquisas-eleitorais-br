@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-24T05:43:31.459Z",
+  "ran_at": "2026-10-24T10:50:31.666Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 419,
+  "candidate_links": 429,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-24T05:43:15.573Z"
+      "found_at": "2026-10-24T10:50:18.825Z"
     },
     {
       "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/23/datafolha-df-presidente-segundo-turno-23-outubro.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-24T05:43:15.719Z"
+      "found_at": "2026-10-24T10:50:19.062Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-presidente-segundo-turno-22-outubro-recortes.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-23",
-      "found_at": "2026-10-24T05:43:15.864Z"
+      "found_at": "2026-10-24T10:50:19.299Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-22",
-      "found_at": "2026-10-24T05:43:16.007Z"
+      "found_at": "2026-10-24T10:50:19.461Z"
     },
     {
       "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_published_date",
       "institute": "Datafolha",
       "published_date": null,
-      "found_at": "2026-10-24T05:43:16.056Z"
+      "found_at": "2026-10-24T10:50:19.481Z"
     }
   ],
-  "meta_last_check_at": "2026-10-24T05:43:31.460Z"
+  "meta_last_check_at": "2026-10-24T10:50:31.671Z"
 }
