@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-10-24T20:42:05.503Z",
+  "ran_at": "2026-10-24T23:07:39.278Z",
   "watermark": "2026-09-21",
   "sources": 22,
   "candidate_links": 422,
@@ -506,45 +506,45 @@
   "verified_samples": [],
   "inbox_samples": [
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-violencia-presidente.ghtml",
-      "title": "Datafolha: Combater a violência é prioridade para 25% dos eleitores | G1 Pular para o conteúdo Eleições 2026 Pesquisa el",
-      "reason": "incomplete_extract:no_fieldwork,no_moe,no_scenario",
-      "institute": "Datafolha",
-      "published_date": "2026-10-23",
-      "found_at": "2026-10-24T20:41:37.590Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/23/datafolha-df-presidente-segundo-turno-23-outubro.ghtml",
-      "title": "Datafolha: veja como está a disputa de 2º turno para presidente no DF | G1 Pular para o conteúdo Distrito Federal Eleiçõ",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-23",
-      "found_at": "2026-10-24T20:41:37.926Z"
-    },
-    {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/23/datafolha-presidente-segundo-turno-22-outubro-recortes.ghtml",
-      "title": "Datafolha 2º turno: veja recortes do cenário de 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
+      "title": "Datafolha: Lula tem rejeição de 46%; Flávio tem 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafolh",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
-      "published_date": "2026-10-23",
-      "found_at": "2026-10-24T20:41:38.105Z"
+      "published_date": "2026-10-24",
+      "found_at": "2026-10-24T23:07:23.020Z"
     },
     {
-      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/22/quaest-noticia-impacto-escolha-voto-presidente-1-turno.ghtml",
-      "title": "Quaest: veja os temas que definiram escolha de presidente no 1º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
-      "reason": "incomplete_extract:no_fieldwork,no_n,no_moe",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
+      "title": "Veja última pesquisa Quaest do 2º turno entre Lula e Flávio Bolsonaro | G1 Pular para o conteúdo Eleições 2026 Pesquisa ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
-      "published_date": "2026-10-22",
-      "found_at": "2026-10-24T20:41:38.285Z"
+      "published_date": "2026-10-24",
+      "found_at": "2026-10-24T23:07:23.309Z"
     },
     {
-      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-outubro-2026-segundo-turno-3/",
-      "title": "A nova pesquisa Datafolha para presidente no 2º turno Publicidade Eleições Eleições 2026 Pesquisa Eleitoral Eleições 202",
-      "reason": "incomplete_extract:no_published_date",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
+      "title": "Datafolha 2º turno: Flávio Bolsonaro tem 51% e Lula 49% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Data",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
+      "published_date": "2026-10-24",
+      "found_at": "2026-10-24T23:07:23.462Z"
+    },
+    {
+      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/24/datafolha-df-presidente-segundo-turno-24-outubro.ghtml",
+      "title": "Datafolha no DF: a disputa pela presidência na véspera do 2º turno | G1 Pular para o conteúdo Distrito Federal Eleições ",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-24",
+      "found_at": "2026-10-24T23:07:23.615Z"
+    },
+    {
+      "url": "https://especiaisg1.globo/politica/eleicoes/2026/pesquisas-eleitorais/presidente/",
+      "title": "G1 - Pesquisas eleitorais | Eleições 2026 G1 Eleições 2026 Apuração Turno 1º turno 2º turno Instituto Quaest Datafolha P",
+      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
+      "institute": "Quaest",
       "published_date": null,
-      "found_at": "2026-10-24T20:41:38.920Z"
+      "found_at": "2026-10-24T23:07:24.192Z"
     }
   ],
-  "meta_last_check_at": "2026-10-24T20:42:05.504Z"
+  "meta_last_check_at": "2026-10-24T23:07:39.279Z"
 }
