@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-24T23:07:39.278Z",
+  "ran_at": "2026-10-25T01:04:41.454Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 422,
+  "candidate_links": 428,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -506,12 +506,28 @@
   "verified_samples": [],
   "inbox_samples": [
     {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos-recortes.ghtml",
+      "title": "Pesquisa Quaest 2º turno: veja recortes | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Quaest, 2º turno: ve",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Quaest",
+      "published_date": "2026-10-24",
+      "found_at": "2026-10-25T01:04:13.044Z"
+    },
+    {
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
+      "title": "Datafolha 2º turno: veja recortes do cenário de 2º turno | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Dat",
+      "reason": "incomplete_extract:no_fieldwork,no_moe",
+      "institute": "Datafolha",
+      "published_date": "2026-10-24",
+      "found_at": "2026-10-25T01:04:13.349Z"
+    },
+    {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
       "title": "Datafolha: Lula tem rejeição de 46%; Flávio tem 45% | G1 Pular para o conteúdo Eleições 2026 Pesquisa eleitoral Datafolh",
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-24T23:07:23.020Z"
+      "found_at": "2026-10-25T01:04:13.515Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -519,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-24T23:07:23.309Z"
+      "found_at": "2026-10-25T01:04:13.683Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -527,24 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-24T23:07:23.462Z"
-    },
-    {
-      "url": "https://g1.globo.com/df/distrito-federal/eleicoes/2026/noticia/2026/10/24/datafolha-df-presidente-segundo-turno-24-outubro.ghtml",
-      "title": "Datafolha no DF: a disputa pela presidência na véspera do 2º turno | G1 Pular para o conteúdo Distrito Federal Eleições ",
-      "reason": "incomplete_extract:no_fieldwork,no_moe",
-      "institute": "Datafolha",
-      "published_date": "2026-10-24",
-      "found_at": "2026-10-24T23:07:23.615Z"
-    },
-    {
-      "url": "https://especiaisg1.globo/politica/eleicoes/2026/pesquisas-eleitorais/presidente/",
-      "title": "G1 - Pesquisas eleitorais | Eleições 2026 G1 Eleições 2026 Apuração Turno 1º turno 2º turno Instituto Quaest Datafolha P",
-      "reason": "incomplete_extract:no_published_date,no_fieldwork,no_moe",
-      "institute": "Quaest",
-      "published_date": null,
-      "found_at": "2026-10-24T23:07:24.192Z"
+      "found_at": "2026-10-25T01:04:13.852Z"
     }
   ],
-  "meta_last_check_at": "2026-10-24T23:07:39.279Z"
+  "meta_last_check_at": "2026-10-25T01:04:41.456Z"
 }
