@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-10-26T04:41:17.894Z",
+  "ran_at": "2026-10-26T11:00:04.149Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 426,
+  "candidate_links": 425,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-26T04:40:46.801Z"
+      "found_at": "2026-10-26T10:59:42.356Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-26T04:40:47.234Z"
+      "found_at": "2026-10-26T10:59:42.655Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-26T04:40:47.531Z"
+      "found_at": "2026-10-26T10:59:42.819Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-26T04:40:47.708Z"
+      "found_at": "2026-10-26T10:59:42.982Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-26T04:40:47.884Z"
+      "found_at": "2026-10-26T10:59:43.146Z"
     }
   ],
-  "meta_last_check_at": "2026-10-26T04:41:17.895Z"
+  "meta_last_check_at": "2026-10-26T11:00:04.151Z"
 }
