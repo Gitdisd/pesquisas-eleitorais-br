@@ -1,5 +1,5 @@
 {
-  "ran_at": "2026-10-28T23:09:26.251Z",
+  "ran_at": "2026-10-29T02:24:38.654Z",
   "watermark": "2026-09-21",
   "sources": 22,
   "candidate_links": 426,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-28T23:09:02.063Z"
+      "found_at": "2026-10-29T02:24:11.207Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-28T23:09:02.243Z"
+      "found_at": "2026-10-29T02:24:11.576Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-28T23:09:02.577Z"
+      "found_at": "2026-10-29T02:24:11.783Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-28T23:09:02.761Z"
+      "found_at": "2026-10-29T02:24:11.984Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-28T23:09:02.972Z"
+      "found_at": "2026-10-29T02:24:12.200Z"
     }
   ],
-  "meta_last_check_at": "2026-10-28T23:09:26.252Z"
+  "meta_last_check_at": "2026-10-29T02:24:38.660Z"
 }
