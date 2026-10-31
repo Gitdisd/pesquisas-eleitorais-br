@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "generated_at": "2026-10-30T20:42:57.723Z",
+  "generated_at": "2026-10-31T00:44:11.302Z",
   "identity_key": "tse_protocol|scenario|geo; fallback institute|fieldwork_start|fieldwork_end|scenario|geo",
   "base_polls": 240,
   "supplemental_rows": 36,
