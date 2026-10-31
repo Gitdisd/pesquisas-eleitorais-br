@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-31T13:36:04.535Z",
+  "ran_at": "2026-10-31T18:29:08.580Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 416,
+  "candidate_links": 409,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 58,
+  "inbox_new": 56,
   "skipped_old": 1,
   "fetch_errors": 8,
   "source_health": [
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T13:35:39.811Z"
+      "found_at": "2026-10-31T18:28:42.455Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T13:35:40.068Z"
+      "found_at": "2026-10-31T18:28:42.736Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T13:35:40.403Z"
+      "found_at": "2026-10-31T18:28:43.029Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T13:35:40.561Z"
+      "found_at": "2026-10-31T18:28:43.306Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T13:35:40.842Z"
+      "found_at": "2026-10-31T18:28:43.566Z"
     }
   ],
-  "meta_last_check_at": "2026-10-31T13:36:04.536Z"
+  "meta_last_check_at": "2026-10-31T18:29:08.582Z"
 }
