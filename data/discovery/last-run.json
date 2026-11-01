@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-10-31T22:26:45.543Z",
+  "ran_at": "2026-11-01T02:08:17.309Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 407,
+  "candidate_links": 405,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 56,
+  "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 9,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -159,8 +159,8 @@
     {
       "source_id": "quaest-genial",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -169,8 +169,8 @@
         },
         {
           "url": "https://www.quaest.com.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 200,
+          "error": null
         }
       ],
       "redundancy_ok": true,
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T22:26:11.917Z"
+      "found_at": "2026-11-01T02:07:46.449Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T22:26:12.237Z"
+      "found_at": "2026-11-01T02:07:46.824Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T22:26:12.445Z"
+      "found_at": "2026-11-01T02:07:47.009Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T22:26:12.780Z"
+      "found_at": "2026-11-01T02:07:47.204Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-10-31T22:26:12.990Z"
+      "found_at": "2026-11-01T02:07:47.483Z"
     }
   ],
-  "meta_last_check_at": "2026-10-31T22:26:45.546Z"
+  "meta_last_check_at": "2026-11-01T02:08:17.311Z"
 }
