@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-11-01T20:27:47.705Z",
+  "ran_at": "2026-11-02T00:37:33.725Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 374,
+  "candidate_links": 412,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
-  "inbox_new": 59,
-  "skipped_old": 0,
-  "fetch_errors": 10,
+  "inbox_new": 58,
+  "skipped_old": 1,
+  "fetch_errors": 8,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -129,8 +129,8 @@
     {
       "source_id": "datafolha-folha",
       "attempts": 4,
-      "successes": 2,
-      "failures": 2,
+      "successes": 4,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/",
@@ -144,12 +144,12 @@
         },
         {
           "url": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-lula-tem-39-e-flavio-bolsonaro-35-em-primeiro-turno.shtml",
-          "status": null,
-          "error": "timeout"
+          "status": 200,
+          "error": null
         },
         {
           "url": "https://www1.folha.uol.com.br/poder/",
-          "status": 502,
+          "status": 200,
           "error": null
         }
       ],
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-01T20:27:26.384Z"
+      "found_at": "2026-11-02T00:36:52.034Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-01T20:27:26.683Z"
+      "found_at": "2026-11-02T00:36:52.511Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-01T20:27:26.929Z"
+      "found_at": "2026-11-02T00:36:52.806Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-01T20:27:27.091Z"
+      "found_at": "2026-11-02T00:36:53.145Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-01T20:27:27.359Z"
+      "found_at": "2026-11-02T00:36:53.501Z"
     }
   ],
-  "meta_last_check_at": "2026-11-01T20:27:47.710Z"
+  "meta_last_check_at": "2026-11-02T00:37:33.726Z"
 }
