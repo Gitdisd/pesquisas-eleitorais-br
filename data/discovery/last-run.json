@@ -1,15 +1,15 @@
 {
-  "ran_at": "2026-11-13T00:12:44.044Z",
+  "ran_at": "2026-11-13T07:51:04.735Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 367,
+  "candidate_links": 374,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
   "staging_size": 1,
   "inbox_new": 58,
   "skipped_old": 1,
-  "fetch_errors": 18,
+  "fetch_errors": 9,
   "source_health": [
     {
       "source_id": "gnews-presidencial",
@@ -109,13 +109,13 @@
     {
       "source_id": "wikipedia-polling-2026",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 0,
+      "failures": 2,
       "statuses": [
         {
           "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
-          "status": 200,
-          "error": null
+          "status": null,
+          "error": "timeout"
         },
         {
           "url": "https://pt.wikipedia.org/wiki/Pesquisas_de_opini%C3%A3o_para_a_elei%C3%A7%C3%A3o_presidencial_do_Brasil_em_2026",
@@ -123,8 +123,8 @@
           "error": null
         }
       ],
-      "redundancy_ok": true,
-      "fully_failed": false
+      "redundancy_ok": false,
+      "fully_failed": true
     },
     {
       "source_id": "datafolha-folha",
@@ -179,8 +179,8 @@
     {
       "source_id": "atlasintel",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.atlasintel.org/",
@@ -189,7 +189,7 @@
         },
         {
           "url": "https://www.poder360.com.br/tag/atlasintel/",
-          "status": 403,
+          "status": 200,
           "error": null
         }
       ],
@@ -199,17 +199,17 @@
     {
       "source_id": "poderdata-poder360",
       "attempts": 4,
-      "successes": 1,
-      "failures": 3,
+      "successes": 4,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/poderdata/",
-          "status": 403,
+          "status": 200,
           "error": null
         },
         {
           "url": "https://www.poder360.com.br/poder-eleicoes-2026/",
-          "status": 403,
+          "status": 200,
           "error": null
         },
         {
@@ -219,7 +219,7 @@
         },
         {
           "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-47-ante-40-de-lula-no-2o-turno-diz-pesquisa/",
-          "status": 403,
+          "status": 200,
           "error": null
         }
       ],
@@ -229,8 +229,8 @@
     {
       "source_id": "nexus-btg",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.nexus.fsb.com.br/estudos-divulgados/",
@@ -239,7 +239,7 @@
         },
         {
           "url": "https://www.poder360.com.br/tag/nexus/",
-          "status": 403,
+          "status": 200,
           "error": null
         }
       ],
@@ -294,8 +294,8 @@
     {
       "source_id": "cnt-mda",
       "attempts": 2,
-      "successes": 0,
-      "failures": 2,
+      "successes": 1,
+      "failures": 1,
       "statuses": [
         {
           "url": "https://www.cnt.org.br/",
@@ -304,12 +304,12 @@
         },
         {
           "url": "https://www.poder360.com.br/tag/cnt/",
-          "status": 403,
+          "status": 200,
           "error": null
         }
       ],
-      "redundancy_ok": false,
-      "fully_failed": true
+      "redundancy_ok": true,
+      "fully_failed": false
     },
     {
       "source_id": "realtime-bigdata",
@@ -334,12 +334,12 @@
     {
       "source_id": "futura",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/tag/futura/",
-          "status": 403,
+          "status": 200,
           "error": null
         },
         {
@@ -354,8 +354,8 @@
     {
       "source_id": "gerp",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/",
@@ -364,7 +364,7 @@
         },
         {
           "url": "https://www.poder360.com.br/poder-eleicoes-2026/",
-          "status": 403,
+          "status": 200,
           "error": null
         }
       ],
@@ -394,27 +394,27 @@
     {
       "source_id": "vox-brasil",
       "attempts": 1,
-      "successes": 0,
-      "failures": 1,
+      "successes": 1,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/tag/vox/",
-          "status": 403,
+          "status": 200,
           "error": null
         }
       ],
-      "redundancy_ok": false,
-      "fully_failed": true
+      "redundancy_ok": true,
+      "fully_failed": false
     },
     {
       "source_id": "alfa-inteligencia",
       "attempts": 2,
-      "successes": 1,
-      "failures": 1,
+      "successes": 2,
+      "failures": 0,
       "statuses": [
         {
           "url": "https://www.poder360.com.br/tag/alfa/",
-          "status": 403,
+          "status": 200,
           "error": null
         },
         {
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-13T00:12:06.983Z"
+      "found_at": "2026-11-13T07:50:32.842Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-13T00:12:07.512Z"
+      "found_at": "2026-11-13T07:50:33.191Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-13T00:12:07.917Z"
+      "found_at": "2026-11-13T07:50:33.555Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-13T00:12:08.276Z"
+      "found_at": "2026-11-13T07:50:33.855Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-13T00:12:08.626Z"
+      "found_at": "2026-11-13T07:50:34.241Z"
     }
   ],
-  "meta_last_check_at": "2026-11-13T00:12:44.045Z"
+  "meta_last_check_at": "2026-11-13T07:51:04.737Z"
 }
