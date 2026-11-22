@@ -1,8 +1,8 @@
 {
   "version": 7,
   "status": "resolved",
-  "started_at": "2026-11-21T23:06:05.492Z",
-  "completed_at": "2026-11-21T23:06:07.464Z",
+  "started_at": "2026-11-22T03:01:30.669Z",
+  "completed_at": "2026-11-22T03:01:32.726Z",
   "selected_source": "tse-ckan",
   "trust": "official",
   "requested_url": "https://cdn.tse.jus.br/estatistica/sead/odsele/pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
