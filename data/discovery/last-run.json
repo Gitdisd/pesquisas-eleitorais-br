@@ -1,8 +1,8 @@
 {
-  "ran_at": "2026-11-26T04:57:35.045Z",
+  "ran_at": "2026-11-26T15:01:39.140Z",
   "watermark": "2026-09-21",
   "sources": 22,
-  "candidate_links": 410,
+  "candidate_links": 403,
   "pages_fetched": 60,
   "verified_new": 0,
   "staged_verified_new": 0,
@@ -299,8 +299,8 @@
       "statuses": [
         {
           "url": "https://www.cnt.org.br/",
-          "status": null,
-          "error": "fetch failed"
+          "status": 403,
+          "error": null
         },
         {
           "url": "https://www.poder360.com.br/tag/cnt/",
@@ -511,7 +511,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-26T04:56:53.007Z"
+      "found_at": "2026-11-26T15:01:14.438Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-recortes.ghtml",
@@ -519,7 +519,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-26T04:56:53.326Z"
+      "found_at": "2026-11-26T15:01:14.702Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro-rejeicao.ghtml",
@@ -527,7 +527,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-26T04:56:53.665Z"
+      "found_at": "2026-11-26T15:01:14.982Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/quaest-2o-turno-votos-validos.ghtml",
@@ -535,7 +535,7 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Quaest",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-26T04:56:53.994Z"
+      "found_at": "2026-11-26T15:01:15.339Z"
     },
     {
       "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/10/24/datafolha-presidente-24-outubro.ghtml",
@@ -543,8 +543,8 @@
       "reason": "incomplete_extract:no_fieldwork,no_moe",
       "institute": "Datafolha",
       "published_date": "2026-10-24",
-      "found_at": "2026-11-26T04:56:54.347Z"
+      "found_at": "2026-11-26T15:01:15.634Z"
     }
   ],
-  "meta_last_check_at": "2026-11-26T04:57:35.046Z"
+  "meta_last_check_at": "2026-11-26T15:01:39.186Z"
 }
